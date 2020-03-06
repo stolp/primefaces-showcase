@@ -21,7 +21,10 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+
+import org.primefaces.model.file.NativeUploadedFile;
 import org.primefaces.model.file.UploadedFile;
+import org.primefaces.model.file.UploadedFileWrapper;
 import org.primefaces.model.file.UploadedFiles;
 
 @Named
@@ -61,6 +64,15 @@ public class FileUploadView {
                 FacesContext.getCurrentInstance().addMessage(null, message);
             }
         }
+    }
+
+    public void handleFileChunkUpload(FileUploadEvent event) {
+        NativeUploadedFile uploadedFile = (NativeUploadedFile) ((UploadedFileWrapper) event.getFile()).getWrapped();
+
+        FacesMessage msg = new FacesMessage("Chunk Successful", "Chunk " + uploadedFile.getChunkRangeBegin() +
+                " - " + uploadedFile.getChunkRangeBegin() +
+                " of file" + event.getFile().getFileName() + " is uploaded.");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     
     public void handleFileUpload(FileUploadEvent event) {
