@@ -39,7 +39,7 @@ public class FileUploadView {
     private UploadedFiles files;
 
     private boolean writeChunkUpload2TempDir = false;
-    String tempDir = System.getProperty("java.io.tmpdir");
+    private String tempDir = System.getProperty("java.io.tmpdir");
 
     public UploadedFile getFile() {
         return file;
