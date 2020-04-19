@@ -25,11 +25,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.OpenOption;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 
 @Named
 @RequestScoped
@@ -37,9 +32,6 @@ public class FileUploadView {
     
     private UploadedFile file;
     private UploadedFiles files;
-
-    private boolean writeChunkUpload2TempDir = false;
-    private String tempDir = System.getProperty("java.io.tmpdir");
 
     public UploadedFile getFile() {
         return file;
@@ -74,47 +66,17 @@ public class FileUploadView {
     }
 
     public void handleFileChunkUpload(FileChunkUploadEvent event) {
-        UploadedFileChunk uploadedFileChunk = event.getFileChunk();
+        UploadedFileChunk uploadedFileChunk = event.getFile();
 
         //TODO: we see this message after the complete file is uploaded. Is there a chance to get this update to the client after each chunk?
         FacesMessage msg = new FacesMessage("Chunk Successful", "Chunk " + uploadedFileChunk.getChunkRangeBegin() +
                 " - " + uploadedFileChunk.getChunkRangeEnd() +
                 " of file " + uploadedFileChunk.getFileName() + " is uploaded.");
         FacesContext.getCurrentInstance().addMessage(null, msg);
-
-        if (writeChunkUpload2TempDir) {
-            try {
-                OpenOption openOption = StandardOpenOption.APPEND;
-                if (uploadedFileChunk.getChunkRangeBegin() == 0) {
-                    openOption = StandardOpenOption.CREATE;
-                }
-
-                Files.write(Paths.get(tempDir, uploadedFileChunk.getFileName()), uploadedFileChunk.getContent(), openOption);
-            }
-            catch (IOException ex) {
-                msg = new FacesMessage("Chunk Error", "Chunk " + uploadedFileChunk.getChunkRangeBegin() +
-                        " - " + uploadedFileChunk.getChunkRangeEnd() +
-                        " of file " + uploadedFileChunk.getFileName() + " can´t be written to tempDir. " + ex.getMessage());
-                msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-                FacesContext.getCurrentInstance().addMessage(null, msg);
-            }
-        }
     }
     
     public void handleFileUpload(FileUploadEvent event) {
         FacesMessage msg = new FacesMessage("Successful", event.getFile().getFileName() + " is uploaded.");
         FacesContext.getCurrentInstance().addMessage(null, msg);
-
-        if (writeChunkUpload2TempDir) {
-            try {
-                //cleanup tempDir
-                Files.delete(Paths.get(tempDir, event.getFile().getFileName()));
-            }
-            catch (IOException ex) {
-                msg = new FacesMessage("Error", event.getFile().getFileName() + " can´t be deleted from tempDir. " + ex.getMessage());
-                msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-                FacesContext.getCurrentInstance().addMessage(null, msg);
-            }
-        }
     }
 }
