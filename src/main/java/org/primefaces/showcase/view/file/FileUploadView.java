@@ -15,10 +15,8 @@
  */
 package org.primefaces.showcase.view.file;
 
-import org.primefaces.event.FileChunkUploadEvent;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.file.UploadedFile;
-import org.primefaces.model.file.UploadedFileChunk;
 import org.primefaces.model.file.UploadedFiles;
 
 import javax.enterprise.context.RequestScoped;
@@ -65,16 +63,6 @@ public class FileUploadView {
         }
     }
 
-    public void handleFileChunkUpload(FileChunkUploadEvent event) {
-        UploadedFileChunk uploadedFileChunk = event.getFile();
-
-        //TODO: we see this message after the complete file is uploaded. Is there a chance to get this update to the client after each chunk?
-        FacesMessage msg = new FacesMessage("Chunk Successful", "Chunk " + uploadedFileChunk.getChunkRangeBegin() +
-                " - " + uploadedFileChunk.getChunkRangeEnd() +
-                " of file " + uploadedFileChunk.getFileName() + " is uploaded.");
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-    
     public void handleFileUpload(FileUploadEvent event) {
         FacesMessage msg = new FacesMessage("Successful", event.getFile().getFileName() + " is uploaded.");
         FacesContext.getCurrentInstance().addMessage(null, msg);
