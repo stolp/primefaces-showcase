@@ -124,7 +124,7 @@
 
     <servlet>
         <servlet-name>FileUpload Resume Servlet</servlet-name>
-        <servlet-class>org.primefaces.webapp.FileUploadResumeServlet</servlet-class>
+        <servlet-class>org.primefaces.webapp.FileUploadChunksServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>FileUpload Resume Servlet</servlet-name>
