@@ -23,6 +23,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import javax.validation.constraints.Future;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -32,6 +33,7 @@ import java.util.*;
 public class CalendarView implements Serializable {
 
     private Date date1;
+    @Future
     private Date date2;
     private Date date3;
     private Date date4;
@@ -41,6 +43,7 @@ public class CalendarView implements Serializable {
     private Date date8;
     private Date date9;
     private Date dateDe;
+    @Future
     private Date date10;
     private Date date11;
     private Date date12;

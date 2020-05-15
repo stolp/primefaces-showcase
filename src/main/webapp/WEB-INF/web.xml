@@ -67,6 +67,10 @@
         <param-value>false</param-value>
     </context-param>
     <context-param>
+        <param-name>primefaces.TRANSFORM_METADATA</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
         <param-name>primefaces.CACHE_PROVIDER</param-name>
         <param-value>org.primefaces.showcase.util.EHCache3Provider</param-value>
     </context-param>

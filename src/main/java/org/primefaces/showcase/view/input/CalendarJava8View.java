@@ -23,6 +23,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import javax.validation.constraints.Future;
 import java.io.Serializable;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -37,6 +38,7 @@ public class CalendarJava8View implements Serializable {
     private Boolean showOtherMonths = Boolean.FALSE;
 
     private LocalDate date1;
+    @Future
     private LocalDate date2;
     private LocalDate date3;
     private LocalDate date4;
@@ -58,6 +60,7 @@ public class CalendarJava8View implements Serializable {
     private LocalTime time6;
     private LocalTime time7;
     private LocalDateTime dateTime1;
+    @Future
     private LocalDateTime dateTime2;
     private LocalDateTime dateTime3;
     private LocalDateTime dateTime4;
