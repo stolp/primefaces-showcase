@@ -16,13 +16,13 @@
 package org.primefaces.showcase.view.file;
 
 import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.file.UploadedFile;
+import org.primefaces.model.file.UploadedFiles;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import org.primefaces.model.file.UploadedFile;
-import org.primefaces.model.file.UploadedFiles;
 
 @Named
 @RequestScoped
@@ -62,7 +62,7 @@ public class FileUploadView {
             }
         }
     }
-    
+
     public void handleFileUpload(FileUploadEvent event) {
         FacesMessage msg = new FacesMessage("Successful", event.getFile().getFileName() + " is uploaded.");
         FacesContext.getCurrentInstance().addMessage(null, msg);
