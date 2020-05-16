@@ -26,15 +26,19 @@ import org.primefaces.model.diagram.endpoint.EndPointAnchor;
 import org.primefaces.model.diagram.overlay.ArrowOverlay;
 import org.primefaces.model.diagram.overlay.LabelOverlay;
 
+import java.io.Serializable;
+
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 @Named("diagramFlowChartView")
-@RequestScoped
-public class FlowChartView {
+@ViewScoped
+public class FlowChartView implements Serializable {
     
-    private DefaultDiagramModel model;
+	private static final long serialVersionUID = 1L;
+	
+	private DefaultDiagramModel model;
 
     @PostConstruct
     public void init() {
