@@ -92,9 +92,17 @@
                     <f:selectItems value="#{selectOneMenuView.options}" />
                 </p:selectOneMenu>
 
+                <p:outputLabel for="@next" value="Hide NoSelection Option:" />
+                <p:selectOneMenu id="hideNoselectionOption" value="#{selectOneMenuView.hideNoSelectOption}" style="width:125px" hideNoSelectionOption="#{not empty selectOneMenuView.hideNoSelectOption}">
+                    <p:ajax update="@this" process="@this" />
+                    <f:selectItem itemLabel="Select One" itemValue="#{null}"  noSelectionOption="true" />
+                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
+                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+                </p:selectOneMenu>
+
                 <p:outputLabel for="@next" value="Long Item Label:" />
-                <p:selectOneMenu id="longItemLabel" value="#{selectOneMenuView.longItemLabel}" style="width:100px" hideNoSelectionOption="#{not empty selectOneMenuView.options}">
-                    <f:selectItem itemLabel="Select One" itemValue="#{null}"  noSelectionOption="true"/>
+                <p:selectOneMenu id="longItemLabel" value="#{selectOneMenuView.longItemLabel}" style="width:100px" >
                     <f:selectItem itemLabel="Zero" itemValue="0" />
                     <f:selectItem itemLabel="One" itemValue="1" />
                     <f:selectItem itemLabel="Two" itemValue="2" />
@@ -131,6 +139,9 @@
 
                     <h:outputText value="Lazy:" />
                     <h:outputText value="#{selectOneMenuView.option}" />
+                    
+                    <h:outputText value="Hide NoSelection Option:" />
+                    <h:outputText value="#{selectOneMenuView.hideNoSelectOption}" />
 
                     <h:outputText value="Long Item Label:" />
                     <h:outputText value="#{selectOneMenuView.longItemLabel}" />

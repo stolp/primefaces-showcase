@@ -35,6 +35,7 @@ public class SelectOneMenuView {
     
     private String console; 
     private String rtl;
+    private String hideNoSelectOption;
     
     private String car;  
     private List<SelectItem> cars;
@@ -95,6 +96,14 @@ public class SelectOneMenuView {
 
     public String getRtl() {
         return rtl;
+    }
+    
+    public String getHideNoSelectOption() {
+        return hideNoSelectOption;
+    }
+
+    public void setHideNoSelectOption(String hideNoSelectOption) {
+        this.hideNoSelectOption = hideNoSelectOption;
     }
 
     public void setRtl(String rtl) {
