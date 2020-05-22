@@ -131,7 +131,7 @@ $(document).ready(function() {
                 for(var i = 0; i < $this.submenuItems.length; i++) {
                     var submenuItem = $this.submenuItems.eq(i),
                     submenuLink = submenuItem.children('a'),
-                    submenuLinkVal = $.trim(submenuLink.children('span').text()).toLowerCase();
+                    submenuLinkVal = String.prototype.trim.call(submenuLink.children('span').text()).toLowerCase();
                     
                     if(submenuLinkVal.search(searchedValue) < 0 || searchedValue.length === 0) {  
                         var menulinksInSubmenu = submenuLink.next().find('a');
@@ -139,7 +139,7 @@ $(document).ready(function() {
                         for(var j = 0; j < menulinksInSubmenu.length; j++) {
                             var menulink = menulinksInSubmenu.eq(j),
                             menuitem = menulink.parent(),
-                            itemVal = $.trim(menulink.children('span').text()).toLowerCase();
+                            itemVal = String.prototype.trim.call(menulink.children('span').text()).toLowerCase();
                             
                             if(itemVal.search(searchedValue) >= 0) {
                                 menuitem.show();
@@ -427,14 +427,14 @@ PrimeFaces.ShowcaseConfigurator = {
 
 	function read(s, converter) {
 		var value = config.raw ? s : parseCookieValue(s);
-		return $.isFunction(converter) ? converter(value) : value;
+		return typeof converter === "function" ? converter(value) : value;
 	}
 
 	var config = $.cookie = function (key, value, options) {
 
 		// Write
 
-		if (arguments.length > 1 && !$.isFunction(value)) {
+		if (arguments.length > 1 && typeof value !== "function") {
 			options = $.extend({}, config.defaults, options);
 
 			if (typeof options.expires === 'number') {
