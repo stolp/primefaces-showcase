@@ -377,13 +377,13 @@
             <id>community-stable</id>
             <properties>
                 <jsfVersion>Mojarra-${mojarra.version}</jsfVersion>
-                <primefacesVersion>PrimeFaces-7.0</primefacesVersion>
+                <primefacesVersion>PrimeFaces-8.0</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>7.0</version>
+                    <version>8.0</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
