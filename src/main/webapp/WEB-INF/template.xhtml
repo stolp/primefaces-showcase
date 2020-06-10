@@ -25,66 +25,32 @@
         </f:facet>
         <title>PrimeFaces Showcase</title>
 
-        <h:outputStylesheet name="css/sh.css" library="showcase"/>
-        <h:outputStylesheet name="css/nanoscroller.css" library="showcase"/>
-        <h:outputStylesheet name="css/primeflex.css" library="showcase"/>
+        <h:outputStylesheet name="styles/sh.css" library="showcase"/>
+        <h:outputStylesheet name="styles/primeflex.css" library="showcase"/>
+        <h:outputStylesheet name="styles/primeicons/primeicons.css" library="showcase"/>
 
-        <!-- For Community Themes except 'Luna' and 'Nova' theme -->
-        <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
-
-
-        <h:outputScript name="jquery/jquery.js" library="primefaces"/>
-        <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
-        <h:outputScript name="script/nanoscroller.js" library="showcase"/>
         <h:outputScript name="script/layout.js" library="showcase"/>
-
-        <ui:insert name="head"/>
-        
     </h:head>
 
     <h:body>
         <div class="layout-wrapper">
-            <!--<div class="layout-notification">
-                <a href="https://www.primefaces.org/store">
-                    <h:graphicImage name="showcase/images/asset-1-endofyear-2019.png" alt="New Year"/>
-                    <span class="layout-notification-details">
-                        <span class="helper-text">NEW YEAR SALE</span> SAVE UP TO <span class="rate">60%</span> AT PRIMESTORE!
-                    </span>
-                </a>
-            </div>-->
-            
-            <div class="layout-news">
-                <div class="layout-news-container">
-                    <h:graphicImage name="showcase/images/news/topbar-pandora-device.png" alt="Pandora"/>
-                    <a href="https://www.primefaces.org/store" target="_blank" class="layout-news-button">
-                        SHOP NOW<i class="pi pi-angle-right"></i>
-                    </a>
-                    <a href="#" class="layout-news-close">
-                        <i class="pi pi-times"></i>
-                    </a>
-                </div>
-            </div>
-            
             <ui:include src="./topbar.xhtml"></ui:include>
             <ui:include src="./menu.xhtml"></ui:include>
 
             <div class="layout-content">
                 <ui:insert name="content">
-                    <div class="content-section content-submenu">
-                        <ui:insert name="submenu"></ui:insert>
-                    </div>
-                    <div class="content-section content-introduction">
-                        <h1><ui:insert name="title"></ui:insert></h1>
-                        <p><ui:insert name="description"></ui:insert></p>
+                    <div class="content-section introduction">
                         <a class="documentation-link" href="https://primefaces.github.io/primefaces/8_0/##{documentationLink}" target="_blank">
                             <i class="pi pi-external-link"></i> 
                             Documentation
                         </a>
+                        <h1><ui:insert name="title"></ui:insert></h1>
+                        <p><ui:insert name="description"></ui:insert></p>
                     </div>
-                    <div class="content-section content-implementation #{guestPreferences.theme.startsWith('luna') ? 'dark-content' : null}">
+                    <div class="content-section implementation #{guestPreferences.theme.startsWith('luna') ? 'dark-content' : null}">
                         <ui:insert name="implementation"></ui:insert>
                     </div>
-                    <div class="content-section content-source">
+                    <div class="content-section source">
                         <ui:insert name="source">
                             <sc:tabscode
                                     value="#{sc:getFilesContent(facesContext.externalContext.requestServletPath, true)}">
@@ -93,33 +59,15 @@
                         </ui:insert>
                     </div>
                 </ui:insert>
+                <ui:include src="./footer.xhtml"></ui:include>
             </div>
-
-            <ui:include src="./config.xhtml"></ui:include>
-            <ui:include src="./footer.xhtml"></ui:include>
-            <div class="layout-mask"></div>
-
         </div>
-
-        <ui:insert name="status">
-            <p:ajaxStatus style="width:64px;height:64px;position:fixed;right:5px;bottom:5px">
-                <f:facet name="start">
-                    <i class="pi pi-spin pi-spinner ajax-loader" aria-hidden="true"></i>
-                </f:facet>
-
-                <f:facet name="complete">
-                    <h:outputText value=""/>
-                </f:facet>
-            </p:ajaxStatus>
-        </ui:insert>
 
         <ui:insert name="highlight">
             <h:outputScript name="showcase/script/sh.js" target="body"/>
         </ui:insert>
 
-        <ui:insert name="body"></ui:insert>
-
-        <h:outputStylesheet name="css/layout.css" library="showcase"/>
+        <h:outputStylesheet name="styles/app/layout.css" library="showcase"/>
     </h:body>
 
 </html>

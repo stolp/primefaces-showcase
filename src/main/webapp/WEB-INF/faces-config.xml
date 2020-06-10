@@ -4,6 +4,22 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 
+    
+    <name>showcase</name>
+
+    <component>
+        <component-type>org.primefaces.component.ShowcaseMenu</component-type>
+        <component-class>org.primefaces.showcase.component.menu.ShowcaseMenu</component-class>
+    </component>
+    
+    <render-kit>
+        <renderer>
+            <component-family>org.primefaces.component</component-family>
+            <renderer-type>org.primefaces.component.ShowcaseMenuRenderer</renderer-type>
+            <renderer-class>org.primefaces.showcase.component.menu.ShowcaseMenuRenderer</renderer-class>
+        </renderer>
+    </render-kit>
+
     <application>
         <action-listener>org.primefaces.application.DialogActionListener</action-listener>
         <navigation-handler>org.primefaces.application.DialogNavigationHandler</navigation-handler>
