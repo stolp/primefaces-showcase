@@ -15,6 +15,7 @@
  */
 package org.primefaces.showcase.view.panel;
 
+import org.primefaces.PrimeFaces;
 import org.primefaces.event.TabChangeEvent;
 import org.primefaces.event.TabCloseEvent;
 import org.primefaces.showcase.domain.Car;
@@ -56,5 +57,19 @@ public class TabbedView {
     public void onTabClose(TabCloseEvent event) {
         FacesMessage msg = new FacesMessage("Tab Closed", "Closed tab: " + event.getTab().getTitle());
         FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+    public void clearMultiViewState() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        String viewId = context.getViewRoot().getViewId();
+        PrimeFaces.current().multiViewState().clearAll(viewId, true, (clientId) -> {
+            showMessage(clientId);
+        });
+    }
+
+    private void showMessage(String clientId) {
+        FacesContext.getCurrentInstance()
+                .addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, clientId + " multiview state has been cleared out", null));
     }
 }
