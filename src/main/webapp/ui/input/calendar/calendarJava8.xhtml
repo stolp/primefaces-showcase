@@ -64,6 +64,9 @@
                 
                 <p:outputLabel for="popup" value="Popup:" />
                 <p:calendar id="popup" value="#{calendarJava8View.date2}" />
+				
+                <p:outputLabel for="readonly" value="Read-Only:" />
+                <p:calendar id="readonly" value="#{calendarJava8View.dateDe}" readonly="true" />
                 
                 <p:outputLabel for="button" value="Button:" />
                 <p:calendar id="button" value="#{calendarJava8View.date3}" showOn="button" />
@@ -89,7 +92,7 @@
                 <p:calendar id="effect" value="#{calendarJava8View.date8}" effect="fold" />
                 
                 <p:outputLabel for="mask" value="Mask:" />
-                <p:calendar id="mask" value="#{calendarJava8View.date9}" pattern="dd-MM-yyyy" mask="true" />
+                <p:calendar id="mask" value="#{calendarJava8View.date9}" pattern="dd-MM-yyyy" mask="true" showButtonPanel="true" />
                 
                 <p:outputLabel for="datetime" value="Datetime:" />
                 <p:calendar id="datetime" value="#{calendarJava8View.dateTime1}" pattern="MM/dd/yyyy HH:mm:ss" />
