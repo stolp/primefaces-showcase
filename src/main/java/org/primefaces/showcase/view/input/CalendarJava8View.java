@@ -52,6 +52,7 @@ public class CalendarJava8View implements Serializable {
     private LocalDate date11;
     private LocalDate date12;
     private LocalDate date13;
+    private LocalDate date14;
     private LocalTime time1;
     private LocalTime time2;
     private LocalTime time3;
@@ -323,6 +324,14 @@ public class CalendarJava8View implements Serializable {
 
     public void setDate13(LocalDate date13) {
         this.date13 = date13;
+    }
+
+    public LocalDate getDate14() {
+        return date14;
+    }
+
+    public void setDate14(LocalDate date14) {
+        this.date14 = date14;
     }
 
     public ZonedDateTime getZonedDateTime1() {

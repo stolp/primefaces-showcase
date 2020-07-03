@@ -125,6 +125,9 @@
                             <p:outputLabel for="touch" value="Touch UI:" />
                             <p:datePicker id="touch" value="#{calendarJava8View.date4}" touchUI="true"  showOtherMonths="#{calendarJava8View.showOtherMonths}" />
 
+                            <p:outputLabel for="mask" value="Mask:" />
+                            <p:datePicker id="mask" value="#{calendarJava8View.date14}" pattern="MM/dd/yyyy" showButtonBar="true" mask="true" />
+
                             <p:outputLabel for="dateTemplate" value="Date Template:" />
                             <p:datePicker id="dateTemplate" value="#{calendarJava8View.date5}" dateTemplate="dateTemplateFunc" showOtherMonths="#{calendarJava8View.showOtherMonths}" />
 
