@@ -33,7 +33,7 @@
 
             <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                 <p:outputLabel for="@next" value="Basic:" />
-                <p:selectOneMenu id="console" value="#{selectOneMenuView.console}" style="width:125px">
+                <p:selectOneMenu id="console" value="#{selectOneMenuView.console}" style="width:200px">
                     <f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true"/>
                     <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
                     <f:selectItem itemLabel="PS4" itemValue="PS4" />
@@ -45,7 +45,7 @@
                 </p:selectOneMenu>
 
                 <p:outputLabel for="@next" value="RTL:" />
-                <p:selectOneMenu id="trl" value="#{selectOneMenuView.rtl}" style="width:125px" dir="rtl">
+                <p:selectOneMenu id="trl" value="#{selectOneMenuView.rtl}" dir="rtl">
                     <f:selectItem itemLabel="Select One" itemValue="" />
                     <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
                     <f:selectItem itemLabel="PS4" itemValue="PS4" />
@@ -65,8 +65,8 @@
                 </p:selectOneMenu>
 
                 <p:outputLabel for="@next" value="Advanced:" />
-                <p:selectOneMenu id="advanced" value="#{selectOneMenuView.theme}" converter="#{themeConverter}" panelStyle="width:180px"
-                                 effect="fade" var="t" style="width:160px" filter="true" filterMatchMode="startsWith">
+                <p:selectOneMenu id="advanced" value="#{selectOneMenuView.theme}" converter="#{themeConverter}" panelStyle="width:180px" 
+                                 effect="fade" var="t" style="width:200px" filter="true" filterMatchMode="startsWith">
                     <f:selectItems value="#{selectOneMenuView.themes}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" />
 
                     <p:column style="width:10%">
@@ -87,13 +87,13 @@
                 </p:selectOneMenu>
 
                 <p:outputLabel for="@next" value="Lazy:" />
-                <p:selectOneMenu id="lazy" value="#{selectOneMenuView.option}" dynamic="true" style="width:125px">
+                <p:selectOneMenu id="lazy" value="#{selectOneMenuView.option}" dynamic="true">
                     <f:selectItem itemLabel="Select One" itemValue="" />
                     <f:selectItems value="#{selectOneMenuView.options}" />
                 </p:selectOneMenu>
 
                 <p:outputLabel for="@next" value="Hide NoSelection Option:" />
-                <p:selectOneMenu id="hideNoselectionOption" value="#{selectOneMenuView.hideNoSelectOption}" style="width:125px" hideNoSelectionOption="#{not empty selectOneMenuView.hideNoSelectOption}">
+                <p:selectOneMenu id="hideNoselectionOption" value="#{selectOneMenuView.hideNoSelectOption}" hideNoSelectionOption="#{not empty selectOneMenuView.hideNoSelectOption}">
                     <p:ajax update="@this" process="@this" />
                     <f:selectItem itemLabel="Select One" itemValue="#{null}"  noSelectionOption="true" />
                     <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
@@ -102,7 +102,7 @@
                 </p:selectOneMenu>
 
                 <p:outputLabel for="@next" value="Long Item Label:" />
-                <p:selectOneMenu id="longItemLabel" value="#{selectOneMenuView.longItemLabel}" style="width:100px" >
+                <p:selectOneMenu id="longItemLabel" value="#{selectOneMenuView.longItemLabel}" >
                     <f:selectItem itemLabel="Zero" itemValue="0" />
                     <f:selectItem itemLabel="One" itemValue="1" />
                     <f:selectItem itemLabel="Two" itemValue="2" />
