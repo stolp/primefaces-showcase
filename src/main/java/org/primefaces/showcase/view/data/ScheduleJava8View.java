@@ -52,13 +52,28 @@ public class ScheduleJava8View implements Serializable {
 
 	private ScheduleEvent<?> event = new DefaultScheduleEvent<>();
 
+	private boolean slotEventOverlap = true;
+	private boolean showWeekNumbers = false;
+	private boolean showHeader = true;
+	private boolean draggable = true;
+	private boolean resizable = true;
 	private boolean showWeekends = true;
 	private boolean tooltip = true;
 	private boolean allDaySlot = true;
 
+	private double aspectRatio = Double.MIN_VALUE;
+
+	private String leftHeaderTemplate = "prev, next, today";
+	private String centerHeaderTemplate = "title";
+	private String rightHeaderTemplate = "dayGridMonth,timeGridWeek,timeGridDay,listYear";
+	private String nextDayThreshold = "09:00:00";
+	private String weekNumberCalculation = "local";
+	private String weekNumberCalculator = "date.getTime()";
+	private String displayEventEnd;
 	private String timeFormat;
 	private String slotDuration = "00:30:00";
 	private String slotLabelInterval;
+	private String slotLabelFormat;
 	private String scrollTime = "06:00:00";
 	private String minTime = "04:00:00";
 	private String maxTime = "20:00:00";
@@ -66,6 +81,7 @@ public class ScheduleJava8View implements Serializable {
 	private String timeZone = "";
 	private String clientTimeZone = "local";
 	private String columnHeaderFormat = "";
+	private String view = "timeGridWeek";
 
 	private String extenderCode = "// Write your code here or select an example from above";
 	private String selectedExtenderExample = "";
@@ -94,19 +110,21 @@ public class ScheduleJava8View implements Serializable {
 		eventModel.addEvent(event);
 
 		event = DefaultScheduleEvent.builder()
-				.title("Breakfast at Tiffanys")
+				.title("Breakfast at Tiffanys (always resizable)")
 				.startDate(nextDay9Am())
 				.endDate(nextDay11Am())
 				.description("all you can eat")
 				.overlapAllowed(true)
+				.resizable(true)
 				.build();
 		eventModel.addEvent(event);
 
 		event = DefaultScheduleEvent.builder()
-				.title("Plant the new garden stuff")
+				.title("Plant the new garden stuff (always draggable)")
 				.startDate(theDayAfter3Pm())
 				.endDate(fourDaysLater3pm())
 				.description("Trees, flowers, ...")
+				.draggable(true)
 				.build();
 		eventModel.addEvent(event);
 
@@ -226,6 +244,10 @@ public class ScheduleJava8View implements Serializable {
 		event = selectEvent.getObject();
 	}
 
+	public void onViewChange(SelectEvent<String> selectEvent) {
+		view = selectEvent.getObject();
+	}
+
 	public void onDateSelect(SelectEvent<LocalDateTime> selectEvent) {
 		event = DefaultScheduleEvent.builder().startDate(selectEvent.getObject()).endDate(selectEvent.getObject().plusHours(1)).build();
 	}
@@ -273,6 +295,46 @@ public class ScheduleJava8View implements Serializable {
 		this.showWeekends = showWeekends;
 	}
 
+	public boolean isSlotEventOverlap() {
+		return slotEventOverlap;
+	}
+
+	public void setSlotEventOverlap(boolean slotEventOverlap) {
+		this.slotEventOverlap = slotEventOverlap;
+	}
+
+	public boolean isShowWeekNumbers() {
+		return showWeekNumbers;
+	}
+
+	public void setShowWeekNumbers(boolean showWeekNumbers) {
+		this.showWeekNumbers = showWeekNumbers;
+	}
+
+	public boolean isShowHeader() {
+		return showHeader;
+	}
+
+	public void setShowHeader(boolean showHeader) {
+		this.showHeader = showHeader;
+	}
+
+	public boolean isDraggable() {
+		return draggable;
+	}
+
+	public void setDraggable(boolean draggable) {
+		this.draggable = draggable;
+	}
+
+	public boolean isResizable() {
+		return resizable;
+	}
+
+	public void setResizable(boolean resizable) {
+		this.resizable = resizable;
+	}
+
 	public boolean isTooltip() {
 		return tooltip;
 	}
@@ -287,6 +349,70 @@ public class ScheduleJava8View implements Serializable {
 
 	public void setAllDaySlot(boolean allDaySlot) {
 		this.allDaySlot = allDaySlot;
+	}
+
+	public double getAspectRatio() {
+		return aspectRatio == 0 ? Double.MIN_VALUE : aspectRatio;
+	}
+
+	public void setAspectRatio(double aspectRatio) {
+		this.aspectRatio = aspectRatio;
+	}
+
+	public String getLeftHeaderTemplate() {
+		return leftHeaderTemplate;
+	}
+
+	public void setLeftHeaderTemplate(String leftHeaderTemplate) {
+		this.leftHeaderTemplate = leftHeaderTemplate;
+	}
+
+	public String getCenterHeaderTemplate() {
+		return centerHeaderTemplate;
+	}
+
+	public void setCenterHeaderTemplate(String centerHeaderTemplate) {
+		this.centerHeaderTemplate= centerHeaderTemplate;
+	}
+
+	public String getRightHeaderTemplate() {
+		return rightHeaderTemplate;
+	}
+
+	public void setRightHeaderTemplate(String rightHeaderTemplate) {
+		this.rightHeaderTemplate= rightHeaderTemplate;
+	}
+
+	public String getView() {
+		return view;
+	}
+
+	public void setView(String view) {
+		this.view = view;
+	}
+
+	public String getNextDayThreshold() {
+		return nextDayThreshold;
+	}
+
+	public void setNextDayThreshold(String nextDayThreshold) {
+		this.nextDayThreshold = nextDayThreshold;
+	}
+
+	public String getWeekNumberCalculation() {
+		return weekNumberCalculation;
+	}
+
+	public void setWeekNumberCalculation(String weekNumberCalculation) {
+		this.weekNumberCalculation = weekNumberCalculation;
+	}
+
+	public String getWeekNumberCalculator() {
+		return weekNumberCalculator;
+	}
+
+	public void setWeekNumberCalculator(String weekNumberCalculator) {
+		this.weekNumberCalculator = weekNumberCalculator;
 	}
 
 	public String getTimeFormat() {
@@ -311,6 +437,22 @@ public class ScheduleJava8View implements Serializable {
 
 	public void setSlotLabelInterval(String slotLabelInterval) {
 		this.slotLabelInterval = slotLabelInterval;
+	}
+
+	public String getSlotLabelFormat() {
+		return slotLabelFormat;
+	}
+
+	public void setSlotLabelFormat(String slotLabelFormat) {
+		this.slotLabelFormat = slotLabelFormat;
+	}
+
+	public String getDisplayEventEnd() {
+		return displayEventEnd;
+	}
+
+	public void setDisplayEventEnd(String displayEventEnd) {
+		this.displayEventEnd = displayEventEnd;
 	}
 
 	public String getScrollTime() {
