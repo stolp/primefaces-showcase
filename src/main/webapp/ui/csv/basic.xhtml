@@ -41,8 +41,8 @@
                     <h:outputText value="#{validationView.text}" />
 
                     <h:outputLabel for="number" value="Number:" style="font-weight:bold"/>
-                    <p:inputMask id="number" value="#{validationView.integer}" label="Number" mask="9999999999">
-                        <f:validateLength minimum="5" maximum="8"/>
+                    <p:inputMask id="number" value="#{validationView.integer}" label="Number" mask="9[99]"  validateMask="false">
+                        <f:validateLength minimum="2" maximum="3"/>
                     </p:inputMask>
                     <p:message for="number" />
                     <h:outputText value="#{validationView.integer}" />
