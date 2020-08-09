@@ -37,11 +37,11 @@
                 MESSAGE_ID: 'org.primefaces.examples.validate.email.message',
                 
                 validate: function(element, value) {
-                    var vc = PrimeFaces.util.ValidationContext;
+                    var vc = PrimeFaces.validation.ValidationContext;
             
                     if(!this.pattern.test(value)) {
                         var msgStr = element.data('p-email-msg'),
-                        msg = msgStr ? {summary:msgStr, detail: msgStr} : vc.getMessage(this.MESSAGE_ID);
+                        msg = msgStr ? {summary: msgStr, detail: msgStr} : vc.getMessage(this.MESSAGE_ID);
                 
                         throw msg;
                     }
