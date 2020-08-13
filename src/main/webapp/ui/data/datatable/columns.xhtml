@@ -28,7 +28,7 @@
             </h:panelGrid>
 
             <p:dataTable id="cars" var="car" value="#{dtColumnsView.cars}" widgetVar="carsTable" filteredValue="#{dtColumnsView.filteredCars}">                    
-                <p:columns value="#{dtColumnsView.columns}" var="column" columnIndexVar="colIndex" sortBy="#{car[column.property]}" filterBy="#{car[column.property]}">
+                <p:columns value="#{dtColumnsView.columns}" var="column" columnIndexVar="colIndex" field="#{column.property}" sortBy="#{car[column.property]}" filterBy="#{car[column.property]}">
                     <f:facet name="header">
                         <h:outputText value="#{column.header}" />
                     </f:facet>
