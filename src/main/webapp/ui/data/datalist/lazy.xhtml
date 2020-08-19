@@ -41,7 +41,7 @@
     <ui:define name="implementation">
 
         <h:form id="form">
-            <p:dataList value="#{dtLazyView.lazyModel}" var="car" lazy="true" type="unordered" itemType="none" style="width: 450px"
+            <p:dataList value="#{dtLazyView.lazyModel}" var="car" type="unordered" itemType="none" style="width: 450px"
                         paginator="true" rows="5" rowsPerPageTemplate="5,10,20" pageLinks="5"
                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
                 <h:panelGrid columns="3" columnClasses="logo,detail">
