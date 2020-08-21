@@ -21,7 +21,7 @@
         <p:growl id="messages" showDetail="true" />
 
         Single file<br />
-        <h:form enctype="multipart/form-data">
+        <h:form>
             <p:fileUpload value="#{fileUploadView.file}" mode="simple" skinSimple="true" auto="true"
                           process="@this" update="messages"
                           listener="#{fileUploadView.handleFileUpload}"  />
@@ -30,7 +30,7 @@
         <br />
         <br />
         Multiple files; NOTE: in simple mode, you can get all files within a single request!<br />
-        <h:form enctype="multipart/form-data">
+        <h:form>
             <p:fileUpload value="#{fileUploadView.files}" mode="simple" skinSimple="true" multiple="true" auto="true"
                           process="@this" update="messages"
                           listener="#{fileUploadView.handleFilesUpload}" />
