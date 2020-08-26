@@ -25,7 +25,8 @@ import javax.inject.Named;
 public class UserView {
     
     private String firstname;
-	private String lastname;
+    private String middlename;
+    private String lastname;
 
     public String getFirstname() {
         return firstname;
@@ -33,6 +34,14 @@ public class UserView {
 
     public void setFirstname(String firstname) {
         this.firstname = firstname;
+    }
+
+    public String getMiddlename() {
+        return middlename;
+    }
+
+    public void setMiddlename(String middlename) {
+        this.middlename = middlename;
     }
 
     public String getLastname() {
@@ -43,8 +52,8 @@ public class UserView {
         this.lastname = lastname;
     }
 
-	public void save() {
-		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage("Welcome " + firstname + " " + lastname));
-	}
+    public void save() {
+        FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage("Welcome " + firstname + " " + middlename + " " + lastname));
+    }
 }
