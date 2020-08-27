@@ -63,7 +63,7 @@ public class ScheduleJava8View implements Serializable {
 
 	private double aspectRatio = Double.MIN_VALUE;
 
-	private String leftHeaderTemplate = "prev, next, today";
+	private String leftHeaderTemplate = "prev,next today";
 	private String centerHeaderTemplate = "title";
 	private String rightHeaderTemplate = "dayGridMonth,timeGridWeek,timeGridDay,listYear";
 	private String nextDayThreshold = "09:00:00";
