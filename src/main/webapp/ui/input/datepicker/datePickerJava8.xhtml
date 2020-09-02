@@ -103,7 +103,7 @@
                             <p:datePicker id="inline" value="#{calendarJava8View.date1}" inline="true" showOtherMonths="#{calendarJava8View.showOtherMonths}" />
 
                             <p:outputLabel for="popup" value="Popup:" />
-                            <p:datePicker id="popup" value="#{calendarJava8View.date2}" showOtherMonths="#{calendarJava8View.showOtherMonths}" />
+                            <p:datePicker id="popup" value="#{calendarJava8View.date2}" showOtherMonths="#{calendarJava8View.showOtherMonths}" monthNavigator="true" yearNavigator="true"/>
 
                             <p:outputLabel for="popupConvertDateTime" value="Popup (f:convertDateTime):" />
                             <p:datePicker id="popupConvertDateTime" value="#{calendarJava8View.date13}" pattern="MM/dd/yyyy" showOtherMonths="#{calendarJava8View.showOtherMonths}">
@@ -161,7 +161,7 @@
                             <p:datePicker id="minmax" value="#{calendarJava8View.date11}" mindate="#{calendarJava8View.minDate}" maxdate="#{calendarJava8View.maxDate}" readonlyInput="true" showOtherMonths="#{calendarJava8View.showOtherMonths}"/>
 
                             <p:outputLabel for="multi" value="Multiple Months:" />
-                            <p:datePicker id="multi" value="#{calendarJava8View.date12}" numberOfMonths="3" showOtherMonths="#{calendarJava8View.showOtherMonths}"/>
+                            <p:datePicker id="multi" value="#{calendarJava8View.date12}" numberOfMonths="3" monthNavigator="true" yearNavigator="true" showOtherMonths="#{calendarJava8View.showOtherMonths}"/>
                         </p:panelGrid>
                     </p:panel>
 

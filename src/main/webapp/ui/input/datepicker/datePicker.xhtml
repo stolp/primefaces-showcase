@@ -97,7 +97,7 @@
                 <p:datePicker id="inline" value="#{calendarView.date1}" inline="true" />
 
                 <p:outputLabel for="popup" value="Popup:" />
-                <p:datePicker id="popup" value="#{calendarView.date2}" />
+                <p:datePicker id="popup" value="#{calendarView.date2}" monthNavigator="true" yearNavigator="true"/>
 
                 <p:outputLabel for="multiselect" value="Multiple Selection:" />
                 <p:datePicker id="multiselect" selectionMode="multiple" value="#{calendarView.multi}" readonlyInput="true" />
@@ -138,7 +138,7 @@
                 <p:datePicker id="minmax" value="#{calendarView.date11}" mindate="#{calendarView.minDate}" maxdate="#{calendarView.maxDate}" readonlyInput="true"/>
 
                 <p:outputLabel for="multi" value="Multiple Months:" />
-                <p:datePicker id="multi" value="#{calendarView.date12}" numberOfMonths="3"/>
+                <p:datePicker id="multi" value="#{calendarView.date12}" numberOfMonths="3" monthNavigator="true" yearNavigator="true"/>
 
                 <p:outputLabel for="time" value="Time" />
                 <p:datePicker id="time" value="#{calendarView.date13}" showTime="true"/>
