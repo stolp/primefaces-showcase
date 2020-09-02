@@ -35,10 +35,14 @@ function stop() {
             <p:graphicImage name="/demo/images/ajaxloadingbar.gif" />
         </p:dialog>
        
-        <h:form>   
+        <h:form>
             <p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="pi pi-arrow-down">
                 <p:fileDownload value="#{fileDownloadView.file}" />
-            </p:commandButton>      
+            </p:commandButton>
+
+            <p:commandButton value="Ajax Download" icon="pi pi-arrow-down">
+                <p:fileDownload value="#{fileDownloadView.file}" />
+            </p:commandButton>
         </h:form>
         
     </ui:define>
