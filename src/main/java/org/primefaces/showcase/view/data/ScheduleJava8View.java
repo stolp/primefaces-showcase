@@ -246,6 +246,8 @@ public class ScheduleJava8View implements Serializable {
 
 	public void onViewChange(SelectEvent<String> selectEvent) {
 		view = selectEvent.getObject();
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "View Changed", "View:" + view);
+		addMessage(message);
 	}
 
 	public void onDateSelect(SelectEvent<LocalDateTime> selectEvent) {

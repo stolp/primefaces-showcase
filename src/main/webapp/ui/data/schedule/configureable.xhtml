@@ -26,7 +26,9 @@
     <ui:define name="implementation">
 
         <h:form>
-            <p:growl id="messages" showDetail="true" />
+            <p:growl id="messages" showDetail="true" life="2000">
+               <p:autoUpdate />
+            </p:growl>
 
             <p:panel header="Settings">
                 <p:panelGrid columns="2" layout="flex" styleClass="ui-noborder" columnClasses="p-col-12 p-xl-6, p-col-12 p-xl-6">
