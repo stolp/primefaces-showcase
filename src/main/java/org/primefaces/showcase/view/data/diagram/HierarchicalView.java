@@ -75,8 +75,8 @@ public class HierarchicalView {
         model.addElement(tst);
         
         StraightConnector connector = new StraightConnector();
-        connector.setPaintStyle("{strokeStyle:'#404a4e', lineWidth:3}");
-        connector.setHoverPaintStyle("{strokeStyle:'#20282b'}");
+        connector.setPaintStyle("{stroke:'#404a4e', strokeWidth:3}");
+        connector.setHoverPaintStyle("{stroke:'#20282b'}");
                         
         //connections
         model.connect(new Connection(ceo.getEndPoints().get(0), cfo.getEndPoints().get(0), connector));        
@@ -89,8 +89,8 @@ public class HierarchicalView {
     
     private EndPoint createEndPoint(EndPointAnchor anchor) {
         DotEndPoint endPoint = new DotEndPoint(anchor);
-        endPoint.setStyle("{fillStyle:'#404a4e'}");
-        endPoint.setHoverStyle("{fillStyle:'#20282b'}");
+        endPoint.setStyle("{fill:'#404a4e'}");
+        endPoint.setHoverStyle("{fill:'#20282b'}");
         
         return endPoint;
     }

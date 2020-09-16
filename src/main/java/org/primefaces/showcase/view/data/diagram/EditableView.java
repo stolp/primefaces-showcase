@@ -48,11 +48,12 @@ public class EditableView implements Serializable {
     public void init() {
         model = new DefaultDiagramModel();
         model.setMaxConnections(-1);
+        model.setContainment(false);
         
         model.getDefaultConnectionOverlays().add(new ArrowOverlay(20, 20, 1, 1));
         StraightConnector connector = new StraightConnector();
-        connector.setPaintStyle("{strokeStyle:'#98AFC7', lineWidth:3}");
-        connector.setHoverPaintStyle("{strokeStyle:'#5C738B'}");
+        connector.setPaintStyle("{stroke:'#98AFC7', strokeWidth:3}");
+        connector.setHoverPaintStyle("{stroke:'#5C738B'}");
         model.setDefaultConnector(connector);
         
         Element computerA = new Element(new NetworkElement("Computer A", "computer-icon.png"), "10em", "6em");
@@ -133,8 +134,8 @@ public class EditableView implements Serializable {
         DotEndPoint endPoint = new DotEndPoint(anchor);
         endPoint.setScope("network");
         endPoint.setTarget(true);
-        endPoint.setStyle("{fillStyle:'#98AFC7'}");
-        endPoint.setHoverStyle("{fillStyle:'#5C738B'}");
+        endPoint.setStyle("{fill:'#98AFC7'}");
+        endPoint.setHoverStyle("{fill:'#5C738B'}");
         
         return endPoint;
     }
@@ -143,8 +144,8 @@ public class EditableView implements Serializable {
         RectangleEndPoint endPoint = new RectangleEndPoint(anchor);
         endPoint.setScope("network");
         endPoint.setSource(true);
-        endPoint.setStyle("{fillStyle:'#98AFC7'}");
-        endPoint.setHoverStyle("{fillStyle:'#5C738B'}");
+        endPoint.setStyle("{fill:'#98AFC7'}");
+        endPoint.setHoverStyle("{fill:'#5C738B'}");
         
         return endPoint;
     }

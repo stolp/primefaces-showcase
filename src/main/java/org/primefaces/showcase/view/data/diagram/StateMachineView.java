@@ -43,7 +43,7 @@ public class StateMachineView {
         
         StateMachineConnector connector = new StateMachineConnector();
         connector.setOrientation(StateMachineConnector.Orientation.ANTICLOCKWISE);
-        connector.setPaintStyle("{strokeStyle:'#7D7463',lineWidth:3}");
+        connector.setPaintStyle("{stroke:'#7D7463',strokeWidth:3}");
         model.setDefaultConnector(connector);
         
         Element start = new Element(null, "15em", "5em");

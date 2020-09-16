@@ -46,7 +46,7 @@ public class FlowChartView implements Serializable {
         model.setMaxConnections(-1);
         
         FlowChartConnector connector = new FlowChartConnector();
-        connector.setPaintStyle("{strokeStyle:'#C7B097',lineWidth:3}");
+        connector.setPaintStyle("{stroke:'#C7B097',strokeWidth:3}");
         model.setDefaultConnector(connector);
         
         Element start = new Element("Fight for your dream", "20em", "6em");

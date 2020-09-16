@@ -23,12 +23,13 @@ import org.primefaces.model.diagram.endpoint.DotEndPoint;
 import org.primefaces.model.diagram.endpoint.EndPointAnchor;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import java.io.Serializable;
 
 @Named("diagramBasicView")
-@RequestScoped
-public class BasicView {
+@ViewScoped
+public class BasicView implements Serializable {
     
     private DefaultDiagramModel model;
 
