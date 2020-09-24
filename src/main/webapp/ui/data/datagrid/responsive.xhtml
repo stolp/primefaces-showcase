@@ -18,11 +18,12 @@
 	</ui:define>
     
     <ui:define name="title">
-        DataGrid - <span class="subitem">Basic</span>
+        DataGrid - <span class="subitem">Responsive</span>
     </ui:define>
 
     <ui:define name="description">
-        DataGrid displays data in a grid layout.
+        Responsive mode is provided to optimize the display for different screen sizes.
+        You can improve this for e.g. large screen via rowStyleClass-attribute.
     </ui:define>
 
     <ui:param name="documentationLink" value="/components/datagrid" />
@@ -32,17 +33,17 @@
 
         <h:form id="form">
             <p:dataGrid var="car" value="#{dataGridView.cars}" columns="3" layout="grid"
-                rows="12" paginator="true" id="cars"
-                paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                rowsPerPageTemplate="6,12,16">
-                
+                        rows="12" paginator="true" id="cars"
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                        rowStyleClass="ui-lg-3 ui-xl-2">
+
                 <f:facet name="header">
                     Cars for Sale
                 </f:facet>
 
                 <p:panel header="#{car.id}" style="text-align:center">
                     <h:panelGrid columns="1" style="width:100%">
-                        <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> 
+                        <p:graphicImage name="demo/images/car/#{car.brand}.gif"/>
 
                         <h:outputText value="#{car.year}" />
 
