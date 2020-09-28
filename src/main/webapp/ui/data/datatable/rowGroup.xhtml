@@ -20,7 +20,7 @@
         <h3 class="first">Header Row</h3>
         <h:form>
             <p:dataTable var="car" value="#{dtRowGroupView.cars}" sortBy="#{car.brand}" expandableRowGroups="true">
-                <p:headerRow>
+                <p:headerRow expanded="#{car.brand != 'BMW'}">
                     <p:column colspan="3">
                         <h:outputText value="#{car.brand}" />
                     </p:column>
