@@ -56,6 +56,9 @@
                     <p:selectBooleanCheckbox value="#{scheduleJava8View.slotEventOverlap}" itemLabel="show contemporary events as overlapping">
                         <p:ajax update="schedule" />
                     </p:selectBooleanCheckbox>
+                    <p:selectBooleanCheckbox value="#{scheduleJava8View.rtl}" itemLabel="right to left">
+                        <p:ajax update="schedule" />
+                    </p:selectBooleanCheckbox>
                 </p:panelGrid>
 
                 <p:panelGrid columns="4" layout="flex" styleClass="ui-noborder" columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4">
@@ -121,7 +124,7 @@
 
                     <p:outputLabel value="locale (some examples)" for="locale" />
                     <p:selectOneMenu id="locale" value="#{scheduleJava8View.locale}">
-                        <f:selectItem itemLabel="Englisch" itemValue="en" />
+                        <f:selectItem itemLabel="English" itemValue="en" />
                         <f:selectItem itemLabel="French" itemValue="fr" />
                         <f:selectItem itemLabel="German" itemValue="de" />
                         <f:selectItem itemLabel="Turkish" itemValue="tr" />
@@ -214,7 +217,8 @@
                             displayEventEnd="#{scheduleJava8View.displayEventEnd}" weekNumberCalculator="#{scheduleJava8View.weekNumberCalculator}"
                             weekNumberCalculation="#{scheduleJava8View.weekNumberCalculation}" nextDayThreshold="#{scheduleJava8View.nextDayThreshold}"
                             slotEventOverlap="#{scheduleJava8View.slotEventOverlap}" leftHeaderTemplate="#{scheduleJava8View.leftHeaderTemplate}"
-                            centerHeaderTemplate="#{scheduleJava8View.centerHeaderTemplate}" rightHeaderTemplate="#{scheduleJava8View.rightHeaderTemplate}">
+                            centerHeaderTemplate="#{scheduleJava8View.centerHeaderTemplate}" rightHeaderTemplate="#{scheduleJava8View.rightHeaderTemplate}"
+                            dir="#{scheduleJava8View.rtl ? 'rtl' : 'ltr'}">
 
                     <p:ajax event="dateSelect" listener="#{scheduleJava8View.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
                     <p:ajax event="eventSelect" listener="#{scheduleJava8View.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
