@@ -53,6 +53,7 @@ public class ButtonView {
 
         //Second submenu
         item = DefaultMenuItem.builder()
+                .id("mniSave")
                 .value("Save")
                 .icon("pi pi-save")
                 .function((i) -> save())
