@@ -72,6 +72,12 @@
                     <p:ajax event="itemSelect" listener="#{autoCompleteView.onItemSelect}" update="msgs" />
                 </p:autoComplete>
 
+                <p:outputLabel value="Empty message:" for="emptyMessage" />
+                <p:autoComplete id="emptyMessage" value="#{autoCompleteView.txt9}" completeMethod="#{autoCompleteView.noResults}"
+                                emptyMessage="No results">
+                    <p:ajax event="emptyMessageSelect" listener="#{autoCompleteView.onEmptyMessageSelect}" update="msgs" />
+                </p:autoComplete>
+
                 <p:outputLabel value="Pojo:" for="themePojo" />
                 <p:autoComplete id="themePojo" value="#{autoCompleteView.theme1}" completeMethod="#{autoCompleteView.completeTheme}"
                                 var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="#{themeConverter}" forceSelection="true" />

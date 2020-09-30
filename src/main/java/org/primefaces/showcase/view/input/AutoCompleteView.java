@@ -15,18 +15,18 @@
  */
 package org.primefaces.showcase.view.input;
 
-import org.primefaces.event.SelectEvent;
-import org.primefaces.showcase.domain.Theme;
-import org.primefaces.showcase.service.ThemeService;
-
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.showcase.domain.Theme;
+import org.primefaces.showcase.service.ThemeService;
 
 @Named
 @RequestScoped
@@ -40,6 +40,7 @@ public class AutoCompleteView {
     private String txt6;
     private String txt7;
     private String txt8;
+    private String txt9;
     private Theme theme1;
     private Theme theme2;
     private Theme theme3;
@@ -57,6 +58,10 @@ public class AutoCompleteView {
 		
 		return results;
 	}
+
+    public List<String> noResults(String query) {
+        return Collections.EMPTY_LIST;
+    }
     
     public List<Theme> completeTheme(String query) {
         String queryLowerCase = query.toLowerCase();
@@ -72,6 +77,10 @@ public class AutoCompleteView {
         
     public void onItemSelect(SelectEvent<String> event) {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Item Selected", event.getObject()));
+    }
+
+    public void onEmptyMessageSelect() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Empty message selected"));
     }
 
     public String getTxt1() {
@@ -136,6 +145,14 @@ public class AutoCompleteView {
 
     public void setTxt8(String txt8) {
         this.txt8 = txt8;
+    }
+
+    public String getTxt9() {
+        return txt9;
+    }
+
+    public void setTxt9(String txt9) {
+        this.txt9 = txt9;
     }
 
     public Theme getTheme1() {
