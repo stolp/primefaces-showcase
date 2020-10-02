@@ -98,6 +98,7 @@ public class ScheduleJava8View implements Serializable {
 				.startDate(previousDay8Pm())
 				.endDate(previousDay11Pm())
 				.description("Team A vs. Team B")
+				.url("https://www.uefa.com/uefachampionsleague/")
 				.build();
 		eventModel.addEvent(event);
 
