@@ -1,0 +1,36 @@
+    <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./template.xhtml">
+
+    <ui:define name="head">
+    </ui:define>
+
+    <ui:define name="title">
+        DatePicker - <span class="subitem">Date meta data</span>
+    </ui:define>
+
+    <ui:define name="description">
+        Meta data for the dates in the date picker calendar.
+    </ui:define>
+
+    <ui:param name="documentationLink" value="/components/datepicker" />
+    <ui:param name="widgetLink" value="datepicker" />
+
+    <ui:define name="implementation">
+
+        <h:form id="form">
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:outputLabel for="basic" value="Basic:" />
+                <p:datePicker id="basic" value="#{datePickerMetaDataView.date1}" model="#{datePickerMetaDataView.model}" />
+
+                <p:outputLabel for="lazy" value="Lazy:" />
+                <p:datePicker pattern="yyyy-MM-dd" id="lazy" value="#{datePickerMetaDataView.date2}" model="#{datePickerMetaDataView.modelLazy}" />
+            </h:panelGrid>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
