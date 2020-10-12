@@ -19,10 +19,11 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import org.primefaces.model.datepicker.DateMetaDataModel;
-import org.primefaces.model.datepicker.DefaultDateMetaData;
-import org.primefaces.model.datepicker.DefaultDateMetaDataModel;
-import org.primefaces.model.datepicker.LazyDateMetaDataModel;
+
+import org.primefaces.model.datepicker.DateMetadataModel;
+import org.primefaces.model.datepicker.DefaultDateMetadata;
+import org.primefaces.model.datepicker.DefaultDateMetadataModel;
+import org.primefaces.model.datepicker.LazyDateMetadataModel;
 
 @Named
 @ViewScoped
@@ -30,20 +31,20 @@ public class DatePickerMetaDataView implements Serializable {
 
     private LocalDate date1;
     private LocalDate date2;
-    private final DateMetaDataModel model;
-    private final DateMetaDataModel modelLazy;
+    private final DateMetadataModel model;
+    private final DateMetadataModel modelLazy;
 
     public DatePickerMetaDataView() {
         LocalDate start = LocalDate.now().withDayOfMonth(1);
-        DefaultDateMetaData metaDataDisabled = DefaultDateMetaData.builder().disabled(true).build();
-        model = new DefaultDateMetaDataModel();
+        DefaultDateMetadata metaDataDisabled = DefaultDateMetadata.builder().disabled(true).build();
+        model = new DefaultDateMetadataModel();
         model.add(start.plusDays(start.getMonthValue() + 3), metaDataDisabled);
         model.add(start.plusDays(start.getMonthValue() + 6), metaDataDisabled);
         model.add(start.plusDays(start.getMonthValue() + 9), metaDataDisabled);
 
-        modelLazy = new LazyDateMetaDataModel() {
+        modelLazy = new LazyDateMetadataModel() {
             @Override
-            public void loadDateMetaData(LocalDate start, LocalDate end) {
+            public void loadDateMetadata(LocalDate start, LocalDate end) {
                 add(start.plusDays(start.getMonthValue() + 2), metaDataDisabled);
                 add(start.plusDays(start.getMonthValue() + 5), metaDataDisabled);
                 add(start.plusDays(start.getMonthValue() + 8), metaDataDisabled);
@@ -67,11 +68,11 @@ public class DatePickerMetaDataView implements Serializable {
         this.date2 = date2;
     }
 
-    public DateMetaDataModel getModel() {
+    public DateMetadataModel getModel() {
         return model;
     }
 
-    public DateMetaDataModel getModelLazy() {
+    public DateMetadataModel getModelLazy() {
         return modelLazy;
     }
 }
