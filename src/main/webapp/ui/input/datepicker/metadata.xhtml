@@ -21,6 +21,8 @@
 
     <ui:define name="implementation">
 
+        <p:growl id="growl" />
+
         <h:form id="form">
             <h:panelGrid columns="2" cellpadding="5">
                 <p:outputLabel for="basic" value="Basic:" />
@@ -28,6 +30,16 @@
 
                 <p:outputLabel for="lazy" value="Lazy:" />
                 <p:datePicker pattern="yyyy-MM-dd" id="lazy" value="#{datePickerMetadataView.date2}" model="#{datePickerMetadataView.modelLazy}" />
+
+                <p:outputLabel for="basicEvent" value="Basic + event:" />
+                <p:datePicker id="basicEvent" value="#{datePickerMetadataView.date3}" model="#{datePickerMetadataView.model}">
+                    <p:ajax event="viewChange" listener="#{datePickerMetadataView.onViewChange}" update="growl" />
+                </p:datePicker>
+
+                <p:outputLabel for="lazyEvent" value="Lazy + event:" />
+                <p:datePicker pattern="yyyy-MM-dd" id="lazyEvent" value="#{datePickerMetadataView.date4}" model="#{datePickerMetadataView.modelLazy}">
+                    <p:ajax event="viewChange" listener="#{datePickerMetadataView.onViewChange}" update="growl" />
+                </p:datePicker>
             </h:panelGrid>
         </h:form>
 

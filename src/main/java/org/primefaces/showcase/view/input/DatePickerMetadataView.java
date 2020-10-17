@@ -17,9 +17,11 @@ package org.primefaces.showcase.view.input;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-
+import org.primefaces.event.DateViewChangeEvent;
 import org.primefaces.model.datepicker.DateMetadataModel;
 import org.primefaces.model.datepicker.DefaultDateMetadata;
 import org.primefaces.model.datepicker.DefaultDateMetadataModel;
@@ -31,6 +33,8 @@ public class DatePickerMetadataView implements Serializable {
 
     private LocalDate date1;
     private LocalDate date2;
+    private LocalDate date3;
+    private LocalDate date4;
     private final DateMetadataModel model;
     private final DateMetadataModel modelLazy;
 
@@ -52,6 +56,12 @@ public class DatePickerMetadataView implements Serializable {
         };
     }
 
+    public void onViewChange(DateViewChangeEvent event) {
+        String summary = "Year: " + event.getYear() + ", month: " + event.getMonth();
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, null);
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+
     public LocalDate getDate1() {
         return date1;
     }
@@ -66,6 +76,22 @@ public class DatePickerMetadataView implements Serializable {
 
     public void setDate2(LocalDate date2) {
         this.date2 = date2;
+    }
+
+    public LocalDate getDate3() {
+        return date3;
+    }
+
+    public void setDate3(LocalDate date3) {
+        this.date3 = date3;
+    }
+
+    public LocalDate getDate4() {
+        return date4;
+    }
+
+    public void setDate4(LocalDate date4) {
+        this.date4 = date4;
     }
 
     public DateMetadataModel getModel() {
