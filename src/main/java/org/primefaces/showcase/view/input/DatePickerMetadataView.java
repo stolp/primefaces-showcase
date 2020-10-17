@@ -42,9 +42,11 @@ public class DatePickerMetadataView implements Serializable {
         LocalDate start = LocalDate.now().withDayOfMonth(1);
         DefaultDateMetadata metaDataDisabled = DefaultDateMetadata.builder().disabled(true).build();
         model = new DefaultDateMetadataModel();
+        model.add(start.minusMonths(1), metaDataDisabled);
         model.add(start.plusDays(start.getMonthValue() + 3), metaDataDisabled);
         model.add(start.plusDays(start.getMonthValue() + 6), metaDataDisabled);
         model.add(start.plusDays(start.getMonthValue() + 9), metaDataDisabled);
+        model.add(start.plusMonths(1), metaDataDisabled);
 
         modelLazy = new LazyDateMetadataModel() {
             @Override
