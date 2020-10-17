@@ -27,14 +27,14 @@ import org.primefaces.model.datepicker.LazyDateMetadataModel;
 
 @Named
 @ViewScoped
-public class DatePickerMetaDataView implements Serializable {
+public class DatePickerMetadataView implements Serializable {
 
     private LocalDate date1;
     private LocalDate date2;
     private final DateMetadataModel model;
     private final DateMetadataModel modelLazy;
 
-    public DatePickerMetaDataView() {
+    public DatePickerMetadataView() {
         LocalDate start = LocalDate.now().withDayOfMonth(1);
         DefaultDateMetadata metaDataDisabled = DefaultDateMetadata.builder().disabled(true).build();
         model = new DefaultDateMetadataModel();
