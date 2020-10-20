@@ -21,6 +21,7 @@ import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.FillPatternType;
 import org.primefaces.component.export.ExcelOptions;
 import org.primefaces.component.export.PDFOptions;
+import org.primefaces.component.export.PDFOrientationType;
 import org.primefaces.showcase.domain.Car;
 import org.primefaces.showcase.service.CarService;
 
@@ -74,6 +75,7 @@ public class CustomizedDocumentsView implements Serializable {
         pdfOpt.setFacetFontStyle("BOLD");
         pdfOpt.setCellFontSize("12");
         pdfOpt.setFontName("Courier");
+        pdfOpt.setOrientation(PDFOrientationType.LANDSCAPE);
     }
 
     public List<Car> getCars() {
