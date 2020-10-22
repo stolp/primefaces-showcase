@@ -13,15 +13,15 @@
         Chips is used to enter multiple values on an inputfield.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/chips" />
+    <ui:param name="documentationLink" value="/components/chips"/>
 
     <ui:define name="implementation">
-
-        <h:panelGrid columns="2">
-            <p:outputLabel for="chips" value="Values: " />
-            <p:chips id="chips" />
-        </h:panelGrid>
-
+        <div class="card">
+            <h:panelGrid columns="2">
+                <p:outputLabel for="chips" value="Values: "/>
+                <p:chips id="chips"/>
+            </h:panelGrid>
+        </div>
     </ui:define>
 
 </ui:composition>

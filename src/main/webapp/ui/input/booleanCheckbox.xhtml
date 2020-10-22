@@ -12,31 +12,31 @@
         SelectBooleanCheckbox is used to select a boolean value.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/selectbooleancheckbox" />
+    <ui:param name="documentationLink" value="/components/selectbooleancheckbox"/>
 
     <ui:define name="implementation">
+        <div class="card">
+            <h:form>
+                <p:growl id="msg"/>
 
-        <h:form>
-            <p:growl id="msg" />
+                <h:panelGrid columns="1" style="margin-bottom:10px" cellpadding="5">
+                    <p:selectBooleanCheckbox value="#{selectBooleanView.value1}" itemLabel="Basic"/>
 
-            <h:panelGrid columns="1" style="margin-bottom:10px" cellpadding="5">
-                <p:selectBooleanCheckbox value="#{selectBooleanView.value1}" itemLabel="Basic"/>
-
-                <p:selectBooleanCheckbox value="#{selectBooleanView.value2}" itemLabel="Ajax">
-                    <p:ajax update="msg" listener="#{selectBooleanView.addMessage}" />
-                </p:selectBooleanCheckbox>
-            </h:panelGrid>
-
-            <p:commandButton value="Submit" icon="pi pi-check" update="display" oncomplete="PF('dlg').show()" />
-
-            <p:dialog header="Values" modal="true" resizable="false" showEffect="fade" widgetVar="dlg">
-                <h:panelGrid columns="1" id="display">
-                    <h:outputText value="Value 1: #{selectBooleanView.value1}" />
-                    <h:outputText value="Value 2: #{selectBooleanView.value2}" />
+                    <p:selectBooleanCheckbox value="#{selectBooleanView.value2}" itemLabel="Ajax">
+                        <p:ajax update="msg" listener="#{selectBooleanView.addMessage}"/>
+                    </p:selectBooleanCheckbox>
                 </h:panelGrid>
-            </p:dialog>
-        </h:form>
-        
+
+                <p:commandButton value="Submit" icon="pi pi-check" update="display" oncomplete="PF('dlg').show()"/>
+
+                <p:dialog header="Values" modal="true" resizable="false" showEffect="fade" widgetVar="dlg">
+                    <h:panelGrid columns="1" id="display">
+                        <h:outputText value="Value 1: #{selectBooleanView.value1}"/>
+                        <h:outputText value="Value 2: #{selectBooleanView.value2}"/>
+                    </h:panelGrid>
+                </p:dialog>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

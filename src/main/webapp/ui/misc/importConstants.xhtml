@@ -13,19 +13,19 @@
         In older EL versions (&lt; 3.0), it's not possible to use constants or any other static fields/methods in an EL expression.<br/>
         As it is not really "cool" to create beans with getter/setter for each constants class, we provide an utils tag which allows to import constant fields in a page.<br/>
         <br/>
-        The constants can be accessed via the name of the class (default setting) or via a custom name (var attribute). 
+        The constants can be accessed via the name of the class (default setting) or via a custom name (var attribute).
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/importconstants" />
+    <ui:param name="documentationLink" value="/components/importconstants"/>
 
     <ui:define name="implementation">
-        <p:importConstants type="org.primefaces.util.Constants" var="PFConstants" /> 
-        
-        LIBRARY:  
-        <h:outputText value="#{PFConstants.LIBRARY}" />
-        <br />
+        <p:importConstants type="org.primefaces.util.Constants" var="PFConstants"/>
+
+        LIBRARY:
+        <h:outputText value="#{PFConstants.LIBRARY}"/>
+        <br/>
         DOWNLOAD_COOKIE:
-        <h:outputText value="#{PFConstants.DOWNLOAD_COOKIE}" />
+        <h:outputText value="#{PFConstants.DOWNLOAD_COOKIE}"/>
     </ui:define>
 
 </ui:composition>

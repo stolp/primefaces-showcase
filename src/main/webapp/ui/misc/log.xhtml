@@ -13,7 +13,7 @@
             }
         </style>
     </ui:define>
-    
+
     <ui:define name="title">
         Log
     </ui:define>
@@ -23,25 +23,30 @@
         you can also use the component.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/log" />
+    <ui:param name="documentationLink" value="/components/log"/>
 
     <ui:define name="implementation">
-        <p:log id="log" />
+        <div class="card">
+            <p:log id="log"/>
 
-        <h3 style="margin-top:0">Client Side API</h3>
-        <p:commandButton type="button" id="info" value="Info" onclick="PrimeFaces.info('This is an info message.')" />
-        <p:commandButton type="button" id="warn" value="Warn" onclick="PrimeFaces.warn('This is a warn message.')" />
-        <p:commandButton type="button" id="debug" value="Debug" onclick="PrimeFaces.debug('This is a debug message.')" />
-        <p:commandButton type="button" id="error" value="Error" onclick="PrimeFaces.error('This is an error message.')" />
+            <h5 style="margin-top:0">Client Side API</h5>
+            <p:commandButton type="button" id="info" value="Info"
+                             onclick="PrimeFaces.info('This is an info message.')"/>
+            <p:commandButton type="button" id="warn" value="Warn" onclick="PrimeFaces.warn('This is a warn message.')"/>
+            <p:commandButton type="button" id="debug" value="Debug"
+                             onclick="PrimeFaces.debug('This is a debug message.')"/>
+            <p:commandButton type="button" id="error" value="Error"
+                             onclick="PrimeFaces.error('This is an error message.')"/>
 
-        <h3>Ajax Request</h3>
-        <h:form id="form">
-            <h:panelGrid id="grid" columns="4" cellpadding="5">
-                <p:outputLabel for="name" value="Name:" style="font-weight:bold"/>
-                <p:inputText id="name" />
-                <p:commandButton value="Submit" update="grid"/>
-            </h:panelGrid>
-        </h:form>
+            <h5>Ajax Request</h5>
+            <h:form id="form">
+                <h:panelGrid id="grid" columns="4" cellpadding="5">
+                    <p:outputLabel for="name" value="Name:" style="font-weight:bold"/>
+                    <p:inputText id="name"/>
+                    <p:commandButton value="Submit" update="grid"/>
+                </h:panelGrid>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

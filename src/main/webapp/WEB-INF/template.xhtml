@@ -7,63 +7,90 @@
       xmlns:sc="http://primefaces.org/ui/showcase"
       lang="en">
 
-    <h:head>
-        <f:facet name="first">
-            <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-93461466-1"></script>
-            <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'UA-93461466-1');
-            </script>
-            <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-            <meta name="apple-mobile-web-app-capable" content="yes"/>
-            <link href="#{resource['showcase/images/favicon-32x32.png']}" rel="icon" type="image/png" sizes="32x32"/>
-            <link href="#{resource['showcase/images/favicon-16x16.png']}" rel="icon" type="image/png" sizes="16x16"/>
-        </f:facet>
-        <title>PrimeFaces Showcase</title>
+<h:head>
+    <f:facet name="first">
+        <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-93461466-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
 
-        <h:outputStylesheet name="styles/sh.css" library="showcase"/>
-        <h:outputStylesheet name="styles/primeflex.css" library="showcase"/>
-        <h:outputStylesheet name="styles/primeicons/primeicons.css" library="showcase"/>
+            function gtag() {
+                dataLayer.push(arguments);
+            }
 
-        <h:outputScript name="script/layout.js" library="showcase"/>
-    </h:head>
+            gtag('js', new Date());
+            gtag('config', 'UA-93461466-1');
+        </script>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <link href="#{resource['showcase/images/favicon-32x32.png']}" rel="icon" type="image/png" sizes="32x32"/>
+        <link href="#{resource['showcase/images/favicon-16x16.png']}" rel="icon" type="image/png" sizes="16x16"/>
+    </f:facet>
+    <title>PrimeFaces Showcase</title>
 
-    <h:body>
-        <div class="layout-wrapper">
-            <ui:include src="./topbar.xhtml"></ui:include>
-            <ui:include src="./menu.xhtml"></ui:include>
+    <h:outputStylesheet name="styles/sh.css" library="showcase"/>
+    <h:outputStylesheet name="styles/primeflex.css" library="showcase"/>
+    <h:outputStylesheet name="styles/primeicons/primeicons.css" library="showcase"/>
 
-            <div class="layout-content">
-                <ui:insert name="content">
-                    <div class="content-section introduction">
-                        <!--<a class="documentation-link" href="https://primefaces.github.io/primefaces/8_0/##{documentationLink}" target="_blank">
-                            <i class="pi pi-external-link"></i> 
-                            Documentation
-                        </a>-->
-                        <div class="feature-intro">
-                            <h1><ui:insert name="title"></ui:insert></h1>
-                            <p><ui:insert name="description"></ui:insert></p>
-                        </div>
+    <h:outputScript name="script/layout.js" library="showcase"/>
+
+    <ui:insert name="head"/>
+
+</h:head>
+
+<h:body>
+    <div class="layout-wrapper">
+        <ui:include src="./topbar.xhtml"></ui:include>
+        <ui:include src="./menu.xhtml"></ui:include>
+
+        <div class="layout-content">
+            <ui:insert name="content">
+                <div class="content-section introduction">
+                    <!--<a class="documentation-link" href="https://primefaces.github.io/primefaces/8_0/##{documentationLink}" target="_blank">
+                        <i class="pi pi-external-link"></i>
+                        Documentation
+                    </a>-->
+                    <div class="feature-intro">
+                        <h1><ui:insert name="title"></ui:insert></h1>
+                        <p><ui:insert name="description"></ui:insert></p>
                     </div>
-                    <div class="content-section implementation">
-                        <ui:insert name="implementation"></ui:insert>
-                    </div>
-                    <div class="content-section source">
-                    </div>
-                </ui:insert>
-                <ui:include src="./footer.xhtml"></ui:include>
-            </div>
+                </div>
+                <div class="content-section implementation">
+                    <ui:insert name="implementation"></ui:insert>
+                </div>
+                <div class="content-section documentation">
+                    <ui:insert name="source">
+                        <sc:tabscode
+                                value="#{sc:getFilesContent(facesContext.externalContext.requestServletPath, true)}">
+                            <ui:insert name="more-source-tabs"/>
+                        </sc:tabscode>
+                    </ui:insert>
+                </div>
+            </ui:insert>
+
+            <ui:include src="./footer.xhtml"></ui:include>
+
         </div>
+    </div>
 
-        <ui:insert name="highlight">
-            <h:outputScript name="showcase/script/sh.js" target="body"/>
-        </ui:insert>
+    <ui:insert name="status">
+        <p:ajaxStatus style="width:64px;height:64px;position:fixed;right:5px;bottom:5px">
+            <f:facet name="start">
+                <i class="pi pi-spin pi-spinner ajax-loader" aria-hidden="true"></i>
+            </f:facet>
 
-        <h:outputStylesheet name="styles/app/layout.css" library="showcase"/>
-    </h:body>
+            <f:facet name="complete">
+                <h:outputText value=""/>
+            </f:facet>
+        </p:ajaxStatus>
+    </ui:insert>
+
+    <ui:insert name="highlight">
+        <h:outputScript name="showcase/script/sh.js" target="body"/>
+    </ui:insert>
+
+    <h:outputStylesheet name="styles/app/layout.css" library="showcase"/>
+</h:body>
 
 </html>

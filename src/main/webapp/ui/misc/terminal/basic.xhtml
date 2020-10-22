@@ -13,19 +13,20 @@
         Terminal commands are handled by a server side listener. "greet {text}" and "date" are sample commands.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/terminal" />
+    <ui:param name="documentationLink" value="/components/terminal"/>
 
     <ui:define name="implementation">
+        <div class="card">
+            <h:form>
+                <p:focus for="terminal"/>
 
-        <h:form>
-            <p:focus for="terminal" />
+                <p:terminal id="terminal" widgetVar="term" commandHandler="#{terminalBasicView.handleCommand}"
+                            welcomeMessage="Welcome to PrimeFaces Terminal, how are you today?"/>
 
-            <p:terminal id="terminal" widgetVar="term" commandHandler="#{terminalBasicView.handleCommand}"
-                        welcomeMessage="Welcome to PrimeFaces Terminal, how are you today?" />
-
-            <p:commandButton type="button" value="Clear" icon="pi pi-trash" onclick="PF('term').clear()" style="margin-top:10px"/>
-        </h:form>
-        
+                <p:commandButton type="button" value="Clear" icon="pi pi-trash" onclick="PF('term').clear()"
+                                 style="margin-top:10px"/>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

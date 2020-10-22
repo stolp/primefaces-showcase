@@ -13,18 +13,18 @@
         Dialog Framework provides APIs to pass and retrieve data between the source page and the dialog.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/core/dialogframework" />
+    <ui:param name="documentationLink" value="/core/dialogframework"/>
 
     <ui:define name="implementation">
-        
-        <h:form>
-            <p:growl id="growl" showDetail="true" />
+        <div class="card">
+            <h:form>
+                <p:growl id="growl" showDetail="true"/>
 
-            <p:commandButton value="Select Car" icon="pi pi-home" action="#{dfView.chooseCar}">
-                <p:ajax event="dialogReturn" listener="#{dfView.onCarChosen}" update="growl" />
-            </p:commandButton>
-        </h:form>
-        
+                <p:commandButton value="Select Car" icon="pi pi-home" action="#{dfView.chooseCar}">
+                    <p:ajax event="dialogReturn" listener="#{dfView.onCarChosen}" update="growl"/>
+                </p:commandButton>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

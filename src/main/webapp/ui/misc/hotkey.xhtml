@@ -14,33 +14,33 @@
         use "left" and "right" keys to switch images and in second example you can do an ajax request with the (ctrl+shift+s) combination.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/hotkey" />
+    <ui:param name="documentationLink" value="/components/hotkey"/>
 
     <ui:define name="implementation">
-        
-        <h3 style="margin-top:0">ImageSwitch Integration (Left-Right)</h3>
-        <p:imageSwitch effect="fade" widgetVar="switcher" slideshowAuto="false">
-            <p:graphicImage name="demo/images/nature/nature1.jpg" />
-            <p:graphicImage name="demo/images/nature/nature2.jpg" />
-            <p:graphicImage name="demo/images/nature/nature3.jpg" />
-            <p:graphicImage name="demo/images/nature/nature4.jpg" />
-        </p:imageSwitch>
+        <div class="card">
+            <h5 style="margin-top:0">ImageSwitch Integration (Left-Right)</h5>
+            <p:imageSwitch effect="fade" widgetVar="switcher" slideshowAuto="false">
+                <p:graphicImage name="demo/images/nature/nature1.jpg"/>
+                <p:graphicImage name="demo/images/nature/nature2.jpg"/>
+                <p:graphicImage name="demo/images/nature/nature3.jpg"/>
+                <p:graphicImage name="demo/images/nature/nature4.jpg"/>
+            </p:imageSwitch>
 
-        <p:hotkey bind="left" handler="PF('switcher').previous();" />
-        <p:hotkey bind="right" handler="PF('switcher').next();" />
+            <p:hotkey bind="left" handler="PF('switcher').previous();"/>
+            <p:hotkey bind="right" handler="PF('switcher').next();"/>
 
-        <h3>Ajax Hotkey (ctrl + shift + s)</h3>
-        <h:form>
-            <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
-            
-            <p:hotkey bind="ctrl+shift+s" update="msgs" action="#{hotkeyView.save}"/>
+            <h5>Ajax Hotkey (ctrl + shift + s)</h5>
+            <h:form>
+                <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
 
-            <h:panelGrid columns="2" cellpadding="5">
-                <p:outputLabel for="text" value="Text" />
-                <p:inputText id="text" value="#{hotkeyView.text}" />
-            </h:panelGrid>
-        </h:form>
-        
+                <p:hotkey bind="ctrl+shift+s" update="msgs" action="#{hotkeyView.save}"/>
+
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel for="text" value="Text"/>
+                    <p:inputText id="text" value="#{hotkeyView.text}"/>
+                </h:panelGrid>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

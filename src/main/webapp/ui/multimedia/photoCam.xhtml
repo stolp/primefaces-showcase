@@ -13,20 +13,21 @@
         PhotoCam is an input component to take photos with the webcam and send them to the backend model.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/photocam" />
+    <ui:param name="documentationLink" value="/components/photocam"/>
 
     <ui:define name="implementation">
-        
-        <h:form>        
-            <h:panelGrid columns="3" cellpadding="5">
-                <p:photoCam widgetVar="pc" listener="#{photoCamView.oncapture}" update="photo" />
-                <p:commandButton type="button" value="Capture" onclick="PF('pc').capture()"/>
-                <p:outputPanel id="photo">
-                    <p:graphicImage name="demo/images/photocam/#{photoCamView.filename}.jpeg" rendered="#{not empty photoCamView.filename}"/>
-                </p:outputPanel>
-            </h:panelGrid>
-        </h:form>
-        
+        <div class="card">
+            <h:form>
+                <h:panelGrid columns="3" cellpadding="5">
+                    <p:photoCam widgetVar="pc" listener="#{photoCamView.oncapture}" update="photo"/>
+                    <p:commandButton type="button" value="Capture" onclick="PF('pc').capture()"/>
+                    <p:outputPanel id="photo">
+                        <p:graphicImage name="demo/images/photocam/#{photoCamView.filename}.jpeg"
+                                        rendered="#{not empty photoCamView.filename}"/>
+                    </p:outputPanel>
+                </h:panelGrid>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

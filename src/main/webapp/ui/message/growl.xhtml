@@ -13,23 +13,23 @@
         Growl displays messages in an overlay.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/growl" />
+    <ui:param name="documentationLink" value="/components/growl"/>
 
     <ui:define name="implementation">
-        
-        <h:form>           
-            <p:growl id="growl" showDetail="true" sticky="true" />  
-      
-            <p:panel header="Growl">  
-                <h:panelGrid columns="2" cellpadding="5">  
-                    <p:outputLabel for="msg" value="Message:" />   
-                    <p:inputText id="msg" value="#{growlView.message}" required="true" />  
-                </h:panelGrid>  
-  
-                <p:commandButton value="Save" action="#{growlView.saveMessage}" update="@form" />
-            </p:panel>     
-        </h:form> 
-           
+        <div class="card">
+            <h:form>
+                <p:growl id="growl" showDetail="true" sticky="true"/>
+
+                <p:panel header="Growl">
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <p:outputLabel for="msg" value="Message:"/>
+                        <p:inputText id="msg" value="#{growlView.message}" required="true"/>
+                    </h:panelGrid>
+
+                    <p:commandButton value="Save" action="#{growlView.saveMessage}" update="@form"/>
+                </p:panel>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

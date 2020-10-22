@@ -13,14 +13,14 @@
         Link is a navigation component integrated with JSF navigation model.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/link" />
+    <ui:param name="documentationLink" value="/components/link"/>
 
     <ui:define name="implementation">
-        
-        <p:link outcome="productDetail" value="Bookmark">
-            <f:param name="productId" value="10" />
-        </p:link>
-        
+        <div class="card">
+            <p:link outcome="productDetail" value="Bookmark">
+                <f:param name="productId" value="10"/>
+            </p:link>
+        </div>
     </ui:define>
 
 </ui:composition>

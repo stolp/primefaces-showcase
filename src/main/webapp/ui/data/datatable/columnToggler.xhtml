@@ -12,7 +12,7 @@
             }
         </style>
     </ui:define>
-    
+
     <ui:define name="title">
         DataTable - <span class="subitem">ColumnToggler</span>
     </ui:define>
@@ -21,41 +21,44 @@
         ColumnToggler is a helper component of datatable to toggle the visibility of columns.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/datatable" />
+    <ui:param name="documentationLink" value="/components/datatable"/>
 
     <ui:define name="implementation">
-        
-        <p:dataTable id="cars" var="car" value="#{dtBasicView.cars}">
-            <f:facet name="header">
-                List of Cars
 
-                <p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="pi pi-align-justify" />
-                <p:columnToggler datasource="cars" trigger="toggler" />
-            </f:facet>
-            
-            <p:column headerText="Id">
-                <h:outputText value="#{car.id}" />
-            </p:column>
+        <div class="card">
+            <p:dataTable id="cars" var="car" value="#{dtBasicView.cars}">
+                <f:facet name="header">
+                    List of Cars
 
-            <p:column headerText="Year">
-                <h:outputText value="#{car.year}" />
-            </p:column>
+                    <p:commandButton id="toggler" type="button" value="Columns" style="float:right"
+                                     icon="pi pi-align-justify"/>
+                    <p:columnToggler datasource="cars" trigger="toggler"/>
+                </f:facet>
 
-            <p:column headerText="Brand">
-                <h:outputText value="#{car.brand}" />
-            </p:column>
+                <p:column headerText="Id">
+                    <h:outputText value="#{car.id}"/>
+                </p:column>
 
-            <p:column headerText="Color">
-                <h:outputText value="#{car.color}" />
-            </p:column>
-            
-            <p:column headerText="Price">
-                <h:outputText value="#{car.price}">
-                    <f:convertNumber type="currency" currencySymbol="$" />
-                </h:outputText>
-            </p:column>
-        </p:dataTable>
-        
+                <p:column headerText="Year">
+                    <h:outputText value="#{car.year}"/>
+                </p:column>
+
+                <p:column headerText="Brand">
+                    <h:outputText value="#{car.brand}"/>
+                </p:column>
+
+                <p:column headerText="Color">
+                    <h:outputText value="#{car.color}"/>
+                </p:column>
+
+                <p:column headerText="Price">
+                    <h:outputText value="#{car.price}">
+                        <f:convertNumber type="currency" currencySymbol="$"/>
+                    </h:outputText>
+                </p:column>
+            </p:dataTable>
+        </div>
+
     </ui:define>
 
 </ui:composition>

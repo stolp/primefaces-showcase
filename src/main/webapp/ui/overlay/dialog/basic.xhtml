@@ -13,30 +13,32 @@
         Dialog visibility is managed by using show() and hide() methods of the client side api.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/dialog" />
+    <ui:param name="documentationLink" value="/components/dialog"/>
 
     <ui:define name="implementation">
-        
-        <h:panelGrid columns="1" cellpadding="5">
-            <p:commandButton value="Basic" type="button" onclick="PF('dlg1').show();" />
-            
-            <p:commandButton value="Modal" type="button" onclick="PF('dlg2').show();" />
-            
-            <p:commandButton value="Effects" type="button" onclick="PF('dlg3').show();" /> 
-        </h:panelGrid>
-       
+
+        <div class="card">
+            <h:panelGrid columns="1" cellpadding="5">
+                <p:commandButton value="Basic" type="button" onclick="PF('dlg1').show();"/>
+
+                <p:commandButton value="Modal" type="button" onclick="PF('dlg2').show();"/>
+
+                <p:commandButton value="Effects" type="button" onclick="PF('dlg3').show();"/>
+            </h:panelGrid>
+        </div>
+
         <p:dialog header="Basic Dialog" widgetVar="dlg1" minHeight="40">
-            <h:outputText value="Resistance to PrimeFaces is futile!" />
+            <h:outputText value="Resistance to PrimeFaces is futile!"/>
         </p:dialog>
-        
+
         <p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
-            <h:outputText value="This is a Modal Dialog." />
-        </p:dialog>	
+            <h:outputText value="This is a Modal Dialog."/>
+        </p:dialog>
 
         <p:dialog header="Effects" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" height="100">
-            <h:outputText value="This dialog has nice effects." />
+            <h:outputText value="This dialog has nice effects."/>
         </p:dialog>
-        
+
     </ui:define>
 
 </ui:composition>

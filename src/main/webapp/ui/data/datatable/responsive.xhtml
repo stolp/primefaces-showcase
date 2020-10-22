@@ -14,48 +14,56 @@
         in reflow mode, columns are displayed as stacked on smaller screens.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/datatable" />
+    <ui:param name="documentationLink" value="/components/datatable"/>
 
     <ui:define name="implementation">
+
         <h:form>
-        <h3 style="margin-top:0">Column Priority</h3>
-        <p:dataTable var="car" value="#{dtBasicView.cars}">
-            <p:column headerText="Id">
-                <h:outputText value="#{car.id}" />
-            </p:column>
 
-            <p:column headerText="Year (p3)" priority="3">
-                <h:outputText value="#{car.year}" />
-            </p:column>
+            <div class="card">
+                <h5 style="margin-top:0">Column Priority</h5>
+                <p:dataTable var="car" value="#{dtBasicView.cars}">
+                    <p:column headerText="Id">
+                        <h:outputText value="#{car.id}"/>
+                    </p:column>
 
-            <p:column headerText="Brand (p2)" priority="2">
-                <h:outputText value="#{car.brand}" />
-            </p:column>
+                    <p:column headerText="Year (p3)" priority="3">
+                        <h:outputText value="#{car.year}"/>
+                    </p:column>
 
-            <p:column headerText="Color (p4)" priority="4">
-                <h:outputText value="#{car.color}" />
-            </p:column>
-        </p:dataTable>
-        
-        <h3>Reflow</h3>
-        <p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="5" paginator="true">
-            <p:column headerText="Id">
-                <h:outputText value="#{car.id}" />
-            </p:column>
+                    <p:column headerText="Brand (p2)" priority="2">
+                        <h:outputText value="#{car.brand}"/>
+                    </p:column>
 
-            <p:column headerText="Year">
-                <h:outputText value="#{car.year}" />
-            </p:column>
+                    <p:column headerText="Color (p4)" priority="4">
+                        <h:outputText value="#{car.color}"/>
+                    </p:column>
+                </p:dataTable>
+            </div>
 
-            <p:column headerText="Brand">
-                <h:outputText value="#{car.brand}" />
-            </p:column>
+            <div class="card">
+                <h5>Reflow</h5>
+                <p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="5" paginator="true">
+                    <p:column headerText="Id">
+                        <h:outputText value="#{car.id}"/>
+                    </p:column>
 
-            <p:column headerText="Color">
-                <h:outputText value="#{car.color}" />
-            </p:column>
-        </p:dataTable>
+                    <p:column headerText="Year">
+                        <h:outputText value="#{car.year}"/>
+                    </p:column>
+
+                    <p:column headerText="Brand">
+                        <h:outputText value="#{car.brand}"/>
+                    </p:column>
+
+                    <p:column headerText="Color">
+                        <h:outputText value="#{car.color}"/>
+                    </p:column>
+                </p:dataTable>
+            </div>
+
         </h:form>
+
     </ui:define>
 
 </ui:composition>

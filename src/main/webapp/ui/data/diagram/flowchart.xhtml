@@ -7,10 +7,10 @@
 
     <ui:define name="head">
         <style type="text/css">
-            .ui-diagram-element {	
-                width:14em; 
-                height:4em; 	
-                line-height:4em;
+            .ui-diagram-element {
+                width: 14em;
+                height: 4em;
+                line-height: 4em;
                 text-align: center;
                 box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
                 border-radius: 4px;
@@ -18,26 +18,26 @@
                 background-color: #98AFC7;
                 color: #ffffff;
             }
-            
+
             .ui-diagram-success {
                 background-color: #9CB071;
                 color: #ffffff;
                 border-color: #7ab02c;
             }
-            
+
             .ui-diagram-fail {
                 background-color: #C34A2C;
                 color: #ffffff;
             }
-            
+
             .flow-label {
                 font-size: 24px;
                 font-weight: bold;
                 color: #816A51;
             }
         </style>
-	</ui:define>
-    
+    </ui:define>
+
     <ui:define name="title">
         Diagram - <span class="subitem">FlowChart</span>
     </ui:define>
@@ -46,12 +46,12 @@
         FlowCharts can be created using label overlays and arrow connectors.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/diagram" />
+    <ui:param name="documentationLink" value="/components/diagram"/>
 
     <ui:define name="implementation">
-
-        <p:diagram value="#{diagramFlowChartView.model}" style="height:600px" styleClass="ui-widget-content" />
-        
+        <div class="card">
+            <p:diagram value="#{diagramFlowChartView.model}" style="height:600px" styleClass="ui-widget-content"/>
+        </div>
     </ui:define>
 
 </ui:composition>

@@ -4,9 +4,9 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
                 template="./template.xhtml">
-    
+
     <ui:define name="head">
-        <style type="text/css">            
+        <style type="text/css">
             .ui-datalist-item .ui-draggable:hover {
                 background: #eeeeee;
             }
@@ -21,43 +21,45 @@
         Drag events from the list on the left side and drop them onto the timeline.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/timeline" />
+    <ui:param name="documentationLink" value="/components/timeline"/>
 
     <ui:define name="implementation">
 
-        <p:growl id="growl" showSummary="true" showDetail="false">
-            <p:autoUpdate />
-        </p:growl>
+        <div class="card">
+            <p:growl id="growl" showSummary="true" showDetail="false">
+                <p:autoUpdate/>
+            </p:growl>
 
-        <div style="float:left; width: 130px;">
-            <strong>Drag and drop events</strong>
-            <p/>
-            <p:dataList id="eventsList" value="#{dndTimelineView.events}"
-                        var="event" itemType="circle">
-                <h:panelGroup id="eventBox" layout="box" style="z-index:9999; cursor:move;">
-                    #{event.name}
-                </h:panelGroup>
+            <div style="float:left; width: 130px;">
+                <strong>Drag and drop events</strong>
+                <p/>
+                <p:dataList id="eventsList" value="#{dndTimelineView.events}"
+                            var="event" itemType="circle">
+                    <h:panelGroup id="eventBox" layout="box" style="z-index:9999; cursor:move;">
+                        #{event.name}
+                    </h:panelGroup>
 
-                <p:draggable for="eventBox" revert="true" helper="clone" cursor="move"/>
-            </p:dataList>
+                    <p:draggable for="eventBox" revert="true" helper="clone" cursor="move"/>
+                </p:dataList>
+            </div>
+            <p:timeline id="timeline" value="#{dndTimelineView.model}" var="event"
+                        editable="true" eventMargin="10" eventMarginAxis="0" minHeight="400"
+                        start="#{dndTimelineView.start}" end="#{dndTimelineView.end}"
+                        style="margin-left:135px;"
+                        dropActiveStyleClass="ui-state-highlight" dropHoverStyleClass="ui-state-hover">
+                <p:ajax event="drop" listener="#{dndTimelineView.onDrop}" global="false" update="eventsList"/>
+
+                <h:panelGrid columns="1">
+                    <h:outputText value="#{event.name}"/>
+                    <h:outputText value="#{event.start}">
+                        <f:convertDateTime type="localDateTime" pattern="hh:mm:ss a"/>
+                    </h:outputText>
+                    <h:outputText value="#{event.end}">
+                        <f:convertDateTime type="localDateTime" pattern="hh:mm:ss a"/>
+                    </h:outputText>
+                </h:panelGrid>
+            </p:timeline>
         </div>
-        <p:timeline id="timeline" value="#{dndTimelineView.model}" var="event"
-                    editable="true" eventMargin="10" eventMarginAxis="0" minHeight="250"
-                    start="#{dndTimelineView.start}" end="#{dndTimelineView.end}"
-                    style="margin-left:135px;"
-                    dropActiveStyleClass="ui-state-highlight" dropHoverStyleClass="ui-state-hover">
-            <p:ajax event="drop" listener="#{dndTimelineView.onDrop}" global="false" update="eventsList"/>
-
-            <h:panelGrid columns="1">
-                <h:outputText value="#{event.name}"/>
-                <h:outputText value="#{event.start}">
-                    <f:convertDateTime type="localDateTime" pattern="hh:mm:ss a"/>
-                </h:outputText>
-                <h:outputText value="#{event.end}">
-                    <f:convertDateTime type="localDateTime" pattern="hh:mm:ss a"/>
-                </h:outputText>
-            </h:panelGrid>
-        </p:timeline>
 
     </ui:define>
 

@@ -13,16 +13,16 @@
         Printer is used to print a certain component instead of the whole page.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/printer" />
+    <ui:param name="documentationLink" value="/components/printer"/>
 
     <ui:define name="implementation">
-        
-        <p:commandButton value="Print" type="button" icon="pi pi-print" style="display:block;margin-bottom: 20px">
-            <p:printer target="image" />
-        </p:commandButton>
-        
-        <p:graphicImage id="image" name="demo/images/nature/nature10.jpg" />
-        
+        <div class="card">
+            <p:commandButton value="Print" type="button" icon="pi pi-print" style="display:block;margin-bottom: 20px">
+                <p:printer target="image"/>
+            </p:commandButton>
+
+            <p:graphicImage id="image" name="demo/images/nature/nature10.jpg"/>
+        </div>
     </ui:define>
 
 </ui:composition>

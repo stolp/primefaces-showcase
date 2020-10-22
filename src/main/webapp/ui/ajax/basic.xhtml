@@ -13,19 +13,19 @@
         This example demonstrates a simple but common usage of posting the form, updating the backend value and displaying the output with ajax.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/ajax/rendering" />
+    <ui:param name="documentationLink" value="/ajax/rendering"/>
 
     <ui:define name="implementation">
-
-        <h:form>
-            <h:panelGrid columns="4" cellpadding="5">
-                <h:outputLabel for="name" value="Name:" style="font-weight:bold" />
-                <p:inputText id="name" value="#{basicView.text}" />
-                <p:commandButton value="Submit" update="display" icon="pi pi-check" />
-                <h:outputText id="display" value="#{basicView.text}" />
-            </h:panelGrid>
-        </h:form>
-        
+        <div class="card">
+            <h:form>
+                <h:panelGrid columns="4" cellpadding="5">
+                    <h:outputLabel for="name" value="Name:" style="font-weight:bold"/>
+                    <p:inputText id="name" value="#{basicView.text}"/>
+                    <p:commandButton value="Submit" update="display" icon="pi pi-check"/>
+                    <h:outputText id="display" value="#{basicView.text}"/>
+                </h:panelGrid>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

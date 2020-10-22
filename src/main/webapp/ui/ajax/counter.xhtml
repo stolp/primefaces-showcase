@@ -13,19 +13,19 @@
         An integer variable is incremented each time the button is clicked and current value is updated with ajax.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/ajax/rendering" />
+    <ui:param name="documentationLink" value="/ajax/rendering"/>
 
     <ui:define name="implementation">
-        
-        <h:form>
-            <h:panelGrid columns="2" cellpadding="5">
-                <h:outputText value="Counter: " />
-                <h:outputText id="output" value="#{counterView.number}" />
-            </h:panelGrid>
+        <div class="card">
+            <h:form>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputText value="Counter: "/>
+                    <h:outputText id="output" value="#{counterView.number}"/>
+                </h:panelGrid>
 
-            <p:commandButton value="Count" action="#{counterView.increment}" update="output" />
-        </h:form>
-        
+                <p:commandButton value="Count" action="#{counterView.increment}" update="output"/>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

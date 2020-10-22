@@ -13,17 +13,17 @@
         RemoteCommand provides a simple way to execute backing bean methods with javascript.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/remotecommand" />
+    <ui:param name="documentationLink" value="/components/remotecommand"/>
 
     <ui:define name="implementation">
-        
-        <h:form>
-            <p:remoteCommand name="rc" update="msgs" action="#{remoteCommandView.execute}" />
-            
-            <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
-            <p:commandButton type="button" onclick="rc()" value="Execute" icon="pi pi-refresh" />
-        </h:form>
-    
+        <div class="card">
+            <h:form>
+                <p:remoteCommand name="rc" update="msgs" action="#{remoteCommandView.execute}"/>
+
+                <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
+                <p:commandButton type="button" onclick="rc()" value="Execute" icon="pi pi-refresh"/>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

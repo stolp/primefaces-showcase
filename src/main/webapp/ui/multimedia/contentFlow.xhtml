@@ -13,13 +13,15 @@
         ContentFlow is a content gallery component.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/contentflow" />
+    <ui:param name="documentationLink" value="/components/contentflow"/>
 
     <ui:define name="implementation">
-        <p:contentFlow value="#{imagesView.images}" var="image">
-            <p:graphicImage name="demo/images/nature/#{image}" styleClass="content" />
-            <div class="caption">#{image}</div>
-        </p:contentFlow>
+        <div class="card">
+            <p:contentFlow value="#{imagesView.images}" var="image">
+                <p:graphicImage name="demo/images/nature/#{image}" styleClass="content"/>
+                <div class="caption">#{image}</div>
+            </p:contentFlow>
+        </div>
     </ui:define>
 
 </ui:composition>

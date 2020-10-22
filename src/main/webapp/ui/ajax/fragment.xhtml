@@ -17,27 +17,27 @@
         defining component identifiers.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/fragment" />
+    <ui:param name="documentationLink" value="/components/fragment"/>
 
     <ui:define name="implementation">
-
-        <h:form>
-            <h:panelGrid columns="2" cellpadding="5">
-                <p:outputLabel for="ignored" value="Required" />
-                <p:inputText id="ignored" required="true" />
-            </h:panelGrid>
-
-            <p:fragment>
-                <p:autoUpdate />
-                <h:panelGrid columns="4" cellpadding="5">
-                    <p:outputLabel for="txt" value="Text Value:" />
-                    <p:inputText id="txt" value="#{basicView.text}" />
-                    <p:commandButton value="Submit"/>
-                    <h:outputText value="#{basicView.text}" />
+        <div class="card">
+            <h:form>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel for="ignored" value="Required"/>
+                    <p:inputText id="ignored" required="true"/>
                 </h:panelGrid>
-            </p:fragment>
-        </h:form>
 
+                <p:fragment>
+                    <p:autoUpdate/>
+                    <h:panelGrid columns="4" cellpadding="5">
+                        <p:outputLabel for="txt" value="Text Value:"/>
+                        <p:inputText id="txt" value="#{basicView.text}"/>
+                        <p:commandButton value="Submit"/>
+                        <h:outputText value="#{basicView.text}"/>
+                    </h:panelGrid>
+                </p:fragment>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

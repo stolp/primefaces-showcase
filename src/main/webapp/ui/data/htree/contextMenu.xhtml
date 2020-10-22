@@ -13,33 +13,35 @@
         ContextMenu has special integration with Tree. Even different menus can be assigned to different node types by matching node types.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/tree?id=horizontal-tree" />
+    <ui:param name="documentationLink" value="/components/tree?id=horizontal-tree"/>
 
     <ui:define name="implementation">
+        <div class="card">
+            <h:form>
+                <p:growl id="messages" showDetail="true"/>
 
-        <h:form>
-            <p:growl id="messages" showDetail="true" />
-            
-            <p:tree id="docs" value="#{treeContextMenuView.root}" var="doc" selectionMode="single" selection="#{treeContextMenuView.selectedNode}" orientation="horizontal" dynamic="true">                    
-                <p:treeNode expandedIcon="pi pi-folder-open" collapsedIcon="pi pi-folder">
-                    <h:outputText value="#{doc.name}"/>
-                </p:treeNode>
-                <p:treeNode type="document" icon="pi pi-file">
-                    <h:outputText value="#{doc.name}" />
-                </p:treeNode>
-                <p:treeNode type="picture" icon="pi pi-image">
-                    <h:outputText value="#{doc.name}" />
-                </p:treeNode>
-                <p:treeNode type="mp3" icon="pi pi-video">
-                    <h:outputText value="#{doc.name}" />
-                </p:treeNode>
-            </p:tree>
-            
-            <p:contextMenu for="docs">
-                <p:menuitem value="View" update="messages" action="#{treeContextMenuView.displaySelectedSingle}" icon="pi pi-search" />
-            </p:contextMenu>
-        </h:form>
-        
+                <p:tree id="docs" value="#{treeContextMenuView.root}" var="doc" selectionMode="single"
+                        selection="#{treeContextMenuView.selectedNode}" orientation="horizontal" dynamic="true">
+                    <p:treeNode expandedIcon="pi pi-folder-open" collapsedIcon="pi pi-folder">
+                        <h:outputText value="#{doc.name}"/>
+                    </p:treeNode>
+                    <p:treeNode type="document" icon="pi pi-file">
+                        <h:outputText value="#{doc.name}"/>
+                    </p:treeNode>
+                    <p:treeNode type="picture" icon="pi pi-image">
+                        <h:outputText value="#{doc.name}"/>
+                    </p:treeNode>
+                    <p:treeNode type="mp3" icon="pi pi-video">
+                        <h:outputText value="#{doc.name}"/>
+                    </p:treeNode>
+                </p:tree>
+
+                <p:contextMenu for="docs">
+                    <p:menuitem value="View" update="messages" action="#{treeContextMenuView.displaySelectedSingle}"
+                                icon="pi pi-search"/>
+                </p:contextMenu>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

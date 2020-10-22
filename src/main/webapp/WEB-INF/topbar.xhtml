@@ -3,7 +3,7 @@
 
     <div class="layout-topbar">
         <div class="layout-topbar-left">
-            <a class="menu-button" href="#">
+            <a class="p-link menu-button" href="#">
                 <i class="pi pi-bars"></i>
             </a>
             <h:link class="logo" outcome="/index.xhtml">
@@ -11,13 +11,14 @@
             </h:link>
         </div>
         
-        <div class="layout-topbar-right">
+        <div class="topbar-menu p-unselectable-text">
             <ul class="topbar-menu">
                 <li>
-                    <h:link outcome="/getstarted">Get Started</h:link>
+                    <h:link outcome="/getstarted" styleClass="topbar-root-link">Get Started</h:link>
                 </li>
+
                 <li class="topbar-submenu">
-                    <a href="#" class="themes-menu-link">Themes</a>
+                    <a href="#" class="p-link">Themes</a>
                     <ul>
                         <li class="topbar-submenu-header">THEMING</li>
                         <li><a href="https://www.primefaces.org/designer/primefaces"><i class="pi pi-fw pi-palette" /><span>Designer</span></a></li>

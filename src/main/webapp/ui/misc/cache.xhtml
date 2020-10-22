@@ -13,18 +13,21 @@
         cache providers are supported like ehcache and hazelcast. Showcase use actually this component to render source examples for every PrimeFaces components.
         Why? Because parsing an xhtml file takes time, and since the rendering won't change during the whole lifecycle of the application, it's better to cache the content.
 
-        <ul style="color: white;">
+        <ul>
             <li>tabscode.xhtml demonstrate how to use cache component declaratively</li>
             <li>ShowcaseUtil demonstrate how to use cache API programmatically</li>
         </ul>
 
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/cache" />
+    <ui:param name="documentationLink" value="/components/cache"/>
 
     <ui:define name="source">
-        <sc:tabscode value="#{sc:getFilesContent('/WEB-INF/tags/tabscode.xhtml', false)}">
-            <p:tab title="/org/primefaces/showcase/util/ShowcaseUtil.java"/>
-        </sc:tabscode>
+        <div class="card">
+            <sc:tabscode value="#{sc:getFilesContent('/WEB-INF/tags/tabscode.xhtml', false)}">
+                <p:tab title="/org/primefaces/showcase/util/ShowcaseUtil.java"/>
+            </sc:tabscode>
+        </div>
     </ui:define>
+
 </ui:composition>

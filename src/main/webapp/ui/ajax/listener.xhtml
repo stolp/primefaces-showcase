@@ -13,20 +13,20 @@
         A java method can be invoked in an ajax request using listener option of p:ajax.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/ajaxbehavior?id=listener" />
+    <ui:param name="documentationLink" value="/components/ajaxbehavior?id=listener"/>
 
     <ui:define name="implementation">
-        
-        <h:form>
-            <h:panelGrid columns="3">
-                <h:outputText value="Keyup: " />
-                <p:inputText id="counter" value="#{listenerView.text}">
-                    <p:ajax event="keyup" update="out" listener="#{listenerView.handleKeyEvent}" />
-                </p:inputText>
-                <h:outputText id="out" value="#{listenerView.text}" />
-            </h:panelGrid>
-        </h:form>
-        
+        <div class="card">
+            <h:form>
+                <h:panelGrid columns="3">
+                    <h:outputText value="Keyup: "/>
+                    <p:inputText id="counter" value="#{listenerView.text}">
+                        <p:ajax event="keyup" update="out" listener="#{listenerView.handleKeyEvent}"/>
+                    </p:inputText>
+                    <h:outputText id="out" value="#{listenerView.text}"/>
+                </h:panelGrid>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

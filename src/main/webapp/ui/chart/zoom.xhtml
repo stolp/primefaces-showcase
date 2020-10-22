@@ -13,12 +13,14 @@
         A specific part on Cartesian Charts can be zoomed using mouse drag.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/chart" />
+    <ui:param name="documentationLink" value="/components/chart"/>
 
     <ui:define name="implementation">
-        <p:chart type="line" model="#{chartView.zoomModel}" style="height:300px;" widgetVar="chart"/>
-        <br />    
-        <p:commandButton type="button" value="Reset" icon="pi pi-ban" onclick="PF('chart').resetZoom()"/>    
+        <div class="card">
+            <p:chart type="line" model="#{chartView.zoomModel}" style="height:300px;" widgetVar="chart"/>
+            <br/>
+            <p:commandButton type="button" value="Reset" icon="pi pi-ban" onclick="PF('chart').resetZoom()"/>
+        </div>
     </ui:define>
 
 </ui:composition>

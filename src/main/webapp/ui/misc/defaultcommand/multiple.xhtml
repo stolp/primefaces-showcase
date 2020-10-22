@@ -14,43 +14,45 @@
         defaultCommand in same form is supported with scope option. Within a Textarea the defaultCommand is not active.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/defaultcommand" />
+    <ui:param name="documentationLink" value="/components/defaultcommand"/>
 
     <ui:define name="implementation">
+        <div class="card">
+            <h:form id="form">
+                <p:growl>
+                    <p:autoUpdate/>
+                </p:growl>
 
-        <h:form id="form">
-            <p:growl>
-                <p:autoUpdate />
-            </p:growl>
+                <p:panel header="Panel 1" id="panel1">
+                    <p:panelGrid columns="2" layout="flex" columnClasses="p-col-4, p-col-8"
+                                 styleClass="ui-fluid ui-noborder">
+                        <h:outputLabel for="name" value="Name"/>
+                        <p:inputText id="name" value="#{defaultCommandView.text}"/>
 
-            <p:panel header="Panel 1" id="panel1">
-                <p:panelGrid columns="2" layout="flex" columnClasses="p-col-4, p-col-8" styleClass="ui-fluid ui-noborder">
-                    <h:outputLabel for="name" value="Name"/>
-                    <p:inputText id="name" value="#{defaultCommandView.text}" />
+                        <h:outputLabel for="textarea" value="Textarea"/>
+                        <p:inputTextarea id="textarea" value="#{defaultCommandView.text2}"/>
+                    </p:panelGrid>
+                </p:panel>
 
-                    <h:outputLabel for="textarea" value="Textarea"/>
-                    <p:inputTextarea id="textarea" value="#{defaultCommandView.text2}" />
-                </p:panelGrid>
-            </p:panel>
+                <br/>
 
-            <br/>
+                <p:panel header="Panel 2" id="panel2">
+                    <p:panelGrid columns="2" layout="flex" columnClasses="p-col-4, p-col-8"
+                                 styleClass="ui-fluid ui-noborder">
+                        <h:outputLabel for="otherInput" value="Other input"/>
+                        <p:inputText id="otherInput"/>
+                    </p:panelGrid>
+                </p:panel>
 
-            <p:panel header="Panel 2" id="panel2">
-                <p:panelGrid columns="2" layout="flex" columnClasses="p-col-4, p-col-8" styleClass="ui-fluid ui-noborder">
-                    <h:outputLabel for="otherInput" value="Other input"/>
-                    <p:inputText id="otherInput" />
-                </p:panelGrid>
-            </p:panel>
+                <br/>
 
-            <br/>
+                <p:commandButton value="Button1" id="btn1" action="#{defaultCommandView.btn1Submit}"/>
+                <p:commandButton value="Button2" id="btn2" action="#{defaultCommandView.btn2Submit}"/>
 
-            <p:commandButton value="Button1" id="btn1" action="#{defaultCommandView.btn1Submit}" />
-            <p:commandButton value="Button2" id="btn2" action="#{defaultCommandView.btn2Submit}" />
-
-            <p:defaultCommand target="btn1" scope="panel1" />
-            <p:defaultCommand target="btn2" scope="panel2" />
-        </h:form>
-
+                <p:defaultCommand target="btn1" scope="panel1"/>
+                <p:defaultCommand target="btn2" scope="panel2"/>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

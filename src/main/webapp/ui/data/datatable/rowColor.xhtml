@@ -14,7 +14,7 @@
             }
         </style>
     </ui:define>
-    
+
     <ui:define name="title">
         DataTable - <span class="subitem">Color</span>
     </ui:define>
@@ -23,26 +23,28 @@
         Certain rows can be styled based on a condition using rowStyleClass. Table below highlights cars that are manufactured before 1990.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/datatable" />
+    <ui:param name="documentationLink" value="/components/datatable"/>
 
     <ui:define name="implementation">
-        <p:dataTable var="car" value="#{dtBasicView.cars}" rowStyleClass="#{car.year le 1990 ? 'old' : null}">
-            <p:column headerText="Id">
-                <h:outputText value="#{car.id}" />
-            </p:column>
+        <div class="card">
+            <p:dataTable var="car" value="#{dtBasicView.cars}" rowStyleClass="#{car.year le 1990 ? 'old' : null}">
+                <p:column headerText="Id">
+                    <h:outputText value="#{car.id}"/>
+                </p:column>
 
-            <p:column headerText="Year">
-                <h:outputText value="#{car.year}" />
-            </p:column>
+                <p:column headerText="Year">
+                    <h:outputText value="#{car.year}"/>
+                </p:column>
 
-            <p:column headerText="Brand">
-                <h:outputText value="#{car.brand}" />
-            </p:column>
+                <p:column headerText="Brand">
+                    <h:outputText value="#{car.brand}"/>
+                </p:column>
 
-            <p:column headerText="Color">
-                <h:outputText value="#{car.color}" />
-            </p:column>
-        </p:dataTable>
+                <p:column headerText="Color">
+                    <h:outputText value="#{car.color}"/>
+                </p:column>
+            </p:dataTable>
+        </div>
     </ui:define>
 
 </ui:composition>

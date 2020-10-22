@@ -10,7 +10,7 @@
     </ui:define>
 
     <ui:define name="description">
-        Sticky component positions the target component as fixed so that the component stays in window viewport during scrolling. 
+        Sticky component positions the target component as fixed so that the component stays in window viewport during scrolling.
         Scroll down to see the sticky toolbar.
     </ui:define>
 
@@ -19,6 +19,7 @@
             .ui-sticky {
                 top: 70px !important;
             }
+
             @media (max-width: 960px) {
                 .ui-sticky {
                     top: 110px !important;
@@ -27,26 +28,26 @@
         </style>
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/sticky" />
-    
+    <ui:param name="documentationLink" value="/components/sticky"/>
+
     <ui:define name="implementation">
+        <div class="card">
+            <p:toolbar id="tb">
+                <f:facet name="left">
+                    <p:commandButton type="button" value="New" icon="pi pi-file"/>
+                    <p:commandButton type="button" value="Open" icon="pi pi-folder-open"/>
+                </f:facet>
+                <f:facet name="right">
+                    <p:commandButton type="button" title="Save" icon="pi pi-save"/>
+                    <p:commandButton type="button" title="Delete" icon="pi pi-trash"/>
+                    <p:commandButton type="button" title="Print" icon="pi pi-print"/>
+                </f:facet>
+            </p:toolbar>
 
-        <p:toolbar id="tb">
-            <f:facet name="left">
-                <p:commandButton type="button" value="New" icon="pi pi-file" />
-                <p:commandButton type="button" value="Open" icon="pi pi-folder-open"/>
-            </f:facet>
-            <f:facet name="right">
-                <p:commandButton type="button" title="Save" icon="pi pi-save"/>
-                <p:commandButton type="button" title="Delete" icon="pi pi-trash"/>
-                <p:commandButton type="button" title="Print" icon="pi pi-print"/>
-            </f:facet>
-        </p:toolbar>
-        
-        <div style="height:800px"></div>
+            <div style="height:800px"></div>
 
-        <p:sticky target="tb" />
-        
+            <p:sticky target="tb"/>
+        </div>
     </ui:define>
 
 </ui:composition>

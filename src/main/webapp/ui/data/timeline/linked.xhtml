@@ -31,6 +31,7 @@
                 second.jq.data("rangeFired", true);
                 PF('timelineFirstWdgt').setVisibleRange(range.start, range.end);
             }
+
             //]]>
         </script>
     </ui:define>
@@ -41,38 +42,42 @@
 
     <ui:define name="description">
         When moving one timeline, the other moves along. Use mouse scroll wheel for zoom-in and zoom-out. A click on an event in the first timeline
-            selects an event in the second timeline (Project A or Project B).
+        selects an event in the second timeline (Project A or Project B).
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/timeline" />
+    <ui:param name="documentationLink" value="/components/timeline"/>
 
     <ui:define name="implementation">
 
         <h:form id="form">
             <p:growl id="growl" showSummary="true" showDetail="false">
-                <p:autoUpdate />
+                <p:autoUpdate/>
             </p:growl>
 
-            <h3 style="margin-top: 0">Events</h3>
-            <p:timeline id="timelineFirst" value="#{linkedTimelinesView.modelFirst}" var="task"
-                        height="250px" widgetVar="timelineFirstWdgt">
-                <p:ajax event="rangechange" process="@none" onstart="onrangechange1(); return false;"/>
-                <p:ajax event="select" listener="#{linkedTimelinesView.onSelect}"/>
+            <div class="card">
+                <h5 style="margin-top: 0">Events</h5>
+                <p:timeline id="timelineFirst" value="#{linkedTimelinesView.modelFirst}" var="task"
+                            height="250px" widgetVar="timelineFirstWdgt">
+                    <p:ajax event="rangechange" process="@none" onstart="onrangechange1(); return false;"/>
+                    <p:ajax event="select" listener="#{linkedTimelinesView.onSelect}"/>
 
-                <h:panelGroup layout="block" rendered="#{not task.period}" style="padding-bottom:5px">
-                    <h:outputText value="#{task.title}"/>
-                </h:panelGroup>
-                <p:graphicImage library="demo" name="#{task.imagePath}" height="26px" />
-                <h:panelGroup rendered="#{task.period}" style="padding:8px">
-                    <h:outputText value="#{task.title}"/>
-                </h:panelGroup>
-            </p:timeline>
+                    <h:panelGroup layout="block" rendered="#{not task.period}" style="padding-bottom:5px">
+                        <h:outputText value="#{task.title}"/>
+                    </h:panelGroup>
+                    <p:graphicImage library="demo" name="#{task.imagePath}" height="26px"/>
+                    <h:panelGroup rendered="#{task.period}" style="padding:8px">
+                        <h:outputText value="#{task.title}"/>
+                    </h:panelGroup>
+                </p:timeline>
+            </div>
 
-            <h3>Projects</h3>
-            <p:timeline id="timelineSecond" value="#{linkedTimelinesView.modelSecond}"
-                        height="150px" widgetVar="timelineSecondWdgt">
-                <p:ajax event="rangechange" process="@none" onstart="onrangechange2(); return false;"/>
-            </p:timeline>
+            <div class="card">
+                <h5>Projects</h5>
+                <p:timeline id="timelineSecond" value="#{linkedTimelinesView.modelSecond}"
+                            height="150px" widgetVar="timelineSecondWdgt">
+                    <p:ajax event="rangechange" process="@none" onstart="onrangechange2(); return false;"/>
+                </p:timeline>
+            </div>
         </h:form>
 
     </ui:define>

@@ -14,15 +14,15 @@
     </ui:define>
 
     <ui:define name="implementation">
-
-        <h:form>
-            <p:tree value="#{treeBasicView.root}" var="node" filterBy="#{node}">
-                <p:treeNode>
-                    <h:outputText value="#{node}" />
-                </p:treeNode>
-            </p:tree>
-        </h:form>
-        
+        <div class="card">
+            <h:form>
+                <p:tree value="#{treeBasicView.root}" var="node" filterBy="#{node}">
+                    <p:treeNode>
+                        <h:outputText value="#{node}"/>
+                    </p:treeNode>
+                </p:tree>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

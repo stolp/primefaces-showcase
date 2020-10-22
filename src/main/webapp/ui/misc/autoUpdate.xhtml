@@ -11,23 +11,26 @@
 
     <ui:define name="description">
         AutoUpdate is a utility tag, which registers the attached/parent component to be updated automatically on each ajax request.
-        <br />
+        <br/>
         All ajaxified components (includes p:ajax) provides an attribute, to mark the current request to ignore all autoUpdates.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/autoupdate" />
+    <ui:param name="documentationLink" value="/components/autoupdate"/>
 
     <ui:define name="implementation">
-        <h:form>
-            <p:outputPanel>
-                <p:autoUpdate />
+        <div class="card">
+            <h:form>
+                <p:outputPanel>
+                    <p:autoUpdate/>
 
-                Time: #{autoUpdateView.time}
-            </p:outputPanel>
+                    Time: #{autoUpdateView.time}
+                </p:outputPanel>
 
-            <p:commandButton value="AJAX request" update="@none" process="@this" />
-            <p:commandButton value="AJAX request with ignoreAutoUpdate=true" update="@none" process="@this" ignoreAutoUpdate="true" />
-        </h:form>
+                <p:commandButton value="AJAX request" update="@none" process="@this"/>
+                <p:commandButton value="AJAX request with ignoreAutoUpdate=true" update="@none" process="@this"
+                                 ignoreAutoUpdate="true"/>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

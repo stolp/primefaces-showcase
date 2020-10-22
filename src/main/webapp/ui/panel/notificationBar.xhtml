@@ -6,17 +6,17 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="head">
-		<style type="text/css">			
-			.top {
-				filter:alpha(opacity=80);
-				opacity:0.8;
-				padding:50px 0 0 50px;
+        <style type="text/css">
+            .top {
+                filter: alpha(opacity=80);
+                opacity: 0.8;
+                padding: 50px 0 0 50px;
                 z-index: 1000;
-			}
-		</style>
-	
-	</ui:define>
-    
+            }
+        </style>
+
+    </ui:define>
+
     <ui:define name="title">
         NotificationBar
     </ui:define>
@@ -25,17 +25,19 @@
         NotificationBar is a fixed positioned panel either at the top or the bottom of the page.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/notificationbar" />
+    <ui:param name="documentationLink" value="/components/notificationbar"/>
 
     <ui:define name="implementation">
-        
-        <p:notificationBar position="top" effect="slide" styleClass="top" widgetVar="bar">
-            <h:outputText value="PrimeFaces Rocks!" style="font-size:36px;" />
-        </p:notificationBar>
 
-        <p:commandButton value="Show" onclick="PF('bar').show()" type="button" icon="pi pi-arrow-down" />
-        <p:commandButton value="Hide" onclick="PF('bar').hide()" type="button" icon="pi pi-arrow-up"/>
-        
+        <div class="card">
+            <p:notificationBar position="top" effect="slide" styleClass="top" widgetVar="bar">
+                <h:outputText value="PrimeFaces Rocks!" style="font-size:36px;"/>
+            </p:notificationBar>
+
+            <p:commandButton value="Show" onclick="PF('bar').show()" type="button" icon="pi pi-arrow-down"/>
+            <p:commandButton value="Hide" onclick="PF('bar').hide()" type="button" icon="pi pi-arrow-up"/>
+        </div>
+
     </ui:define>
 
 </ui:composition>

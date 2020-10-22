@@ -13,20 +13,20 @@
         InputText is an extension to standard input element with theming and keyfiltering.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/inputtext" />
+    <ui:param name="documentationLink" value="/components/inputtext"/>
 
     <ui:define name="implementation">
-        <div class="card">        
+        <div class="card">
             <h5>Basic</h5>
-            <p:inputText />
+            <p:inputText/>
 
-           <h5>Floating Label</h5>
-           <span class="ui-float-label">
-               <p:inputText id="float-input" value="#{basicView.text}" />
-               <p:outputLabel for="@previous" value="Username" />
+            <h5>Floating Label</h5>
+            <span class="ui-float-label">
+               <p:inputText id="float-input" value="#{basicView.text}"/>
+               <p:outputLabel for="@previous" value="Username"/>
            </span>
         </div>
-        
+
     </ui:define>
 
 </ui:composition>

@@ -6,9 +6,9 @@
                 template="./template.xhtml">
 
     <ui:define name="head">
-		<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
-	</ui:define>
-    
+        <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+    </ui:define>
+
     <ui:define name="title">
         GMap - <span class="subitem">Map in Dialog</span>
     </ui:define>
@@ -17,16 +17,18 @@
         This sample demonstrates using map inside a dialog.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/gmap" />
+    <ui:param name="documentationLink" value="/components/gmap"/>
 
     <ui:define name="implementation">
 
-        <p:commandButton id="btn" type="button" icon="pi pi-globe" value="Show Map" onclick="PF('dlg').show();" />
-			
+        <div class="card">
+            <p:commandButton id="btn" type="button" icon="pi pi-globe" value="Show Map" onclick="PF('dlg').show();"/>
+        </div>
+
         <p:dialog id="gmapDialog" widgetVar="dlg" width="625" height="400" modal="true">
-            <p:gmap id="gmap" center="41.381542, 2.122893" zoom="15" type="HYBRID" style="width:100%;height:400px" />
+            <p:gmap id="gmap" center="41.381542, 2.122893" zoom="15" type="HYBRID" style="width:100%;height:400px"/>
         </p:dialog>
-        
+
     </ui:define>
 
 </ui:composition>

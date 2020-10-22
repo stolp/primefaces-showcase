@@ -13,12 +13,16 @@
         BubbleChart is created using a BubbleChartModel.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/chart" />
+    <ui:param name="documentationLink" value="/components/chart"/>
 
     <ui:define name="implementation">
-        <p:chart type="bubble" model="#{chartView.bubbleModel1}" />
-        <br /><br />
-        <p:chart type="bubble" model="#{chartView.bubbleModel2}" />
+        <div class="card">
+            <p:chart type="bubble" model="#{chartView.bubbleModel1}"/>
+        </div>
+        <br/><br/>
+        <div class="card">
+            <p:chart type="bubble" model="#{chartView.bubbleModel2}"/>
+        </div>
     </ui:define>
 
 </ui:composition>

@@ -9,14 +9,16 @@
         Charts - <span class="subitem">MultiAxis</span>
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/chart" />
+    <ui:param name="documentationLink" value="/components/chart"/>
 
     <ui:define name="description">
         Up to 9 axes (xaxis-x9axis, yaxis-y9axis) can be displayed on the same chart.
     </ui:define>
 
     <ui:define name="implementation">
-        <p:chart type="line" model="#{chartView.multiAxisModel}" style="height:400px;"/>
+        <div class="card">
+            <p:chart type="line" model="#{chartView.multiAxisModel}" style="height:400px;"/>
+        </div>
     </ui:define>
 
 </ui:composition>

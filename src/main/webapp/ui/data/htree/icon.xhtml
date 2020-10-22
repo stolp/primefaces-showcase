@@ -13,30 +13,30 @@
         Each node type can have different icons.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/tree?id=horizontal-tree" />
+    <ui:param name="documentationLink" value="/components/tree?id=horizontal-tree"/>
 
     <ui:define name="implementation">
+        <div class="card">
+            <h:form>
+                <p:tree value="#{treeIconView.root}" var="doc" orientation="horizontal">
+                    <p:treeNode expandedIcon="pi pi-folder-open" collapsedIcon="pi pi-folder">
+                        <h:outputText value="#{doc.name}"/>
+                    </p:treeNode>
 
-        <h:form>
-            <p:tree value="#{treeIconView.root}" var="doc" orientation="horizontal">
-                <p:treeNode expandedIcon="pi pi-folder-open" collapsedIcon="pi pi-folder">
-                    <h:outputText value="#{doc.name}"/>
-                </p:treeNode>
+                    <p:treeNode type="document" icon="pi pi-file">
+                        <h:outputText value="#{doc.name}"/>
+                    </p:treeNode>
 
-                <p:treeNode type="document" icon="pi pi-file">
-                    <h:outputText value="#{doc.name}" />
-                </p:treeNode>
+                    <p:treeNode type="picture" icon="pi pi-image">
+                        <h:outputText value="#{doc.name}"/>
+                    </p:treeNode>
 
-                <p:treeNode type="picture" icon="pi pi-image">
-                    <h:outputText value="#{doc.name}" />
-                </p:treeNode>
-
-                <p:treeNode type="mp3" icon="pi pi-video">
-                    <h:outputText value="#{doc.name}" />
-                </p:treeNode>
-            </p:tree>
-        </h:form>
-        
+                    <p:treeNode type="mp3" icon="pi pi-video">
+                        <h:outputText value="#{doc.name}"/>
+                    </p:treeNode>
+                </p:tree>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

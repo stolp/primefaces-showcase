@@ -13,15 +13,17 @@
         TagCloud displays a collection of tags with different strengths.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/tagcloud" />
+    <ui:param name="documentationLink" value="/components/tagcloud"/>
 
     <ui:define name="implementation">
-        <h:form>
-            <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
-            <p:tagCloud model="#{tagCloudView.model}">
-                <p:ajax event="select" update="msgs" listener="#{tagCloudView.onSelect}" />
-            </p:tagCloud>
-        </h:form>
+        <div class="card">
+            <h:form>
+                <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
+                <p:tagCloud model="#{tagCloudView.model}">
+                    <p:ajax event="select" update="msgs" listener="#{tagCloudView.onSelect}"/>
+                </p:tagCloud>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>
