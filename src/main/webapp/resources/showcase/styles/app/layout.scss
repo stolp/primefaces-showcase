@@ -1,65 +1,31 @@
 @charset 'UTF-8';
+
 :root {
-    --layer-0: #ffffff;
-    --layer-1: #f8f9fa;
-    --layer-2: #e9ecef;
+    --surface-a: #ffffff;
+    --surface-b: #f8f9fa;
+    --surface-c: #e9ecef;
+    --surface-d: #dee2e6;
+    --surface-e: #ffffff;
+    --surface-f: #ffffff;
     --text-color: #495057;
     --text-color-secondary: #6c757d;
     --primary-color: #2196F3;
     --primary-color-text: #ffffff;
+    --font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
 }
 
-/* Variables */
-$linkColor: #2196f3;
-$focusBorderColor:#BBDEFB;
-$tabletBreakpoint: 1024px;
-$mobileBreakpoint: 640px;
+@import './_core';
+@import './_topbar';
+@import './_sidebar';
+@import './_content';
+@import './_news';
+@import './_footer';
+@import './_config';
+@import './_home';
+@import './_responsive';
+@import './_demo';
+@import './changelog';
 
-html {
-    font-size: 14px;
+.layout-topbar .topbar-menu > li.topbar-submenu > ul {
+    display: none;
 }
-
-body {
-    margin: 0;
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-    background-color: var(--layer-0);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-weight: normal;
-    color: var(--text-color);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-    text-decoration: none;
-}
-
-/* Remove */
-.action-button {
-    font-weight: bold;
-    text-align: center;
-    color: #ffffff !important;
-    background-color: #455C71;
-    padding: 10px 24px 9px 24px;
-    border-radius: 3px;
-    transition: background-color .2s;
-
-    &:hover {
-        background-color: #708EA5;
-        color: #ffffff;
-    }
-}
-/************/
-
-/* Styles */
-@import '_mixins';
-@import '_news';
-@import '_topbar';
-@import '_sidebar';
-@import '_content';
-@import '_footer';
-@import '_mask';
-@import '_config';
-@import '_home';

@@ -40,23 +40,19 @@
             <div class="layout-content">
                 <ui:insert name="content">
                     <div class="content-section introduction">
-                        <a class="documentation-link" href="https://primefaces.github.io/primefaces/8_0/##{documentationLink}" target="_blank">
+                        <!--<a class="documentation-link" href="https://primefaces.github.io/primefaces/8_0/##{documentationLink}" target="_blank">
                             <i class="pi pi-external-link"></i> 
                             Documentation
-                        </a>
-                        <h1><ui:insert name="title"></ui:insert></h1>
-                        <p><ui:insert name="description"></ui:insert></p>
+                        </a>-->
+                        <div class="feature-intro">
+                            <h1><ui:insert name="title"></ui:insert></h1>
+                            <p><ui:insert name="description"></ui:insert></p>
+                        </div>
                     </div>
-                    <div class="content-section implementation #{guestPreferences.theme.startsWith('luna') ? 'dark-content' : null}">
+                    <div class="content-section implementation">
                         <ui:insert name="implementation"></ui:insert>
                     </div>
                     <div class="content-section source">
-                        <ui:insert name="source">
-                            <sc:tabscode
-                                    value="#{sc:getFilesContent(facesContext.externalContext.requestServletPath, true)}">
-                                <ui:insert name="more-source-tabs"/>
-                            </sc:tabscode>
-                        </ui:insert>
                     </div>
                 </ui:insert>
                 <ui:include src="./footer.xhtml"></ui:include>

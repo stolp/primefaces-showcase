@@ -1,259 +1,198 @@
-.layout-wrapper {
-    .layout-content {
-        margin-left: 250px;
-        padding-top: 70px;
+.layout-content {
+    margin-left: 250px;
+    padding-top: 70px;
 
-        .content-section {
-            padding: 2rem;
+    .content-section {
+        padding: 2rem;
 
-            &.introduction {
-                background-color: var(--layer-1);
-                color: var(--text-color);
-                border-bottom: 1px solid var(--layer-2);
-                position: relative;
+        &.introduction {
+            background-color: var(--surface-b);
+            color: var(--text-color);
+            padding-bottom: 0;
+            display: flex;
+            align-items: top;
+            justify-content: space-between;
 
-                .documentation-link {
-                    position: absolute;
-                    right: 2rem;
-                    top: 2rem;
+            .feature-intro {
+                h1 {
+                    span {
+                        font-weight: 400;
+                        color: var(--text-color-secondary);
+                    }
                 }
 
-                .feature-intro {
-                    h1 {
-                        font-size: 2rem;
-                        margin: 0 0 1.5rem 0;
-                        font-weight: 700;
+                p {
+                    margin: 0;
+                }
 
-                        span {
-                            font-weight: 400;
+                a {
+                    text-decoration: none;
+                    color: $linkColor;
+                    font-weight: 600;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+
+        &.implementation {
+            background-color: var(--surface-b);
+            color: var(--text-color);
+
+            +.documentation {
+                padding-top: 0;
+            }
+        }
+
+        &.documentation {
+            background-color: var(--surface-b);
+            color: var(--text-color);
+
+            li {
+                line-height: 1.5;
+            }
+
+            a {
+                text-decoration: none;
+                color: $linkColor;
+                font-weight: 600;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            .doc-tablewrapper {
+                margin: 1rem 0;
+                overflow: auto;
+            }
+
+            i:not([class~="pi"]) {
+                background-color: var(--surface-a);
+                color: #2196f3;
+                font-family: Monaco, courier, monospace;
+                font-style: normal;
+                font-size: 12px;
+                font-weight: 500;
+                padding: 2px 4px;
+                letter-spacing: .5px;
+                border-radius: 3px;
+                font-weight: 600;
+                margin: 0 2px;
+            }
+
+            .p-tabview {
+                background: transparent;
+                border: 0 none;
+
+                .p-tabview-nav {
+                    border-radius: 0;
+                    padding: 0;
+                    border-bottom: 1px solid var(--surface-d);
+                    background-color: transparent;
+
+                    li {
+                        margin-right: 0;
+                        border: 0 none;
+                        top: 1px;
+                        line-height: 1;
+
+                        a, a:visited {
                             color: var(--text-color-secondary);
+                            text-shadow: none;
+                            height: inherit;
+                            background-color: transparent;
+                            border: 0 none;
+                            border-bottom: 1px solid transparent;
+                            margin-bottom: -1px;
+                            transition: border-bottom-color .2s;
+
+                            &:focus {
+                                outline: 0 none;
+                                transition: background-color .2s, box-shadow .2s;
+                                box-shadow: 0 0 0 0.2em $focusBorderColor;
+                            }
+
+                            &:hover {
+                                background: transparent;
+                                text-decoration: none;
+                            }
+                        }
+
+                        &.p-highlight a,
+                        &.p-highlight:hover a {
+                            background: transparent;
+                            color: var(--primary-color);
+                            border-bottom: 1px solid $linkColor;
+                        }
+
+                        &:not(.p-highlight):not(.p-disabled):hover a {
+                            color: var(--text-color);
+                            border-bottom: 1px solid var(--primary-color);
                         }
                     }
 
-                    p {
-                        margin: 0;
-                        line-height: 2;
-                        font-size: 1.143rem;
+                    .p-tabview-ink-bar {
+                        display: none;
+                    }
+                }
+
+                .p-tabview-panels {
+                    background: transparent;
+                    border: 0 none;
+                    padding: 2rem 1rem;
+
+                    .btn-viewsource {
+                        display: inline-block;
+                        padding: .5rem 1rem;
                     }
 
                     a {
-                        background-color: var(--primary-color-text);
-                        color: var(--primary-color);
-                        border-radius: 3px;
-                        padding: 2px 4px;
+                        text-decoration: none;
+                        color: $linkColor;
+                        font-weight: 600;
 
                         &:hover {
                             text-decoration: underline;
                         }
                     }
                 }
+            }
+        }
 
-                + .source {
-                    border-top: 0 none;
-                }
+        .doc-table {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: var(--surface-a);
+
+            th {
+                border-bottom: 1px solid var(--surface-d);
+                padding: 1rem;
+                text-align: left;
             }
 
-            &.implementation {
-                background-color: var(--layer-0);
-                color: var(--text-color);
-
-                h3 {
-                    font-weight: 500;
-                    margin: 2rem 0 1rem 0;
-                    font-size: 1.286rem;
-                    color: var(--text-color);
-
-                    &:first-child,
-                    &.first {
-                        margin-top: 0;
-                    }
-                }
-
-                .component-sizes {
-                    display: inline-flex;
-                    flex-direction: column;
-                
-                    .p-component {
-                        margin-bottom: 1rem;
-                        flex: 0 0 auto;
-                
-                        &:last-child {
-                            margin-bottom: 0;
-                        } 
-                    }
-                }
-            }
-
-            &.source {
-                background-color: var(--layer-1);
-                color: var(--text-color);
-                border-top: 1px solid var(--layer-2);
-
-                h3 {
-                    margin-top: 1.5rem;
-                    margin-bottom: 0;
-                    font-size: 1.5rem;
-                    font-weight: 500;
-                    color: var(--text-color);
-                }
-
-                a {
-                    text-decoration: none;
-                    color: $linkColor;
-                    font-weight: 500;
-
-                    &:hover {
-                        text-decoration: underline;
-                    }
-                }
-
-                p {
-                    font-size: 1rem;
-                    line-height: 1.5;
-                    margin: .75rem 0;
-                    color: var(--text-color);
-                }
-
-                .doc-tablewrapper {
-                    margin: 1rem 0;
-                    overflow: auto;
-                }
-
-                i:not([class~="pi"]) {
-                    background-color: var(--layer-0);
-                    color: #2196f3;
-                    font-family: Monaco, courier, monospace;
-                    font-style: normal;
-                    font-size: 12px;
-                    font-weight: 500;
-                    padding: 2px 4px;
-                    letter-spacing: .5px;
-                    border-radius: 3px;
-                    font-weight: 600;
-                    margin: 0 2px;
-                }
-
-                .ui-tabs {
-                    background: transparent;
-                    border: 0 none;
-
-                    .ui-tabs-nav {
-                        border-radius: 0;
-                        padding: 0;
-                        border-bottom: 1px solid var(--layer-2);
-                        background-color: transparent;
-
-                        li {
-                            margin-right: 0;
-                            border: 0 none;
-                            top: 1px;
-                            background-color: transparent;
-
-                            a, a:visited {
-                                color: var(--text-color-secondary);
-                                text-shadow: none;
-                                height: inherit;
-                                background-color: transparent;
-                                border: 0 none;
-                                border-bottom: 1px solid transparent;
-                                margin-bottom: -1px;
-                                transition: background-color .2s;
-                                font-weight: 500;
-
-                                &:focus {
-                                    outline: 0 none;
-                                    transition: background-color .2s, box-shadow .2s;
-                                    box-shadow: 0 0 0 0.2em $focusBorderColor;
-                                }
-
-                                &:hover {
-                                    text-decoration: none;
-                                }
-                            }
-
-                            &.ui-state-active {
-                                background: transparent;
-
-                                a {
-                                    color: $linkColor;
-                                    border-bottom: 1px solid $linkColor;
-                                }
-                            }
-
-                            &:not(.ui-state-active):not(.ui-state-disabled):hover a {
-                                border-bottom: 1px solid  var(--primary-color);
-                            }
-                        }
-                    }
-
-                    .ui-tabs-panels {
-                        background: transparent;
-                        border: 0 none;
-
-                        a {
-                            text-decoration: none;
-                            color: $linkColor;
-                            font-weight: 500;
-
-                            &:hover {
-                                text-decoration: underline;
-                            }
-                        }
-                    }
-                }
-            }
-
-            .doc-table {
-                border-collapse: collapse;
-                width: 100%;
-                background-color: var(--layer-0);
-
-                th {
-                    border-bottom: 1px solid var(--layer-2);
+            tbody{
+                td {
                     padding: 1rem;
-                    text-align: left;
-                }
-
-                tbody{
-                    td {
-                        padding: 1rem;
-                        border-bottom: 1px solid var(--layer-2);
-                    }
-                }
-            }
-
-            .syntaxhighlighter {
-                border: 0 none;
-                border-left: 10px solid var(--layer-2)!important;
-                border-radius: 0;
-
-                .line {
-                    background-color: transparent !important;
-                }
-
-                table td.gutter {
-                    display: none;
-                }
-
-                table td.code .container {
-                    background: var(--layer-0)!important;
-                    color: var(--text-color);
+                    border-bottom: 1px solid var(--surface-d);
                 }
             }
         }
     }
 
-    @media screen and (max-width: $tabletBreakpoint) {
-        .layout-content {
-            margin-left: 0;
-            padding-top: 110px;
+    .card {
+        background: var(--surface-e);
+        padding: 2rem;
+        box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+        border-radius: 4px;
+        margin-bottom: 2rem;
 
-            .content-section {
-                &.submenu ul li,
-                &.content-submenu ul li {
-                    width: 50%;
-                }
-            }
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
     }
 }

@@ -1,132 +1,94 @@
-.layout-wrapper {
-    .layout-sidebar {
-        position: fixed;
-        left: 0;
-        top: 70px;
-        height: calc(100% - 70px);
-        background-color: var(--layer-0);
-        overflow: auto;
-        width: 250px;
-        border-right: 1px solid var(--layer-2);
-        @include user-select(none);
+.layout-sidebar {
+    position: fixed;
+    left: 0;
+    top: 70px;
+    height: calc(100% - 70px);
+    background-color: var(--surface-a);
+    overflow: auto;
+    width: 250px;
+    border-right: 1px solid var(--surface-d);
+    user-select: none;
+    padding: 1rem;
+    transition: transform .4s cubic-bezier(.05,.74,.2,.99);
 
-        .layout-sidebar-search-wrapper {
-            padding: 1.25rem;
-            position: relative;
-
-            .icon-search {
-                position: absolute;
-                color: var(--text-color);
-                top: 50%;
-                left: 1.75rem;
-                font-size: 1rem;
-                margin-top: -.5rem;
-            }
-
-            input {
-                color: var(--text-color);
-                padding: .5rem 0 .5rem 1.75rem;
-                width: 100%;
-                background-color: #ffffff;
-                border: solid 1px #cfd4d5;
-                @include border-radius(3px);
-
-                @include focus();
-            }
-        }
-
-        .layout-menu {
-            margin: 0;
-            list-style: none;
-            padding: 0 0 1.5rem;
-
-            > li {
-                .layout-menu-header {
-                    background-color: var(--layer-1);
-                    color: var(--text-color-secondary);
-                    font-weight: 700;
-                    padding: 1rem 0 1rem 1.5rem;
-                    @include flex();
-                    @include flex-align-center();
-                    @include user-select(none);
-
-                    > i {
-                        margin-right: .5rem;
-                    }
-                }
-
-                > ul {
-                    margin: 0;
-                    padding: 1rem 1.125rem;
-                    list-style-type: none;
-
-                    li {
-                        a {
-                            color: var(--text-color);
-                            display: block;
-                            padding: .5rem;
-                            @include border-radius(3px);
-                            @include transition(background-color .2s);
-                            @include focus();
-            
-                            &:hover {
-                                background-color: var(--layer-2);
-                            }
-                        }
-
-                        ul {
-                            margin: 0;
-                            padding: 0;
-                            list-style-type: none;
-                            display: none;
-
-                            li {
-                                &:first-child {
-                                    margin-top: .5rem;
-                                }
-
-                                &:last-child {
-                                    margin-bottom: .5rem;
-                                }
-
-                                a {
-                                    font-size: .875rem;
-                                    padding: .475rem .5rem .475rem 2rem;
-                                }
-                            }
-                        }
-
-                        &.active-menuitem {
-                            > a {
-                                font-weight: 700;
-                            }
-                        }
-                    }
-                }
-
-                &.layout-sidebar-button-demo {
-                    .layout-menu-header {
-                        .pi-mobile {
-                            transform: rotate(90deg);
-                        }
-                    }
-                }
-            }
-        }
+    .layout-sidebar-filter {
+        width: 100%;
     }
 
-    @media screen and (max-width: $tabletBreakpoint) {
-        .layout-sidebar {
-            top: 110px;
-            left: -300px;
-            height: calc(100% - 110px);
-            z-index: 999;
-            @include transition(left .2s);
+    .layout-menu {
+        .menu-category {
+            display: block;
+            color: var(--text-color-secondary);
+            font-weight: 600;
+            user-select: none;
+            padding: 1.5rem 0 1rem 0;
+            font-size: 0.857rem;
+            text-transform: uppercase;
+            border-top: 1px solid var(--surface-d);
+
+            &:first-child {
+                border-top: 0 none;
+                padding-top: 1rem;
+            }
         }
 
-        &.layout-sidebar-mobile-active {
-            .layout-sidebar {
-                left: 0;
+        .menu-items {
+            padding: 0 0 1rem 0;
+            display: flex;
+            flex-direction: column;
+
+            a,
+            button {
+                color: var(--text-color);
+                display: flex;
+                padding: .5rem;
+                border-radius: 3px;
+                cursor: pointer;
+                align-items: center;
+
+                .layout-menu-badge {
+                    padding: .14rem .5rem;
+                    font-size: .7rem;
+                    line-height: 1.4;
+                }
+
+                &:hover {
+                    background-color: var(--surface-c);
+                }
+
+                &:focus {
+                    z-index: 1;
+                    outline: 0 none;
+                    transition: box-shadow .2s;
+                    box-shadow: 0 0 0 0.2em $focusBorderColor;
+                }
+
+                &.router-link-exact-active {
+                    font-weight: 700;
+                }
+            }
+
+            div {
+                &.router-link-exact-active {
+                    > a {
+                        font-weight: 700;
+                    }
+
+                    ul {
+                        display: block;
+                    }
+                }
+
+                ul {
+                    padding: .5rem 0;
+                    margin: 0;
+                    list-style-type: none;
+
+                    a {
+                        font-size: .875rem;
+                        padding: .475rem .5rem .475rem 2rem;
+                    }
+                }
             }
         }
     }

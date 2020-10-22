@@ -10,24 +10,22 @@
     </ui:define>
 
     <ui:define name="description">
-        InputText extends standard InputText with skinning capabilities.
+        InputText is an extension to standard input element with theming and keyfiltering.
     </ui:define>
 
     <ui:param name="documentationLink" value="/components/inputtext" />
 
     <ui:define name="implementation">
-       
-        <h:form>            
-            <h3>Basic</h3>
+        <div class="card">        
+            <h5>Basic</h5>
             <p:inputText />
-        
-           <h3>Floating Label</h3>
+
+           <h5>Floating Label</h5>
            <span class="ui-float-label">
                <p:inputText id="float-input" value="#{basicView.text}" />
                <p:outputLabel for="@previous" value="Username" />
            </span>
-
-        </h:form>
+        </div>
         
     </ui:define>
 
