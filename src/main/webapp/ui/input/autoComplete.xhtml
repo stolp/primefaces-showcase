@@ -25,6 +25,10 @@
                 -webkit-box-sizing: content-box;
                 box-sizing: content-box;
             }
+
+            .flag {
+                font-size: 5em;
+            }
         </style>
     </ui:define>
 
@@ -38,6 +42,7 @@
     </ui:define>
 
     <ui:param name="documentationLink" value="/components/autocomplete"/>
+    <ui:param name="widgetLink" value="autocomplete" />
 
     <ui:define name="implementation">
         <div class="card">
@@ -79,69 +84,58 @@
                         <p:ajax event="itemSelect" listener="#{autoCompleteView.onItemSelect}" update="msgs"/>
                     </p:autoComplete>
 
-                    <p:outputLabel value="Pojo:" for="themePojo"/>
-                    <p:autoComplete id="themePojo" value="#{autoCompleteView.theme1}"
-                                    completeMethod="#{autoCompleteView.completeTheme}"
-                                    var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}"
-                                    converter="#{themeConverter}" forceSelection="true"/>
+                    <p:outputLabel value="Pojo:" for="countryPojo"/>
+                    <p:autoComplete id="countryPojo" value="#{autoCompleteView.country1}"
+                                    completeMethod="#{autoCompleteView.completeCountry}"
+                                    var="country" itemLabel="#{country.name}" itemValue="#{country}"
+                                    converter="#{countryConverter}" forceSelection="true"/>
 
-                    <p:outputLabel value="Custom Content:" for="themeCustom"/>
-                    <p:autoComplete id="themeCustom" value="#{autoCompleteView.theme2}"
-                                    completeMethod="#{autoCompleteView.completeTheme}"
-                                    var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}"
-                                    converter="#{themeConverter}" forceSelection="true">
+                    <p:outputLabel value="Custom Content:" for="countryCustom"/>
+                    <p:autoComplete id="countryCustom" value="#{autoCompleteView.country2}"
+                                    completeMethod="#{autoCompleteView.completeCountry}"
+                                    var="country" itemLabel="#{country.name}" itemValue="#{country}"
+                                    converter="#{countryConverter}" forceSelection="true">
                         <p:column>
-                            <h:graphicImage name="showcase/images/themeswitcher/themeswitcher-#{theme.name}.png"
-                                            alt="#{theme.name}" styleClass="ui-theme"/>
-                        </p:column>
-
-                        <p:column>
-                            <h:outputText value="#{theme.displayName}"/>
+                            <h:outputText value="#{autoCompleteView.countryCodeToEmoji(country.code)} #{country.name}"/>
                         </p:column>
                     </p:autoComplete>
 
-                    <p:outputLabel value="Multiple:" for="themes"/>
-                    <p:autoComplete id="themes" multiple="true" value="#{autoCompleteView.selectedThemes}"
-                                    completeMethod="#{autoCompleteView.completeTheme}"
-                                    var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}"
-                                    converter="#{themeConverter}" forceSelection="true">
-                        <p:column style="width:10%">
-                            <h:graphicImage name="showcase/images/themeswitcher/themeswitcher-#{theme.name}.png"
-                                            alt="#{theme.name}" styleClass="ui-theme"/>
-                        </p:column>
-
+                    <p:outputLabel value="Multiple:" for="countries"/>
+                    <p:autoComplete id="countries" multiple="true" value="#{autoCompleteView.selectedCountries}"
+                                    completeMethod="#{autoCompleteView.completeCountry}"
+                                    var="country" itemLabel="#{country.name}" itemValue="#{country}"
+                                    converter="#{countryConverter}" forceSelection="true">
                         <p:column>
-                            <h:outputText value="#{theme.displayName}"/>
+                            <h:outputText value="#{autoCompleteView.countryCodeToEmoji(country.code)} #{country.name}"/>
                         </p:column>
                     </p:autoComplete>
 
                     <p:outputLabel value="Itemtip:" for="itemTip"/>
-                    <p:autoComplete id="itemTip" value="#{autoCompleteView.theme3}"
-                                    completeMethod="#{autoCompleteView.completeTheme}"
-                                    var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}"
-                                    converter="#{themeConverter}">
+                    <p:autoComplete id="itemTip" value="#{autoCompleteView.country3}"
+                                    completeMethod="#{autoCompleteView.completeCountry}"
+                                    var="country" itemLabel="#{country.name}" itemValue="#{country}"
+                                    converter="#{countryConverter}">
                         <f:facet name="itemtip">
                             <h:panelGrid columns="2" cellpadding="5">
                                 <f:facet name="header">
-                                    <h:graphicImage name="showcase/images/themeswitcher/themeswitcher-#{theme.name}.png"
-                                                    alt="#{theme.name}" styleClass="ui-theme"/>
+                                    <h:outputText styleClass="flag" value="#{autoCompleteView.countryCodeToEmoji(country.code)}"/>
                                 </f:facet>
 
-                                <h:outputText value="Display:"/>
-                                <h:outputText value="#{theme.displayName}"/>
+                                <h:outputText value="Name:"/>
+                                <h:outputText value="#{country.name}"/>
 
-                                <h:outputText value="Key"/>
-                                <h:outputText value="#{theme.name}"/>
+                                <h:outputText value="Code:"/>
+                                <h:outputText value="#{country.code}"/>
                             </h:panelGrid>
                         </f:facet>
                     </p:autoComplete>
 
                     <p:outputLabel value="Group:" for="group"/>
-                    <p:autoComplete id="group" value="#{autoCompleteView.theme4}"
-                                    completeMethod="#{autoCompleteView.completeThemeContains}"
-                                    var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}"
-                                    converter="#{themeConverter}" forceSelection="true"
-                                    groupBy="#{autoCompleteView.getThemeGroup(theme)}" scrollHeight="250"/>
+                    <p:autoComplete id="group" value="#{autoCompleteView.country4}"
+                                    completeMethod="#{autoCompleteView.completeCountry}"
+                                    var="country" itemLabel="#{country.name}" itemValue="#{country}"
+                                    converter="#{countryConverter}" forceSelection="true"
+                                    groupBy="#{autoCompleteView.getCountryGroup(country)}" scrollHeight="250"/>
                 </h:panelGrid>
 
                 <p:commandButton value="Submit" icon="pi pi-check" update="output msgs" oncomplete="PF('dlg').show()"/>
@@ -173,18 +167,18 @@
                         <h:outputText value="#{autoCompleteView.txt8}"/>
 
                         <h:outputText value="Pojo:"/>
-                        <h:outputText value="#{autoCompleteView.theme1}"/>
+                        <h:outputText value="#{autoCompleteView.country1}"/>
 
                         <h:outputText value="Custom Content:"/>
-                        <h:outputText value="#{autoCompleteView.theme2}"/>
+                        <h:outputText value="#{autoCompleteView.country2}"/>
 
                         <h:outputText value="Multiple:"/>
-                        <p:dataList value="#{autoCompleteView.selectedThemes}" var="t">
+                        <p:dataList value="#{autoCompleteView.selectedCountries}" var="t">
                             <h:outputText value="#{t}"/>
                         </p:dataList>
 
                         <h:outputText value="Itemtip:"/>
-                        <h:outputText value="#{autoCompleteView.theme3}"/>
+                        <h:outputText value="#{autoCompleteView.country3}"/>
                     </p:panelGrid>
                 </p:dialog>
             </h:form>
@@ -192,6 +186,6 @@
     </ui:define>
 
     <ui:define name="more-source-tabs">
-        <p:tab title="/org/primefaces/showcase/convert/ThemeConverter.java"/>
+        <p:tab title="/org/primefaces/showcase/convert/CountryConverter.java"/>
     </ui:define>
 </ui:composition>

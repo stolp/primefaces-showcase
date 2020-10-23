@@ -16,8 +16,8 @@
 package org.primefaces.showcase.view.input;
 
 import org.primefaces.event.SelectEvent;
-import org.primefaces.showcase.domain.Theme;
-import org.primefaces.showcase.service.ThemeService;
+import org.primefaces.showcase.domain.Country;
+import org.primefaces.showcase.service.CountryService;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
 @Named
 @RequestScoped
 public class AutoCompleteView {
-    
+
     private String txt1;
     private String txt2;
     private String txt3;
@@ -40,38 +40,63 @@ public class AutoCompleteView {
     private String txt6;
     private String txt7;
     private String txt8;
-    private Theme theme1;
-    private Theme theme2;
-    private Theme theme3;
-    private Theme theme4;
-    private List<Theme> selectedThemes;
-    
+    private Country country1;
+    private Country country2;
+    private Country country3;
+    private Country country4;
+    private List<Country> selectedCountries;
+
     @Inject
-    private ThemeService service;
-    
+    private CountryService countryService;
+
     public List<String> completeText(String query) {
-		List<String> results = new ArrayList<>();
-		for(int i = 0; i < 10; i++) {
-			results.add(query + i);
-		}
-		
-		return results;
-	}
-    
-    public List<Theme> completeTheme(String query) {
         String queryLowerCase = query.toLowerCase();
-        List<Theme> allThemes = service.getThemes();
-        return allThemes.stream().filter(t -> t.getName().toLowerCase().startsWith(queryLowerCase)).collect(Collectors.toList());
-	}
-    
-    public List<Theme> completeThemeContains(String query) {
+        List<String> countryList = new ArrayList<>();
+        List<Country> countries = countryService.getCountries();
+        for (Country country : countries) {
+            countryList.add(country.getName());
+        }
+
+        return countryList.stream().filter(t -> t.toLowerCase().startsWith(queryLowerCase)).collect(Collectors.toList());
+    }
+
+    public List<Country> completeCountry(String query) {
         String queryLowerCase = query.toLowerCase();
-        List<Theme> allThemes = service.getThemes();
-        return allThemes.stream().filter(t -> t.getName().toLowerCase().contains(queryLowerCase)).collect(Collectors.toList());
-	}
-        
+        List<Country> countries = countryService.getCountries();
+        return countries.stream().filter(t -> t.getName().toLowerCase().startsWith(queryLowerCase)).collect(Collectors.toList());
+    }
+
+    public String countryCodeToEmoji(String code) {
+
+        // offset between uppercase ascii and regional indicator symbols
+        int OFFSET = 127397;
+
+        // validate code
+        if (code == null || code.length() != 2) {
+            return "";
+        }
+
+        //fix for uk -> gb
+        if (code.equalsIgnoreCase("uk")) {
+            code = "gb";
+        }
+
+        // convert code to uppercase
+        code = code.toUpperCase();
+
+        StringBuilder emojiStr = new StringBuilder();
+
+        //loop all characters
+        for (int i = 0; i < code.length(); i++) {
+            emojiStr.appendCodePoint(code.charAt(i) + OFFSET);
+        }
+
+        // return emoji
+        return emojiStr.toString();
+    }
+
     public void onItemSelect(SelectEvent<String> event) {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Item Selected", event.getObject()));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Country Selected", event.getObject()));
     }
 
     public String getTxt1() {
@@ -138,51 +163,55 @@ public class AutoCompleteView {
         this.txt8 = txt8;
     }
 
-    public Theme getTheme1() {
-        return theme1;
+    public Country getCountry1() {
+        return country1;
     }
 
-    public void setTheme1(Theme theme1) {
-        this.theme1 = theme1;
+    public void setCountry1(Country country1) {
+        this.country1 = country1;
     }
 
-    public Theme getTheme2() {
-        return theme2;
+    public Country getCountry2() {
+        return country2;
     }
 
-    public void setTheme2(Theme theme2) {
-        this.theme2 = theme2;
+    public void setCountry2(Country country2) {
+        this.country2 = country2;
     }
 
-    public Theme getTheme3() {
-        return theme3;
+    public Country getCountry3() {
+        return country3;
     }
 
-    public void setTheme3(Theme theme3) {
-        this.theme3 = theme3;
+    public void setCountry3(Country country3) {
+        this.country3 = country3;
     }
 
-    public Theme getTheme4() {
-        return theme4;
+    public Country getCountry4() {
+        return country4;
     }
 
-    public void setTheme4(Theme theme4) {
-        this.theme4 = theme4;
+    public void setCountry4(Country country4) {
+        this.country4 = country4;
     }
 
-    public List<Theme> getSelectedThemes() {
-        return selectedThemes;
+    public List<Country> getSelectedCountries() {
+        return selectedCountries;
     }
 
-    public void setSelectedThemes(List<Theme> selectedThemes) {
-        this.selectedThemes = selectedThemes;
+    public void setSelectedCountries(List<Country> selectedCountries) {
+        this.selectedCountries = selectedCountries;
     }
-    
-    public void setService(ThemeService service) {
-        this.service = service;
+
+    public CountryService getCountryService() {
+        return countryService;
     }
-    
-    public char getThemeGroup(Theme theme) {
-        return theme.getDisplayName().charAt(0);
+
+    public void setCountryService(CountryService countryService) {
+        this.countryService = countryService;
+    }
+
+    public char getCountryGroup(Country country) {
+        return country.getName().charAt(0);
     }
 }
