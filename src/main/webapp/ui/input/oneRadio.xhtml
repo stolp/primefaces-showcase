@@ -32,9 +32,9 @@
                 <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                     <p:outputLabel for="console" value="Console:"/>
                     <p:selectOneRadio id="console" value="#{radioView.console}" unselectable="true">
-                        <f:selectItem itemLabel="Xbox One" itemValue="Xbox One"/>
-                        <f:selectItem itemLabel="PS4" itemValue="PS4"/>
-                        <f:selectItem itemLabel="Wii U" itemValue="Wii U"/>
+                        <f:selectItem itemLabel="Option1" itemValue="Option1"/>
+                        <f:selectItem itemLabel="Option2" itemValue="Option2"/>
+                        <f:selectItem itemLabel="Option3" itemValue="Option3"/>
                     </p:selectOneRadio>
                 </h:panelGrid>
 
@@ -78,7 +78,7 @@
 
                 <p:dialog modal="true" resizable="false" widgetVar="dlg" header="Values" showEffect="clip">
                     <p:panelGrid columns="2" id="display" columnClasses="label,value">
-                        <h:outputText value="Console:"/>
+                        <h:outputText value="Option:"/>
                         <h:outputText value="#{radioView.console}"/>
 
                         <h:outputText value="City:"/>
