@@ -39,9 +39,9 @@
                     </p:selectCheckboxMenu>
 
                     <h:outputLabel for="grouped" value="Grouped:"/>
-                    <p:selectCheckboxMenu id="grouped" value="#{checkboxView.selectedCars}" label="Cars" multiple="true"
+                    <p:selectCheckboxMenu id="grouped" value="#{checkboxView.selectedCountries}" label="Countries" multiple="true"
                                           filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
-                        <f:selectItems value="#{checkboxView.cars}"/>
+                        <f:selectItems value="#{checkboxView.countries}"/>
                     </p:selectCheckboxMenu>
                 </h:panelGrid>
 
@@ -67,7 +67,7 @@
                             #{city}
                         </p:dataList>
 
-                        <p:dataList value="#{checkboxView.selectedCars}" var="car" emptyMessage="No cars selected">
+                        <p:dataList value="#{checkboxView.selectedCountries}" var="car" emptyMessage="No cars selected">
                             <f:facet name="header">
                                 Grouped
                             </f:facet>
