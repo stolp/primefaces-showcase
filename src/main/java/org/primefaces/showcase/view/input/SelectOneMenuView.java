@@ -15,8 +15,8 @@
  */
 package org.primefaces.showcase.view.input;
 
-import org.primefaces.showcase.domain.Theme;
-import org.primefaces.showcase.service.ThemeService;
+import org.primefaces.showcase.domain.Country;
+import org.primefaces.showcase.service.CountryService;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -32,65 +32,74 @@ import java.util.Map;
 @Named
 @RequestScoped
 public class SelectOneMenuView {
-    
-    private String console; 
+
+    private String selectedOption;
     private String rtl;
-    
-    private String car;  
-    private List<SelectItem> cars;
-    
-    private String city;  
-    private Map<String,String> cities = new HashMap<String, String>();
-    
-    private Theme theme;   
-    private List<Theme> themes;
-    
-    private String option;  
+
+    private String countryGroup;
+    private List<SelectItem> countriesGroup;
+
+    private String city;
+    private Map<String, String> cities = new HashMap<>();
+
+    private Country country;
+    private List<Country> countries;
+
+    private String option;
     private List<String> options;
 
     private String longItemLabel;
-    
+
     @Inject
-    private ThemeService service;
-    
+    private CountryService service;
+
     @PostConstruct
     public void init() {
-        //cars
-        SelectItemGroup g1 = new SelectItemGroup("German Cars");
-        g1.setSelectItems(new SelectItem[] {new SelectItem("BMW", "BMW"), new SelectItem("Mercedes", "Mercedes"), new SelectItem("Volkswagen", "Volkswagen")});
-        
-        SelectItemGroup g2 = new SelectItemGroup("American Cars");
-        g2.setSelectItems(new SelectItem[] {new SelectItem("Chrysler", "Chrysler"), new SelectItem("GM", "GM"), new SelectItem("Ford", "Ford")});
-        
-        cars = new ArrayList<SelectItem>();
-        cars.add(g1);
-        cars.add(g2);
-        
+
+        countriesGroup = new ArrayList<>();
+
+        SelectItemGroup europeCountries = new SelectItemGroup("Europe Countries");
+        europeCountries.setSelectItems(new SelectItem[]{
+                new SelectItem("Germany", "Germany"),
+                new SelectItem("Turkey", "Turkey"),
+                new SelectItem("Spain", "Spain")
+        });
+
+        SelectItemGroup americaCountries = new SelectItemGroup("America Countries");
+        americaCountries.setSelectItems(new SelectItem[]{
+                new SelectItem("United States", "United States"),
+                new SelectItem("Brazil", "Brazil"),
+                new SelectItem("Mexico", "Mexico")
+        });
+
+        countriesGroup.add(europeCountries);
+        countriesGroup.add(americaCountries);
+
         //cities
-        cities = new HashMap<String, String>();
+        cities = new HashMap<>();
         cities.put("New York", "New York");
-        cities.put("London","London");
-        cities.put("Paris","Paris");
-        cities.put("Barcelona","Barcelona");
-        cities.put("Istanbul","Istanbul");
-        cities.put("Berlin","Berlin");
-        
+        cities.put("London", "London");
+        cities.put("Paris", "Paris");
+        cities.put("Barcelona", "Barcelona");
+        cities.put("Istanbul", "Istanbul");
+        cities.put("Berlin", "Berlin");
+
         //themes
-        themes = service.getThemes();
-        
+        countries = service.getCountries();
+
         //options
-        options = new ArrayList<String>();
-        for(int i = 0; i < 20; i++) {
+        options = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
             options.add("Option " + i);
         }
     }
 
-    public String getConsole() {
-        return console;
+    public String getSelectedOption() {
+        return selectedOption;
     }
 
-    public void setConsole(String console) {
-        this.console = console;
+    public void setSelectedOption(String selectedOption) {
+        this.selectedOption = selectedOption;
     }
 
     public String getRtl() {
@@ -101,12 +110,20 @@ public class SelectOneMenuView {
         this.rtl = rtl;
     }
 
-    public String getCar() {
-        return car;
+    public String getCountryGroup() {
+        return countryGroup;
     }
 
-    public void setCar(String car) {
-        this.car = car;
+    public void setCountryGroup(String countryGroup) {
+        this.countryGroup = countryGroup;
+    }
+
+    public List<SelectItem> getCountriesGroup() {
+        return countriesGroup;
+    }
+
+    public void setCountriesGroup(List<SelectItem> countriesGroup) {
+        this.countriesGroup = countriesGroup;
     }
 
     public String getCity() {
@@ -117,29 +134,29 @@ public class SelectOneMenuView {
         this.city = city;
     }
 
-    public Theme getTheme() {
-        return theme;
-    }
-
-    public void setTheme(Theme theme) {
-        this.theme = theme;
-    }
-    
-    public List<SelectItem> getCars() {
-        return cars;
-    }
-
     public Map<String, String> getCities() {
         return cities;
     }
 
-    public List<Theme> getThemes() {
-        return themes;
+    public void setCities(Map<String, String> cities) {
+        this.cities = cities;
     }
-    
-    public void setService(ThemeService service) {
-        this.service = service;
-    } 
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
+    public List<Country> getCountries() {
+        return countries;
+    }
+
+    public void setCountries(List<Country> countries) {
+        this.countries = countries;
+    }
 
     public String getOption() {
         return option;

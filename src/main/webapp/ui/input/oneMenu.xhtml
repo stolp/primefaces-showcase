@@ -32,29 +32,29 @@
 
                 <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                     <p:outputLabel for="@next" value="Basic:"/>
-                    <p:selectOneMenu id="console" value="#{selectOneMenuView.console}" style="width:125px">
+                    <p:selectOneMenu id="option" value="#{selectOneMenuView.selectedOption}" style="width:125px">
                         <f:selectItem itemLabel="Select One" itemValue=""/>
-                        <f:selectItem itemLabel="Xbox One" itemValue="Xbox One"/>
-                        <f:selectItem itemLabel="PS4" itemValue="PS4"/>
-                        <f:selectItem itemLabel="Wii U" itemValue="Wii U"/>
+                        <f:selectItem itemLabel="Option1" itemValue="Option1"/>
+                        <f:selectItem itemLabel="Option2" itemValue="Option2"/>
+                        <f:selectItem itemLabel="Option3" itemValue="Option3"/>
                         <f:facet name="footer">
                             <p:separator/>
-                            <h:outputText value="3 consoles" style="font-weight:bold;"/>
+                            <h:outputText value="3 options" style="font-weight:bold;"/>
                         </f:facet>
                     </p:selectOneMenu>
 
                     <p:outputLabel for="@next" value="RTL:"/>
                     <p:selectOneMenu id="trl" value="#{selectOneMenuView.rtl}" style="width:125px" dir="rtl">
                         <f:selectItem itemLabel="Select One" itemValue=""/>
-                        <f:selectItem itemLabel="Xbox One" itemValue="Xbox One"/>
-                        <f:selectItem itemLabel="PS4" itemValue="PS4"/>
-                        <f:selectItem itemLabel="Wii U" itemValue="Wii U"/>
+                        <f:selectItem itemLabel="Option1" itemValue="Option1"/>
+                        <f:selectItem itemLabel="Option2" itemValue="Option2"/>
+                        <f:selectItem itemLabel="Option3" itemValue="Option3"/>
                     </p:selectOneMenu>
 
                     <p:outputLabel for="@next" value="Grouping: "/>
-                    <p:selectOneMenu id="car" value="#{selectOneMenuView.car}">
+                    <p:selectOneMenu id="group" value="#{selectOneMenuView.countryGroup}">
                         <f:selectItem itemLabel="Select One" itemValue=""/>
-                        <f:selectItems value="#{selectOneMenuView.cars}"/>
+                        <f:selectItems value="#{selectOneMenuView.countriesGroup}"/>
                     </p:selectOneMenu>
 
                     <p:outputLabel for="@next" value="Editable: "/>
@@ -64,28 +64,31 @@
                     </p:selectOneMenu>
 
                     <p:outputLabel for="@next" value="Advanced:"/>
-                    <p:selectOneMenu id="advanced" value="#{selectOneMenuView.theme}" converter="#{themeConverter}"
+                    <p:selectOneMenu id="advanced" value="#{selectOneMenuView.country}" converter="#{countryConverter}"
                                      panelStyle="width:180px"
-                                     effect="fade" var="t" style="width:160px" filter="true"
+                                     effect="fade"
+                                     var="t"
+                                     style="width:160px"
+                                     filter="true"
                                      filterMatchMode="startsWith">
-                        <f:selectItems value="#{selectOneMenuView.themes}" var="theme" itemLabel="#{theme.displayName}"
-                                       itemValue="#{theme}"/>
+                        <f:selectItems value="#{selectOneMenuView.countries}" var="country" itemLabel="#{country.name}"
+                                       itemValue="#{country}"/>
 
                         <p:column style="width:10%">
-                            <h:graphicImage name="showcase/images/themeswitcher/themeswitcher-#{t.name}.png"
-                                            alt="#{t.name}" styleClass="ui-theme"/>
+                            <h:outputText styleClass="flag"
+                                          value="#{autoCompleteView.countryCodeToEmoji(t.code)}"/>
                         </p:column>
 
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="Name"/>
                             </f:facet>
-                            <h:outputText value="#{t.displayName}"/>
+                            <h:outputText value="#{t.name}"/>
                         </p:column>
 
                         <f:facet name="footer">
                             <p:separator/>
-                            <h:outputText value="#{selectOneMenuView.themes.size()} themes" style="font-weight:bold;"/>
+                            <h:outputText value="#{selectOneMenuView.countries.size()} countries" style="font-weight:bold;"/>
                         </f:facet>
                     </p:selectOneMenu>
 
@@ -117,19 +120,19 @@
                 <p:dialog header="Values" modal="true" showEffect="bounce" widgetVar="dlg" resizable="false">
                     <p:panelGrid columns="2" id="display" columnClasses="label,value">
                         <h:outputText value="Basic:"/>
-                        <h:outputText value="#{selectOneMenuView.console}"/>
+                        <h:outputText value="#{selectOneMenuView.selectedOption}"/>
 
                         <h:outputText value="RTL:"/>
                         <h:outputText value="#{selectOneMenuView.rtl}"/>
 
                         <h:outputText value="Grouping:"/>
-                        <h:outputText value="#{selectOneMenuView.car}"/>
+                        <h:outputText value="#{selectOneMenuView.countryGroup}"/>
 
                         <h:outputText value="Editable"/>
                         <h:outputText value="#{selectOneMenuView.city}"/>
 
                         <h:outputText value="Advanced:"/>
-                        <h:outputText value="#{selectOneMenuView.theme.displayName}"/>
+                        <h:outputText value="#{selectOneMenuView.country.name}"/>
 
                         <h:outputText value="Lazy:"/>
                         <h:outputText value="#{selectOneMenuView.option}"/>
