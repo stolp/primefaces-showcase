@@ -19,13 +19,15 @@
     <ui:param name="documentationLink" value="/components/importconstants"/>
 
     <ui:define name="implementation">
-        <p:importConstants type="org.primefaces.util.Constants" var="PFConstants"/>
+        <div class="card">
+            <p:importConstants type="org.primefaces.util.Constants" var="PFConstants"/>
 
-        LIBRARY:
-        <h:outputText value="#{PFConstants.LIBRARY}"/>
-        <br/>
-        DOWNLOAD_COOKIE:
-        <h:outputText value="#{PFConstants.DOWNLOAD_COOKIE}"/>
+            LIBRARY:
+            <h:outputText value="#{PFConstants.LIBRARY}"/>
+            <br/>
+            DOWNLOAD_COOKIE:
+            <h:outputText value="#{PFConstants.DOWNLOAD_COOKIE}"/>
+        </div>
     </ui:define>
 
 </ui:composition>

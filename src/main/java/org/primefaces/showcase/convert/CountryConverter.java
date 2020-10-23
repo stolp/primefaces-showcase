@@ -25,7 +25,7 @@ public class CountryConverter implements Converter {
             try {
                 return countryService.getCountries().get(Integer.parseInt(value));
             } catch (NumberFormatException e) {
-                throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Conversion Error", "Not a valid theme."));
+                throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Conversion Error", "Not a valid country."));
             }
         } else {
             return null;

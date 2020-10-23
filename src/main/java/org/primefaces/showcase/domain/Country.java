@@ -40,4 +40,9 @@ public class Country implements Serializable {
         this.code = code;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
 }

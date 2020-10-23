@@ -22,16 +22,19 @@
     <ui:param name="documentationLink" value="/components/importenum"/>
 
     <ui:define name="implementation">
-        <p:importEnum type="javax.faces.application.ProjectStage" var="JsfProjectStages" allSuffix="ALL_ENUM_VALUES"/>
+        <div class="card">
+            <p:importEnum type="javax.faces.application.ProjectStage" var="JsfProjectStages"
+                          allSuffix="ALL_ENUM_VALUES"/>
 
-        Development: #{JsfProjectStages.Development}
+            Development: #{JsfProjectStages.Development}
 
-        <br/>
+            <br/>
 
-        ALL:
-        <ui:repeat var="current" value="#{JsfProjectStages.ALL_ENUM_VALUES}">
-            <h:outputText value="#{current}"/> &#160;
-        </ui:repeat>
+            ALL:
+            <ui:repeat var="current" value="#{JsfProjectStages.ALL_ENUM_VALUES}">
+                <h:outputText value="#{current}"/> &#160;
+            </ui:repeat>
+        </div>
     </ui:define>
 
 </ui:composition>

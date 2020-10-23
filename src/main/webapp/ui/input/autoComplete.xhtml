@@ -25,10 +25,6 @@
                 -webkit-box-sizing: content-box;
                 box-sizing: content-box;
             }
-
-            .flag {
-                font-size: 5em;
-            }
         </style>
     </ui:define>
 
@@ -42,7 +38,7 @@
     </ui:define>
 
     <ui:param name="documentationLink" value="/components/autocomplete"/>
-    <ui:param name="widgetLink" value="autocomplete" />
+    <ui:param name="widgetLink" value="autocomplete"/>
 
     <ui:define name="implementation">
         <div class="card">
@@ -118,7 +114,8 @@
                         <f:facet name="itemtip">
                             <h:panelGrid columns="2" cellpadding="5">
                                 <f:facet name="header">
-                                    <h:outputText styleClass="flag" value="#{autoCompleteView.countryCodeToEmoji(country.code)}"/>
+                                    <h:outputText styleClass="flag"
+                                                  value="#{autoCompleteView.countryCodeToEmoji(country.code)}"/>
                                 </f:facet>
 
                                 <h:outputText value="Name:"/>
@@ -179,6 +176,9 @@
 
                         <h:outputText value="Itemtip:"/>
                         <h:outputText value="#{autoCompleteView.country3}"/>
+
+                        <h:outputText value="Group:"/>
+                        <h:outputText value="#{autoCompleteView.country4}"/>
                     </p:panelGrid>
                 </p:dialog>
             </h:form>

@@ -83,9 +83,10 @@
     </ui:define>
 
     <ui:define name="implementation">
-        <div class="card">
-            <h:form>
-                <p:tabView rendered="#{cspView.cspEnabled}">
+
+        <h:form rendered="#{cspView.cspEnabled}">
+            <div class="card">
+                <p:tabView rendered="">
                     <p:tab title="JS event handlers">
                         <p:outputPanel>
                             JS event handlers should work as expected.
@@ -305,14 +306,14 @@
                     </p:tab>
 
                 </p:tabView>
+            </div>
+            <br/>
+            <!--
+            <p:button value="Validate CSP header" disabled="#\{not cspView.configuration.javascriptDebuggingCookie}"
+                onclick="window.open('https://cspvalidator.org/#headerValue%5B%5D=' + $.cookie('CSP'), '_blank'); return false;"
+                title="#\{not cspView.configuration.javascriptDebuggingCookie ? 'primefaces.csp.JAVASCRIPT_DEBUGGING_COOKIE must be enabled' : ''}" />
+            -->
+        </h:form>
 
-                <br/>
-                <!--
-                <p:button value="Validate CSP header" disabled="#\{not cspView.configuration.javascriptDebuggingCookie}"
-                    onclick="window.open('https://cspvalidator.org/#headerValue%5B%5D=' + $.cookie('CSP'), '_blank'); return false;"
-                    title="#\{not cspView.configuration.javascriptDebuggingCookie ? 'primefaces.csp.JAVASCRIPT_DEBUGGING_COOKIE must be enabled' : ''}" />
-                -->
-            </h:form>
-        </div>
     </ui:define>
 </ui:composition>
