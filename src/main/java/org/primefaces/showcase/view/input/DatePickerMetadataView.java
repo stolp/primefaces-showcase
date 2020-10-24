@@ -41,19 +41,21 @@ public class DatePickerMetadataView implements Serializable {
     public DatePickerMetadataView() {
         LocalDate start = LocalDate.now().withDayOfMonth(1);
         DefaultDateMetadata metaDataDisabled = DefaultDateMetadata.builder().disabled(true).build();
+        DefaultDateMetadata metaDataStart = DefaultDateMetadata.builder().styleClass("start").build();
+        DefaultDateMetadata metaDataDeadline = DefaultDateMetadata.builder().styleClass("deadline").build();
         model = new DefaultDateMetadataModel();
         model.add(start.minusMonths(1), metaDataDisabled);
-        model.add(start.plusDays(start.getMonthValue() + 3), metaDataDisabled);
+        model.add(start.plusDays(start.getMonthValue() + 3), metaDataStart);
         model.add(start.plusDays(start.getMonthValue() + 6), metaDataDisabled);
-        model.add(start.plusDays(start.getMonthValue() + 9), metaDataDisabled);
+        model.add(start.plusDays(start.getMonthValue() + 9), metaDataDeadline);
         model.add(start.plusMonths(1), metaDataDisabled);
 
         modelLazy = new LazyDateMetadataModel() {
             @Override
             public void loadDateMetadata(LocalDate start, LocalDate end) {
-                add(start.plusDays(start.getMonthValue() + 2), metaDataDisabled);
+                add(start.plusDays(start.getMonthValue() + 2), metaDataStart);
                 add(start.plusDays(start.getMonthValue() + 5), metaDataDisabled);
-                add(start.plusDays(start.getMonthValue() + 8), metaDataDisabled);
+                add(start.plusDays(start.getMonthValue() + 8), metaDataDeadline);
             }
         };
     }
