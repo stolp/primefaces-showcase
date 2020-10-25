@@ -52,15 +52,15 @@ public class LazyCarDataModel extends LazyDataModel<Car> {
     }
 
     @Override
-    public List<Car> load(int first, int pageSize, Map<String, SortMeta> sortMeta, Map<String, FilterMeta> filterMeta) {
+    public List<Car> load(int first, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
         List<Car> data = new ArrayList<>();
 
         //filter
         for (Car car : datasource) {
             boolean match = true;
 
-            if (filterMeta != null) {
-                for (FilterMeta meta : filterMeta.values()) {
+            if (filterBy != null) {
+                for (FilterMeta meta : filterBy.values()) {
                     try {
                         String filterField = meta.getFilterField();
                         Object filterValue = meta.getFilterValue();
@@ -86,8 +86,8 @@ public class LazyCarDataModel extends LazyDataModel<Car> {
         }
 
         //sort
-        if (sortMeta != null && !sortMeta.isEmpty()) {
-            for (SortMeta meta : sortMeta.values()) {
+        if (sortBy != null && !sortBy.isEmpty()) {
+            for (SortMeta meta : sortBy.values()) {
                 Collections.sort(data, new LazySorter(meta.getSortField(), meta.getSortOrder()));
             }
         }
