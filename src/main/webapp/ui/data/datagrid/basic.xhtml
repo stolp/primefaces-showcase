@@ -26,52 +26,51 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form id="form">
-                <p:dataGrid var="car" value="#{dataGridView.cars}" columns="3" layout="grid"
+                <p:dataGrid var="product" value="#{dataGridView.products}" columns="3" layout="grid"
                             rows="12" paginator="true" id="cars"
                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                             rowsPerPageTemplate="6,12,16">
 
                     <f:facet name="header">
-                        Cars for Sale
+                        Products for Sale
                     </f:facet>
 
-                    <p:panel header="#{car.id}" style="text-align:center">
+                    <p:panel header="#{product.name}" style="text-align:center">
                         <h:panelGrid columns="1" style="width:100%">
-                            <p:graphicImage name="demo/images/car/#{car.brand}.gif"/>
+                            <p:graphicImage name="demo/images/product/#{product.image}"/>
 
-                            <h:outputText value="#{car.year}"/>
+                            <h:outputText value="$#{product.price}"/>
 
-                            <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()"
+                            <p:commandLink update=":form:productDetail" oncomplete="PF('carDialog').show()"
                                            title="View Detail">
                                 <h:outputText styleClass="pi pi-search" style="margin:0 auto;"/>
-                                <f:setPropertyActionListener value="#{car}" target="#{dataGridView.selectedCar}"/>
+                                <f:setPropertyActionListener value="#{product}" target="#{dataGridView.selectedProduct}"/>
                             </p:commandLink>
                         </h:panelGrid>
                     </p:panel>
 
                 </p:dataGrid>
 
-                <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade"
+                <p:dialog header="Product Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade"
                           resizable="false">
-                    <p:outputPanel id="carDetail" style="text-align:center;">
-                        <p:panelGrid columns="2" rendered="#{not empty dataGridView.selectedCar}"
+                    <p:outputPanel id="productDetail" style="text-align:center;">
+                        <p:panelGrid columns="2" rendered="#{not empty dataGridView.selectedProduct}"
                                      columnClasses="label,value">
                             <f:facet name="header">
-                                <p:graphicImage name="demo/images/car/#{dataGridView.selectedCar.brand}-big.gif"/>
+                                <p:graphicImage name="demo/images/product/#{dataGridView.selectedProduct.image}"/>
                             </f:facet>
 
                             <h:outputText value="Id:"/>
-                            <h:outputText value="#{dataGridView.selectedCar.id}"/>
+                            <h:outputText value="#{dataGridView.selectedProduct.id}"/>
 
-                            <h:outputText value="Year"/>
-                            <h:outputText value="#{dataGridView.selectedCar.year}"/>
+                            <h:outputText value="Name:"/>
+                            <h:outputText value="#{dataGridView.selectedProduct.name}"/>
 
-                            <h:outputText value="Color:"/>
-                            <h:outputText value="#{dataGridView.selectedCar.color}"
-                                          style="color:#{dataGridView.selectedCar.color}"/>
+                            <h:outputText value="Price:"/>
+                            <h:outputText value="$#{dataGridView.selectedProduct.price}"/>
 
-                            <h:outputText value="Price"/>
-                            <h:outputText value="$#{dataGridView.selectedCar.price}"/>
+                            <h:outputText value="Stock:"/>
+                            <h:outputText value="#{dataGridView.selectedProduct.inventoryStatus}"/>
                         </p:panelGrid>
                     </p:outputPanel>
                 </p:dialog>
