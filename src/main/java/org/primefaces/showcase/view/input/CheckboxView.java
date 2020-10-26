@@ -31,6 +31,8 @@ import org.primefaces.event.UnselectEvent;
 @RequestScoped
 public class CheckboxView {
 
+    private String[] selectedOptions;
+    private String[] selectedOptions2;
     private String[] selectedCities;
     private String[] selectedCities2;
     private List<String> cities;
@@ -67,6 +69,22 @@ public class CheckboxView {
 
         countries.add(europeCountries);
         countries.add(americaCountries);
+    }
+
+    public String[] getSelectedOptions() {
+        return selectedOptions;
+    }
+
+    public void setSelectedOptions(String[] selectedOptions) {
+        this.selectedOptions = selectedOptions;
+    }
+
+    public String[] getSelectedOptions2() {
+        return selectedOptions2;
+    }
+
+    public void setSelectedOptions2(String[] selectedOptions2) {
+        this.selectedOptions2 = selectedOptions2;
     }
 
     public String[] getSelectedCities() {

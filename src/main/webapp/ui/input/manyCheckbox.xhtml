@@ -36,10 +36,10 @@
         <div class="card">
             <h:form>
                 <h5 style="margin-top:0px">Basic Layout</h5>
-                <p:selectManyCheckbox id="basic" value="#{checkboxView.selectedConsoles}">
-                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One"/>
-                    <f:selectItem itemLabel="PS4" itemValue="PS4"/>
-                    <f:selectItem itemLabel="Wii U" itemValue="Wii U"/>
+                <p:selectManyCheckbox id="basic" value="#{checkboxView.selectedOptions}">
+                    <f:selectItem itemLabel="Option 1" itemValue="Option 1"/>
+                    <f:selectItem itemLabel="Option 2" itemValue="Option 2"/>
+                    <f:selectItem itemLabel="Option 3" itemValue="Option 3"/>
                 </p:selectManyCheckbox>
 
                 <h5>Grid Layout</h5>
@@ -55,24 +55,24 @@
 
                 <h5>Custom Layout</h5>
                 <p:outputPanel id="customPanel" style="margin-bottom:20px">
-                    <p:selectManyCheckbox id="custom" value="#{checkboxView.selectedConsoles2}" layout="custom">
-                        <f:selectItem itemLabel="Xbox One" itemValue="Xbox One"/>
-                        <f:selectItem itemLabel="PS4" itemValue="PS4"/>
-                        <f:selectItem itemLabel="Wii U" itemValue="Wii U"/>
+                    <p:selectManyCheckbox id="custom" value="#{checkboxView.selectedOptions2}" layout="custom">
+                        <f:selectItem itemLabel="Option 1" itemValue="Option 1"/>
+                        <f:selectItem itemLabel="Option 2" itemValue="Option 2"/>
+                        <f:selectItem itemLabel="Option 3" itemValue="Option 3"/>
                     </p:selectManyCheckbox>
 
                     <div class="ui-grid ui-grid-responsive">
                         <div class="ui-grid-row">
                             <div class="ui-grid-col-4" style="text-align:center">
-                                <h:outputLabel for="opt1" value="Xbox One" style="display:block;margin-bottom: 8px"/>
+                                <h:outputLabel for="opt1" value="Option 1" style="display:block;margin-bottom: 8px"/>
                                 <p:checkbox id="opt1" for="custom" itemIndex="0"/>
                             </div>
                             <div class="ui-grid-col-4" style="text-align:center">
-                                <h:outputLabel for="opt2" value="PS4" style="display:block;margin-bottom: 8px"/>
+                                <h:outputLabel for="opt2" value="Option 2" style="display:block;margin-bottom: 8px"/>
                                 <p:checkbox id="opt2" for="custom" itemIndex="1"/>
                             </div>
                             <div class="ui-grid-col-4" style="text-align:center">
-                                <h:outputLabel for="opt3" value="Wii U" style="display:block;margin-bottom: 8px"/>
+                                <h:outputLabel for="opt3" value="Option 3" style="display:block;margin-bottom: 8px"/>
                                 <p:checkbox id="opt3" for="custom" itemIndex="2"/>
                             </div>
                         </div>
@@ -80,9 +80,9 @@
                 </p:outputPanel>
 
                 <h5>Grouped</h5>
-                <p:selectManyCheckbox id="grid3" value="#{checkboxView.selectedCars}" layout="pageDirection"
+                <p:selectManyCheckbox id="grid3" value="#{checkboxView.selectedCountries}" layout="pageDirection"
                                       columns="1">
-                    <f:selectItems value="#{checkboxView.cars}" var="car" itemLabel="#{car}" itemValue="#{car}"/>
+                    <f:selectItems value="#{checkboxView.countries}" var="country" itemLabel="#{country}" itemValue="#{country}"/>
                 </p:selectManyCheckbox>
 
                 <p:separator/>
@@ -91,11 +91,11 @@
 
                 <p:dialog header="Values" modal="true" showEffect="clip" widgetVar="dlg" resizable="false">
                     <p:outputPanel id="display">
-                        <p:dataList value="#{checkboxView.selectedConsoles}" var="console">
+                        <p:dataList value="#{checkboxView.selectedOptions}" var="option">
                             <f:facet name="header">
                                 Basic
                             </f:facet>
-                            #{console}
+                            #{option}
                         </p:dataList>
                         <p:dataList value="#{checkboxView.selectedCities}" var="city">
                             <f:facet name="header">
@@ -109,17 +109,17 @@
                             </f:facet>
                             #{city}
                         </p:dataList>
-                        <p:dataList value="#{checkboxView.selectedConsoles2}" var="console">
+                        <p:dataList value="#{checkboxView.selectedOptions2}" var="option">
                             <f:facet name="header">
                                 Custom
                             </f:facet>
-                            #{console}
+                            #{option}
                         </p:dataList>
-                        <p:dataList value="#{checkboxView.selectedCars}" var="car">
+                        <p:dataList value="#{checkboxView.selectedCountries}" var="country">
                             <f:facet name="header">
-                                Cars
+                                Countries
                             </f:facet>
-                            #{car}
+                            #{country}
                         </p:dataList>
                     </p:outputPanel>
                 </p:dialog>
