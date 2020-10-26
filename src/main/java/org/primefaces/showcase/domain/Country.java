@@ -1,8 +1,6 @@
 package org.primefaces.showcase.domain;
 
-import java.io.Serializable;
-
-public class Country implements Serializable {
+public class Country {
 
     private int id;
     private String name;

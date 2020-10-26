@@ -65,25 +65,22 @@
 
                     <p:outputLabel for="@next" value="Advanced:"/>
                     <p:selectOneMenu id="advanced" value="#{selectOneMenuView.country}" converter="#{countryConverter}"
-                                     panelStyle="width:180px"
-                                     effect="fade"
-                                     var="t"
-                                     style="width:160px"
-                                     filter="true"
-                                     filterMatchMode="startsWith">
-                        <f:selectItems value="#{selectOneMenuView.countries}" var="country" itemLabel="#{country.name}"
-                                       itemValue="#{country}"/>
+                                     panelStyle="width:180px" effect="fade" var="c" style="width:160px"
+                                     filter="true" filterMatchMode="startsWith">
+
+                        <f:selectItems value="#{selectOneMenuView.countries}" var="country"
+                                       itemLabel="#{country.name}" itemValue="#{country}"/>
 
                         <p:column style="width:10%">
                             <h:outputText styleClass="flag"
-                                          value="#{autoCompleteView.countryCodeToEmoji(t.code)}"/>
+                                          value="#{selectOneMenuView.service.countryCodeToEmoji(c.code)}"/>
                         </p:column>
 
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="Name"/>
                             </f:facet>
-                            <h:outputText value="#{t.name}"/>
+                            <h:outputText value="#{c.name}"/>
                         </p:column>
 
                         <f:facet name="footer">

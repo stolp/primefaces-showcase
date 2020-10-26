@@ -38,7 +38,6 @@
     </ui:define>
 
     <ui:param name="documentationLink" value="/components/autocomplete"/>
-    <ui:param name="widgetLink" value="autocomplete"/>
 
     <ui:define name="implementation">
         <div class="card">
@@ -92,7 +91,7 @@
                                     var="country" itemLabel="#{country.name}" itemValue="#{country}"
                                     converter="#{countryConverter}" forceSelection="true">
                         <p:column>
-                            <h:outputText value="#{autoCompleteView.countryCodeToEmoji(country.code)} #{country.name}"/>
+                            <h:outputText value="#{autoCompleteView.countryService.countryCodeToEmoji(country.code)} #{country.name}"/>
                         </p:column>
                     </p:autoComplete>
 
@@ -102,7 +101,7 @@
                                     var="country" itemLabel="#{country.name}" itemValue="#{country}"
                                     converter="#{countryConverter}" forceSelection="true">
                         <p:column>
-                            <h:outputText value="#{autoCompleteView.countryCodeToEmoji(country.code)} #{country.name}"/>
+                            <h:outputText value="#{autoCompleteView.countryService.countryCodeToEmoji(country.code)} #{country.name}"/>
                         </p:column>
                     </p:autoComplete>
 
@@ -115,7 +114,7 @@
                             <h:panelGrid columns="2" cellpadding="5">
                                 <f:facet name="header">
                                     <h:outputText styleClass="flag"
-                                                  value="#{autoCompleteView.countryCodeToEmoji(country.code)}"/>
+                                                  value="#{autoCompleteView.countryService.countryCodeToEmoji(country.code)}"/>
                                 </f:facet>
 
                                 <h:outputText value="Name:"/>

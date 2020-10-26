@@ -154,10 +154,6 @@ public class SelectOneMenuView {
         return countries;
     }
 
-    public void setCountries(List<Country> countries) {
-        this.countries = countries;
-    }
-
     public String getOption() {
         return option;
     }
@@ -180,5 +176,13 @@ public class SelectOneMenuView {
 
     public void setLongItemLabel(String longItemLabel) {
         this.longItemLabel = longItemLabel;
+    }
+
+    public CountryService getService() {
+        return service;
+    }
+
+    public void setService(CountryService service) {
+        this.service = service;
     }
 }
