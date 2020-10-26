@@ -18,8 +18,10 @@
     <ui:param name="documentationLink" value="/components/formlayout"/>
 
     <ui:define name="implementation">
-        <div class="card">
-            <h:form>
+
+        <h:form>
+
+            <div class="card">
                 <h5>Vertical</h5>
                 <div class="ui-fluid">
                     <div class="p-field">
@@ -31,7 +33,9 @@
                         <p:inputText id="lastname1"/>
                     </div>
                 </div>
+            </div>
 
+            <div class="card">
                 <h5>Vertical and Grid</h5>
                 <div class="ui-fluid p-formgrid p-grid">
                     <div class="p-field p-col">
@@ -43,7 +47,9 @@
                         <p:inputText id="lastname2"/>
                     </div>
                 </div>
+            </div>
 
+            <div class="card">
                 <h5>Horizontal and Fixed Width</h5>
                 <div class="p-field p-grid">
                     <p:outputLabel for="firstname3" styleClass="p-col-fixed" style="width:100px" value="Firstname"/>
@@ -57,7 +63,9 @@
                         <p:inputText id="lastname3"/>
                     </div>
                 </div>
+            </div>
 
+            <div class="card">
                 <h5>Horizontal and Fluid</h5>
                 <div class="ui-fluid">
                     <div class="p-field p-grid">
@@ -73,7 +81,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
+            <div class="card">
                 <h5>Inline</h5>
                 <div class="p-formgroup-inline">
                     <div class="p-field">
@@ -86,7 +96,9 @@
                     </div>
                     <p:button value="Submit"/>
                 </div>
+            </div>
 
+            <div class="card">
                 <h5>Vertical Checkbox</h5>
                 <div class="p-field-checkbox">
                     <p:selectBooleanCheckbox id="v_option1"/>
@@ -108,14 +120,18 @@
                         <p:outputLabel for="h_option2" value="Option 2"/>
                     </div>
                 </div>
+            </div>
 
+            <div class="card">
                 <h5>Help Text</h5>
                 <div class="p-field ui-fluid">
                     <p:outputLabel for="username" value="Username"/>
                     <p:inputText id="username"/>
                     <small id="username-help">Enter your username to reset your password.</small>
                 </div>
+            </div>
 
+            <div class="card">
                 <h5>Advanced</h5>
                 <div class="ui-fluid p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-6">
@@ -148,9 +164,10 @@
                         <p:inputText id="zip"/>
                     </div>
                 </div>
+            </div>
 
-            </h:form>
-        </div>
+        </h:form>
+
     </ui:define>
 
 </ui:composition>
