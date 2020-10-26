@@ -34,60 +34,55 @@
 
             <div class="card">
                 <h5>Responsive</h5>
-                <p:carousel value="#{carouselView.cars}" var="car" itemStyle="text-align:center"
+                <p:carousel value="#{carouselView.products}" var="product" itemStyle="text-align:center"
                             responsive="true">
                     <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value"
                                  layout="grid"
                                  styleClass="ui-panelgrid-blank">
                         <f:facet name="header">
-                            <p:graphicImage name="demo/images/car/#{car.brand}.gif"/>
+                            <p:graphicImage name="demo/images/product/#{product.image}"/>
                         </f:facet>
 
                         <h:outputText value="Id:"/>
-                        <h:outputText value="#{car.id}"/>
+                        <h:outputText value="#{product.id}"/>
 
-                        <h:outputText value="Year"/>
-                        <h:outputText value="#{car.year}"/>
+                        <h:outputText value="Price:"/>
+                        <h:outputText value="#{product.price}"/>
 
-                        <h:outputText value="Color:"/>
-                        <h:outputText value="#{car.color}" style="color:#{car.color}"/>
+                        <h:outputText value="Stock:"/>
+                        <h:outputText value="#{product.inventoryStatus}" />
 
-                        <h:outputText value="Price"/>
-                        <h:outputText value="$#{car.price}"/>
                     </p:panelGrid>
 
                     <f:facet name="footer">
-                        In total there are #{fn:length(carouselView.cars)} cars.
+                        In total there are #{fn:length(carouselView.products)} products.
                     </f:facet>
                 </p:carousel>
             </div>
 
             <div class="card">
                 <h5>Custom</h5>
-                <p:carousel value="#{carouselView.cars}" var="car"
+                <p:carousel value="#{carouselView.products}" var="product"
                             itemStyle="height:200px;text-align:center" numVisible="1" easing="easeOutBounce"
                             style="width:250px" circular="true">
                     <h:panelGrid columns="2" style="width:100%" columnClasses="label,value">
                         <f:facet name="header">
-                            <p:graphicImage name="demo/images/car/#{car.brand}.gif"/>
+                            <p:graphicImage name="demo/images/product/#{product.image}"/>
                         </f:facet>
 
                         <h:outputText value="Id:"/>
-                        <h:outputText value="#{car.id}"/>
+                        <h:outputText value="#{product.id}"/>
 
-                        <h:outputText value="Year"/>
-                        <h:outputText value="#{car.year}"/>
+                        <h:outputText value="Price:"/>
+                        <h:outputText value="#{product.price}"/>
 
-                        <h:outputText value="Color:"/>
-                        <h:outputText value="#{car.color}" style="color:#{car.color}"/>
-
-                        <h:outputText value="Price"/>
-                        <h:outputText value="$#{car.price}"/>
+                        <h:outputText value="Stock:"/>
+                        <h:outputText value="#{product.inventoryStatus}" />
 
                         <f:facet name="footer">
-                            <p:commandButton update=":form:carDetail" oncomplete="PF('carDialog').show()"
+                            <p:commandButton update=":form:productDetail" oncomplete="PF('carDialog').show()"
                                              icon="pi pi-search">
-                                <f:setPropertyActionListener value="#{car}" target="#{carouselView.selectedCar}"/>
+                                <f:setPropertyActionListener value="#{product}" target="#{carouselView.selectedProduct}"/>
                             </p:commandButton>
                         </f:facet>
                     </h:panelGrid>
@@ -127,25 +122,21 @@
 
             <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade"
                       resizable="false">
-                <p:outputPanel id="carDetail" style="text-align:center;">
-                    <p:panelGrid columns="2" rendered="#{not empty carouselView.selectedCar}"
+                <p:outputPanel id="productDetail" style="text-align:center;">
+                    <p:panelGrid columns="2" rendered="#{not empty carouselView.selectedProduct}"
                                  columnClasses="label,value">
                         <f:facet name="header">
-                            <p:graphicImage name="demo/images/car/#{carouselView.selectedCar.brand}-big.gif"/>
+                            <p:graphicImage name="demo/images/product/#{product.image}"/>
                         </f:facet>
 
                         <h:outputText value="Id:"/>
-                        <h:outputText value="#{carouselView.selectedCar.id}"/>
+                        <h:outputText value="#{product.id}"/>
 
-                        <h:outputText value="Year"/>
-                        <h:outputText value="#{carouselView.selectedCar.year}"/>
+                        <h:outputText value="Price:"/>
+                        <h:outputText value="#{product.price}"/>
 
-                        <h:outputText value="Color:"/>
-                        <h:outputText value="#{carouselView.selectedCar.color}"
-                                      style="color:#{carouselView.selectedCar.color}"/>
-
-                        <h:outputText value="Price"/>
-                        <h:outputText value="$#{carouselView.selectedCar.price}"/>
+                        <h:outputText value="Stock:"/>
+                        <h:outputText value="#{product.inventoryStatus}" />
                     </p:panelGrid>
                 </p:outputPanel>
             </p:dialog>
