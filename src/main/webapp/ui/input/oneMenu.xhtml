@@ -72,8 +72,7 @@
                                        itemLabel="#{country.name}" itemValue="#{country}"/>
 
                         <p:column style="width:10%">
-                            <h:outputText styleClass="flag"
-                                          value="#{selectOneMenuView.service.countryCodeToEmoji(c.code)}"/>
+                            <h:outputText value="#{selectOneMenuView.service.countryCodeToEmoji(c.code)}"/>
                         </p:column>
 
                         <p:column>
