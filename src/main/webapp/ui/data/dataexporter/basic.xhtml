@@ -27,7 +27,7 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form>
-                <p:dataTable id="tbl" var="car" value="#{dataExporterView.cars}"
+                <p:dataTable id="tbl" var="product" value="#{dataExporterView.products}"
                              paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
                              paginator="true" rows="10" style="margin-bottom:20px">
 
@@ -35,32 +35,32 @@
                         <div style="float:right;padding-top: 5px;">
                             <h:commandLink>
                                 <p:graphicImage name="/demo/images/excel.png" width="24"/>
-                                <p:dataExporter type="xls" target="tbl" fileName="cars"/>
+                                <p:dataExporter type="xls" target="tbl" fileName="products"/>
                             </h:commandLink>
 
                             <h:commandLink>
                                 <p:graphicImage name="/demo/images/xlsx.png" width="24"/>
-                                <p:dataExporter type="xlsxstream" target="tbl" fileName="cars"/>
+                                <p:dataExporter type="xlsxstream" target="tbl" fileName="products"/>
                             </h:commandLink>
 
                             <h:commandLink>
                                 <p:graphicImage name="/demo/images/pdf.png" width="24"/>
-                                <p:dataExporter type="pdf" target="tbl" fileName="cars"/>
+                                <p:dataExporter type="pdf" target="tbl" fileName="products"/>
                             </h:commandLink>
 
                             <h:commandLink>
                                 <p:graphicImage name="/demo/images/csv.png" width="24"/>
-                                <p:dataExporter type="csv" target="tbl" fileName="cars"/>
+                                <p:dataExporter type="csv" target="tbl" fileName="products"/>
                             </h:commandLink>
 
                             <h:commandLink>
                                 <p:graphicImage name="/demo/images/xml.png" width="24"/>
-                                <p:dataExporter type="xml" target="tbl" fileName="cars"/>
+                                <p:dataExporter type="xml" target="tbl" fileName="products"/>
                             </h:commandLink>
 
                             <h:commandLink>
                                 <p:graphicImage name="/demo/images/keyboardpencil.png" width="24"/>
-                                <p:dataExporter type="text" target="tbl" fileName="cars"
+                                <p:dataExporter type="text" target="tbl" fileName="products"
                                                 exporter="#{dataExporterView.textExporter}"/>
                             </h:commandLink>
                         </div>
@@ -68,52 +68,52 @@
 
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Id"/>
+                            <h:outputText value="Code"/>
                         </f:facet>
-                        <h:outputText value="#{car.id}"/>
+                        <h:outputText value="#{product.code}"/>
                     </p:column>
 
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Year"/>
+                            <h:outputText value="Name"/>
                         </f:facet>
-                        <h:outputText value="#{car.year}"/>
+                        <h:outputText value="#{product.name}"/>
                     </p:column>
 
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Brand"/>
+                            <h:outputText value="Category"/>
                         </f:facet>
-                        <h:outputText value="#{car.brand}"/>
+                        <h:outputText value="#{product.category}"/>
                     </p:column>
 
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Color"/>
+                            <h:outputText value="Quantity"/>
                         </f:facet>
-                        <h:outputText value="#{car.color}"/>
+                        <h:outputText value="#{product.quantity}"/>
                     </p:column>
                 </p:dataTable>
 
                 <h5>Export Page Data Only</h5>
                 <h:commandLink>
                     <p:graphicImage name="/demo/images/excel.png"/>
-                    <p:dataExporter type="xls" target="tbl" fileName="cars" pageOnly="true"/>
+                    <p:dataExporter type="xls" target="tbl" fileName="products" pageOnly="true"/>
                 </h:commandLink>
 
                 <h:commandLink>
                     <p:graphicImage name="/demo/images/pdf.png"/>
-                    <p:dataExporter type="pdf" target="tbl" fileName="cars" pageOnly="true"/>
+                    <p:dataExporter type="pdf" target="tbl" fileName="products" pageOnly="true"/>
                 </h:commandLink>
 
                 <h:commandLink>
                     <p:graphicImage name="/demo/images/csv.png"/>
-                    <p:dataExporter type="csv" target="tbl" fileName="cars" pageOnly="true"/>
+                    <p:dataExporter type="csv" target="tbl" fileName="products" pageOnly="true"/>
                 </h:commandLink>
 
                 <h:commandLink>
                     <p:graphicImage name="/demo/images/xml.png"/>
-                    <p:dataExporter type="xml" target="tbl" fileName="cars" pageOnly="true"/>
+                    <p:dataExporter type="xml" target="tbl" fileName="productsca" pageOnly="true"/>
                 </h:commandLink>
             </h:form>
         </div>

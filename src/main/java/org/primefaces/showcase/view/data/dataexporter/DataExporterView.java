@@ -25,31 +25,31 @@ import javax.inject.Named;
 
 import org.primefaces.component.datatable.DataTable;
 import org.primefaces.component.export.Exporter;
-import org.primefaces.showcase.domain.Car;
-import org.primefaces.showcase.service.CarService;
+import org.primefaces.showcase.domain.Product;
+import org.primefaces.showcase.service.ProductService;
 
 @Named
 @RequestScoped
 public class DataExporterView implements Serializable {
     
-    private List<Car> cars;
+    private List<Product> products;
     
     private Exporter<DataTable> textExporter;
         
     @Inject
-    private CarService service;
+    private ProductService service;
     
     @PostConstruct
     public void init() {
-        cars = service.createCars(100);
+        products = service.getProductsWithSize(100);
         textExporter = new TextExporter();
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setService(CarService service) {
+    public void setService(ProductService service) {
         this.service = service;
     }
 

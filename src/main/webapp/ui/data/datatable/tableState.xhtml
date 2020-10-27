@@ -36,53 +36,57 @@
             <p:messages id="messages"/>
 
             <div class="card">
-                <p:dataTable id="tableStateDT" var="car" value="#{dtTableStateView.cars}" widgetVar="carsTable"
+                <p:dataTable id="tableStateDT" var="customer" value="#{dtTableStateView.customers}"
+                             widgetVar="customersTable"
                              multiViewState="true"
                              rows="10" paginator="true"
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="5,10,15"
-                             selectionMode="single" selection="#{dtTableStateView.selectedCar}" rowKey="#{car.id}"
-                             emptyMessage="No cars found with given criteria"
-                             filteredValue="#{dtTableStateView.filteredCars}">
+                             selectionMode="single" selection="#{dtTableStateView.selectedCustomer}"
+                             rowKey="#{customer.id}"
+                             emptyMessage="No customers found with given criteria"
+                             filteredValue="#{dtTableStateView.filteredCustomers}">
 
                     <f:facet name="header">
                         <p:outputPanel>
                             <h:outputText value="Search all fields:"/>
-                            <p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()" style="width:150px"
+                            <p:inputText id="globalFilter" onkeyup="PF('customersTable').filter()" style="width:150px"
                                          placeholder="Enter keyword"/>
                         </p:outputPanel>
                     </f:facet>
 
-                    <p:ajax event="rowSelect" update=":form:carDetail" oncomplete="PF('carDialog').show()"/>
+                    <p:ajax event="rowSelect" update=":form:customerDetail" oncomplete="PF('customerDialog').show()"/>
 
-                    <p:column headerText="Id" filterBy="#{car.id}" sortBy="#{car.id}" filterMatchMode="contains">
-                        <h:outputText value="#{car.id}"/>
+                    <p:column headerText="Name" filterBy="#{customer.name}" sortBy="#{customer.name}"
+                              filterMatchMode="contains">
+                        <h:outputText value="#{customer.name}"/>
                     </p:column>
 
-                    <p:column headerText="Year" filterBy="#{car.year}" sortBy="#{car.year}"
+                    <p:column headerText="Country" filterBy="#{customer.country.name}" sortBy="#{customer.country.name}"
                               filterMatchMode="startsWith">
-                        <h:outputText value="#{car.year}"/>
+                        <span class="flag flag-#{customer.country.code}" style="width: 30px; height: 20px"></span>
+                        <h:outputText style="vertical-align: middle; margin-left: .5rem"
+                                      value="#{customer.country.name}"/>
                     </p:column>
 
-                    <p:column headerText="Brand" filterBy="#{car.brand}" sortBy="#{car.brand}" filterMatchMode="exact">
+                    <p:column headerText="Representative" filterBy="#{customer.representative.name}"
+                              sortBy="#{customer.representative.name}" filterMatchMode="startsWith">
+                        <p:graphicImage name="images/avatar/#{customer.representative.image}" library="demo"
+                                        width="32" style="vertical-align: middle"/>
+                        <h:outputText style="vertical-align: middle; margin-left: .5rem"
+                                      value="#{customer.representative.name}"/>
+                    </p:column>
+
+                    <p:column headerText="Status" filterBy="#{customer.status}" sortBy="#{customer.status}"
+                              filterMatchMode="exact">
                         <f:facet name="filter">
-                            <p:selectOneMenu onchange="PF('carsTable').filter()"
+                            <p:selectOneMenu onchange="PF('customersTable').filter()"
                                              style="width:100%; box-sizing: border-box;">
                                 <f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true"/>
-                                <f:selectItems value="#{dtTableStateView.brands}"/>
+                                <f:selectItems value="#{dtTableStateView.customerStatus}"/>
                             </p:selectOneMenu>
                         </f:facet>
-                        <h:outputText value="#{car.brand}"/>
-                    </p:column>
-
-                    <p:column headerText="Color" filterBy="#{car.color}" sortBy="#{car.color}" filterMatchMode="in">
-                        <f:facet name="filter">
-                            <p:selectCheckboxMenu label="Colors" onchange="PF('carsTable').filter()"
-                                                  style="width:100%; box-sizing: border-box;" scrollHeight="150">
-                                <f:selectItems value="#{dtTableStateView.colors}"/>
-                            </p:selectCheckboxMenu>
-                        </f:facet>
-                        <h:outputText value="#{car.color}"/>
+                        <span class="customer-badge status-#{customer.status.name().toLowerCase()}">#{customer.status}</span>
                     </p:column>
 
                     <f:facet name="paginatorTopLeft">
@@ -96,20 +100,27 @@
 
             <div class="card">
                 <h5>With LazyDataModel:</h5>
-                <p:dataTable var="car" value="#{dtLazyView.lazyModel}" paginator="true" rows="10"
+                <p:dataTable var="customer" value="#{dtLazyView.lazyModel}" paginator="true" rows="10"
                              paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                             rowsPerPageTemplate="5,10,15" id="carTable" lazy="true" multiViewState="true">
-                    <p:column headerText="Id" sortBy="#{car.id}" filterBy="#{car.id}">
-                        <h:outputText value="#{car.id}"/>
+                             rowsPerPageTemplate="5,10,15" id="customerTable" lazy="true" multiViewState="true">
+                    <p:column headerText="Name" sortBy="#{customer.name}" filterBy="#{customer.name}">
+                        <h:outputText value="#{customer.name}"/>
                     </p:column>
-                    <p:column headerText="Year" sortBy="#{car.year}" filterBy="#{car.year}">
-                        <h:outputText value="#{car.year}"/>
+                    <p:column headerText="Country" sortBy="#{customer.country}" filterBy="#{customer.country}">
+                        <span class="flag flag-#{customer.country.code}" style="width: 30px; height: 20px"></span>
+                        <h:outputText style="vertical-align: middle; margin-left: .5rem" value="#{customer.country}"/>
                     </p:column>
-                    <p:column headerText="Brand" sortBy="#{car.brand}" filterBy="#{car.brand}">
-                        <h:outputText value="#{car.brand}"/>
+
+                    <p:column headerText="Representative" sortBy="#{customer.representative}"
+                              filterBy="#{customer.representative}" filterMatchMode="startsWith">
+                        <p:graphicImage name="images/avatar/#{customer.representative.image}" library="demo"
+                                        width="32" style="vertical-align: middle"/>
+                        <h:outputText style="vertical-align: middle; margin-left: .5rem"
+                                      value="#{customer.representative.name}"/>
                     </p:column>
-                    <p:column headerText="Color" sortBy="#{car.color}" filterBy="#{car.color}">
-                        <h:outputText value="#{car.color}"/>
+
+                    <p:column headerText="Status" sortBy="#{customer.status}" filterBy="#{customer.status}">
+                        <span class="customer-badge status-#{customer.status.name().toLowerCase()}">#{customer.status}</span>
                     </p:column>
 
                     <f:facet name="paginatorTopLeft">
@@ -119,27 +130,34 @@
                 </p:dataTable>
             </div>
 
-            <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade"
+            <p:dialog header="Customer Info" widgetVar="customerDialog" modal="true" showEffect="fade" hideEffect="fade"
                       resizable="false">
-                <p:outputPanel id="carDetail" style="text-align:center;">
-                    <p:panelGrid columns="2" rendered="#{not empty dtTableStateView.selectedCar}"
+                <p:outputPanel id="customerDetail" style="text-align:center;">
+                    <p:panelGrid columns="2" rendered="#{not empty dtTableStateView.selectedCustomer}"
                                  columnClasses="label,value">
-                        <f:facet name="header">
-                            <p:graphicImage name="demo/images/car/#{dtTableStateView.selectedCar.brand}-big.gif"/>
-                        </f:facet>
+                        <h:outputText value="Name:"/>
+                        <h:outputText value="#{dtTableStateView.selectedCustomer.name}"/>
 
-                        <h:outputText value="Id:"/>
-                        <h:outputText value="#{dtTableStateView.selectedCar.id}"/>
+                        <h:outputText value="Country"/>
+                        <p:column>
+                            <span class="flag flag-#{dtTableStateView.selectedCustomer.country.code}"
+                                  style="width: 30px; height: 20px"></span>
+                            <h:outputText style="vertical-align: middle; margin-left: .5rem"
+                                          value="#{dtTableStateView.selectedCustomer.name}"/>
+                        </p:column>
 
-                        <h:outputText value="Year"/>
-                        <h:outputText value="#{dtTableStateView.selectedCar.year}"/>
+                        <h:outputText value="Representative"/>
+                        <p:column>
+                            <p:graphicImage
+                                    name="images/avatar/#{dtTableStateView.selectedCustomer.representative.image}"
+                                    library="demo"
+                                    width="32" style="vertical-align: middle"/>
+                            <h:outputText style="vertical-align: middle; margin-left: .5rem"
+                                          value="#{dtTableStateView.selectedCustomer.representative}"/>
+                        </p:column>
 
-                        <h:outputText value="Brand"/>
-                        <h:outputText value="#{dtTableStateView.selectedCar.brand}"/>
-
-                        <h:outputText value="Color:"/>
-                        <h:outputText value="#{dtTableStateView.selectedCar.color}"
-                                      style="color:#{dtTableStateView.selectedCar.color}"/>
+                        <h:outputText value="Status:"/>
+                        <span class="customer-badge status-#{dtTableStateView.selectedCustomer.status.name().toLowerCase()}">#{dtTableStateView.selectedCustomer.status}</span>
                     </p:panelGrid>
                 </p:outputPanel>
             </p:dialog>

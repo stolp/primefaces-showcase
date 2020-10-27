@@ -41,16 +41,16 @@ public class GroupView implements Serializable {
     
     static {		
 		manufacturers = new String[10];
-		manufacturers[0] = "Apple";
-		manufacturers[1] = "Samsung";
-		manufacturers[2] = "Microsoft";
-		manufacturers[3] = "Philips";
-		manufacturers[4] = "Sony";
-		manufacturers[5] = "LG";
-		manufacturers[6] = "Sharp";
-		manufacturers[7] = "Panasonic";
-		manufacturers[8] = "HTC";
-		manufacturers[9] = "Nokia";
+		manufacturers[0] = "Bamboo Watch";
+		manufacturers[1] = "Black Watch";
+		manufacturers[2] = "Blue Band";
+		manufacturers[3] = "Blue T-Shirt";
+		manufacturers[4] = "Brown Purse";
+		manufacturers[5] = "Chakra Bracelet";
+		manufacturers[6] = "Galaxy Earrings";
+		manufacturers[7] = "Game Controller";
+		manufacturers[8] = "Gaming Set";
+		manufacturers[9] = "Gold Phone Case";
 	}
         
     static {
@@ -69,19 +69,19 @@ public class GroupView implements Serializable {
         
     @PostConstruct
     public void init() {
-        sales = new ArrayList<Sale>();
+        sales = new ArrayList<>();
         for(int i = 0; i < 10; i++) {
             sales.add(new Sale(manufacturers[i], getRandomAmount(), getRandomAmount(), getRandomPercentage(), getRandomPercentage()));
         }
         
-        years = new ArrayList<Integer>();
+        years = new ArrayList<>();
         years.add(2010);
         years.add(2011);
         years.add(2012);
         years.add(2013);
         years.add(2014);
         
-        players = new ArrayList<Player>();
+        players = new ArrayList<>();
         for(int i = 0; i < 10; i++) {
             players.add(new Player(playerNames[i], generateRandomGoalStatsData()));
         }

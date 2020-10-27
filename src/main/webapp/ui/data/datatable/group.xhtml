@@ -26,7 +26,7 @@
 
                     <p:columnGroup type="header">
                         <p:row>
-                            <p:column rowspan="3" headerText="Manufacturer"/>
+                            <p:column rowspan="3" headerText="Product"/>
                             <p:column colspan="4" headerText="Sale Rate"/>
                         </p:row>
                         <p:row>
@@ -64,15 +64,12 @@
                     <p:columnGroup type="footer">
                         <p:row>
                             <p:column colspan="3" style="text-align:right" footerText="Totals:"/>
-                            <p:column footerText="\$#{dtGroupView.lastYearTotal}"/>
+                            <p:column footerText="$#{dtGroupView.lastYearTotal}"/>
 
-                            <p:column footerText="\$#{dtGroupView.thisYearTotal}"/>
+                            <p:column footerText="$#{dtGroupView.thisYearTotal}"/>
                         </p:row>
                     </p:columnGroup>
 
-                    <f:facet name="footer">
-                        Data between 2013-2014
-                    </f:facet>
                 </p:dataTable>
 
                 <p:dataTable var="player" value="#{dtGroupView.players}" style="margin-top:40px">
@@ -100,9 +97,6 @@
                         <h:outputText value="#{player.getGoals(year)}"/>
                     </p:columns>
 
-                    <f:facet name="footer">
-                        Data between 2010-2014
-                    </f:facet>
                 </p:dataTable>
             </h:form>
         </div>

@@ -42,25 +42,25 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form>
-                <p:dataScroller value="#{dataScrollerView.cars}" var="car" chunkSize="10" mode="inline"
+                <p:dataScroller value="#{dataScrollerView.products}" var="product" chunkSize="10" mode="inline"
                                 scrollHeight="500">
                     <f:facet name="header">
-                        Scroll Down to Load More Cars
+                        Scroll Down to Load More Products
                     </f:facet>
 
                     <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
-                        <p:graphicImage name="demo/images/car/#{car.brand}-big.gif"/>
+                        <p:graphicImage name="demo/images/product/#{product.image}"/>
 
                         <p:outputPanel>
                             <h:panelGrid columns="2" cellpadding="5">
                                 <h:outputText value="Id:"/>
-                                <h:outputText value="#{car.id}" style="font-weight: bold"/>
+                                <h:outputText value="#{product.id}" style="font-weight: bold"/>
 
-                                <h:outputText value="Year:"/>
-                                <h:outputText value="#{car.year}" style="font-weight: bold"/>
+                                <h:outputText value="Name:"/>
+                                <h:outputText value="#{product.name}" style="font-weight: bold"/>
 
-                                <h:outputText value="Color:"/>
-                                <h:outputText value="#{car.color}" style="font-weight: bold"/>
+                                <h:outputText value="Price:"/>
+                                <h:outputText value="$#{product.price}" style="font-weight: bold"/>
                             </h:panelGrid>
                         </p:outputPanel>
                     </h:panelGrid>

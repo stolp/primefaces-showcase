@@ -18,50 +18,50 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form>
-                <p:dataTable id="tbl" var="car" value="#{customizedDocumentsView.cars}"
+                <p:dataTable id="tbl" var="product" value="#{customizedDocumentsView.products}"
                              paginator="true" rows="10">
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Id"/>
+                            <h:outputText value="Code"/>
                         </f:facet>
-                        <h:outputText value="#{car.id}"/>
+                        <h:outputText value="#{product.code}"/>
                     </p:column>
 
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Year"/>
+                            <h:outputText value="Name"/>
                         </f:facet>
-                        <h:outputText value="#{car.year}"/>
+                        <h:outputText value="#{product.name}"/>
                     </p:column>
 
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Brand"/>
+                            <h:outputText value="Category"/>
                         </f:facet>
-                        <h:outputText value="#{car.brand}"/>
+                        <h:outputText value="#{product.category}"/>
                     </p:column>
 
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Color"/>
+                            <h:outputText value="Quantity"/>
                         </f:facet>
-                        <h:outputText value="#{car.color}"/>
+                        <h:outputText value="#{product.quantity}"/>
                     </p:column>
                 </p:dataTable>
 
                 <h:commandLink id="excel">
                     <p:graphicImage name="/demo/images/excel.png"/>
-                    <p:dataExporter type="xls" target="tbl" fileName="cars"
+                    <p:dataExporter type="xls" target="tbl" fileName="products"
                                     postProcessor="#{customizedDocumentsView.postProcessXLS}"/>
                 </h:commandLink>
 
                 <h:commandLink id="pdf">
                     <p:graphicImage name="/demo/images/pdf.png"/>
-                    <p:dataExporter type="pdf" target="tbl" fileName="cars"
+                    <p:dataExporter type="pdf" target="tbl" fileName="products"
                                     preProcessor="#{customizedDocumentsView.preProcessPDF}"/>
                 </h:commandLink>
 
-                <p:dataTable id="tbl2" var="car" value="#{customizedDocumentsView.cars2}"
+                <p:dataTable id="tbl2" var="product" value="#{customizedDocumentsView.products2}"
                              paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
                              paginator="true" rows="10" style="margin-top: 25px;">
 
@@ -69,13 +69,13 @@
                         <div style="float:right">
                             <h:commandLink>
                                 <p:graphicImage name="/demo/images/excel.png" width="24"/>
-                                <p:dataExporter type="xls" target="tbl2" fileName="cars"
+                                <p:dataExporter type="xls" target="tbl2" fileName="products"
                                                 options="#{customizedDocumentsView.excelOpt}"/>
                             </h:commandLink>
 
                             <h:commandLink>
                                 <p:graphicImage name="/demo/images/pdf.png" width="24"/>
-                                <p:dataExporter type="pdf" target="tbl2" fileName="cars"
+                                <p:dataExporter type="pdf" target="tbl2" fileName="products"
                                                 options="#{customizedDocumentsView.pdfOpt}"/>
                             </h:commandLink>
                         </div>
@@ -83,30 +83,30 @@
 
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Id"/>
+                            <h:outputText value="Code"/>
                         </f:facet>
-                        <h:outputText value="#{car.id}"/>
+                        <h:outputText value="#{product.code}"/>
                     </p:column>
 
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Year"/>
+                            <h:outputText value="Name"/>
                         </f:facet>
-                        <h:outputText value="#{car.year}"/>
+                        <h:outputText value="#{product.name}"/>
                     </p:column>
 
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Brand"/>
+                            <h:outputText value="Category"/>
                         </f:facet>
-                        <h:outputText value="#{car.brand}"/>
+                        <h:outputText value="#{product.category}"/>
                     </p:column>
 
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Color"/>
+                            <h:outputText value="Quantity"/>
                         </f:facet>
-                        <h:outputText value="#{car.color}"/>
+                        <h:outputText value="#{product.quantity}"/>
                     </p:column>
                 </p:dataTable>
             </h:form>

@@ -32,43 +32,51 @@
             <div class="card">
                 <h5>Single Column</h5>
 
-                <p:dataTable var="car" value="#{dtSortView.cars1}" style="margin-bottom:40px">
-                    <p:column headerText="Id" sortBy="#{car.id}">
-                        <h:outputText value="#{car.id}"/>
+                <p:dataTable var="product" value="#{dtSortView.products1}" style="margin-bottom:40px">
+                    <p:column headerText="Code" sortBy="#{product.code}">
+                        <h:outputText value="#{product.code}"/>
                     </p:column>
 
-                    <p:column headerText="Year" sortBy="#{car.year}">
-                        <h:outputText value="#{car.year}"/>
+                    <p:column headerText="Name" sortBy="#{product.name}">
+                        <h:outputText value="#{product.name}"/>
                     </p:column>
 
-                    <p:column headerText="Brand" sortBy="#{car.brand}">
-                        <h:outputText value="#{car.brand}"/>
+                    <p:column headerText="Category" sortBy="#{product.category}">
+                        <h:outputText value="#{product.category}"/>
                     </p:column>
 
-                    <p:column headerText="Color" sortBy="#{car.color}">
-                        <h:outputText value="#{car.color}"/>
+                    <p:column headerText="Quantitiy" sortBy="#{product.quantity}">
+                        <h:outputText value="#{product.quantity}"/>
+                    </p:column>
+
+                    <p:column headerText="Price" sortBy="#{product.price}">
+                        <h:outputText value="$#{product.price}"/>
                     </p:column>
                 </p:dataTable>
             </div>
             <div class="card">
                 <h5>Editable Values</h5>
 
-                <p:dataTable var="car" value="#{dtSortView.cars2}" style="margin-bottom:40px">
+                <p:dataTable var="product" value="#{dtSortView.products2}" style="margin-bottom:40px">
                     <p:ajax event="sort" skipChildren="false"/>
-                    <p:column headerText="Id" sortBy="#{car.id}">
-                        <p:inputText value="#{car.id}"/>
+                    <p:column headerText="Code" sortBy="#{product.code}">
+                        <p:inputText value="#{product.code}"/>
                     </p:column>
 
-                    <p:column headerText="Year" sortBy="#{car.year}">
-                        <p:inputText value="#{car.year}"/>
+                    <p:column headerText="Name" sortBy="#{product.name}">
+                        <p:inputText value="#{product.name}"/>
                     </p:column>
 
-                    <p:column headerText="Brand" sortBy="#{car.brand}">
-                        <p:inputText value="#{car.brand}"/>
+                    <p:column headerText="Category" sortBy="#{product.category}">
+                        <p:inputText value="#{product.category}"/>
                     </p:column>
 
-                    <p:column headerText="Color" sortBy="#{car.color}">
-                        <p:inputText value="#{car.color}"/>
+                    <p:column headerText="Quantitiy" sortBy="#{product.quantity}">
+                        <p:inputText value="#{product.quantity}"/>
+                    </p:column>
+
+                    <p:column headerText="Price" sortBy="#{product.price}">
+                        <h:outputText value="$#{product.price}"/>
                     </p:column>
                 </p:dataTable>
             </div>
@@ -76,21 +84,25 @@
                 <h5>Multiple Columns</h5>
                 <p>Use metakey to add a column to the sort selection.</p>
 
-                <p:dataTable var="car" value="#{dtSortView.cars3}" sortMode="multiple">
-                    <p:column headerText="Id" sortBy="#{car.id}">
-                        <h:outputText value="#{car.id}"/>
+                <p:dataTable var="product" value="#{dtSortView.products3}" sortMode="multiple">
+                    <p:column headerText="Code" sortBy="#{product.code}">
+                        <h:outputText value="#{product.code}"/>
                     </p:column>
 
-                    <p:column headerText="Year" sortBy="#{car.year}">
-                        <h:outputText value="#{car.year}"/>
+                    <p:column headerText="Name" sortBy="#{product.name}">
+                        <h:outputText value="#{product.name}"/>
                     </p:column>
 
-                    <p:column headerText="Brand" sortBy="#{car.brand}">
-                        <h:outputText value="#{car.brand}"/>
+                    <p:column headerText="Category" sortBy="#{product.category}">
+                        <h:outputText value="#{product.category}"/>
                     </p:column>
 
-                    <p:column headerText="Color" sortBy="#{car.color}">
-                        <h:outputText value="#{car.color}"/>
+                    <p:column headerText="Quantitiy" sortBy="#{product.quantity}">
+                        <h:outputText value="#{product.quantity}"/>
+                    </p:column>
+
+                    <p:column headerText="Price" sortBy="#{product.price}">
+                        <h:outputText value="$#{product.price}"/>
                     </p:column>
                 </p:dataTable>
             </div>

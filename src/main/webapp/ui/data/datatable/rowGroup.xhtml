@@ -20,29 +20,41 @@
         <div class="card">
             <h5 class="first">Header Row</h5>
             <h:form>
-                <p:dataTable var="car" value="#{dtRowGroupView.cars}" sortBy="#{car.brand}" expandableRowGroups="true">
+                <p:dataTable var="customer" value="#{dtRowGroupView.customers}" sortBy="#{customer.representative.name}"
+                             expandableRowGroups="true">
                     <p:headerRow>
-                        <p:column colspan="3">
-                            <h:outputText value="#{car.brand}"/>
+                        <p:column colspan="6">
+                            <p:graphicImage name="images/avatar/#{customer.representative.image}" library="demo"
+                                            width="32" style="vertical-align: middle"/>
+                            <h:outputText style="vertical-align: middle; margin-left: .5rem"
+                                          value="#{customer.representative.name}"/>
                         </p:column>
                     </p:headerRow>
-                    <p:column headerText="Year">
-                        <h:outputText value="#{car.year}"/>
+                    <p:column headerText="Representative">
+                        <h:outputText value="#{customer.representative.name}"/>
                     </p:column>
-                    <p:column headerText="Color">
-                        <h:outputText value="#{car.color}"/>
+                    <p:column headerText="Name">
+                        <h:outputText value="#{customer.name}"/>
                     </p:column>
-                    <p:column headerText="Id">
-                        <h:outputText value="#{car.id}"/>
+                    <p:column headerText="Country">
+                        <span class="flag flag-#{customer.country.code}" style="width: 30px; height: 20px"></span>
+                        <h:outputText style="vertical-align: middle; margin-left: .5rem" value="#{customer.country}"/>
+                    </p:column>
+                    <p:column headerText="Company">
+                        <h:outputText value="#{customer.company}"/>
+                    </p:column>
+                    <p:column headerText="Status">
+                        <span class="customer-badge status-#{customer.status.name().toLowerCase()}">#{customer.status}</span>
+                    </p:column>
+                    <p:column headerText="Date">
+                        <h:outputText value="#{customer.date}"/>
                     </p:column>
                     <p:summaryRow>
-                        <p:column colspan="2" style="text-align:right">
-                            <h:outputText value="Total:"/>
+                        <p:column colspan="5" style="text-align:right">
+                            <h:outputText value="Total Customers:"/>
                         </p:column>
                         <p:column>
-                            <h:outputText value="#{dtRowGroupView.randomPrice}">
-                                <f:convertNumber type="currency" currencySymbol="$"/>
-                            </h:outputText>
+                            <h:outputText value="#{dtRowGroupView.getTotalCount(customer.representative.name)}"/>
                         </p:column>
                     </p:summaryRow>
                 </p:dataTable>
@@ -52,18 +64,27 @@
         <div class="card">
             <h5>Rowspan</h5>
             <h:form>
-                <p:dataTable var="car" value="#{dtRowGroupView.cars}" sortBy="#{car.brand}">
-                    <p:column headerText="Brand" groupRow="true">
-                        <h:outputText value="#{car.brand}"/>
+                <p:dataTable var="customer" value="#{dtRowGroupView.customers}" sortBy="#{customer.representative.name}">
+                    <p:column headerText="Representative" groupRow="true">
+                        <p:graphicImage name="images/avatar/#{customer.representative.image}" library="demo"
+                                        width="32" style="vertical-align: middle"/>
+                        <h:outputText style="vertical-align: middle; margin-left: .5rem" value="#{customer.representative.name}"/>
                     </p:column>
-                    <p:column headerText="Year">
-                        <h:outputText value="#{car.year}"/>
+                    <p:column headerText="Name">
+                        <h:outputText value="#{customer.name}"/>
                     </p:column>
-                    <p:column headerText="Color">
-                        <h:outputText value="#{car.color}"/>
+                    <p:column headerText="Country">
+                        <span class="flag flag-#{customer.country.code}" style="width: 30px; height: 20px"></span>
+                        <h:outputText style="vertical-align: middle; margin-left: .5rem" value="#{customer.country}"/>
                     </p:column>
-                    <p:column headerText="Id">
-                        <h:outputText value="#{car.id}"/>
+                    <p:column headerText="Company">
+                        <h:outputText value="#{customer.company}"/>
+                    </p:column>
+                    <p:column headerText="Status">
+                        <span class="customer-badge status-#{customer.status.name().toLowerCase()}">#{customer.status}</span>
+                    </p:column>
+                    <p:column headerText="Date">
+                        <h:outputText value="#{customer.date}"/>
                     </p:column>
                 </p:dataTable>
             </h:form>

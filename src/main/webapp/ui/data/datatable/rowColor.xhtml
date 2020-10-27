@@ -7,8 +7,8 @@
 
     <ui:define name="head">
         <style type="text/css">
-            .old {
-                background-color: #fca752 !important;
+            .cheap {
+                background-color: #54a90a !important;
                 background-image: none !important;
                 color: #000000 !important;
             }
@@ -20,28 +20,28 @@
     </ui:define>
 
     <ui:define name="description">
-        Certain rows can be styled based on a condition using rowStyleClass. Table below highlights cars that are manufactured before 1990.
+        Certain rows can be styled based on a condition using rowStyleClass. Table below highlights products that are cheaper than $50.
     </ui:define>
 
     <ui:param name="documentationLink" value="/components/datatable"/>
 
     <ui:define name="implementation">
         <div class="card">
-            <p:dataTable var="car" value="#{dtBasicView.cars}" rowStyleClass="#{car.year le 1990 ? 'old' : null}">
-                <p:column headerText="Id">
-                    <h:outputText value="#{car.id}"/>
+            <p:dataTable var="product" value="#{dtBasicView.products}" rowStyleClass="#{product.price le 50.0 ? 'cheap' : null}">
+                <p:column headerText="Code">
+                    <h:outputText value="#{product.code}"/>
                 </p:column>
 
-                <p:column headerText="Year">
-                    <h:outputText value="#{car.year}"/>
+                <p:column headerText="Name">
+                    <h:outputText value="#{product.name}"/>
                 </p:column>
 
-                <p:column headerText="Brand">
-                    <h:outputText value="#{car.brand}"/>
+                <p:column headerText="Category">
+                    <h:outputText value="#{product.category}"/>
                 </p:column>
 
-                <p:column headerText="Color">
-                    <h:outputText value="#{car.color}"/>
+                <p:column headerText="Price">
+                    <h:outputText value="#{product.price}"/>
                 </p:column>
             </p:dataTable>
         </div>

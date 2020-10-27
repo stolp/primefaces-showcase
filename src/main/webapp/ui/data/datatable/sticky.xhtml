@@ -18,18 +18,18 @@
     <ui:define name="implementation">
 
         <div class="card">
-            <p:dataTable var="car" value="#{dtStickyView.cars}" stickyHeader="true" stickyTopAt=".layout-topbar">
-                <p:column headerText="Id">
-                    <h:outputText value="#{car.id}"/>
+            <p:dataTable var="product" value="#{dtStickyView.products}" stickyHeader="true" stickyTopAt=".layout-topbar">
+                <p:column headerText="Code">
+                    <h:outputText value="#{product.code}"/>
                 </p:column>
-                <p:column headerText="Year">
-                    <h:outputText value="#{car.year}"/>
+                <p:column headerText="Name">
+                    <h:outputText value="#{product.name}"/>
                 </p:column>
-                <p:column headerText="Brand">
-                    <h:outputText value="#{car.brand}"/>
+                <p:column headerText="Category">
+                    <h:outputText value="#{product.category}"/>
                 </p:column>
-                <p:column headerText="Color">
-                    <h:outputText value="#{car.color}"/>
+                <p:column headerText="Price">
+                    <h:outputText value="$#{product.price}"/>
                 </p:column>
             </p:dataTable>
         </div>

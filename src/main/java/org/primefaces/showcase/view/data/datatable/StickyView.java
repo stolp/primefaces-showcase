@@ -15,8 +15,8 @@
  */
 package org.primefaces.showcase.view.data.datatable;
 
-import org.primefaces.showcase.domain.Car;
-import org.primefaces.showcase.service.CarService;
+import org.primefaces.showcase.domain.Product;
+import org.primefaces.showcase.service.ProductService;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -29,21 +29,21 @@ import java.util.List;
 @RequestScoped
 public class StickyView implements Serializable {
     
-    private List<Car> cars;
+    private List<Product> products;
     
     @Inject
-    private CarService service;
+    private ProductService service;
 
     @PostConstruct
     public void init() {
-        cars = service.createCars(50);
+        products = service.getProductsWithSize(50);
     }
     
-    public List<Car> getCars() {
-        return cars;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setService(CarService service) {
+    public void setService(ProductService service) {
         this.service = service;
     }
 }

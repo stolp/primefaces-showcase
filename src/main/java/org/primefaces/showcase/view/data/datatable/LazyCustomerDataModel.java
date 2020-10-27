@@ -15,31 +15,29 @@
  */
 package org.primefaces.showcase.view.data.datatable;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
 import org.primefaces.model.FilterMeta;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortMeta;
-import org.primefaces.showcase.domain.Car;
+import org.primefaces.showcase.domain.Customer;
 
 /**
  * Dummy implementation of LazyDataModel that uses a list to mimic a real datasource like a database.
  */
-public class LazyCarDataModel extends LazyDataModel<Car> {
+public class LazyCustomerDataModel extends LazyDataModel<Customer> {
 
-    private List<Car> datasource;
+    private final List<Customer> datasource;
 
-    public LazyCarDataModel(List<Car> datasource) {
+    public LazyCustomerDataModel(List<Customer> datasource) {
         this.datasource = datasource;
     }
 
     @Override
-    public Car getRowData(String rowKey) {
-        for (Car car : datasource) {
-            if (car.getId().equals(rowKey)) {
-                return car;
+    public Customer getRowData(String rowKey) {
+        for (Customer customer : datasource) {
+            if (customer.getId() == Integer.parseInt(rowKey)) {
+                return customer;
             }
         }
 
@@ -47,16 +45,16 @@ public class LazyCarDataModel extends LazyDataModel<Car> {
     }
 
     @Override
-    public Object getRowKey(Car car) {
-        return car.getId();
+    public Object getRowKey(Customer customer) {
+        return customer.getId();
     }
 
     @Override
-    public List<Car> load(int first, int pageSize, Map<String, SortMeta> sortMeta, Map<String, FilterMeta> filterMeta) {
-        List<Car> data = new ArrayList<>();
+    public List<Customer> load(int first, int pageSize, Map<String, SortMeta> sortMeta, Map<String, FilterMeta> filterMeta) {
+        List<Customer> data = new ArrayList<>();
 
         //filter
-        for (Car car : datasource) {
+        for (Customer customer : datasource) {
             boolean match = true;
 
             if (filterMeta != null) {
@@ -64,7 +62,7 @@ public class LazyCarDataModel extends LazyDataModel<Car> {
                     try {
                         String filterField = meta.getFilterField();
                         Object filterValue = meta.getFilterValue();
-                        String fieldValue = String.valueOf(car.getClass().getField(filterField).get(car));
+                        String fieldValue = String.valueOf(customer.getClass().getField(filterField).get(customer));
 
                         if (filterValue == null || fieldValue.startsWith(filterValue.toString())) {
                             match = true;
@@ -81,7 +79,7 @@ public class LazyCarDataModel extends LazyDataModel<Car> {
             }
 
             if (match) {
-                data.add(car);
+                data.add(customer);
             }
         }
 

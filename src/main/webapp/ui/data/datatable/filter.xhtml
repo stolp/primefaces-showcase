@@ -28,7 +28,7 @@
                 box-sizing: border-box;
             }
 
-            .year-spinner input {
+            .name-spinner input {
                 width: 100%;
                 box-sizing: border-box;
             }
@@ -46,114 +46,50 @@
     <ui:param name="documentationLink" value="/components/datatable"/>
 
     <ui:define name="implementation">
-        <div class="card">
-            <h:form>
-                <p:dataTable var="car" value="#{dtFilterView.cars1}" widgetVar="carsTable1"
-                             emptyMessage="No cars found with given criteria"
-                             filteredValue="#{dtFilterView.filteredCars1}">
 
+        <h:form>
+
+            <div class="card">
+                <p:dataTable widgetVar="customersDT" var="customer" value="#{dtFilterView.customers1}"
+                             reflow="true"
+                             selection="#{dtFilterView.filteredCustomers1}" rowKey="#{customer.id}"
+                             paginator="true" rows="10" paginatorPosition="bottom" rowSelectMode="add">
                     <f:facet name="header">
                         <p:outputPanel>
-                            <h:outputText value="Search all fields:"/>
-                            <p:inputText id="globalFilter" onkeyup="PF('carsTable1').filter()" style="width:150px"
-                                         placeholder="Enter keyword"/>
+                            <h:outputText style="float: left" value="List Of Customers" />
+                            <p:inputText id="globalFilter" onkeyup="PF('customersDT').filter()" style="width:150px" placeholder="Global Search"/>
                         </p:outputPanel>
                     </f:facet>
-
-                    <p:column filterBy="#{car.id}" headerText="Id" footerText="contains" filterMatchMode="contains">
-                        <h:outputText value="#{car.id}"/>
+                    <p:column headerText="Name" sortBy="#{customer.name}" filterBy="#{customer.name}">
+                        <h:outputText value="#{customer.name}"/>
                     </p:column>
-
-                    <p:column filterBy="#{car.year}" headerText="Year" footerText="lte" filterMatchMode="lte">
-                        <f:facet name="filter">
-                            <p:spinner onchange="PF('carsTable1').filter()" styleClass="year-spinner custom-filter">
-                                <f:converter converterId="javax.faces.Integer"/>
-                            </p:spinner>
-                        </f:facet>
-                        <h:outputText value="#{car.year}"/>
+                    <p:column headerText="Country" sortBy="#{customer.country.name}"
+                              filterBy="#{customer.country.name}">
+                        <span class="flag flag-#{customer.country.code}" style="width: 30px; height: 20px"></span>
+                        <h:outputText style="vertical-align: middle; margin-left: .5rem"
+                                      value="#{customer.country.name}"/>
                     </p:column>
-
-                    <p:column filterBy="#{car.brand}" headerText="Brand" footerText="exact" filterMatchMode="exact">
-                        <f:facet name="filter">
-                            <p:selectOneMenu onchange="PF('carsTable1').filter()" styleClass="custom-filter">
-                                <f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true"/>
-                                <f:selectItems value="#{dtFilterView.brands}"/>
-                            </p:selectOneMenu>
-                        </f:facet>
-                        <h:outputText value="#{car.brand}"/>
+                    <p:column headerText="Representative" sortBy="#{customer.representative.name}"
+                              filterBy="#{customer.representative.name}">
+                        <p:graphicImage name="images/avatar/#{customer.representative.image}" library="demo"
+                                        width="32" style="vertical-align: middle"/>
+                        <h:outputText style="vertical-align: middle; margin-left: .5rem"
+                                      value="#{customer.representative.name}"/>
                     </p:column>
-
-                    <p:column filterBy="#{car.color}" headerText="Color" footerText="in" filterMatchMode="in">
-                        <f:facet name="filter">
-                            <p:selectCheckboxMenu label="Colors" onchange="PF('carsTable1').filter()" scrollHeight="150"
-                                                  styleClass="custom-filter">
-                                <f:selectItems value="#{dtFilterView.colors}"/>
-                            </p:selectCheckboxMenu>
-                        </f:facet>
-                        <h:outputText value="#{car.color}"/>
+                    <p:column headerText="Join Date" sortBy="#{customer.date}" filterBy="#{customer.date}">
+                        <h:outputText value="#{customer.date}"/>
                     </p:column>
-
-                    <p:column filterBy="#{car.sold}" headerText="Status" footerText="equals" filterMatchMode="equals">
-                        <f:facet name="filter">
-                            <p:selectOneButton onchange="PF('carsTable1').filter()" styleClass="custom-filter">
-                                <f:converter converterId="javax.faces.Boolean"/>
-                                <f:selectItem itemLabel="All" itemValue=""/>
-                                <f:selectItem itemLabel="Sold" itemValue="true"/>
-                                <f:selectItem itemLabel="Sale" itemValue="false"/>
-                            </p:selectOneButton>
-                        </f:facet>
-                        <h:outputText value="#{car.sold ? 'Sold': 'Sale'}"/>
+                    <p:column headerText="Status" sortBy="#{customer.status}" filterBy="#{customer.status}">
+                        <span class="customer-badge status-#{customer.status.name().toLowerCase()}">#{customer.status}</span>
                     </p:column>
-
-                    <p:column filterBy="#{car.price}" headerText="Price" footerText="custom (min)"
-                              filterFunction="#{dtFilterView.filterByPrice}">
-                        <h:outputText value="#{car.price}">
-                            <f:convertNumber currencySymbol="$" type="currency"/>
-                        </h:outputText>
+                    <p:column headerText="Activity" sortBy="#{customer.activity}">
+                        <p:progressBar value="#{customer.activity}" displayOnly="true" style="height: .5rem"/>
                     </p:column>
                 </p:dataTable>
+            </div>
 
-                <p:dataTable var="car" value="#{dtFilterView.cars2}" widgetVar="carsTable2"
-                             emptyMessage="No cars found with given criteria"
-                             filteredValue="#{dtFilterView.filteredCars2}"
-                             globalFilterFunction="#{dtFilterView.globalFilterFunction}">
+        </h:form>
 
-                    <f:facet name="header">
-                        <p:outputPanel>
-                            <h:outputText value="Search all fields using globalFilterFunction:"/>
-                            <p:inputText id="globalFilter2" onkeyup="PF('carsTable2').filter()" style="width:150px"
-                                         placeholder="Enter keyword"/>
-                        </p:outputPanel>
-                    </f:facet>
-
-                    <p:column headerText="Id">
-                        <h:outputText value="#{car.id}"/>
-                    </p:column>
-
-                    <p:column headerText="Year">
-                        <h:outputText value="#{car.year}"/>
-                    </p:column>
-
-                    <p:column headerText="Brand">
-                        <h:outputText value="#{car.brand}"/>
-                    </p:column>
-
-                    <p:column headerText="Color">
-                        <h:outputText value="#{car.color}"/>
-                    </p:column>
-
-                    <p:column headerText="Status">
-                        <h:outputText value="#{car.sold ? 'Sold': 'Sale'}"/>
-                    </p:column>
-
-                    <p:column headerText="Price">
-                        <h:outputText value="#{car.price}">
-                            <f:convertNumber currencySymbol="$" type="currency"/>
-                        </h:outputText>
-                    </p:column>
-                </p:dataTable>
-            </h:form>
-        </div>
     </ui:define>
 
 </ui:composition>

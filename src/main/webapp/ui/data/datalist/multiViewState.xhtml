@@ -45,54 +45,53 @@
 
                 <br/><br/>
 
-                <p:dataList value="#{dataListView.cars3}" var="car" id="carList" type="unordered" itemType="none"
-                            multiViewState="true" style="width:400px"
+                <p:dataList value="#{dataListView.products3}" var="product" id="productList" type="unordered" itemType="none"
+                            multiViewState="true" style="width:600px"
                             paginator="true" rows="5" pageLinks="5"
                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
                     <h:panelGrid columns="3" columnClasses="logo,detail,command">
-                        <p:graphicImage name="demo/images/car/#{car.brand}-big.gif"/>
+                        <p:graphicImage name="demo/images/product/#{product.image}"/>
 
                         <p:outputPanel>
                             <h:panelGrid columns="2" cellpadding="5">
                                 <h:outputText value="Id:"/>
-                                <h:outputText value="#{car.id}" style="font-weight: bold"/>
+                                <h:outputText value="#{product.id}" style="font-weight: bold"/>
 
-                                <h:outputText value="Year:"/>
-                                <h:outputText value="#{car.year}" style="font-weight: bold"/>
+                                <h:outputText value="Name:"/>
+                                <h:outputText value="#{product.name}" style="font-weight: bold"/>
 
-                                <h:outputText value="Color:"/>
-                                <h:outputText value="#{car.color}" style="font-weight: bold"/>
+                                <h:outputText value="Price:"/>
+                                <h:outputText value="$#{product.price}" style="font-weight: bold"/>
                             </h:panelGrid>
                         </p:outputPanel>
 
-                        <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
+                        <p:commandLink update=":form:productDetail" oncomplete="PF('productDialog').show()" title="View Detail">
                             <h:outputText styleClass="ui-icon pi pi-search" style="margin:0 auto;"/>
-                            <f:setPropertyActionListener value="#{car}" target="#{dataListView.selectedCar}"/>
+                            <f:setPropertyActionListener value="#{product}" target="#{dataListView.selectedProduct}"/>
                         </p:commandLink>
                     </h:panelGrid>
                 </p:dataList>
 
-                <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="blind" hideEffect="explode"
+                <p:dialog header="Product Info" widgetVar="productDialog" modal="true" showEffect="blind" hideEffect="explode"
                           resizable="false">
-                    <p:outputPanel id="carDetail" style="text-align:center;">
-                        <p:panelGrid columns="2" rendered="#{not empty dataListView.selectedCar}"
+                    <p:outputPanel id="productDetail" style="text-align:center;">
+                        <p:panelGrid columns="2" rendered="#{not empty dataListView.selectedProduct}"
                                      columnClasses="label,value">
                             <f:facet name="header">
-                                <p:graphicImage name="demo/images/car/#{dataListView.selectedCar.brand}-big.gif"/>
+                                <p:graphicImage name="demo/images/product/#{dataListView.selectedProduct.image}"/>
                             </f:facet>
 
                             <h:outputText value="Id:"/>
-                            <h:outputText value="#{dataListView.selectedCar.id}"/>
+                            <h:outputText value="#{dataListView.selectedProduct.id}"/>
 
-                            <h:outputText value="Year"/>
-                            <h:outputText value="#{dataListView.selectedCar.year}"/>
+                            <h:outputText value="Name:"/>
+                            <h:outputText value="#{dataListView.selectedProduct.name}"/>
 
-                            <h:outputText value="Color:"/>
-                            <h:outputText value="#{dataListView.selectedCar.color}"
-                                          style="color:#{dataListView.selectedCar.color}"/>
+                            <h:outputText value="Price:"/>
+                            <h:outputText value="$#{dataListView.selectedProduct.price}"/>
 
-                            <h:outputText value="Price"/>
-                            <h:outputText value="$#{dataListView.selectedCar.price}"/>
+                            <h:outputText value="Stock:"/>
+                            <h:outputText value="#{dataListView.selectedProduct.inventoryStatus}"/>
                         </p:panelGrid>
                     </p:outputPanel>
                 </p:dialog>

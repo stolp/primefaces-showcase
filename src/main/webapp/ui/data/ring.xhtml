@@ -41,13 +41,13 @@
 
             <div class="card">
                 <h5 style="margin-top: 0">Basic Ring</h5>
-                <p:ring id="basic" value="#{ringView.cars}" var="car">
+                <p:ring id="basic" value="#{ringView.products}" var="product">
                     <p:outputPanel style="text-align: center;" layout="block">
-                        #{car.brand}
+                        #{product.name}
                         <br/>
-                        <p:commandButton update=":form:carDetail" icon="pi pi-search" title="View"
-                                         oncomplete="PF('carDialog').show();">
-                            <f:setPropertyActionListener value="#{car}" target="#{ringView.selectedCar}"/>
+                        <p:commandButton update=":form:productDetail" icon="pi pi-search" title="View"
+                                         oncomplete="PF('productDialog').show();">
+                            <f:setPropertyActionListener value="#{product}" target="#{ringView.selectedProduct}"/>
                         </p:commandButton>
                     </p:outputPanel>
                 </p:ring>
@@ -55,30 +55,30 @@
 
             <div class="card">
                 <h5>Images with Custom Easing</h5>
-                <p:ring id="custom" value="#{ringView.cars}" var="car" styleClass="image-ring" easing="easeInOutBack">
-                    <p:graphicImage id="img" name="/demo/images/car/#{car.brand}-big.gif"/>
+                <p:ring id="custom" value="#{ringView.products}" var="product" styleClass="image-ring" easing="easeInOutBack">
+                    <p:graphicImage id="img" name="/demo/images/product/#{product.image}"/>
                 </p:ring>
 
-                <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade"
+                <p:dialog header="Product Info" widgetVar="productDialog" modal="true" showEffect="fade" hideEffect="fade"
                           resizable="false">
-                    <p:outputPanel id="carDetail" style="text-align:center;" layout="block">
-                        <p:panelGrid columns="2" rendered="#{not empty ringView.selectedCar}" columnClasses="value">
+                    <p:outputPanel id="productDetail" style="text-align:center;" layout="block">
+                        <p:panelGrid columns="2" rendered="#{not empty ringView.selectedProduct}" columnClasses="value">
                             <f:facet name="header">
-                                <p:graphicImage name="demo/images/car/#{ringView.selectedCar.brand}-big.gif"/>
+                                <p:graphicImage name="demo/images/product/#{ringView.selectedProduct.image}"/>
                             </f:facet>
 
-                            <h:outputText value="Id:"/>
-                            <h:outputText value="#{ringView.selectedCar.id}"/>
+                            <h:outputText value="Code:"/>
+                            <h:outputText value="#{ringView.selectedProduct.code}" style="font-weight: bold"/>
 
-                            <h:outputText value="Year"/>
-                            <h:outputText value="#{ringView.selectedCar.year}"/>
+                            <h:outputText value="Name:"/>
+                            <h:outputText value="#{ringView.selectedProduct.name}" style="font-weight: bold"/>
 
-                            <h:outputText value="Brand: "/>
-                            <h:outputText value="#{ringView.selectedCar.brand}"/>
+                            <h:outputText value="Category:"/>
+                            <h:outputText value="#{ringView.selectedProduct.category}" style="font-weight: bold"/>
 
-                            <h:outputText value="Color:"/>
-                            <h:outputText value="#{ringView.selectedCar.color}"
-                                          style="color:#{ringView.selectedCar.color}"/>
+                            <h:outputText value="Price:"/>
+                            <h:outputText value="$#{ringView.selectedProduct.price}" style="font-weight: bold"/>
+
                         </p:panelGrid>
                     </p:outputPanel>
                 </p:dialog>

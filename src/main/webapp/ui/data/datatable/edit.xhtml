@@ -29,49 +29,44 @@
 
             <div class="card">
                 <h5>Row Editing</h5>
-                <p:dataTable id="cars1" var="car" value="#{dtEditView.cars1}" editable="true"
+                <p:dataTable id="products1" var="product" value="#{dtEditView.products1}" editable="true"
                              style="margin-bottom:20px">
 
                     <p:ajax event="rowEdit" listener="#{dtEditView.onRowEdit}" update=":form:msgs"/>
                     <p:ajax event="rowEditCancel" listener="#{dtEditView.onRowCancel}" update=":form:msgs"/>
 
-                    <p:column headerText="Id">
+                    <p:column headerText="Code">
                         <p:cellEditor>
-                            <f:facet name="output"><h:outputText value="#{car.id}"/></f:facet>
-                            <f:facet name="input"><p:inputText id="modelInput" value="#{car.id}"
+                            <f:facet name="output"><h:outputText value="#{product.code}"/></f:facet>
+                            <f:facet name="input"><p:inputText id="modelInput" value="#{product.code}"
                                                                style="width:100%"/></f:facet>
                         </p:cellEditor>
                     </p:column>
 
-                    <p:column headerText="Year">
+                    <p:column headerText="Name">
                         <p:cellEditor>
-                            <f:facet name="output"><h:outputText value="#{car.year}"/></f:facet>
-                            <f:facet name="input"><p:inputText value="#{car.year}" style="width:100%"
-                                                               label="Year"/></f:facet>
+                            <f:facet name="output"><h:outputText value="#{product.name}"/></f:facet>
+                            <f:facet name="input"><p:inputText value="#{product.name}" style="width:100%"
+                                                               label="Name"/></f:facet>
                         </p:cellEditor>
                     </p:column>
 
-                    <p:column headerText="Brand">
+                    <p:column headerText="Status">
                         <p:cellEditor>
-                            <f:facet name="output"><h:outputText value="#{car.brand}"/></f:facet>
+                            <f:facet name="output"><h:outputText value="#{product.inventoryStatus}"/></f:facet>
                             <f:facet name="input">
-                                <h:selectOneMenu value="#{car.brand}" style="width:100%">
-                                    <f:selectItems value="#{dtEditView.brands}" var="man" itemLabel="#{man}"
-                                                   itemValue="#{man}"/>
+                                <h:selectOneMenu value="#{product.inventoryStatus}" style="width:100%">
+                                    <f:selectItems value="#{dtEditView.inventoryStatusList}" var="status" itemLabel="#{status.text}" itemValue="#{status}" />
                                 </h:selectOneMenu>
                             </f:facet>
                         </p:cellEditor>
                     </p:column>
 
-                    <p:column headerText="Color">
+                    <p:column headerText="Price">
                         <p:cellEditor>
-                            <f:facet name="output"><h:outputText value="#{car.color}"/></f:facet>
-                            <f:facet name="input">
-                                <h:selectOneMenu value="#{car.color}" style="width:100%">
-                                    <f:selectItems value="#{dtEditView.colors}" var="color" itemLabel="#{color}"
-                                                   itemValue="#{color}"/>
-                                </h:selectOneMenu>
-                            </f:facet>
+                            <f:facet name="output"><h:outputText value="$#{product.price}"/></f:facet>
+                            <f:facet name="input"><p:inputText value="#{product.price}" style="width:100%"
+                                                               label="Price"/></f:facet>
                         </p:cellEditor>
                     </p:column>
 
@@ -83,56 +78,52 @@
 
             <div class="card">
                 <h5>Cell Editing with Click and RightClick</h5>
-                <p:dataTable id="cars2" var="car" value="#{dtEditView.cars2}" editable="true" editMode="cell"
-                             widgetVar="cellCars">
+                <p:dataTable id="products2" var="product" value="#{dtEditView.products2}" editable="true"
+                             editMode="cell" widgetVar="cellProducts">
 
                     <p:ajax event="cellEdit" listener="#{dtEditView.onCellEdit}" update=":form:msgs"/>
 
-                    <p:column headerText="Id">
+                    <p:column headerText="Code">
                         <p:cellEditor>
-                            <f:facet name="output"><h:outputText value="#{car.id}"/></f:facet>
-                            <f:facet name="input"><p:inputText id="modelInput2" value="#{car.id}"
-                                                               style="width:96%"/></f:facet>
+                            <f:facet name="output"><h:outputText value="#{product.code}"/></f:facet>
+                            <f:facet name="input"><p:inputText id="modelInput2" value="#{product.code}"
+                                                               style="width:100%"/></f:facet>
                         </p:cellEditor>
                     </p:column>
 
-                    <p:column headerText="Year">
+                    <p:column headerText="Name">
                         <p:cellEditor>
-                            <f:facet name="output"><h:outputText value="#{car.year}"/></f:facet>
-                            <f:facet name="input"><p:inputText value="#{car.year}" style="width:96%"
-                                                               label="Year"/></f:facet>
+                            <f:facet name="output"><h:outputText value="#{product.name}"/></f:facet>
+                            <f:facet name="input"><p:inputText value="#{product.name}" style="width:100%"
+                                                               label="Name"/></f:facet>
                         </p:cellEditor>
                     </p:column>
 
-                    <p:column headerText="Brand">
+                    <p:column headerText="Status">
                         <p:cellEditor>
-                            <f:facet name="output"><h:outputText value="#{car.brand}"/></f:facet>
+                            <f:facet name="output"><h:outputText value="#{product.inventoryStatus}"/></f:facet>
                             <f:facet name="input">
-                                <h:selectOneMenu value="#{car.brand}" style="width:100%">
-                                    <f:selectItems value="#{dtEditView.brands}" var="man" itemLabel="#{man}"
-                                                   itemValue="#{man}"/>
+                                <h:selectOneMenu value="#{product.inventoryStatus}" style="width:100%">
+                                    <f:selectItems value="#{dtEditView.inventoryStatusList}" var="status" itemLabel="#{status.text}" itemValue="#{status}" />
                                 </h:selectOneMenu>
                             </f:facet>
                         </p:cellEditor>
                     </p:column>
 
-                    <p:column headerText="Color">
+                    <p:column headerText="Price">
                         <p:cellEditor>
-                            <f:facet name="output"><h:outputText value="#{car.color}"/></f:facet>
-                            <f:facet name="input">
-                                <h:selectOneMenu value="#{car.color}" style="width:100%">
-                                    <f:selectItems value="#{dtEditView.colors}" var="color" itemLabel="#{color}"
-                                                   itemValue="#{color}"/>
-                                </h:selectOneMenu>
-                            </f:facet>
+                            <f:facet name="output"><h:outputText value="$#{product.price}"/></f:facet>
+                            <f:facet name="input"><p:inputText value="#{product.price}" style="width:100%"
+                                                               label="Price"/></f:facet>
                         </p:cellEditor>
                     </p:column>
+
                 </p:dataTable>
             </div>
 
-            <p:contextMenu for="cars2" widgetVar="cMenu">
+            <p:contextMenu for="products2" widgetVar="cMenu">
                 <p:menuitem value="Edit Cell" icon="pi pi-search"
-                            onclick="PF('cellCars').showCellEditor();return false;"/>
+                            onclick="PF('cellProducts').showCellEditor();return false;"/>
                 <p:menuitem value="Hide Menu" icon="pi pi-times" onclick="PF('cMenu').hide()"/>
             </p:contextMenu>
         </h:form>

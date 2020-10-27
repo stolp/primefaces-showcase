@@ -22,49 +22,62 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form id="form">
-                <p:dataTable var="car" value="#{dtLazyView.lazyModel}" paginator="true" rows="10"
+                <p:dataTable var="customer" value="#{dtLazyView.lazyModel}" paginator="true" rows="10"
                              paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                             rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{dtLazyView.selectedCar}"
-                             id="carTable" lazy="true">
-                    <p:ajax event="rowSelect" listener="#{dtLazyView.onRowSelect}" update=":form:carDetail"
-                            oncomplete="PF('carDialog').show()"/>
-                    <p:column headerText="Id" sortBy="#{car.id}" filterBy="#{car.id}">
-                        <h:outputText value="#{car.id}"/>
+                             rowsPerPageTemplate="5,10,15" selectionMode="single"
+                             selection="#{dtLazyView.selectedCustomer}"
+                             id="customerTable" lazy="true">
+                    <p:ajax event="rowSelect" listener="#{dtLazyView.onRowSelect}" update=":form:customerDetail"
+                            oncomplete="PF('customerDialog').show()"/>
+                    <p:column headerText="Name" sortBy="#{customer.name}" filterBy="#{customer.name}">
+                        <h:outputText value="#{customer.name}"/>
                     </p:column>
-                    <p:column headerText="Year" sortBy="#{car.year}" filterBy="#{car.year}">
-                        <h:outputText value="#{car.year}"/>
+                    <p:column headerText="Country" sortBy="#{customer.country}" filterBy="#{customer.country}">
+                        <span class="flag flag-#{customer.country.code}" style="width: 30px; height: 20px"></span>
+                        <h:outputText style="vertical-align: middle; margin-left: .5rem"
+                                      value="#{customer.country.name}"/>
                     </p:column>
-                    <p:column headerText="Brand" sortBy="#{car.brand}" filterBy="#{car.brand}">
-                        <h:outputText value="#{car.brand}"/>
+                    <p:column headerText="Company" sortBy="#{customer.company}" filterBy="#{customer.company}">
+                        <h:outputText value="#{customer.company}"/>
                     </p:column>
-                    <p:column headerText="Color" sortBy="#{car.color}" filterBy="#{car.color}">
-                        <h:outputText value="#{car.color}"/>
+                    <p:column headerText="Representative" sortBy="#{customer.representative}"
+                              filterBy="#{customer.representative}">
+                        <p:graphicImage name="images/avatar/#{customer.representative.image}" library="demo"
+                                        width="32" style="vertical-align: middle"/>
+                        <h:outputText style="vertical-align: middle; margin-left: .5rem"
+                                      value="#{customer.representative.name}"/>
                     </p:column>
                 </p:dataTable>
 
-                <p:dialog header="Car Detail" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade"
-                          resizable="false">
-                    <p:outputPanel id="carDetail" style="text-align:center;">
-                        <p:panelGrid columns="2" rendered="#{not empty dtLazyView.selectedCar}"
+                <p:dialog header="Customer Detail" widgetVar="customerDialog" modal="true" showEffect="fade"
+                          hideEffect="fade" resizable="false">
+                    <p:outputPanel id="customerDetail" style="text-align:center;">
+                        <p:panelGrid columns="2" rendered="#{not empty dtLazyView.selectedCustomer}"
                                      columnClasses="label,value">
-                            <f:facet name="header">
-                                <p:graphicImage name="demo/images/car/#{dtLazyView.selectedCar.brand}-big.gif"/>
-                            </f:facet>
 
-                            <h:outputText value="Id:"/>
-                            <h:outputText value="#{dtLazyView.selectedCar.id}"/>
+                            <h:outputText value="Name:"/>
+                            <h:outputText value="#{dtLazyView.selectedCustomer.name}"/>
 
-                            <h:outputText value="Year"/>
-                            <h:outputText value="#{dtLazyView.selectedCar.year}"/>
+                            <h:outputText value="Country"/>
+                            <p:column>
+                                <span class="flag flag-#{dtLazyView.selectedCustomer.country.code}"
+                                      style="width: 30px; height: 20px"></span>
+                                <h:outputText style="vertical-align: middle; margin-left: .5rem"
+                                              value="#{dtLazyView.selectedCustomer.country.name}"/>
+                            </p:column>
 
-                            <h:outputText value="Color:"/>
-                            <h:outputText value="#{dtLazyView.selectedCar.color}"
-                                          style="color:#{dtLazyView.selectedCar.color}"/>
+                            <h:outputText value="Company:"/>
+                            <h:outputText value="#{dtLazyView.selectedCustomer.company}"/>
 
-                            <h:outputText value="Price:"/>
-                            <h:outputText value="#{dtLazyView.selectedCar.price}">
-                                <f:convertNumber type="currency" currencySymbol="$"/>
-                            </h:outputText>
+                            <h:outputText value="Representative:"/>
+                            <p:column>
+                                <p:graphicImage name="images/avatar/#{dtLazyView.selectedCustomer.representative.image}"
+                                                library="demo"
+                                                width="32" style="vertical-align: middle"/>
+                                <h:outputText style="vertical-align: middle; margin-left: .5rem"
+                                              value="#{dtLazyView.selectedCustomer.representative.name}"/>
+                            </p:column>
+
                         </p:panelGrid>
                     </p:outputPanel>
                 </p:dialog>
@@ -74,6 +87,6 @@
 
     <ui:define name="more-source-tabs">
         <p:tab title="/org/primefaces/showcase/view/data/datatable/LazySorter.java"/>
-        <p:tab title="/org/primefaces/showcase/view/data/datatable/LazyCarDataModel.java"/>
+        <p:tab title="/org/primefaces/showcase/view/data/datatable/LazyCustomerDataModel.java"/>
     </ui:define>
 </ui:composition>

@@ -22,42 +22,42 @@
 
             <div class="card">
                 <h5 style="margin-top:0">Column Priority</h5>
-                <p:dataTable var="car" value="#{dtBasicView.cars}">
-                    <p:column headerText="Id">
-                        <h:outputText value="#{car.id}"/>
+                <p:dataTable var="product" value="#{dtBasicView.products}">
+                    <p:column headerText="Code">
+                        <h:outputText value="#{product.code}"/>
                     </p:column>
 
-                    <p:column headerText="Year (p3)" priority="3">
-                        <h:outputText value="#{car.year}"/>
+                    <p:column headerText="Name (p3)" priority="3">
+                        <h:outputText value="#{product.name}"/>
                     </p:column>
 
-                    <p:column headerText="Brand (p2)" priority="2">
-                        <h:outputText value="#{car.brand}"/>
+                    <p:column headerText="Category (p2)" priority="2">
+                        <h:outputText value="#{product.category}"/>
                     </p:column>
 
-                    <p:column headerText="Color (p4)" priority="4">
-                        <h:outputText value="#{car.color}"/>
+                    <p:column headerText="Price (p4)" priority="4">
+                        <h:outputText value="$#{product.price}"/>
                     </p:column>
                 </p:dataTable>
             </div>
 
             <div class="card">
                 <h5>Reflow</h5>
-                <p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="5" paginator="true">
-                    <p:column headerText="Id">
-                        <h:outputText value="#{car.id}"/>
+                <p:dataTable var="product" value="#{dtBasicView.products}" reflow="true" rows="5" paginator="true">
+                    <p:column headerText="Code">
+                        <h:outputText value="#{product.code}"/>
                     </p:column>
 
-                    <p:column headerText="Year">
-                        <h:outputText value="#{car.year}"/>
+                    <p:column headerText="Name">
+                        <h:outputText value="#{product.name}"/>
                     </p:column>
 
-                    <p:column headerText="Brand">
-                        <h:outputText value="#{car.brand}"/>
+                    <p:column headerText="Category">
+                        <h:outputText value="#{product.category}"/>
                     </p:column>
 
-                    <p:column headerText="Color">
-                        <h:outputText value="#{car.color}"/>
+                    <p:column headerText="Price">
+                        <h:outputText value="$#{product.price}"/>
                     </p:column>
                 </p:dataTable>
             </div>

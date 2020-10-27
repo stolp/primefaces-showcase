@@ -2,22 +2,26 @@ package org.primefaces.showcase.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Customer implements Serializable {
 
-    private int id;
-    private String name;
-    private Country country;
-    private LocalDate date;
-    private CustomerStatus status;
-    private int activity;
-    private Representative representative;
+    public int id;
+    public String name;
+    public String company;
+    public Country country;
+    public LocalDate date;
+    public CustomerStatus status;
+    public int activity;
+    public Representative representative;
 
-    public Customer() {}
+    public Customer() {
+    }
 
-    public Customer(int id, String name, Country country, LocalDate date, CustomerStatus status, int activity, Representative representative) {
+    public Customer(int id, String name, String company, Country country, LocalDate date, CustomerStatus status, int activity, Representative representative) {
         this.id = id;
         this.name = name;
+        this.company = company;
         this.country = country;
         this.date = date;
         this.status = status;
@@ -39,6 +43,14 @@ public class Customer implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
     }
 
     public Country getCountry() {
@@ -79,5 +91,25 @@ public class Customer implements Serializable {
 
     public void setRepresentative(Representative representative) {
         this.representative = representative;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return id == customer.id &&
+                activity == customer.activity &&
+                Objects.equals(name, customer.name) &&
+                Objects.equals(company, customer.company) &&
+                Objects.equals(country, customer.country) &&
+                Objects.equals(date, customer.date) &&
+                status == customer.status &&
+                Objects.equals(representative, customer.representative);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, company, country, date, status, activity, representative);
     }
 }

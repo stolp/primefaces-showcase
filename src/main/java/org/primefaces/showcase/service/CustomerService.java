@@ -1,30 +1,27 @@
 package org.primefaces.showcase.service;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
-
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
-
 import org.primefaces.showcase.domain.Country;
 import org.primefaces.showcase.domain.Customer;
 import org.primefaces.showcase.domain.CustomerStatus;
 import org.primefaces.showcase.domain.Representative;
 
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Named;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+
 @Named
 @ApplicationScoped
 public class CustomerService {
 
-    private Country[] countries;
-
-    private Representative[] representatives;
-
-    private String[] names;
-
     List<Customer> customers;
+    private Country[] countries;
+    private Representative[] representatives;
+    private String[] names;
+    private String[] companies;
 
     @PostConstruct
     public void init() {
@@ -44,29 +41,35 @@ public class CustomerService {
                 new Country(10, "Spain", "es"),
                 new Country(11, "United Kingdom", "gb")};
 
-        representatives = new Representative[]{new Representative("Amy Elsner", "amyelsner.png"),new Representative("Anna Fali", "annafali.png"),
-                new Representative("Asiya Javayant", "asiyajavayant.png"),new Representative("Bernardo Dominic", "bernardodominic.png"),
-                new Representative("Elwin Sharvill", "elwinsharvill.png"),new Representative("Ioni Bowcher", "ionibowcher.png"),
-                new Representative("Ivan Magalhaes", "ivanmagalhaes.png"),new Representative("Onyama Limba", "onyamalimba.png"),
-                new Representative("Stephen Shaw", "stephenshaw.png"),new Representative("Xuxue Feng", "xuxuefeng.png")};
+        companies = new String[]{"Benton, John B Jr", "Chanay, Jeffrey A Esq", "Chemel, James L Cpa", "Feltz Printing Service",
+                "Printing Dimensions", "Chapman, Ross E Esq", "Morlong Associates", "Commercial Press", "Truhlar And Truhlar Attys",
+                "King, Christopher A Esq","Dorl, James J Esq","Rangoni Of Florence","Feiner Bros","Buckley Miller Wright","Rousseaux, Michael Esq",};
 
-        names = new String[]{"James","David","Jeanfrancois","Ivar","Tony","Adams","Claire","Costa","Juan","Maria","Jennifer","Stacey","Leja","Morrow",
-                "Arvin","Darci","Izzy","Lionel","Clifford","Emily","Kadeem","Mujtaba","Aika","Mayumi","Misaki","Silvio","Nicolas","Antonio",
-                "Deepesh","Aditya","Aruna","Jones","Julie","Smith","Johnson","Francesco","Salvatore","Kaitlin","Faith","Maisha","Jefferson",
-                "Leon","Rodrigues","Alejandro","Munro","Cody","Chavez","Sinclair","Isabel","Octavia","Murillo","Greenwood","Wickens","Ashley"};
+        representatives = new Representative[]{new Representative("Amy Elsner", "amyelsner.png"), new Representative("Anna Fali", "annafali.png"),
+                new Representative("Asiya Javayant", "asiyajavayant.png"), new Representative("Bernardo Dominic", "bernardodominic.png"),
+                new Representative("Elwin Sharvill", "elwinsharvill.png"), new Representative("Ioni Bowcher", "ionibowcher.png"),
+                new Representative("Ivan Magalhaes", "ivanmagalhaes.png"), new Representative("Onyama Limba", "onyamalimba.png"),
+                new Representative("Stephen Shaw", "stephenshaw.png"), new Representative("Xuxue Feng", "xuxuefeng.png")};
+
+        names = new String[]{"James Butt", "David Darakjy", "Jeanfrancois Venere", "Ivar Paprocki", "Tony Foller",
+                "Adams Morasca", "Claire Tollner", "Costa Dilliard", "Juan Wieser", "Maria Marrier", "Jennifer Amigon",
+                "Stacey Maclead", "Leja Caldarera", "Morrow Ruta", "Arvin Albares", "Darci Poquette", "Izzy Garufi",
+                "Lionel Messi", "Clifford Rim", "Emily Whobrey", "Kadeem Flosi", "Mujtaba Nicka", "Aika Inouye",
+                "Mayumi Kolmetz", "Misaki Royster", "Silvio Slusarski", "Nicolas Iturbide", "Antonio Caudy", "" +
+                "Deepesh Chui", "Aditya Kusko", "Aruna Figeroa", "Jones Vocelka", "Julie Stenseth", "Smith Glick",
+                "Johnson Sergi", "Francesco Shinko", "Salvatore Stockham", "Kaitlin Ostrosky", "Faith Gillian",
+                "Maisha Rulapaugh", "Jefferson Schemmer", "Leon Oldroyd", "Rodrigues Campain", "Alejandro Perin",
+                "Munro Ferencz", "Cody Saylors", "Chavez Briddick", "Sinclair Waycott", "Isabel Bowley", "Octavia Malet",
+                "Murillo Malet", "Greenwood Bolognia", "Wickens Nestle", "Ashley Doe"};
     }
 
 
     public List<Customer> getCustomers(int number) {
         List<Customer> customers = new ArrayList<>();
         for (int i = 0; i < number; i++) {
-            customers.add(new Customer(i + 1000, getCustomerName(), getCountry(), getDate(), CustomerStatus.random(), getActivity(), getRepresentative()));
+            customers.add(new Customer(i + 1000, getName(), getCompany(), getCountry(), getDate(), CustomerStatus.random(), getActivity(), getRepresentative()));
         }
         return customers;
-    }
-
-    private String getCustomerName() {
-        return this.getName();
     }
 
     private String getName() {
@@ -75,6 +78,10 @@ public class CustomerService {
 
     private Country getCountry() {
         return countries[(int) (Math.random() * countries.length)];
+    }
+
+    private String getCompany() {
+        return companies[(int) (Math.random() * companies.length)];
     }
 
     private LocalDate getDate() {

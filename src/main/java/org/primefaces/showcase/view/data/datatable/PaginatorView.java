@@ -16,8 +16,11 @@
 package org.primefaces.showcase.view.data.datatable;
 
 import javax.faces.view.ViewScoped;
-import org.primefaces.showcase.domain.Car;
-import org.primefaces.showcase.service.CarService;
+
+import org.primefaces.showcase.domain.Customer;
+import org.primefaces.showcase.domain.Product;
+import org.primefaces.showcase.service.CustomerService;
+import org.primefaces.showcase.service.ProductService;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -29,21 +32,21 @@ import java.util.List;
 @ViewScoped
 public class PaginatorView implements Serializable {
     
-    private List<Car> cars;
+    private List<Customer> customers;
     
     @Inject
-    private CarService service;
+    private CustomerService service;
 
     @PostConstruct
     public void init() {
-        cars = service.createCars(50);
+        customers = service.getCustomers(50);
     }
     
-    public List<Car> getCars() {
-        return cars;
+    public List<Customer> getCustomers() {
+        return customers;
     }
 
-    public void setService(CarService service) {
+    public void setService(CustomerService service) {
         this.service = service;
     }
 }

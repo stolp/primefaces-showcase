@@ -8,7 +8,7 @@
     <ui:define name="head">
         <style type="text/css">
             .ui-datalist {
-                width: 300px;
+                width: 400px;
                 margin-bottom: 20px;
             }
 
@@ -34,17 +34,17 @@
 
             <div class="card">
                 <h5>Basic</h5>
-                <p:dataList value="#{dataListView.cars1}" var="car" type="ordered">
-                    #{car.brand}, #{car.year}
+                <p:dataList value="#{dataListView.products1}" var="product" type="ordered">
+                    #{product.name}, $#{product.price}
                 </p:dataList>
             </div>
 
             <div class="card">
                 <h5>Definition</h5>
-                <p:dataList value="#{dataListView.cars2}" var="car" type="definition">
-                    Brand: #{car.brand}, Year: #{car.year}
+                <p:dataList value="#{dataListView.products2}" var="product" type="definition">
+                    Name: #{product.name}, Price: $#{product.price}
                     <f:facet name="description">
-                        <p:graphicImage name="demo/images/car/#{car.brand}.gif"/>
+                        <p:graphicImage name="demo/images/product/#{product.image}"/>
                     </f:facet>
                 </p:dataList>
             </div>

@@ -16,8 +16,8 @@
 package org.primefaces.showcase.view.data.datatable;
 
 import javax.faces.view.ViewScoped;
-import org.primefaces.showcase.domain.Car;
-import org.primefaces.showcase.service.CarService;
+import org.primefaces.showcase.domain.Product;
+import org.primefaces.showcase.service.ProductService;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -29,36 +29,36 @@ import java.util.List;
 @ViewScoped
 public class ContextMenuView implements Serializable {
     
-    private List<Car> cars;
+    private List<Product> products;
     
-    private Car selectedCar;
+    private Product selectedProduct;
     
     @Inject
-    private CarService service;
+    private ProductService service;
 
     @PostConstruct
     public void init() {
-        cars = service.createCars(10);
+        products = service.getProductsWithSize(10);
     }
     
-    public List<Car> getCars() {
-        return cars;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public Car getSelectedCar() {
-        return selectedCar;
+    public Product getSelectedProduct() {
+        return selectedProduct;
     }
 
-    public void setSelectedCar(Car selectedCar) {
-        this.selectedCar = selectedCar;
+    public void setSelectedProduct(Product selectedProduct) {
+        this.selectedProduct = selectedProduct;
     }
 
-    public void setService(CarService service) {
+    public void setService(ProductService service) {
         this.service = service;
     }
     
-    public void deleteCar() {
-        cars.remove(selectedCar);
-        selectedCar = null;
+    public void deleteProduct() {
+        products.remove(selectedProduct);
+        selectedProduct = null;
     }
 }

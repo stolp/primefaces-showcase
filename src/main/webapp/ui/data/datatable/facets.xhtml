@@ -18,29 +18,29 @@
 
     <ui:define name="implementation">
         <div class="card">
-            <p:dataTable var="car" value="#{dtBasicView.cars}">
+            <p:dataTable var="product" value="#{dtBasicView.products}">
                 <f:facet name="header">
-                    List of Cars
+                    List of Products
                 </f:facet>
 
-                <p:column headerText="Id">
-                    <h:outputText value="#{car.id}"/>
+                <p:column headerText="Code">
+                    <h:outputText value="#{product.code}"/>
                 </p:column>
 
-                <p:column headerText="Year">
-                    <h:outputText value="#{car.year}"/>
+                <p:column headerText="Name">
+                    <h:outputText value="#{product.name}"/>
                 </p:column>
 
-                <p:column headerText="Brand">
-                    <h:outputText value="#{car.brand}"/>
+                <p:column headerText="Category">
+                    <h:outputText value="#{product.category}"/>
                 </p:column>
 
-                <p:column headerText="Color">
-                    <h:outputText value="#{car.color}"/>
+                <p:column headerText="Quantitiy">
+                    <h:outputText value="#{product.quantity}"/>
                 </p:column>
 
                 <f:facet name="footer">
-                    In total there are #{fn:length(dtBasicView.cars)} cars.
+                    In total there are #{fn:length(dtBasicView.products)} products.
                 </f:facet>
             </p:dataTable>
         </div>

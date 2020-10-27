@@ -22,44 +22,44 @@
 
             <div class="card">
                 <h5>Draggable Columns</h5>
-                <p:dataTable var="car" value="#{dtReorderView.cars1}" draggableColumns="true"
+                <p:dataTable var="product" value="#{dtReorderView.products1}" draggableColumns="true"
                              style="margin-bottom:20px">
-                    <p:column headerText="Id">
-                        <h:outputText value="#{car.id}"/>
+                    <p:column headerText="Code">
+                        <h:outputText value="#{product.code}"/>
                     </p:column>
 
-                    <p:column headerText="Year">
-                        <h:outputText value="#{car.year}"/>
+                    <p:column headerText="Name">
+                        <h:outputText value="#{product.name}"/>
                     </p:column>
 
-                    <p:column headerText="Brand">
-                        <h:outputText value="#{car.brand}"/>
+                    <p:column headerText="Category">
+                        <h:outputText value="#{product.category}"/>
                     </p:column>
 
-                    <p:column headerText="Color">
-                        <h:outputText value="#{car.color}"/>
+                    <p:column headerText="Quantitiy">
+                        <h:outputText value="#{product.quantity}"/>
                     </p:column>
                 </p:dataTable>
             </div>
 
             <div class="card">
                 <h5>Draggable Rows</h5>
-                <p:dataTable var="car" value="#{dtReorderView.cars2}" draggableRows="true">
+                <p:dataTable var="product" value="#{dtReorderView.products2}" draggableRows="true">
                     <p:ajax event="rowReorder" listener="#{dtReorderView.onRowReorder}" update=":form:msgs"/>
-                    <p:column headerText="Id">
-                        <h:outputText value="#{car.id}"/>
+                    <p:column headerText="Code">
+                        <h:outputText value="#{product.code}"/>
                     </p:column>
 
-                    <p:column headerText="Year">
-                        <h:outputText value="#{car.year}"/>
+                    <p:column headerText="Name">
+                        <h:outputText value="#{product.name}"/>
                     </p:column>
 
-                    <p:column headerText="Brand">
-                        <h:outputText value="#{car.brand}"/>
+                    <p:column headerText="Category">
+                        <h:outputText value="#{product.category}"/>
                     </p:column>
 
-                    <p:column headerText="Color">
-                        <h:outputText value="#{car.color}"/>
+                    <p:column headerText="Quantitiy">
+                        <h:outputText value="#{product.quantity}"/>
                     </p:column>
                 </p:dataTable>
             </div>

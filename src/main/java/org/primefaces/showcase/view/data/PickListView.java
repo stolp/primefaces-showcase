@@ -19,8 +19,8 @@ import org.primefaces.event.SelectEvent;
 import org.primefaces.event.TransferEvent;
 import org.primefaces.event.UnselectEvent;
 import org.primefaces.model.DualListModel;
-import org.primefaces.showcase.domain.Theme;
-import org.primefaces.showcase.service.ThemeService;
+import org.primefaces.showcase.domain.Country;
+import org.primefaces.showcase.service.CountryService;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -36,16 +36,16 @@ import java.util.List;
 public class PickListView {
     
     @Inject
-    private ThemeService service;
+    private CountryService service;
     
     private DualListModel<String> cities;
-    private DualListModel<Theme> themes;
+    private DualListModel<Country> countries;
     
     @PostConstruct
     public void init() {
         //Cities
-        List<String> citiesSource = new ArrayList<String>();
-        List<String> citiesTarget = new ArrayList<String>();
+        List<String> citiesSource = new ArrayList<>();
+        List<String> citiesTarget = new ArrayList<>();
         
         citiesSource.add("San Francisco");
         citiesSource.add("London");
@@ -57,11 +57,11 @@ public class PickListView {
         
         cities = new DualListModel<String>(citiesSource, citiesTarget);
         
-        //Themes
-        List<Theme> themesSource = service.getThemes().subList(0, 5);
-        List<Theme> themesTarget = new ArrayList<Theme>();
+        //Countries
+        List<Country> countriesSource = service.getCountries().subList(0, 10);
+        List<Country> countriesTarget = new ArrayList<Country>();
         
-        themes = new DualListModel<Theme>(themesSource, themesTarget);
+        countries = new DualListModel<Country>(countriesSource, countriesTarget);
         
     }
 
@@ -73,26 +73,26 @@ public class PickListView {
         this.cities = cities;
     }
 
-    public ThemeService getService() {
+    public CountryService getService() {
         return service;
     }
 
-    public void setService(ThemeService service) {
+    public void setService(CountryService service) {
         this.service = service;
     }
 
-    public DualListModel<Theme> getThemes() {
-        return themes;
+    public DualListModel<Country> getCountries() {
+        return countries;
     }
 
-    public void setThemes(DualListModel<Theme> themes) {
-        this.themes = themes;
+    public void setCountries(DualListModel<Country> countries) {
+        this.countries = countries;
     }
     
     public void onTransfer(TransferEvent event) {
         StringBuilder builder = new StringBuilder();
         for(Object item : event.getItems()) {
-            builder.append(((Theme) item).getName()).append("<br />");
+            builder.append(((Country) item).getName()).append("<br />");
         }
         
         FacesMessage msg = new FacesMessage();
@@ -103,12 +103,12 @@ public class PickListView {
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }  
     
-    public void onSelect(SelectEvent<Theme> event) {
+    public void onSelect(SelectEvent<Country> event) {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Item Selected", event.getObject().getName()));
     }
     
-    public void onUnselect(UnselectEvent<Theme> event) {
+    public void onUnselect(UnselectEvent<Country> event) {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Item Unselected", event.getObject().getName()));
     }

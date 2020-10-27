@@ -91,7 +91,8 @@
                                     var="country" itemLabel="#{country.name}" itemValue="#{country}"
                                     converter="#{countryConverter}" forceSelection="true">
                         <p:column>
-                            <h:outputText value="#{autoCompleteView.countryService.countryCodeToEmoji(country.code)} #{country.name}"/>
+                            <span class="flag flag-#{country.code}" style="width: 30px; height: 20px"></span>
+                            <h:outputText style="vertical-align: middle; margin-left: .5rem" value="#{country.name}"/>
                         </p:column>
                     </p:autoComplete>
 
@@ -101,7 +102,8 @@
                                     var="country" itemLabel="#{country.name}" itemValue="#{country}"
                                     converter="#{countryConverter}" forceSelection="true">
                         <p:column>
-                            <h:outputText value="#{autoCompleteView.countryService.countryCodeToEmoji(country.code)} #{country.name}"/>
+                            <span class="flag flag-#{country.code}" style="width: 30px; height: 20px"></span>
+                            <h:outputText style="vertical-align: middle; margin-left: .5rem" value="#{country.name}"/>
                         </p:column>
                     </p:autoComplete>
 
@@ -113,7 +115,7 @@
                         <f:facet name="itemtip">
                             <h:panelGrid columns="2" cellpadding="5">
                                 <f:facet name="header">
-                                    <h:outputText value="#{autoCompleteView.countryService.countryCodeToEmoji(country.code)}"/>
+                                    <span class="flag flag-#{country.code}" style="width: 30px; height: 20px"></span>
                                 </f:facet>
 
                                 <h:outputText value="Name:"/>

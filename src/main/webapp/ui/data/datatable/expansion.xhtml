@@ -26,37 +26,55 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form>
-                <p:dataTable var="car" value="#{dtBasicView.cars}">
+                <p:dataTable var="product" value="#{dtBasicView.products}">
                     <f:facet name="header">
                         Expand rows to see detailed information
                     </f:facet>
                     <p:column style="width:16px">
                         <p:rowToggler/>
                     </p:column>
-                    <p:column headerText="Id">
-                        <h:outputText value="#{car.id}"/>
+
+                    <p:column headerText="Name">
+                        <h:outputText value="#{product.name}"/>
                     </p:column>
-                    <p:column headerText="Year">
-                        <h:outputText value="#{car.year}"/>
+
+                    <p:column headerText="Image">
+                        <p:graphicImage name="demo/images/product/#{product.image}"/>
+                    </p:column>
+
+                    <p:column headerText="Price">
+                        <h:outputText value="$#{product.price}"/>
+                    </p:column>
+
+                    <p:column headerText="Category">
+                        <h:outputText value="#{product.category}"/>
+                    </p:column>
+
+                    <p:column headerText="Reviews">
+                        <h:outputText value="#{product.name}"/>
+                    </p:column>
+
+                    <p:column headerText="Status">
+                        <h:outputText value="#{product.inventoryStatus}"/>
                     </p:column>
 
                     <p:rowExpansion>
                         <p:panelGrid columns="2" columnClasses="label,value" style="width:300px">
                             <f:facet name="header">
-                                <p:graphicImage name="demo/images/car/#{car.brand}-big.gif"/>
+                                <p:graphicImage name="demo/images/product/#{product.image}"/>
                             </f:facet>
 
                             <h:outputText value="Id:"/>
-                            <h:outputText value="#{car.id}"/>
+                            <h:outputText value="#{product.id}"/>
 
-                            <h:outputText value="Year"/>
-                            <h:outputText value="#{car.year}"/>
+                            <h:outputText value="Name"/>
+                            <h:outputText value="#{product.name}"/>
 
-                            <h:outputText value="Color:"/>
-                            <h:outputText value="#{car.color}" style="color:#{car.color}"/>
+                            <h:outputText value="Quantitiy:"/>
+                            <h:outputText value="#{product.quantity}"/>
 
                             <h:outputText value="Price"/>
-                            <h:outputText value="$#{car.price}"/>
+                            <h:outputText value="$#{product.price}"/>
                         </p:panelGrid>
                     </p:rowExpansion>
                 </p:dataTable>

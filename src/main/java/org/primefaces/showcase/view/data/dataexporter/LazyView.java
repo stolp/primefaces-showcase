@@ -15,10 +15,12 @@
  */
 package org.primefaces.showcase.view.data.dataexporter;
 
+import org.primefaces.component.datatable.DataTable;
+import org.primefaces.component.export.Exporter;
 import org.primefaces.model.LazyDataModel;
-import org.primefaces.showcase.domain.Car;
-import org.primefaces.showcase.service.CarService;
-import org.primefaces.showcase.view.data.datatable.LazyCarDataModel;
+import org.primefaces.showcase.domain.Customer;
+import org.primefaces.showcase.service.CustomerService;
+import org.primefaces.showcase.view.data.datatable.LazyCustomerDataModel;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -30,34 +32,37 @@ import java.util.List;
 @Named("deLazyView")
 @ViewScoped
 public class LazyView implements Serializable {
-    
-    private LazyDataModel<Car> lazyModel;
-    
-    private List<Car> filteredCars;
+
+    private LazyDataModel<Customer> lazyModel;
+
+    private List<Customer> filteredCustomers;
+
+    private Exporter<DataTable> textExporter;
 
     private String sortMode = "single";
 
     @Inject
-    private CarService service;
-    
+    private CustomerService service;
+
     @PostConstruct
     public void init() {
-        lazyModel = new LazyCarDataModel(service.createCars(200));
+        lazyModel = new LazyCustomerDataModel(service.getCustomers(200));
+        textExporter = new TextExporter();
     }
 
-    public LazyDataModel<Car> getLazyModel() {
+    public LazyDataModel<Customer> getLazyModel() {
         return lazyModel;
     }
 
-    public List<Car> getFilteredCars() {
-        return filteredCars;
+    public List<Customer> getFilteredCustomers() {
+        return filteredCustomers;
     }
 
-    public void setFilteredCars(List<Car> filteredCars) {
-        this.filteredCars = filteredCars;
+    public void setFilteredCustomers(List<Customer> filteredCustomers) {
+        this.filteredCustomers = filteredCustomers;
     }
 
-    public void setService(CarService service) {
+    public void setService(CustomerService service) {
         this.service = service;
     }
 
@@ -68,4 +73,13 @@ public class LazyView implements Serializable {
     public void setSortMode(String sortMode) {
         this.sortMode = sortMode;
     }
+
+    public Exporter<DataTable> getTextExporter() {
+        return textExporter;
+    }
+
+    public void setTextExporter(Exporter<DataTable> textExporter) {
+        this.textExporter = textExporter;
+    }
+
 }
