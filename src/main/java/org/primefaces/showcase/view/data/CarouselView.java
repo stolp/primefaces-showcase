@@ -1,9 +1,8 @@
 package org.primefaces.showcase.view.data;
 
 import javax.faces.view.ViewScoped;
-import org.primefaces.showcase.domain.Car;
+
 import org.primefaces.showcase.domain.Product;
-import org.primefaces.showcase.service.CarService;
 import org.primefaces.showcase.service.ProductService;
 
 import javax.annotation.PostConstruct;
@@ -25,7 +24,7 @@ public class CarouselView implements Serializable {
     
     @PostConstruct
     public void init() {
-        products = service.getProductsWithSize(9);
+        products = service.getProducts(9);
     }
 
     public List<Product> getProducts() {

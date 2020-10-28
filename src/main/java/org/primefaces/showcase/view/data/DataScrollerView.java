@@ -29,18 +29,18 @@ import java.util.List;
 @ViewScoped
 public class DataScrollerView implements Serializable {
     
-    private List<Product> cars;
+    private List<Product> products;
         
     @Inject
     private ProductService service;
     
     @PostConstruct
     public void init() {
-        cars = service.getProductsWithSize(100);
+        products = service.getProducts(100);
     }
 
     public List<Product> getProducts() {
-        return cars;
+        return products;
     }
 
     public void setService(ProductService service) {

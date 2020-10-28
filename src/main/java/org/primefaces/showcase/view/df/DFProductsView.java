@@ -17,8 +17,8 @@ package org.primefaces.showcase.view.df;
 
 import javax.faces.view.ViewScoped;
 import org.primefaces.PrimeFaces;
-import org.primefaces.showcase.domain.Car;
-import org.primefaces.showcase.service.CarService;
+import org.primefaces.showcase.domain.Product;
+import org.primefaces.showcase.service.ProductService;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -26,29 +26,29 @@ import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 
-@Named("dfCarsView")
+@Named("dfProductsView")
 @ViewScoped
-public class DFCarsView implements Serializable {
+public class DFProductsView implements Serializable {
     
-    private List<Car> cars;
+    private List<Product> products;
 
     @Inject
-    private CarService service;
+    private ProductService service;
     
     @PostConstruct
     public void init() {
-        cars = service.createCars(9);
+        products = service.getProducts(9);
     }
     
-    public List<Car> getCars() {
-        return cars;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setService(CarService service) {
+    public void setService(ProductService service) {
         this.service = service;
     }
     
-    public void selectCarFromDialog(Car car) {
-        PrimeFaces.current().dialog().closeDynamic(car);
+    public void selectProductFromDialog(Product product) {
+        PrimeFaces.current().dialog().closeDynamic(product);
     }
 }

@@ -38,9 +38,9 @@ public class SortView implements Serializable {
 
     @PostConstruct
     public void init() {
-        products1 = service.getProductsWithSize(10);
-        products2 = service.getProductsWithSize(10);
-        products3 = service.getProductsWithSize(50);
+        products1 = service.getProducts(10);
+        products2 = service.getProducts(10);
+        products3 = service.getProducts(50);
     }
 
     public List<Product> getProducts1() {

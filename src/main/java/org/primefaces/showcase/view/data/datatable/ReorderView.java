@@ -41,8 +41,8 @@ public class ReorderView implements Serializable {
 
     @PostConstruct
     public void init() {
-        products1 = service.getProductsWithSize(10);
-        products2 = service.getProductsWithSize(10);
+        products1 = service.getProducts(10);
+        products2 = service.getProducts(10);
     }
 
     public List<Product> getProducts1() {

@@ -16,9 +16,7 @@
 package org.primefaces.showcase.view.data;
 
 import org.primefaces.PrimeFaces;
-import org.primefaces.showcase.domain.Car;
 import org.primefaces.showcase.domain.Product;
-import org.primefaces.showcase.service.CarService;
 import org.primefaces.showcase.service.ProductService;
 
 import javax.annotation.PostConstruct;
@@ -42,7 +40,7 @@ public class DataGridView implements Serializable {
     
     @PostConstruct
     public void init() {
-        products = service.getProductsWithSize(48);
+        products = service.getProducts(48);
     }
 
     public List<Product> getProducts() {

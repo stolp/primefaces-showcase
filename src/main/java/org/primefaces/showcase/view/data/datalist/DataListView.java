@@ -16,7 +16,6 @@
 package org.primefaces.showcase.view.data.datalist;
 
 import org.primefaces.PrimeFaces;
-import org.primefaces.component.datalist.DataList;
 import org.primefaces.showcase.domain.Product;
 import org.primefaces.showcase.service.ProductService;
 
@@ -46,9 +45,9 @@ public class DataListView implements Serializable {
     
     @PostConstruct
     public void init() {
-        products1 = service.getProductsWithSize(10);
-        products2 = service.getProductsWithSize(5);
-        products3 = service.getProductsWithSize(50);
+        products1 = service.getProducts(10);
+        products2 = service.getProducts(5);
+        products3 = service.getProducts(50);
     }
 
     public List<Product> getProducts1() {

@@ -36,7 +36,7 @@ public class SummaryRowView implements Serializable {
 
     @PostConstruct
     public void init() {
-        products = service.getProductsWithSize(50);
+        products = service.getProducts(50);
     }
     
     public List<Product> getProducts() {

@@ -24,7 +24,7 @@
     <ui:param name="documentationLink" value="/components/datagrid"/>
 
     <ui:define name="implementation">
-        <div class="card">
+        <div class="list-demo card">
             <h:form id="form">
                 <p:messages id="messages"/>
 
@@ -42,43 +42,62 @@
                         Products for Sale
                     </f:facet>
 
-                    <p:panel header="#{product.name}" style="text-align:center">
-                        <h:panelGrid columns="1" style="width:100%">
+                    <div class="product-grid-item card" style="margin-bottom: 0">
+                        <div class="product-grid-item-top">
+                            <div>
+                                <i class="pi pi-tag product-category-icon"></i>
+                                <span class="product-category">#{product.category}</span>
+                            </div>
+                            <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
+                        </div>
+                        <div class="product-grid-item-content">
                             <p:graphicImage name="demo/images/product/#{product.image}"/>
-
-                            <h:outputText value="$#{product.price}"/>
-
-                            <p:commandLink update=":form:productDetail" oncomplete="PF('productDialog').show()"
-                                           title="View Detail">
-                                <h:outputText styleClass="pi pi-search" style="margin:0 auto;"/>
-                                <f:setPropertyActionListener value="#{product}" target="#{dataGridView.selectedProduct}"/>
-                            </p:commandLink>
-                        </h:panelGrid>
-                    </p:panel>
+                            <div class="product-name">#{product.name}</div>
+                            <div class="product-description">#{product.description}</div>
+                            <p:rating readonly="true" value="#{product.rating}"/>
+                        </div>
+                        <div class="product-grid-item-bottom">
+                            <h:outputText value="#{product.price}" styleClass="product-price">
+                                <f:convertNumber currencySymbol="$" type="currency"/>
+                            </h:outputText>
+                            <p:commandButton update=":form:productDetail" oncomplete="PF('productDialog').show()" value="Add To Cart"
+                                             icon="pi pi-shopping-cart" disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
+                                <f:setPropertyActionListener value="#{product}" target="#{dataGridView.selectedProduct}" />
+                            </p:commandButton>
+                        </div>
+                    </div>
 
                 </p:dataGrid>
 
                 <p:dialog header="Product Info" widgetVar="productDialog" modal="true" showEffect="fade" hideEffect="fade"
                           resizable="false">
                     <p:outputPanel id="productDetail" style="text-align:center;">
-                        <p:panelGrid columns="2" rendered="#{not empty dataGridView.selectedProduct}"
-                                     columnClasses="label,value">
-                            <f:facet name="header">
-                                <p:graphicImage name="demo/images/product/#{dataGridView.selectedProduct.image}"/>
-                            </f:facet>
-
-                            <h:outputText value="Id:"/>
-                            <h:outputText value="#{dataGridView.selectedProduct.id}"/>
-
-                            <h:outputText value="Name:"/>
-                            <h:outputText value="#{dataGridView.selectedProduct.name}"/>
-
-                            <h:outputText value="Price:"/>
-                            <h:outputText value="$#{dataGridView.selectedProduct.price}"/>
-
-                            <h:outputText value="Stock:"/>
-                            <h:outputText value="#{dataGridView.selectedProduct.inventoryStatus}"/>
-                        </p:panelGrid>
+                        <div class="list-demo">
+                            <div class="product-grid-item card" style="margin-bottom: 0">
+                                <div class="product-grid-item-top">
+                                    <div>
+                                        <i class="pi pi-tag product-category-icon"></i>
+                                        <span class="product-category">#{dataGridView.selectedProduct.category}</span>
+                                    </div>
+                                    <span class="product-badge status-#{dataGridView.selectedProduct.inventoryStatus.name().toLowerCase()}">#{dataGridView.selectedProduct.inventoryStatus.text}</span>
+                                </div>
+                                <div class="product-grid-item-content">
+                                    <p:graphicImage name="demo/images/product/#{dataGridView.selectedProduct.image}"/>
+                                    <div class="product-name">#{dataGridView.selectedProduct.name}</div>
+                                    <div class="product-description">#{dataGridView.selectedProduct.description}</div>
+                                    <p:rating readonly="true" value="#{dataGridView.selectedProduct.rating}"/>
+                                </div>
+                                <div class="product-grid-item-bottom">
+                                    <h:outputText value="#{dataGridView.selectedProduct.price}" styleClass="product-price">
+                                        <f:convertNumber currencySymbol="$" type="currency"/>
+                                    </h:outputText>
+                                    <p:commandButton update=":form:productDetail" oncomplete="PF('productDialog').show()" value="Add To Cart"
+                                                     icon="pi pi-shopping-cart" disabled="#{dataGridView.selectedProduct.inventoryStatus == 'OUTOFSTOCK'}">
+                                        <f:setPropertyActionListener value="#{dataGridView.selectedProduct}" target="#{dataGridView.selectedProduct}" />
+                                    </p:commandButton>
+                                </div>
+                            </div>
+                        </div>
                     </p:outputPanel>
                 </p:dialog>
             </h:form>

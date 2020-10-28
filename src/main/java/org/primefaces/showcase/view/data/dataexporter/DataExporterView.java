@@ -41,7 +41,7 @@ public class DataExporterView implements Serializable {
     
     @PostConstruct
     public void init() {
-        products = service.getProductsWithSize(100);
+        products = service.getProducts(100);
         textExporter = new TextExporter();
     }
 

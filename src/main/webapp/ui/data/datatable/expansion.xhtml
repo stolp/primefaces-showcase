@@ -59,23 +59,26 @@
                     </p:column>
 
                     <p:rowExpansion>
-                        <p:panelGrid columns="2" columnClasses="label,value" style="width:300px">
-                            <f:facet name="header">
+                        <div class="list-demo">
+                            <div class="product-list-item">
                                 <p:graphicImage name="demo/images/product/#{product.image}"/>
-                            </f:facet>
-
-                            <h:outputText value="Id:"/>
-                            <h:outputText value="#{product.id}"/>
-
-                            <h:outputText value="Name"/>
-                            <h:outputText value="#{product.name}"/>
-
-                            <h:outputText value="Quantitiy:"/>
-                            <h:outputText value="#{product.quantity}"/>
-
-                            <h:outputText value="Price"/>
-                            <h:outputText value="$#{product.price}"/>
-                        </p:panelGrid>
+                                <div class="product-list-detail">
+                                    <div class="product-name">#{product.name}</div>
+                                    <div class="product-description">#{product.description}</div>
+                                    <p:rating readonly="true" value="#{product.rating}"/>
+                                    <i class="pi pi-tag product-category-icon"></i><span
+                                        class="product-category">#{product.category}</span>
+                                </div>
+                                <div class="product-list-action">
+                                    <h:outputText value="#{product.price}" styleClass="product-price">
+                                        <f:convertNumber currencySymbol="$" type="currency"/>
+                                    </h:outputText>
+                                    <p:commandButton value="Add To Cart" icon="pi pi-shopping-cart" disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
+                                    </p:commandButton>
+                                    <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
+                                </div>
+                            </div>
+                        </div>
                     </p:rowExpansion>
                 </p:dataTable>
             </h:form>

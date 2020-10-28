@@ -62,9 +62,9 @@
                         <p:outputLabel for="onemenu" value="OneMenu"/>
                         <p:selectOneMenu id="onemenu">
                             <f:selectItem itemLabel="Select One" itemValue=""/>
-                            <f:selectItem itemLabel="Xbox One" itemValue="Xbox One"/>
-                            <f:selectItem itemLabel="PS4" itemValue="PS4"/>
-                            <f:selectItem itemLabel="Wii U" itemValue="Wii U"/>
+                            <f:selectItem itemLabel="Option 1" itemValue="Option 1"/>
+                            <f:selectItem itemLabel="Option 2" itemValue="Option 2"/>
+                            <f:selectItem itemLabel="Option 3" itemValue="Option 3"/>
                         </p:selectOneMenu>
 
                         <p:outputLabel for="spinner" value="Spinner"/>
@@ -78,7 +78,7 @@
 
                         <p:outputLabel for="radio" value="Radio"/>
                         <p:selectOneRadio id="radio" value="#{radioView.city2}" layout="responsive" columns="3">
-                            <f:selectItems value="#{radioView.cities}" var="c" itemLabel="#{city}" itemValue="#{city}"/>
+                            <f:selectItems value="#{radioView.cities}" var="c" itemLabel="#{c}" itemValue="#{c}"/>
                         </p:selectOneRadio>
 
                         <p:outputLabel for="chkbox" value="Checkbox"/>
@@ -110,8 +110,8 @@
 
                         <p:outputLabel for="oneBtn" value="OneButton"/>
                         <p:selectOneButton id="oneBtn">
-                            <f:selectItem itemLabel="XB1" itemValue="XB1"/>
-                            <f:selectItem itemLabel="PS4" itemValue="PS4"/>
+                            <f:selectItem itemLabel="Option 1" itemValue="Option 1"/>
+                            <f:selectItem itemLabel="Option 2" itemValue="Option 2"/>
                         </p:selectOneButton>
 
                         <p:outputLabel for="manyBtn" value="Many Button"/>
@@ -156,148 +156,152 @@
                     <p:chart type="line" model="#{chartView.lineModel1}" style="height:300px;margin:20px 0"
                              responsive="true"/>
 
-                    <p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" style="margin-top:20px">
+                    <p:dataTable var="product" value="#{dtBasicView.products}" reflow="true" style="margin-top:20px">
                         <f:facet name="header">
                             DataTable
                         </f:facet>
-                        <p:column headerText="Id">
-                            <h:outputText value="#{car.id}"/>
+                        <p:column headerText="Code">
+                            <h:outputText value="#{product.code}"/>
                         </p:column>
 
-                        <p:column headerText="Year">
-                            <h:outputText value="#{car.year}"/>
+                        <p:column headerText="Name">
+                            <h:outputText value="#{product.name}"/>
                         </p:column>
 
-                        <p:column headerText="Brand">
-                            <h:outputText value="#{car.brand}"/>
+                        <p:column headerText="Category">
+                            <h:outputText value="#{product.category}"/>
                         </p:column>
 
-                        <p:column headerText="Color">
-                            <h:outputText value="#{car.color}"/>
+                        <p:column headerText="Quantity">
+                            <h:outputText value="#{product.quantity}"/>
                         </p:column>
                     </p:dataTable>
 
-                    <p:dataGrid var="car" value="#{dataGridView.cars}" columns="3" layout="grid"
+                    <p:dataGrid var="product" value="#{dataGridView.products}" columns="3" layout="grid"
                                 rows="12" paginator="true" style="margin-top:20px">
 
                         <f:facet name="header">
                             DataGrid
                         </f:facet>
 
-                        <p:panel header="#{car.id}" style="text-align:center">
-                            <h:panelGrid columns="1" style="width:100%">
-                                <p:graphicImage name="demo/images/car/#{car.brand}.gif"/>
-
-                                <h:outputText value="#{car.brand} - #{car.year}"/>
-                            </h:panelGrid>
-                        </p:panel>
+                        <div class="list-demo">
+                            <div class="product-grid-item card" style="margin-bottom: 0">
+                                <div class="product-grid-item-top">
+                                    <div>
+                                        <i class="pi pi-tag product-category-icon"></i>
+                                        <span class="product-category">#{product.category}</span>
+                                    </div>
+                                    <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
+                                </div>
+                                <div class="product-grid-item-content">
+                                    <p:graphicImage name="demo/images/product/#{product.image}"/>
+                                    <div class="product-name">#{product.name}</div>
+                                    <div class="product-description">#{product.description}</div>
+                                    <p:rating readonly="true" value="#{product.rating}"/>
+                                </div>
+                                <div class="product-grid-item-bottom">
+                                    <h:outputText value="#{product.price}" styleClass="product-price">
+                                        <f:convertNumber currencySymbol="$" type="currency"/>
+                                    </h:outputText>
+                                    <p:commandButton value="Add To Cart" icon="pi pi-shopping-cart" style="width: 10rem"
+                                                     disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
+                                    </p:commandButton>
+                                </div>
+                            </div>
+                        </div>
 
                     </p:dataGrid>
 
                     <p:tree value="#{treeIconView.root}" var="doc" style="margin-top:20px">
+
                         <p:treeNode expandedIcon="pi pi-folder-open" collapsedIcon="pi pi-folder">
-                            <h:outputText value="#{doc.name}"/>
+                            <h:outputText value="#{doc}"/>
                         </p:treeNode>
 
-                        <p:treeNode type="document" icon="pi pi-file">
-                            <h:outputText value="#{doc.name}"/>
-                        </p:treeNode>
-
-                        <p:treeNode type="picture" icon="pi pi-image">
-                            <h:outputText value="#{doc.name}"/>
-                        </p:treeNode>
-
-                        <p:treeNode type="mp3" icon="pi pi-video">
-                            <h:outputText value="#{doc.name}"/>
-                        </p:treeNode>
                     </p:tree>
 
-                    <p:pickList id="PojoPickList" value="#{pickListView.themes}" var="theme" effect="bounce"
+                    <p:pickList id="PojoPickList" value="#{pickListView.countries}" var="c" effect="bounce"
                                 style="margin-top:20px"
-                                itemValue="#{theme}" itemLabel="#{theme.displayName}" showSourceControls="true"
-                                showTargetControls="true" converter="#{themeConverter}" responsive="true">
+                                itemValue="#{c}" itemLabel="#{c.name}" showSourceControls="true"
+                                showTargetControls="true" converter="#{countryConverter}" responsive="true">
 
                         <f:facet name="sourceCaption">Available</f:facet>
                         <f:facet name="targetCaption">Starting</f:facet>
 
                         <p:column style="width:45px">
-                            <h:graphicImage name="showcase/images/themeswitcher/themeswitcher-#{theme.name}.png"
-                                            alt="#{theme.name}"
-                                            style="margin:0; display: block; width: 30px; height: 30px;"/>
+                            <span class="flag flag-#{c.code}" style="width: 30px; height: 20px"></span>
                         </p:column>
 
                         <p:column>
-                            <h:outputText value="#{theme.displayName}"/>
+                            <h:outputText value="#{c.name}"/>
                         </p:column>
                     </p:pickList>
 
-                    <p:carousel value="#{carouselView.cars}" headerText="Carousel" var="car"
-                                itemStyle="text-align:center"
-                                responsive="true" style="margin-top:20px">
-                        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value"
-                                     layout="grid" styleClass="ui-panelgrid-blank">
-                            <f:facet name="header">
-                                <p:graphicImage name="demo/images/car/#{car.brand}.gif"/>
-                            </f:facet>
+                    <p:carousel value="#{carouselView.products}" headerText="Carousel" var="product"
+                                itemStyle="text-align:center" responsive="true" style="margin-top:20px">
+                        <div class="list-demo">
+                            <div class="product-grid-item card" style="margin-bottom: 0">
+                                <div class="product-grid-item-top">
+                                    <div>
+                                        <i class="pi pi-tag product-category-icon"></i>
+                                        <span class="product-category">#{product.category}</span>
+                                    </div>
+                                    <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
+                                </div>
+                                <div class="product-grid-item-content">
+                                    <p:graphicImage name="demo/images/product/#{product.image}"/>
+                                    <div class="product-name">#{product.name}</div>
+                                    <div class="product-description">#{product.description}</div>
+                                    <p:rating readonly="true" value="#{product.rating}"/>
+                                </div>
+                                <div class="product-grid-item-bottom">
+                                    <h:outputText value="#{product.price}" styleClass="product-price">
+                                        <f:convertNumber currencySymbol="$" type="currency"/>
+                                    </h:outputText>
+                                    <p:commandButton value="Add To Cart" icon="pi pi-shopping-cart" style="width: 10rem"
+                                                     disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
+                                    </p:commandButton>
+                                </div>
+                            </div>
+                        </div>
 
-                            <h:outputText value="Id:"/>
-                            <h:outputText value="#{car.id}"/>
-
-                            <h:outputText value="Year"/>
-                            <h:outputText value="#{car.year}"/>
-
-                            <h:outputText value="Color:"/>
-                            <h:outputText value="#{car.color}" style="color:#{car.color}"/>
-
-                            <h:outputText value="Price"/>
-                            <h:outputText value="$#{car.price}"/>
-                        </p:panelGrid>
                     </p:carousel>
 
-                    <p:orderList value="#{orderListView.themes}" var="theme" itemValue="#{theme}"
-                                 converter="#{themeConverter}" controlsLocation="left" responsive="true"
+                    <p:orderList value="#{orderListView.countries}" var="c" itemValue="#{c}"
+                                 converter="#{countryConverter}" controlsLocation="left" responsive="true"
                                  style="margin-top:20px">
                         <f:facet name="caption">Available</f:facet>
 
                         <p:column style="width:45px">
-                            <h:graphicImage name="showcase/images/themeswitcher/themeswitcher-#{theme.name}.png"
-                                            alt="#{theme.name}"
-                                            style="margin:0; display: block; width: 30px; height: 30px;"/>
+                            <span class="flag flag-#{c.code}" style="width: 30px; height: 20px"></span>
                         </p:column>
 
                         <p:column>
-                            <h:outputText value="#{theme.displayName}"/>
+                            <h:outputText value="#{c.name}"/>
                         </p:column>
                     </p:orderList>
 
 
                     <p:accordionPanel style="margin-top:20px">
-                        <p:tab title="Godfather Part I">
+                        <p:tab title="Header I">
                             <p:panelGrid columns="2" columnClasses="ui-g-12 ui-md-4,ui-g-12 ui-md-8" layout="grid"
                                          styleClass="ui-panelgrid-blank">
-                                <p:graphicImage name="demo/images/godfather/godfather1.jpg"/>
                                 <h:outputText
-                                        value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
-                                His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
-                                Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect,
-                                but given to ruthless violence whenever anything stands against the good of the family."/>
+                                        value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
                             </p:panelGrid>
                         </p:tab>
-                        <p:tab title="Godfather Part II">
+                        <p:tab title="Header II">
                             <p:panelGrid columns="2" columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-10" layout="grid"
                                          styleClass="ui-panelgrid-blank">
-                                <p:graphicImage name="demo/images/godfather/godfather2.jpg"/>
-                                <h:outputText value="Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream.
-                                          In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy,
-                                          killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows."/>
+                                <h:outputText
+                                        value="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi."/>
                             </p:panelGrid>
                         </p:tab>
-                        <p:tab title="Godfather Part III">
+                        <p:tab title="Header III">
                             <p:panelGrid columns="2" columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-10" layout="grid"
                                          styleClass="ui-panelgrid-blank">
-                                <p:graphicImage name="demo/images/godfather/godfather3.jpg"/>
-                                <h:outputText value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family.
-                                          Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate."/>
+                                <h:outputText
+                                        value="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus."/>
                             </p:panelGrid>
                         </p:tab>
                     </p:accordionPanel>
@@ -346,15 +350,11 @@
                         </div>
                     </div>
 
-                    <p:panel header="Panel" footer="Movie Details" style="margin-top:20px">
+                    <p:panel header="Panel" footer="Details" style="margin-top:20px">
                         <p:panelGrid columns="2" columnClasses="ui-g-12 ui-md-4,ui-g-12 ui-md-8" layout="grid"
                                      styleClass="ui-panelgrid-blank">
-                            <p:graphicImage name="demo/images/godfather/godfather1.jpg"/>
                             <h:outputText
-                                    value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
-                            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
-                            Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect,
-                            but given to ruthless violence whenever anything stands against the good of the family."/>
+                                    value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
                         </p:panelGrid>
                     </p:panel>
                 </div>

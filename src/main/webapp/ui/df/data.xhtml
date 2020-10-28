@@ -20,8 +20,8 @@
             <h:form>
                 <p:growl id="growl" showDetail="true"/>
 
-                <p:commandButton value="Select Car" icon="pi pi-home" action="#{dfView.chooseCar}">
-                    <p:ajax event="dialogReturn" listener="#{dfView.onCarChosen}" update="growl"/>
+                <p:commandButton value="Select Product" icon="pi pi-home" action="#{dfView.chooseProduct}">
+                    <p:ajax event="dialogReturn" listener="#{dfView.onProductChosen}" update="growl"/>
                 </p:commandButton>
             </h:form>
         </div>

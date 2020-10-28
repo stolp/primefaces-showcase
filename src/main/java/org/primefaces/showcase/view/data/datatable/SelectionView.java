@@ -47,12 +47,12 @@ public class SelectionView implements Serializable {
     
     @PostConstruct
     public void init() {
-        products1 = service.getProductsWithSize(10);
-        products2 = service.getProductsWithSize(10);
-        products3 = service.getProductsWithSize(10);
-        products4 = service.getProductsWithSize(10);
-        products5 = service.getProductsWithSize(10);
-        products6 = service.getProductsWithSize(10);
+        products1 = service.getProducts(10);
+        products2 = service.getProducts(10);
+        products3 = service.getProducts(10);
+        products4 = service.getProducts(10);
+        products5 = service.getProducts(10);
+        products6 = service.getProducts(10);
     }
 
     public List<Product> getProducts1() {

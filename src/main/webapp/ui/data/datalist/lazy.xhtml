@@ -5,27 +5,6 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="./template.xhtml">
 
-    <ui:define name="head">
-        <style type="text/css">
-            .logo {
-                width: 200px;
-            }
-
-            .detail {
-                width: 600px;
-                padding-left: 25px;
-            }
-
-            .command {
-                padding-left: 25px;
-            }
-
-            ul.ui-datalist-data {
-                padding-inline-start: 0px;
-            }
-        </style>
-    </ui:define>
-
     <ui:define name="title">
         DataList - <span class="subitem">Lazy</span>
     </ui:define>
@@ -44,10 +23,9 @@
         <div class="card">
             <h:form id="form">
                 <p:dataList value="#{dtLazyView.lazyModel}" var="customer" lazy="true" type="unordered" itemType="none"
-                            style="width: 800px"
                             paginator="true" rows="5" rowsPerPageTemplate="5,10,20" pageLinks="5"
                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
-                    <h:panelGrid columns="3" columnClasses="logo detail">
+                    <h:panelGrid columns="2" style="width:100%" cellspacing="20">
 
                         <p:outputPanel>
                             <h:panelGrid columns="2" cellpadding="5">
@@ -77,7 +55,6 @@
 
                             </h:panelGrid>
 
-                            <p:separator/>
                         </p:outputPanel>
 
                         <p:commandLink update=":form:customerDetail" oncomplete="PF('customerDialog').show()"
@@ -86,14 +63,15 @@
                             <f:setPropertyActionListener value="#{customer}" target="#{dtLazyView.selectedCustomer}"/>
                         </p:commandLink>
 
+                        <p:separator/>
+
                     </h:panelGrid>
                 </p:dataList>
 
                 <p:dialog header="Customer Info" widgetVar="customerDialog" modal="true" showEffect="blind"
                           hideEffect="explode" resizable="false">
                     <p:outputPanel id="customerDetail" style="text-align:center;">
-                        <p:panelGrid columns="2" rendered="#{not empty dtLazyView.selectedCustomer}"
-                                     columnClasses="label,value">
+                        <h:panelGrid columns="2" cellpadding="5" rendered="#{not empty dtLazyView.selectedCustomer}">
 
                             <h:outputText value="Name:"/>
                             <h:outputText value="#{dtLazyView.selectedCustomer.name}"/>
@@ -118,7 +96,7 @@
                                               value="#{dtLazyView.selectedCustomer.representative.name}"/>
                             </p:column>
 
-                        </p:panelGrid>
+                        </h:panelGrid>
                     </p:outputPanel>
                 </p:dialog>
             </h:form>

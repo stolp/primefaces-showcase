@@ -20,11 +20,9 @@ import org.primefaces.showcase.service.ProductService;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Named
@@ -39,7 +37,7 @@ public class RingView implements Serializable {
 
     @PostConstruct
     public void init() {
-        products = service.getProductsWithSize(5);
+        products = service.getProducts(5);
     }
 
     public List<Product> getProducts() {

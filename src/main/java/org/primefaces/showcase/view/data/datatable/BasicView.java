@@ -36,7 +36,7 @@ public class BasicView implements Serializable {
 
     @PostConstruct
     public void init() {
-        products = service.getProductsWithSize(10);
+        products = service.getProducts(10);
     }
     
     public List<Product> getProducts() {

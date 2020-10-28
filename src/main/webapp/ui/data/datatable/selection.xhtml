@@ -188,38 +188,69 @@
                 </p:dataTable>
             </div>
 
-            <p:dialog header="Product Info" widgetVar="productDialog" modal="true" showEffect="fade" hideEffect="fade"
+            <p:dialog header="Product Info" widgetVar="productDialog" modal="true" showEffect="blind" hideEffect="explode"
                       resizable="false">
                 <p:outputPanel id="productDetail" style="text-align:center;">
-                    <p:panelGrid columns="2" rendered="#{not empty dtSelectionView.selectedProduct}"
-                                 columnClasses="label,value">
-                        <f:facet name="header">
-                            <p:graphicImage name="demo/images/product/#{dtSelectionView.selectedProduct.image}-big.gif"/>
-                        </f:facet>
-
-                        <h:outputText value="Code:"/>
-                        <h:outputText value="#{dtSelectionView.selectedProduct.code}"/>
-
-                        <h:outputText value="Name:"/>
-                        <h:outputText value="#{dtSelectionView.selectedProduct.name}"/>
-
-                        <h:outputText value="Category:"/>
-                        <h:outputText value="#{dtSelectionView.selectedProduct.category}"
-                                      style="color:#{dtSelectionView.selectedProduct.color}"/>
-
-                        <h:outputText value="Quantity:"/>
-                        <h:outputText value="#{dtSelectionView.selectedProduct.quantity}"/>
-                    </p:panelGrid>
+                    <div class="list-demo">
+                        <div class="product-grid-item card" style="margin-bottom: 0">
+                            <div class="product-grid-item-top">
+                                <div>
+                                    <i class="pi pi-tag product-category-icon"></i>
+                                    <span class="product-category">#{dtSelectionView.selectedProduct.category}</span>
+                                </div>
+                                <span class="product-badge status-#{dtSelectionView.selectedProduct.inventoryStatus.name().toLowerCase()}">#{dtSelectionView.selectedProduct.inventoryStatus.text}</span>
+                            </div>
+                            <div class="product-grid-item-content">
+                                <p:graphicImage name="demo/images/product/#{dtSelectionView.selectedProduct.image}"/>
+                                <div class="product-name">#{dtSelectionView.selectedProduct.name}</div>
+                                <div class="product-description">#{dtSelectionView.selectedProduct.description}</div>
+                                <p:rating readonly="true" value="#{dtSelectionView.selectedProduct.rating}"/>
+                            </div>
+                            <div class="product-grid-item-bottom">
+                                <h:outputText value="#{dtSelectionView.selectedProduct.price}" styleClass="product-price">
+                                    <f:convertNumber currencySymbol="$" type="currency"/>
+                                </h:outputText>
+                                <p:commandButton update=":form:productDetail" oncomplete="PF('productDialog').show()" value="Add To Cart"
+                                                 icon="pi pi-shopping-cart" disabled="#{dtSelectionView.selectedProduct.inventoryStatus == 'OUTOFSTOCK'}">
+                                    <f:setPropertyActionListener value="#{dtSelectionView.selectedProduct}" target="#{dtSelectionView.selectedProduct}" />
+                                </p:commandButton>
+                            </div>
+                        </div>
+                    </div>
                 </p:outputPanel>
             </p:dialog>
 
             <p:dialog header="Selected Products" widgetVar="multiProductDialog" modal="true" showEffect="fade"
-                      hideEffect="fade"
-                      resizable="false" width="220">
+                      hideEffect="fade" resizable="false">
                 <p:outputPanel id="multiProductDetail" style="text-align:center;">
-                    <ui:repeat value="#{dtSelectionView.selectedProducts}" var="product">
-                        <h:outputText value="#{product.code} - #{product.name}" style="display:block"/>
-                    </ui:repeat>
+                    <p:dataScroller value="#{dtSelectionView.selectedProducts}" var="product" chunkSize="10" mode="inline"
+                                    scrollHeight="500">
+                        <f:facet name="header">
+                            Selected Products
+                        </f:facet>
+
+                        <div class="list-demo">
+                            <div class="product-list-item">
+                                <p:graphicImage name="demo/images/product/#{product.image}"/>
+                                <div class="product-list-detail">
+                                    <div class="product-name">#{product.name}</div>
+                                    <div class="product-description">#{product.description}</div>
+                                    <p:rating readonly="true" value="#{product.rating}"/>
+                                    <i class="pi pi-tag product-category-icon"></i><span
+                                        class="product-category">#{product.category}</span>
+                                </div>
+                                <div class="product-list-action">
+                                    <h:outputText value="#{product.price}" styleClass="product-price">
+                                        <f:convertNumber currencySymbol="$" type="currency"/>
+                                    </h:outputText>
+                                    <p:commandButton value="Add To Cart" icon="pi pi-shopping-cart" disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
+                                    </p:commandButton>
+                                    <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </p:dataScroller>
                 </p:outputPanel>
             </p:dialog>
 

@@ -57,15 +57,23 @@ public class ProductService {
         return products;
     }
 
-    public List<Product> getProductsWithSize(int size) {
-        Random rand = new Random();
+    public List<Product> getProducts(int size) {
 
-        List<Product> randomList = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            int randomIndex = rand.nextInt(products.size());
-            randomList.add(products.get(randomIndex));
+        if (size > products.size()) {
+            Random rand = new Random();
+
+            List<Product> randomList = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                int randomIndex = rand.nextInt(products.size());
+                randomList.add(products.get(randomIndex));
+            }
+
+            return randomList;
         }
 
-        return randomList;
+        else {
+            return products.subList(0, size);
+        }
+
     }
 }

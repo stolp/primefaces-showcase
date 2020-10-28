@@ -48,7 +48,7 @@ public class ColumnsView implements Serializable {
 
     @PostConstruct
     public void init() {
-        products = service.getProductsWithSize(10);
+        products = service.getProducts(10);
         
         createDynamicColumns();
     }

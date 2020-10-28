@@ -83,9 +83,9 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form id="form">
-                <p:remoteCommand name="treeToTable" action="#{columnManagerView.treeToTable}" update="tree cars"
+                <p:remoteCommand name="treeToTable" action="#{columnManagerView.treeToTable}" update="tree products"
                                  oncomplete="initDND()"/>
-                <p:remoteCommand name="tableToTree" action="#{columnManagerView.tableToTree}" update="tree cars"
+                <p:remoteCommand name="tableToTree" action="#{columnManagerView.tableToTree}" update="tree products"
                                  oncomplete="initDND()"/>
 
                 <p:tree id="tree" value="#{columnManagerView.availableColumns}" var="column" style="margin-bottom:20px">
@@ -98,7 +98,7 @@
                     </p:treeNode>
                 </p:tree>
 
-                <p:dataTable id="cars" var="car" value="#{columnManagerView.cars}">
+                <p:dataTable id="products" var="product" value="#{columnManagerView.products}">
                     <p:columns value="#{columnManagerView.columns}" var="column">
                         <f:facet name="header">
                             <h:outputText style="float:left;display:block;height:20px;width:10px;border:0 none;"
@@ -108,7 +108,7 @@
                             <h:outputText value="#{column.header}"/>
                         </f:facet>
 
-                        <h:outputText value="#{car[column.property]}"/>
+                        <h:outputText value="#{product[column.property]}"/>
                     </p:columns>
                 </p:dataTable>
             </h:form>

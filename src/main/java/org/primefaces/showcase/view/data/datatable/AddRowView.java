@@ -39,7 +39,7 @@ public class AddRowView implements Serializable {
     
     @PostConstruct
     public void init() {
-        products1 = service.getProductsWithSize(15);
+        products1 = service.getProducts(15);
     }
 
     public List<Product> getProducts1() {
@@ -62,7 +62,7 @@ public class AddRowView implements Serializable {
 
     public void onAddNew() {
         // Add one new product to the table:
-        Product product2Add = service.getProductsWithSize(1).get(0);
+        Product product2Add = service.getProducts(1).get(0);
         products1.add(product2Add);
         FacesMessage msg = new FacesMessage("New Product added", String.valueOf(product2Add.getId()));
         FacesContext.getCurrentInstance().addMessage(null, msg);

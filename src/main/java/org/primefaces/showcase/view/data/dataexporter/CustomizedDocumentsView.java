@@ -52,9 +52,9 @@ public class CustomizedDocumentsView implements Serializable {
     
     @PostConstruct
     public void init() {
-        products = service.getProductsWithSize(100);
+        products = service.getProducts(100);
         
-        products2 = service.getProductsWithSize(100);
+        products2 = service.getProducts(100);
         customizationOptions();
     }
     
