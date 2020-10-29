@@ -78,35 +78,36 @@
 
                 <p:dialog header="Product Detail" widgetVar="productDialog" resizable="false" draggable="false"
                           showEffect="fade" hideEffect="fade" modal="true">
-
                     <p:outputPanel id="display">
-                        <div class="list-demo">
-                            <div class="product-grid-item card" style="margin-bottom: 0">
-                                <div class="product-grid-item-top">
-                                    <div>
-                                        <i class="pi pi-tag product-category-icon"></i>
-                                        <span class="product-category">#{dndProductsView.selectedProduct.category}</span>
+                        <p:panelGrid rendered="#{not empty dndProductsView.selectedProduct}">
+                            <div class="list-demo">
+                                <div class="product-grid-item card" style="margin-bottom: 0">
+                                    <div class="product-grid-item-top">
+                                        <div>
+                                            <i class="pi pi-tag product-category-icon"/>
+                                            <span class="product-category">#{dndProductsView.selectedProduct.category}</span>
+                                        </div>
+                                        <span class="product-badge status-#{dndProductsView.selectedProduct.inventoryStatus.name().toLowerCase()}">#{dndProductsView.selectedProduct.inventoryStatus.text}</span>
                                     </div>
-                                    <span class="product-badge status-#{dndProductsView.selectedProduct.inventoryStatus.name().toLowerCase()}">#{dndProductsView.selectedProduct.inventoryStatus.text}</span>
-                                </div>
-                                <div class="product-grid-item-content">
-                                    <p:graphicImage
-                                            name="demo/images/product/#{dndProductsView.selectedProduct.image}"/>
-                                    <div class="product-name">#{dndProductsView.selectedProduct.name}</div>
-                                    <div class="product-description">#{dndProductsView.selectedProduct.description}</div>
-                                    <p:rating readonly="true" value="#{dndProductsView.selectedProduct.rating}"/>
-                                </div>
-                                <div class="product-grid-item-bottom">
-                                    <h:outputText value="#{dndProductsView.selectedProduct.price}"
-                                                  styleClass="product-price">
-                                        <f:convertNumber currencySymbol="$" type="currency"/>
-                                    </h:outputText>
-                                    <p:commandButton value="Add To Cart" icon="pi pi-shopping-cart"
-                                                     disabled="#{dndProductsView.selectedProduct.inventoryStatus == 'OUTOFSTOCK'}">
-                                    </p:commandButton>
+                                    <div class="product-grid-item-content">
+                                        <p:graphicImage
+                                                name="demo/images/product/#{dndProductsView.selectedProduct.image}"/>
+                                        <div class="product-name">#{dndProductsView.selectedProduct.name}</div>
+                                        <div class="product-description">#{dndProductsView.selectedProduct.description}</div>
+                                        <p:rating readonly="true" value="#{dndProductsView.selectedProduct.rating}"/>
+                                    </div>
+                                    <div class="product-grid-item-bottom">
+                                        <h:outputText value="#{dndProductsView.selectedProduct.price}"
+                                                      styleClass="product-price">
+                                            <f:convertNumber currencySymbol="$" type="currency"/>
+                                        </h:outputText>
+                                        <p:commandButton value="Add To Cart" icon="pi pi-shopping-cart"
+                                                         disabled="#{dndProductsView.selectedProduct.inventoryStatus == 'OUTOFSTOCK'}">
+                                        </p:commandButton>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </p:panelGrid>
                     </p:outputPanel>
                 </p:dialog>
             </h:form>

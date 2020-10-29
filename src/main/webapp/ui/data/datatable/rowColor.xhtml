@@ -27,7 +27,8 @@
 
     <ui:define name="implementation">
         <div class="card">
-            <p:dataTable var="product" value="#{dtBasicView.products}" rowStyleClass="#{product.price le 50.0 ? 'cheap' : null}">
+            <p:dataTable var="product" value="#{dtBasicView.products}"
+                         rowStyleClass="#{product.price le 50.0 ? 'cheap' : null}">
                 <p:column headerText="Code">
                     <h:outputText value="#{product.code}"/>
                 </p:column>

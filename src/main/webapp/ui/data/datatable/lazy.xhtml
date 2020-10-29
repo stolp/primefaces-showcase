@@ -33,7 +33,7 @@
                         <h:outputText value="#{customer.name}"/>
                     </p:column>
                     <p:column headerText="Country" sortBy="#{customer.country}" filterBy="#{customer.country}">
-                        <span class="flag flag-#{customer.country.code}" style="width: 30px; height: 20px"></span>
+                        <span class="flag flag-#{customer.country.code}" style="width: 30px; height: 20px"/>
                         <h:outputText style="vertical-align: middle; margin-left: .5rem"
                                       value="#{customer.country.name}"/>
                     </p:column>
@@ -61,7 +61,7 @@
                             <h:outputText value="Country"/>
                             <p:column>
                                 <span class="flag flag-#{dtLazyView.selectedCustomer.country.code}"
-                                      style="width: 30px; height: 20px"></span>
+                                      style="width: 30px; height: 20px"/>
                                 <h:outputText style="vertical-align: middle; margin-left: .5rem"
                                               value="#{dtLazyView.selectedCustomer.country.name}"/>
                             </p:column>

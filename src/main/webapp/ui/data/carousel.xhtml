@@ -21,49 +21,13 @@
         <h:form id="form">
 
             <div class="list-demo card">
-                    <h5>Responsive</h5>
-                    <p:carousel value="#{carouselView.products}" var="product" responsive="true">
+                <h5>Responsive</h5>
+                <p:carousel value="#{carouselView.products}" var="product" responsive="true">
 
-                        <div class="product-grid-item card" style="margin-bottom: 0">
-                            <div class="product-grid-item-top">
-                                <div>
-                                    <i class="pi pi-tag product-category-icon"></i>
-                                    <span class="product-category">#{product.category}</span>
-                                </div>
-                                <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
-                            </div>
-                            <div class="product-grid-item-content">
-                                <p:graphicImage name="demo/images/product/#{product.image}"/>
-                                <div class="product-name">#{product.name}</div>
-                                <div class="product-description">#{product.description}</div>
-                                <p:rating readonly="true" value="#{product.rating}"/>
-                            </div>
-                            <div class="product-grid-item-bottom">
-                                <h:outputText value="#{product.price}" styleClass="product-price">
-                                    <f:convertNumber currencySymbol="$" type="currency"/>
-                                </h:outputText>
-                                <p:commandButton update=":form:productDetail" oncomplete="PF('productDialog').show()" value="Add To Cart"
-                                                 icon="pi pi-shopping-cart" disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
-                                    <f:setPropertyActionListener value="#{product}" target="#{carouselView.selectedProduct}" />
-                                </p:commandButton>
-                            </div>
-                        </div>
-
-                        <f:facet name="footer">
-                            In total there are #{fn:length(carouselView.products)} products.
-                        </f:facet>
-                    </p:carousel>
-                </div>
-
-            <div class="list-demo card">
-                <h5>Custom</h5>
-                <p:carousel value="#{carouselView.products}" var="product"
-                            itemStyle="text-align:center" numVisible="1" easing="easeOutBounce"
-                            style="width: 500px;" circular="true">
                     <div class="product-grid-item card" style="margin-bottom: 0">
                         <div class="product-grid-item-top">
                             <div>
-                                <i class="pi pi-tag product-category-icon"></i>
+                                <i class="pi pi-tag product-category-icon"/>
                                 <span class="product-category">#{product.category}</span>
                             </div>
                             <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
@@ -78,9 +42,51 @@
                             <h:outputText value="#{product.price}" styleClass="product-price">
                                 <f:convertNumber currencySymbol="$" type="currency"/>
                             </h:outputText>
-                            <p:commandButton update=":form:productDetail" oncomplete="PF('productDialog').show()" value="Add To Cart"
-                                             icon="pi pi-shopping-cart" disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
-                                <f:setPropertyActionListener value="#{product}" target="#{carouselView.selectedProduct}" />
+                            <p:commandButton update=":form:productDetail" oncomplete="PF('productDialog').show()"
+                                             value="Add To Cart"
+                                             icon="pi pi-shopping-cart"
+                                             disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
+                                <f:setPropertyActionListener value="#{product}"
+                                                             target="#{carouselView.selectedProduct}"/>
+                            </p:commandButton>
+                        </div>
+                    </div>
+
+                    <f:facet name="footer">
+                        In total there are #{fn:length(carouselView.products)} products.
+                    </f:facet>
+                </p:carousel>
+            </div>
+
+            <div class="list-demo card">
+                <h5>Custom</h5>
+                <p:carousel value="#{carouselView.products}" var="product"
+                            itemStyle="text-align:center" numVisible="1" easing="easeOutBounce"
+                            style="width: 500px;" circular="true">
+                    <div class="product-grid-item card" style="margin-bottom: 0">
+                        <div class="product-grid-item-top">
+                            <div>
+                                <i class="pi pi-tag product-category-icon"/>
+                                <span class="product-category">#{product.category}</span>
+                            </div>
+                            <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
+                        </div>
+                        <div class="product-grid-item-content">
+                            <p:graphicImage name="demo/images/product/#{product.image}"/>
+                            <div class="product-name">#{product.name}</div>
+                            <div class="product-description">#{product.description}</div>
+                            <p:rating readonly="true" value="#{product.rating}"/>
+                        </div>
+                        <div class="product-grid-item-bottom">
+                            <h:outputText value="#{product.price}" styleClass="product-price">
+                                <f:convertNumber currencySymbol="$" type="currency"/>
+                            </h:outputText>
+                            <p:commandButton update=":form:productDetail" oncomplete="PF('productDialog').show()"
+                                             value="Add To Cart"
+                                             icon="pi pi-shopping-cart"
+                                             disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
+                                <f:setPropertyActionListener value="#{product}"
+                                                             target="#{carouselView.selectedProduct}"/>
                             </p:commandButton>
                         </div>
                     </div>
@@ -114,32 +120,38 @@
             <p:dialog header="Product Info" widgetVar="productDialog" modal="true" showEffect="fade" hideEffect="fade"
                       resizable="false">
                 <p:outputPanel id="productDetail" style="text-align:center;">
-                    <div class="list-demo">
-                        <div class="product-grid-item card" style="margin-bottom: 0">
-                            <div class="product-grid-item-top">
-                                <div>
-                                    <i class="pi pi-tag product-category-icon"></i>
-                                    <span class="product-category">#{carouselView.selectedProduct.category}</span>
+                    <p:panelGrid rendered="#{not empty carouselView.selectedProduct}">
+                        <div class="list-demo">
+                            <div class="product-grid-item card" style="margin-bottom: 0">
+                                <div class="product-grid-item-top">
+                                    <div>
+                                        <i class="pi pi-tag product-category-icon"/>
+                                        <span class="product-category">#{carouselView.selectedProduct.category}</span>
+                                    </div>
+                                    <span class="product-badge status-#{carouselView.selectedProduct.inventoryStatus.name().toLowerCase()}">#{carouselView.selectedProduct.inventoryStatus.text}</span>
                                 </div>
-                                <span class="product-badge status-#{carouselView.selectedProduct.inventoryStatus.name().toLowerCase()}">#{carouselView.selectedProduct.inventoryStatus.text}</span>
-                            </div>
-                            <div class="product-grid-item-content">
-                                <p:graphicImage name="demo/images/product/#{carouselView.selectedProduct.image}"/>
-                                <div class="product-name">#{carouselView.selectedProduct.name}</div>
-                                <div class="product-description">#{carouselView.selectedProduct.description}</div>
-                                <p:rating readonly="true" value="#{carouselView.selectedProduct.rating}"/>
-                            </div>
-                            <div class="product-grid-item-bottom">
-                                <h:outputText value="#{carouselView.selectedProduct.price}" styleClass="product-price">
-                                    <f:convertNumber currencySymbol="$" type="currency"/>
-                                </h:outputText>
-                                <p:commandButton update=":form:productDetail" oncomplete="PF('productDialog').show()" value="Add To Cart"
-                                                 icon="pi pi-shopping-cart" disabled="#{carouselView.selectedProduct.inventoryStatus == 'OUTOFSTOCK'}">
-                                    <f:setPropertyActionListener value="#{carouselView.selectedProduct}" target="#{carouselView.selectedProduct}" />
-                                </p:commandButton>
+                                <div class="product-grid-item-content">
+                                    <p:graphicImage name="demo/images/product/#{carouselView.selectedProduct.image}"/>
+                                    <div class="product-name">#{carouselView.selectedProduct.name}</div>
+                                    <div class="product-description">#{carouselView.selectedProduct.description}</div>
+                                    <p:rating readonly="true" value="#{carouselView.selectedProduct.rating}"/>
+                                </div>
+                                <div class="product-grid-item-bottom">
+                                    <h:outputText value="#{carouselView.selectedProduct.price}"
+                                                  styleClass="product-price">
+                                        <f:convertNumber currencySymbol="$" type="currency"/>
+                                    </h:outputText>
+                                    <p:commandButton update=":form:productDetail"
+                                                     oncomplete="PF('productDialog').show()" value="Add To Cart"
+                                                     icon="pi pi-shopping-cart"
+                                                     disabled="#{carouselView.selectedProduct.inventoryStatus == 'OUTOFSTOCK'}">
+                                        <f:setPropertyActionListener value="#{carouselView.selectedProduct}"
+                                                                     target="#{carouselView.selectedProduct}"/>
+                                    </p:commandButton>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </p:panelGrid>
                 </p:outputPanel>
             </p:dialog>
 

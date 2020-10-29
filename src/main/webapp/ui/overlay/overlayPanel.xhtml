@@ -93,33 +93,35 @@
                 <p:overlayPanel widgetVar="productOP" showEffect="fade" hideEffect="fade" dismissable="false"
                                 showCloseIcon="true" dynamic="true">
                     <p:outputPanel id="productDetail" style="text-align:center;">
-                        <div class="list-demo">
-                            <div class="product-grid-item card" style="margin-bottom: 0">
-                                <div class="product-grid-item-top">
-                                    <div>
-                                        <i class="pi pi-tag product-category-icon"></i>
-                                        <span class="product-category">#{dtSelectionView.selectedProduct.category}</span>
+                        <p:panelGrid rendered="#{not empty dtSelectionView.selectedProduct}">
+                            <div class="list-demo">
+                                <div class="product-grid-item card" style="margin-bottom: 0">
+                                    <div class="product-grid-item-top">
+                                        <div>
+                                            <i class="pi pi-tag product-category-icon"/>
+                                            <span class="product-category">#{dtSelectionView.selectedProduct.category}</span>
+                                        </div>
+                                        <span class="product-badge status-#{dtSelectionView.selectedProduct.inventoryStatus.name().toLowerCase()}">#{dtSelectionView.selectedProduct.inventoryStatus.text}</span>
                                     </div>
-                                    <span class="product-badge status-#{dtSelectionView.selectedProduct.inventoryStatus.name().toLowerCase()}">#{dtSelectionView.selectedProduct.inventoryStatus.text}</span>
-                                </div>
-                                <div class="product-grid-item-content">
-                                    <p:graphicImage
-                                            name="demo/images/product/#{dtSelectionView.selectedProduct.image}"/>
-                                    <div class="product-name">#{dtSelectionView.selectedProduct.name}</div>
-                                    <div class="product-description">#{dtSelectionView.selectedProduct.description}</div>
-                                    <p:rating readonly="true" value="#{dtSelectionView.selectedProduct.rating}"/>
-                                </div>
-                                <div class="product-grid-item-bottom">
-                                    <h:outputText value="#{dtSelectionView.selectedProduct.price}"
-                                                  styleClass="product-price">
-                                        <f:convertNumber currencySymbol="$" type="currency"/>
-                                    </h:outputText>
-                                    <p:commandButton value="Add To Cart" icon="pi pi-shopping-cart"
-                                                     disabled="#{dtSelectionView.selectedProduct.inventoryStatus == 'OUTOFSTOCK'}">
-                                    </p:commandButton>
+                                    <div class="product-grid-item-content">
+                                        <p:graphicImage
+                                                name="demo/images/product/#{dtSelectionView.selectedProduct.image}"/>
+                                        <div class="product-name">#{dtSelectionView.selectedProduct.name}</div>
+                                        <div class="product-description">#{dtSelectionView.selectedProduct.description}</div>
+                                        <p:rating readonly="true" value="#{dtSelectionView.selectedProduct.rating}"/>
+                                    </div>
+                                    <div class="product-grid-item-bottom">
+                                        <h:outputText value="#{dtSelectionView.selectedProduct.price}"
+                                                      styleClass="product-price">
+                                            <f:convertNumber currencySymbol="$" type="currency"/>
+                                        </h:outputText>
+                                        <p:commandButton value="Add To Cart" icon="pi pi-shopping-cart"
+                                                         disabled="#{dtSelectionView.selectedProduct.inventoryStatus == 'OUTOFSTOCK'}">
+                                        </p:commandButton>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </p:panelGrid>
                     </p:outputPanel>
                 </p:overlayPanel>
 

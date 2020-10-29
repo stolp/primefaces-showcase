@@ -25,7 +25,8 @@
 
                 <br/><br/>
 
-                <p:dataList value="#{dataListView.products3}" var="product" id="productList" type="unordered" itemType="none"
+                <p:dataList value="#{dataListView.products3}" var="product" id="productList" type="unordered"
+                            itemType="none"
                             multiViewState="true" paginator="true" rows="5" pageLinks="5"
                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
                     <div class="product-list-item">
@@ -34,51 +35,61 @@
                             <div class="product-name">#{product.name}</div>
                             <div class="product-description">#{product.description}</div>
                             <p:rating readonly="true" value="#{product.rating}"/>
-                            <i class="pi pi-tag product-category-icon"></i><span
+                            <i class="pi pi-tag product-category-icon"/><span
                                 class="product-category">#{product.category}</span>
                         </div>
                         <div class="product-list-action">
                             <h:outputText value="#{product.price}" styleClass="product-price">
                                 <f:convertNumber currencySymbol="$" type="currency"/>
                             </h:outputText>
-                            <p:commandButton update=":form:productDetail" oncomplete="PF('productDialog').show()" value="Add To Cart"
-                                             icon="pi pi-shopping-cart" disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
-                                <f:setPropertyActionListener value="#{product}" target="#{dataListView.selectedProduct}" />
+                            <p:commandButton update=":form:productDetail" oncomplete="PF('productDialog').show()"
+                                             value="Add To Cart"
+                                             icon="pi pi-shopping-cart"
+                                             disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
+                                <f:setPropertyActionListener value="#{product}"
+                                                             target="#{dataListView.selectedProduct}"/>
                             </p:commandButton>
                             <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
                         </div>
                     </div>
                 </p:dataList>
 
-                <p:dialog header="Product Info" widgetVar="productDialog" modal="true" showEffect="blind" hideEffect="explode"
-                          resizable="false">
+                <p:dialog header="Product Info" widgetVar="productDialog" modal="true" showEffect="blind"
+                          hideEffect="explode" resizable="false">
                     <p:outputPanel id="productDetail" style="text-align:center;">
-                        <div class="list-demo">
-                            <div class="product-grid-item card" style="margin-bottom: 0">
-                                <div class="product-grid-item-top">
-                                    <div>
-                                        <i class="pi pi-tag product-category-icon"></i>
-                                        <span class="product-category">#{dataListView.selectedProduct.category}</span>
+                        <p:panelGrid rendered="#{not empty dataListView.selectedProduct}">
+                            <div class="list-demo">
+                                <div class="product-grid-item card" style="margin-bottom: 0">
+                                    <div class="product-grid-item-top">
+                                        <div>
+                                            <i class="pi pi-tag product-category-icon"/>
+                                            <span class="product-category">#{dataListView.selectedProduct.category}</span>
+                                        </div>
+                                        <span class="product-badge status-#{dataListView.selectedProduct.inventoryStatus.name().toLowerCase()}">#{dataListView.selectedProduct.inventoryStatus.text}</span>
                                     </div>
-                                    <span class="product-badge status-#{dataListView.selectedProduct.inventoryStatus.name().toLowerCase()}">#{dataListView.selectedProduct.inventoryStatus.text}</span>
-                                </div>
-                                <div class="product-grid-item-content">
-                                    <p:graphicImage name="demo/images/product/#{dataListView.selectedProduct.image}"/>
-                                    <div class="product-name">#{dataListView.selectedProduct.name}</div>
-                                    <div class="product-description">#{dataListView.selectedProduct.description}</div>
-                                    <p:rating readonly="true" value="#{dataListView.selectedProduct.rating}"/>
-                                </div>
-                                <div class="product-grid-item-bottom">
-                                    <h:outputText value="#{dataListView.selectedProduct.price}" styleClass="product-price">
-                                        <f:convertNumber currencySymbol="$" type="currency"/>
-                                    </h:outputText>
-                                    <p:commandButton update=":form:productDetail" oncomplete="PF('productDialog').show()" value="Add To Cart"
-                                                     icon="pi pi-shopping-cart" disabled="#{dataListView.selectedProduct.inventoryStatus == 'OUTOFSTOCK'}">
-                                        <f:setPropertyActionListener value="#{dataListView.selectedProduct}" target="#{dataListView.selectedProduct}" />
-                                    </p:commandButton>
+                                    <div class="product-grid-item-content">
+                                        <p:graphicImage
+                                                name="demo/images/product/#{dataListView.selectedProduct.image}"/>
+                                        <div class="product-name">#{dataListView.selectedProduct.name}</div>
+                                        <div class="product-description">#{dataListView.selectedProduct.description}</div>
+                                        <p:rating readonly="true" value="#{dataListView.selectedProduct.rating}"/>
+                                    </div>
+                                    <div class="product-grid-item-bottom">
+                                        <h:outputText value="#{dataListView.selectedProduct.price}"
+                                                      styleClass="product-price">
+                                            <f:convertNumber currencySymbol="$" type="currency"/>
+                                        </h:outputText>
+                                        <p:commandButton update=":form:productDetail"
+                                                         oncomplete="PF('productDialog').show()" value="Add To Cart"
+                                                         icon="pi pi-shopping-cart"
+                                                         disabled="#{dataListView.selectedProduct.inventoryStatus == 'OUTOFSTOCK'}">
+                                            <f:setPropertyActionListener value="#{dataListView.selectedProduct}"
+                                                                         target="#{dataListView.selectedProduct}"/>
+                                        </p:commandButton>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </p:panelGrid>
                     </p:outputPanel>
                 </p:dialog>
             </h:form>

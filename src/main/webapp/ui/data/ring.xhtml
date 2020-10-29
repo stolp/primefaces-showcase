@@ -55,12 +55,13 @@
 
             <div class="card">
                 <h5>Images with Custom Easing</h5>
-                <p:ring id="custom" value="#{ringView.products}" var="product" styleClass="image-ring" easing="easeInOutBack">
+                <p:ring id="custom" value="#{ringView.products}" var="product" styleClass="image-ring"
+                        easing="easeInOutBack">
                     <p:graphicImage id="img" name="/demo/images/product/#{product.image}"/>
                 </p:ring>
 
-                <p:dialog header="Product Info" widgetVar="productDialog" modal="true" showEffect="fade" hideEffect="fade"
-                          resizable="false">
+                <p:dialog header="Product Info" widgetVar="productDialog" modal="true" showEffect="fade"
+                          hideEffect="fade" resizable="false">
                     <p:outputPanel id="productDetail" style="text-align:center;" layout="block">
                         <p:panelGrid columns="2" rendered="#{not empty ringView.selectedProduct}" columnClasses="value">
                             <f:facet name="header">

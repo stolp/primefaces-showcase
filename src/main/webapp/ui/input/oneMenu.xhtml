@@ -72,7 +72,7 @@
                                        itemLabel="#{country.name}" itemValue="#{country}"/>
 
                         <p:column style="width:10%">
-                            <span class="flag flag-#{c.code}" style="width: 30px; height: 20px"></span>
+                            <span class="flag flag-#{c.code}" style="width: 30px; height: 20px"/>
                         </p:column>
 
                         <p:column>
@@ -84,7 +84,8 @@
 
                         <f:facet name="footer">
                             <p:separator/>
-                            <h:outputText value="#{selectOneMenuView.countries.size()} countries" style="font-weight:bold;"/>
+                            <h:outputText value="#{selectOneMenuView.countries.size()} countries"
+                                          style="font-weight:bold;"/>
                         </f:facet>
                     </p:selectOneMenu>
 

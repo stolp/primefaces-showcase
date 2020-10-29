@@ -39,7 +39,8 @@
                     </p:selectCheckboxMenu>
 
                     <h:outputLabel for="grouped" value="Grouped:"/>
-                    <p:selectCheckboxMenu id="grouped" value="#{checkboxView.selectedCountries}" label="Countries" multiple="true"
+                    <p:selectCheckboxMenu id="grouped" value="#{checkboxView.selectedCountries}" label="Countries"
+                                          multiple="true"
                                           filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
                         <f:selectItems value="#{checkboxView.countries}"/>
                     </p:selectCheckboxMenu>

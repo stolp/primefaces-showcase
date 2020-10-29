@@ -44,7 +44,8 @@
                                 action="#{dtContextMenuView.deleteProduct}"/>
                 </p:contextMenu>
 
-                <p:dialog header="Product Info" widgetVar="productDialog" modal="true" showEffect="fade" hideEffect="fade"
+                <p:dialog header="Product Info" widgetVar="productDialog" modal="true" showEffect="fade"
+                          hideEffect="fade"
                           resizable="false">
                     <p:outputPanel id="productDetail" style="text-align:center;">
                         <p:panelGrid columns="2" rendered="#{not empty dtContextMenuView.selectedProduct}"

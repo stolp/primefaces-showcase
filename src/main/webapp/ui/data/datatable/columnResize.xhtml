@@ -22,7 +22,8 @@
 
             <div class="card">
                 <h5 style="margin-top:0">Basic Resize</h5>
-                <p:dataTable id="products1" var="product" value="#{dtResizableColumnsView.products1}" resizableColumns="true"
+                <p:dataTable id="products1" var="product" value="#{dtResizableColumnsView.products1}"
+                             resizableColumns="true"
                              style="margin-bottom:20px">
                     <f:facet name="header">
                         Basic Resize
@@ -44,7 +45,8 @@
 
             <div class="card">
                 <h5>Live Resize with Callback</h5>
-                <p:dataTable id="products2" var="product" value="#{dtResizableColumnsView.products2}" resizableColumns="true"
+                <p:dataTable id="products2" var="product" value="#{dtResizableColumnsView.products2}"
+                             resizableColumns="true"
                              liveResize="true" style="margin-bottom:20px">
                     <p:ajax event="colResize" update=":form:msgs" listener="#{dtResizableColumnsView.onResize}"/>
                     <f:facet name="header">

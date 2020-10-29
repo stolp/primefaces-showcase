@@ -56,8 +56,9 @@
                              paginator="true" rows="10" paginatorPosition="bottom" rowSelectMode="add">
                     <f:facet name="header">
                         <p:outputPanel>
-                            <h:outputText style="float: left" value="List Of Customers" />
-                            <p:inputText id="globalFilter" onkeyup="PF('customersDT').filter()" style="width:150px" placeholder="Global Search"/>
+                            <h:outputText style="float: left" value="List Of Customers"/>
+                            <p:inputText id="globalFilter" onkeyup="PF('customersDT').filter()" style="width:150px"
+                                         placeholder="Global Search"/>
                         </p:outputPanel>
                     </f:facet>
                     <p:column headerText="Name" sortBy="#{customer.name}" filterBy="#{customer.name}">
@@ -65,7 +66,7 @@
                     </p:column>
                     <p:column headerText="Country" sortBy="#{customer.country.name}"
                               filterBy="#{customer.country.name}">
-                        <span class="flag flag-#{customer.country.code}" style="width: 30px; height: 20px"></span>
+                        <span class="flag flag-#{customer.country.code}" style="width: 30px; height: 20px"/>
                         <h:outputText style="vertical-align: middle; margin-left: .5rem"
                                       value="#{customer.country.name}"/>
                     </p:column>

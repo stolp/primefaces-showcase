@@ -5,14 +5,6 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="./template.xhtml">
 
-    <ui:define name="head">
-        <style type="text/css">
-            .value {
-                font-weight: bold;
-            }
-        </style>
-    </ui:define>
-
     <ui:define name="title">
         DataTable - <span class="subitem">RowExpansion</span>
     </ui:define>
@@ -66,14 +58,15 @@
                                     <div class="product-name">#{product.name}</div>
                                     <div class="product-description">#{product.description}</div>
                                     <p:rating readonly="true" value="#{product.rating}"/>
-                                    <i class="pi pi-tag product-category-icon"></i><span
+                                    <i class="pi pi-tag product-category-icon"/><span
                                         class="product-category">#{product.category}</span>
                                 </div>
                                 <div class="product-list-action">
                                     <h:outputText value="#{product.price}" styleClass="product-price">
                                         <f:convertNumber currencySymbol="$" type="currency"/>
                                     </h:outputText>
-                                    <p:commandButton value="Add To Cart" icon="pi pi-shopping-cart" disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
+                                    <p:commandButton value="Add To Cart" icon="pi pi-shopping-cart"
+                                                     disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
                                     </p:commandButton>
                                     <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
                                 </div>

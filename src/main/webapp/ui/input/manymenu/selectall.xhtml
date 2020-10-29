@@ -77,7 +77,7 @@
                                        itemValue="#{country}"/>
 
                         <p:column>
-                            <span class="flag flag-#{c.code}" style="width: 30px; height: 20px"></span>
+                            <span class="flag flag-#{c.code}" style="width: 30px; height: 20px"/>
                         </p:column>
 
                         <p:column>
@@ -98,7 +98,7 @@
                                        itemValue="#{country}"/>
 
                         <p:column>
-                            <span class="flag flag-#{c.code}" style="width: 30px; height: 20px"></span>
+                            <span class="flag flag-#{c.code}" style="width: 30px; height: 20px"/>
                         </p:column>
 
                         <p:column>
@@ -117,7 +117,7 @@
 
                 <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="pi pi-check"/>
 
-                <p:dialog header="Selected Values" modal="true" showEffect="fade" widgetVar="dlg" resizable="false" >
+                <p:dialog header="Selected Values" modal="true" showEffect="fade" widgetVar="dlg" resizable="false">
                     <p:panelGrid columns="2" id="display" columnClasses="label,output">
                         <h:outputText value="Basic:"/>
                         <p:dataList value="#{selectManyView.selectedOptions}" var="option">

@@ -56,7 +56,8 @@
                             <f:facet name="output"><h:outputText value="#{product.inventoryStatus}"/></f:facet>
                             <f:facet name="input">
                                 <h:selectOneMenu value="#{product.inventoryStatus}" style="width:100%">
-                                    <f:selectItems value="#{dtEditView.inventoryStatusList}" var="status" itemLabel="#{status.text}" itemValue="#{status}" />
+                                    <f:selectItems value="#{dtEditView.inventoryStatusList}" var="status"
+                                                   itemLabel="#{status.text}" itemValue="#{status}"/>
                                 </h:selectOneMenu>
                             </f:facet>
                         </p:cellEditor>
@@ -104,7 +105,8 @@
                             <f:facet name="output"><h:outputText value="#{product.inventoryStatus}"/></f:facet>
                             <f:facet name="input">
                                 <h:selectOneMenu value="#{product.inventoryStatus}" style="width:100%">
-                                    <f:selectItems value="#{dtEditView.inventoryStatusList}" var="status" itemLabel="#{status.text}" itemValue="#{status}" />
+                                    <f:selectItems value="#{dtEditView.inventoryStatusList}" var="status"
+                                                   itemLabel="#{status.text}" itemValue="#{status}"/>
                                 </h:selectOneMenu>
                             </f:facet>
                         </p:cellEditor>
