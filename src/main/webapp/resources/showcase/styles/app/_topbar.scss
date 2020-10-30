@@ -100,9 +100,17 @@
             }
 
             &.topbar-submenu {
+
+                &.active-menuitem {
+                    > ul {
+                        display: block;
+                    }
+                }
+
                 position: relative;
 
                 > ul {
+                    display: none;
                     position: absolute;
                     transform-origin: top;
                     top: 70px;

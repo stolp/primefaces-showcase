@@ -48,7 +48,7 @@ PrimeFaces.widget.Showcase = PrimeFaces.widget.BaseWidget.extend({
             }
             
             if (!$this.topbarItemClicked) {
-                $this.topbarItems.siblings('.active-topmenuitem').removeClass('active-topmenuitem');
+                $this.topbarItems.siblings('.active-menuitem ').removeClass('active-menuitem ');
             }
             
             $this.sidebarClick = false;
@@ -113,8 +113,8 @@ PrimeFaces.widget.Showcase = PrimeFaces.widget.BaseWidget.extend({
             item = link.parent(),
             submenu = item.children('ul');
 
-            $this.topbarItems.siblings('.active-topmenuitem').removeClass('active-topmenuitem');
-            item.addClass('active-topmenuitem');
+            $this.topbarItems.siblings('.active-menuitem ').removeClass('active-menuitem ');
+            item.addClass('active-menuitem ');
 
             $this.topbarItemClicked = true;
             
