@@ -40,20 +40,22 @@ public class DatePickerMetadataView implements Serializable {
 
     public DatePickerMetadataView() {
         LocalDate start = LocalDate.now().withDayOfMonth(1);
-        DefaultDateMetadata metaDataDisabled = DefaultDateMetadata.builder().disabled(true).build();
+        DefaultDateMetadata metadataDisabled = DefaultDateMetadata.builder().disabled(true).build();
+        DefaultDateMetadata metadataStart = DefaultDateMetadata.builder().styleClass("start").build();
+        DefaultDateMetadata metadataDeadline = DefaultDateMetadata.builder().styleClass("deadline").build();
         model = new DefaultDateMetadataModel();
-        model.add(start.minusMonths(1), metaDataDisabled);
-        model.add(start.plusDays(start.getMonthValue() + 3), metaDataDisabled);
-        model.add(start.plusDays(start.getMonthValue() + 6), metaDataDisabled);
-        model.add(start.plusDays(start.getMonthValue() + 9), metaDataDisabled);
-        model.add(start.plusMonths(1), metaDataDisabled);
+        model.add(start.minusMonths(1), metadataDisabled);
+        model.add(start.plusDays(start.getMonthValue() + 3), metadataStart);
+        model.add(start.plusDays(start.getMonthValue() + 6), metadataDisabled);
+        model.add(start.plusDays(start.getMonthValue() + 9), metadataDeadline);
+        model.add(start.plusMonths(1), metadataDisabled);
 
         modelLazy = new LazyDateMetadataModel() {
             @Override
             public void loadDateMetadata(LocalDate start, LocalDate end) {
-                add(start.plusDays(start.getMonthValue() + 2), metaDataDisabled);
-                add(start.plusDays(start.getMonthValue() + 5), metaDataDisabled);
-                add(start.plusDays(start.getMonthValue() + 8), metaDataDisabled);
+                add(start.plusDays(start.getMonthValue() + 2), metadataStart);
+                add(start.plusDays(start.getMonthValue() + 5), metadataDisabled);
+                add(start.plusDays(start.getMonthValue() + 8), metadataDeadline);
             }
         };
     }
