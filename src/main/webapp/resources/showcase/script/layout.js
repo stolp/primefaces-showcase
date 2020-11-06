@@ -11,13 +11,15 @@ PrimeFaces.widget.Showcase = PrimeFaces.widget.BaseWidget.extend({
 
         this.sidebar = this.wrapper.children('.layout-sidebar');
         this.sidebarButton = this.topbar.find('.menu-button');
-        this.menu = this.sidebar.find('.layout-menu');
+        this.menu = this.sidebar.children('.layout-menu');
+        this.menuCategories = this.menu.find('.menu-category');
+        this.submenuItems = this.menu.find('.menu-items');
         this.menulinks = this.menu.find('a');
 
+        this.searchInput = this.sidebar.find('.search-input > input');
         this.expandedMenuitems = this.expandedMenuitems||[];
 
         this.restoreMenuState();
-
         this.bindEvents();
     },
 
@@ -76,32 +78,72 @@ PrimeFaces.widget.Showcase = PrimeFaces.widget.BaseWidget.extend({
             
             e.preventDefault();
         });
-        
+
         this.menulinks.off('click.sidebar').on('click.sidebar', function(e) {
             var link = $(this),
-            item = link.parent(),
-            submenu = item.children('ul');
-            
-            if (item.hasClass('active-menuitem')) {
-                $this.removeMenuitem(item.attr('id'));
-                item.removeClass('active-menuitem');
-                
-                if(submenu.length) {
-                    submenu.slideUp(function() {
-                        item.removeClass('active-menuitem');
-                    });
-                }
-            }
-            else {
-                $this.addMenuitem(item.attr('id'));
-                $this.deactivateItems(item.siblings(), true);
-                $this.activate(item);
-                $this.saveScrollPosition();
-            }
-                                                
+            submenu = link.next('.p-toggleable-content');
+
             if(submenu.length) {
+                submenu.slideToggle('fast');
                 e.preventDefault();
             }
+
+            $this.saveScrollPosition();
+
+        });
+
+        this.searchInput.on('keyup', function(e) {
+            var input = $(this),
+                searchedValue = input.val().toLowerCase();
+
+            for(var i = 0; i < $this.submenuItems.length; i++) {
+
+                var submenuItem = $this.submenuItems.eq(i),
+                    submenuCategory = $this.menuCategories.eq(i),
+                    submenuLinks = submenuItem.find('a'),
+                    matchSub = false;
+
+                submenuCategory.hide();
+
+                for(var j = 0; j < submenuLinks.length; j++) {
+                    var submenuLinkVal = submenuLinks.eq(j).data('meta').toLowerCase().trim();
+                    if(submenuLinkVal.search(searchedValue) >= 0) {
+                        submenuCategory.show();
+                        submenuItem.show();
+                        submenuLinks.eq(j).show();
+                        if (submenuLinks.eq(j).parents().hasClass('p-toggleable-content')) {
+                            submenuLinks.eq(j).parents('.p-toggleable-content').prev().show();
+                        }
+                        matchSub = true;
+                    } else {
+                        submenuLinks.eq(j).hide();
+                        if (submenuLinks.eq(j).parents().hasClass('p-toggleable-content')) {
+                            submenuLinks.eq(j).parents('.p-toggleable-content').hide();
+                        }
+                    }
+                }
+
+                if (!matchSub) {
+                    submenuItem.hide();
+                }
+            }
+
+            if (searchedValue.length === 0) {
+                $this.submenuItems.find('.p-toggleable-content').hide();
+            } else {
+                for(var a = 0; a < $this.submenuItems.length; a++) {
+                    var showItem = $this.submenuItems.eq(a),
+                        showLinks = showItem.find('a');
+
+                    for(var b = 0; b < showLinks.length; b++) {
+                        var linkItem = showLinks.eq(b);
+                        if(linkItem.css('display') !== 'none' && linkItem.parents().hasClass('p-toggleable-content')){
+                            linkItem.parents('.p-toggleable-content').show();
+                        }
+                    }
+                }
+            }
+
         });
     },
     
@@ -148,7 +190,7 @@ PrimeFaces.widget.Showcase = PrimeFaces.widget.BaseWidget.extend({
         for(var i = 0; i < items.length; i++) {
             var item = items.eq(i),
             submenu = item.children('ul');
-            
+
             if(submenu.length) {
                 if(item.hasClass('active-menuitem')) {
                     var activeSubItems = item.find('.active-menuitem');

@@ -1,17 +1,17 @@
 /**
- *  Copyright 2009-2020 PrimeTek.
- *
- *  Licensed under PrimeFaces Commercial License, Version 1.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *  Licensed under PrimeFaces Commercial License, Version 1.0 (the "License");
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
+ * Copyright 2009-2020 PrimeTek.
+ * <p>
+ * Licensed under PrimeFaces Commercial License, Version 1.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * <p>
+ * Licensed under PrimeFaces Commercial License, Version 1.0 (the "License");
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package org.primefaces.showcase.component.menu;
 
@@ -25,6 +25,7 @@ import javax.faces.FacesException;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
+
 import org.primefaces.component.api.AjaxSource;
 import org.primefaces.component.api.UIOutcomeTarget;
 import org.primefaces.component.menu.AbstractMenu;
@@ -49,8 +50,7 @@ public class ShowcaseMenuRenderer extends BaseMenuRenderer {
         String styleClass = menu.getStyleClass();
         styleClass = (styleClass == null) ? "layout-menu" : "layout-menu " + styleClass;
 
-        writer.startElement("ul", menu);
-        writer.writeAttribute("id", menu.getClientId(context), "id");
+        writer.startElement("div", menu);
         writer.writeAttribute("class", styleClass, "styleClass");
         if (style != null) {
             writer.writeAttribute("style", style, "style");
@@ -61,14 +61,12 @@ public class ShowcaseMenuRenderer extends BaseMenuRenderer {
             encodeElements(context, menu, menu.getElements(), false);
         }
 
-        writer.endElement("ul");
+        writer.endElement("div");
     }
 
     protected void encodeElements(FacesContext context, AbstractMenu menu, List<MenuElement> elements, boolean isNestedSubmenu) throws IOException {
-        int size = elements.size();
-
-        for (int i = 0; i < size; i++) {
-            encodeElement(context, menu, elements.get(i), isNestedSubmenu);
+        for (MenuElement element : elements) {
+            encodeElement(context, menu, element, isNestedSubmenu);
         }
     }
 
@@ -78,128 +76,106 @@ public class ShowcaseMenuRenderer extends BaseMenuRenderer {
         if (element.isRendered()) {
             if (element instanceof MenuItem) {
                 MenuItem menuItem = (MenuItem) element;
-                String menuItemClientId = (menuItem instanceof UIComponent) ? menuItem.getClientId() : menu.getClientId(context) + "_" + menuItem.getClientId();
-                String containerStyle = menuItem.getContainerStyle();
-                String containerStyleClass = menuItem.getContainerStyleClass();
-
-                writer.startElement("li", null);
-                writer.writeAttribute("id", menuItemClientId, null);
-                writer.writeAttribute("role", "presentation", null);
-
-                if (containerStyle != null) {
-                    writer.writeAttribute("style", containerStyle, null);
-                }
-                if (containerStyleClass != null) {
-                    writer.writeAttribute("class", containerStyleClass, null);
-                }
-
                 encodeMenuItem(context, menu, menuItem, isNestedSubmenu);
 
-                writer.endElement("li");
             } else if (element instanceof Submenu) {
-                Submenu submenu = (Submenu) element;
-                String submenuClientId = (submenu instanceof UIComponent) ? ((UIComponent) submenu).getClientId() : menu.getClientId(context) + "_" + submenu.getId();
-                String style = submenu.getStyle();
-                String styleClass = submenu.getStyleClass();
-                boolean expanded = submenu.isExpanded();
-                styleClass = expanded ? "active-menuitem" + (styleClass != null ? " " + styleClass : "") : styleClass;
+                if (isNestedSubmenu) {
+                    Submenu submenu = (Submenu) element;
+                    String style = submenu.getStyle();
 
-                writer.startElement("li", null);
-                writer.writeAttribute("id", submenuClientId, null);
-                writer.writeAttribute("role", "presentation", null);
+                    writer.startElement("a", null);
+                    writer.writeAttribute("role", "menuitem", null);
+                    writer.writeAttribute("class", "p-link", null);
+                    writer.writeAttribute("data-meta", submenu.getLabel(), null);
+                    writer.writeText(submenu.getLabel(), null);
+                    writer.endElement("a");
 
-                if (style != null) {
-                    writer.writeAttribute("style", style, null);
+                    writer.startElement("div", null);
+                    writer.writeAttribute("class", "p-toggleable-content", null);
+                    if (style != null) {
+                        writer.writeAttribute("style", style, null);
+                    }
+                    writer.startElement("ul", null);
+                    writer.writeAttribute("role", "menu", null);
+
+                    for (Object e : submenu.getElements()) {
+                        encodeNestedMenuItem(context, menu,(MenuItem) e, isNestedSubmenu);
+                    }
+
+                    writer.endElement("ul");
+                    writer.endElement("div");
+
+                } else {
+                    Submenu submenu = (Submenu) element;
+
+                    encodeSubmenu(context, menu, submenu, isNestedSubmenu);
                 }
-                if (styleClass != null) {
-                    writer.writeAttribute("class", styleClass, null);
-                }
-
-                encodeSubmenu(context, menu, submenu, isNestedSubmenu);
-
-                writer.endElement("li");
             }
         }
+    }
+
+    protected void encodeNestedMenuItem(FacesContext context, AbstractMenu menu, MenuItem menuItem, boolean isNestedSubmenu) throws IOException {
+        ResponseWriter writer = context.getResponseWriter();
+        Object label = menuItem.getValue();
+        String title = menuItem.getTitle() != null ? menuItem.getTitle()  + " " + label : label.toString();
+        String targetURL = getTargetURL(context, (UIOutcomeTarget) menuItem);
+
+        writer.startElement("li", null);
+        writer.writeAttribute("role", "menuitem", null);
+        writer.startElement("a", null);
+        writer.writeAttribute("role", "menuitem", null);
+        writer.writeAttribute("href", targetURL, null);
+        writer.writeAttribute("data-meta", title, null);
+        writer.writeText(label, null);
+        writer.endElement("a");
+        writer.endElement("li");
     }
 
     protected void encodeSubmenu(FacesContext context, AbstractMenu menu, Submenu submenu, boolean isNestedSubmenu) throws IOException {
         ResponseWriter writer = context.getResponseWriter();
-        String icon = submenu.getIcon();
         String label = submenu.getLabel();
         int childrenElementsCount = submenu.getElementsCount();
         boolean expanded = submenu.isExpanded();
-        
+
         if (isNestedSubmenu) {
             writer.startElement("a", null);
             writer.writeAttribute("href", "#", null);
             writer.writeAttribute("role", "menuitem", null);
+            writer.writeAttribute("data-meta", label, null);
             writer.writeText(label, null);
             writer.endElement("a");
-        }
-        else {
-            writer.startElement("span", null);
-            writer.writeAttribute("class", "layout-menu-header", null);
-            writer.writeAttribute("role", "menuitem", null);
-
-            encodeItemIcon(context, icon);
+        } else {
+            writer.startElement("div", null);
+            writer.writeAttribute("class", "menu-category", null);
 
             if (label != null) {
-                writer.startElement("span", null);
                 writer.writeText(label, null);
-                writer.endElement("span");
-
-                if (submenu instanceof UISubmenu) {
-                    encodeBadge(context, ((UISubmenu) submenu).getAttributes().get("badge"));
-                }
             }
 
-            writer.endElement("span");
+            writer.endElement("div");
         }
 
         //submenus and menuitems
         if (childrenElementsCount > 0) {
-            writer.startElement("ul", null);
-            writer.writeAttribute("role", "menu", null);
+
+            writer.startElement("div", null);
+            writer.writeAttribute("class", "menu-items", null);
             if (expanded) {
                 writer.writeAttribute("style", "display:block", null);
             }
             encodeElements(context, menu, submenu.getElements(), true);
-            writer.endElement("ul");
-        }
-    }
-
-    protected void encodeItemIcon(FacesContext context, String icon) throws IOException {
-        if (icon != null) {
-            ResponseWriter writer = context.getResponseWriter();
-
-            writer.startElement("i", null);
-            writer.writeAttribute("class", icon, null);
-            writer.endElement("i");
-        }
-    }
-
-    protected void encodeBadge(FacesContext context, Object value) throws IOException {
-        if (value != null) {
-            ResponseWriter writer = context.getResponseWriter();
-
-            writer.startElement("span", null);
-            writer.writeAttribute("class", "menuitem-badge", null);
-            writer.writeText(value.toString(), null);
-            writer.endElement("span");
+            writer.endElement("div");
         }
     }
 
     protected void encodeMenuItem(FacesContext context, AbstractMenu menu, MenuItem menuitem, boolean isNestedSubmenu) throws IOException {
         ResponseWriter writer = context.getResponseWriter();
-        String title = menuitem.getTitle();
         boolean disabled = menuitem.isDisabled();
         String style = menuitem.getStyle();
         String styleClass = menuitem.getStyleClass();
 
         writer.startElement("a", null);
-        if (title != null) {
-            writer.writeAttribute("title", title, null);
-        }
+        writer.writeAttribute("role", "menuitem", null);
         if (style != null) {
             writer.writeAttribute("style", style, null);
         }
@@ -262,18 +238,12 @@ public class ShowcaseMenuRenderer extends BaseMenuRenderer {
     @Override
     protected void encodeMenuItemContent(FacesContext context, AbstractMenu menu, MenuItem menuitem) throws IOException {
         ResponseWriter writer = context.getResponseWriter();
-        String icon = menuitem.getIcon();
         Object value = menuitem.getValue();
-
-        if (menuitem instanceof UIMenuItem) {
-            encodeBadge(context, ((UIMenuItem) menuitem).getAttributes().get("badge"));
-        }
-        encodeItemIcon(context, icon);
+        String title = menuitem.getTitle() != null ? menuitem.getTitle()  + " " + value : value.toString();
 
         if (value != null) {
-            writer.startElement("span", null);
+            writer.writeAttribute("data-meta", title, null);
             writer.writeText(value, "value");
-            writer.endElement("span");
         }
     }
 
@@ -321,7 +291,7 @@ public class ShowcaseMenuRenderer extends BaseMenuRenderer {
     }
 
     protected String createAjaxRequest(FacesContext context, AbstractMenu menu, AjaxSource source, UIComponent form,
-            Map<String, List<String>> params) {
+                                       Map<String, List<String>> params) {
 
         String clientId = menu.getClientId(context);
 

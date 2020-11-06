@@ -6,448 +6,448 @@
                 xmlns:sc="http://primefaces.org/ui/showcase">
 
     <div class="layout-sidebar" role="navigation">
-        <div class="layout-sidebar-search-wrapper">
-            <i class="pi pi-search icon-search"></i>
-            <input type="text" placeholder="Search..." aria-label="Search input" autocomplete="off"></input>
+        <div class="search-input">
+            <i class="pi pi-search icon-search"/>
+            <input type="text" placeholder="Search..." aria-label="Search input"/>
         </div>
 
-        <h:form id="menuform">
-            <sc:menu>
-                <p:submenu id="sc_ajaxcore" label="AjaxCore" icon="pi pi-bookmark">
-                    <p:menuitem id="sc_listener" value="Listener" outcome="/ui/ajax/listener"/>
-                    <p:menuitem id="sc_partialsubmit" value="PartialSubmit" outcome="/ui/ajax/partialSubmit"/>
-                    <p:menuitem id="sc_counter" value="Counter" outcome="/ui/ajax/counter"/>
-                    <p:menuitem id="sc_process" value="Process" outcome="/ui/ajax/process"/>
-                    <p:menuitem id="sc_validation" value="Validation" outcome="/ui/ajax/validation"/>
-                    <p:menuitem id="sc_remotecommand" value="RemoteCommand" outcome="/ui/ajax/remoteCommand"/>
-                    <p:menuitem id="sc_dropdown" value="Dropdown" outcome="/ui/ajax/dropdown"/>
-                    <p:menuitem id="sc_basic" value="Basic" outcome="/ui/ajax/basic"/>
-                    <p:menuitem id="sc_event" value="Event" outcome="/ui/ajax/event"/>
-                    <p:menuitem id="sc_selector" value="Selector" outcome="/ui/ajax/selector"/>
-                    <p:menuitem id="sc_search" value="Search" outcome="/ui/ajax/search"/>
-                    <p:menuitem id="sc_poll" value="Poll" outcome="/ui/ajax/poll"/>
-                    <p:menuitem id="sc_fragment" value="Fragment" outcome="/ui/ajax/fragment"/>
-                    <p:menuitem id="sc_status" value="Status" outcome="/ui/ajax/status"/>
+        <sc:menu>
+            <p:submenu id="sc_ajaxcore" label="AjaxCore" icon="pi pi-bookmark">
+                <p:menuitem id="sc_listener" value="Listener" outcome="/ui/ajax/listener"/>
+                <p:menuitem id="sc_partialsubmit" value="PartialSubmit" outcome="/ui/ajax/partialSubmit"/>
+                <p:menuitem id="sc_counter" value="Counter" outcome="/ui/ajax/counter"/>
+                <p:menuitem id="sc_process" value="Process" outcome="/ui/ajax/process"/>
+                <p:menuitem id="sc_validation" value="Validation" outcome="/ui/ajax/validation"/>
+                <p:menuitem id="sc_remotecommand" value="RemoteCommand" outcome="/ui/ajax/remoteCommand"/>
+                <p:menuitem id="sc_dropdown" value="Dropdown" outcome="/ui/ajax/dropdown"/>
+                <p:menuitem id="sc_basic" value="Basic" outcome="/ui/ajax/basic"/>
+                <p:menuitem id="sc_event" value="Event" outcome="/ui/ajax/event"/>
+                <p:menuitem id="sc_selector" value="Selector" outcome="/ui/ajax/selector"/>
+                <p:menuitem id="sc_search" value="Search" outcome="/ui/ajax/search"/>
+                <p:menuitem id="sc_poll" value="Poll" outcome="/ui/ajax/poll"/>
+                <p:menuitem id="sc_fragment" value="Fragment" outcome="/ui/ajax/fragment"/>
+                <p:menuitem id="sc_status" value="Status" outcome="/ui/ajax/status"/>
+            </p:submenu>
+            <p:submenu id="sc_form" label="Form" icon="pi pi-id-card">
+                <p:menuitem id="sc_autocomplete" value="AutoComplete" outcome="/ui/input/autoComplete"/>
+                <p:menuitem id="sc_inputtextarea" value="InputTextArea" outcome="/ui/input/inputTextarea"/>
+                <p:menuitem id="sc_selectbooleanbutton" value="SelectBooleanButton" outcome="/ui/input/booleanButton"/>
+                <p:menuitem id="sc_selectbooleancheckbox" value="SelectBooleanCheckbox"
+                            outcome="/ui/input/booleanCheckbox"/>
+                <p:menuitem id="sc_selectonebutton" value="SelectOneButton" outcome="/ui/input/oneButton"/>
+                <p:menuitem id="sc_selectoneradio" value="SelectOneRadio" outcome="/ui/input/oneRadio"/>
+                <p:menuitem id="sc_selectcheckboxmenu" value="SelectCheckboxMenu" title="multiselect"
+                            outcome="/ui/input/checkboxMenu"/>
+                <p:menuitem id="sc_selectonemenu" value="SelectOneMenu" title="dropdown"
+                            outcome="/ui/input/oneMenu"/>
+                <p:menuitem id="sc_tristatecheckbox" value="TriStateCheckbox" outcome="/ui/input/triStateCheckbox"/>
+                <p:menuitem id="sc_inputgroup" value="InputGroup" outcome="/ui/input/inputGroup"/>
+                <p:menuitem id="sc_formlayout" value="FormLayout" outcome="/ui/input/formLayout"/>
+                <p:menuitem id="sc_inputnumber" value="InputNumber" outcome="/ui/input/inputNumber"/>
+                <p:menuitem id="sc_inputmask" value="InputMask" outcome="/ui/input/inputMask"/>
+                <p:menuitem id="sc_listbox" value="SelectOneListbox" outcome="/ui/input/listbox"/>
+                <p:menuitem id="sc_selectmanybutton" value="SelectManyButton" outcome="/ui/input/manyButton"/>
+                <p:submenu id="sc_selectmanymenu" label="SelectManyMenu">
+                    <p:menuitem id="sc_selectmanymenu_basic" value="Basic" title="SelectManyMenu" outcome="/ui/input/manymenu/basic"/>
+                    <p:menuitem id="sc_selectmanymenu_selectall" value="(Un)SelectAll" title="SelectManyMenu"
+                                outcome="/ui/input/manymenu/selectall"/>
                 </p:submenu>
-                <p:submenu id="sc_form" label="Form" icon="pi pi-id-card">
-                    <p:menuitem id="sc_autocomplete" value="AutoComplete" outcome="/ui/input/autoComplete"/>
-                    <p:menuitem id="sc_inputtextarea" value="InputTextArea" outcome="/ui/input/inputTextarea"/>
-                    <p:menuitem id="sc_selectbooleanbutton" value="SelectBooleanButton"
-                                outcome="/ui/input/booleanButton"/>
-                    <p:menuitem id="sc_selectbooleancheckbox" value="SelectBooleanCheckbox"
-                                outcome="/ui/input/booleanCheckbox"/>
-                    <p:menuitem id="sc_selectonebutton" value="SelectOneButton" outcome="/ui/input/oneButton"/>
-                    <p:menuitem id="sc_selectoneradio" value="SelectOneRadio" outcome="/ui/input/oneRadio"/>
-                    <p:menuitem id="sc_selectcheckboxmenu" value="SelectCheckboxMenu" outcome="/ui/input/checkboxMenu"/>
-                    <p:menuitem id="sc_selectonemenu" value="SelectOneMenu" outcome="/ui/input/oneMenu"/>
-                    <p:menuitem id="sc_tristatecheckbox" value="TriStateCheckbox" outcome="/ui/input/triStateCheckbox"/>
-                    <p:menuitem id="sc_inputgroup" value="InputGroup" outcome="/ui/input/inputGroup"/>
-                    <p:menuitem id="sc_formlayout" value="FormLayout" outcome="/ui/input/formLayout"/>
-                    <p:menuitem id="sc_inputnumber" value="InputNumber" outcome="/ui/input/inputNumber"/>
-                    <p:menuitem id="sc_inputmask" value="InputMask" outcome="/ui/input/inputMask"/>
-                    <p:menuitem id="sc_listbox" value="SelectOneListbox" outcome="/ui/input/listbox"/>
-                    <p:menuitem id="sc_selectmanybutton" value="SelectManyButton" outcome="/ui/input/manyButton"/>
-                    <p:submenu id="sc_selectmanymenu" label="SelectManyMenu">
-                        <p:menuitem id="sc_selectmanymenu_basic" value="Basic" outcome="/ui/input/manymenu/basic"/>
-                        <p:menuitem id="sc_selectmanymenu_selectall" value="(Un)SelectAll"
-                                    outcome="/ui/input/manymenu/selectall"/>
-                    </p:submenu>
-                    <p:menuitem id="sc_selectmanycheckbox" value="SelectManyCheckbox" outcome="/ui/input/manyCheckbox"/>
-                    <p:menuitem id="sc_multiselectlistbox" value="MultiSelectListbox"
-                                outcome="/ui/input/multiSelectListbox"/>
-                    <p:menuitem id="sc_toggleswitch" value="ToggleSwitch" outcome="/ui/input/toggleSwitch"/>
-                    <p:menuitem id="sc_chips" value="Chips" outcome="/ui/input/chips"/>
-                    <p:submenu id="sc_datepicker" label="DatePicker">
-                        <p:menuitem id="sc_datepicker_date" value="Date (java.util.Date)"
-                                    outcome="/ui/input/datepicker/datePicker"/>
-                        <p:menuitem id="sc_datepicker_localdate" value="LocalDate (java.time.Local*)"
-                                    outcome="/ui/input/datepicker/datePickerJava8"/>
-                    </p:submenu>
-                    <p:submenu id="sc_calendar" label="Calendar">
-                        <p:menuitem id="sc_calendar_date" value="Date (java.util.Date)"
-                                    outcome="/ui/input/calendar/calendar"/>
-                        <p:menuitem id="sc_calendar_localdate" value="LocalDate (java.time.Local*)"
-                                    outcome="/ui/input/calendar/calendarJava8"/>
-                    </p:submenu>
-                    <p:menuitem id="sc_editor" value="Editor" outcome="/ui/input/editor"/>
-                    <p:menuitem id="sc_signature" value="Signature" outcome="/ui/input/signature"/>
-                    <p:menuitem id="sc_spinner" value="Spinner" outcome="/ui/input/spinner"/>
-                    <p:menuitem id="sc_slider" value="Slider" outcome="/ui/input/slider"/>
-                    <p:menuitem id="sc_inputtext" value="InputText" outcome="/ui/input/inputText"/>
-                    <p:menuitem id="sc_inputswitch" value="InputSwitch" outcome="/ui/input/inputSwitch"/>
-                    <p:menuitem id="sc_password" value="Password" outcome="/ui/input/password"/>
-                    <p:menuitem id="sc_keyboard" value="Keyboard" outcome="/ui/input/keyboard"/>
-                    <p:menuitem id="sc_rating" value="Rating" outcome="/ui/input/rating"/>
-                    <p:menuitem id="sc_colorpicker" value="ColorPicker" outcome="/ui/input/colorPicker"/>
-                    <p:menuitem id="sc_inplace" value="Inplace" outcome="/ui/input/inplace"/>
-                    <p:menuitem id="sc_keyfilter" value="KeyFilter" outcome="/ui/input/keyFilter"/>
-                    <p:menuitem id="sc_knob" value="Knob" outcome="/ui/input/knob"/>
-                    <p:menuitem id="sc_texteditor" value="TextEditor" outcome="/ui/input/textEditor"/>
+                <p:menuitem id="sc_selectmanycheckbox" value="SelectManyCheckbox" outcome="/ui/input/manyCheckbox"/>
+                <p:menuitem id="sc_multiselectlistbox" value="MultiSelectListbox"
+                            outcome="/ui/input/multiSelectListbox"/>
+                <p:menuitem id="sc_toggleswitch" value="ToggleSwitch" outcome="/ui/input/toggleSwitch"/>
+                <p:menuitem id="sc_chips" value="Chips" outcome="/ui/input/chips"/>
+                <p:submenu id="sc_datepicker" label="DatePicker">
+                    <p:menuitem id="sc_datepicker_date" value="Date (java.util.Date)" title="datepicker"
+                                outcome="/ui/input/datepicker/datePicker"/>
+                    <p:menuitem id="sc_datepicker_localdate" value="LocalDate (java.time.Local*)" title="datepicker"
+                                outcome="/ui/input/datepicker/datePickerJava8"/>
                 </p:submenu>
-                <p:submenu id="sc_buttons" label="Button" icon="pi pi-mobile" styleClass="layout-sidebar-button-demo">
-                    <p:menuitem id="sc_button" value="Button" outcome="/ui/button/button"/>
-                    <p:menuitem id="sc_commandbutton" value="CommandButton" outcome="/ui/button/commandButton"/>
-                    <p:menuitem id="sc_commandlink" value="CommandLink" outcome="/ui/button/commandLink"/>
-                    <p:menuitem id="sc_link" value="Link" outcome="/ui/button/link"/>
-                    <p:menuitem id="sc_linkbutton" value="LinkButton" outcome="/ui/button/linkButton"/>
-                    <p:menuitem id="sc_splitbutton" value="SplitButton" outcome="/ui/button/splitButton"/>
+                <p:submenu id="sc_calendar" label="Calendar">
+                    <p:menuitem id="sc_calendar_date" value="Date (java.util.Date)" title="calendar"
+                                outcome="/ui/input/calendar/calendar"/>
+                    <p:menuitem id="sc_calendar_localdate" value="LocalDate (java.time.Local*)" title="calendar"
+                                outcome="/ui/input/calendar/calendarJava8"/>
                 </p:submenu>
-                <p:submenu id="sc_data" label="Data" icon="pi pi-list">
-                    <p:menuitem id="sc_carousel" value="Carousel" outcome="/ui/data/carousel"/>
-                    <p:submenu id="sc_datagrid" label="DataGrid">
-                        <p:menuitem id="sc_datagrid_basic" value="Basic" outcome="/ui/data/datagrid/basic"/>
-                        <p:menuitem id="sc_datagrid_multiViewState" value="MultiViewState"
-                                    outcome="/ui/data/datagrid/multiViewState"/>
-                    </p:submenu>
-                    <p:submenu id="sc_datalist" label="DataList">
-                        <p:menuitem id="sc_datalist_basic" value="Basic" outcome="/ui/data/datalist/basic"/>
-                        <p:menuitem id="sc_datalist_paginator" value="Paginator" outcome="/ui/data/datalist/paginator"/>
-                        <p:menuitem id="sc_datalist_multiViewState" value="MultiViewState"
-                                    outcome="/ui/data/datalist/multiViewState"/>
-                        <p:menuitem id="sc_datalist_lazy" value="Lazy" outcome="/ui/data/datalist/lazy"/>
-                    </p:submenu>
-                    <p:submenu id="sc_dataview" label="DataView">
-                        <p:menuitem id="sc_dataview_basic" value="Basic" outcome="/ui/data/dataview/basic"/>
-                        <p:menuitem id="sc_dataview_paginator" value="Paginator" outcome="/ui/data/dataview/paginator"/>
-                        <p:menuitem id="sc_dataview_multiViewState" value="MultiViewState"
-                                    outcome="/ui/data/dataview/multiViewState"/>
-                        <p:menuitem id="sc_dataview_lazy" value="Lazy" outcome="/ui/data/dataview/lazy"/>
-                        <p:menuitem id="sc_dataview_listOnly" value="List Only" outcome="/ui/data/dataview/listOnly"/>
-                    </p:submenu>
-                    <p:submenu id="sc_datascroller" label="DataScroller">
-                        <p:menuitem id="sc_datascroller_basic" value="Basic" outcome="/ui/data/datascroller/basic"/>
-                        <p:menuitem id="sc_datascroller_inline" value="Inline" outcome="/ui/data/datascroller/inline"/>
-                        <p:menuitem id="sc_datascroller_loader" value="Loader" outcome="/ui/data/datascroller/loader"/>
-                    </p:submenu>
-                    <p:submenu id="sc_datatable" label="DataTable">
-                        <p:menuitem id="sc_datatable_basic" value="Basic" outcome="/ui/data/datatable/basic"/>
-                        <p:menuitem id="sc_datatable_facets" value="Facets" outcome="/ui/data/datatable/facets"/>
-                        <p:menuitem id="sc_datatable_paginator" value="Paginator"
-                                    outcome="/ui/data/datatable/paginator"/>
-                        <p:menuitem id="sc_datatable_sort" value="Sort" outcome="/ui/data/datatable/sort"/>
-                        <p:menuitem id="sc_datatable_filter" value="Filter" outcome="/ui/data/datatable/filter"/>
-                        <p:menuitem id="sc_datatable_selection" value="Selection"
-                                    outcome="/ui/data/datatable/selection"/>
-                        <p:menuitem id="sc_datatable_group" value="Group" outcome="/ui/data/datatable/group"/>
-                        <p:menuitem id="sc_datatable_subTable" value="SubTable" outcome="/ui/data/datatable/subTable"/>
-                        <p:menuitem id="sc_datatable_summaryRow" value="SummaryRow"
-                                    outcome="/ui/data/datatable/summaryRow"/>
-                        <p:menuitem id="sc_datatable_expansion" value="Expansion"
-                                    outcome="/ui/data/datatable/expansion"/>
-                        <p:menuitem id="sc_datatable_columns" value="Columns" outcome="/ui/data/datatable/columns"/>
-                        <p:menuitem id="sc_datatable_edit" value="Edit" outcome="/ui/data/datatable/edit"/>
-                        <p:menuitem id="sc_datatable_addRow" value="Add Row" outcome="/ui/data/datatable/addRow"/>
-                        <p:menuitem id="sc_datatable_scroll" value="Scroll" outcome="/ui/data/datatable/scroll"/>
-                        <p:menuitem id="sc_datatable_rowColor" value="RowColor" outcome="/ui/data/datatable/rowColor"/>
-                        <p:menuitem id="sc_datatable_lazy" value="Lazy" outcome="/ui/data/datatable/lazy"/>
-                        <p:menuitem id="sc_datatable_columnResize" value="Resize"
-                                    outcome="/ui/data/datatable/columnResize"/>
-                        <p:menuitem id="sc_datatable_reorder" value="Reorder" outcome="/ui/data/datatable/reorder"/>
-                        <p:menuitem id="sc_datatable_columnToggler" value="ColToggler"
-                                    outcome="/ui/data/datatable/columnToggler"/>
-                        <p:menuitem id="sc_datatable_contextMenu" value="ContextMenu"
-                                    outcome="/ui/data/datatable/contextMenu"/>
-                        <p:menuitem id="sc_datatable_sticky" value="Sticky" outcome="/ui/data/datatable/sticky"/>
-                        <p:menuitem id="sc_datatable_responsive" value="Responsive"
-                                    outcome="/ui/data/datatable/responsive"/>
-                        <p:menuitem id="sc_datatable_rtl" value="RTL" outcome="/ui/data/datatable/rtl"/>
-                        <p:menuitem id="sc_datatable_tableState" value="TableState"
-                                    outcome="/ui/data/datatable/tableState"/>
-                        <p:menuitem id="sc_datatable_rowGroup" value="RowGroup" outcome="/ui/data/datatable/rowGroup"/>
-                    </p:submenu>
-                    <p:submenu id="sc_horizontaltree" label="HorizontalTree">
-                        <p:menuitem id="sc_horizontaltree_basic" value="Basic" outcome="/ui/data/htree/basic"/>
-                        <p:menuitem id="sc_horizontaltree_icon" value="Icon" outcome="/ui/data/htree/icon"/>
-                        <p:menuitem id="sc_horizontaltree_selection" value="Selection"
-                                    outcome="/ui/data/htree/selection"/>
-                        <p:menuitem id="sc_horizontaltree_events" value="Events" outcome="/ui/data/htree/events"/>
-                        <p:menuitem id="sc_horizontaltree_contextMenu" value="ContextMenu"
-                                    outcome="/ui/data/htree/contextMenu"/>
-                    </p:submenu>
-                    <p:menuitem id="sc_orderlist" value="OrderList" outcome="/ui/data/orderList"/>
-                    <p:menuitem id="sc_organigram" value="Organigram" outcome="/ui/data/organigram"/>
-                    <p:submenu id="sc_dataexporter" label="DataExporter">
-                        <p:menuitem id="sc_dataexporter_basic" value="Basic" outcome="/ui/data/dataexporter/basic"/>
-                        <p:menuitem id="sc_dataexporter_lazy" value="Basic (LazyDataModel)"
-                                    outcome="/ui/data/dataexporter/lazy"/>
-                        <p:menuitem id="sc_dataexporter_exclude" value="Exclude"
-                                    outcome="/ui/data/dataexporter/excludeColumns"/>
-                        <p:menuitem id="sc_dataexporter_customized" value="Customized"
-                                    outcome="/ui/data/dataexporter/customizedDocuments"/>
-                    </p:submenu>
-                    <p:submenu id="sc_gmap" label="GMap">
-                        <p:menuitem id="sc_gmap_basic" value="Basic" outcome="/ui/data/gmap/basic"/>
-                        <p:menuitem id="sc_gmap_event" value="Event" outcome="/ui/data/gmap/event"/>
-                        <p:menuitem id="sc_gmap_markers" value="Markers" outcome="/ui/data/gmap/markers"/>
-                        <p:menuitem id="sc_gmap_markerSelection" value="Selection"
-                                    outcome="/ui/data/gmap/markerSelection"/>
-                        <p:menuitem id="sc_gmap_addMarkers" value="Add Markers" outcome="/ui/data/gmap/addMarkers"/>
-                        <p:menuitem id="sc_gmap_draggableMarkers" value="Draggable"
-                                    outcome="/ui/data/gmap/draggableMarkers"/>
-                        <p:menuitem id="sc_gmap_infoWindow" value="InfoWindow" outcome="/ui/data/gmap/infoWindow"/>
-                        <p:menuitem id="sc_gmap_polylines" value="Polylines" outcome="/ui/data/gmap/polylines"/>
-                        <p:menuitem id="sc_gmap_polygons" value="Polygons" outcome="/ui/data/gmap/polygons"/>
-                        <p:menuitem id="sc_gmap_circles" value="Circles" outcome="/ui/data/gmap/circles"/>
-                        <p:menuitem id="sc_gmap_rectangles" value="Rectangles" outcome="/ui/data/gmap/rectangles"/>
-                        <p:menuitem id="sc_gmap_street" value="StreetView" outcome="/ui/data/gmap/street"/>
-                        <p:menuitem id="sc_gmap_controls" value="Controls" outcome="/ui/data/gmap/controls"/>
-                        <p:menuitem id="sc_gmap_geocode" value="Geocode" outcome="/ui/data/gmap/geocode"/>
-                        <p:menuitem id="sc_gmap_mapDialog" value="Dialog" outcome="/ui/data/gmap/mapDialog"/>
-                    </p:submenu>
-                    <p:menuitem id="sc_mindmap" value="Mindmap" outcome="/ui/data/mindmap"/>
-                    <p:submenu id="sc_diagram" label="Diagram">
-                        <p:menuitem id="sc_diagram_basic" value="Basic" outcome="/ui/data/diagram/basic"/>
-                        <p:menuitem id="sc_diagram_hierarchical" value="Hierarchical"
-                                    outcome="/ui/data/diagram/hierarchical"/>
-                        <p:menuitem id="sc_diagram_flowchart" value="FlowChart" outcome="/ui/data/diagram/flowchart"/>
-                        <p:menuitem id="sc_diagram_statemachine" value="StateMachine"
-                                    outcome="/ui/data/diagram/statemachine"/>
-                        <p:menuitem id="sc_diagram_editable" value="Editable" outcome="/ui/data/diagram/editable"/>
-                    </p:submenu>
-                    <p:menuitem id="sc_picklist" value="PickList" outcome="/ui/data/pickList"/>
-                    <p:menuitem id="sc_repeat" value="Repeat" outcome="/ui/data/repeat"/>
-                    <p:menuitem id="sc_ring" value="Ring" outcome="/ui/data/ring"/>
-                    <p:submenu id="sc_schedule" label="Schedule">
-                        <p:menuitem id="sc_schedule_basic" value="Basic" outcome="/ui/data/schedule/basic"/>
-                        <p:menuitem id="sc_schedule_configureable" value="Configureable"
-                                    outcome="/ui/data/schedule/configureable"/>
-                        <p:menuitem id="sc_schedule_lazy" value="Lazy" outcome="/ui/data/schedule/lazy"/>
-                    </p:submenu>
-                    <p:menuitem id="sc_tagcloud" value="TagCloud" outcome="/ui/data/tagCloud"/>
-                    <p:submenu id="sc_tree" label="Tree">
-                        <p:menuitem id="sc_tree_basic" value="Basic" outcome="/ui/data/tree/basic"/>
-                        <p:menuitem id="sc_tree_icon" value="Icon" outcome="/ui/data/tree/icon"/>
-                        <p:menuitem id="sc_tree_selection" value="Selection" outcome="/ui/data/tree/selection"/>
-                        <p:menuitem id="sc_tree_events" value="Events" outcome="/ui/data/tree/events"/>
-                        <p:menuitem id="sc_tree_dragdrop" value="DragDrop" outcome="/ui/data/tree/dragdrop"/>
-                        <p:menuitem id="sc_tree_contextMenu" value="ContextMenu" outcome="/ui/data/tree/contextMenu"/>
-                        <p:menuitem id="sc_tree_animate" value="Animate" outcome="/ui/data/tree/animate"/>
-                        <p:menuitem id="sc_tree_rtl" value="RTL" outcome="/ui/data/tree/rtl"/>
-                        <p:menuitem id="sc_tree_filter" value="Filter" outcome="/ui/data/tree/filter"/>
-                    </p:submenu>
-                    <p:submenu id="sc_treetable" label="TreeTable">
-                        <p:menuitem id="sc_treetable_basic" value="Basic" outcome="/ui/data/treetable/basic"/>
-                        <p:menuitem id="sc_treetable_selection" value="Selection"
-                                    outcome="/ui/data/treetable/selection"/>
-                        <p:menuitem id="sc_treetable_events" value="Events" outcome="/ui/data/treetable/events"/>
-                        <p:menuitem id="sc_treetable_contextMenu" value="ContextMenu"
-                                    outcome="/ui/data/treetable/contextMenu"/>
-                        <p:menuitem id="sc_treetable_scroll" value="Scroll" outcome="/ui/data/treetable/scroll"/>
-                        <p:menuitem id="sc_treetable_resize" value="Resize" outcome="/ui/data/treetable/resize"/>
-                        <p:menuitem id="sc_treetable_sort" value="Sort" outcome="/ui/data/treetable/sort"/>
-                        <p:menuitem id="sc_treetable_filter" value="Filter" outcome="/ui/data/treetable/filter"/>
-                        <p:menuitem id="sc_treetable_columns" value="Columns" outcome="/ui/data/treetable/columns"/>
-                        <p:menuitem id="sc_treetable_responsive" value="Responsive"
-                                    outcome="/ui/data/treetable/responsive"/>
-                        <p:menuitem id="sc_treetable_edit" value="Edit" outcome="/ui/data/treetable/edit"/>
-                        <p:menuitem id="sc_treetable_paginator" value="Paginator"
-                                    outcome="/ui/data/treetable/paginator"/>
-                    </p:submenu>
-                    <p:submenu id="sc_timeline" label="TimeLine">
-                        <p:menuitem id="sc_timeline_basic" value="Basic" outcome="/ui/data/timeline/basic"/>
-                        <p:menuitem id="sc_timeline_limitRange" value="Limit Range" outcome="/ui/data/timeline/basic"/>
-                        <p:menuitem id="sc_timeline_custom" value="Custom" outcome="/ui/data/timeline/custom"/>
-                        <p:menuitem id="sc_timeline_dragdrop" value="DragDrop" outcome="/ui/data/timeline/dragdrop"/>
-                        <p:menuitem id="sc_timeline_linked" value="Linked Timelines"
-                                    outcome="/ui/data/timeline/linked"/>
-                        <p:menuitem id="sc_timeline_allEvents" value="All Events"
-                                    outcome="/ui/data/timeline/allEvents"/>
-                        <p:menuitem id="sc_timeline_grouping" value="Grouping" outcome="/ui/data/timeline/grouping"/>
-                        <p:menuitem id="sc_timeline_editServer" value="Editable Server-Side"
-                                    outcome="/ui/data/timeline/editServer"/>
-                        <p:menuitem id="sc_timeline_lazy" value="Lazy Loading" outcome="/ui/data/timeline/lazy"/>
-                    </p:submenu>
+                <p:menuitem id="sc_editor" value="Editor" outcome="/ui/input/editor"/>
+                <p:menuitem id="sc_signature" value="Signature" outcome="/ui/input/signature"/>
+                <p:menuitem id="sc_spinner" value="Spinner" outcome="/ui/input/spinner"/>
+                <p:menuitem id="sc_slider" value="Slider" outcome="/ui/input/slider"/>
+                <p:menuitem id="sc_inputtext" value="InputText" outcome="/ui/input/inputText"/>
+                <p:menuitem id="sc_inputswitch" value="InputSwitch" outcome="/ui/input/inputSwitch"/>
+                <p:menuitem id="sc_password" value="Password" outcome="/ui/input/password"/>
+                <p:menuitem id="sc_keyboard" value="Keyboard" outcome="/ui/input/keyboard"/>
+                <p:menuitem id="sc_rating" value="Rating" outcome="/ui/input/rating"/>
+                <p:menuitem id="sc_colorpicker" value="ColorPicker" outcome="/ui/input/colorPicker"/>
+                <p:menuitem id="sc_inplace" value="Inplace" outcome="/ui/input/inplace"/>
+                <p:menuitem id="sc_keyfilter" value="KeyFilter" outcome="/ui/input/keyFilter"/>
+                <p:menuitem id="sc_knob" value="Knob" outcome="/ui/input/knob"/>
+                <p:menuitem id="sc_texteditor" value="TextEditor" outcome="/ui/input/textEditor"/>
+            </p:submenu>
+            <p:submenu id="sc_buttons" label="Button" icon="pi pi-mobile" styleClass="layout-sidebar-button-demo">
+                <p:menuitem id="sc_button" value="Button" outcome="/ui/button/button"/>
+                <p:menuitem id="sc_commandbutton" value="CommandButton" outcome="/ui/button/commandButton"/>
+                <p:menuitem id="sc_commandlink" value="CommandLink" outcome="/ui/button/commandLink"/>
+                <p:menuitem id="sc_link" value="Link" outcome="/ui/button/link"/>
+                <p:menuitem id="sc_linkbutton" value="LinkButton" outcome="/ui/button/linkButton"/>
+                <p:menuitem id="sc_splitbutton" value="SplitButton" outcome="/ui/button/splitButton"/>
+            </p:submenu>
+            <p:submenu id="sc_data" label="Data" icon="pi pi-list">
+                <p:menuitem id="sc_carousel" value="Carousel" outcome="/ui/data/carousel"/>
+                <p:submenu id="sc_datagrid" label="DataGrid">
+                    <p:menuitem id="sc_datagrid_basic" value="Basic" title="datagrid" outcome="/ui/data/datagrid/basic"/>
+                    <p:menuitem id="sc_datagrid_multiViewState" value="MultiViewState" title="datagrid"
+                                outcome="/ui/data/datagrid/multiViewState"/>
                 </p:submenu>
-                <p:submenu id="sc_panels" label="Panel" icon="pi pi-th-large">
-                    <p:menuitem id="sc_accordion" value="Accordion" outcome="/ui/panel/accordionPanel"/>
-                    <p:menuitem id="sc_dashboard" value="Dashboard" outcome="/ui/panel/dashboard"/>
-                    <p:menuitem id="sc_fieldset" value="Fieldset" outcome="/ui/panel/fieldset"/>
-                    <p:menuitem id="sc_grid" value="Grid CSS" outcome="/ui/panel/grid"/>
-                    <p:menuitem id="sc_notificationbar" value="NotificationBar" outcome="/ui/panel/notificationBar"/>
-                    <p:menuitem id="sc_outputpanel" value="outputPanel" outcome="/ui/panel/outputPanel"/>
-                    <p:menuitem id="sc_flexgrid" value="FlexGrid" outcome="/ui/panel/flexGrid"/>
-                    <p:menuitem id="sc_panel" value="Panel" outcome="/ui/panel/panel"/>
-                    <p:menuitem id="sc_panelGrid" value="PanelGrid" outcome="/ui/panel/panelGrid"/>
-                    <p:menuitem id="sc_ribbon" value="Ribbon" outcome="/ui/panel/ribbon"/>
-                    <p:menuitem id="sc_scrollpanel" value="ScrollPanel" outcome="/ui/panel/scrollPanel"/>
-                    <p:menuitem id="sc_tabview" value="TabView" outcome="/ui/panel/tabView"/>
-                    <p:menuitem id="sc_toolbar" value="Toolbar" outcome="/ui/panel/toolbar"/>
-                    <p:menuitem id="sc_wizard" value="Wizard" outcome="/ui/panel/wizard"/>
+                <p:submenu id="sc_datalist" label="DataList">
+                    <p:menuitem id="sc_datalist_basic" value="Basic" title="datalist" outcome="/ui/data/datalist/basic"/>
+                    <p:menuitem id="sc_datalist_paginator" value="Paginator" title="datalist" outcome="/ui/data/datalist/paginator"/>
+                    <p:menuitem id="sc_datalist_multiViewState" value="MultiViewState" title="datalist"
+                                outcome="/ui/data/datalist/multiViewState"/>
+                    <p:menuitem id="sc_datalist_lazy" value="Lazy" title="datalist" outcome="/ui/data/datalist/lazy"/>
                 </p:submenu>
-                <p:submenu id="sc_overlay" label="Overlay" icon="pi pi-clone">
-                    <p:menuitem id="sc_confirmdialog" value="ConfirmDialog" outcome="/ui/overlay/confirmDialog"/>
-                    <p:menuitem id="sc_overlaypanel" value="OverlayPanel" outcome="/ui/overlay/overlayPanel"/>
-                    <p:menuitem id="sc_lightbox" value="LightBox" outcome="/ui/overlay/lightBox"/>
-                    <p:submenu id="sc_tooltip" label="Tooltip">
-                        <p:menuitem id="sc_tooltip_tooltipOptions" value="Tooltip Options"
-                                    outcome="/ui/overlay/tooltip/tooltipOptions"/>
-                        <p:menuitem id="sc_tooltip_tooltipGlobal" value="Global Tooltip"
-                                    outcome="/ui/overlay/tooltip/tooltipGlobal"/>
-                    </p:submenu>
-                    <p:submenu id="sc_dialog" label="Dialog">
-                        <p:menuitem id="sc_dialog_basic" value="Basic" outcome="/ui/overlay/dialog/basic"/>
-                        <p:menuitem id="sc_dialog_dynamic" value="Dynamic" outcome="/ui/overlay/dialog/dynamic"/>
-                        <p:menuitem id="sc_dialog_focus" value="Focus" outcome="/ui/overlay/dialog/focus"/>
-                        <p:menuitem id="sc_dialog_events" value="Events" outcome="/ui/overlay/dialog/events"/>
-                        <p:menuitem id="sc_dialog_minMax" value="Min/Max" outcome="/ui/overlay/dialog/minMax"/>
-                        <p:menuitem id="sc_dialog_loginDemo" value="Login" outcome="/ui/overlay/dialog/loginDemo"/>
-                        <p:menuitem id="sc_dialog_rtl" value="RTL" outcome="/ui/overlay/dialog/rtl"/>
-                    </p:submenu>
-                    <p:menuitem id="sc_sidebar" value="Sidebar" outcome="/ui/overlay/sidebar"/>
+                <p:submenu id="sc_dataview" label="DataView">
+                    <p:menuitem id="sc_dataview_basic" value="Basic" title="dataview" outcome="/ui/data/dataview/basic"/>
+                    <p:menuitem id="sc_dataview_paginator" value="Paginator" title="dataview" outcome="/ui/data/dataview/paginator"/>
+                    <p:menuitem id="sc_dataview_multiViewState" value="MultiViewState" title="dataview"
+                                outcome="/ui/data/dataview/multiViewState"/>
+                    <p:menuitem id="sc_dataview_lazy" value="Lazy" title="dataview" outcome="/ui/data/dataview/lazy"/>
+                    <p:menuitem id="sc_dataview_listOnly" value="List Only" title="dataview" outcome="/ui/data/dataview/listOnly"/>
                 </p:submenu>
-                <p:submenu id="sc_menus" label="Menu" icon="pi pi-bars">
-                    <p:menuitem id="sc_breadcrumb" value="Breadcrumb" outcome="/ui/menu/breadcrumb"/>
-                    <p:submenu id="sc_contextmenu" label="ContextMenu">
-                        <p:menuitem id="sc_contextmenu_basic" value="Basic" outcome="/ui/menu/contextmenu/basic"/>
-                        <p:menuitem id="sc_contextmenu_tiered" value="Tiered" outcome="/ui/menu/contextmenu/tiered"/>
-                        <p:menuitem id="sc_contextmenu_target" value="Target" outcome="/ui/menu/contextmenu/target"/>
-                        <p:menuitem id="sc_contextmenu_datatable" value="DataTable"
-                                    outcome="/ui/data/datatable/contextMenu"/>
-                        <p:menuitem id="sc_contextmenu_tree" value="Tree" outcome="/ui/data/tree/contextMenu"/>
-                        <p:menuitem id="sc_contextmenu_treetable" value="TreeTable"
-                                    outcome="/ui/data/treetable/contextMenu"/>
-                    </p:submenu>
-                    <p:menuitem id="sc_dock" value="Dock" outcome="/ui/menu/dock"/>
-                    <p:menuitem id="sc_megamenu" value="MegaMenu" outcome="/ui/menu/megaMenu"/>
-                    <p:menuitem id="sc_menu" value="Menu" outcome="/ui/menu/menu"/>
-                    <p:menuitem id="sc_menubar" value="Menubar" outcome="/ui/menu/menubar"/>
-                    <p:menuitem id="sc_menubutton" value="MenuButton" outcome="/ui/menu/menuButton"/>
-                    <p:menuitem id="sc_panelmenu" value="PanelMenu" outcome="/ui/menu/panelMenu"/>
-                    <p:menuitem id="sc_slidemenu" value="SlideMenu" outcome="/ui/menu/slideMenu"/>
-                    <p:menuitem id="sc_stack" value="Stack" outcome="/ui/menu/stack"/>
-                    <p:menuitem id="sc_steps" value="Steps" outcome="/ui/menu/steps"/>
-                    <p:menuitem id="sc_tabmenu" value="TabMenu" outcome="/ui/menu/tabMenu"/>
-                    <p:menuitem id="sc_tieredmenu" value="TieredMenu" outcome="/ui/menu/tieredMenu"/>
+                <p:submenu id="sc_datascroller" label="DataScroller">
+                    <p:menuitem id="sc_datascroller_basic" value="Basic" title="datascroller" outcome="/ui/data/datascroller/basic"/>
+                    <p:menuitem id="sc_datascroller_inline" value="Inline" title="datascroller" outcome="/ui/data/datascroller/inline"/>
+                    <p:menuitem id="sc_datascroller_loader" value="Loader" title="datascroller" outcome="/ui/data/datascroller/loader"/>
                 </p:submenu>
-                <p:submenu id="sc_charts" label="Charts" icon="pi pi-chart-bar">
-                    <p:menuitem id="sc_charts_area" value="Area" outcome="/ui/chart/area"/>
-                    <p:menuitem id="sc_charts_bar" value="Bar" outcome="/ui/chart/bar"/>
-                    <p:menuitem id="sc_charts_bubble" value="Bubble" outcome="/ui/chart/bubble"/>
-                    <p:menuitem id="sc_charts_donut" value="Donut" outcome="/ui/chart/donut"/>
-                    <p:menuitem id="sc_charts_line" value="Line" outcome="/ui/chart/line"/>
-                    <p:menuitem id="sc_charts_pie" value="Pie" outcome="/ui/chart/pie"/>
-                    <p:menuitem id="sc_charts_metergauge" value="MeterGauge" outcome="/ui/chart/metergauge"/>
-                    <p:menuitem id="sc_charts_ohlc" value="OHLC" outcome="/ui/chart/ohlc"/>
-                    <p:menuitem id="sc_charts_animate" value="Animate" outcome="/ui/chart/animate"/>
-                    <p:menuitem id="sc_charts_export" value="Export" outcome="/ui/chart/export"/>
-                    <p:menuitem id="sc_charts_interactive" value="Interactive" outcome="/ui/chart/interactive"/>
-                    <p:menuitem id="sc_charts_live" value="Live" outcome="/ui/chart/live"/>
-                    <p:menuitem id="sc_charts_static" value="Static" outcome="/ui/multimedia/graphicImage"/>
-                    <p:menuitem id="sc_charts_zoom" value="Zoom" outcome="/ui/chart/zoom"/>
-                    <p:menuitem id="sc_charts_combined" value="Combined" outcome="/ui/chart/combined"/>
-                    <p:menuitem id="sc_charts_multiaxis" value="MultiAxis" outcome="/ui/chart/multiaxis"/>
-                    <p:menuitem id="sc_charts_date" value="Date" outcome="/ui/chart/date"/>
-                    <p:menuitem id="sc_charts_responsive" value="Responsive" outcome="/ui/chart/responsive"/>
+                <p:submenu id="sc_datatable" label="DataTable">
+                    <p:menuitem id="sc_datatable_basic" value="Basic" title="datatable" outcome="/ui/data/datatable/basic"/>
+                    <p:menuitem id="sc_datatable_facets" value="Facets" title="datatable" outcome="/ui/data/datatable/facets"/>
+                    <p:menuitem id="sc_datatable_paginator" value="Paginator" title="datatable"
+                                outcome="/ui/data/datatable/paginator"/>
+                    <p:menuitem id="sc_datatable_sort" value="Sort" title="datatable" outcome="/ui/data/datatable/sort"/>
+                    <p:menuitem id="sc_datatable_filter" value="Filter" title="datatable" outcome="/ui/data/datatable/filter"/>
+                    <p:menuitem id="sc_datatable_selection" value="Selection" title="datatable"
+                                outcome="/ui/data/datatable/selection"/>
+                    <p:menuitem id="sc_datatable_group" value="Group" title="datatable" outcome="/ui/data/datatable/group"/>
+                    <p:menuitem id="sc_datatable_subTable" value="SubTable" title="datatable" outcome="/ui/data/datatable/subTable"/>
+                    <p:menuitem id="sc_datatable_summaryRow" value="SummaryRow" title="datatable"
+                                outcome="/ui/data/datatable/summaryRow"/>
+                    <p:menuitem id="sc_datatable_expansion" value="Expansion" title="datatable"
+                                outcome="/ui/data/datatable/expansion"/>
+                    <p:menuitem id="sc_datatable_columns" value="Columns" title="datatable" outcome="/ui/data/datatable/columns"/>
+                    <p:menuitem id="sc_datatable_edit" value="Edit" title="datatable" outcome="/ui/data/datatable/edit"/>
+                    <p:menuitem id="sc_datatable_addRow" value="Add Row" title="datatable" outcome="/ui/data/datatable/addRow"/>
+                    <p:menuitem id="sc_datatable_scroll" value="Scroll" title="datatable" outcome="/ui/data/datatable/scroll"/>
+                    <p:menuitem id="sc_datatable_rowColor" value="RowColor" title="datatable" outcome="/ui/data/datatable/rowColor"/>
+                    <p:menuitem id="sc_datatable_lazy" value="Lazy" title="datatable" outcome="/ui/data/datatable/lazy"/>
+                    <p:menuitem id="sc_datatable_columnResize" value="Resize" title="datatable"
+                                outcome="/ui/data/datatable/columnResize"/>
+                    <p:menuitem id="sc_datatable_reorder" value="Reorder" title="datatable" outcome="/ui/data/datatable/reorder"/>
+                    <p:menuitem id="sc_datatable_columnToggler" value="ColToggler" title="datatable"
+                                outcome="/ui/data/datatable/columnToggler"/>
+                    <p:menuitem id="sc_datatable_contextMenu" value="ContextMenu" title="datatable"
+                                outcome="/ui/data/datatable/contextMenu"/>
+                    <p:menuitem id="sc_datatable_sticky" value="Sticky" title="datatable" outcome="/ui/data/datatable/sticky"/>
+                    <p:menuitem id="sc_datatable_responsive" value="Responsive"
+                                outcome="/ui/data/datatable/responsive"/>
+                    <p:menuitem id="sc_datatable_rtl" value="RTL" title="datatable" outcome="/ui/data/datatable/rtl"/>
+                    <p:menuitem id="sc_datatable_tableState" value="TableState"
+                                outcome="/ui/data/datatable/tableState"/>
+                    <p:menuitem id="sc_datatable_rowGroup" value="RowGroup" title="datatable" outcome="/ui/data/datatable/rowGroup"/>
                 </p:submenu>
-                <p:submenu id="sc_chartjs" label="ChartJs" icon="pi pi-chart-line">
-                    <p:submenu id="sc_bar" label="Bar">
-                        <p:menuitem id="sc_bar_basic" value="Basic" outcome="/ui/chartjs/bar/bar"/>
-                        <p:menuitem id="sc_bar_hbar" value="Horizontal Bar" outcome="/ui/chartjs/bar/hbar"/>
-                        <p:menuitem id="sc_bar_stacked" value="Stacked" outcome="/ui/chartjs/bar/stacked"/>
-                        <p:menuitem id="sc_bar_stackedGroup" value="Stacked Group"
-                                    outcome="/ui/chartjs/bar/stackedGroup"/>
-                    </p:submenu>
-                    <p:menuitem id="sc_bubble" value="Bubble" outcome="/ui/chartjs/bubble"/>
-                    <p:menuitem id="sc_donut" value="Donut" outcome="/ui/chartjs/donut"/>
-                    <p:menuitem id="sc_line" value="Line" outcome="/ui/chartjs/line"/>
-                    <p:menuitem id="sc_pie" value="Pie" outcome="/ui/chartjs/pie"/>
-                    <p:menuitem id="sc_scatter" value="Scatter" outcome="/ui/chartjs/scatter"/>
-                    <p:menuitem id="sc_polararea" value="PolarArea" outcome="/ui/chartjs/polararea"/>
-                    <p:menuitem id="sc_radar" value="Radar" outcome="/ui/chartjs/radar"/>
-                    <p:menuitem id="sc_mixed" value="Mixed" outcome="/ui/chartjs/mixed"/>
-                    <p:menuitem id="sc_interactive" value="Interactive" outcome="/ui/chartjs/interactive"/>
-                    <p:menuitem id="sc_export" value="Export" outcome="/ui/chartjs/export"/>
+                <p:submenu id="sc_horizontaltree" label="HorizontalTree">
+                    <p:menuitem id="sc_horizontaltree_basic" value="Basic" title="horizontaltree" outcome="/ui/data/htree/basic"/>
+                    <p:menuitem id="sc_horizontaltree_icon" value="Icon" title="horizontaltree" outcome="/ui/data/htree/icon"/>
+                    <p:menuitem id="sc_horizontaltree_selection" value="Selection" title="horizontaltree"
+                                outcome="/ui/data/htree/selection"/>
+                    <p:menuitem id="sc_horizontaltree_events" value="Events" title="horizontaltree" outcome="/ui/data/htree/events"/>
+                    <p:menuitem id="sc_horizontaltree_contextMenu" value="ContextMenu" title="horizontaltree"
+                                outcome="/ui/data/htree/contextMenu"/>
                 </p:submenu>
-                <p:submenu id="sc_messages" label="Messages" icon="pi pi-comment">
-                    <p:menuitem id="sc_growl" value="Growl" outcome="/ui/message/growl"/>
-                    <p:menuitem id="sc_messages2" value="Messages" outcome="/ui/message/messages"/>
-                    <p:menuitem id="sc_staticmessage" value="StaticMessage" outcome="/ui/message/staticMessage"/>
+                <p:menuitem id="sc_orderlist" value="OrderList" outcome="/ui/data/orderList"/>
+                <p:menuitem id="sc_organigram" value="Organigram" outcome="/ui/data/organigram"/>
+                <p:submenu id="sc_dataexporter" label="DataExporter">
+                    <p:menuitem id="sc_dataexporter_basic" value="Basic" title="dataexporter" outcome="/ui/data/dataexporter/basic"/>
+                    <p:menuitem id="sc_dataexporter_lazy" value="Basic (LazyDataModel)" title="dataexporter"
+                                outcome="/ui/data/dataexporter/lazy"/>
+                    <p:menuitem id="sc_dataexporter_exclude" value="Exclude" title="dataexporter"
+                                outcome="/ui/data/dataexporter/excludeColumns"/>
+                    <p:menuitem id="sc_dataexporter_customized" value="Customized" title="dataexporter"
+                                outcome="/ui/data/dataexporter/customizedDocuments"/>
                 </p:submenu>
-                <p:submenu id="sc_multimedia" label="Multimedia" icon="pi pi-image">
-                    <p:menuitem id="sc_compare" value="Compare" outcome="/ui/multimedia/compare"/>
-                    <p:menuitem id="sc_graphicimage" value="GraphicImage" outcome="/ui/multimedia/graphicImage"/>
-                    <p:menuitem id="sc_contentflow" value="ContentFlow" outcome="/ui/multimedia/contentFlow"/>
-                    <p:menuitem id="sc_cropper" value="Cropper" outcome="/ui/multimedia/cropper"/>
-                    <p:menuitem id="sc_galleria" value="Galleria" outcome="/ui/multimedia/galleria"/>
-                    <p:menuitem id="sc_barcode" value="Barcode" outcome="/ui/multimedia/barcode"/>
-                    <p:menuitem id="sc_media" value="Media" outcome="/ui/multimedia/media"/>
-                    <p:menuitem id="sc_photocam" value="PhotoCam" outcome="/ui/multimedia/photoCam"/>
-                    <p:menuitem id="sc_switch" value="Switch" outcome="/ui/multimedia/switch"/>
+                <p:submenu id="sc_gmap" label="GMap">
+                    <p:menuitem id="sc_gmap_basic" value="Basic" title="Google Maps, gmap" outcome="/ui/data/gmap/basic"/>
+                    <p:menuitem id="sc_gmap_event" value="Event" title="Google Maps, gmap" outcome="/ui/data/gmap/event"/>
+                    <p:menuitem id="sc_gmap_markers" value="Markers" title="Google Maps, gmap" outcome="/ui/data/gmap/markers"/>
+                    <p:menuitem id="sc_gmap_markerSelection" value="Selection" title="Google Maps, gmap"
+                                outcome="/ui/data/gmap/markerSelection"/>
+                    <p:menuitem id="sc_gmap_addMarkers" value="Add Markers" title="Google Maps, gmap" outcome="/ui/data/gmap/addMarkers"/>
+                    <p:menuitem id="sc_gmap_draggableMarkers" value="Draggable" title="Google Maps, gmap"
+                                outcome="/ui/data/gmap/draggableMarkers"/>
+                    <p:menuitem id="sc_gmap_infoWindow" value="InfoWindow" title="Google Maps, gmap" outcome="/ui/data/gmap/infoWindow"/>
+                    <p:menuitem id="sc_gmap_polylines" value="Polylines" title="Google Maps, gmap" outcome="/ui/data/gmap/polylines"/>
+                    <p:menuitem id="sc_gmap_polygons" value="Polygons" title="Google Maps, gmap" outcome="/ui/data/gmap/polygons"/>
+                    <p:menuitem id="sc_gmap_circles" value="Circles" title="Google Maps, gmap" outcome="/ui/data/gmap/circles"/>
+                    <p:menuitem id="sc_gmap_rectangles" value="Rectangles" title="Google Maps, gmap" outcome="/ui/data/gmap/rectangles"/>
+                    <p:menuitem id="sc_gmap_street" value="StreetView" title="Google Maps, gmap" outcome="/ui/data/gmap/street"/>
+                    <p:menuitem id="sc_gmap_controls" value="Controls" title="Google Maps, gmap" outcome="/ui/data/gmap/controls"/>
+                    <p:menuitem id="sc_gmap_geocode" value="Geocode" title="Google Maps, gmap" outcome="/ui/data/gmap/geocode"/>
+                    <p:menuitem id="sc_gmap_mapDialog" value="Dialog" title="Google Maps, gmap" outcome="/ui/data/gmap/mapDialog"/>
                 </p:submenu>
-                <p:submenu id="sc_file" label="File" icon="pi pi-file-o">
-                    <p:submenu id="sc_upload" label="Upload">
-                        <p:menuitem id="sc_upload_basic" value="Basic" outcome="/ui/file/upload/basic"/>
-                        <p:menuitem id="sc_upload_single" value="Single" outcome="/ui/file/upload/single"/>
-                        <p:menuitem id="sc_upload_multiple" value="Multiple" outcome="/ui/file/upload/multiple"/>
-                        <p:menuitem id="sc_upload_auto" value="Auto" outcome="/ui/file/upload/auto"/>
-                        <p:menuitem id="sc_upload_dnd" value="DragDrop" outcome="/ui/file/upload/dnd"/>
-                    </p:submenu>
-                    <p:menuitem id="sc_download" value="Download" outcome="/ui/file/download"/>
+                <p:menuitem id="sc_mindmap" value="Mindmap" outcome="/ui/data/mindmap"/>
+                <p:submenu id="sc_diagram" label="Diagram">
+                    <p:menuitem id="sc_diagram_basic" value="Basic" title="diagram" outcome="/ui/data/diagram/basic"/>
+                    <p:menuitem id="sc_diagram_hierarchical" value="Hierarchical" title="diagram"
+                                outcome="/ui/data/diagram/hierarchical"/>
+                    <p:menuitem id="sc_diagram_flowchart" value="FlowChart" title="diagram"  outcome="/ui/data/diagram/flowchart"/>
+                    <p:menuitem id="sc_diagram_statemachine" value="StateMachine" title="diagram"
+                                outcome="/ui/data/diagram/statemachine"/>
+                    <p:menuitem id="sc_diagram_editable" value="Editable" title="diagram" outcome="/ui/data/diagram/editable"/>
                 </p:submenu>
-                <p:submenu id="sc_dragdrop" label="DragDrop" icon="pi pi-copy">
-                    <p:menuitem id="sc_dnd_draggable" value="Draggable" outcome="/ui/dnd/draggable"/>
-                    <p:menuitem id="sc_dnd_datagrid" value="DataGrid" outcome="/ui/dnd/dataGrid"/>
-                    <p:menuitem id="sc_dnd_datatable" value="DataTable" outcome="/ui/dnd/dataTable"/>
-                    <p:menuitem id="sc_dnd_custom" value="Custom" outcome="/ui/dnd/custom"/>
+                <p:menuitem id="sc_picklist" value="PickList" outcome="/ui/data/pickList"/>
+                <p:menuitem id="sc_repeat" value="Repeat" outcome="/ui/data/repeat"/>
+                <p:menuitem id="sc_ring" value="Ring" outcome="/ui/data/ring"/>
+                <p:submenu id="sc_schedule" label="Schedule">
+                    <p:menuitem id="sc_schedule_basic" value="Basic" title="schedule" outcome="/ui/data/schedule/basic"/>
+                    <p:menuitem id="sc_schedule_configureable" value="Configureable" title="schedule"
+                                outcome="/ui/data/schedule/configureable"/>
+                    <p:menuitem id="sc_schedule_lazy" value="Lazy" title="schedule" outcome="/ui/data/schedule/lazy"/>
                 </p:submenu>
-                <p:submenu id="sc_csv" label="Client Side Validation" icon="pi pi-check-square">
-                    <p:menuitem id="sc_csv_basic" value="Basic" outcome="/ui/csv/basic"/>
-                    <p:menuitem id="sc_csv_bean" value="Bean" outcome="/ui/csv/bean"/>
-                    <p:menuitem id="sc_csv_custom" value="Custom" outcome="/ui/csv/custom"/>
-                    <p:menuitem id="sc_csv_event" value="Event" outcome="/ui/csv/event"/>
+                <p:menuitem id="sc_tagcloud" value="TagCloud" outcome="/ui/data/tagCloud"/>
+                <p:submenu id="sc_tree" label="Tree">
+                    <p:menuitem id="sc_tree_basic" value="Basic" title="tree" outcome="/ui/data/tree/basic"/>
+                    <p:menuitem id="sc_tree_icon" value="Icon" title="tree" outcome="/ui/data/tree/icon"/>
+                    <p:menuitem id="sc_tree_selection" value="Selection" title="tree" outcome="/ui/data/tree/selection"/>
+                    <p:menuitem id="sc_tree_events" value="Events" title="tree" outcome="/ui/data/tree/events"/>
+                    <p:menuitem id="sc_tree_dragdrop" value="DragDrop" title="tree" outcome="/ui/data/tree/dragdrop"/>
+                    <p:menuitem id="sc_tree_contextMenu" value="ContextMenu" title="tree" outcome="/ui/data/tree/contextMenu"/>
+                    <p:menuitem id="sc_tree_animate" value="Animate" title="tree" outcome="/ui/data/tree/animate"/>
+                    <p:menuitem id="sc_tree_rtl" value="RTL" title="tree" outcome="/ui/data/tree/rtl"/>
+                    <p:menuitem id="sc_tree_filter" value="Filter" title="tree" outcome="/ui/data/tree/filter"/>
                 </p:submenu>
-                <p:submenu id="sc_df" label="Dialog Framework" icon="pi pi-globe">
-                    <p:menuitem id="sc_df_basic" value="Basic" outcome="/ui/df/basic"/>
-                    <p:menuitem id="sc_df_bean" value="Data" outcome="/ui/df/data"/>
-                    <p:menuitem id="sc_df_message" value="Message" outcome="/ui/df/message"/>
-                    <p:menuitem id="sc_df_nested" value="Nested" outcome="/ui/df/nested"/>
+                <p:submenu id="sc_treetable" label="TreeTable">
+                    <p:menuitem id="sc_treetable_basic" value="Basic" title="treetable" outcome="/ui/data/treetable/basic"/>
+                    <p:menuitem id="sc_treetable_selection" value="Selection" title="treetable"
+                                outcome="/ui/data/treetable/selection"/>
+                    <p:menuitem id="sc_treetable_events" value="Events" title="treetable" outcome="/ui/data/treetable/events"/>
+                    <p:menuitem id="sc_treetable_contextMenu" value="ContextMenu" title="treetable"
+                                outcome="/ui/data/treetable/contextMenu"/>
+                    <p:menuitem id="sc_treetable_scroll" value="Scroll" title="treetable" outcome="/ui/data/treetable/scroll"/>
+                    <p:menuitem id="sc_treetable_resize" value="Resize" title="treetable" outcome="/ui/data/treetable/resize"/>
+                    <p:menuitem id="sc_treetable_sort" value="Sort" title="treetable" outcome="/ui/data/treetable/sort"/>
+                    <p:menuitem id="sc_treetable_filter" value="Filter" title="treetable" outcome="/ui/data/treetable/filter"/>
+                    <p:menuitem id="sc_treetable_columns" value="Columns" title="treetable" outcome="/ui/data/treetable/columns"/>
+                    <p:menuitem id="sc_treetable_responsive" value="Responsive" title="treetable"
+                                outcome="/ui/data/treetable/responsive"/>
+                    <p:menuitem id="sc_treetable_edit" value="Edit" title="treetable" outcome="/ui/data/treetable/edit"/>
+                    <p:menuitem id="sc_treetable_paginator" value="Paginator" title="treetable"
+                                outcome="/ui/data/treetable/paginator"/>
                 </p:submenu>
-                <p:submenu id="sc_misc" label="Misc" icon="pi pi-share-alt">
-                    <p:menuitem id="sc_responsive" value="Responsive" outcome="/ui/misc/responsive"/>
-                    <p:menuitem id="sc_autoupdate" value="AutoUpdate" outcome="/ui/misc/autoUpdate"/>
-                    <p:menuitem id="sc_themeswitcher" value="ThemeSwitcher" outcome="/ui/misc/themeSwitcher"/>
-                    <p:menuitem id="sc_outputlabel" value="OutputLabel" outcome="/ui/misc/outputLabel"/>
-                    <p:menuitem id="sc_blockui" value="BlockUI" outcome="/ui/misc/blockUI"/>
-                    <p:menuitem id="sc_cache" value="Cache" outcome="/ui/misc/cache"/>
-                    <p:menuitem id="sc_captcha" value="Captcha" outcome="/ui/misc/captcha"/>
-                    <p:menuitem id="sc_clock" value="Clock" outcome="/ui/misc/clock"/>
-                    <p:menuitem id="sc_collector" value="Collector" outcome="/ui/misc/collector"/>
-                    <p:submenu id="sc_defaultcommand" label="DefaultCommand">
-                        <p:menuitem id="sc_defaultcommand_basic" value="Basic" outcome="/ui/misc/defaultcommand/basic"/>
-                        <p:menuitem id="sc_defaultcommand_multiple" value="Multiple"
-                                    outcome="/ui/misc/defaultcommand/multiple"/>
-                    </p:submenu>
-                    <p:menuitem id="sc_effect" value="Effect" outcome="/ui/misc/effect"/>
-                    <p:menuitem id="sc_exceptionHandler" value="ExceptionHandler" outcome="/ui/misc/exceptionHandler"/>
-                    <p:menuitem id="sc_feedreader" value="FeedReader" outcome="/ui/misc/feedReader"/>
-                    <p:menuitem id="sc_idlemonitor" value="IdleMonitor" outcome="/ui/misc/idleMonitor"/>
-                    <p:menuitem id="sc_importconstants" value="ImportConstants" outcome="/ui/misc/importConstants"/>
-                    <p:menuitem id="sc_importenum" value="ImportEnum" outcome="/ui/misc/importEnum"/>
-                    <p:menuitem id="sc_csp" value="CSP" outcome="/ui/misc/csp"/>
-                    <p:menuitem id="sc_primeicons" value="PrimeIcons" outcome="/ui/misc/primeicons"/>
-                    <p:menuitem id="sc_fontawesome" value="FontAwesome" outcome="/ui/misc/fa"/>
-                    <p:menuitem id="sc_lifecycle" value="Lifecycle" outcome="/ui/misc/lifecycle"/>
-                    <p:menuitem id="sc_log" value="Log" outcome="/ui/misc/log"/>
-                    <p:menuitem id="sc_focus" value="Focus" outcome="/ui/misc/focus"/>
-                    <p:menuitem id="sc_hotkey" value="Hotkey" outcome="/ui/misc/hotkey"/>
-                    <p:menuitem id="sc_printer" value="Printer" outcome="/ui/misc/printer"/>
-                    <p:menuitem id="sc_progressbar" value="ProgressBar" outcome="/ui/misc/progressBar"/>
-                    <p:menuitem id="sc_context" value="Context" outcome="/ui/misc/requestContext"/>
-                    <p:menuitem id="sc_resetinput" value="ResetInput" outcome="/ui/misc/resetInput"/>
-                    <p:menuitem id="sc_resizable" value="Resizable" outcome="/ui/misc/resizable"/>
-                    <p:menuitem id="sc_separator" value="Separator" outcome="/ui/misc/separator"/>
-                    <p:menuitem id="sc_spacer" value="Spacer" outcome="/ui/misc/spacer"/>
-                    <p:menuitem id="sc_spotlight" value="Spotlight" outcome="/ui/misc/spotlight"/>
-                    <p:menuitem id="sc_sticky" value="Sticky" outcome="/ui/misc/sticky"/>
-                    <p:submenu id="sc_terminal" label="Terminal">
-                        <p:menuitem id="sc_terminal_basic" value="Basic" outcome="/ui/misc/terminal/basic"/>
-                        <p:menuitem id="sc_terminal_autocomplete" value="Autocompletion"
-                                    outcome="/ui/misc/terminal/autocomplete"/>
-                    </p:submenu>
-                    <p:menuitem id="sc_watermark" value="Watermark" outcome="/ui/misc/watermark"/>
+                <p:submenu id="sc_timeline" label="TimeLine">
+                    <p:menuitem id="sc_timeline_basic" value="Basic" title="timeline" outcome="/ui/data/timeline/basic"/>
+                    <p:menuitem id="sc_timeline_limitRange" value="Limit Range" title="timeline" outcome="/ui/data/timeline/basic"/>
+                    <p:menuitem id="sc_timeline_custom" value="Custom" title="timeline" outcome="/ui/data/timeline/custom"/>
+                    <p:menuitem id="sc_timeline_dragdrop" value="DragDrop" title="timeline" outcome="/ui/data/timeline/dragdrop"/>
+                    <p:menuitem id="sc_timeline_linked" value="Linked Timelines" title="timeline"
+                                outcome="/ui/data/timeline/linked"/>
+                    <p:menuitem id="sc_timeline_allEvents" value="All Events" title="timeline"
+                                outcome="/ui/data/timeline/allEvents"/>
+                    <p:menuitem id="sc_timeline_grouping" value="Grouping" title="timeline" outcome="/ui/data/timeline/grouping"/>
+                    <p:menuitem id="sc_timeline_editServer" value="Editable Server-Side" title="timeline"
+                                outcome="/ui/data/timeline/editServer"/>
+                    <p:menuitem id="sc_timeline_lazy" value="Lazy Loading" title="timeline" outcome="/ui/data/timeline/lazy"/>
                 </p:submenu>
-            </sc:menu>
-        </h:form>
+            </p:submenu>
+            <p:submenu id="sc_panels" label="Panel" icon="pi pi-th-large">
+                <p:menuitem id="sc_accordion" value="Accordion" title="panel" outcome="/ui/panel/accordionPanel"/>
+                <p:menuitem id="sc_dashboard" value="Dashboard" title="panel" outcome="/ui/panel/dashboard"/>
+                <p:menuitem id="sc_fieldset" value="Fieldset" title="panel" outcome="/ui/panel/fieldset"/>
+                <p:menuitem id="sc_grid" value="Grid CSS" title="panel" outcome="/ui/panel/grid"/>
+                <p:menuitem id="sc_notificationbar" value="NotificationBar" title="panel" outcome="/ui/panel/notificationBar"/>
+                <p:menuitem id="sc_outputpanel" value="OutputPanel" title="panel" outcome="/ui/panel/outputPanel"/>
+                <p:menuitem id="sc_flexgrid" value="FlexGrid" title="panel" outcome="/ui/panel/flexGrid"/>
+                <p:menuitem id="sc_panel" value="Panel" title="panel" outcome="/ui/panel/panel"/>
+                <p:menuitem id="sc_panelGrid" value="PanelGrid" title="panel" outcome="/ui/panel/panelGrid"/>
+                <p:menuitem id="sc_ribbon" value="Ribbon" title="panel" outcome="/ui/panel/ribbon"/>
+                <p:menuitem id="sc_scrollpanel" value="ScrollPanel" title="panel" outcome="/ui/panel/scrollPanel"/>
+                <p:menuitem id="sc_tabview" value="TabView" title="panel" outcome="/ui/panel/tabView"/>
+                <p:menuitem id="sc_toolbar" value="Toolbar" title="panel" outcome="/ui/panel/toolbar"/>
+                <p:menuitem id="sc_wizard" value="Wizard" title="panel" outcome="/ui/panel/wizard"/>
+            </p:submenu>
+            <p:submenu id="sc_overlay" label="Overlay" icon="pi pi-clone">
+                <p:menuitem id="sc_confirmdialog" value="ConfirmDialog" outcome="/ui/overlay/confirmDialog"/>
+                <p:menuitem id="sc_overlaypanel" value="OverlayPanel" outcome="/ui/overlay/overlayPanel"/>
+                <p:menuitem id="sc_lightbox" value="LightBox" outcome="/ui/overlay/lightBox"/>
+                <p:submenu id="sc_tooltip" label="Tooltip">
+                    <p:menuitem id="sc_tooltip_tooltipOptions" value="Tooltip Options"
+                                outcome="/ui/overlay/tooltip/tooltipOptions"/>
+                    <p:menuitem id="sc_tooltip_tooltipGlobal" value="Global Tooltip"
+                                outcome="/ui/overlay/tooltip/tooltipGlobal"/>
+                </p:submenu>
+                <p:submenu id="sc_dialog" label="Dialog">
+                    <p:menuitem id="sc_dialog_basic" value="Basic" title="dialog" outcome="/ui/overlay/dialog/basic"/>
+                    <p:menuitem id="sc_dialog_dynamic" value="Dynamic" title="dialog" outcome="/ui/overlay/dialog/dynamic"/>
+                    <p:menuitem id="sc_dialog_focus" value="Focus" title="dialog" outcome="/ui/overlay/dialog/focus"/>
+                    <p:menuitem id="sc_dialog_events" value="Events" title="dialog" outcome="/ui/overlay/dialog/events"/>
+                    <p:menuitem id="sc_dialog_minMax" value="Min/Max" title="dialog" outcome="/ui/overlay/dialog/minMax"/>
+                    <p:menuitem id="sc_dialog_loginDemo" value="Login" title="dialog" outcome="/ui/overlay/dialog/loginDemo"/>
+                    <p:menuitem id="sc_dialog_rtl" value="RTL" title="dialog" outcome="/ui/overlay/dialog/rtl"/>
+                </p:submenu>
+                <p:menuitem id="sc_sidebar" value="Sidebar" outcome="/ui/overlay/sidebar"/>
+            </p:submenu>
+            <p:submenu id="sc_menus" label="Menu" icon="pi pi-bars">
+                <p:menuitem id="sc_breadcrumb" value="Breadcrumb" outcome="/ui/menu/breadcrumb"/>
+                <p:submenu id="sc_contextmenu" label="ContextMenu">
+                    <p:menuitem id="sc_contextmenu_basic" value="Basic" title="contextmenu" outcome="/ui/menu/contextmenu/basic"/>
+                    <p:menuitem id="sc_contextmenu_tiered" value="Tiered" title="contextmenu" outcome="/ui/menu/contextmenu/tiered"/>
+                    <p:menuitem id="sc_contextmenu_target" value="Target" title="contextmenu" outcome="/ui/menu/contextmenu/target"/>
+                    <p:menuitem id="sc_contextmenu_datatable" value="DataTable" title="contextmenu"
+                                outcome="/ui/data/datatable/contextMenu"/>
+                    <p:menuitem id="sc_contextmenu_tree" value="Tree" title="contextmenu" outcome="/ui/data/tree/contextMenu"/>
+                    <p:menuitem id="sc_contextmenu_treetable" value="TreeTable" title="contextmenu"
+                                outcome="/ui/data/treetable/contextMenu"/>
+                </p:submenu>
+                <p:menuitem id="sc_dock" value="Dock" outcome="/ui/menu/dock"/>
+                <p:menuitem id="sc_megamenu" value="MegaMenu" outcome="/ui/menu/megaMenu"/>
+                <p:menuitem id="sc_menu" value="Menu" outcome="/ui/menu/menu"/>
+                <p:menuitem id="sc_menubar" value="Menubar" outcome="/ui/menu/menubar"/>
+                <p:menuitem id="sc_menubutton" value="MenuButton" outcome="/ui/menu/menuButton"/>
+                <p:menuitem id="sc_panelmenu" value="PanelMenu" outcome="/ui/menu/panelMenu"/>
+                <p:menuitem id="sc_slidemenu" value="SlideMenu" outcome="/ui/menu/slideMenu"/>
+                <p:menuitem id="sc_stack" value="Stack" outcome="/ui/menu/stack"/>
+                <p:menuitem id="sc_steps" value="Steps" outcome="/ui/menu/steps"/>
+                <p:menuitem id="sc_tabmenu" value="TabMenu" outcome="/ui/menu/tabMenu"/>
+                <p:menuitem id="sc_tieredmenu" value="TieredMenu" outcome="/ui/menu/tieredMenu"/>
+            </p:submenu>
+            <p:submenu id="sc_charts" label="Charts" icon="pi pi-chart-bar">
+                <p:menuitem id="sc_charts_area" value="Area" title="chart" outcome="/ui/chart/area"/>
+                <p:menuitem id="sc_charts_bar" value="Bar" title="chart" outcome="/ui/chart/bar"/>
+                <p:menuitem id="sc_charts_bubble" value="Bubble" title="chart" outcome="/ui/chart/bubble"/>
+                <p:menuitem id="sc_charts_donut" value="Donut" title="chart" outcome="/ui/chart/donut"/>
+                <p:menuitem id="sc_charts_line" value="Line" title="chart" outcome="/ui/chart/line"/>
+                <p:menuitem id="sc_charts_pie" value="Pie" title="chart" outcome="/ui/chart/pie"/>
+                <p:menuitem id="sc_charts_metergauge" value="MeterGauge" title="chart" outcome="/ui/chart/metergauge"/>
+                <p:menuitem id="sc_charts_ohlc" value="OHLC" title="chart" outcome="/ui/chart/ohlc"/>
+                <p:menuitem id="sc_charts_animate" value="Animate" title="chart" outcome="/ui/chart/animate"/>
+                <p:menuitem id="sc_charts_export" value="Export" title="chart" outcome="/ui/chart/export"/>
+                <p:menuitem id="sc_charts_interactive" value="Interactive" title="chart" outcome="/ui/chart/interactive"/>
+                <p:menuitem id="sc_charts_live" value="Live" title="chart" outcome="/ui/chart/live"/>
+                <p:menuitem id="sc_charts_static" value="Static" title="chart" outcome="/ui/multimedia/graphicImage"/>
+                <p:menuitem id="sc_charts_zoom" value="Zoom" title="chart" outcome="/ui/chart/zoom"/>
+                <p:menuitem id="sc_charts_combined" value="Combined" title="chart" outcome="/ui/chart/combined"/>
+                <p:menuitem id="sc_charts_multiaxis" value="MultiAxis" title="chart" outcome="/ui/chart/multiaxis"/>
+                <p:menuitem id="sc_charts_date" value="Date" title="chart" outcome="/ui/chart/date"/>
+                <p:menuitem id="sc_charts_responsive" value="Responsive" title="chart" outcome="/ui/chart/responsive"/>
+            </p:submenu>
+            <p:submenu id="sc_chartjs" label="ChartJs" icon="pi pi-chart-line">
+                <p:submenu id="sc_bar" label="Bar">
+                    <p:menuitem id="sc_bar_basic" value="Basic" title="chartjs" outcome="/ui/chartjs/bar/bar"/>
+                    <p:menuitem id="sc_bar_hbar" value="Horizontal Bar" title="chartjs" outcome="/ui/chartjs/bar/hbar"/>
+                    <p:menuitem id="sc_bar_stacked" value="Stacked" title="chartjs" outcome="/ui/chartjs/bar/stacked"/>
+                    <p:menuitem id="sc_bar_stackedGroup" value="Stacked Group" title="chartjs"
+                                outcome="/ui/chartjs/bar/stackedGroup"/>
+                </p:submenu>
+                <p:menuitem id="sc_bubble" value="Bubble" title="chartjs" outcome="/ui/chartjs/bubble"/>
+                <p:menuitem id="sc_donut" value="Donut" title="chartjs" outcome="/ui/chartjs/donut"/>
+                <p:menuitem id="sc_line" value="Line" title="chartjs" outcome="/ui/chartjs/line"/>
+                <p:menuitem id="sc_pie" value="Pie" title="chartjs" outcome="/ui/chartjs/pie"/>
+                <p:menuitem id="sc_scatter" value="Scatter" title="chartjs" outcome="/ui/chartjs/scatter"/>
+                <p:menuitem id="sc_polararea" value="PolarArea" title="chartjs" outcome="/ui/chartjs/polararea"/>
+                <p:menuitem id="sc_radar" value="Radar" title="chartjs" outcome="/ui/chartjs/radar"/>
+                <p:menuitem id="sc_mixed" value="Mixed" title="chartjs" outcome="/ui/chartjs/mixed"/>
+                <p:menuitem id="sc_interactive" value="Interactive" title="chartjs" outcome="/ui/chartjs/interactive"/>
+                <p:menuitem id="sc_export" value="Export" title="chartjs" outcome="/ui/chartjs/export"/>
+            </p:submenu>
+            <p:submenu id="sc_messages" label="Messages" icon="pi pi-comment">
+                <p:menuitem id="sc_growl" value="Growl" outcome="/ui/message/growl"/>
+                <p:menuitem id="sc_messages2" value="Messages" outcome="/ui/message/messages"/>
+                <p:menuitem id="sc_staticmessage" value="StaticMessage" outcome="/ui/message/staticMessage"/>
+            </p:submenu>
+            <p:submenu id="sc_multimedia" label="Multimedia" icon="pi pi-image">
+                <p:menuitem id="sc_compare" value="Compare" outcome="/ui/multimedia/compare"/>
+                <p:menuitem id="sc_graphicimage" value="GraphicImage" outcome="/ui/multimedia/graphicImage"/>
+                <p:menuitem id="sc_contentflow" value="ContentFlow" outcome="/ui/multimedia/contentFlow"/>
+                <p:menuitem id="sc_cropper" value="Cropper" outcome="/ui/multimedia/cropper"/>
+                <p:menuitem id="sc_galleria" value="Galleria" outcome="/ui/multimedia/galleria"/>
+                <p:menuitem id="sc_barcode" value="Barcode" outcome="/ui/multimedia/barcode"/>
+                <p:menuitem id="sc_media" value="Media" outcome="/ui/multimedia/media"/>
+                <p:menuitem id="sc_photocam" value="PhotoCam" outcome="/ui/multimedia/photoCam"/>
+                <p:menuitem id="sc_switch" value="Switch" outcome="/ui/multimedia/switch"/>
+            </p:submenu>
+            <p:submenu id="sc_file" label="File" icon="pi pi-file-o">
+                <p:submenu id="sc_upload" label="Upload">
+                    <p:menuitem id="sc_upload_basic" value="Basic" title="file upload" outcome="/ui/file/upload/basic"/>
+                    <p:menuitem id="sc_upload_single" value="Single" title="file upload" outcome="/ui/file/upload/single"/>
+                    <p:menuitem id="sc_upload_multiple" value="Multiple" title="file upload" outcome="/ui/file/upload/multiple"/>
+                    <p:menuitem id="sc_upload_auto" value="Auto" title="file upload" outcome="/ui/file/upload/auto"/>
+                    <p:menuitem id="sc_upload_dnd" value="DragDrop" title="file upload" outcome="/ui/file/upload/dnd"/>
+                </p:submenu>
+                <p:menuitem id="sc_download" value="Download" title="file" outcome="/ui/file/download"/>
+            </p:submenu>
+            <p:submenu id="sc_dragdrop" label="DragDrop" icon="pi pi-copy">
+                <p:menuitem id="sc_dnd_draggable" value="Draggable" title="dragdrop" outcome="/ui/dnd/draggable"/>
+                <p:menuitem id="sc_dnd_datagrid" value="DataGrid" title="dragdrop" outcome="/ui/dnd/dataGrid"/>
+                <p:menuitem id="sc_dnd_datatable" value="DataTable" title="dragdrop" outcome="/ui/dnd/dataTable"/>
+                <p:menuitem id="sc_dnd_custom" value="Custom" title="dragdrop" outcome="/ui/dnd/custom"/>
+            </p:submenu>
+            <p:submenu id="sc_csv" label="Client Side Validation" icon="pi pi-check-square">
+                <p:menuitem id="sc_csv_basic" value="Basic" title="validation" outcome="/ui/csv/basic"/>
+                <p:menuitem id="sc_csv_bean" value="Bean" title="validation" outcome="/ui/csv/bean"/>
+                <p:menuitem id="sc_csv_custom" value="Custom" title="validation" outcome="/ui/csv/custom"/>
+                <p:menuitem id="sc_csv_event" value="Event" title="validation" outcome="/ui/csv/event"/>
+            </p:submenu>
+            <p:submenu id="sc_df" label="Dialog Framework" icon="pi pi-globe">
+                <p:menuitem id="sc_df_basic" value="Basic" title="dialog framework" outcome="/ui/df/basic"/>
+                <p:menuitem id="sc_df_bean" value="Data" title="dialog framework" outcome="/ui/df/data"/>
+                <p:menuitem id="sc_df_message" value="Message" title="dialog framework" outcome="/ui/df/message"/>
+                <p:menuitem id="sc_df_nested" value="Nested" title="dialog framework" outcome="/ui/df/nested"/>
+            </p:submenu>
+            <p:submenu id="sc_misc" label="Misc" icon="pi pi-share-alt">
+                <p:menuitem id="sc_responsive" value="Responsive" outcome="/ui/misc/responsive"/>
+                <p:menuitem id="sc_autoupdate" value="AutoUpdate" outcome="/ui/misc/autoUpdate"/>
+                <p:menuitem id="sc_themeswitcher" value="ThemeSwitcher" outcome="/ui/misc/themeSwitcher"/>
+                <p:menuitem id="sc_outputlabel" value="OutputLabel" outcome="/ui/misc/outputLabel"/>
+                <p:menuitem id="sc_blockui" value="BlockUI" outcome="/ui/misc/blockUI"/>
+                <p:menuitem id="sc_cache" value="Cache" outcome="/ui/misc/cache"/>
+                <p:menuitem id="sc_captcha" value="Captcha" title="recaptcha" outcome="/ui/misc/captcha"/>
+                <p:menuitem id="sc_clock" value="Clock" outcome="/ui/misc/clock"/>
+                <p:menuitem id="sc_collector" value="Collector" outcome="/ui/misc/collector"/>
+                <p:submenu id="sc_defaultcommand" label="DefaultCommand">
+                    <p:menuitem id="sc_defaultcommand_basic" value="Basic" outcome="/ui/misc/defaultcommand/basic"/>
+                    <p:menuitem id="sc_defaultcommand_multiple" value="Multiple"
+                                outcome="/ui/misc/defaultcommand/multiple"/>
+                </p:submenu>
+                <p:menuitem id="sc_effect" value="Effect" outcome="/ui/misc/effect"/>
+                <p:menuitem id="sc_exceptionHandler" value="ExceptionHandler" outcome="/ui/misc/exceptionHandler"/>
+                <p:menuitem id="sc_feedreader" value="FeedReader" outcome="/ui/misc/feedReader"/>
+                <p:menuitem id="sc_idlemonitor" value="IdleMonitor" outcome="/ui/misc/idleMonitor"/>
+                <p:menuitem id="sc_importconstants" value="ImportConstants" outcome="/ui/misc/importConstants"/>
+                <p:menuitem id="sc_importenum" value="ImportEnum" outcome="/ui/misc/importEnum"/>
+                <p:menuitem id="sc_csp" value="CSP" outcome="/ui/misc/csp"/>
+                <p:menuitem id="sc_primeicons" value="PrimeIcons" outcome="/ui/misc/primeicons"/>
+                <p:menuitem id="sc_fontawesome" value="FontAwesome" outcome="/ui/misc/fa"/>
+                <p:menuitem id="sc_lifecycle" value="Lifecycle" outcome="/ui/misc/lifecycle"/>
+                <p:menuitem id="sc_log" value="Log" outcome="/ui/misc/log"/>
+                <p:menuitem id="sc_focus" value="Focus" outcome="/ui/misc/focus"/>
+                <p:menuitem id="sc_hotkey" value="Hotkey" outcome="/ui/misc/hotkey"/>
+                <p:menuitem id="sc_printer" value="Printer" outcome="/ui/misc/printer"/>
+                <p:menuitem id="sc_progressbar" value="ProgressBar" outcome="/ui/misc/progressBar"/>
+                <p:menuitem id="sc_context" value="Context" outcome="/ui/misc/requestContext"/>
+                <p:menuitem id="sc_resetinput" value="ResetInput" outcome="/ui/misc/resetInput"/>
+                <p:menuitem id="sc_resizable" value="Resizable" outcome="/ui/misc/resizable"/>
+                <p:menuitem id="sc_separator" value="Separator" outcome="/ui/misc/separator"/>
+                <p:menuitem id="sc_spacer" value="Spacer" outcome="/ui/misc/spacer"/>
+                <p:menuitem id="sc_spotlight" value="Spotlight" outcome="/ui/misc/spotlight"/>
+                <p:menuitem id="sc_sticky" value="Sticky" outcome="/ui/misc/sticky"/>
+                <p:submenu id="sc_terminal" label="Terminal">
+                    <p:menuitem id="sc_terminal_basic" value="Basic" outcome="/ui/misc/terminal/basic"/>
+                    <p:menuitem id="sc_terminal_autocomplete" value="Autocompletion"
+                                outcome="/ui/misc/terminal/autocomplete"/>
+                </p:submenu>
+                <p:menuitem id="sc_watermark" value="Watermark" outcome="/ui/misc/watermark"/>
+            </p:submenu>
+        </sc:menu>
+
     </div>
 
 </ui:composition>
