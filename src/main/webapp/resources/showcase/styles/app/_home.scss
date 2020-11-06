@@ -16,15 +16,15 @@
 
     .introduction {
         background-color: var(--surface-a);
-        background-image: url('../../images/home/react-intro-bg.jpg');
+        background-image: url("\#{resource['showcase:images/home/intro-bg.jpg']}");
         background-repeat: no-repeat;
         background-size: cover;
         padding: 115px 30px 135px 50px;
-        color: #ffffff;
+        color: #455C71;
         position: relative;
 
         &.introduction-dark {
-            background-image: url('../../images/home/react-intro-bg-dark.jpg');
+            background-image: url("\#{resource['showcase:images/home/intro-bg-dark.jpg']}");
             color: var(--text-color);
 
             .introduction-promo {
@@ -136,7 +136,7 @@
         }
     }
 
-    .primereact-designer {
+    .primefaces-designer {
         background-color: var(--surface-a);
         color: var(--text-color);
         padding: 2rem;
