@@ -88,7 +88,7 @@ public class LazyCarDataModel extends LazyDataModel<Car> {
         //sort
         if (sortBy != null && !sortBy.isEmpty()) {
             for (SortMeta meta : sortBy.values()) {
-                Collections.sort(data, new LazySorter(meta.getSortField(), meta.getSortOrder()));
+                Collections.sort(data, new LazySorter(meta.getField(), meta.getOrder()));
             }
         }
 

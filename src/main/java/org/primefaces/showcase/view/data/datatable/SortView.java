@@ -16,6 +16,9 @@
 package org.primefaces.showcase.view.data.datatable;
 
 import javax.faces.view.ViewScoped;
+
+import org.primefaces.model.SortMeta;
+import org.primefaces.model.SortOrder;
 import org.primefaces.showcase.domain.Car;
 import org.primefaces.showcase.service.CarService;
 
@@ -23,6 +26,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Named("dtSortView")
@@ -32,7 +36,8 @@ public class SortView implements Serializable {
     private List<Car> cars1;
     private List<Car> cars2;
     private List<Car> cars3;
-    
+    private List<SortMeta> sortBy;
+
     @Inject
     private CarService service;
 
@@ -41,6 +46,18 @@ public class SortView implements Serializable {
         cars1 = service.createCars(10);
         cars2 = service.createCars(10);
         cars3 = service.createCars(50);
+
+        sortBy = new ArrayList<>();
+        sortBy.add(SortMeta.builder()
+                .field("year")
+                .order(SortOrder.ASCENDING)
+                .build());
+
+        sortBy.add(SortMeta.builder()
+                .field("color")
+                .order(SortOrder.ASCENDING)
+                .priority(1)
+                .build());
     }
 
     public List<Car> getCars1() {
@@ -53,6 +70,10 @@ public class SortView implements Serializable {
     
     public List<Car> getCars3() {
         return cars3;
+    }
+
+    public List<SortMeta> getSortBy() {
+        return sortBy;
     }
 
     public void setService(CarService service) {

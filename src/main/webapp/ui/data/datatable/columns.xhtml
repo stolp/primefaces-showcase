@@ -27,13 +27,10 @@
                 <p:commandButton update="cars" action="#{dtColumnsView.updateColumns}" value="Update" process="@parent" icon="pi pi-refresh" oncomplete="PF('carsTable').clearFilters()"/>
             </h:panelGrid>
 
-            <p:dataTable id="cars" var="car" value="#{dtColumnsView.cars}" widgetVar="carsTable" filteredValue="#{dtColumnsView.filteredCars}">                    
-                <p:columns value="#{dtColumnsView.columns}" var="column" columnIndexVar="colIndex" field="#{column.property}" sortBy="#{car[column.property]}" filterBy="#{car[column.property]}">
-                    <f:facet name="header">
-                        <h:outputText value="#{column.header}" />
-                    </f:facet>
-                    <h:outputText value="#{car[column.property]}" />
-                </p:columns>
+            <p:dataTable id="cars" var="car" value="#{dtColumnsView.cars}" widgetVar="carsTable" filteredValue="#{dtColumnsView.filteredCars}">
+
+                <p:columns value="#{dtColumnsView.columns}" var="column" headerText="#{column.header}" field="#{column.property}" />
+
             </p:dataTable>
         </h:form>
         

@@ -21,40 +21,24 @@
         <h:form>
         <h3 style="margin-top:0">Column Priority</h3>
         <p:dataTable var="car" value="#{dtBasicView.cars}">
-            <p:column headerText="Id">
-                <h:outputText value="#{car.id}" />
-            </p:column>
+            <p:column headerText="Id" field="id"/>
 
-            <p:column headerText="Year (p3)" priority="3">
-                <h:outputText value="#{car.year}" />
-            </p:column>
+            <p:column headerText="Year (p3)" field="year" priority="3"/>
 
-            <p:column headerText="Brand (p2)" priority="2">
-                <h:outputText value="#{car.brand}" />
-            </p:column>
+            <p:column headerText="Brand (p2)" field="brand" priority="2"/>
 
-            <p:column headerText="Color (p4)" priority="4">
-                <h:outputText value="#{car.color}" />
-            </p:column>
+            <p:column headerText="Color (p4)" field="color" priority="4" />
         </p:dataTable>
         
         <h3>Reflow</h3>
         <p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="5" paginator="true">
-            <p:column headerText="Id">
-                <h:outputText value="#{car.id}" />
-            </p:column>
+            <p:column headerText="Id" field="id"/>
 
-            <p:column headerText="Year">
-                <h:outputText value="#{car.year}" />
-            </p:column>
+            <p:column headerText="Year (p3)" field="year" />
 
-            <p:column headerText="Brand">
-                <h:outputText value="#{car.brand}" />
-            </p:column>
+            <p:column headerText="Brand (p2)" field="brand" />
 
-            <p:column headerText="Color">
-                <h:outputText value="#{car.color}" />
-            </p:column>
+            <p:column headerText="Color (p4)" field="color"  />
         </p:dataTable>
         </h:form>
     </ui:define>

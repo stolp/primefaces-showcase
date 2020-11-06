@@ -10,7 +10,7 @@
     </ui:define>
 
     <ui:define name="description">
-        Sorting is enabled with sortBy expressions. Both single and multiple column sorting are supported.
+        Sorting is enabled with field or sortBy expressions. Both single and multiple column sorting are supported.
     </ui:define>
 
     <ui:param name="documentationLink" value="/components/datatable" />
@@ -18,6 +18,10 @@
     
     <ui:define name="head">
         <style type="text/css">
+            .ui-datatable {
+                margin-bottom: 25px
+            }
+
             .ui-datatable input {
                 box-sizing: border-box;
                 width: 100%;
@@ -30,68 +34,34 @@
     <ui:define name="implementation">
         
         <h:form>
-            <p:dataTable var="car" value="#{dtSortView.cars1}" style="margin-bottom:40px">
+            <p:dataTable var="car" value="#{dtSortView.cars1}">
                 <f:facet name="header">
-                    Single Column Sort
+                    Default sort with markup attributes
                 </f:facet>
-                <p:column headerText="Id" sortBy="#{car.id}">
-                    <h:outputText value="#{car.id}" />
-                </p:column>
 
-                <p:column headerText="Year" sortBy="#{car.year}">
-                    <h:outputText value="#{car.year}" />
-                </p:column>
+                <p:column headerText="Id" field="id" sortable="false" />
 
-                <p:column headerText="Brand" sortBy="#{car.brand}">
-                    <h:outputText value="#{car.brand}" />
-                </p:column>
+                <p:column headerText="Year" field="year" sortOrder="desc" sortPriority="1"/>
 
-                <p:column headerText="Color" sortBy="#{car.color}">
-                    <h:outputText value="#{car.color}" />
-                </p:column>
+                <p:column headerText="Brand" field="brand" sortOrder="asc"/>
+
+                <p:column headerText="Color" sortBy="#{car.color}" />
+
             </p:dataTable>
-            
-            <p:dataTable var="car" value="#{dtSortView.cars2}" style="margin-bottom:40px">
+
+            <p:dataTable var="car" value="#{dtSortView.cars1}" sortMode="single" sortBy="#{dtSortView.sortBy}">
                 <f:facet name="header">
-                    Editable Values
+                    Default sort programmatically
                 </f:facet>
-                <p:ajax event="sort" skipChildren="false" />
-                <p:column headerText="Id" sortBy="#{car.id}">
-                    <p:inputText value="#{car.id}" />
-                </p:column>
 
-                <p:column headerText="Year" sortBy="#{car.year}">
-                    <p:inputText value="#{car.year}" />
-                </p:column>
+                <p:column headerText="Id" field="id" sortable="false"/>
 
-                <p:column headerText="Brand" sortBy="#{car.brand}">
-                    <p:inputText value="#{car.brand}" />
-                </p:column>
+                <p:column headerText="Year" field="year" />
 
-                <p:column headerText="Color" sortBy="#{car.color}">
-                    <p:inputText value="#{car.color}" />
-                </p:column>
-            </p:dataTable>
-            
-            <p:dataTable var="car" value="#{dtSortView.cars3}" sortMode="multiple">
-                <f:facet name="header">
-                    Multiple Column Sort with Metakey
-                </f:facet>
-                <p:column headerText="Id" sortBy="#{car.id}">
-                    <h:outputText value="#{car.id}" />
-                </p:column>
+                <p:column headerText="Brand" field="brand" />
 
-                <p:column headerText="Year" sortBy="#{car.year}">
-                    <h:outputText value="#{car.year}" />
-                </p:column>
+                <p:column headerText="Color" field="color" />
 
-                <p:column headerText="Brand" sortBy="#{car.brand}">
-                    <h:outputText value="#{car.brand}" />
-                </p:column>
-
-                <p:column headerText="Color" sortBy="#{car.color}">
-                    <h:outputText value="#{car.color}" />
-                </p:column>
             </p:dataTable>
         </h:form>
         
