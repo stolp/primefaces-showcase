@@ -21,6 +21,9 @@ $(document).ready(function() {
             this.configMenu = $('.layout-config');
             this.configMenuClose = this.configMenu.find('.layout-config-content-wrapper > .layout-config-close');
             
+            this.expandedItemsKey ='Showcase_ExpandedItems';
+            this.newsbarKey = 'Showcase_Newsbar';
+            
             this.initPrimeNewsBar();
             
             this.restoreMenuState();
@@ -31,16 +34,17 @@ $(document).ready(function() {
         },
         
         initPrimeNewsBar: function() {
+            var $this = this;
             var topbarNewsBar = this.wrapper.children('.layout-news');
             if (topbarNewsBar.length) {
                var topbarNewsCloseButton = topbarNewsBar.find('.layout-news-close'),
                removeTopbarNewsBar = function() {
-                   PrimeFaces.setCookie('showcase_newsbar', false, {path: '/'});
+                   localStorage.setItem($this.newsbarKey, true);
                    topbarNewsBar.removeClass('layout-news-active');
                };
                
-                var newsbarcookie = PrimeFaces.getCookie('showcase_newsbar');
-                if (newsbarcookie) {
+                var newsbarstore = localStorage.getItem($this.newsbarKey);
+                if (newsbarstore) {
                     topbarNewsBar.removeClass('layout-news-active');
                 }
                 else {
@@ -246,11 +250,11 @@ $(document).ready(function() {
         },
     
         saveMenuState: function() {
-            PrimeFaces.setCookie('showcase_expandeditems', this.expandedMenuitems.join(','), {path: '/'});
+            localStorage.setItem(this.expandedItemsKey, this.expandedMenuitems.join(',').replace(/,\s*$/, ""))
         },
     
         clearMenuState: function() {
-            PrimeFaces.deleteCookie('showcase_expandeditems', {path: '/'});
+            localStorage.removeItem(this.expandedItemsKey);
         },
     
         activate: function(item) {
@@ -318,9 +322,9 @@ $(document).ready(function() {
         },
     
         restoreMenuState: function() {
-            var menucookie = PrimeFaces.getCookie('showcase_expandeditems');
-            if (menucookie) {
-                this.expandedMenuitems = menucookie.split(',');
+            var menustore = localStorage.getItem(this.expandedItemsKey);
+            if (menustore) {
+                this.expandedMenuitems = menustore.split(',');
                 for (var i = 0; i < this.expandedMenuitems.length; i++) {
                     var id = this.expandedMenuitems[i];
                     if (id) {
