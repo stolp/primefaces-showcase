@@ -16,6 +16,8 @@ PrimeFaces.widget.Showcase = PrimeFaces.widget.BaseWidget.extend({
         this.submenuItems = this.menu.find('.menu-items');
         this.menulinks = this.menu.find('a');
 
+        this.layoutMask = this.wrapper.children('.layout-mask');
+
         this.searchInput = this.sidebar.find('.search-input > input');
         this.expandedMenuitems = this.expandedMenuitems||[];
 
@@ -40,13 +42,11 @@ PrimeFaces.widget.Showcase = PrimeFaces.widget.BaseWidget.extend({
         
         $(document.body).off('click.showcase-body').on('click.showcase-body', function() {            
             if (!$this.sidebarClick) {
-                if ($this.wrapper.hasClass('layout-sidebar-mobile-active')) {
-                    if (!$this.wrapper.hasClass('layout-megamenu-mobile-active')) {
-                        $(document.body).removeClass('blocked-scroll');
-                    }
-                    $this.wrapper.removeClass('layout-sidebar-mobile-active');
+                if ($this.sidebar.hasClass('active')) {
+                    $(document.body).removeClass('blocked-scroll');
+                    $this.sidebar.removeClass('active');
+                    $this.layoutMask.removeClass('layout-mask-active');
                 }
-                $this.wrapper.removeClass('layout-sidebar-mobile-active');
             }
             
             if (!$this.topbarItemClicked) {
@@ -67,13 +67,15 @@ PrimeFaces.widget.Showcase = PrimeFaces.widget.BaseWidget.extend({
         
         this.sidebarButton.off('click.sidebar').on('click.sidebar', function(e) {
             $this.sidebarClick = true;
-            $this.toggleClass($this.wrapper, 'layout-sidebar-mobile-active');
+            $this.toggleClass($this.sidebar, 'active');
 
-            if ($this.wrapper.hasClass('layout-sidebar-mobile-active')) {
+            if ($this.sidebar.hasClass('active')) {
                 $(document.body).addClass('blocked-scroll');
+                $this.layoutMask.addClass('layout-mask-active');
             }
             else {
                 $(document.body).removeClass('blocked-scroll');
+                $this.layoutMask.removeClass('layout-mask-active');
             }
             
             e.preventDefault();

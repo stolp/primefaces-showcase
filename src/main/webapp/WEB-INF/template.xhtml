@@ -33,7 +33,7 @@
     <h:outputStylesheet name="styles/primeflex.css" library="showcase"/>
     <h:outputStylesheet name="styles/primeicons/primeicons.css" library="showcase"/>
     <h:outputStylesheet name="styles/flags/flags.css" library="showcase" />
-
+    <h:outputStylesheet name="styles/app/layout.css" library="showcase"/>
     <h:outputScript name="script/layout.js" library="showcase"/>
 
     <ui:insert name="head"/>
@@ -73,6 +73,8 @@
             <ui:include src="./footer.xhtml"></ui:include>
 
         </div>
+
+        <div class="layout-mask"></div>
     </div>
 
     <ui:insert name="status">
@@ -91,7 +93,6 @@
         <h:outputScript name="showcase/script/sh.js" target="body"/>
     </ui:insert>
 
-    <h:outputStylesheet name="styles/app/layout.css" library="showcase"/>
 </h:body>
 
 </html>
