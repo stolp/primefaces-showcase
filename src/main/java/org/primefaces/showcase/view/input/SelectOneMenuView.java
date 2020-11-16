@@ -50,6 +50,7 @@ public class SelectOneMenuView {
     private List<String> options;
 
     private String longItemLabel;
+    private String labeled;
     
     @Inject
     private ThemeService service;
@@ -172,5 +173,13 @@ public class SelectOneMenuView {
 
     public void setLongItemLabel(String longItemLabel) {
         this.longItemLabel = longItemLabel;
+    }
+
+    public String getLabeled() {
+        return labeled;
+    }
+
+    public void setLabeled(String labeled) {
+        this.labeled = labeled;
     }
 }

@@ -63,6 +63,11 @@
                     <f:selectItem itemLabel="Select One" itemValue="" />
                     <f:selectItems value="#{selectOneMenuView.cities}" />
                 </p:selectOneMenu>
+                
+                <p:outputLabel value="Label: " />
+                <p:selectOneMenu id="labeled" value="#{selectOneMenuView.labeled}" label="Always Show Label" alwaysDisplayLabel="true">
+                    <f:selectItems value="#{selectOneMenuView.cities}" />
+                </p:selectOneMenu>
 
                 <p:outputLabel for="@next" value="Advanced:" />
                 <p:selectOneMenu id="advanced" value="#{selectOneMenuView.theme}" converter="#{themeConverter}" panelStyle="width:180px" 
@@ -133,6 +138,9 @@
 
                     <h:outputText value="Editable" />
                     <h:outputText value="#{selectOneMenuView.city}" />
+                    
+                    <h:outputText value="Label" />
+                    <h:outputText value="#{selectOneMenuView.labeled}" />
 
                     <h:outputText value="Advanced:" />
                     <h:outputText value="#{selectOneMenuView.theme.displayName}" />
