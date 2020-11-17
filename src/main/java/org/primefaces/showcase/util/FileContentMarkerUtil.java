@@ -31,7 +31,8 @@ public class FileContentMarkerUtil {
                     Marker.of(" class "),
                     Marker.of(" enum "),
                     Marker.of("EXCLUDE-SOURCE-END").excluded())
-            .setEndMarkers(Marker.of("EXCLUDE-SOURCE-START").excluded());
+            .setEndMarkers(
+                    Marker.of("EXCLUDE-SOURCE-START").excluded());
 
     private static final FileContentSettings xhtmlFileSettings = new FileContentSettings()
             .setType("xml")
@@ -43,7 +44,7 @@ public class FileContentMarkerUtil {
                     Marker.of("EXAMPLE-SOURCE-END").excluded(),
                     Marker.of("</ui:define>").excluded());
 
-    private static final Pattern SC_BEAN_PATTERN = Pattern.compile("#\\{\\w*?\\s?(\\w+)[\\.\\[].*\\}");
+    private static final Pattern SC_BEAN_PATTERN = Pattern.compile("#\\{\\w*?\\s?(\\w+)[\\[].*}");
 
     private static final String SC_PREFIX = "org.primefaces.showcase";
 
@@ -171,11 +172,12 @@ public class FileContentMarkerUtil {
 
     private static String prettyFormat(String value) {
         String[] chunks = value.split("(?<=\\n)");
-        String pretty = "";
+        StringBuilder pretty = new StringBuilder();
+        pretty.append("\n");
         for (String chunk : chunks) {
-            pretty += chunk.replaceFirst("\\s{8}", "");
+            pretty.append(chunk.replaceFirst("\\s{8}", ""));
         }
-        return pretty;
+        return pretty.toString();
     }
 
     private static boolean isEligibleFile(String file) {

@@ -29,7 +29,7 @@
     </f:facet>
     <title>PrimeFaces Showcase</title>
 
-    <h:outputStylesheet name="styles/sh.css" library="showcase"/>
+    <h:outputStylesheet name="styles/prism.css" library="showcase"/>
     <h:outputStylesheet name="styles/primeflex.css" library="showcase"/>
     <h:outputStylesheet name="styles/primeicons/primeicons.css" library="showcase"/>
     <h:outputStylesheet name="styles/flags/flags.css" library="showcase" />
@@ -48,13 +48,10 @@
         <div class="layout-content">
             <ui:insert name="content">
                 <div class="content-section introduction">
-                    <!--<a class="documentation-link" href="https://primefaces.github.io/primefaces/8_0/##{documentationLink}" target="_blank">
-                        <i class="pi pi-external-link"></i>
-                        Documentation
-                    </a>-->
                     <div class="feature-intro">
                         <h1><ui:insert name="title"></ui:insert></h1>
                         <p><ui:insert name="description"></ui:insert></p>
+                        <p:linkButton icon="pi pi-external-link" value="Documentation" styleClass="p-mt-3" href="https://primefaces.github.io/primefaces/8_0/##{documentationLink}" target="_blank"/>
                     </div>
                 </div>
                 <div class="content-section implementation">
@@ -74,6 +71,7 @@
 
         </div>
 
+        <ui:include src="./config.xhtml"></ui:include>
         <div class="layout-mask"></div>
     </div>
 
@@ -90,7 +88,7 @@
     </ui:insert>
 
     <ui:insert name="highlight">
-        <h:outputScript name="showcase/script/sh.js" target="body"/>
+        <h:outputScript name="showcase/script/prism.js" target="body"/>
     </ui:insert>
 
 </h:body>

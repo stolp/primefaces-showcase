@@ -34,6 +34,10 @@
                         text-decoration: underline;
                     }
                 }
+
+                .ui-button {
+                    background-color: white;
+                }
             }
         }
 
@@ -75,7 +79,6 @@
                 font-family: Monaco, courier, monospace;
                 font-style: normal;
                 font-size: 12px;
-                font-weight: 500;
                 padding: 2px 4px;
                 letter-spacing: .5px;
                 border-radius: 3px;
@@ -83,11 +86,11 @@
                 margin: 0 2px;
             }
 
-            .p-tabview {
+            .ui-tabs {
                 background: transparent;
                 border: 0 none;
 
-                .p-tabview-nav {
+                .ui-tabs-nav {
                     border-radius: 0;
                     padding: 0;
                     border-bottom: 1px solid var(--surface-d);
@@ -108,6 +111,7 @@
                             border-bottom: 1px solid transparent;
                             margin-bottom: -1px;
                             transition: border-bottom-color .2s;
+                            padding: 1rem 1rem 1rem 1rem;
 
                             &:focus {
                                 outline: 0 none;
@@ -121,14 +125,18 @@
                             }
                         }
 
-                        &.p-highlight a,
-                        &.p-highlight:hover a {
+                        &.ui-tabs-header {
+                            background: transparent;
+                        }
+
+                        &.ui-state-active a,
+                        &.ui-state-active:hover a {
                             background: transparent;
                             color: var(--primary-color);
                             border-bottom: 1px solid $linkColor;
                         }
 
-                        &:not(.p-highlight):not(.p-disabled):hover a {
+                        &:not(.ui-state-active):not(.p-disabled):hover a {
                             color: var(--text-color);
                             border-bottom: 1px solid var(--primary-color);
                         }
@@ -139,15 +147,9 @@
                     }
                 }
 
-                .p-tabview-panels {
+                .ui-tabs-panels {
                     background: transparent;
                     border: 0 none;
-                    padding: 2rem 1rem;
-
-                    .btn-viewsource {
-                        display: inline-block;
-                        padding: .5rem 1rem;
-                    }
 
                     a {
                         text-decoration: none;

@@ -21,6 +21,10 @@ PrimeFaces.widget.Showcase = PrimeFaces.widget.BaseWidget.extend({
         this.searchInput = this.sidebar.find('.search-input > input');
         this.expandedMenuitems = this.expandedMenuitems||[];
 
+        this.configMenu = this.wrapper.children('.layout-config');
+        this.configButton = this.configMenu.find('.layout-config-content-wrapper > .layout-config-button');
+        this.configMenuClose = this.configMenu.find('.layout-config-content-wrapper > .layout-config-close');
+
         this.restoreMenuState();
         this.bindEvents();
     },
@@ -39,7 +43,8 @@ PrimeFaces.widget.Showcase = PrimeFaces.widget.BaseWidget.extend({
         
         this.bindSidebarEvents();
         this.bindTopbarEvents();
-        
+        this.bindConfigEvents();
+
         $(document.body).off('click.showcase-body').on('click.showcase-body', function() {            
             if (!$this.sidebarClick) {
                 if ($this.sidebar.hasClass('active')) {
@@ -52,9 +57,14 @@ PrimeFaces.widget.Showcase = PrimeFaces.widget.BaseWidget.extend({
             if (!$this.topbarItemClicked) {
                 $this.topbarItems.siblings('.active-menuitem ').removeClass('active-menuitem ');
             }
+
+            if (!$this.configMenuClicked) {
+                $this.configMenu.removeClass('layout-config-active');
+            }
             
             $this.sidebarClick = false;
             $this.topbarItemClicked = false;
+            $this.configMenuClicked = false;
         });
     },
 
@@ -86,12 +96,11 @@ PrimeFaces.widget.Showcase = PrimeFaces.widget.BaseWidget.extend({
             submenu = link.next('.p-toggleable-content');
 
             if(submenu.length) {
-                submenu.slideToggle('fast');
+                submenu.slideDown();
                 e.preventDefault();
             }
 
             $this.saveScrollPosition();
-
         });
 
         this.searchInput.on('keyup', function(e) {
@@ -165,6 +174,22 @@ PrimeFaces.widget.Showcase = PrimeFaces.widget.BaseWidget.extend({
             if (submenu.length) {
                 e.preventDefault();
             }
+        });
+    },
+
+    bindConfigEvents: function() {
+        var $this = this;
+        var changeConfigMenuState = function(e) {
+            this.toggleClass($this.configMenu, 'layout-config-active');
+            this.configMenuClicked = true;
+            e.preventDefault();
+        };
+
+        this.configButton.off('click.config').on('click.config', changeConfigMenuState.bind(this));
+        this.configMenuClose.off('click.config').on('click.config', changeConfigMenuState.bind(this));
+
+        this.configMenu.off('click.config').on('click.config', function() {
+            $this.configMenuClicked = true;
         });
     },
 
