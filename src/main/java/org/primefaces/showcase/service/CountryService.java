@@ -29,6 +29,6 @@ public class CountryService {
     }
 
     public List<Country> getCountries() {
-        return countries;
+        return new ArrayList<>(countries);
     }
 }

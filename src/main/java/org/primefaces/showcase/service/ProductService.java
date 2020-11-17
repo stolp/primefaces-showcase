@@ -54,7 +54,7 @@ public class ProductService {
     }
 
     public List<Product> getProducts() {
-        return products;
+        return new ArrayList<>(products);
     }
 
     public List<Product> getProducts(int size) {
@@ -72,7 +72,7 @@ public class ProductService {
         }
 
         else {
-            return products.subList(0, size);
+            return new ArrayList<>(products).subList(0, size);
         }
 
     }

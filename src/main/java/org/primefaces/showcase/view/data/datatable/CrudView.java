@@ -1,8 +1,6 @@
 package org.primefaces.showcase.view.data.datatable;
 
 import org.primefaces.PrimeFaces;
-import org.primefaces.event.ToggleEvent;
-import org.primefaces.model.Visibility;
 import org.primefaces.showcase.domain.Product;
 import org.primefaces.showcase.service.ProductService;
 
@@ -97,6 +95,7 @@ public class CrudView implements Serializable {
         this.selectedProducts = null;
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Products Removed"));
         PrimeFaces.current().ajax().update("form:messages", "form:dt-products");
+        PrimeFaces.current().executeScript("PF('dtProducts').clearFilters()");
     }
 
 }
