@@ -44,7 +44,7 @@ public class FileContentMarkerUtil {
                     Marker.of("EXAMPLE-SOURCE-END").excluded(),
                     Marker.of("</ui:define>").excluded());
 
-    private static final Pattern SC_BEAN_PATTERN = Pattern.compile("#\\{\\w*?\\s?(\\w+)[\\[].*}");
+    private static final Pattern SC_BEAN_PATTERN = Pattern.compile("#\\{\\w*?\\s?(\\w+)[\\.\\[].*\\}");
 
     private static final String SC_PREFIX = "org.primefaces.showcase";
 
