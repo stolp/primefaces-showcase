@@ -26,16 +26,17 @@
         }
 
         input {
-            color: #495057;
-            padding: 8px 0 8px 24px;
-            width: 100%;
-            border-radius: 3px;
-            font-size: 1rem;
             background-color: #ffffff;
             border: solid 1px #ced4da;
+            border-radius: 3px;
+            box-sizing: border-box;
+            color: #495057;
+            margin: 0;
+            padding: 8px 0 8px 24px;
+            width: 100%;
+            font-size: 1rem;
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
-            box-sizing: border-box;
             -moz-transition: border-color .2s;
             -o-transition: border-color .2s;
             -webkit-transition: border-color .2s;
@@ -124,9 +125,14 @@
                 }
             }
 
+            &.active-menuitem .p-toggleable-content{
+                display: block;
+            }
+
             .p-toggleable-content {
                 display: none;
             }
+
         }
     }
 }

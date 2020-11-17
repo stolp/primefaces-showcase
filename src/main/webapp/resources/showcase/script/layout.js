@@ -1,7 +1,7 @@
 PrimeFaces.widget.Showcase = PrimeFaces.widget.BaseWidget.extend({
-    
+
     init: function(cfg) {
-        this._super(cfg);  
+        this._super(cfg);
         this.wrapper = $(document.body).children('.layout-wrapper');
 
         this.topbar = this.wrapper.children('.layout-topbar');
@@ -40,12 +40,12 @@ PrimeFaces.widget.Showcase = PrimeFaces.widget.BaseWidget.extend({
 
     bindEvents: function() {
         var $this = this;
-        
+
         this.bindSidebarEvents();
         this.bindTopbarEvents();
         this.bindConfigEvents();
 
-        $(document.body).off('click.showcase-body').on('click.showcase-body', function() {            
+        $(document.body).off('click.showcase-body').on('click.showcase-body', function() {
             if (!$this.sidebarClick) {
                 if ($this.sidebar.hasClass('active')) {
                     $(document.body).removeClass('blocked-scroll');
@@ -53,7 +53,7 @@ PrimeFaces.widget.Showcase = PrimeFaces.widget.BaseWidget.extend({
                     $this.layoutMask.removeClass('layout-mask-active');
                 }
             }
-            
+
             if (!$this.topbarItemClicked) {
                 $this.topbarItems.siblings('.active-menuitem ').removeClass('active-menuitem ');
             }
@@ -61,7 +61,7 @@ PrimeFaces.widget.Showcase = PrimeFaces.widget.BaseWidget.extend({
             if (!$this.configMenuClicked) {
                 $this.configMenu.removeClass('layout-config-active');
             }
-            
+
             $this.sidebarClick = false;
             $this.topbarItemClicked = false;
             $this.configMenuClicked = false;
@@ -70,11 +70,18 @@ PrimeFaces.widget.Showcase = PrimeFaces.widget.BaseWidget.extend({
 
     bindSidebarEvents: function() {
         var $this = this;
-        
+
+        var searchKey = $.cookie('showcase_searchkey');
+
+        if (searchKey) {
+            document.getElementById("searchInput").value = searchKey;
+            $this.searchInputEvent(searchKey);
+        }
+
         this.sidebar.off('click.sidebar').on('click.sidebar', function() {
             $this.sidebarClick = true;
         });
-        
+
         this.sidebarButton.off('click.sidebar').on('click.sidebar', function(e) {
             $this.sidebarClick = true;
             $this.toggleClass($this.sidebar, 'active');
@@ -87,7 +94,7 @@ PrimeFaces.widget.Showcase = PrimeFaces.widget.BaseWidget.extend({
                 $(document.body).removeClass('blocked-scroll');
                 $this.layoutMask.removeClass('layout-mask-active');
             }
-            
+
             e.preventDefault();
         });
 
@@ -95,9 +102,14 @@ PrimeFaces.widget.Showcase = PrimeFaces.widget.BaseWidget.extend({
             var link = $(this),
             submenu = link.next('.p-toggleable-content');
 
-            if(submenu.length) {
-                submenu.slideDown();
+            if (submenu.hasClass('active-menuitem')) {
+                $this.removeMenuitem(submenu.attr('id'));
+                $this.deactivate(submenu);
                 e.preventDefault();
+            }
+            else {
+                $this.addMenuitem(submenu.attr('id'));
+                $this.activate(submenu);
             }
 
             $this.saveScrollPosition();
@@ -106,58 +118,65 @@ PrimeFaces.widget.Showcase = PrimeFaces.widget.BaseWidget.extend({
         this.searchInput.on('keyup', function(e) {
             var input = $(this),
                 searchedValue = input.val().toLowerCase();
-
-            for(var i = 0; i < $this.submenuItems.length; i++) {
-
-                var submenuItem = $this.submenuItems.eq(i),
-                    submenuCategory = $this.menuCategories.eq(i),
-                    submenuLinks = submenuItem.find('a'),
-                    matchSub = false;
-
-                submenuCategory.hide();
-
-                for(var j = 0; j < submenuLinks.length; j++) {
-                    var submenuLinkVal = submenuLinks.eq(j).data('meta').toLowerCase().trim();
-                    if(submenuLinkVal.search(searchedValue) >= 0) {
-                        submenuCategory.show();
-                        submenuItem.show();
-                        submenuLinks.eq(j).show();
-                        if (submenuLinks.eq(j).parents().hasClass('p-toggleable-content')) {
-                            submenuLinks.eq(j).parents('.p-toggleable-content').prev().show();
-                        }
-                        matchSub = true;
-                    } else {
-                        submenuLinks.eq(j).hide();
-                        if (submenuLinks.eq(j).parents().hasClass('p-toggleable-content')) {
-                            submenuLinks.eq(j).parents('.p-toggleable-content').hide();
-                        }
-                    }
-                }
-
-                if (!matchSub) {
-                    submenuItem.hide();
-                }
-            }
-
-            if (searchedValue.length === 0) {
-                $this.submenuItems.find('.p-toggleable-content').hide();
-            } else {
-                for(var a = 0; a < $this.submenuItems.length; a++) {
-                    var showItem = $this.submenuItems.eq(a),
-                        showLinks = showItem.find('a');
-
-                    for(var b = 0; b < showLinks.length; b++) {
-                        var linkItem = showLinks.eq(b);
-                        if(linkItem.css('display') !== 'none' && linkItem.parents().hasClass('p-toggleable-content')){
-                            linkItem.parents('.p-toggleable-content').show();
-                        }
-                    }
-                }
-            }
-
+            $this.saveSearchKey(searchedValue.trim());
+            $this.searchInputEvent(searchedValue);
         });
+
+
     },
-    
+
+    searchInputEvent: function (searchedValue) {
+        var $this = this;
+        for(var i = 0; i < $this.submenuItems.length; i++) {
+
+            var submenuItem = $this.submenuItems.eq(i),
+                submenuCategory = $this.menuCategories.eq(i),
+                submenuLinks = submenuItem.find('a'),
+                matchSub = false;
+
+            submenuCategory.hide();
+
+            for(var j = 0; j < submenuLinks.length; j++) {
+                var submenuLinkVal = submenuLinks.eq(j).data('meta').toLowerCase().trim();
+                if(submenuLinkVal.search(searchedValue) >= 0) {
+                    submenuCategory.show();
+                    submenuItem.show();
+                    submenuLinks.eq(j).show();
+                    if (submenuLinks.eq(j).parents().hasClass('p-toggleable-content')) {
+                        submenuLinks.eq(j).parents('.p-toggleable-content').prev().show();
+                    }
+                    matchSub = true;
+                } else {
+                    submenuLinks.eq(j).hide();
+                    if (submenuLinks.eq(j).parents().hasClass('p-toggleable-content')) {
+                        submenuLinks.eq(j).parents('.p-toggleable-content').hide();
+                    }
+                }
+            }
+
+            if (!matchSub) {
+                submenuItem.hide();
+            }
+        }
+
+        if (searchedValue.length === 0) {
+            $this.submenuItems.find('.p-toggleable-content').hide();
+            $this.restoreMenuState();
+        } else {
+            for(var a = 0; a < $this.submenuItems.length; a++) {
+                var showItem = $this.submenuItems.eq(a),
+                    showLinks = showItem.find('a');
+
+                for(var b = 0; b < showLinks.length; b++) {
+                    var linkItem = showLinks.eq(b);
+                    if(linkItem.css('display') !== 'none' && linkItem.parents().hasClass('p-toggleable-content')){
+                        linkItem.parents('.p-toggleable-content').show();
+                    }
+                }
+            }
+        }
+    },
+
     bindTopbarEvents: function() {
         var $this = this;
 
@@ -170,7 +189,7 @@ PrimeFaces.widget.Showcase = PrimeFaces.widget.BaseWidget.extend({
             item.addClass('active-menuitem ');
 
             $this.topbarItemClicked = true;
-            
+
             if (submenu.length) {
                 e.preventDefault();
             }
@@ -193,88 +212,38 @@ PrimeFaces.widget.Showcase = PrimeFaces.widget.BaseWidget.extend({
         });
     },
 
+    saveSearchKey: function (key) {
+        $.cookie('showcase_searchkey', key, {path: '/'});
+    },
+
     activate: function(item) {
-        var submenu = item.children('ul');
         item.addClass('active-menuitem');
-
-        if(submenu.length) {
-            submenu.slideDown();
-        }
+        item.toggle("fast");
     },
-    
+
     deactivate: function(item) {
-        var submenu = item.children('ul');
         item.removeClass('active-menuitem');
-        
-        if(submenu.length) {
-            submenu.hide();
-        }
+        item.toggle("fast");
     },
-        
-    deactivateItems: function(items, animate) {
-        var $this = this;
-        
-        for(var i = 0; i < items.length; i++) {
-            var item = items.eq(i),
-            submenu = item.children('ul');
 
-            if(submenu.length) {
-                if(item.hasClass('active-menuitem')) {
-                    var activeSubItems = item.find('.active-menuitem');
-                    item.removeClass('active-menuitem');
-                    
-                    if(animate) {
-                        submenu.slideUp('normal', function() {
-                            $(this).parent().find('.active-menuitem').each(function() {
-                                $this.deactivate($(this));
-                            });
-                        });
-                    }
-                    else {
-                        submenu.hide();
-                        item.find('.active-menuitem').each(function() {
-                            $this.deactivate($(this));
-                        });
-                    }
-                    
-                    $this.removeMenuitem(item.attr('id'));
-                    activeSubItems.each(function() {
-                        $this.removeMenuitem($(this).attr('id'));
-                    });
-                }
-                else {
-                    item.find('.active-menuitem').each(function() {
-                        var subItem = $(this);
-                        $this.deactivate(subItem);
-                        $this.removeMenuitem(subItem.attr('id'));
-                    });
-                }
-            }
-            else if(item.hasClass('active-menuitem')) {
-                $this.deactivate(item);
-                $this.removeMenuitem(item.attr('id'));
-            }
-        }
-    },
-    
     removeMenuitem: function (id) {
         this.expandedMenuitems = $.grep(this.expandedMenuitems, function (value) {
             return value !== id;
         });
         this.saveMenuState();
     },
-    
+
     addMenuitem: function (id) {
         if ($.inArray(id, this.expandedMenuitems) === -1) {
             this.expandedMenuitems.push(id);
         }
         this.saveMenuState();
     },
-    
+
     saveMenuState: function() {
         $.cookie('showcase_expandeditems', this.expandedMenuitems.join(','), {path: '/'});
     },
-    
+
     clearMenuState: function() {
         $.removeCookie('showcase_expandeditems', {path: '/'});
     },
@@ -282,8 +251,10 @@ PrimeFaces.widget.Showcase = PrimeFaces.widget.BaseWidget.extend({
     saveScrollPosition: function() {
         $.cookie('showcase_scroll_position', this.sidebar.scrollTop(), { path: '/' });
     },
-    
+
     restoreMenuState: function() {
+        var $this = this;
+
         this.sidebar.scrollTop($.cookie('showcase_scroll_position') || 0);
 
         var menuCookie = $.cookie('showcase_expandeditems');
@@ -293,26 +264,21 @@ PrimeFaces.widget.Showcase = PrimeFaces.widget.BaseWidget.extend({
                 var id = this.expandedMenuitems[i];
                 if (id) {
                     var menuitem = $("#" + this.expandedMenuitems[i].replace(/:/g, "\\:"));
-                    menuitem.addClass('active-menuitem');
-                    
-                    var submenu = menuitem.children('ul');
-                    if(submenu.length) {
-                        submenu.show();
-                    }
+                    $this.activate(menuitem);
                 }
             }
         }
     },
-    
+
     hideTopBar: function() {
         var $this = this;
         this.topbarMenu.addClass('fadeOutUp');
-        
+
         setTimeout(function() {
             $this.topbarMenu.removeClass('fadeOutUp topbar-menu-visible');
         },500);
     },
-    
+
     isMobile: function() {
         return window.innerWidth <= 1024;
     }

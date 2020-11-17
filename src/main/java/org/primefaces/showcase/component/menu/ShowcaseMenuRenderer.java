@@ -81,6 +81,7 @@ public class ShowcaseMenuRenderer extends BaseMenuRenderer {
             } else if (element instanceof Submenu) {
                 if (isNestedSubmenu) {
                     Submenu submenu = (Submenu) element;
+                    String submenuClientId = (submenu instanceof UIComponent) ? ((UIComponent) submenu).getClientId() : menu.getClientId(context) + "_" + submenu.getId();
                     String style = submenu.getStyle();
 
                     writer.startElement("a", null);
@@ -91,6 +92,7 @@ public class ShowcaseMenuRenderer extends BaseMenuRenderer {
                     writer.endElement("a");
 
                     writer.startElement("div", null);
+                    writer.writeAttribute("id", submenuClientId, null);
                     writer.writeAttribute("class", "p-toggleable-content", null);
                     if (style != null) {
                         writer.writeAttribute("style", style, null);
