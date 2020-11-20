@@ -83,8 +83,11 @@
                                 var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="#{themeConverter}" forceSelection="true" />
 
                 <p:outputLabel value="Pojo (via REST):" for="themePojoRest" />
-                <p:autoComplete id="themePojoRest" value="#{autoCompleteView.theme5}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="#{themeConverter}"
-                                completeEndpoint="#{request.contextPath}/rest/theme/autocomplete" forceSelection="true" emptyMessage="sorry, no suggestions" moreText="more items available" />
+                <p:outputPanel>
+                    <p:autoComplete id="themePojoRest" widgetVar="themePojoRest" value="#{autoCompleteView.theme5}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="#{themeConverter}"
+                                    completeEndpoint="#{request.contextPath}/rest/theme/autocomplete" forceSelection="true" emptyMessage="sorry, no suggestions" moreText="more items available" />
+                    <p:commandButton type="button" value="X" title="clear" onclick="PF('themePojoRest').clear();" />
+                </p:outputPanel>
 
                 <p:outputLabel value="Custom Content:" for="themeCustom" />
                 <p:autoComplete id="themeCustom" value="#{autoCompleteView.theme2}" completeMethod="#{autoCompleteView.completeTheme}"
