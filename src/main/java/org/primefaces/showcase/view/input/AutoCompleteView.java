@@ -45,6 +45,7 @@ public class AutoCompleteView {
     private Theme theme2;
     private Theme theme3;
     private Theme theme4;
+    private Theme theme5;
     private List<Theme> selectedThemes;
     
     @Inject
@@ -185,6 +186,14 @@ public class AutoCompleteView {
 
     public void setTheme4(Theme theme4) {
         this.theme4 = theme4;
+    }
+
+    public Theme getTheme5() {
+        return theme5;
+    }
+
+    public void setTheme5(Theme theme5) {
+        this.theme5 = theme5;
     }
 
     public List<Theme> getSelectedThemes() {

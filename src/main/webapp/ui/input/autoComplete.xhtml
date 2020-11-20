@@ -82,6 +82,10 @@
                 <p:autoComplete id="themePojo" value="#{autoCompleteView.theme1}" completeMethod="#{autoCompleteView.completeTheme}"
                                 var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="#{themeConverter}" forceSelection="true" />
 
+                <p:outputLabel value="Pojo (via REST):" for="themePojoRest" />
+                <p:autoComplete id="themePojoRest" value="#{autoCompleteView.theme5}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="#{themeConverter}"
+                                completeEndpoint="#{request.contextPath}/rest/theme/autocomplete" forceSelection="true" emptyMessage="sorry, no suggestions" moreText="more items available" />
+
                 <p:outputLabel value="Custom Content:" for="themeCustom" />
                 <p:autoComplete id="themeCustom" value="#{autoCompleteView.theme2}" completeMethod="#{autoCompleteView.completeTheme}"
                                 var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="#{themeConverter}" forceSelection="true">
@@ -160,6 +164,9 @@
 
                     <h:outputText value="Pojo:" />
                     <h:outputText value="#{autoCompleteView.theme1}" />
+
+                    <h:outputText value="Pojo (via REST):" />
+                    <h:outputText value="#{autoCompleteView.theme5}" />
 
                     <h:outputText value="Custom Content:" />
                     <h:outputText value="#{autoCompleteView.theme2}" />
