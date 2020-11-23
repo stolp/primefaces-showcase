@@ -12,7 +12,7 @@
 			}
 		</style>
 	</ui:define>
-    
+
     <ui:define name="title">
         Inplace
     </ui:define>
@@ -29,17 +29,22 @@
 
         <h:form>
             <h:panelGrid columns="2" columnClasses="column" cellpadding="5">
-                <h:outputLabel for="basic" value="Basic:" />
+                <p:outputLabel for="@next" value="Basic:" />
                 <p:inplace id="basic">
                     <p:inputText value="Edit Me" />
                 </p:inplace>
 
-                <h:outputLabel for="ajax" value="Ajax:" />
+                <p:outputLabel for="@next" value="Ajax:" />
                 <p:inplace id="ajax" editor="true">
                     <p:inputText value="#{inplaceView.text}" required="true" label="text" />
                 </p:inplace>
 
-                <h:outputLabel for="event" value="Dblclick"/>
+                <p:outputLabel for="@next" value="Ajax with input mode:" />
+                <p:inplace id="ajaxInput" editor="true" mode="input">
+                    <p:inputText value="#{inplaceView.text}" required="true" label="text" />
+                </p:inplace>
+
+                <p:outputLabel for="@next" value="Dblclick"/>
                 <p:inplace id="event" label="Cities" effectSpeed="fast" event="dblclick">
                     <h:selectOneMenu>
                         <f:selectItem itemLabel="New York" itemValue="0" />
@@ -49,7 +54,7 @@
                     </h:selectOneMenu>
                 </p:inplace>
 
-                <h:outputLabel for="facet" value="Facet:" />
+                <p:outputLabel for="@next" value="Facet:" />
                 <p:inplace id="facet" effect="none">
                     <f:facet name="output">
                         Yes or No
@@ -59,13 +64,13 @@
                     </f:facet>
                 </p:inplace>
 
-                <h:outputLabel for="image" value="Image:" />
+                <p:outputLabel for="@next" value="Image:" />
                 <p:inplace id="image" label="Show" effect="slide">
                     <p:graphicImage name="/demo/images/nature/nature3.jpg" />
                 </p:inplace>
             </h:panelGrid>
         </h:form>
-        
+
     </ui:define>
 
 </ui:composition>
