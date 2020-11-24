@@ -49,18 +49,18 @@ public class NestedGroupingTimelineView implements Serializable {
         model = new TimelineModel<>();
 
         // create nested groups
-        TimelineGroup<String> group1 = new TimelineGroup<>("id1", "Truck Group Level 1", "id1", 1, new HashSet<>(Arrays.asList("id2", "id3", "id4", "id7", "id8")));
-        TimelineGroup<String> group2 = new TimelineGroup<>("id2", "Truck Group Level 2","id2", 2, new HashSet<>(Arrays.asList("id5", "id6")));
-        TimelineGroup<String> group3 = new TimelineGroup<>("id3", "Truck 1",2);
-        TimelineGroup<String> group4 = new TimelineGroup<>("id4", "Truck 2",2);
-        TimelineGroup<String> group5 = new TimelineGroup<>("id5", "Truck 3", 3);
-        TimelineGroup<String> group6 = new TimelineGroup<>("id6", "Truck 4", 3);
-        TimelineGroup<String> group7 = new TimelineGroup<>("id7", "Truck 5", 2);
-        TimelineGroup<String> group8 = new TimelineGroup<>("id8", "Truck 6", 2);
-        TimelineGroup<String> group9 = new TimelineGroup<>("id9", "Truck Group Level 1","id9",1, new HashSet<>(Arrays.asList("id10", "id11", "id12")));
-        TimelineGroup<String> group10 = new TimelineGroup<>("id10", "Truck 7",2);
-        TimelineGroup<String> group11 = new TimelineGroup<>("id11", "Truck 8", 2);
-        TimelineGroup<String> group12 = new TimelineGroup<>("id12", "Truck 9", 2);
+        TimelineGroup<String> group1 = new TimelineGroup<>("groupId1", "Truck Group Level 1", "groupId1", 1, Arrays.asList("groupId2", "id1", "id2", "id5", "id6"));
+        TimelineGroup<String> group2 = new TimelineGroup<>("groupId2", "Truck Group Level 2", "groupId2", 2, Arrays.asList("id3", "id4"));
+        TimelineGroup<String> group3 = new TimelineGroup<>("id1", "Truck 1",2);
+        TimelineGroup<String> group4 = new TimelineGroup<>("id2", "Truck 2",2);
+        TimelineGroup<String> group5 = new TimelineGroup<>("id3", "Truck 3", 3);
+        TimelineGroup<String> group6 = new TimelineGroup<>("id4", "Truck 4", 3);
+        TimelineGroup<String> group7 = new TimelineGroup<>("id5", "Truck 5", 2);
+        TimelineGroup<String> group8 = new TimelineGroup<>("id6", "Truck 6", 2);
+        TimelineGroup<String> group9 = new TimelineGroup<>("groupId3", "Truck Group Level 1", "groupId3", 1, Arrays.asList("id7", "id8", "id9"));
+        TimelineGroup<String> group10 = new TimelineGroup<>("id7", "Truck 7",2);
+        TimelineGroup<String> group11 = new TimelineGroup<>("id8", "Truck 8", 2);
+        TimelineGroup<String> group12 = new TimelineGroup<>("id9", "Truck 9", 2);
 
         // add nested groups to the model
         model.addGroup(group1);
