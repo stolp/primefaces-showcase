@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Ajax Framework - <span class="subitem">Observer / Event</span>
+    </ui:define>
+
+    <ui:define name="description">
+
+    </ui:define>
+
+    <ui:param name="documentationLink" value="/core/ajaxRendering" />
+
+    <ui:define name="implementation">
+
+        <h:form>
+            <h:outputLabel for="name" value="Name:" style="font-weight:bold" />
+            <p:inputText id="name" value="#{observerView.text}">
+                <p:ajax process="@this" update="@none" ignoreAutoUpdate="true" />
+            </p:inputText>
+
+            <br /><br />
+
+            <p:commandButton value="Update global" icon="pi pi-check" />
+            <p:commandButton value="Update event1" update="@obs(event1)" icon="pi pi-check" />
+            <p:commandButton value="Update event2" update="@obs(event2)" icon="pi pi-check" />
+
+            <br /><br />
+            Global:
+            <h:outputText id="displayGlobal" value="#{observerView.text}">
+                <p:autoUpdate />
+            </h:outputText>
+
+            <br /><br />
+            Event1:
+            <h:outputText id="displayEvent1" value="#{observerView.text}">
+                <p:autoUpdate on="event1" />
+            </h:outputText>
+
+            <br /><br />
+            Event2:
+            <h:outputText id="displayEvent2" value="#{observerView.text}">
+                <p:autoUpdate on="event2" />
+            </h:outputText>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
