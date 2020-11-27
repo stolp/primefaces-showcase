@@ -2,28 +2,63 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
                 template="./template.xhtml">
 
     <ui:define name="title">
         DataTable - <span class="subitem">Basic</span>
     </ui:define>
-    
+
     <ui:define name="description">
         DataTable displays data in tabular format.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/datatable" />
-    <ui:param name="widgetLink" value="datatable" />
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-datatable {
+                margin-bottom: 25px
+            }
+        </style>
+    </ui:define>
+
+    <ui:param name="documentationLink" value="/components/datatable"/>
+    <ui:param name="widgetLink" value="datatable"/>
 
     <ui:define name="implementation">
         <p:dataTable var="car" value="#{dtBasicView.cars}">
-            <p:column field="id" headerText="Id" />
+            <f:facet name="header">
+                Verbose way of declaring columns
+            </f:facet>
 
-            <p:column field="year" headerText="Year" />
+            <p:column headerText="Id">
+                #{car.id}
+            </p:column>
 
-            <p:column field="brand" headerText="Brand" />
+            <p:column headerText="Year">
+                #{car.year}
+            </p:column>
 
-            <p:column field="color" headerText="Color" />
+            <p:column headerText="Brand">
+                #{car.brand}
+            </p:column>
+
+            <p:column headerText="Color">
+                #{car.color}
+            </p:column>
+        </p:dataTable>
+
+        <p:dataTable var="car" value="#{dtBasicView.cars}">
+            <f:facet name="header">
+                Quick way  of declaring columns if sorting &amp; filtering needed (since 9.0)
+            </f:facet>
+
+            <p:column field="id" headerText="Id" sortable="false" filterable="false" />
+
+            <p:column field="year" headerText="Year"/>
+
+            <p:column field="brand" headerText="Brand"/>
+
+            <p:column field="color" headerText="Color"/>
         </p:dataTable>
     </ui:define>
 

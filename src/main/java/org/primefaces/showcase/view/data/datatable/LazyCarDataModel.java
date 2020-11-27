@@ -15,14 +15,20 @@
  */
 package org.primefaces.showcase.view.data.datatable;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import org.apache.commons.collections4.ComparatorUtils;
 import org.primefaces.model.FilterMeta;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortMeta;
+import org.primefaces.model.filter.FilterConstraint;
 import org.primefaces.showcase.domain.Car;
+import org.primefaces.util.LocaleUtils;
+
+import javax.faces.context.FacesContext;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Dummy implementation of LazyDataModel that uses a list to mimic a real datasource like a database.
@@ -53,60 +59,50 @@ public class LazyCarDataModel extends LazyDataModel<Car> {
 
     @Override
     public List<Car> load(int first, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
-        List<Car> data = new ArrayList<>();
-
-        //filter
-        for (Car car : datasource) {
-            boolean match = true;
-
-            if (filterBy != null) {
-                for (FilterMeta meta : filterBy.values()) {
-                    try {
-                        String filterField = meta.getFilterField();
-                        Object filterValue = meta.getFilterValue();
-                        String fieldValue = String.valueOf(car.getClass().getField(filterField).get(car));
-
-                        if (filterValue == null || fieldValue.startsWith(filterValue.toString())) {
-                            match = true;
-                        }
-                        else {
-                            match = false;
-                            break;
-                        }
-                    }
-                    catch (Exception e) {
-                        match = false;
-                    }
-                }
-            }
-
-            if (match) {
-                data.add(car);
-            }
+        List<Car> cars = datasource;
+        // filter
+        if (!filterBy.isEmpty()) {
+            cars = datasource.stream()
+                    .skip(first)
+                    .filter(o -> filter(FacesContext.getCurrentInstance(), filterBy.values(), o))
+                    .collect(Collectors.toList());
         }
 
         //sort
-        if (sortBy != null && !sortBy.isEmpty()) {
-            for (SortMeta meta : sortBy.values()) {
-                Collections.sort(data, new LazySorter(meta.getField(), meta.getOrder()));
-            }
+        if (!sortBy.isEmpty()) {
+            List<Comparator<Car>> comparators = sortBy.values().stream()
+                    .map(o -> new LazySorter(o.getField(), o.getOrder()))
+                    .collect(Collectors.toList());
+            Comparator<Car> cp = ComparatorUtils.chainedComparator(comparators); // from apache
+            cars.sort(cp);
         }
 
-        //rowCount
-        int dataSize = data.size();
-        this.setRowCount(dataSize);
+        // rowCount
+        int dataSize = cars.size();
+        this.setRowCount(first + dataSize);
 
-        //paginate
-        if (dataSize > pageSize) {
+        return cars;
+    }
+
+    private boolean filter(FacesContext context, Collection<FilterMeta> filterBy, Object o) {
+        boolean matching = true;
+
+        for (FilterMeta filter : filterBy) {
+            FilterConstraint constraint = filter.getConstraint();
+            Object filterValue = filter.getFilterValue();
+
             try {
-                return data.subList(first, first + pageSize);
+                Object columnValue = String.valueOf(o.getClass().getField(filter.getField()).get(o));
+                matching = constraint.isMatching(context, columnValue, filterValue, LocaleUtils.getCurrentLocale());
+            } catch (ReflectiveOperationException e) {
+                matching = false;
             }
-            catch (IndexOutOfBoundsException e) {
-                return data.subList(first, first + (dataSize % pageSize));
+
+            if (!matching) {
+                break;
             }
         }
-        else {
-            return data;
-        }
+
+        return matching;
     }
 }

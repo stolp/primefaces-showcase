@@ -11,7 +11,7 @@
                 margin-bottom: 25px
             }
 
-            .ui-datatable .ui-datatable-header {
+            .ui-datatable .ui-datatable-header .global-filter {
                 text-align: right !important;
             }
 
@@ -53,45 +53,42 @@
                          emptyMessage="No cars found with given criteria" filteredValue="#{dtFilterView.filteredCars1}">
 
                 <f:facet name="header">
-                    <p:outputPanel>
+                    Default filtering with markup attributes
+
+                    <div class="global-filter">
                         <h:outputText value="Search all fields:" />
                         <p:inputText id="globalFilter" onkeyup="PF('carsTable1').filter()" style="width:150px" placeholder="Enter keyword"/>
-                    </p:outputPanel>
+                    </div>
                 </f:facet>
 
-                <p:column filterBy="#{car.id}" headerText="Id" footerText="contains" filterMatchMode="contains">
-                    <h:outputText value="#{car.id}" />
-                </p:column>
+                <p:column field="id" headerText="Id" footerText="contains" filterMatchMode="contains" />
 
-                <p:column filterBy="#{car.year}" headerText="Year" footerText="lte" filterMatchMode="lte">
+                <p:column field="year" headerText="Year" footerText="lte" filterMatchMode="lte" filterValue="2000">
                     <f:facet name="filter">
                         <p:spinner onchange="PF('carsTable1').filter()" styleClass="year-spinner custom-filter">
                             <f:converter converterId="javax.faces.Integer" />
                         </p:spinner>
                     </f:facet>
-                    <h:outputText value="#{car.year}" />
                 </p:column>
 
-                <p:column filterBy="#{car.brand}" headerText="Brand" footerText="exact" filterMatchMode="exact">
+                <p:column field="brand" headerText="Brand" footerText="exact" filterMatchMode="exact">
                     <f:facet name="filter">
                         <p:selectOneMenu onchange="PF('carsTable1').filter()" styleClass="custom-filter">
                             <f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true" />
                             <f:selectItems value="#{dtFilterView.brands}" />
                         </p:selectOneMenu>
                     </f:facet>
-                    <h:outputText value="#{car.brand}" />
                 </p:column>
 
-                <p:column filterBy="#{car.color}" headerText="Color" footerText="in" filterMatchMode="in">
+                <p:column field="color" headerText="Color" footerText="in" filterMatchMode="in">
                     <f:facet name="filter">
                         <p:selectCheckboxMenu label="Colors" onchange="PF('carsTable1').filter()" scrollHeight="150" styleClass="custom-filter">
                             <f:selectItems value="#{dtFilterView.colors}" />
                         </p:selectCheckboxMenu>
                     </f:facet>
-                    <h:outputText value="#{car.color}" />
                 </p:column>
 
-                <p:column filterBy="#{car.sold}" headerText="Status" footerText="equals" filterMatchMode="equals">
+                <p:column field="sold" headerText="Status" footerText="equals" filterMatchMode="equals">
                     <f:facet name="filter">
                         <p:selectOneButton onchange="PF('carsTable1').filter()" styleClass="custom-filter">
                             <f:converter converterId="javax.faces.Boolean" />
@@ -103,7 +100,7 @@
                     <h:outputText value="#{car.sold ? 'Sold': 'Sale'}" />
                 </p:column>
 
-                <p:column filterBy="#{car.price}" headerText="Price" footerText="custom (min)" filterFunction="#{dtFilterView.filterByPrice}">
+                <p:column field="price" headerText="Price" footerText="custom (min)" filterFunction="#{dtFilterView.filterByPrice}">
                     <h:outputText value="#{car.price}">
                         <f:convertNumber currencySymbol="$" type="currency"/>
                     </h:outputText>
@@ -112,36 +109,58 @@
 
             <p:dataTable var="car" value="#{dtFilterView.cars2}" widgetVar="carsTable2"
                          emptyMessage="No cars found with given criteria" filteredValue="#{dtFilterView.filteredCars2}"
-                         globalFilterFunction="#{dtFilterView.globalFilterFunction}">
+                         globalFilterFunction="#{dtFilterView.globalFilterFunction}"
+                         filterBy="#{dtFilterView.filterBy}">
 
                 <f:facet name="header">
-                    <p:outputPanel>
-                        <h:outputText value="Search all fields using globalFilterFunction:" />
+                    Default filtering programmatically <br /> and using globalFilterFunction
+
+                    <div class="global-filter">
+                        <h:outputText value="Search all fields:" />
                         <p:inputText id="globalFilter" onkeyup="PF('carsTable2').filter()" style="width:150px" placeholder="Enter keyword"/>
-                    </p:outputPanel>
+                    </div>
                 </f:facet>
 
-                <p:column headerText="Id">
-                    <h:outputText value="#{car.id}" />
+                <p:column field="id" headerText="Id" footerText="contains" filterMatchMode="contains" />
+
+                <p:column field="year" headerText="Year" footerText="lte" filterMatchMode="lte">
+                    <f:facet name="filter">
+                        <p:spinner onchange="PF('carsTable1').filter()" styleClass="year-spinner custom-filter">
+                            <f:converter converterId="javax.faces.Integer" />
+                        </p:spinner>
+                    </f:facet>
                 </p:column>
 
-                <p:column headerText="Year">
-                    <h:outputText value="#{car.year}" />
+                <p:column field="brand" headerText="Brand" footerText="exact" filterMatchMode="exact">
+                    <f:facet name="filter">
+                        <p:selectOneMenu onchange="PF('carsTable1').filter()" styleClass="custom-filter">
+                            <f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItems value="#{dtFilterView.brands}" />
+                        </p:selectOneMenu>
+                    </f:facet>
                 </p:column>
 
-                <p:column headerText="Brand">
-                    <h:outputText value="#{car.brand}" />
+                <p:column field="color" headerText="Color" footerText="in" filterMatchMode="in">
+                    <f:facet name="filter">
+                        <p:selectCheckboxMenu label="Colors" onchange="PF('carsTable1').filter()" scrollHeight="150" styleClass="custom-filter">
+                            <f:selectItems value="#{dtFilterView.colors}" />
+                        </p:selectCheckboxMenu>
+                    </f:facet>
                 </p:column>
 
-                <p:column headerText="Color">
-                    <h:outputText value="#{car.color}" />
-                </p:column>
-
-                <p:column headerText="Status">
+                <p:column field="sold" headerText="Status" footerText="equals" filterMatchMode="equals">
+                    <f:facet name="filter">
+                        <p:selectOneButton onchange="PF('carsTable1').filter()" styleClass="custom-filter">
+                            <f:converter converterId="javax.faces.Boolean" />
+                            <f:selectItem itemLabel="All" itemValue="" />
+                            <f:selectItem itemLabel="Sold" itemValue="true" />
+                            <f:selectItem itemLabel="Sale" itemValue="false" />
+                        </p:selectOneButton>
+                    </f:facet>
                     <h:outputText value="#{car.sold ? 'Sold': 'Sale'}" />
                 </p:column>
 
-                <p:column headerText="Price">
+                <p:column field="price" headerText="Price" footerText="custom (min)" filterFunction="#{dtFilterView.filterByPrice}">
                     <h:outputText value="#{car.price}">
                         <f:convertNumber currencySymbol="$" type="currency"/>
                     </h:outputText>

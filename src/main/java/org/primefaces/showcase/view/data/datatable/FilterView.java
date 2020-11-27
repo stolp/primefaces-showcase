@@ -16,12 +16,18 @@
 package org.primefaces.showcase.view.data.datatable;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.primefaces.model.FilterMeta;
+import org.primefaces.model.MatchMode;
+import org.primefaces.model.SortMeta;
+import org.primefaces.model.SortOrder;
 import org.primefaces.showcase.domain.Car;
 import org.primefaces.showcase.service.CarService;
 
@@ -38,10 +44,25 @@ public class FilterView implements Serializable {
     @Inject
     private CarService service;
 
+    private List<FilterMeta> filterBy;
+
     @PostConstruct
     public void init() {
         cars1 = service.createCars(10);
         cars2 = service.createCars(10);
+
+        filterBy = new ArrayList<>();
+        filterBy.add(FilterMeta.builder()
+                .field("year")
+                .filterValue(2000)
+                .matchMode(MatchMode.LESS_THAN_EQUALS)
+                .build());
+
+        filterBy.add(FilterMeta.builder()
+                .field("sold")
+                .filterValue(true)
+                .matchMode(MatchMode.EQUALS)
+                .build());
     }
 
     public boolean filterByPrice(Object value, Object filter, Locale locale) {
@@ -116,5 +137,9 @@ public class FilterView implements Serializable {
 
     public void setService(CarService service) {
         this.service = service;
+    }
+
+    public List<FilterMeta> getFilterBy() {
+        return filterBy;
     }
 }

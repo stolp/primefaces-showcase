@@ -27,21 +27,13 @@
 
                 <p:ajax event="rowSelect" listener="#{dtLazyView.onRowSelect}" update=":form:carDetail" oncomplete="PF('carDialog').show()" />
 
-                <p:column headerText="Id" sortBy="#{car.id}" filterBy="#{car.id}">
-                    #{car.id}
-                </p:column>
+                <p:column headerText="Id" field="id" />
 
-                <p:column headerText="Year" sortBy="#{car.year}" filterBy="#{car.year}">
-                    #{car.year}
-                </p:column>
+                <p:column headerText="Year" field="year" />
 
-                <p:column headerText="Brand" sortBy="#{car.brand}" filterBy="#{car.brand}">
-                    #{car.brand}
-                </p:column>
+                <p:column headerText="Brand" field="brand"/>
 
-                <p:column headerText="Color" sortBy="#{car.color}" filterBy="#{car.color}">
-                    #{car.color}
-                </p:column>
+                <p:column headerText="Color" field="color" />
 
             </p:dataTable>
 
