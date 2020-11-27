@@ -16,6 +16,8 @@
 package org.primefaces.showcase.domain;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Random;
 
 public class Car implements Serializable {
     
@@ -25,6 +27,7 @@ public class Car implements Serializable {
     public String color;
     public int price;
     public boolean sold;
+    public LocalDate date;
 
     public Car() {}
     
@@ -42,6 +45,7 @@ public class Car implements Serializable {
         this.color = color;
         this.price = price;
         this.sold = sold;
+        this.date = LocalDate.ofYearDay(year, new Random().nextInt(365 - 1) + 1);
     }
 
     public String getId() {
@@ -84,6 +88,13 @@ public class Car implements Serializable {
     }
     public void setSold(boolean sold) {
         this.sold = sold;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     @Override

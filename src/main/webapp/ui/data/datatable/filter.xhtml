@@ -61,17 +61,15 @@
                     </div>
                 </f:facet>
 
-                <p:column field="id" headerText="Id" footerText="contains" filterMatchMode="contains" />
+                <p:column field="id" headerText="Id" filterable="false" />
 
-                <p:column field="year" headerText="Year" footerText="lte" filterMatchMode="lte" filterValue="2000">
+                <p:column field="date" headerText="Year" footerText="lte" filterMatchMode="range">
                     <f:facet name="filter">
-                        <p:spinner onchange="PF('carsTable1').filter()" styleClass="year-spinner custom-filter">
-                            <f:converter converterId="javax.faces.Integer" />
-                        </p:spinner>
+                        <p:datePicker selectionMode="range" onchange="PF('carsTable1').filter()" />
                     </f:facet>
                 </p:column>
 
-                <p:column field="brand" headerText="Brand" footerText="exact" filterMatchMode="exact">
+                <p:column field="brand" headerText="Brand" footerText="exact" filterMatchMode="exact" filterValue="Volvo">
                     <f:facet name="filter">
                         <p:selectOneMenu onchange="PF('carsTable1').filter()" styleClass="custom-filter">
                             <f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true" />
