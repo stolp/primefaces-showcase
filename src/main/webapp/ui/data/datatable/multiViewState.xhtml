@@ -23,7 +23,7 @@
 
     <ui:define name="description">
         MultiViewState (MVS) feature enables DataTable to maintain its state across pages by setting multiViewState attribute to true. In this demo,
-        manipulate table with pagination, sorting, filtering and selection, then visit another page and then come back to this page. DataTable
+        manipulate DataTable with pagination, sorting, filtering and selection, then visit another page and then come back to this page. DataTable
         state should remain as you've left it.
     </ui:define>
 
@@ -79,7 +79,7 @@
                 </p:column>
 
                 <f:facet name="paginatorTopLeft">
-                    <p:commandButton value="Clear table state" action="#{dtMultiViewStateView.clearMultiViewState}" update="@form"/>
+                    <p:commandButton value="Clear MultiViewState" action="#{dtMultiViewStateView.clearMultiViewState}" update="@form"/>
                 </f:facet>
             </p:dataTable>
 
@@ -102,7 +102,7 @@
                 </p:column>
 
                 <f:facet name="paginatorTopLeft">
-                    <p:commandButton value="Clear table state" action="#{dtMultiViewStateView.clearMultiViewState}" update="@form"/>
+                    <p:commandButton value="Clear MultiViewState" action="#{dtMultiViewStateView.clearMultiViewState}" update="@form"/>
                 </f:facet>
             </p:dataTable>
 
