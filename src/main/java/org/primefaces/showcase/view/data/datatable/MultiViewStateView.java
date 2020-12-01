@@ -21,7 +21,6 @@ import org.primefaces.showcase.domain.Car;
 import org.primefaces.showcase.service.CarService;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
@@ -30,9 +29,9 @@ import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 
-@Named("dtTableStateView")
+@Named("dtMultiViewStateView")
 @ViewScoped
-public class TableStateView implements Serializable {
+public class MultiViewStateView implements Serializable {
     
     private List<Car> cars;
     
@@ -80,7 +79,7 @@ public class TableStateView implements Serializable {
         this.service = service;
     }
 
-    public void clearTableState() {
+    public void clearMultiViewState() {
         FacesContext context = FacesContext.getCurrentInstance();
         String viewId = context.getViewRoot().getViewId();
         PrimeFaces.current().multiViewState().clearAll(viewId, true, (clientId) -> {

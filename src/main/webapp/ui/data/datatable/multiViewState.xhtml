@@ -35,12 +35,12 @@
         <h:form id="form">
             <p:messages id="messages" />
 
-            <p:dataTable id="tableStateDT" var="car" value="#{dtTableStateView.cars}" widgetVar="carsTable" multiViewState="true"
+            <p:dataTable id="multiViewStateDT" var="car" value="#{dtMultiViewStateView.cars}" widgetVar="carsTable" multiViewState="true"
                          rows="10" paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          rowsPerPageTemplate="5,10,15"
-                         selectionMode="single" selection="#{dtTableStateView.selectedCar}" rowKey="#{car.id}"
-                         emptyMessage="No cars found with given criteria" filteredValue="#{dtTableStateView.filteredCars}">
+                         selectionMode="single" selection="#{dtMultiViewStateView.selectedCar}" rowKey="#{car.id}"
+                         emptyMessage="No cars found with given criteria" filteredValue="#{dtMultiViewStateView.filteredCars}">
 
                 <f:facet name="header">
                     <p:outputPanel>
@@ -63,7 +63,7 @@
                     <f:facet name="filter">
                         <p:selectOneMenu onchange="PF('carsTable').filter()" style="width:100%; box-sizing: border-box;" >
                             <f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true" />
-                            <f:selectItems value="#{dtTableStateView.brands}" />
+                            <f:selectItems value="#{dtMultiViewStateView.brands}" />
                         </p:selectOneMenu>
                     </f:facet>
                     <h:outputText value="#{car.brand}" />
@@ -72,14 +72,14 @@
                 <p:column headerText="Color" filterBy="#{car.color}" sortBy="#{car.color}" filterMatchMode="in">
                     <f:facet name="filter">
                         <p:selectCheckboxMenu label="Colors" onchange="PF('carsTable').filter()" style="width:100%; box-sizing: border-box;" scrollHeight="150">
-                            <f:selectItems value="#{dtTableStateView.colors}" />
+                            <f:selectItems value="#{dtMultiViewStateView.colors}" />
                         </p:selectCheckboxMenu>
                     </f:facet>
                     <h:outputText value="#{car.color}" />
                 </p:column>
 
                 <f:facet name="paginatorTopLeft">
-                    <p:commandButton value="Clear table state" action="#{dtTableStateView.clearTableState}" update="@form"/>
+                    <p:commandButton value="Clear table state" action="#{dtMultiViewStateView.clearMultiViewState}" update="@form"/>
                 </f:facet>
             </p:dataTable>
 
@@ -102,28 +102,28 @@
                 </p:column>
 
                 <f:facet name="paginatorTopLeft">
-                    <p:commandButton value="Clear table state" action="#{dtTableStateView.clearTableState}" update="@form"/>
+                    <p:commandButton value="Clear table state" action="#{dtMultiViewStateView.clearMultiViewState}" update="@form"/>
                 </f:facet>
             </p:dataTable>
 
             <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
                 <p:outputPanel id="carDetail" style="text-align:center;">
-                    <p:panelGrid  columns="2" rendered="#{not empty dtTableStateView.selectedCar}" columnClasses="label,value">
+                    <p:panelGrid  columns="2" rendered="#{not empty dtMultiViewStateView.selectedCar}" columnClasses="label,value">
                         <f:facet name="header">
-                            <p:graphicImage name="demo/images/car/#{dtTableStateView.selectedCar.brand}-big.gif"/>
+                            <p:graphicImage name="demo/images/car/#{dtMultiViewStateView.selectedCar.brand}-big.gif"/>
                         </f:facet>
 
                         <h:outputText value="Id:" />
-                        <h:outputText value="#{dtTableStateView.selectedCar.id}" />
+                        <h:outputText value="#{dtMultiViewStateView.selectedCar.id}" />
 
                         <h:outputText value="Year" />
-                        <h:outputText value="#{dtTableStateView.selectedCar.year}" />
+                        <h:outputText value="#{dtMultiViewStateView.selectedCar.year}" />
 
                         <h:outputText value="Brand" />
-                        <h:outputText value="#{dtTableStateView.selectedCar.brand}" />
+                        <h:outputText value="#{dtMultiViewStateView.selectedCar.brand}" />
 
                         <h:outputText value="Color:" />
-                        <h:outputText value="#{dtTableStateView.selectedCar.color}" style="color:#{dtTableStateView.selectedCar.color}"/>
+                        <h:outputText value="#{dtMultiViewStateView.selectedCar.color}" style="color:#{dtMultiViewStateView.selectedCar.color}"/>
                     </p:panelGrid>
                 </p:outputPanel>
             </p:dialog>
