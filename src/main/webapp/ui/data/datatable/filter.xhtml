@@ -123,7 +123,7 @@
 
                 <p:column field="year" headerText="Year" footerText="lte" filterMatchMode="lte">
                     <f:facet name="filter">
-                        <p:spinner onchange="PF('carsTable1').filter()" styleClass="year-spinner custom-filter">
+                        <p:spinner onchange="PF('carsTable2').filter()" styleClass="year-spinner custom-filter">
                             <f:converter converterId="javax.faces.Integer" />
                         </p:spinner>
                     </f:facet>
@@ -131,7 +131,7 @@
 
                 <p:column field="brand" headerText="Brand" footerText="exact" filterMatchMode="exact">
                     <f:facet name="filter">
-                        <p:selectOneMenu onchange="PF('carsTable1').filter()" styleClass="custom-filter">
+                        <p:selectOneMenu onchange="PF('carsTable2').filter()" styleClass="custom-filter">
                             <f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true" />
                             <f:selectItems value="#{dtFilterView.brands}" />
                         </p:selectOneMenu>
@@ -140,7 +140,7 @@
 
                 <p:column field="color" headerText="Color" footerText="in" filterMatchMode="in">
                     <f:facet name="filter">
-                        <p:selectCheckboxMenu label="Colors" onchange="PF('carsTable1').filter()" scrollHeight="150" styleClass="custom-filter">
+                        <p:selectCheckboxMenu label="Colors" onchange="PF('carsTable2').filter()" scrollHeight="150" styleClass="custom-filter">
                             <f:selectItems value="#{dtFilterView.colors}" />
                         </p:selectCheckboxMenu>
                     </f:facet>
@@ -148,7 +148,7 @@
 
                 <p:column field="sold" headerText="Status" footerText="equals" filterMatchMode="equals">
                     <f:facet name="filter">
-                        <p:selectOneButton onchange="PF('carsTable1').filter()" styleClass="custom-filter">
+                        <p:selectOneButton onchange="PF('carsTable2').filter()" styleClass="custom-filter">
                             <f:converter converterId="javax.faces.Boolean" />
                             <f:selectItem itemLabel="All" itemValue="" />
                             <f:selectItem itemLabel="Sold" itemValue="true" />
