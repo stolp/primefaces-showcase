@@ -58,13 +58,19 @@ public class LazyCarDataModel extends LazyDataModel<Car> {
     }
 
     @Override
-    public List<Car> load(int first, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
+    public List<Car> load(int offset, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
+        long rowCount = datasource.stream()
+                .filter(o -> filter(FacesContext.getCurrentInstance(), filterBy.values(), o))
+                .count();
+
+        // apply offset & filters
         List<Car> cars = datasource.stream()
-                .skip(first)
+                .skip(offset)
+                .limit(pageSize)
                 .filter(o -> filter(FacesContext.getCurrentInstance(), filterBy.values(), o))
                 .collect(Collectors.toList());
 
-        //sort
+        // sort
         if (!sortBy.isEmpty()) {
             List<Comparator<Car>> comparators = sortBy.values().stream()
                     .map(o -> new LazySorter(o.getField(), o.getOrder()))
@@ -74,8 +80,7 @@ public class LazyCarDataModel extends LazyDataModel<Car> {
         }
 
         // rowCount
-        int dataSize = cars.size();
-        setRowCount(first + dataSize);
+        setRowCount((int) rowCount);
 
         return cars;
     }
