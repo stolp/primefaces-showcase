@@ -12,7 +12,7 @@
             }
         </style>
     </ui:define>
-    
+
     <ui:define name="title">
         TreeTable - <span class="subitem">Sort</span>
     </ui:define>
@@ -25,11 +25,56 @@
     <ui:param name="widgetLink" value="treetable" />
 
     <ui:define name="implementation">
-        
+
         <h:form>
             <p:treeTable value="#{ttBasicView.root}" var="document">
                 <f:facet name="header">
-                    Document Viewer
+                    Document Viewer (multi sort)
+                </f:facet>
+                <p:column headerText="Name" sortBy="#{document.name}">
+                    <h:outputText value="#{document.name}" />
+                </p:column>
+                <p:column headerText="Size" sortBy="#{document.size}">
+                    <h:outputText value="#{document.size}" />
+                </p:column>
+                <p:column headerText="Type"  sortBy="#{document.type}">
+                    <h:outputText value="#{document.type}" />
+                </p:column>
+            </p:treeTable>
+
+            <p:treeTable value="#{ttBasicView.root}" var="document" sortMode="single" style="margin-top: 20px;">
+                <f:facet name="header">
+                    Document Viewer (single sort)
+                </f:facet>
+                <p:column headerText="Name" sortBy="#{document.name}">
+                    <h:outputText value="#{document.name}" />
+                </p:column>
+                <p:column headerText="Size" sortBy="#{document.size}">
+                    <h:outputText value="#{document.size}" />
+                </p:column>
+                <p:column headerText="Type"  sortBy="#{document.type}">
+                    <h:outputText value="#{document.type}" />
+                </p:column>
+            </p:treeTable>
+
+            <p:treeTable value="#{ttBasicView.root}" var="document" style="margin-top: 20px;">
+                <f:facet name="header">
+                    Document Viewer (multi sort, predefined sort in markup)
+                </f:facet>
+                <p:column headerText="Name" sortBy="#{document.name}" sortOrder="desc" sortPriority="1">
+                    <h:outputText value="#{document.name}" />
+                </p:column>
+                <p:column headerText="Size" sortBy="#{document.size}">
+                    <h:outputText value="#{document.size}" />
+                </p:column>
+                <p:column headerText="Type"  sortBy="#{document.type}">
+                    <h:outputText value="#{document.type}" />
+                </p:column>
+            </p:treeTable>
+
+            <p:treeTable value="#{ttBasicView.root}" var="document" sortMode="single" style="margin-top: 20px;">
+                <f:facet name="header">
+                    Document Viewer (single sort, predefined sort via code)
                 </f:facet>
                 <p:column headerText="Name" sortBy="#{document.name}">
                     <h:outputText value="#{document.name}" />
@@ -42,7 +87,7 @@
                 </p:column>
             </p:treeTable>
         </h:form>
-        
+
     </ui:define>
 
 </ui:composition>
