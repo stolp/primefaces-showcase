@@ -24,12 +24,17 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import org.primefaces.model.SortMeta;
+import org.primefaces.model.SortOrder;
 
 @Named("ttBasicView")
 @ViewScoped
 public class BasicView implements Serializable {
     
     private TreeNode root;
+    private List<SortMeta> sortBy;
     
     private Document selectedDocument;
         
@@ -39,6 +44,12 @@ public class BasicView implements Serializable {
     @PostConstruct
     public void init() {
         root = service.createDocuments();
+        
+        sortBy = new ArrayList<>();
+        sortBy.add(SortMeta.builder()
+                .field("name")
+                .order(SortOrder.ASCENDING)
+                .build());
     }
 
     public TreeNode getRoot() {
@@ -55,5 +66,9 @@ public class BasicView implements Serializable {
 
     public void setSelectedDocument(Document selectedDocument) {
         this.selectedDocument = selectedDocument;
+    }
+
+    public List<SortMeta> getSortBy() {
+        return sortBy;
     }
 }

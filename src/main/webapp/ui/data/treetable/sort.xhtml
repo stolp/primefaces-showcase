@@ -72,7 +72,7 @@
                 </p:column>
             </p:treeTable>
 
-            <p:treeTable value="#{ttBasicView.root}" var="document" sortMode="single" style="margin-top: 20px;">
+            <p:treeTable value="#{ttBasicView.root}" var="document" sortMode="single" style="margin-top: 20px;" sortBy="#{ttBasicView.sortBy}">
                 <f:facet name="header">
                     Document Viewer (single sort, predefined sort via code)
                 </f:facet>
