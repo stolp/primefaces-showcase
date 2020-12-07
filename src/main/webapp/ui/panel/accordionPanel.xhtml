@@ -21,7 +21,7 @@
             <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
         
             <h3 style="margin-top:0">Basic</h3>
-            <p:accordionPanel>
+            <p:accordionPanel widgetVar="basic">
                 <p:tab title="Godfather Part I">
                     <h:panelGrid columns="2" cellpadding="10">
                         <p:graphicImage name="demo/images/godfather/godfather1.jpg" />
@@ -50,7 +50,7 @@
             </p:accordionPanel>
 
             <h3>Multiple Selection</h3>
-            <p:accordionPanel multiple="true">
+            <p:accordionPanel multiple="true" widgetVar="multiple">
                 <p:tab title="Godfather Part I">
                     <h:panelGrid columns="2" cellpadding="10">
                         <p:graphicImage name="demo/images/godfather/godfather1.jpg" />
@@ -79,7 +79,7 @@
             </p:accordionPanel>
 
             <h3>On-Demand Loading</h3>
-            <p:accordionPanel dynamic="true" cache="true">
+            <p:accordionPanel dynamic="true" cache="true" multiple="true" widgetVar="ondemand">
                 <p:tab title="Godfather Part I">
                     <h:panelGrid columns="2" cellpadding="10">
                         <p:graphicImage name="demo/images/godfather/godfather1.jpg" />
