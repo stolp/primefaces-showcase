@@ -29,18 +29,20 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import org.primefaces.event.data.FilterEvent;
+import org.primefaces.event.data.SortEvent;
 
 @Named("ttEventsView")
 @ViewScoped
 public class EventsView implements Serializable {
-    
+
     private TreeNode root;
-    
+
     private TreeNode selectedNode;
-    
+
     @Inject
     private DocumentService service;
-    
+
     @PostConstruct
     public void init() {
         root = service.createDocuments();
@@ -61,24 +63,34 @@ public class EventsView implements Serializable {
     public void setService(DocumentService service) {
         this.service = service;
     }
-    
+
     public void onNodeExpand(NodeExpandEvent event) {
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Expanded", event.getTreeNode().toString());
-		FacesContext.getCurrentInstance().addMessage(null, message);
-	}
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Expanded", event.getTreeNode().toString());
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
 
-	public void onNodeCollapse(NodeCollapseEvent event) {
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Collapsed", event.getTreeNode().toString());
-		FacesContext.getCurrentInstance().addMessage(null, message);
-	}
+    public void onNodeCollapse(NodeCollapseEvent event) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Collapsed", event.getTreeNode().toString());
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
 
-	public void onNodeSelect(NodeSelectEvent event) {
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", event.getTreeNode().toString());
-		FacesContext.getCurrentInstance().addMessage(null, message);
-	}
+    public void onNodeSelect(NodeSelectEvent event) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", event.getTreeNode().toString());
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
 
     public void onNodeUnselect(NodeUnselectEvent event) {
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Unselected", event.getTreeNode().toString());
-		FacesContext.getCurrentInstance().addMessage(null, message);
-	}
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Unselected", event.getTreeNode().toString());
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+
+    public void onFilter(FilterEvent event) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Filter", "FilterBy info size :" + event.getFilterBy().size());
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+
+    public void onSort(SortEvent event) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sort", "SortBy info size :" + event.getSortBy().size());
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
 }
