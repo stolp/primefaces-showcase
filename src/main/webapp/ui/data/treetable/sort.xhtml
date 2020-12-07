@@ -42,9 +42,9 @@
                 </p:column>
             </p:treeTable>
 
-            <p:treeTable value="#{ttBasicView.root}" var="document" sortMode="single" style="margin-top: 20px;">
+            <p:treeTable value="#{ttBasicView.root}" var="document" sortMode="single" style="margin-top: 20px;" allowUnsorting="true">
                 <f:facet name="header">
-                    Document Viewer (single sort)
+                    Document Viewer (single sort, allowUnsorting)
                 </f:facet>
                 <p:column headerText="Name" sortBy="#{document.name}">
                     <h:outputText value="#{document.name}" />

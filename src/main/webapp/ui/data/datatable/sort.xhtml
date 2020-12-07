@@ -15,7 +15,7 @@
 
     <ui:param name="documentationLink" value="/components/datatable" />
     <ui:param name="widgetLink" value="datatable" />
-    
+
     <ui:define name="head">
         <style type="text/css">
             .ui-datatable {
@@ -32,11 +32,11 @@
     </ui:define>
 
     <ui:define name="implementation">
-        
+
         <h:form>
-            <p:dataTable var="car" value="#{dtSortView.cars1}">
+            <p:dataTable var="car" value="#{dtSortView.cars1}" allowUnsorting="true">
                 <f:facet name="header">
-                    Default sort with markup attributes
+                    Default sort with markup attributes, allowUnsorting=true
                 </f:facet>
 
                 <p:column headerText="Id" field="id" sortable="false" />
@@ -64,7 +64,7 @@
 
             </p:dataTable>
         </h:form>
-        
+
     </ui:define>
 
 </ui:composition>
