@@ -26,6 +26,7 @@ import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import org.primefaces.PrimeFaces;
+import org.primefaces.showcase.domain.Document;
 
 @Named("ttMultiViewStateView")
 @ViewScoped
@@ -58,9 +59,13 @@ public class MultiViewStateView implements Serializable {
     }
 
     private void showMessage(String clientId) {
-        FacesContext.getCurrentInstance()
-                .addMessage(null,
-                        new FacesMessage(FacesMessage.SEVERITY_INFO, clientId + " multiview state has been cleared out", null));
+        FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_INFO, clientId + " multiview state has been cleared out", null));
+    }
+    
+    public void someAction(Document document) {
+        FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_INFO, "Action on " + document.getName(), null));
     }
 }
 
