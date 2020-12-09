@@ -1,58 +1,66 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:p="http://primefaces.org/ui"
-                template="./template.xhtml">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="./template.xhtml">
 
-    <ui:define name="title">
+	<ui:define name="title">
         DataTable - <span class="subitem">Reorder</span>
-    </ui:define>
+	</ui:define>
 
-    <ui:define name="description">
+	<ui:define name="description">
         Both columns and rows can be reordered using dragdrop.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/datatable" />
-    <ui:param name="widgetLink" value="datatable" />
+	<ui:param name="documentationLink" value="/components/datatable" />
+	<ui:param name="widgetLink" value="datatable" />
 
-    <ui:define name="implementation">
-        
-        <h:form id="form">
-            <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
-            
-            <p:dataTable var="car" value="#{dtReorderView.cars1}" draggableColumns="true" style="margin-bottom:20px">
-                <f:facet name="header">
+	<ui:define name="implementation">
+
+		<h:form id="form">
+			<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+
+			<p:dataTable var="car" value="#{dtReorderView.cars1}" draggableColumns="true" style="margin-bottom:20px">
+				<f:facet name="header">
                     Draggable Columns
                 </f:facet>
 
-                <p:column field="id" headerText="Id" />
+				<p:column headerText="Id">
+                   #{car.id}
+                </p:column>
 
-                <p:column field="year" headerText="Year" draggable="false"/>
+				<p:column headerText="Year (not draggable)" draggable="false">
+                   #{car.year}
+                </p:column>
 
-                <p:column field="brand" headerText="Brand" />
+				<p:column headerText="Brand">
+                   #{car.brand}
+                </p:column>
 
-                <p:column field="color" headerText="Color" />
+				<p:column headerText="Color">
+                   #{car.color}
+                </p:column>
 
-            </p:dataTable>
-            
-            <p:dataTable var="car" value="#{dtReorderView.cars2}" draggableRows="true">
-                <p:ajax event="rowReorder" listener="#{dtReorderView.onRowReorder}" update=":form:msgs" />
-                <f:facet name="header">
+			</p:dataTable>
+
+			<p:dataTable var="car" value="#{dtReorderView.cars2}" draggableRows="true">
+				<p:ajax event="rowReorder" listener="#{dtReorderView.onRowReorder}"
+					update=":form:msgs" />
+				<f:facet name="header">
                     Draggable Rows
                 </f:facet>
 
-                <p:column field="id" headerText="Id" />
+				<p:column field="id" headerText="Id" />
 
-                <p:column field="year" headerText="Year" />
+				<p:column field="year" headerText="Year" />
 
-                <p:column field="brand" headerText="Brand" />
+				<p:column field="brand" headerText="Brand" />
 
-                <p:column field="color" headerText="Color" />
+				<p:column field="color" headerText="Color" />
 
-            </p:dataTable>
-        </h:form>
-    
-    </ui:define>
+			</p:dataTable>
+		</h:form>
+
+	</ui:define>
 
 </ui:composition>
