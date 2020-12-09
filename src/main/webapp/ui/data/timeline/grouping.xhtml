@@ -65,6 +65,22 @@
                 <h:outputText value="Order #{order.number}"/>
             </p:timeline>
 
+            <h4>Timeline Grouping With Vertical Scroll </h4>
+
+            <p:timeline id="timelineVerticalScroll" value="#{groupingTimelineView.model2}" var="order" varGroup="truck"
+                        editable="true" eventMargin="0" eventMarginAxis="0" stackEvents="false"
+                        orientationAxis="top" orientationItem="top" maxHeight="400" horizontalScroll="false"
+                        verticalScroll="true" widgetVar="timelineWdgt2">
+                <f:facet name="group">
+                    <h:graphicImage library="demo" name="images/timeline/truck.png" style="vertical-align:middle;" alt="Truck"/>
+                    <h:outputText value="Truck #{truck.code}" style="font-weight:bold;"/>
+                </f:facet>
+
+                <h:graphicImage library="demo" name="#{order.imagePath}" rendered="#{not empty order.imagePath}"
+                                style="display:inline; vertical-align:middle;" alt="Order"/>
+                <h:outputText value="Order #{order.number}"/>
+            </p:timeline>
+
             <!-- Dialog with overlapped timeline events -->
             <p:dialog id="overlapEventsDlg" header="Overlapped Orders" widgetVar="overlapEventsWdgt"
                       showEffect="clip" hideEffect="clip">
