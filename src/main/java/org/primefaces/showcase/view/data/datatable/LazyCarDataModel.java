@@ -66,8 +66,8 @@ public class LazyCarDataModel extends LazyDataModel<Car> {
         // apply offset & filters
         List<Car> cars = datasource.stream()
                 .skip(offset)
-                .limit(pageSize)
                 .filter(o -> filter(FacesContext.getCurrentInstance(), filterBy.values(), o))
+                .limit(pageSize)
                 .collect(Collectors.toList());
 
         // sort
