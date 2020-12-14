@@ -38,8 +38,9 @@ import org.primefaces.model.timeline.TimelineGroup;
 @Named("groupingTimelineView")
 @ViewScoped
 public class GroupingTimelineView implements Serializable {
-  
+
     private TimelineModel<Order, Truck> model;
+    private TimelineModel<Order, Truck> model2;
     private TimelineEvent<Order> event; // current changed event
     private List<TimelineEvent<Order>> overlappedOrders; // all overlapped orders (events) to the changed order (event)
     private List<TimelineEvent<Order>> ordersToMerge; // selected orders (events) in the dialog which should be merged
@@ -47,33 +48,21 @@ public class GroupingTimelineView implements Serializable {
     @PostConstruct
     protected void initialize() {
         // create timeline model
-        model = new TimelineModel<>();
+        model = newModelWithNumber(6);
+        model2 = newModelWithNumber(30);
 
-        // create groups
-        TimelineGroup<Truck> group1 = new TimelineGroup<>("id1", new Truck("10"));
-        TimelineGroup<Truck> group2 = new TimelineGroup<>("id2", new Truck("11"));
-        TimelineGroup<Truck> group3 = new TimelineGroup<>("id3", new Truck("12"));
-        TimelineGroup<Truck> group4 = new TimelineGroup<>("id4", new Truck("13"));
-        TimelineGroup<Truck> group5 = new TimelineGroup<>("id5", new Truck("14"));
-        TimelineGroup<Truck> group6 = new TimelineGroup<>("id6", new Truck("15"));
+    }
 
-        // add groups to the model
-        model.addGroup(group1);
-        model.addGroup(group2);
-        model.addGroup(group3);
-        model.addGroup(group4);
-        model.addGroup(group5);
-        model.addGroup(group6);
+    public TimelineModel<Order,Truck> newModelWithNumber(int n) {
+        TimelineModel<Order, Truck>  model = new TimelineModel<>();
 
         int orderNumber = 1;
-
-        // iterate over groups
-        for (int j = 1; j <= 6; j++) {
+        for (int j = 1; j <= n; j++) {
+            model.addGroup(new TimelineGroup<Truck>("id" + j, new Truck(String.valueOf(9+j))));
             LocalDateTime referenceDate = LocalDateTime.of(2015, Month.DECEMBER, 14, 8, 0);
-            // iterate over events in the same group
+
             for (int i = 0; i < 6; i++) {
                 LocalDateTime startDate = referenceDate.plusHours(3 * (Math.random() < 0.2 ? 1 : 0));
-
                 LocalDateTime endDate = startDate.plusHours(2 + (int) Math.floor(Math.random() * 4));
 
                 String imagePath = null;
@@ -88,10 +77,16 @@ public class GroupingTimelineView implements Serializable {
                 referenceDate = endDate;
             }
         }
+
+        return model;
     }
 
     public TimelineModel<Order, Truck> getModel() {
         return model;
+    }
+
+    public TimelineModel<Order, Truck> getModel2() {
+        return model2;
     }
 
     public void onChange(TimelineModificationEvent<Order> e) {
