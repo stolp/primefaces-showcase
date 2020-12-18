@@ -1,9 +1,8 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:p="http://primefaces.org/ui"
-                template="./template.xhtml">
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui" template="./template.xhtml">
 
     <ui:define name="title">
         DataTable - <span class="subitem">Group</span>
@@ -17,12 +16,26 @@
     <ui:param name="widgetLink" value="datatable" />
 
     <ui:define name="implementation">
-        
+
         <h:form>
-            
-            <p:dataTable var="sale" value="#{dtGroupView.sales}">
+
+            <p:dataTable id="tblSales" var="sale" value="#{dtGroupView.sales}" paginator="true" paginatorPosition="top" paginatorTemplate="{CurrentPageReport} {Exporters}">
+                <f:facet name="{Exporters}">
+                    <div style="float: right; padding-top: 5px;">
+                        <h:commandLink>
+                            <p:graphicImage name="/demo/images/xlsx.png" width="24" />
+                            <p:dataExporter type="xlsxstream" target="tblSales" fileName="sales" />
+                        </h:commandLink>
+
+                        <h:commandLink>
+                            <p:graphicImage name="/demo/images/pdf.png" width="24" />
+                            <p:dataExporter type="pdf" target="tblSales" fileName="sales" />
+                        </h:commandLink>
+                    </div>
+                </f:facet>
+
                 <f:facet name="header">
-                    Sales/Profits of Manufacturers
+                    <h:outputText value="Sales/Profits of Manufacturers" />
                 </f:facet>
 
                 <p:columnGroup type="header">
@@ -72,13 +85,13 @@
                 </p:columnGroup>
 
                 <f:facet name="footer">
-                    Data between 2013-2014
+                    <h:outputText value="Data between 2013-2014" />
                 </f:facet>
             </p:dataTable>
-            
-            <p:dataTable var="player" value="#{dtGroupView.players}" style="margin-top:40px">
+
+            <p:dataTable id="tblPlayers" var="player" value="#{dtGroupView.players}" style="margin-top:40px">
                 <f:facet name="header">
-                    Dynamic Columns
+                    <h:outputText value="Dynamic Columns" />
                 </f:facet>
 
                 <p:columnGroup type="header">
@@ -96,17 +109,17 @@
                 <p:column>
                     <h:outputText value="#{player.name}" />
                 </p:column>
-                                
+
                 <p:columns value="#{dtGroupView.years}" var="year">
                     <h:outputText value="#{player.getGoals(year)}" />
                 </p:columns>
 
                 <f:facet name="footer">
-                    Data between 2010-2014
+                    <h:outputText value="Data between 2010-2014" />
                 </f:facet>
             </p:dataTable>
         </h:form>
-        
+
     </ui:define>
 
 </ui:composition>
