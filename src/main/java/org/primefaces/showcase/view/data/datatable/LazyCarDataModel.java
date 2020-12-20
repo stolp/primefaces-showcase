@@ -42,22 +42,6 @@ public class LazyCarDataModel extends LazyDataModel<Car> {
     }
 
     @Override
-    public Car getRowData(String rowKey) {
-        for (Car car : datasource) {
-            if (car.getId().equals(rowKey)) {
-                return car;
-            }
-        }
-
-        return null;
-    }
-
-    @Override
-    public Object getRowKey(Car car) {
-        return car.getId();
-    }
-
-    @Override
     public List<Car> load(int offset, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
         long rowCount = datasource.stream()
                 .filter(o -> filter(FacesContext.getCurrentInstance(), filterBy.values(), o))
