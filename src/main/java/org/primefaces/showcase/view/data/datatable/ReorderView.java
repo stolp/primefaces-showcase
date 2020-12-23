@@ -61,4 +61,9 @@ public class ReorderView implements Serializable {
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Row Moved", "From: " + event.getFromIndex() + ", To:" + event.getToIndex());
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
+
+    public void onColReorder() {
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Columns reordered", "");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 }

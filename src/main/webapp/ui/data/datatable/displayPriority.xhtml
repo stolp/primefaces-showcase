@@ -20,12 +20,14 @@
         <h:form id="form">
             <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
 
+            <p:commandButton value="Update" process="@this" update="@form"/>
+
             <p:dataTable var="car" value="#{dtReorderView.cars1}" draggableColumns="true" style="margin-bottom:20px">
                 <f:facet name="header">
                     Draggable Columns
                 </f:facet>
 
-                <p:ajax event="rowReorder" listener="#{dtReorderView.onRowReorder}"
+                <p:ajax event="colReorder" listener="#{dtReorderView.onColReorder}"
                         update=":form:msgs" />
 
                 <p:column headerText="Id (dp1)" displayPriority="1">
