@@ -18,12 +18,18 @@
 
     <ui:define name="implementation">
 
-        <h:panelGrid columns="2">
+        <h:panelGrid columns="3">
             <p:outputLabel for="chips" value="Values: " />
             <p:chips id="chips" />
+            <p:separator style="visibility:hidden"/>
 
             <p:outputLabel for="unique" value="Unique: " />
             <p:chips id="unique" unique="true" max="3"/>
+            <p:separator style="visibility:hidden"/>
+            
+            <p:outputLabel for="paste" value="Paste (comma separated): " />
+            <p:chips id="paste" widgetVar="wgtPaste" addOnPaste="true" separator=","/>
+            <p:commandButton value="Toggle Editor" onclick="PF('wgtPaste').toggleEditor(); return false;" />
         </h:panelGrid>
 
     </ui:define>
