@@ -4,6 +4,9 @@ $(function() {
             this.wrapper = $(document.body).children('.layout-wrapper');
             this.topbar = this.wrapper.children('.layout-topbar');
             this.topbarMenu = this.topbar.find('> form > .topbar-menu');
+            this.sidebar = this.wrapper.children('.layout-sidebar');
+            this.mask = this.wrapper.children('.layout-mask');
+            this.menuButton = this.topbar.children('.menu-button');
             this.configurator = this.wrapper.children('.layout-config');
             this.configuratorButton = $('#layout-config-button');
             this.configuratorCloseButton = $('#layout-config-close-button');
@@ -30,9 +33,19 @@ $(function() {
                     $this.hideTopbarSubmenu($this.topbarMenu.children('.topbar-submenu-active'));
                 }
 
+                if ($this.sidebar.hasClass('active') && !$.contains($this.sidebar.get(0), event.target) && !$this.isMenuButton(event.target)) {
+                    $this.sidebar.removeClass('active');
+                    $this.mask.removeClass('layout-mask-active');
+                }
+
                 if ($this.configurator.hasClass('layout-config-active') && !$.contains($this.configurator.get(0), event.target)) {
                     $this.configurator.removeClass('layout-config-active');
                 }
+            });
+
+            this.menuButton.off('click').on('click', function() {
+                $this.sidebar.addClass('active');
+                $this.mask.addClass('layout-mask-active');
             });
 
             this.configuratorButton.off('click').on('click', function() {
@@ -84,6 +97,10 @@ $(function() {
                 this.wrapper.addClass('ui-input-filled');
             else
                 this.wrapper.removeClass('ui-input-filled');
+        },
+
+        isMenuButton(element) {
+            return $.contains(this.menuButton.get(0), element) || this.menuButton.is(element);
         }
     }
 

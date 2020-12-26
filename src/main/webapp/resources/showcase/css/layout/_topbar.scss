@@ -21,6 +21,7 @@
         line-height: 70px;
         text-align: center;
         transition: background-color .2s;
+        overflow: hidden;
         cursor: pointer;
 
         &:hover {
