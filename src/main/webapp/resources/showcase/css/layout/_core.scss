@@ -134,14 +134,14 @@ pre[class*="language-"] {
 .action-button {
     font-weight: bold;
     text-align: center;
-    color: #ffffff !important;
-    background-color: #455C71;
+    color: #2b3034 !important;
+    background-color: #feab4d;
     padding: 10px 24px 9px 24px;
     border-radius: 3px;
     transition: background-color .2s;
 
     &:hover {
-        background-color: #576c7f;
+        background-color: #feb767;
         color: #ffffff;
         text-decoration: none !important;
     }

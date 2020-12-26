@@ -28,6 +28,10 @@ $(function() {
                     $this.showTopbarSubmenu(item);
             });
 
+            this.topbarMenu.find('.connected-overlay-in a').off('click').on('click', function() {
+                $this.hideTopbarSubmenu($this.topbarMenu.children('.topbar-submenu-active'));
+            });
+
             $(document).off('click.showcase').on('click.showcase', function(event) {
                 if (!$.contains($this.topbarMenu.get(0), event.target)) {
                     $this.hideTopbarSubmenu($this.topbarMenu.children('.topbar-submenu-active'));
@@ -79,6 +83,11 @@ $(function() {
             var currentTheme = href.substring(index + library.length);
     
             this.replaceLink(linkElement, href.replace(currentTheme, theme));
+
+            if (dark)
+                $('#homepage-intro').addClass('introduction-dark');
+            else
+                $('#homepage-intro').removeClass('introduction-dark');
         },
     
         replaceLink: function(linkElement, href) {

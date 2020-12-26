@@ -16,30 +16,27 @@
 
     .introduction {
         background-color: var(--surface-a);
-        background-image: url("\#{resource['showcase:images/home/intro-bg.jpg']}");
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: 0 75%;
+        background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% );
         padding: 115px 30px 135px 50px;
-        color: #455C71;
+        color: #ffffff;
         position: relative;
 
         &.introduction-dark {
-            background-image: url("\#{resource['showcase:images/home/intro-bg-dark.jpg']}");
+            background-image: linear-gradient(to left, var(--surface-d), var(--surface-c));
             color: var(--text-color);
 
             .introduction-promo {
-                background-image: linear-gradient(90deg, #445C72 0%, transparent 100%);
+                background: linear-gradient(90deg, rgba(0,0,0,.1) 0%, transparent 100%);
             }
         }
-
+        
         .introduction-promo {
             display: inline-block;
             margin-left: -50px;
             margin-bottom: 20px;
             padding: 10px 175px 10px 50px;
             font-size: 1.5rem;
-            background-image: linear-gradient(90deg, #445C72 0%, transparent 100%);
+            background: linear-gradient(90deg, rgba(255,255,255,.1) 0%, transparent 100%);
             position: relative;
             color: #ffffff;
             font-weight: 700;
@@ -62,7 +59,7 @@
             position: absolute;
             bottom: 0;
             right: 0;
-            width: 60%;
+            width: 55%;
         }
     }
 
