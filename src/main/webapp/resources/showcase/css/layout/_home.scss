@@ -16,15 +16,16 @@
 
     .introduction {
         background-color: var(--surface-a);
-        background-image: url('./assets/images/home/intro-bg.jpg');
+        background-image: url("\#{resource['showcase:images/home/intro-bg.jpg']}");
         background-repeat: no-repeat;
         background-size: cover;
+        background-position: 0 75%;
         padding: 115px 30px 135px 50px;
         color: #455C71;
         position: relative;
 
         &.introduction-dark {
-            background-image: url('./assets/images/home/intro-bg-d.jpg');
+            background-image: url("\#{resource['showcase:images/home/intro-bg-dark.jpg']}");
             color: var(--text-color);
 
             .introduction-promo {

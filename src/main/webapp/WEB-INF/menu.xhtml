@@ -2,1432 +2,293 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
 
     <div class="layout-sidebar">
-        <div class="nano">
-            <div class="nano-content menu-scroll-content">
-                <div class="search-input">
-                    <i class="pi pi-search icon-search"></i>
-                    <input type="text" aria-label="Search Components"></input>
-                </div>
+        <div class="layout-menu">
+            <div class="menu-category">General</div>
+            <div class="menu-items">
+                <h:link outcome="/getstarted">Get Started</h:link>
+                <a href="https://forum.primefaces.org" target="_blank">Forum</a>
+                <a href="https://discord.gg/gzKFYnpmCY" target="_blank">Discord Chat</a>
+                <a href="https://github.com/primefaces/primefaces" target="_blank">Source Code</a>
+                <h:link outcome="/support">Support</h:link>
+                <a href="https://www.primefaces.org/store" target="_blank">Store</a>
+                <h:link outcome="/accessibility">Get Started</h:link>
+            </div>
 
-                <ul id="layout-menu" class="layout-menu">
-                    <li id="submenu-ajax">
-                        <a href="#">
-                            <p:graphicImage name="images/icons/ajaxCore.svg" library="showcase" />
-                            <span>AjaxCore</span>
-                        </a>
-                        <div>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/ajax/listener">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Listener</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/ajax/partialSubmit">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">PartialSubmit</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/ajax/counter">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Counter</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/ajax/process">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Process</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/ajax/validation">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Validation</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/ajax/remoteCommand">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">RemoteCommand</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/ajax/dropdown">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Dropdown</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/ajax/observer">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Observer / Event</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/ajax/basic">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Basic</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/ajax/event">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Event</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/ajax/selector">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Selector</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/ajax/search">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Search</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/ajax/poll">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Poll</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/ajax/fragment">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Fragment</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/ajax/status">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Status</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/ajax/lifecycle">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Lifecycle</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li id="submenu-input">
-                        <a href="#">
-                            <p:graphicImage name="images/icons/input.svg" library="showcase" />
-                            <span>Input</span>
-                        </a>
-                        <div>
-                            <ul style="width:40%; white-space:nowrap;">
-                                <li>
-                                    <h:link outcome="/ui/input/autoComplete">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Autocomplete</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/calendar/calendarJava8">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Calendar</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/chips">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Chips</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/colorPicker">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">ColorPicker</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/datepicker/datePickerJava8">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">DatePicker</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/formLayout">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Form Layout</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/inplace">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Inplace</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/inputGroup">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">InputGroup</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/inputMask">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">InputMask</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/inputNumber">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">InputNumber</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/inputSwitch">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">InputSwitch</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/inputText">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">InputText</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/inputTextarea">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">InputTextArea</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/keyFilter">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">KeyFilter</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/keyboard">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Keyboard</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/knob">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Knob</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/password">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Password</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/rating">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Rating</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                            <ul style="width:60%; white-space:nowrap;">
-                                <li>
-                                    <h:link outcome="/ui/input/multiSelectListbox">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">MultiSelectListBox</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/booleanButton">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">SelectBooleanButton</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/booleanCheckbox">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">SelectBooleanCheckbox</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/oneButton">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">SelectOneButton</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/oneRadio">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">SelectOneRadio</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/checkboxMenu">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">SelectCheckboxMenu</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/oneMenu">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">SelectOneMenu</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/listbox">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">SelectOneListbox</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/manyButton">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">SelectManyButton</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/manymenu/basic">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">SelectManyMenu</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/manyCheckbox">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">SelectManyCheckbox</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/signature">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Signature</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/slider">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Slider</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/spinner">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Spinner</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/textEditor">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">TextEditor</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/toggleSwitch">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">ToggleSwitch</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/input/triStateCheckbox">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">TriStateCheckbox</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li id="submenu-button">
-                        <a href="#">
-                            <p:graphicImage name="images/icons/button.svg" library="showcase" />
-                            <span>Button</span>
-                        </a>
-                        <div>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/button/button">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Button</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/button/commandButton">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">CommandButton</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/button/commandLink">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">CommandLink</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/button/link">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Link</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/button/linkButton">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">LinkButton</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/button/splitButton">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">SplitButton</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li id="submenu-data">
-                        <a href="#">
-                            <p:graphicImage name="images/icons/data.svg" library="showcase" />
-                            <span>Data</span>
-                        </a>
-                        <div>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/data/carousel">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Carousel</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/data/dataexporter/basic">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">DataExporter</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/data/datagrid/basic">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">DataGrid</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/data/datalist/basic">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">DataList</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/data/datascroller/basic">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">DataScroller</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/data/datatable/basic">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">DataTable</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/data/dataview/basic">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">DataView</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/data/diagram/basic">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Diagram</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/data/gmap/basic">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">GMap</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/data/htree/basic">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">HorizontalTree</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/data/orderList">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">OrderList</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/data/organigram">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Organigram</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/data/mindmap">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Mindmap</span>
-                                    </h:link>
-                                </li>
-                                  <li>
-                                    <h:link outcome="/ui/data/pickList">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">PickList</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/data/repeat">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Repeat</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/data/ring">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Ring</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/data/schedule/basic">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Schedule</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/data/tagCloud">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">TagCloud</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/data/timeline/basic">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Timeline</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/data/tree/basic">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Tree</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/data/treetable/basic">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">TreeTable</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li id="submenu-panel">
-                        <a href="#">
-                            <p:graphicImage name="images/icons/panel.svg" library="showcase" />
-                            <span>Panel</span>
-                        </a>
-                        <div>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/panel/accordionPanel">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Accordion</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/panel/dashboard">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Dashboard</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/panel/fieldset">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Fieldset</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/panel/grid">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Grid CSS</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/panel/notificationBar">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">NotificationBar</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/panel/outputPanel">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">OutputPanel</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/panel/flexGrid">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">FlexGrid</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/panel/panel">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Panel</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/panel/panelGrid">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">PanelGrid</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/panel/ribbon">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Ribbon</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/panel/scrollPanel">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">ScrollPanel</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/panel/tabView">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">TabView</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/panel/toolbar">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Toolbar</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/panel/wizard">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Wizard</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li id="submenu-overlay">
-                        <a href="#">
-                            <p:graphicImage name="images/icons/overlay.svg" library="showcase" />
-                            <span>Overlay</span>
-                        </a>
-                        <div>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/overlay/confirmDialog">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">ConfirmDialog</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/overlay/overlayPanel">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">OverlayPanel</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/overlay/lightBox">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">LightBox</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/overlay/tooltip/tooltipOptions">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Tooltip</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/overlay/dialog/basic">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Dialog</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/overlay/sidebar">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Sidebar</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li id="submenu-menu">
-                        <a href="#">
-                            <p:graphicImage name="images/icons/menu.svg" library="showcase" />
-                            <span>Menu</span>
-                        </a>
-                        <div>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/menu/breadcrumb">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Breadcrumb</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/menu/contextmenu/basic">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">ContextMenu</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/menu/dock">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Dock</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/menu/megaMenu">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">MegaMenu</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/menu/menu">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Menu</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/menu/menubar">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Menubar</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/menu/menuButton">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">MenuButton</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/menu/panelMenu">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">PanelMenu</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/menu/slideMenu">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">SlideMenu</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/menu/stack">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Stack</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/menu/steps">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Steps</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/menu/tabMenu">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">TabMenu</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/menu/tieredMenu">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">TieredMenu</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li id="submenu-charts">
-                        <a href="#">
-                            <p:graphicImage name="images/icons/charts.svg" library="showcase" />
-                            <span>Charts</span>
-                        </a>
-                        <div>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/chart/area">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Area</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/chart/bar">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Bar</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/chart/bubble">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Bubble</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/chart/donut">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Donut</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/chart/line">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Line</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/chart/pie">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Pie</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/chart/metergauge">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">MeterGauge</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/chart/ohlc">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">OHLC</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/chart/animate">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Animate</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/chart/export">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Export</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/chart/interactive">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Interactive</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/chart/live">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Live</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/multimedia/graphicImage">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Static</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/chart/zoom">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Zoom</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/chart/combined">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Combined</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/chart/multiaxis">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">MultiAxis</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/chart/date">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Date</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/chart/responsive">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Responsive</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li id="submenu-chartJs">
-                        <a href="#">
-                            <p:graphicImage name="images/icons/charts.svg" library="showcase" />
-                            <span>ChartJs</span>
-                        </a>
-                        <div>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/chartjs/bar/bar">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Bar</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/chartjs/bubble">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Bubble</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/chartjs/donut">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Donut</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/chartjs/line">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Line</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/chartjs/pie">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Pie</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/chartjs/scatter">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Scatter</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/chartjs/polararea">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">PolarArea</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/chartjs/radar">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Radar</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/chartjs/mixed">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Mixed</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/chartjs/interactive">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Interactive</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/chartjs/export">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Export</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li id="submenu-messages">
-                        <a href="#">
-                            <p:graphicImage name="images/icons/message.svg" library="showcase" />
-                            <span>Messages</span>
-                        </a>
-                        <div>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/message/growl">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Growl</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/message/messages">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Messages</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/message/staticMessage">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">StaticMessage</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li id="submenu-multimedia">
-                        <a href="#">
-                            <p:graphicImage name="images/icons/multimedia.svg" library="showcase" />
-                            <span>Multimedia</span>
-                        </a>
-                        <div>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/multimedia/audio">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Audio</span>
-                                    </h:link>
-                                </li>
-                               <li>
-                                    <h:link outcome="/ui/multimedia/barcode">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Barcode</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/multimedia/compare">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Compare</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/multimedia/contentFlow">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">ContentFlow</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/multimedia/cropper/cropper">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Cropper</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/multimedia/graphicImage">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">GraphicImage</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                            <ul> 
-                                <li>
-                                    <h:link outcome="/ui/multimedia/galleria">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Galleria</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/multimedia/media">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Media</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/multimedia/photocam/photoCam">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">PhotoCam</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/multimedia/switch">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Switch</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/multimedia/video">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Video</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li id="submenu-file">
-                        <a href="#">
-                            <p:graphicImage name="images/icons/file.svg" library="showcase" />
-                            <span>File</span>
-                        </a>
-                        <div>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/file/upload/basic">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Upload</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/file/download">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Download</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li id="submenu-dragdrop">
-                        <a href="#">
-                            <p:graphicImage name="images/icons/dragdrop.svg" library="showcase" />
-                            <span>DragDrop</span>
-                        </a>
-                        <div>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/dnd/draggable">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Draggable</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/dnd/dataGrid">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">DataGrid</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/dnd/dataTable">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">DataTable</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/dnd/custom">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Custom</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li id="submenu-client">
-                        <a href="#">
-                            <p:graphicImage name="images/icons/clientSideValidation.svg" library="showcase" />
-                            <span>Client Side Validation</span>
-                        </a>
-                        <div>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/csv/basic">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Basic</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/csv/bean">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Bean</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/csv/custom">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Custom</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/csv/event">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Event</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/csv/complex">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Complex</span>
-                                    </h:link>
-                                </li>
-                                <li>
+            <div class="menu-category">Theming</div>
+            <div class="menu-items">
+                <h:link outcome="/theming">Guide</h:link>
+                <a href="https://www.primefaces.org/designer/primefaces">Theme Designer</a>
+                <a href="https://www.primefaces.org/designer/api/primefaces/10.0.0">SASS API</a>
+            </div>
 
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li id="submenu-dialog">
-                        <a href="#">
-                            <p:graphicImage name="images/icons/dialogFramework.svg" library="showcase" />
-                            <span>Dialog Framework</span>
-                        </a>
-                        <div>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/df/basic">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Basic</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/df/data">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Data</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/df/message">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Message</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/df/nested">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Nested</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li id="submenu-misc">
-                        <a href="#">
-                            <p:graphicImage name="images/icons/misc.svg" library="showcase" />
-                            <span>Misc</span>
-                        </a>
-                        <div>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/misc/responsive">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Responsive</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/autoUpdate">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">AutoUpdate</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/themeSwitcher">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">ThemeSwitcher</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/outputLabel">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">OutputLabel</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/blockUI">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">BlockUI</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/cache">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Cache</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/captcha">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Captcha</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/clock">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Clock</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/collector">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Collector</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/defaultcommand/basic">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">DefaultCommand</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/effect">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Effect</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/exceptionHandler">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">ExceptionHandler</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/feedReader">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">FeedReader</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/idleMonitor">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">IdleMonitor</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/importConstants">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">ImportConstants</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/importEnum">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">ImportEnum</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/csp">
-                                        <i class="fa fa-circle"></i>
-                                        <span class="menuitem-text">CSP</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <h:link outcome="/ui/misc/primeicons">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">PrimeIcons</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/fa">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">FontAwesome</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/lifecycle">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Lifecycle</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/log">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Log</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/focus">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Focus</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/hotkey">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Hotkey</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/printer">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Printer</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/progressBar">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">ProgressBar</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/requestContext">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Context</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/resetInput">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">ResetInput</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/resizable">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Resizable</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/separator">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Separator</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/spacer">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Spacer</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/spotlight">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Spotlight</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/sticky">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Sticky</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/terminal/basic">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Terminal</span>
-                                    </h:link>
-                                </li>
-                                <li>
-                                    <h:link outcome="/ui/misc/watermark">
-                                        <i class="pi pi-circle-on"></i>
-                                        <span class="menuitem-text">Watermark</span>
-                                    </h:link>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
+            <div class="menu-category">PrimeFlex</div>
+            <div class="menu-items">
+                <h:link outcome="/primeflex/setup">Setup</h:link>
+                <h:link outcome="/primeflex/display">Display</h:link>
+                <h:link outcome="/primeflex/elevation">Elevation</h:link>
+                <h:link outcome="/primeflex/flexbox">FlexBox</h:link>
+                <h:link outcome="/primeflex/formlayout">Form Layout</h:link>
+                <h:link outcome="/primeflex/grid">Grid System</h:link>
+                <h:link outcome="/primeflex/spacing">Spacing</h:link>
+                <h:link outcome="/primeflex/text">Text</h:link>
+            </div>
+
+            <div class="menu-category">PrimeIcons</div>
+            <div class="menu-items">
+                <h:link outcome="/icons">Icons v4.0</h:link>
+            </div>
+
+            <div class="menu-category">Ajax Framework</div>
+            <div class="menu-items">
+                <h:link outcome="/ui/ajax/listener">Listener</h:link>
+                <h:link outcome="/ui/ajax/partialSubmit">PartialSubmit</h:link>
+                <h:link outcome="/ui/ajax/counter">Counter</h:link>
+                <h:link outcome="/ui/ajax/process">Process</h:link>
+                <h:link outcome="/ui/ajax/validation">Validation</h:link>
+                <h:link outcome="/ui/ajax/remoteCommand">RemoteCommand</h:link>
+                <h:link outcome="/ui/ajax/dropdown">Dropdown</h:link>
+                <h:link outcome="/ui/ajax/observer">Observer</h:link>
+                <h:link outcome="/ui/ajax/basic">Basic</h:link>
+                <h:link outcome="/ui/ajax/event">Event</h:link>
+                <h:link outcome="/ui/ajax/selector">Selector</h:link>
+                <h:link outcome="/ui/ajax/search">Search</h:link>
+                <h:link outcome="/ui/ajax/poll">Poll</h:link>
+                <h:link outcome="/ui/ajax/fragment">Fragment</h:link>
+                <h:link outcome="/ui/ajax/status">Status</h:link>
+                <h:link outcome="/ui/ajax/lifecycle">Lifecycle</h:link>
+            </div>
+
+            <div class="menu-category">Form</div>
+            <div class="menu-items">
+                <h:link outcome="/ui/input/autoComplete">AutoComplete</h:link>
+                <h:link outcome="/ui/input/calendar/calendarJava8">Calendar</h:link>
+                <h:link outcome="/ui/input/chips">Chips</h:link>
+                <h:link outcome="/ui/input/colorPicker">ColorPicker</h:link>
+                <h:link outcome="/ui/input/datepicker/datePickerJava8">DatePicker</h:link>
+                <h:link outcome="/ui/input/inplace">Inplace</h:link>
+                <h:link outcome="/ui/input/inputGroup">InputGroup</h:link>
+                <h:link outcome="/ui/input/inputMask">InputMask</h:link>
+                <h:link outcome="/ui/input/inputNumber">InputNumber</h:link>
+                <h:link outcome="/ui/input/inputSwitch">InputSwitch</h:link>
+                <h:link outcome="/ui/input/inputText">InputText</h:link>
+                <h:link outcome="/ui/input/inputTextarea">InputTextArea</h:link>
+                <h:link outcome="/ui/input/keyFilter">KeyFilter</h:link>
+                <h:link outcome="/ui/input/keyboard">Keyboard</h:link>
+                <h:link outcome="/ui/input/knob">Knob</h:link>
+                <h:link outcome="/ui/input/password">Password</h:link>
+                <h:link outcome="/ui/input/rating">Rating</h:link>
+                <h:link outcome="/ui/input/multiSelectListbox">MultiSelectListBox</h:link>
+                <h:link outcome="/ui/input/booleanButton">SelectBooleanButton</h:link>
+                <h:link outcome="/ui/input/autoComplete">SelectBooleanCheckbox</h:link>
+                <h:link outcome="/ui/input/booleanCheckbox">AutoComplete</h:link>
+                <h:link outcome="/ui/input/oneButton">SelectOneButton</h:link>
+                <h:link outcome="/ui/input/oneRadio">SelectOneRadio</h:link>
+                <h:link outcome="/ui/input/checkboxMenu">SelectCheckboxMenu</h:link>
+                <h:link outcome="/ui/input/oneMenu">SelectOneMenu</h:link>
+                <h:link outcome="/ui/input/listbox">SelectOneListbox</h:link>
+                <h:link outcome="/ui/input/manyButton">SelectManyButton</h:link>
+                <h:link outcome="/ui/input/manymenu/basic">SelectManyMenu</h:link>
+                <h:link outcome="/ui/input/manyCheckbox">SelectManyCheckbox</h:link>
+                <h:link outcome="/ui/input/signature">Signature</h:link>
+                <h:link outcome="/ui/input/slider">Slider</h:link>
+                <h:link outcome="/ui/input/spinner">Spinner</h:link>
+                <h:link outcome="/ui/input/textEditor">TextEditor</h:link>
+                <h:link outcome="/ui/input/toggleSwitch">ToggleSwitch</h:link>
+                <h:link outcome="/ui/input/triStateCheckbox">TriStateCheckbox</h:link>
+            </div>
+
+            <div class="menu-category">Button</div>
+            <div class="menu-items">
+                <h:link outcome="/ui/button/button">Button</h:link>
+                <h:link outcome="/ui/button/commandButton">CommandButton</h:link>
+                <h:link outcome="/ui/button/commandLink">CommandLink</h:link>
+                <h:link outcome="/ui/button/link">Link</h:link>
+                <h:link outcome="/ui/button/linkButton">LinkButton</h:link>
+                <h:link outcome="/ui/button/splitButton">SplitButton</h:link>
+            </div>
+
+            <div class="menu-category">Button</div>
+            <div class="menu-items">
+                <h:link outcome="/ui/button/button">Button</h:link>
+                <h:link outcome="/ui/button/commandButton">CommandButton</h:link>
+                <h:link outcome="/ui/button/commandLink">CommandLink</h:link>
+                <h:link outcome="/ui/button/link">Link</h:link>
+                <h:link outcome="/ui/button/linkButton">LinkButton</h:link>
+                <h:link outcome="/ui/button/splitButton">SplitButton</h:link>
+            </div>
+
+            <div class="menu-category">Data</div>
+            <div class="menu-items">
+                <h:link outcome="/ui/data/carousel">Carousel</h:link>
+                <h:link outcome="/ui/data/dataexporter/basic">DataExporter</h:link>
+                <h:link outcome="/ui/data/datagrid/basic">DataGrid</h:link>
+                <h:link outcome="/ui/data/datalist/basic">DataList</h:link>
+                <h:link outcome="/ui/data/datascroller/basic">DataScroller</h:link>
+                <h:link outcome="/ui/data/datatable/basic">DataTable</h:link>
+                <h:link outcome="/ui/data/dataview/basic">DataView</h:link>
+                <h:link outcome="/ui/data/diagram/basic">Diagram</h:link>
+                <h:link outcome="/ui/data/gmap/basic">GMap</h:link>
+                <h:link outcome="/ui/data/htree/basic">HorizontalTree</h:link>
+                <h:link outcome="/ui/data/orderList">OrderList</h:link>
+                <h:link outcome="/ui/data/organigram">Organigram</h:link>
+                <h:link outcome="/ui/data/mindmap">Mindmap</h:link>
+                <h:link outcome="/ui/data/pickList">PickList</h:link>
+                <h:link outcome="/ui/data/repeat">Repeat</h:link>
+                <h:link outcome="/ui/data/ring">Ring</h:link>
+                <h:link outcome="/ui/data/schedule/basic">Schedule</h:link>
+                <h:link outcome="/ui/data/tagCloud">TagCloud</h:link>
+                <h:link outcome="/ui/data/timeline/basic">Timeline</h:link>
+                <h:link outcome="/ui/data/tree/basic">Tree</h:link>
+                <h:link outcome="/ui/data/treetable/basic">TreeTable</h:link>
+            </div>
+
+            <div class="menu-category">Panel</div>
+            <div class="menu-items">
+                <h:link outcome="/ui/panel/accordionPanel">Accordion</h:link>
+                <h:link outcome="/ui/panel/dashboard">Dashboard</h:link>
+                <h:link outcome="/ui/panel/fieldset">Fieldset</h:link>
+                <h:link outcome="/ui/panel/grid">Grid CSS</h:link>
+                <h:link outcome="/ui/panel/notificationBar">NotificationBar</h:link>
+                <h:link outcome="/ui/panel/outputPanel">OutputPanel</h:link>
+                <h:link outcome="/ui/panel/flexGrid">FlexGrid</h:link>
+                <h:link outcome="/ui/panel/panel">Panel</h:link>
+                <h:link outcome="/ui/panel/panelGrid">PanelGrid</h:link>
+                <h:link outcome="/ui/panel/ribbon">Ribbon</h:link>
+                <h:link outcome="/ui/panel/scrollPanel">ScrollPanel</h:link>
+                <h:link outcome="/ui/panel/tabView">TabView</h:link>
+                <h:link outcome="/ui/panel/toolbar">Toolbar</h:link>
+                <h:link outcome="/ui/panel/wizard">Wizard</h:link>
+            </div>
+
+            <div class="menu-category">Overlay</div>
+            <div class="menu-items">
+                <h:link outcome="/ui/overlay/confirmDialog">ConfirmDialog</h:link>
+                <h:link outcome="/ui/overlay/dialog/basic">Dialog</h:link>
+                <h:link outcome="/ui/overlay/lightBox">LightBox</h:link>
+                <h:link outcome="/ui/overlay/overlayPanel">OverlayPanel</h:link>
+                <h:link outcome="/ui/overlay/sidebar">Sidebar</h:link>
+                <h:link outcome="/ui/overlay/tooltip/tooltipOptions">Tooltip</h:link>
+            </div>
+
+            <div class="menu-category">Menu</div>
+            <div class="menu-items">
+                <h:link outcome="/ui/menu/breadcrumb">Breadcrumb</h:link>
+                <h:link outcome="/ui/menu/contextmenu/basic">ContextMenu</h:link>
+                <h:link outcome="/ui/menu/dock">Dock</h:link>
+                <h:link outcome="/ui/menu/megaMenu">MegaMenu</h:link>
+                <h:link outcome="/ui/menu/menu">Menu</h:link>
+                <h:link outcome="/ui/menu/menubar">Menubar</h:link>
+                <h:link outcome="/ui/menu/menuButton">MenuButton</h:link>
+                <h:link outcome="/ui/menu/panelMenu">PanelMenu</h:link>
+                <h:link outcome="/ui/menu/slideMenu">SlideMenu</h:link>
+                <h:link outcome="/ui/menu/stack">Stack</h:link>
+                <h:link outcome="/ui/menu/steps">Steps</h:link>
+                <h:link outcome="/ui/menu/tabMenu">TabMenu</h:link>
+                <h:link outcome="/ui/menu/tieredMenu">TieredMenu</h:link>
+            </div>
+
+            <div class="menu-category">Charts</div>
+            <div class="menu-items">
+                <h:link outcome="/ui/chartjs/bar/bar">Bar</h:link>
+                <h:link outcome="/ui/chartjs/bubble">Bubble</h:link>
+                <h:link outcome="/ui/chartjs/donut">Donut</h:link>
+                <h:link outcome="/ui/chartjs/line">Line</h:link>
+                <h:link outcome="/ui/chartjs/pie">Pie</h:link>
+                <h:link outcome="/ui/chartjs/scatter">Scatter</h:link>
+                <h:link outcome="/ui/chartjs/polararea">PolarArea</h:link>
+                <h:link outcome="/ui/chartjs/radar">Radar</h:link>
+                <h:link outcome="/ui/chartjs/mixed">Mixed</h:link>
+                <h:link outcome="/ui/chartjs/interactive">Interactive</h:link>
+                <h:link outcome="/ui/chartjs/export">Export</h:link>
+            </div>
+
+            <div class="menu-category">Messages</div>
+            <div class="menu-items">
+                <h:link outcome="/ui/message/growl">Growl</h:link>
+                <h:link outcome="/ui/message/messages">Messages</h:link>
+                <h:link outcome="/ui/message/staticMessage">StaticMessage</h:link>
+            </div>
+
+            <div class="menu-category">Multimedia</div>
+            <div class="menu-items">
+                <h:link outcome="/ui/multimedia/audio">Audio</h:link>
+                <h:link outcome="/ui/multimedia/barcode">Barcode</h:link>
+                <h:link outcome="/ui/multimedia/compare">Compare</h:link>
+                <h:link outcome="/ui/multimedia/contentFlow">ContentFlow</h:link>
+                <h:link outcome="/ui/multimedia/cropper/cropper">Cropper</h:link>
+                <h:link outcome="/ui/multimedia/graphicImage">GraphicImage</h:link>
+                <h:link outcome="/ui/multimedia/galleria">Galleria</h:link>
+                <h:link outcome="/ui/multimedia/media">Media</h:link>
+                <h:link outcome="/ui/multimedia/photocam/photoCam">PhotoCam</h:link>
+                <h:link outcome="/ui/multimedia/switch">Switch</h:link>
+                <h:link outcome="/ui/multimedia/video">Video</h:link>
+            </div>
+
+            <div class="menu-category">File</div>
+            <div class="menu-items">
+                <h:link outcome="/ui/file/upload/basic">Upload</h:link>
+                <h:link outcome="/ui/file/download">Download</h:link>
+            </div>
+
+            <div class="menu-category">DragDrop</div>
+            <div class="menu-items">
+                <h:link outcome="/ui/dnd/draggable">Draggable</h:link>
+                <h:link outcome="/ui/dnd/dataGrid">DataGrid</h:link>
+                <h:link outcome="/ui/dnd/dataTable">DataTable</h:link>
+                <h:link outcome="/ui/dnd/custom">Custom</h:link>
+            </div>
+
+            <div class="menu-category">Client Side Validation</div>
+            <div class="menu-items">
+                <h:link outcome="/ui/csv/basic">Basic</h:link>
+                <h:link outcome="/ui/csv/bean">Bean</h:link>
+                <h:link outcome="/ui/csv/custom">Custom</h:link>
+                <h:link outcome="/ui/csv/event">Event</h:link>
+            </div>
+
+            <div class="menu-category">Dialog Framework</div>
+            <div class="menu-items">
+                <h:link outcome="/ui/df/basic">Basic</h:link>
+                <h:link outcome="/ui/df/data">Data</h:link>
+                <h:link outcome="/ui/df/message">Message</h:link>
+                <h:link outcome="/ui/df/nested">Nested</h:link>
+            </div>
+
+            <div class="menu-category">Misc</div>
+            <div class="menu-items">
+                <h:link outcome="/ui/misc/responsive">Responsive</h:link>
+                <h:link outcome="/ui/misc/autoUpdate">AutoUpdate</h:link>
+                <h:link outcome="/ui/misc/themeSwitcher">ThemeSwitcher</h:link>
+                <h:link outcome="/ui/misc/outputLabel">OutputLabel</h:link>
+                <h:link outcome="/ui/misc/blockUI">BlockUI</h:link>
+                <h:link outcome="/ui/misc/cache">Cache</h:link>
+                <h:link outcome="/ui/misc/captcha">Captcha</h:link>
+                <h:link outcome="/ui/misc/clock">Clock</h:link>
+                <h:link outcome="/ui/misc/collector">Collector</h:link>
+                <h:link outcome="/ui/misc/defaultcommand/basic">DefaultCommand</h:link>
+                <h:link outcome="/ui/misc/effect">Effect</h:link>
+                <h:link outcome="/ui/misc/exceptionHandler">ExceptionHandler</h:link>
+                <h:link outcome="/ui/misc/feedReader">FeedReader</h:link>
+                <h:link outcome="/ui/misc/idleMonitor">IdleMonitor</h:link>
+                <h:link outcome="/ui/misc/importConstants">ImportConstants</h:link>
+                <h:link outcome="/ui/misc/importEnum">ImportEnum</h:link>
+                <h:link outcome="/ui/misc/csp">CSP</h:link>
+                <h:link outcome="/ui/misc/fa">FontAwesome</h:link>
+                <h:link outcome="/ui/misc/lifecycle">Lifecycle</h:link>
+                <h:link outcome="/ui/misc/log">Log</h:link>
+                <h:link outcome="/ui/misc/focus">Focus</h:link>
+                <h:link outcome="/ui/misc/hotkey">Hotkey</h:link>
+                <h:link outcome="/ui/misc/printer">Printer</h:link>
+                <h:link outcome="/ui/misc/progressBar">ProgressBar</h:link>
+                <h:link outcome="/ui/misc/requestContext">RequestContext</h:link>
+                <h:link outcome="/ui/misc/resetInput">ResetInput</h:link>
+                <h:link outcome="/ui/misc/resizable">Resizable</h:link>
+                <h:link outcome="/ui/misc/separator">Separator</h:link>
+                <h:link outcome="/ui/misc/spacer">Spacer</h:link>
+                <h:link outcome="/ui/misc/spotlight">Spotlight</h:link>
+                <h:link outcome="/ui/misc/sticky">Sticky</h:link>
+                <h:link outcome="/ui/misc/terminal/basic">Terminal</h:link>
+                <h:link outcome="/ui/misc/watermark">Watermark</h:link>
             </div>
         </div>
     </div>

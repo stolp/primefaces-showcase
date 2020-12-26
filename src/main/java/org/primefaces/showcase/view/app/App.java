@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2014 PrimeTek.
+ * Copyright 2009-2021 PrimeTek.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,12 +24,22 @@ import java.util.Map;
 
 @Named
 @SessionScoped
-public class GuestPreferences implements Serializable {
+public class App implements Serializable {
 
     private String theme = "saga";
 
+    private boolean darkMode = false;
+
     public String getTheme() {
         return theme;
+    }
+
+    public boolean isDarkMode() {
+        return darkMode;
+    }
+
+    public void setDarkMode(boolean darkMode) {
+        this.darkMode = darkMode;
     }
 
     public void setTheme(String theme) {

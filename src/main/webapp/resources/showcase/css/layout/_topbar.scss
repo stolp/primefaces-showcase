@@ -100,7 +100,14 @@
             &.topbar-submenu {
                 position: relative;
 
+                &.topbar-submenu-active {
+                    > ul {
+                        display: block;
+                    }
+                }
+
                 > ul {
+                    display: none;
                     position: absolute;
                     transform-origin: top;
                     top: 70px;
@@ -114,6 +121,7 @@
                     padding: 1rem;
                     margin: 0;
                     border-radius: 3px;
+                    animation-duration: .12s;
 
                     > li {
                         line-height: 1;

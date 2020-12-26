@@ -1,6 +1,53 @@
-/** 
- * PrimeFaces Showcase
- */
+$(function() {
+    var Showcase = {
+        init: function() {    
+            this.wrapper = $(document.body).children('.layout-wrapper');
+            this.topbar = this.wrapper.children('.layout-topbar');
+            this.topbarMenu = this.topbar.children('.topbar-menu');
+            
+            this._bindEvents();
+        },
+
+        _bindEvents: function() {
+            var $this = this;
+
+            this.topbar.find('> .topbar-menu > .topbar-submenu > a').off('click').on('click', function() {
+                var item = $(this).parent();
+
+                item.siblings('.topbar-submenu-active').removeClass('topbar-submenu-active');
+
+                if (item.hasClass('topbar-submenu-active'))
+                    $this.hideTopbarSubmenu(item);
+                else
+                    $this.showTopbarSubmenu(item);
+            });
+
+            $(document).off('click.showcase').on('click.showcase', function(event) {
+                if (!$.contains($this.topbarMenu.get(0), event.target)) {
+                    $this.hideTopbarSubmenu($this.topbarMenu.children('.topbar-submenu-active'));
+                }
+            });
+        },
+
+        hideTopbarSubmenu(item) {
+            var submenu = item.children('ul');
+            submenu.addClass('connected-overlay-out');
+
+            setTimeout(function () {
+                item.removeClass('topbar-submenu-active'),
+                submenu.removeClass('connected-overlay-out');
+            }, 100);
+        },
+
+        showTopbarSubmenu(item) {
+            item.addClass('topbar-submenu-active');
+        }
+    }
+
+    Showcase.init();
+});
+
+/*
 $(document).ready(function() {
     
     var Showcase = {
@@ -14,7 +61,6 @@ $(document).ready(function() {
             this.submenuItems = this.menu.find('> li');
             this.menuButton = $('#menu-button');
             this.expandedMenuitems = this.expandedMenuitems||[];
-            this.nano = this.sidebar.children('.nano');
             this.searchInput = this.sidebar.find('.search-input > input');
 
             this.configButton = $('.layout-config-button');
@@ -28,8 +74,6 @@ $(document).ready(function() {
             
             this.restoreMenuState();
             
-            this.nano.nanoScroller({flash:true});
-
             this._bindEvents();
         },
         
@@ -71,10 +115,6 @@ $(document).ready(function() {
                     $(document.body).toggleClass('hidden-overflow-body');   
                 }
 
-                setTimeout(function() {
-                    $(".nano").nanoScroller();
-                }, 500);
-                
                 e.preventDefault();
             });    
     
@@ -97,9 +137,6 @@ $(document).ready(function() {
                     $this.activate(item);
                 }
 
-                setTimeout(function() {
-                    $(".nano").nanoScroller();
-                }, 500);
                 
                 if (submenu.length) {
                     e.preventDefault();
@@ -379,3 +416,4 @@ PrimeFaces.ShowcaseConfigurator = {
         });
     }
 };
+*/

@@ -27,7 +27,6 @@
         <title>PrimeFaces Showcase</title>
 
         <h:outputStylesheet name="css/sh.css" library="showcase"/>
-        <h:outputStylesheet name="css/nanoscroller.css" library="showcase"/>
         <h:outputStylesheet name="css/primeflex.css" library="showcase"/>
 
         <!-- For Community Themes except 'Luna' and 'Nova' theme -->
@@ -36,7 +35,6 @@
 
         <h:outputScript name="jquery/jquery.js" library="primefaces"/>
         <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
-        <h:outputScript name="script/nanoscroller.js" library="showcase"/>
         <h:outputScript name="script/layout.js" library="showcase"/>
 
         <ui:insert name="head"/>
@@ -44,30 +42,25 @@
     </h:head>
 
     <h:body>
-        <div class="layout-wrapper">
-            <!--<div class="layout-notification">
-                <a href="https://www.primefaces.org/store">
-                    <h:graphicImage name="showcase/images/asset-1-endofyear-2019.png" alt="New Year"/>
-                    <span class="layout-notification-details">
-                        <span class="helper-text">NEW YEAR SALE</span> SAVE UP TO <span class="rate">60%</span> AT PRIMESTORE!
-                    </span>
-                </a>
-            </div>-->
-            
-            <div class="layout-news">
-                <div class="layout-news-container">
-                    <h:graphicImage name="showcase/images/news/topbar-pandora-device.png" alt="Pandora"/>
-                    <a href="https://www.primefaces.org/store" target="_blank" class="layout-news-button">
-                        SHOP NOW<i class="pi pi-angle-right"></i>
-                    </a>
-                    <a href="#" class="layout-news-close">
-                        <i class="pi pi-times"></i>
-                    </a>
+        <div class="layout-wrapper">            
+            <ui:fragment rendered="false">
+                <div class="layout-news">
+                    <div class="layout-news-container">
+                        <h:graphicImage name="showcase/images/news/topbar-pandora-device.png" alt="Pandora" styleClass="layouts-news-mockup-image" />
+                        <a href="https://www.primefaces.org/store" target="_blank" class="layout-news-button">
+                            LEARN MORE<i class="pi pi-angle-right"></i>
+                        </a>
+                        <a tabindex="0" class="layout-news-close">
+                            <i class="pi pi-times"></i>
+                        </a>
+                    </div>
                 </div>
-            </div>
+            </ui:fragment>
             
             <ui:include src="./topbar.xhtml"></ui:include>
             <ui:include src="./menu.xhtml"></ui:include>
+            <!--<ui:include src="./config.xhtml"></ui:include>-->
+            <div class="layout-mask"></div>
 
             <div class="layout-content">
                 <ui:insert name="content">
@@ -93,19 +86,17 @@
                     </div>
                     <div class="content-section content-source">
                         <ui:insert name="source">
+                            
                             <sc:tabscode
                                     value="#{sc:getFilesContent(facesContext.externalContext.requestServletPath, true)}">
                                 <ui:insert name="more-source-tabs"/>
                             </sc:tabscode>
+                         
                         </ui:insert>
                     </div>
                 </ui:insert>
+               <ui:include src="./footer.xhtml"></ui:include>
             </div>
-
-            <ui:include src="./config.xhtml"></ui:include>
-            <ui:include src="./footer.xhtml"></ui:include>
-            <div class="layout-mask"></div>
-
         </div>
 
         <ui:insert name="status">
@@ -126,7 +117,7 @@
 
         <ui:insert name="body"></ui:insert>
 
-        <h:outputStylesheet name="css/layout.css" library="showcase"/>
+        <h:outputStylesheet name="css/layout/layout.css" library="showcase"/>
     </h:body>
 
 </html>
