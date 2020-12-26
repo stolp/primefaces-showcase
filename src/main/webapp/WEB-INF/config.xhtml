@@ -4,164 +4,187 @@
 
     <div class="layout-config">
         <div class="layout-config-content-wrapper">
-            <a href="#" class="layout-config-button">
+            <a id="layout-config-button" tabindex="0" class="layout-config-button">
                 <i class="pi pi-cog"></i>
             </a>
-            <a href="#" class="layout-config-close">
+            <a id="layout-config-close-button" tabindex="0" class="layout-config-close">
                 <i class="pi pi-times"></i>
             </a>
 
             <div class="layout-config-content">
-                <div class="free-themes">
-                    <h1 style="margin-top: 0">FREE THEMES</h1>
+                <h:form>
+                    <h4>Input Style</h4>
+                    <p:selectOneRadio value="#{app.inputStyle}" onchange="Showcase.updateInputStyle(event.target.value)">
+                        <f:selectItem itemLabel="Outlined" itemValue="outlined" />
+                        <f:selectItem itemLabel="Filled" itemValue="filled" />
+                        <p:ajax />
+                    </p:selectOneRadio>
+
+                    <h4>Free Themes</h4>
                     <p>Built-in component themes created by the <a href="https://www.primefaces.org/designer/primefaces">PrimeFaces Theme Designer</a>.</p>
-                    <h:form id="config-form">
-                        <div class="p-grid">
-                            <ui:repeat value="#{themeSwitcherView.themes}" var="theme">
-                                <div class="p-col-3">
-                                    <p:commandLink 
-                                        actionListener="#{guestPreferences.setTheme(theme.name)}"
-                                        oncomplete="PrimeFaces.ShowcaseConfigurator.changeTheme('#{theme.name}')"
-                                        update=":config-form">
-
-                                        <h:graphicImage name="showcase/images/themeswitcher/themeswitcher-#{theme.name}.png" alt="#{theme.name}"/>
-                                        <ui:fragment rendered="#{guestPreferences.theme == theme.name}">
-                                            <i class="pi pi-check"></i>
-                                        </ui:fragment>
-                                    </p:commandLink>
-                                    <span>#{theme.displayName}</span>
-                                </div>
-                            </ui:repeat>
+                   
+                    <div class="p-grid free-themes">
+                        <div class="p-col-4">
+                            <p:commandLink actionListener="#{app.changeTheme('saga', false)}" oncomplete="Showcase.changeTheme('saga')" update=":app-logo">
+                                <p:graphicImage name="images/themes/saga.png" library="showcase" alt="Saga" />
+                            </p:commandLink>
+                            <span>Saga</span>
                         </div>
-                    </h:form>
-                </div>
-
-                <div class="premium-themes">
-                    <h1>PREMIUM TEMPLATES</h1>
+                        <div class="p-col-4">
+                            <p:commandLink actionListener="#{app.changeTheme('vela', true)}" oncomplete="Showcase.changeTheme('vela', true)" update=":app-logo">
+                                <p:graphicImage name="images/themes/vela.png" library="showcase" alt="Vela" />
+                            </p:commandLink>
+                            <span>Vela</span>
+                        </div>
+                        <div class="p-col-4">
+                            <p:commandLink actionListener="#{app.changeTheme('arya', true)}" oncomplete="Showcase.changeTheme('arya', true)" update=":app-logo">
+                                <p:graphicImage name="images/themes/arya.png" library="showcase" alt="Arya" />
+                            </p:commandLink>
+                            <span>Arya</span>
+                        </div>
+                    </div>
+                
+                    <h4>PREMIUM TEMPLATES</h4>
                     <p>Create awesome applications in no time using the premium templates and impress your users.</p>
-                    <div class="p-grid">
-                        <div class="p-col-6">
-                            <a target="_blank" href="https://www.primefaces.org/layouts/pandora">
-                                <p:graphicImage name="images/layouts/pandora.jpg" library="showcase"/>
+
+                    <div class="p-grid premium-themes">
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/freya" target="_blank">
+                                <p:graphicImage name="images/layouts/freya.jpg" library="showcase" />
                             </a>
                         </div>
-                        <div class="p-col-6">
-                            <a target="_blank" href="https://www.primefaces.org/layouts/siberia">
-                                <p:graphicImage name="images/layouts/siberia.jpg" library="showcase"/>
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/rain" target="_blank">
+                                <p:graphicImage name="images/layouts/rain.jpg" library="showcase" />
                             </a>
                         </div>
-                        <div class="p-col-6">
-                            <a target="_blank" href="https://www.primefaces.org/layouts/mirage">
-                                <p:graphicImage name="images/layouts/mirage.jpg" library="showcase"/>
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/diamond" target="_blank">
+                                <p:graphicImage name="images/layouts/diamond.jpg" library="showcase" />
                             </a>
                         </div>
-                        <div class="p-col-6">
-                            <a target="_blank" href="https://www.primefaces.org/layouts/prestige">
-                                <p:graphicImage name="images/layouts/prestige.jpg" library="showcase" />
-                            </a>
-                        </div>
-                        <div class="p-col-6">
-                            <a target="_blank" href="https://www.primefaces.org/layouts/sapphire">
-                                <p:graphicImage name="images/layouts/sapphire.jpg" library="showcase" />
-                            </a>
-                        </div>
-                        <div class="p-col-6">
-                            <a target="_blank" href="https://www.primefaces.org/layouts/roma">
-                                <p:graphicImage name="images/layouts/roma.jpg" library="showcase" />
-                            </a>
-                        </div>
-                        <div class="p-col-6">
-                            <a target="_blank" href="https://www.primefaces.org/layouts/babylon">
-                                <p:graphicImage name="images/layouts/babylon.jpg" library="showcase" />
-                            </a>
-                        </div>
-                        <div class="p-col-6">
-                            <a target="_blank" href="https://www.primefaces.org/layouts/olympia">
-                                <p:graphicImage name="images/layouts/olympia.jpg" library="showcase" />
-                            </a>
-                        </div>
-                        <div class="p-col-6">
-                            <a target="_blank" href="https://www.primefaces.org/layouts/manhattan">
-                                <p:graphicImage name="images/layouts/manhattan.jpg" library="showcase" />
-                            </a>
-                        </div>
-                        <div class="p-col-6">
-                            <a target="_blank" href="https://www.primefaces.org/layouts/ecuador">
-                                <p:graphicImage name="images/layouts/ecuador.jpg" library="showcase" />
-                            </a>
-                        </div>
-                        <div class="p-col-6">
-                            <a target="_blank" href="https://www.primefaces.org/layouts/harmony">
-                                <p:graphicImage name="images/layouts/harmony.jpg" library="showcase" />
-                            </a>
-                        </div>
-                        <div class="p-col-6">
-                            <a target="_blank" href="https://www.primefaces.org/layouts/california">
-                                <p:graphicImage name="images/layouts/california.jpg" library="showcase" />
-                            </a>
-                        </div>
-                        <div class="p-col-6">
-                            <a target="_blank" href="https://www.primefaces.org/layouts/apollo">
-                                <p:graphicImage name="images/layouts/apollo.jpg" library="showcase" />
-                            </a>
-                        </div>
-                        <div class="p-col-6">
-                            <a target="_blank" href="https://www.primefaces.org/layouts/serenity">
-                                <p:graphicImage name="images/layouts/serenity.jpg" library="showcase" />
-                            </a>
-                        </div>
-                        <div class="p-col-6">
-                            <a target="_blank" href="https://www.primefaces.org/layouts/avalon">
-                                <p:graphicImage name="images/layouts/avalon.jpg" library="showcase" />
-                            </a>
-                        </div>                
-                        <div class="p-col-6">
-                            <a target="_blank" href="https://www.primefaces.org/layouts/paradise">
-                                <p:graphicImage name="images/layouts/paradise.jpg" library="showcase" />
-                            </a>
-                        </div>
-                        <div class="p-col-6">
-                            <a target="_blank" href="https://www.primefaces.org/layouts/ultima">
-                                <p:graphicImage name="images/layouts/ultima.jpg" library="showcase" />
-                            </a>
-                        </div>
-                        <div class="p-col-6">
-                            <a target="_blank" href="https://www.primefaces.org/layouts/barcelona">
-                                <p:graphicImage name="images/layouts/barcelona.jpg" library="showcase" />
-                            </a>
-                        </div>
-                        <div class="p-col-6">
-                            <a target="_blank" href="https://www.primefaces.org/layouts/morpheus">
-                                <p:graphicImage name="images/layouts/morpheus.jpg" library="showcase" />
-                            </a>
-                        </div>
-                        <div class="p-col-6">
-                            <a target="_blank" href="https://www.primefaces.org/layouts/verona">
-                                <p:graphicImage name="images/layouts/verona.jpg" library="showcase" />
-                            </a>
-                        </div>
-                        <div class="p-col-6">
-                            <a target="_blank" href="https://www.primefaces.org/layouts/atlantis">
-                                <p:graphicImage name="images/layouts/atlantis.jpg" library="showcase" />
-                            </a>
-                        </div>
-                        <div class="p-col-6">
-                            <a target="_blank" href="https://www.primefaces.org/layouts/poseidon">
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/poseidon" target="_blank">
                                 <p:graphicImage name="images/layouts/poseidon.jpg" library="showcase" />
                             </a>
                         </div>
-                        <div class="p-col-6">
-                            <a target="_blank" href="https://www.primefaces.org/layouts/omega">
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/serenity" target="_blank">
+                                <p:graphicImage name="images/layouts/serenity.jpg" library="showcase" />
+                            </a>
+                        </div>
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/sapphire" target="_blank">
+                                <p:graphicImage name="images/layouts/sapphire.jpg" library="showcase" />
+                            </a>
+                        </div>
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/avalon" target="_blank">
+                                <p:graphicImage name="images/layouts/avalon.jpg" library="showcase" />
+                            </a>
+                        </div>  
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/mirage" target="_blank">
+                                <p:graphicImage name="images/layouts/mirage.jpg" library="showcase"/>
+                            </a>
+                        </div>
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/prestige" target="_blank">
+                                <p:graphicImage name="images/layouts/prestige.jpg" library="showcase" />
+                            </a>
+                        </div>
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/roma" target="_blank">
+                                <p:graphicImage name="images/layouts/roma.jpg" library="showcase" />
+                            </a>
+                        </div>
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/babylon" target="_blank">
+                                <p:graphicImage name="images/layouts/babylon.jpg" library="showcase" />
+                            </a>
+                        </div>
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/apollo" target="_blank">
+                                <p:graphicImage name="images/layouts/apollo.jpg" library="showcase" />
+                            </a>
+                        </div>  
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/olympia" target="_blank">
+                                <p:graphicImage name="images/layouts/olympia.jpg" library="showcase" />
+                            </a>
+                        </div>
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/manhattan" target="_blank">
+                                <p:graphicImage name="images/layouts/manhattan.jpg" library="showcase" />
+                            </a>
+                        </div>
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/ecuador" target="_blank">
+                                <p:graphicImage name="images/layouts/ecuador.jpg" library="showcase" />
+                            </a>
+                        </div>
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/harmony" target="_blank">
+                                <p:graphicImage name="images/layouts/harmony.jpg" library="showcase" />
+                            </a>
+                        </div>
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/california" target="_blank">
+                                <p:graphicImage name="images/layouts/california.jpg" library="showcase" />
+                            </a>
+                        </div>            
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/paradise" target="_blank">
+                                <p:graphicImage name="images/layouts/paradise.jpg" library="showcase" />
+                            </a>
+                        </div>
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/ultima" target="_blank">
+                                <p:graphicImage name="images/layouts/ultima.jpg" library="showcase" />
+                            </a>
+                        </div>
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/barcelona" target="_blank">
+                                <p:graphicImage name="images/layouts/barcelona.jpg" library="showcase" />
+                            </a>
+                        </div>
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/morpheus" target="_blank">
+                                <p:graphicImage name="images/layouts/morpheus.jpg" library="showcase" />
+                            </a>
+                        </div>
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/verona" target="_blank">
+                                <p:graphicImage name="images/layouts/verona.jpg" library="showcase" />
+                            </a>
+                        </div>
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/atlantis" target="_blank">
+                                <p:graphicImage name="images/layouts/atlantis.jpg" library="showcase" />
+                            </a>
+                        </div>
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/pandora" target="_blank">
+                                <p:graphicImage name="images/layouts/pandora.jpg" library="showcase" />
+                            </a>
+                        </div>
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/siberia" target="_blank">
+                                <p:graphicImage name="images/layouts/siberia.jpg" library="showcase" />
+                            </a>
+                        </div>
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/omega" target="_blank">
                                 <p:graphicImage name="images/layouts/omega.jpg" library="showcase" />
                             </a>
                         </div>
-                        <div class="p-col-6">
-                            <a target="_blank" href="https://www.primefaces.org/layouts/icarus">
+                        <div class="p-col-12 p-md-6">
+                            <a href="https://www.primefaces.org/layouts/icarus" target="_blank">
                                 <p:graphicImage name="images/layouts/icarus.jpg" library="showcase" />
                             </a>
                         </div>
                     </div>
-                </div>
+                </h:form>
             </div>
         </div>
     </div>

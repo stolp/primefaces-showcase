@@ -1,9 +1,12 @@
 $(function() {
-    var Showcase = {
+    Showcase = {
         init: function() {    
             this.wrapper = $(document.body).children('.layout-wrapper');
             this.topbar = this.wrapper.children('.layout-topbar');
-            this.topbarMenu = this.topbar.children('.topbar-menu');
+            this.topbarMenu = this.topbar.find('> form > .topbar-menu');
+            this.configurator = this.wrapper.children('.layout-config');
+            this.configuratorButton = $('#layout-config-button');
+            this.configuratorCloseButton = $('#layout-config-close-button');
             
             this._bindEvents();
         },
@@ -11,7 +14,7 @@ $(function() {
         _bindEvents: function() {
             var $this = this;
 
-            this.topbar.find('> .topbar-menu > .topbar-submenu > a').off('click').on('click', function() {
+            this.topbarMenu.find('> .topbar-submenu > a').off('click').on('click', function() {
                 var item = $(this).parent();
 
                 item.siblings('.topbar-submenu-active').removeClass('topbar-submenu-active');
@@ -26,6 +29,18 @@ $(function() {
                 if (!$.contains($this.topbarMenu.get(0), event.target)) {
                     $this.hideTopbarSubmenu($this.topbarMenu.children('.topbar-submenu-active'));
                 }
+
+                if ($this.configurator.hasClass('layout-config-active') && !$.contains($this.configurator.get(0), event.target)) {
+                    $this.configurator.removeClass('layout-config-active');
+                }
+            });
+
+            this.configuratorButton.off('click').on('click', function() {
+                $this.configurator.toggleClass('layout-config-active');
+            });
+
+            this.configuratorCloseButton.off('click').on('click', function() {
+                $this.configurator.removeClass('layout-config-active');
             });
         },
 
@@ -41,6 +56,34 @@ $(function() {
 
         showTopbarSubmenu(item) {
             item.addClass('topbar-submenu-active');
+        },
+
+        changeTheme: function(theme, dark) {
+            var library = 'primefaces-';
+            var linkElement = $('link[href*="theme.css"]');
+            var href = linkElement.attr('href');
+            var index = href.indexOf(library);
+            var currentTheme = href.substring(index + library.length);
+    
+            this.replaceLink(linkElement, href.replace(currentTheme, theme));
+        },
+    
+        replaceLink: function(linkElement, href) {
+            var cloneLinkElement = linkElement.clone(false);
+            
+            cloneLinkElement.attr('href', href);
+            linkElement.after(cloneLinkElement);
+            
+            cloneLinkElement.off('load').on('load', function() {
+                linkElement.remove();
+            });
+        },
+    
+        updateInputStyle: function(value) {
+            if (value === 'filled')
+                this.wrapper.addClass('ui-input-filled');
+            else
+                this.wrapper.removeClass('ui-input-filled');
         }
     }
 

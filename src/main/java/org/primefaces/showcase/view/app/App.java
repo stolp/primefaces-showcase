@@ -30,6 +30,8 @@ public class App implements Serializable {
 
     private boolean darkMode = false;
 
+    private String inputStyle = "outlined";
+
     public String getTheme() {
         return theme;
     }
@@ -46,13 +48,20 @@ public class App implements Serializable {
         this.theme = theme;
     }
 
-    public void changeTheme() {
-        Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-        if (params.containsKey("globaltheme")) {
-            theme = params.get("globaltheme");
-            
-            FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage("Successful",  "Selected Theme: <u><b>" + theme + "</b></u>") );
-        }
+    public String getInputStyle() {
+        return inputStyle;
+    }
+
+    public void setInputStyle(String inputStyle) {
+        this.inputStyle = inputStyle;
+    }
+
+    public String getInputStyleClass() {
+        return this.inputStyle.equals("filled") ? "ui-input-filled" : "";
+    }
+
+    public void changeTheme(String theme, boolean darkMode) {
+        this.theme = theme;
+        this.darkMode = darkMode;
     }
 }
