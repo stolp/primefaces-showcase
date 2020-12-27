@@ -93,9 +93,9 @@
         </div>
 
         <ui:insert name="status">
-            <p:ajaxStatus style="width:64px;height:64px;position:fixed;right:5px;bottom:5px">
+            <p:ajaxStatus styleClass="status-indicator">
                 <f:facet name="start">
-                    <i class="pi pi-spin pi-spinner ajax-loader" aria-hidden="true"></i>
+                    <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
                 </f:facet>
 
                 <f:facet name="complete">
@@ -104,14 +104,11 @@
             </p:ajaxStatus>
         </ui:insert>
 
-        <ui:insert name="highlight">
-            <h:outputScript name="showcase/script/prism.js" target="body"/>
-        </ui:insert>
-
         <ui:insert name="body"></ui:insert>
 
         <h:outputStylesheet name="css/layout/layout.css" library="showcase"/>
         <h:outputScript name="script/layout.js" library="showcase" />
+        <h:outputScript name="showcase/script/prism.js" />
     </h:body>
 
 </html>

@@ -106,3 +106,13 @@ input[type="number"] {
         text-decoration: none !important;
     }
 }
+
+.status-indicator {
+    position:fixed;
+    width:42px;
+    height:42px;
+    right:7px;
+    bottom:7px;
+    font-size: 28px;
+    color: var(--primary-color);
+}
