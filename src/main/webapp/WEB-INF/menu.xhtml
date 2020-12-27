@@ -61,10 +61,27 @@
             <div class="menu-category">Form</div>
             <div class="menu-items">
                 <h:link outcome="/ui/input/autoComplete">AutoComplete</h:link>
-                <h:link outcome="/ui/input/calendar/calendarJava8">Calendar</h:link>
+                <div>
+                    <a tabindex="0" class="submenu-link">Calendar</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><h:link outcome="/ui/input/calendar/calendar">Date (java.util.Date)</h:link></li>
+                            <li><h:link outcome="/ui/input/calendar/calendarJava8">LocalDate (java.time.Local*)</h:link></li>
+                        </ul>
+                    </div>
+                </div>
                 <h:link outcome="/ui/input/chips">Chips</h:link>
                 <h:link outcome="/ui/input/colorPicker">ColorPicker</h:link>
-                <h:link outcome="/ui/input/datepicker/datePickerJava8">DatePicker</h:link>
+                <div>
+                    <a tabindex="0" class="submenu-link">DatePicker</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><h:link outcome="/ui/input/datepicker/datePicker">Date (java.util.Date)</h:link></li>
+                            <li><h:link outcome="/ui/input/datepicker/datePickerJava8">LocalDate (java.time.Local*)</h:link></li>
+                            <li><h:link outcome="/ui/input/datepicker/metadata">Metadata</h:link></li>
+                        </ul>
+                    </div>
+                </div>
                 <h:link outcome="/ui/input/inplace">Inplace</h:link>
                 <h:link outcome="/ui/input/inputGroup">InputGroup</h:link>
                 <h:link outcome="/ui/input/inputMask">InputMask</h:link>
@@ -87,7 +104,15 @@
                 <h:link outcome="/ui/input/oneMenu">SelectOneMenu</h:link>
                 <h:link outcome="/ui/input/listbox">SelectOneListbox</h:link>
                 <h:link outcome="/ui/input/manyButton">SelectManyButton</h:link>
-                <h:link outcome="/ui/input/manymenu/basic">SelectManyMenu</h:link>
+                <div>
+                    <a tabindex="0" class="submenu-link">SelectManyMenu</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><h:link outcome="/ui/input/manymenu/basic">Basic</h:link></li>
+                            <li><h:link outcome="/ui/input/manymenu/selectall">(Un)SelectAll</h:link></li>
+                        </ul>
+                    </div>
+                </div>
                 <h:link outcome="/ui/input/manyCheckbox">SelectManyCheckbox</h:link>
                 <h:link outcome="/ui/input/signature">Signature</h:link>
                 <h:link outcome="/ui/input/slider">Slider</h:link>
@@ -120,26 +145,214 @@
             <div class="menu-category">Data</div>
             <div class="menu-items">
                 <h:link outcome="/ui/data/carousel">Carousel</h:link>
-                <h:link outcome="/ui/data/dataexporter/basic">DataExporter</h:link>
-                <h:link outcome="/ui/data/datagrid/basic">DataGrid</h:link>
-                <h:link outcome="/ui/data/datalist/basic">DataList</h:link>
-                <h:link outcome="/ui/data/datascroller/basic">DataScroller</h:link>
-                <h:link outcome="/ui/data/datatable/basic">DataTable</h:link>
-                <h:link outcome="/ui/data/dataview/basic">DataView</h:link>
-                <h:link outcome="/ui/data/diagram/basic">Diagram</h:link>
-                <h:link outcome="/ui/data/gmap/basic">GMap</h:link>
-                <h:link outcome="/ui/data/htree/basic">HorizontalTree</h:link>
+                <div>
+                    <a tabindex="0" class="submenu-link">DataExporter</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><h:link outcome="/ui/data/dataexporter/basic">Basic</h:link></li>
+                            <li><h:link outcome="/ui/data/dataexporter/lazy">Lazy</h:link></li>
+                            <li><h:link outcome="/ui/data/dataexporter/excludeColumns">Exclude</h:link></li>
+                            <li><h:link outcome="/ui/data/dataexporter/customizedDocuments">Customized</h:link></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <a tabindex="0" class="submenu-link">DataGrid</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><h:link outcome="/ui/data/datagrid/basic">Basic</h:link></li>
+                            <li><h:link outcome="/ui/data/datagrid/multiViewState">MultiViewState</h:link></li>
+                            <li><h:link outcome="/ui/data/datagrid/responsive">Responsive</h:link></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <a tabindex="0" class="submenu-link">DataList</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><h:link outcome="/ui/data/datalist/basic">Basic</h:link></li>
+                            <li><h:link outcome="/ui/data/datalist/paginator">Paginator</h:link></li>
+                            <li><h:link outcome="/ui/data/datalist/multiViewState">MultiViewState</h:link></li>
+                            <li><h:link outcome="/ui/data/datalist/lazy">Lazy</h:link></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <a tabindex="0" class="submenu-link">DataScroller</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><h:link outcome="/ui/data/datascroller/basic">Basic</h:link></li>
+                            <li><h:link outcome="/ui/data/datascroller/inline">Inline</h:link></li>
+                            <li><h:link outcome="/ui/data/datascroller/loader">Loader</h:link></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <a tabindex="0" class="submenu-link">DataTable</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><h:link outcome="/ui/data/datatable/basic">Basic</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/facets">Facets</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/paginator">Paginator</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/sort">Sort</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/filter">Filter</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/selection">Selection</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/group">Group</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/subTable">SubTable</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/summaryRow">SummaryRow</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/expansion">Expansion</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/columns">Columns</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/edit">Edit</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/addRow">Add Row</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/scroll">Scroll</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/rowColor">RowColor</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/lazy">Lazy</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/columnResize">Resize</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/reorder">Reorder</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/columnToggler">ColToggler</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/contextMenu">ContextMenu</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/sticky">Sticky</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/responsive">Responsive</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/rtl">RTL</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/multiViewState">MultiViewState</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/rowGroup">RowGroup</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/displayPriority">DisplayPriority</h:link></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <a tabindex="0" class="submenu-link">DataView</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><h:link outcome="/ui/data/dataview/basic">Basic</h:link></li>
+                            <li><h:link outcome="/ui/data/dataview/paginator">Paginator</h:link></li>
+                            <li><h:link outcome="/ui/data/dataview/multiViewState">MultiViewState</h:link></li>
+                            <li><h:link outcome="/ui/data/dataview/lazy">Lazy</h:link></li>
+                            <li><h:link outcome="/ui/data/dataview/listOnly">List only</h:link></li>
+                            <li><h:link outcome="/ui/data/dataview/responsive">Responsive</h:link></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <a tabindex="0" class="submenu-link">Diagram</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><h:link outcome="/ui/data/diagram/basic">Basic</h:link></li>
+                            <li><h:link outcome="/ui/data/diagram/hierarchical">Hierarchical</h:link></li>
+                            <li><h:link outcome="/ui/data/diagram/flowchart">FlowChart</h:link></li>
+                            <li><h:link outcome="/ui/data/diagram/statemachine">StateMachine</h:link></li>
+                            <li><h:link outcome="/ui/data/diagram/editable">Editable</h:link></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <a tabindex="0" class="submenu-link">Gmap</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><h:link outcome="/ui/data/gmap/basic">Basic</h:link></li>
+                            <li><h:link outcome="/ui/data/gmap/event">Event</h:link></li>
+                            <li><h:link outcome="/ui/data/gmap/markers">Markers</h:link></li>
+                            <li><h:link outcome="/ui/data/gmap/markerSelection">Selection</h:link></li>
+                            <li><h:link outcome="/ui/data/gmap/addMarkers">Add Markers</h:link></li>
+                            <li><h:link outcome="/ui/data/gmap/draggableMarkers">Draggable</h:link></li>
+                            <li><h:link outcome="/ui/data/gmap/infoWindow">InfoWindow</h:link></li>
+                            <li><h:link outcome="/ui/data/gmap/polylines">Polylines</h:link></li>
+                            <li><h:link outcome="/ui/data/gmap/polygons">Polygons</h:link></li>
+                            <li><h:link outcome="/ui/data/gmap/circles">Circles</h:link></li>
+                            <li><h:link outcome="/ui/data/gmap/rectangles">Rectangles</h:link></li>
+                            <li><h:link outcome="/ui/data/gmap/street">StreetView</h:link></li>
+                            <li><h:link outcome="/ui/data/gmap/controls">Controls</h:link></li>
+                            <li><h:link outcome="/ui/data/gmap/geocode">Geocode</h:link></li>
+                            <li><h:link outcome="/ui/data/gmap/mapDialog">Dialog</h:link></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <a tabindex="0" class="submenu-link">HorizontalTree</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><h:link outcome="/ui/data/htree/basic">Basic</h:link></li>
+                            <li><h:link outcome="/ui/data/htree/icon">Icon</h:link></li>
+                            <li><h:link outcome="/ui/data/htree/selection">Selection</h:link></li>
+                            <li><h:link outcome="/ui/data/htree/events">Events</h:link></li>
+                            <li><h:link outcome="/ui/data/htree/contextMenu">ContextMenu</h:link></li>
+                        </ul>
+                    </div>
+                </div>
                 <h:link outcome="/ui/data/orderList">OrderList</h:link>
                 <h:link outcome="/ui/data/organigram">Organigram</h:link>
                 <h:link outcome="/ui/data/mindmap">Mindmap</h:link>
                 <h:link outcome="/ui/data/pickList">PickList</h:link>
                 <h:link outcome="/ui/data/repeat">Repeat</h:link>
                 <h:link outcome="/ui/data/ring">Ring</h:link>
-                <h:link outcome="/ui/data/schedule/basic">Schedule</h:link>
+                <div>
+                    <a tabindex="0" class="submenu-link">Schedule</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><h:link outcome="/ui/data/schedule/basic">Basic</h:link></li>
+                            <li><h:link outcome="/ui/data/schedule/configureable">Configureable</h:link></li>
+                            <li><h:link outcome="/ui/data/schedule/lazy">Lazy</h:link></li>
+                            <li><h:link outcome="/ui/data/schedule/localization">Locale IL8N</h:link></li>
+                            <li><h:link outcome="/ui/data/schedule/extender">Extender</h:link></li>
+                        </ul>
+                    </div>
+                </div>
                 <h:link outcome="/ui/data/tagCloud">TagCloud</h:link>
-                <h:link outcome="/ui/data/timeline/basic">Timeline</h:link>
-                <h:link outcome="/ui/data/tree/basic">Tree</h:link>
-                <h:link outcome="/ui/data/treetable/basic">TreeTable</h:link>
+                <div>
+                    <a tabindex="0" class="submenu-link">Timeline</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><h:link outcome="/ui/data/timeline/basic">Basic</h:link></li>
+                            <li><h:link outcome="/ui/data/timeline/limitRange">Limit Range</h:link></li>
+                            <li><h:link outcome="/ui/data/timeline/custom">Custom</h:link></li>
+                            <li><h:link outcome="/ui/data/timeline/dragdrop">DragDrop</h:link></li>
+                            <li><h:link outcome="/ui/data/timeline/linked">Linked Timelines</h:link></li>
+                            <li><h:link outcome="/ui/data/timeline/allEvents">All Events</h:link></li>
+                            <li><h:link outcome="/ui/data/timeline/grouping">Grouping</h:link></li>
+                            <li><h:link outcome="/ui/data/timeline/nestedGrouping">Nested Grouping</h:link></li>
+                            <li><h:link outcome="/ui/data/timeline/editServer">Editable Server-Side</h:link></li>
+                            <li><h:link outcome="/ui/data/timeline/lazy">Lazy Loading</h:link></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <a tabindex="0" class="submenu-link">Tree</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><h:link outcome="/ui/data/tree/basic">Basic</h:link></li>
+                            <li><h:link outcome="/ui/data/tree/icon">Icon</h:link></li>
+                            <li><h:link outcome="/ui/data/tree/selection">Selection</h:link></li>
+                            <li><h:link outcome="/ui/data/tree/events">Events</h:link></li>
+                            <li><h:link outcome="/ui/data/tree/dragdrop">DragDrop</h:link></li>
+                            <li><h:link outcome="/ui/data/tree/contextMenu">ContextMenu</h:link></li>
+                            <li><h:link outcome="/ui/data/tree/animate">Animate</h:link></li>
+                            <li><h:link outcome="/ui/data/tree/rtl">RTL</h:link></li>
+                            <li><h:link outcome="/ui/data/tree/filter">Filter</h:link></li>
+                            <li><h:link outcome="/ui/data/tree/lazyloading">Lazy Loading</h:link></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <a tabindex="0" class="submenu-link">TreeTable</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><h:link outcome="/ui/data/treetable/basic">Basic</h:link></li>
+                            <li><h:link outcome="/ui/data/treetable/selection">Selection</h:link></li>
+                            <li><h:link outcome="/ui/data/treetable/events">Events</h:link></li>
+                            <li><h:link outcome="/ui/data/treetable/contextMenu">ContextMenu</h:link></li>
+                            <li><h:link outcome="/ui/data/treetable/scroll">Scroll</h:link></li>
+                            <li><h:link outcome="/ui/data/treetable/resize">Resize</h:link></li>
+                            <li><h:link outcome="/ui/data/treetable/sort">Sort</h:link></li>
+                            <li><h:link outcome="/ui/data/treetable/filter">Filter</h:link></li>
+                            <li><h:link outcome="/ui/data/treetable/columns">Columns</h:link></li>
+                            <li><h:link outcome="/ui/data/treetable/responsive">Responsive</h:link></li>
+                            <li><h:link outcome="/ui/data/treetable/edit">Edit</h:link></li>
+                            <li><h:link outcome="/ui/data/treetable/paginator">Paginator</h:link></li>
+                            <li><h:link outcome="/ui/data/treetable/multiViewState">MultiViewState</h:link></li>
+                            <li><h:link outcome="/ui/data/treetable/displayPriority">DisplayPriority</h:link></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
             <div class="menu-category">Panel</div>
@@ -163,17 +376,50 @@
             <div class="menu-category">Overlay</div>
             <div class="menu-items">
                 <h:link outcome="/ui/overlay/confirmDialog">ConfirmDialog</h:link>
-                <h:link outcome="/ui/overlay/dialog/basic">Dialog</h:link>
+                <div>
+                    <a tabindex="0" class="submenu-link">Dialog</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><h:link outcome="/ui/overlay/dialog/basic">Basic</h:link></li>
+                            <li><h:link outcome="/ui/overlay/dialog/dynamic">Dynamic</h:link></li>
+                            <li><h:link outcome="/ui/overlay/dialog/focus">Focus</h:link></li>
+                            <li><h:link outcome="/ui/overlay/dialog/events">Events</h:link></li>
+                            <li><h:link outcome="/ui/overlay/dialog/minMax">Min/Max</h:link></li>
+                            <li><h:link outcome="/ui/overlay/dialog/loginDemo">Login</h:link></li>
+                            <li><h:link outcome="/ui/overlay/dialog/rtl">RTL</h:link></li>
+                        </ul>
+                    </div>
+                </div>
                 <h:link outcome="/ui/overlay/lightBox">LightBox</h:link>
                 <h:link outcome="/ui/overlay/overlayPanel">OverlayPanel</h:link>
                 <h:link outcome="/ui/overlay/sidebar">Sidebar</h:link>
-                <h:link outcome="/ui/overlay/tooltip/tooltipOptions">Tooltip</h:link>
+                <div>
+                    <a tabindex="0" class="submenu-link">Tooltip</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><h:link outcome="/ui/overlay/tooltip/tooltipOptions">Tooltip Options</h:link></li>
+                            <li><h:link outcome="/ui/overlay/tooltip/tooltipGlobal">Global Tooltip</h:link></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
             <div class="menu-category">Menu</div>
             <div class="menu-items">
                 <h:link outcome="/ui/menu/breadcrumb">Breadcrumb</h:link>
-                <h:link outcome="/ui/menu/contextmenu/basic">ContextMenu</h:link>
+                <div>
+                    <a tabindex="0" class="submenu-link">ContextMenu</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><h:link outcome="/ui/menu/contextmenu/basic">Basic</h:link></li>
+                            <li><h:link outcome="/ui/menu/contextmenu/tiered">Tiered</h:link></li>
+                            <li><h:link outcome="/ui/menu/contextmenu/target">Target</h:link></li>
+                            <li><h:link outcome="/ui/data/datatable/contextMenu">DataTable</h:link></li>
+                            <li><h:link outcome="/ui/data/tree/contextMenu">Tree</h:link></li>
+                            <li><h:link outcome="/ui/data/treetable/contextMenu">TreeTable</h:link></li>
+                        </ul>
+                    </div>
+                </div>
                 <h:link outcome="/ui/menu/dock">Dock</h:link>
                 <h:link outcome="/ui/menu/megaMenu">MegaMenu</h:link>
                 <h:link outcome="/ui/menu/menu">Menu</h:link>
@@ -189,7 +435,17 @@
 
             <div class="menu-category">Charts</div>
             <div class="menu-items">
-                <h:link outcome="/ui/chartjs/bar/bar">Bar</h:link>
+                <div>
+                    <a tabindex="0" class="submenu-link">Bar</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><h:link outcome="/ui/chartjs/bar/bar">Basic</h:link></li>
+                            <li><h:link outcome="/ui/chartjs/bar/bar">Horizontal Bar</h:link></li>
+                            <li><h:link outcome="/ui/chartjs/bar/stacked">Stacked</h:link></li>
+                            <li><h:link outcome="/ui/chartjs/bar/stackedGroup">Stacked Group</h:link></li>
+                        </ul>
+                    </div>
+                </div>
                 <h:link outcome="/ui/chartjs/bubble">Bubble</h:link>
                 <h:link outcome="/ui/chartjs/donut">Donut</h:link>
                 <h:link outcome="/ui/chartjs/line">Line</h:link>
@@ -215,18 +471,51 @@
                 <h:link outcome="/ui/multimedia/barcode">Barcode</h:link>
                 <h:link outcome="/ui/multimedia/compare">Compare</h:link>
                 <h:link outcome="/ui/multimedia/contentFlow">ContentFlow</h:link>
-                <h:link outcome="/ui/multimedia/cropper/cropper">Cropper</h:link>
+                <div>
+                    <a tabindex="0" class="submenu-link">Cropper</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><h:link outcome="/ui/multimedia/cropper/cropper">Basic</h:link></li>
+                            <li><h:link outcome="/ui/multimedia/cropper/dynamic">Dynamic</h:link></li>
+                            <li><h:link outcome="/ui/multimedia/cropper/fileupload">Combined with FileUpload</h:link></li>
+                        </ul>
+                    </div>
+                </div>
                 <h:link outcome="/ui/multimedia/graphicImage">GraphicImage</h:link>
                 <h:link outcome="/ui/multimedia/galleria">Galleria</h:link>
                 <h:link outcome="/ui/multimedia/media">Media</h:link>
-                <h:link outcome="/ui/multimedia/photocam/photoCam">PhotoCam</h:link>
+                <div>
+                    <a tabindex="0" class="submenu-link">PhotoCam</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><a href="#{request.contextPath}/ui/multimedia/photocam/photoCam.xhtml">PhotoCam</a>
+                            </li>
+                            <li><a href="#{request.contextPath}/ui/multimedia/photocam/deviceSelection.xhtml">Device Selection</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 <h:link outcome="/ui/multimedia/switch">Switch</h:link>
                 <h:link outcome="/ui/multimedia/video">Video</h:link>
             </div>
 
             <div class="menu-category">File</div>
             <div class="menu-items">
-                <h:link outcome="/ui/file/upload/basic">Upload</h:link>
+                <div>
+                    <a tabindex="0" class="submenu-link">Upload</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><h:link outcome="/ui/file/upload/basic">Basic</h:link></li>
+                            <li><h:link outcome="/ui/file/upload/basicAuto">Basic Auto</h:link></li>
+                            <li><h:link outcome="/ui/file/upload/single">Single</h:link></li>
+                            <li><h:link outcome="/ui/file/upload/multiple">Multiple</h:link></li>
+                            <li><h:link outcome="/ui/file/upload/auto">Auto</h:link></li>
+                            <li><h:link outcome="/ui/file/upload/dnd">DragDrop</h:link></li>
+                            <li><h:link outcome="/ui/file/upload/chunked">Chunked</h:link></li>
+                            <li><h:link outcome="/ui/file/upload/tooltips">Tooltips</h:link></li>
+                        </ul>
+                    </div>
+                </div>
                 <h:link outcome="/ui/file/download">Download</h:link>
             </div>
 
@@ -265,7 +554,15 @@
                 <h:link outcome="/ui/misc/captcha">Captcha</h:link>
                 <h:link outcome="/ui/misc/clock">Clock</h:link>
                 <h:link outcome="/ui/misc/collector">Collector</h:link>
-                <h:link outcome="/ui/misc/defaultcommand/basic">DefaultCommand</h:link>
+                <div>
+                    <a tabindex="0" class="submenu-link">DefaultCommand</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><h:link outcome="/ui/misc/defaultcommand/basic">Basic</h:link></li>
+                            <li><h:link outcome="/ui/misc/defaultcommand/multiple">Multiple</h:link></li>
+                        </ul>
+                    </div>
+                </div>
                 <h:link outcome="/ui/misc/effect">Effect</h:link>
                 <h:link outcome="/ui/misc/exceptionHandler">ExceptionHandler</h:link>
                 <h:link outcome="/ui/misc/feedReader">FeedReader</h:link>
@@ -287,7 +584,15 @@
                 <h:link outcome="/ui/misc/spacer">Spacer</h:link>
                 <h:link outcome="/ui/misc/spotlight">Spotlight</h:link>
                 <h:link outcome="/ui/misc/sticky">Sticky</h:link>
-                <h:link outcome="/ui/misc/terminal/basic">Terminal</h:link>
+                <div>
+                    <a tabindex="0" class="submenu-link">Terminal</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><h:link outcome="/ui/misc/terminal/basic">Basic</h:link></li>
+                            <li><h:link outcome="/ui/misc/terminal/autocomplete">Autocompletion</h:link></li>
+                        </ul>
+                    </div>
+                </div>
                 <h:link outcome="/ui/misc/watermark">Watermark</h:link>
             </div>
         </div>

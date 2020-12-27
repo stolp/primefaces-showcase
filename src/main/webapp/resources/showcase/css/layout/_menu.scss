@@ -63,17 +63,9 @@
                 }
             }
 
-            div {
-                &.router-link-exact-active {
-                    > a {
-                        font-weight: 700;
-                    }
-                    
-                    ul {
-                        display: block;
-                    }
-                }
-
+            .submenu {
+                display: none;
+                
                 ul {
                     padding: .5rem 0;
                     margin: 0;

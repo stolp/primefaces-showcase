@@ -5,6 +5,7 @@ $(function() {
             this.topbar = this.wrapper.children('.layout-topbar');
             this.topbarMenu = this.topbar.find('> form > .topbar-menu');
             this.sidebar = this.wrapper.children('.layout-sidebar');
+            this.menu = this.sidebar.children('.layout-menu');
             this.mask = this.wrapper.children('.layout-mask');
             this.menuButton = this.topbar.children('.menu-button');
             this.configurator = this.wrapper.children('.layout-config');
@@ -30,6 +31,10 @@ $(function() {
 
             this.topbarMenu.find('.connected-overlay-in a').off('click').on('click', function() {
                 $this.hideTopbarSubmenu($this.topbarMenu.children('.topbar-submenu-active'));
+            });
+
+            this.menu.find('.submenu-link').off('click').on('click', function() {
+                $(this).toggleClass('submenu-link-active').next('div').slideToggle('fast');
             });
 
             $(document).off('click.showcase').on('click.showcase', function(event) {
