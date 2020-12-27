@@ -11,6 +11,7 @@ App = {
         this.configurator = this.wrapper.children('.layout-config');
         this.configuratorButton = $('#layout-config-button');
         this.configuratorCloseButton = $('#layout-config-close-button');
+        this.activeSubmenus = [];
         
         this._bindEvents();
         this.restoreMenu();
@@ -37,10 +38,21 @@ App = {
         this.menuLinks.off('click').on('click', function() {
             var link = $(this);
             
-            if (link.hasClass('submenu-link'))
-                link.next('.submenu').slideToggle('fast');
-            else
+            if (link.hasClass('submenu-link')) {
+                if (link.hasClass('submenu-link-active')) {
+                    $this.activeSubmenus.filter(function(id) {return id !== link.attr('id')});
+                    link.removeClass('submenu-link-active').next('.submenu').slideUp('fast');
+                }
+                else {
+                    $this.activeSubmenus.push(link.attr('id'));
+                    link.addClass('submenu-link-active').next('.submenu').slideDown('fast');
+                }
+
+                sessionStorage.setItem('active_submenus', $this.activeSubmenus.join(','));
+            }
+            else {
                 link.addClass('router-link-active');
+            }   
         });
 
         this.sidebar.off('scroll').on('scroll', function(event) {
@@ -129,9 +141,16 @@ App = {
 
     restoreMenu() {
         var activeRouteLink = this.menuLinks.filter('[href^="' + window.location.pathname + '"]');
-        if (activeRouteLink.length && activeRouteLink.parent().is('li')) {
+        if (activeRouteLink.length) {
             activeRouteLink.addClass('router-link-active');
-            activeRouteLink.parent().parent().parent().show();
+        }
+
+        var activeSubmenus = sessionStorage.getItem('active_submenus');
+        if (activeSubmenus) {
+            this.activeSubmenus = activeSubmenus.split(',');
+            this.activeSubmenus.forEach(function(id) {
+                $('#' + id).addClass('submenu-link-active').next().show();
+            });
         }
 
         var scrollPosition = sessionStorage.getItem('scroll_position');
