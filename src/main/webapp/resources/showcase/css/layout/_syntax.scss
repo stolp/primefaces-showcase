@@ -234,8 +234,10 @@ https://prismjs.com/download.html#themes=prism-coy&languages=markup+css+clike+ja
      
          .token {
              &.tag,
-             &.keyword {
+             &.keyword,
+             &.namespace {
                  color: #2196F3 !important;
+                 opacity: 1;
              }
      
              &.attr-name,
