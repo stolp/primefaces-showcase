@@ -22,6 +22,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Named("customTimelineView")
@@ -35,8 +36,8 @@ public class CustomTimelineView implements Serializable {
     @PostConstruct  
     public void init() {  
         // set initial start / end dates for the axis of the timeline  
-        start = LocalDateTime.now().minusHours(4);
-        end = LocalDateTime.now().plusHours(8);
+        start = LocalDate.of(-140, 1, 1).atStartOfDay();
+        end = LocalDate.of(-140, 1, 2).atStartOfDay();
 
         // groups  
         String[] NAMES = new String[] {"User 1", "User 2", "User 3", "User 4", "User 5", "User 6"};  
@@ -45,7 +46,7 @@ public class CustomTimelineView implements Serializable {
         model = new TimelineModel<>();
   
         for (String name : NAMES) {
-            LocalDateTime end = LocalDateTime.now().minusHours(12).withMinute(0).withSecond(0).withNano(0);
+            LocalDateTime end = start.minusHours(12).withMinute(0).withSecond(0).withNano(0);
 
             for (int i = 0; i < 5; i++) {
                 LocalDateTime start = end.plusHours(Math.round(Math.random() *5));
