@@ -88,12 +88,14 @@
         </h:panelGrid>
         
         <h3>Target</h3>
-        <p:commandButton type="button" value="Show" style="display:block" icon="pi pi-image">
-            <p:effect type="puff" event="click" for="img">
-                <f:param name="mode" value="'show'" />
-            </p:effect>
-        </p:commandButton>
-        <p:graphicImage id="img" name="demo/images/nature/nature1.jpg" style="display:none"/>
+        <h:form>
+	        <p:commandButton type="button" value="Show" style="display:block" icon="pi pi-image">
+	            <p:effect type="puff" event="click" for="img">
+	                <f:param name="mode" value="'show'" />
+	            </p:effect>
+	        </p:commandButton>
+	        <p:graphicImage id="img" name="demo/images/nature/nature1.jpg" style="display:none"/>
+        </h:form>
         
         <h:form>
             <h3>On Load</h3>
