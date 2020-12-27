@@ -17,19 +17,18 @@
     <ui:param name="widgetLink" value="inputtext" />
 
     <ui:define name="implementation">
-       
-        <h:form>            
-            <h3>Basic</h3>
-            <p:inputText />
-        
-           <h3>Floating Label</h3>
-           <span class="ui-float-label">
-               <p:inputText id="float-input" value="#{basicView.text}" />
-               <p:outputLabel for="@previous" value="Username" />
-           </span>
-
-        </h:form>
-        
+        <div class="card">
+            <h:form>      
+                <h5>Basic</h5>
+                <p:inputText />
+            
+               <h5>Floating Label</h5>
+               <span class="ui-float-label">
+                   <p:inputText id="float-input" value="#{basicView.text}" />
+                   <p:outputLabel for="@previous" value="Username" />
+               </span>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

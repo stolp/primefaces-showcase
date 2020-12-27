@@ -1,0 +1,9 @@
+@mixin navlink {
+    text-decoration: none;
+    color: $linkColor;
+    font-weight: 600;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

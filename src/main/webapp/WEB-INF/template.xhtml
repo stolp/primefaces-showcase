@@ -62,24 +62,28 @@
 
             <div class="layout-content">
                 <ui:insert name="content">
-                    <div class="content-section content-introduction">
-                        <h1><ui:insert name="title"></ui:insert></h1>
-                        <p><ui:insert name="description"></ui:insert></p>
-                        <a class="documentation-link" href="https://primefaces.github.io/primefaces/9_0/##{documentationLink}" target="_blank">
-                            <i class="pi pi-external-link"></i> 
-                            Documentation
-                        </a>
-                        <span jsf:rendered="#{not empty widgetLink}">
-                            <a class="documentation-link" href="https://primefaces.github.io/primefaces/jsdocs/classes/primefaces.widget.#{widgetLink}.html" target="_blank">
+                    <div class="content-section introduction">
+                        <div class="feature-intro">
+                            <h1><ui:insert name="title"></ui:insert></h1>
+                            <p><ui:insert name="description"></ui:insert></p>
+                        </div>
+                        <div class="feature-documentation">
+                            <a class="documentation-link" href="https://primefaces.github.io/primefaces/9_0/##{documentationLink}" target="_blank">
                                 <i class="pi pi-external-link"></i> 
-                                Widget
+                                <span>SERVER API</span>
                             </a>
-                        </span>
+                            <ui:fragment rendered="#{not empty widgetLink}">
+                                <a class="documentation-link" href="https://primefaces.github.io/primefaces/jsdocs/classes/primefaces.widget.#{widgetLink}.html" target="_blank">
+                                    <i class="pi pi-external-link"></i> 
+                                    <span>CLIENT API</span>
+                                </a>
+                            </ui:fragment>
+                        </div>
                     </div>
-                    <div class="content-section content-implementation">
+                    <div class="content-section implementation">
                         <ui:insert name="implementation"></ui:insert>
                     </div>
-                    <div class="content-section content-source">
+                    <div class="content-section documentation">
                         <ui:insert name="source">
                             <sc:tabscode
                                     value="#{sc:getFilesContent(facesContext.externalContext.requestServletPath, true)}">
