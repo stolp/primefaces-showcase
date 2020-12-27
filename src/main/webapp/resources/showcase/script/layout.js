@@ -1,5 +1,5 @@
 App = {
-    init: function() {    
+    init: function() {
         this.wrapper = $(document.body).children('.layout-wrapper');
         this.topbar = this.wrapper.children('.layout-topbar');
         this.topbarMenu = this.topbar.find('> form > .topbar-menu');
