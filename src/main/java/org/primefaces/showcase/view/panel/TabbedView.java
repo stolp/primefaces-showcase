@@ -18,35 +18,33 @@ package org.primefaces.showcase.view.panel;
 import org.primefaces.PrimeFaces;
 import org.primefaces.event.TabChangeEvent;
 import org.primefaces.event.TabCloseEvent;
-import org.primefaces.showcase.domain.Car;
+import org.primefaces.showcase.domain.Product;
+import org.primefaces.showcase.service.ProductService;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
-import java.util.ArrayList;
 import java.util.List;
 
 @Named
 @RequestScoped
 public class TabbedView {
     
-    private List<Car> cars;
+    private List<Product> products;
+
+    @Inject
+    ProductService service;
 
     @PostConstruct
     public void init() {
-        cars = new ArrayList<Car>();
-        cars.add(new Car("Y25YIH5", "Fiat", 2014, "Black", 10000, true));
-        cars.add(new Car("JHF261G", "BMW", 2013, "Blue", 50000, true));
-        cars.add(new Car("HSFY23H", "Ford", 2012, "Black", 35000, false));
-        cars.add(new Car("GMDK353", "Volvo", 2014, "White", 40000, true));
-        cars.add(new Car("345GKM5", "Jaguar", 2011, "Gray", 48000, false));
-        cars.add(new Car("JIF261G", "BMW", 2011, "White", 52000, true));
+        products = service.getProducts(5);
     }
     
-    public List<Car> getCars() {
-        return cars;
+    public List<Product> getProducts() {
+        return products;
     }
     
     public void onTabChange(TabChangeEvent event) {
@@ -62,9 +60,7 @@ public class TabbedView {
     public void clearMultiViewState() {
         FacesContext context = FacesContext.getCurrentInstance();
         String viewId = context.getViewRoot().getViewId();
-        PrimeFaces.current().multiViewState().clearAll(viewId, true, (clientId) -> {
-            showMessage(clientId);
-        });
+        PrimeFaces.current().multiViewState().clearAll(viewId, true, this::showMessage);
     }
 
     private void showMessage(String clientId) {

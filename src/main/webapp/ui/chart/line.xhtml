@@ -13,13 +13,17 @@
         LineChart is displayed using a LineChartModel.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/chart" />
-    <ui:param name="widgetLink" value="chart" />
+    <ui:param name="documentationLink" value="/components/chart"/>
+    <ui:param name="widgetLink" value="chart"/>
 
     <ui:define name="implementation">
-        <p:chart type="line" model="#{chartView.lineModel1}" style="height:300px;"/>
-        <br /><br />
-        <p:chart type="line" model="#{chartView.lineModel2}" style="height:300px;"/>
+        <div class="card">
+            <p:chart type="line" model="#{chartView.lineModel1}" style="height:300px;"/>
+        </div>
+        <br/><br/>
+        <div class="card">
+            <p:chart type="line" model="#{chartView.lineModel2}" style="height:300px;"/>
+        </div>
     </ui:define>
 
 </ui:composition>

@@ -17,8 +17,8 @@ package org.primefaces.showcase.view.data.datatable;
 
 import javax.faces.view.ViewScoped;
 import org.primefaces.model.LazyDataModel;
-import org.primefaces.showcase.domain.Car;
-import org.primefaces.showcase.service.CarService;
+import org.primefaces.showcase.domain.Customer;
+import org.primefaces.showcase.service.CustomerService;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -30,61 +30,61 @@ import java.util.List;
 @ViewScoped
 public class ScrollView implements Serializable {
     
-    private List<Car> cars1;
-    private List<Car> cars2;
-    private List<Car> cars3;
-    private List<Car> cars4;
-    private List<Car> cars5;
-    private List<Car> cars6;
-    private LazyDataModel<Car> lazyModel;
-    
+    private List<Customer> products1;
+    private List<Customer> products2;
+    private List<Customer> products3;
+    private List<Customer> products4;
+    private List<Customer> products5;
+    private List<Customer> products6;
+    private LazyDataModel<Customer> lazyModel;
+
     @Inject
-    private CarService service;
+    private CustomerService service;
 
     @PostConstruct
     public void init() {
-        cars1 = service.createCars(50);
-        cars2 = service.createCars(10);
-        cars3 = service.createCars(50);
-        cars4 = service.createCars(50);
-        cars5 = service.createCars(50);
-        cars6 = service.createCars(200);
-        lazyModel = new LazyCarDataModel(service.createCars(20000));
+        products1 = service.getCustomers(50);
+        products2 = service.getCustomers(10);
+        products3 = service.getCustomers(50);
+        products4 = service.getCustomers(50);
+        products5 = service.getCustomers(50);
+        products6 = service.getCustomers(200);
+        lazyModel = new LazyCustomerDataModel(service.getCustomers(20000));
     }
 
-    public List<Car> getCars1() {
-        return cars1;
+    public List<Customer> getCustomers1() {
+        return products1;
     }
 
-    public List<Car> getCars2() {
-        return cars2;
+    public List<Customer> getCustomers2() {
+        return products2;
     }
 
-    public List<Car> getCars3() {
-        return cars3;
+    public List<Customer> getCustomers3() {
+        return products3;
     }
 
-    public List<Car> getCars4() {
-        return cars4;
+    public List<Customer> getCustomers4() {
+        return products4;
     }
 
-    public List<Car> getCars5() {
-        return cars5;
+    public List<Customer> getCustomers5() {
+        return products5;
     }
 
-    public List<Car> getCars6() {
-        return cars6;
+    public List<Customer> getCustomers6() {
+        return products6;
     }
 
-    public LazyDataModel<Car> getLazyModel() {
+    public LazyDataModel<Customer> getLazyModel() {
         return lazyModel;
     }
 
-    public void setLazyModel(LazyDataModel<Car> lazyModel) {
+    public void setLazyModel(LazyDataModel<Customer> lazyModel) {
         this.lazyModel = lazyModel;
     }
 
-    public void setService(CarService service) {
+    public void setService(CustomerService service) {
         this.service = service;
     }
 }

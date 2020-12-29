@@ -16,8 +16,8 @@
 package org.primefaces.showcase.view.data.datatable;
 
 import org.primefaces.event.RowEditEvent;
-import org.primefaces.showcase.domain.Car;
-import org.primefaces.showcase.service.CarService;
+import org.primefaces.showcase.domain.Product;
+import org.primefaces.showcase.service.ProductService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -32,47 +32,39 @@ import java.util.List;
 @ViewScoped
 public class AddRowView implements Serializable {
     
-    private List<Car> cars1;
+    private List<Product> products1;
 
     @Inject
-    private CarService service;
+    private ProductService service;
     
     @PostConstruct
     public void init() {
-        cars1 = service.createCars(15);
+        products1 = service.getProducts(15);
     }
 
-    public List<Car> getCars1() {
-        return cars1;
+    public List<Product> getProducts1() {
+        return products1;
     }
 
-    public List<String> getBrands() {
-        return service.getBrands();
-    }
-    
-    public List<String> getColors() {
-        return service.getColors();
-    }
-
-    public void setService(CarService service) {
+    public void setService(ProductService service) {
         this.service = service;
     }
     
-    public void onRowEdit(RowEditEvent<Car> event) {
-        FacesMessage msg = new FacesMessage("Car Edited", event.getObject().getId());
+    public void onRowEdit(RowEditEvent<Product> event) {
+        FacesMessage msg = new FacesMessage("Product Edited", String.valueOf(event.getObject().getId()));
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     
-    public void onRowCancel(RowEditEvent<Car> event) {
-        FacesMessage msg = new FacesMessage("Edit Cancelled", event.getObject().getId());
+    public void onRowCancel(RowEditEvent<Product> event) {
+        FacesMessage msg = new FacesMessage("Edit Cancelled", String.valueOf(event.getObject().getId()));
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
     public void onAddNew() {
-        // Add one new car to the table:
-        Car car2Add = service.createCars(1).get(0);
-        cars1.add(car2Add);
-        FacesMessage msg = new FacesMessage("New Car added", car2Add.getId());
+        // Add one new product to the table:
+        Product product2Add = service.getProducts(1).get(0);
+        products1.add(product2Add);
+        FacesMessage msg = new FacesMessage("New Product added", String.valueOf(product2Add.getId()));
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     

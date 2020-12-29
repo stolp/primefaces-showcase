@@ -22,8 +22,8 @@ import org.apache.poi.ss.usermodel.FillPatternType;
 import org.primefaces.component.export.ExcelOptions;
 import org.primefaces.component.export.PDFOptions;
 import org.primefaces.component.export.PDFOrientationType;
-import org.primefaces.showcase.domain.Car;
-import org.primefaces.showcase.service.CarService;
+import org.primefaces.showcase.domain.Product;
+import org.primefaces.showcase.service.ProductService;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -40,22 +40,22 @@ import java.util.List;
 @RequestScoped
 public class CustomizedDocumentsView implements Serializable {
     
-    private List<Car> cars;
+    private List<Product> products;
     
-    private List<Car> cars2;
+    private List<Product> products2;
     
     private ExcelOptions excelOpt;
     
     private PDFOptions pdfOpt;
         
     @Inject
-    private CarService service;
+    private ProductService service;
     
     @PostConstruct
     public void init() {
-        cars = service.createCars(100);
+        products = service.getProducts(100);
         
-        cars2 = service.createCars(100);
+        products2 = service.getProducts(100);
         customizationOptions();
     }
     
@@ -78,12 +78,12 @@ public class CustomizedDocumentsView implements Serializable {
         pdfOpt.setOrientation(PDFOrientationType.LANDSCAPE);
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public List<Car> getCars2() {
-        return cars2;
+    public List<Product> getProducts2() {
+        return products2;
     }
 
     public ExcelOptions getExcelOpt() {
@@ -102,7 +102,7 @@ public class CustomizedDocumentsView implements Serializable {
         this.pdfOpt = pdfOpt;
     }
 
-    public void setService(CarService service) {
+    public void setService(ProductService service) {
         this.service = service;
     }
     

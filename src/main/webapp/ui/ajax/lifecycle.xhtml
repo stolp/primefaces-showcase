@@ -6,30 +6,31 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="title">
-        Ajax Framework - <span class="subitem">Basic</span>
+        Ajax Framework - <span class="subitem">Lifecycle</span>
     </ui:define>
 
     <ui:define name="description">
         Attach events to the Widget lifecycle so you can call client side Javascript during PostConstruct, PostRefresh, or PreDestroy of the widget.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/core/widgets?id=widget-lifecycle-events" />
+    <ui:param name="documentationLink" value="/core/widgets?id=widget-lifecycle-events"/>
 
     <ui:define name="implementation">
-
-        <h:form>
-            <h:panelGrid columns="4" cellpadding="5">
-                <h:outputLabel for="name" value="Name:" style="font-weight:bold" />
-                <p:inputText id="name" value="#{basicView.text}" widgetVar="wgtName">
-                    <f:attribute name="widgetPostConstruct" value="alert('Widget created!');" />  
-                    <f:attribute name="widgetPostRefresh" value="alert('Widget refreshed!');" />  
-                    <f:attribute name="widgetPreDestroy" value="alert('Widget destroyed!');" />  
-                </p:inputText>
-                <p:commandButton value="Submit" update="@form" icon="pi pi-check" />
-                <p:commandButton value="Destroy" icon="pi pi-times" onclick="PF('wgtName').destroy(); return false;"/>
-            </h:panelGrid>
-        </h:form>
-        
+        <div class="card">
+            <h:form>
+                <h:panelGrid columns="4" cellpadding="5">
+                    <h:outputLabel for="name" value="Name:" style="font-weight:bold"/>
+                    <p:inputText id="name" value="#{basicView.text}" widgetVar="wgtName">
+                        <f:attribute name="widgetPostConstruct" value="alert('Widget created!');"/>
+                        <f:attribute name="widgetPostRefresh" value="alert('Widget refreshed!');"/>
+                        <f:attribute name="widgetPreDestroy" value="alert('Widget destroyed!');"/>
+                    </p:inputText>
+                    <p:commandButton value="Submit" update="@form" icon="pi pi-check"/>
+                    <p:commandButton value="Destroy" icon="pi pi-times"
+                                     onclick="PF('wgtName').destroy(); return false;"/>
+                </h:panelGrid>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

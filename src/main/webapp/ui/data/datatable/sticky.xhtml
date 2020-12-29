@@ -13,23 +13,29 @@
         Header of the datatable can be fixed to keep it in viewport during scroll.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/datatable" />
-    <ui:param name="widgetLink" value="datatable" />
+    <ui:param name="documentationLink" value="/components/datatable"/>
+    <ui:param name="widgetLink" value="datatable"/>
 
     <ui:define name="implementation">
 
-        <p:dataTable var="car" value="#{dtStickyView.cars}" stickyHeader="true" stickyTopAt=".layout-topbar">
+        <div class="card">
+            <p:dataTable var="product" value="#{dtStickyView.products}" stickyHeader="true"
+                         stickyTopAt=".layout-topbar">
+                <p:column headerText="Code">
+                    <h:outputText value="#{product.code}"/>
+                </p:column>
+                <p:column headerText="Name">
+                    <h:outputText value="#{product.name}"/>
+                </p:column>
+                <p:column headerText="Category">
+                    <h:outputText value="#{product.category}"/>
+                </p:column>
+                <p:column headerText="Price">
+                    <h:outputText value="$#{product.price}"/>
+                </p:column>
+            </p:dataTable>
+        </div>
 
-            <p:column field="id" headerText="Id" />
-
-            <p:column field="year" headerText="Year" />
-
-            <p:column field="brand" headerText="Brand" />
-
-            <p:column field="color" headerText="Color" />
-
-        </p:dataTable>
-        
     </ui:define>
 
 </ui:composition>

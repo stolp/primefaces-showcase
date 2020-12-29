@@ -9,4 +9,5 @@ layout.classpath
 layout.css
 layout.css.map
 .DS_STORE
+.idea
 bin

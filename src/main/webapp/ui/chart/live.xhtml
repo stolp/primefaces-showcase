@@ -13,14 +13,16 @@
         Votes are updated live periodically using poll component and displayed on a pie chart.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/chart" />
-    <ui:param name="widgetLink" value="chart" />
+    <ui:param name="documentationLink" value="/components/chart"/>
+    <ui:param name="widgetLink" value="chart"/>
 
     <ui:define name="implementation">
-        <h:form>
-            <p:poll interval="3" update="votes" />
-            <p:chart id="votes" type="pie" model="#{chartView.livePieModel}" style="width:400px;height:300px"/>
-        </h:form>
+        <div class="card">
+            <h:form>
+                <p:poll interval="3" update="votes"/>
+                <p:chart id="votes" type="pie" model="#{chartView.livePieModel}" style="width:400px;height:300px"/>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

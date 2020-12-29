@@ -16,8 +16,8 @@
 package org.primefaces.showcase.view.dnd;
 
 import org.primefaces.event.DragDropEvent;
-import org.primefaces.showcase.domain.Car;
-import org.primefaces.showcase.service.CarService;
+import org.primefaces.showcase.domain.Product;
+import org.primefaces.showcase.service.ProductService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -27,49 +27,49 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Named("dndCarsView")
+@Named("dndProductsView")
 @ViewScoped
-public class DNDCarsView implements Serializable {
+public class DNDProductsView implements Serializable {
  
     @Inject
-    private CarService service;
+    private ProductService service;
 
-    private List<Car> cars;
+    private List<Product> products;
     
-    private List<Car> droppedCars;
+    private List<Product> droppedProducts;
     
-    private Car selectedCar;
+    private Product selectedProduct;
     
     @PostConstruct
     public void init() {
-        cars = service.createCars(9);
-        droppedCars = new ArrayList<>();
+        products = service.getProducts(9);
+        droppedProducts = new ArrayList<>();
     }
     
-    public void onCarDrop(DragDropEvent<Car> ddEvent) {
-        Car car = ddEvent.getData();
+    public void onProductDrop(DragDropEvent<Product> ddEvent) {
+        Product product = ddEvent.getData();
  
-        droppedCars.add(car);
-        cars.remove(car);
+        droppedProducts.add(product);
+        products.remove(product);
     }
     
-    public void setService(CarService service) {
+    public void setService(ProductService service) {
         this.service = service;
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public List<Car> getDroppedCars() {
-        return droppedCars;
+    public List<Product> getDroppedProducts() {
+        return droppedProducts;
     }    
 
-    public Car getSelectedCar() {
-        return selectedCar;
+    public Product getSelectedProduct() {
+        return selectedProduct;
     }
 
-    public void setSelectedCar(Car selectedCar) {
-        this.selectedCar = selectedCar;
+    public void setSelectedProduct(Product selectedProduct) {
+        this.selectedProduct = selectedProduct;
     }
 }

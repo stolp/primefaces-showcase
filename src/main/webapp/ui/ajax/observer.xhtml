@@ -13,41 +13,41 @@
 
     </ui:define>
 
-    <ui:param name="documentationLink" value="/core/ajaxRendering" />
+    <ui:param name="documentationLink" value="/core/ajaxRendering"/>
 
     <ui:define name="implementation">
+        <div class="card">
+            <h:form>
+                <h:outputLabel for="name" value="Name:" style="font-weight:bold"/>
+                <p:inputText id="name" value="#{observerView.text}">
+                    <p:ajax process="@this" update="@none" ignoreAutoUpdate="true"/>
+                </p:inputText>
 
-        <h:form>
-            <h:outputLabel for="name" value="Name:" style="font-weight:bold" />
-            <p:inputText id="name" value="#{observerView.text}">
-                <p:ajax process="@this" update="@none" ignoreAutoUpdate="true" />
-            </p:inputText>
+                <br/><br/>
 
-            <br /><br />
+                <p:commandButton value="Update global" icon="pi pi-check"/>
+                <p:commandButton value="Update event1" update="@obs(event1)" icon="pi pi-check"/>
+                <p:commandButton value="Update event2" update="@obs(event2)" icon="pi pi-check"/>
 
-            <p:commandButton value="Update global" icon="pi pi-check" />
-            <p:commandButton value="Update event1" update="@obs(event1)" icon="pi pi-check" />
-            <p:commandButton value="Update event2" update="@obs(event2)" icon="pi pi-check" />
+                <br/><br/>
+                Global:
+                <h:outputText id="displayGlobal" value="#{observerView.text}">
+                    <p:autoUpdate/>
+                </h:outputText>
 
-            <br /><br />
-            Global:
-            <h:outputText id="displayGlobal" value="#{observerView.text}">
-                <p:autoUpdate />
-            </h:outputText>
+                <br/><br/>
+                Event1:
+                <h:outputText id="displayEvent1" value="#{observerView.text}">
+                    <p:autoUpdate on="event1"/>
+                </h:outputText>
 
-            <br /><br />
-            Event1:
-            <h:outputText id="displayEvent1" value="#{observerView.text}">
-                <p:autoUpdate on="event1" />
-            </h:outputText>
-
-            <br /><br />
-            Event2:
-            <h:outputText id="displayEvent2" value="#{observerView.text}">
-                <p:autoUpdate on="event2" />
-            </h:outputText>
-        </h:form>
-
+                <br/><br/>
+                Event2:
+                <h:outputText id="displayEvent2" value="#{observerView.text}">
+                    <p:autoUpdate on="event2"/>
+                </h:outputText>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

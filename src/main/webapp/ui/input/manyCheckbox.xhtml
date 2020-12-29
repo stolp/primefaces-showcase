@@ -30,100 +30,103 @@
         SelectManyCheckbox is used to choose multiple items from a collection.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/selectmanycheckbox" />
-    <ui:param name="widgetLink" value="selectmanycheckbox" />
+    <ui:param name="documentationLink" value="/components/selectmanycheckbox"/>
+    <ui:param name="widgetLink" value="selectmanycheckbox"/>
 
     <ui:define name="implementation">
-
-        <h:form>
-            <h3 style="margin-top:0px">Basic Layout</h3>
-            <p:selectManyCheckbox id="basic" value="#{checkboxView.selectedConsoles}">
-                <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-                <f:selectItem itemLabel="PS4" itemValue="PS4" />
-                <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
-            </p:selectManyCheckbox>
-
-            <h3>Grid Layout</h3>
-            <p:selectManyCheckbox id="grid" value="#{checkboxView.selectedCities}" layout="grid" columns="3">
-                <f:selectItems value="#{checkboxView.cities}" var="city" itemLabel="#{city}" itemValue="#{city}" />
-            </p:selectManyCheckbox>
-
-            <h3>Responsive</h3>
-            <p:selectManyCheckbox id="grid2" value="#{checkboxView.selectedCities2}" layout="responsive" columns="3">
-                <f:selectItems value="#{checkboxView.cities}" var="city" itemLabel="#{city}" itemValue="#{city}" />
-            </p:selectManyCheckbox>
-
-            <h3>Custom Layout</h3>
-            <p:outputPanel id="customPanel" style="margin-bottom:20px">
-                <p:selectManyCheckbox id="custom" value="#{checkboxView.selectedConsoles2}" layout="custom">
-                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
-                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+        <div class="card">
+            <h:form>
+                <h5 style="margin-top:0px">Basic Layout</h5>
+                <p:selectManyCheckbox id="basic" value="#{checkboxView.selectedOptions}">
+                    <f:selectItem itemLabel="Option 1" itemValue="Option 1"/>
+                    <f:selectItem itemLabel="Option 2" itemValue="Option 2"/>
+                    <f:selectItem itemLabel="Option 3" itemValue="Option 3"/>
                 </p:selectManyCheckbox>
 
-                <div class="ui-grid ui-grid-responsive">
-                    <div class="ui-grid-row">
-                        <div class="ui-grid-col-4" style="text-align:center">
-                            <h:outputLabel for="opt1" value="Xbox One" style="display:block;margin-bottom: 8px"/>
-                            <p:checkbox id="opt1" for="custom" itemIndex="0" />
-                        </div>
-                        <div class="ui-grid-col-4" style="text-align:center">
-                            <h:outputLabel for="opt2" value="PS4" style="display:block;margin-bottom: 8px"/>
-                            <p:checkbox id="opt2" for="custom" itemIndex="1" />
-                        </div>
-                        <div class="ui-grid-col-4" style="text-align:center">
-                            <h:outputLabel for="opt3" value="Wii U" style="display:block;margin-bottom: 8px"/>
-                            <p:checkbox id="opt3" for="custom" itemIndex="2" />
+                <h5>Grid Layout</h5>
+                <p:selectManyCheckbox id="grid" value="#{checkboxView.selectedCities}" layout="grid" columns="3">
+                    <f:selectItems value="#{checkboxView.cities}" var="city" itemLabel="#{city}" itemValue="#{city}"/>
+                </p:selectManyCheckbox>
+
+                <h5>Responsive</h5>
+                <p:selectManyCheckbox id="grid2" value="#{checkboxView.selectedCities2}" layout="responsive"
+                                      columns="3">
+                    <f:selectItems value="#{checkboxView.cities}" var="city" itemLabel="#{city}" itemValue="#{city}"/>
+                </p:selectManyCheckbox>
+
+                <h5>Custom Layout</h5>
+                <p:outputPanel id="customPanel" style="margin-bottom:20px">
+                    <p:selectManyCheckbox id="custom" value="#{checkboxView.selectedOptions2}" layout="custom">
+                        <f:selectItem itemLabel="Option 1" itemValue="Option 1"/>
+                        <f:selectItem itemLabel="Option 2" itemValue="Option 2"/>
+                        <f:selectItem itemLabel="Option 3" itemValue="Option 3"/>
+                    </p:selectManyCheckbox>
+
+                    <div class="ui-grid ui-grid-responsive">
+                        <div class="ui-grid-row">
+                            <div class="ui-grid-col-4" style="text-align:center">
+                                <h:outputLabel for="opt1" value="Option 1" style="display:block;margin-bottom: 8px"/>
+                                <p:checkbox id="opt1" for="custom" itemIndex="0"/>
+                            </div>
+                            <div class="ui-grid-col-4" style="text-align:center">
+                                <h:outputLabel for="opt2" value="Option 2" style="display:block;margin-bottom: 8px"/>
+                                <p:checkbox id="opt2" for="custom" itemIndex="1"/>
+                            </div>
+                            <div class="ui-grid-col-4" style="text-align:center">
+                                <h:outputLabel for="opt3" value="Option 3" style="display:block;margin-bottom: 8px"/>
+                                <p:checkbox id="opt3" for="custom" itemIndex="2"/>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </p:outputPanel>
-
-            <h3>Grouped</h3>
-            <p:selectManyCheckbox id="grid3" value="#{checkboxView.selectedCars}" layout="pageDirection" columns="1">
-                <f:selectItems value="#{checkboxView.cars}" var="car" itemLabel="#{car}" itemValue="#{car}" />
-            </p:selectManyCheckbox>
-            
-            <p:separator />
-
-            <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="pi pi-check" />
-
-            <p:dialog header="Values" modal="true" showEffect="clip" widgetVar="dlg" resizable="false">
-                <p:outputPanel id="display">
-                    <p:dataList value="#{checkboxView.selectedConsoles}" var="console">
-                        <f:facet name="header">
-                            Basic
-                        </f:facet>
-                        #{console}
-                    </p:dataList>
-                    <p:dataList value="#{checkboxView.selectedCities}" var="city">
-                        <f:facet name="header">
-                            Grid
-                        </f:facet>
-                        #{city}
-                    </p:dataList>
-                    <p:dataList value="#{checkboxView.selectedCities2}" var="city">
-                        <f:facet name="header">
-                            Grid
-                        </f:facet>
-                        #{city}
-                    </p:dataList>
-                    <p:dataList value="#{checkboxView.selectedConsoles2}" var="console">
-                        <f:facet name="header">
-                            Custom
-                        </f:facet>
-                        #{console}
-                    </p:dataList>
-                    <p:dataList value="#{checkboxView.selectedCars}" var="car">
-                        <f:facet name="header">
-                            Cars
-                        </f:facet>
-                        #{car}
-                    </p:dataList>
                 </p:outputPanel>
-            </p:dialog>
-        </h:form>
 
+                <h5>Grouped</h5>
+                <p:selectManyCheckbox id="grid3" value="#{checkboxView.selectedCountries}" layout="pageDirection"
+                                      columns="1">
+                    <f:selectItems value="#{checkboxView.countries}" var="country" itemLabel="#{country}"
+                                   itemValue="#{country}"/>
+                </p:selectManyCheckbox>
+
+                <p:separator/>
+
+                <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="pi pi-check"/>
+
+                <p:dialog header="Values" modal="true" showEffect="clip" widgetVar="dlg" resizable="false">
+                    <p:outputPanel id="display">
+                        <p:dataList value="#{checkboxView.selectedOptions}" var="option">
+                            <f:facet name="header">
+                                Basic
+                            </f:facet>
+                            #{option}
+                        </p:dataList>
+                        <p:dataList value="#{checkboxView.selectedCities}" var="city">
+                            <f:facet name="header">
+                                Grid
+                            </f:facet>
+                            #{city}
+                        </p:dataList>
+                        <p:dataList value="#{checkboxView.selectedCities2}" var="city">
+                            <f:facet name="header">
+                                Grid
+                            </f:facet>
+                            #{city}
+                        </p:dataList>
+                        <p:dataList value="#{checkboxView.selectedOptions2}" var="option">
+                            <f:facet name="header">
+                                Custom
+                            </f:facet>
+                            #{option}
+                        </p:dataList>
+                        <p:dataList value="#{checkboxView.selectedCountries}" var="country">
+                            <f:facet name="header">
+                                Countries
+                            </f:facet>
+                            #{country}
+                        </p:dataList>
+                    </p:outputPanel>
+                </p:dialog>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

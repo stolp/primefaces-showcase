@@ -16,8 +16,8 @@
 package org.primefaces.showcase.view.data.datatable;
 
 import javax.faces.view.ViewScoped;
-import org.primefaces.showcase.domain.Car;
-import org.primefaces.showcase.service.CarService;
+import org.primefaces.showcase.domain.Customer;
+import org.primefaces.showcase.service.CustomerService;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -29,25 +29,25 @@ import java.util.List;
 @ViewScoped
 public class RowGroupView implements Serializable {
     
-    private List<Car> cars;
+    private List<Customer> customers;
     
     @Inject
-    private CarService service;
+    private CustomerService service;
 
     @PostConstruct
     public void init() {
-        cars = service.createCars(50);
-    }
-    
-    public List<Car> getCars() {
-        return cars;
+        customers = service.getCustomers(50);
     }
 
-    public void setService(CarService service) {
+    public long getTotalCount(String name) {
+        return customers.stream().filter(customers -> name.equals(customers.representative.name)).count();
+    }
+
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setService(CustomerService service) {
         this.service = service;
     }
-    
-    public int getRandomPrice() {
-            return (int) (Math.random() * 100000);
-	}
 }

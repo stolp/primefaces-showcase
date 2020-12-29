@@ -10,6 +10,7 @@
             .ui-treetable {
                 margin-top: 40px
             }
+
             .ui-treetable table {
                 table-layout: fixed
             }
@@ -26,50 +27,54 @@
         state should remain as you've left it.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/treetable" />
-    <ui:param name="widgetLink" value="treetable" />
+    <ui:param name="documentationLink" value="/components/treetable"/>
+    <ui:param name="widgetLink" value="treetable"/>
 
     <ui:define name="implementation">
+        <div class="card">
+            <h:form>
+                <p:messages id="messages"/>
 
-        <h:form>
-            <p:messages id="messages" />
+                <p:commandButton value="Clear MultiViewState" action="#{ttMultiViewStateView.clearMultiViewState}"
+                                 update="@form"/>
 
-            <p:commandButton value="Clear MultiViewState" action="#{ttMultiViewStateView.clearMultiViewState}" update="@form"/>
-
-            <p:treeTable widgetVar="treeTable" value="#{ttMultiViewStateView.root}" var="document" style="margin-top:0" multiViewState="true">
-                <f:facet name="header">
-                    Vertical
-                </f:facet>
-                <p:column headerText="Name" filterBy="#{document.name}" filterMatchMode="contains" sortBy="#{document.name}">
-                    <h:outputText value="#{document.name}" />
-                </p:column>
-                <p:column headerText="Size">
-                    <h:outputText value="#{document.size}" />
-                </p:column>
-                <p:column headerText="Type" filterBy="#{document.type}" filterMatchMode="exact" sortBy="#{document.type}">
-                    <f:facet name="filter">
-                        <p:selectOneMenu onchange="PF('treeTable').filter()" styleClass="custom-filter">
-                            <f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true" />
-                            <f:selectItem itemLabel="Folder" itemValue="Folder" />
-                            <f:selectItem itemLabel="JPEG Image" itemValue="JPEG Image" />
-                            <f:selectItem itemLabel="PNG Image" itemValue="PNG Image" />
-                            <f:selectItem itemLabel="Movie File" itemValue="Movie File" />
-                            <f:selectItem itemLabel="Word Document" itemValue="Word Document" />
-                            <f:selectItem itemLabel="Pages Document" itemValue="Pages Document" />
-                        </p:selectOneMenu>
+                <p:treeTable widgetVar="treeTable" value="#{ttMultiViewStateView.root}" var="document"
+                             style="margin-top:0" multiViewState="true">
+                    <f:facet name="header">
+                        Vertical
                     </f:facet>
+                    <p:column headerText="Name" filterBy="#{document.name}" filterMatchMode="contains"
+                              sortBy="#{document.name}">
+                        <h:outputText value="#{document.name}"/>
+                    </p:column>
+                    <p:column headerText="Size">
+                        <h:outputText value="#{document.size}"/>
+                    </p:column>
+                    <p:column headerText="Type" filterBy="#{document.type}" filterMatchMode="exact"
+                              sortBy="#{document.type}">
+                        <f:facet name="filter">
+                            <p:selectOneMenu onchange="PF('treeTable').filter()" styleClass="custom-filter">
+                                <f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true"/>
+                                <f:selectItem itemLabel="Folder" itemValue="Folder"/>
+                                <f:selectItem itemLabel="Application" itemValue="Application"/>
+                                <f:selectItem itemLabel="Zip" itemValue="Zip"/>
+                                <f:selectItem itemLabel="Text" itemValue="Text"/>
+                                <f:selectItem itemLabel="PDF" itemValue="PDF"/>
+                                <f:selectItem itemLabel="Picture" itemValue="Picture"/>
+                            </p:selectOneMenu>
+                        </f:facet>
 
-                    <h:outputText value="#{document.type}" />
-                </p:column>
-                <p:column headerText="Actions" width="80">
-                    <p:commandButton icon="fa fa-edit"
-                                     action="#{ttMultiViewStateView.someAction(document)}"
-                                     update="@form:messages"
-                                     disabled="#{document.type eq 'Folder'}" />
-                </p:column>
-            </p:treeTable>
-        </h:form>
-
+                        <h:outputText value="#{document.type}"/>
+                    </p:column>
+                    <p:column headerText="Actions" width="80">
+                        <p:commandButton icon="fa fa-edit"
+                                         action="#{ttMultiViewStateView.someAction(document)}"
+                                         update="@form:messages"
+                                         disabled="#{document.type eq 'Folder'}"/>
+                    </p:column>
+                </p:treeTable>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

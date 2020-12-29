@@ -15,46 +15,44 @@
  */
 package org.primefaces.showcase.view.data;
 
-import org.primefaces.showcase.domain.Car;
+import org.primefaces.showcase.domain.Product;
+import org.primefaces.showcase.service.ProductService;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Named
 @RequestScoped
 public class RingView implements Serializable {
     
-    private List<Car> cars;
-    private Car selectedCar;
-    
+    private List<Product> products;
+    private Product selectedProduct;
+
+    @Inject
+    ProductService service;
+
     @PostConstruct
     public void init() {
-        cars = new ArrayList<Car>();
-        
-        cars.add(new Car("1", "Ford", 2000, "Black"));
-        cars.add(new Car("2", "Audi", 2003, "Orange"));
-        cars.add(new Car("4", "BMW", 2012, "Red"));
-        cars.add(new Car("5", "Fiat", 2001, "Yellow"));
-        cars.add(new Car("6", "Mercedes", 2014, "Blue"));
+        products = service.getProducts(5);
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
-    public Car getSelectedCar() {
-        return selectedCar;
+    public Product getSelectedProduct() {
+        return selectedProduct;
     }
 
-    public void setSelectedCar(Car selectedCar) {
-        this.selectedCar = selectedCar;
+    public void setSelectedProduct(Product selectedProduct) {
+        this.selectedProduct = selectedProduct;
     }
 }

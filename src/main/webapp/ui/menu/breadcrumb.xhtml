@@ -13,20 +13,22 @@
         Breadcrumb provides contextual information about the page hierarchy.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/breadcrumb" />
-    <ui:param name="widgetLink" value="breadcrumb" />
+    <ui:param name="documentationLink" value="/components/breadcrumb"/>
+    <ui:param name="widgetLink" value="breadcrumb"/>
 
     <ui:define name="implementation">
-        <p:breadCrumb>
-            <p:menuitem value="Categories" url="#" />
-            <p:menuitem value="Sports" url="#" />
-            <p:menuitem value="Basketball" url="#" />
-            <p:menuitem value="NBA" url="#" />
-            <p:menuitem value="Teams" url="#" />
-            <p:menuitem value="L.A. Lakers" url="#" />
-            <p:menuitem value="Roster" url="#" />
-            <p:menuitem value="Kobe Bryant" url="#" />
-        </p:breadCrumb>
+        <div class="card">
+            <p:breadCrumb>
+                <p:menuitem value="Categories" url="#"/>
+                <p:menuitem value="Sports" url="#"/>
+                <p:menuitem value="Basketball" url="#"/>
+                <p:menuitem value="NBA" url="#"/>
+                <p:menuitem value="Teams" url="#"/>
+                <p:menuitem value="L.A. Lakers" url="#"/>
+                <p:menuitem value="Roster" url="#"/>
+                <p:menuitem value="Kobe Bryant" url="#"/>
+            </p:breadCrumb>
+        </div>
     </ui:define>
 
 </ui:composition>

@@ -7,10 +7,10 @@
 
     <ui:define name="head">
         <style type="text/css">
-            .ui-diagram-element {	
-                width:5em; 
-                height:5em;
-                line-height:5em;
+            .ui-diagram-element {
+                width: 5em;
+                height: 5em;
+                line-height: 5em;
                 text-align: center;
                 box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
                 border-radius: 5em;
@@ -18,13 +18,13 @@
                 background-color: #404a4e;
                 color: #cccccc;
             }
-            
+
             .ui-diagram-element:hover {
                 background-color: #20282b;
             }
         </style>
-	</ui:define>
-    
+    </ui:define>
+
     <ui:define name="title">
         Diagram - <span class="subitem">Hierarchical</span>
     </ui:define>
@@ -33,13 +33,13 @@
         This example demonstrates an implementation of Hierarchical Diagram.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/diagram" />
-    <ui:param name="widgetLink" value="diagram" />
+    <ui:param name="documentationLink" value="/components/diagram"/>
+    <ui:param name="widgetLink" value="diagram"/>
 
     <ui:define name="implementation">
-
-        <p:diagram value="#{diagramHierarchicalView.model}" style="height:600px" styleClass="ui-widget-content" />
-        
+        <div class="card">
+            <p:diagram value="#{diagramHierarchicalView.model}" style="height:600px" styleClass="ui-widget-content"/>
+        </div>
     </ui:define>
 
 </ui:composition>

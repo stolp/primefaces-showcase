@@ -13,18 +13,18 @@
         Upload process begins once the file is selected in auto mode.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/fileupload?id=auto-upload" />
-    <ui:param name="widgetLink" value="fileupload" />
+    <ui:param name="documentationLink" value="/components/fileupload?id=auto-upload"/>
+    <ui:param name="widgetLink" value="fileupload"/>
 
     <ui:define name="implementation">
-        
-        <h:form>          
-            <p:fileUpload listener="#{fileUploadView.handleFileUpload}" mode="advanced"
-                          update="messages" auto="true" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-                
-            <p:growl id="messages" showDetail="true" />        
-        </h:form>
-       
+        <div class="card">
+            <h:form>
+                <p:fileUpload listener="#{fileUploadView.handleFileUpload}" mode="advanced"
+                              update="messages" auto="true" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
+
+                <p:growl id="messages" showDetail="true"/>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

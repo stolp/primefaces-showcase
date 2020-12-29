@@ -15,12 +15,7 @@
  */
 package org.primefaces.showcase.view.misc;
 
-import org.primefaces.PrimeFaces;
-import org.primefaces.event.SelectEvent;
-
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;

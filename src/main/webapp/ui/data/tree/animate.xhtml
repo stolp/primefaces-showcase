@@ -13,19 +13,19 @@
         Node expand and collapse events can be animated.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/tree?id=vertial-tree" />
-    <ui:param name="widgetLink" value="verticaltree" />
+    <ui:param name="documentationLink" value="/components/tree?id=vertial-tree"/>
+    <ui:param name="widgetLink" value="verticaltree"/>
 
     <ui:define name="implementation">
-
-        <h:form>
-            <p:tree value="#{treeBasicView.root}" var="node" animate="true">
-                <p:treeNode>
-                    <h:outputText value="#{node}" />
-                </p:treeNode>
-            </p:tree>
-        </h:form>
-        
+        <div class="card">
+            <h:form>
+                <p:tree value="#{treeBasicView.root}" var="node" animate="true">
+                    <p:treeNode>
+                        <h:outputText value="#{node}"/>
+                    </p:treeNode>
+                </p:tree>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

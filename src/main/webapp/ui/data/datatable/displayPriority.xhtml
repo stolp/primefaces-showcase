@@ -12,41 +12,42 @@
         Columns can be given a default display priority for ordering columns.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/datatable" />
-    <ui:param name="widgetLink" value="datatable" />
+    <ui:param name="documentationLink" value="/components/datatable"/>
+    <ui:param name="widgetLink" value="datatable"/>
 
     <ui:define name="implementation">
+        <div class="card">
+            <h:form id="form">
+                <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
 
-        <h:form id="form">
-            <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+                <p:dataTable var="product" value="#{dtReorderView.products1}" draggableColumns="true"
+                             style="margin-bottom:20px">
+                    <f:facet name="header">
+                        Draggable Columns
+                    </f:facet>
 
-            <p:dataTable var="car" value="#{dtReorderView.cars1}" draggableColumns="true" style="margin-bottom:20px">
-                <f:facet name="header">
-                    Draggable Columns
-                </f:facet>
+                    <p:ajax event="colReorder" listener="#{dtReorderView.onColReorder}"
+                            update=":form:msgs"/>
 
-                <p:ajax event="colReorder" listener="#{dtReorderView.onColReorder}"
-                        update=":form:msgs" />
+                    <p:column headerText="Code (dp1)" displayPriority="1">
+                        #{product.code}
+                    </p:column>
 
-                <p:column headerText="Id (dp1)" displayPriority="1">
-                    #{car.id}
-                </p:column>
+                    <p:column headerText="Name (not draggable) (dp0)" draggable="false" displayPriority="0">
+                        #{product.name}
+                    </p:column>
 
-                <p:column headerText="Year (not draggable) (dp0)" draggable="false" displayPriority="0">
-                    #{car.year}
-                </p:column>
+                    <p:column headerText="Category (dp8)" displayPriority="8">
+                        #{product.category}
+                    </p:column>
 
-                <p:column headerText="Brand (dp8)" displayPriority="8">
-                    #{car.brand}
-                </p:column>
+                    <p:column headerText="Quantity (dp5)" displayPriority="5">
+                        #{product.quantity}
+                    </p:column>
 
-                <p:column headerText="Color (dp5)" displayPriority="5">
-                    #{car.color}
-                </p:column>
-
-            </p:dataTable>
-        </h:form>
-
+                </p:dataTable>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

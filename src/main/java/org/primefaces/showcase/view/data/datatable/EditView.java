@@ -17,8 +17,9 @@ package org.primefaces.showcase.view.data.datatable;
 
 import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
-import org.primefaces.showcase.domain.Car;
-import org.primefaces.showcase.service.CarService;
+import org.primefaces.showcase.domain.InventoryStatus;
+import org.primefaces.showcase.domain.Product;
+import org.primefaces.showcase.service.ProductService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -32,54 +33,56 @@ import java.util.List;
 @Named("dtEditView")
 @ViewScoped
 public class EditView implements Serializable {
-    
-    private List<Car> cars1;
-    private List<Car> cars2;
-        
+
+    private List<Product> products1;
+    private List<Product> products2;
+    private List<Product> products3;
+
     @Inject
-    private CarService service;
-    
+    private ProductService service;
+
     @PostConstruct
     public void init() {
-        cars1 = service.createCars(10);
-        cars2 = service.createCars(10);
+        products1 = service.getProducts(10);
+        products2 = service.getProducts(10);
+        products3 = service.getProducts(10);
     }
 
-    public List<Car> getCars1() {
-        return cars1;
+    public List<Product> getProducts1() {
+        return products1;
     }
 
-    public List<Car> getCars2() {
-        return cars2;
-    }
-    
-    public List<String> getBrands() {
-        return service.getBrands();
-    }
-    
-    public List<String> getColors() {
-        return service.getColors();
+    public List<Product> getProducts2() {
+        return products2;
     }
 
-    public void setService(CarService service) {
+    public List<Product> getProducts3() {
+        return products3;
+    }
+
+    public InventoryStatus[] getInventoryStatusList() {
+        return InventoryStatus.values();
+    }
+
+    public void setService(ProductService service) {
         this.service = service;
     }
-    
-    public void onRowEdit(RowEditEvent<Car> event) {
-        FacesMessage msg = new FacesMessage("Car Edited", event.getObject().getId());
+
+    public void onRowEdit(RowEditEvent<Product> event) {
+        FacesMessage msg = new FacesMessage("Product Edited", String.valueOf(event.getObject().getCode()));
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
-    
-    public void onRowCancel(RowEditEvent<Car> event) {
-        FacesMessage msg = new FacesMessage("Edit Cancelled", event.getObject().getId());
+
+    public void onRowCancel(RowEditEvent<Product> event) {
+        FacesMessage msg = new FacesMessage("Edit Cancelled", String.valueOf(event.getObject().getCode()));
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
-    
+
     public void onCellEdit(CellEditEvent event) {
         Object oldValue = event.getOldValue();
         Object newValue = event.getNewValue();
-        
-        if(newValue != null && !newValue.equals(oldValue)) {
+
+        if (newValue != null && !newValue.equals(oldValue)) {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }

@@ -16,8 +16,8 @@
 package org.primefaces.showcase.view.data.datatable;
 
 import javax.faces.view.ViewScoped;
-import org.primefaces.showcase.domain.Car;
-import org.primefaces.showcase.service.CarService;
+import org.primefaces.showcase.domain.Product;
+import org.primefaces.showcase.service.ProductService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.component.UIComponent;
@@ -33,39 +33,39 @@ import java.util.List;
 @ViewScoped
 public class ColumnsView implements Serializable {
     
-    private final static List<String> VALID_COLUMN_KEYS = Arrays.asList("id", "brand", "year", "color", "price");
+    private final static List<String> VALID_COLUMN_KEYS = Arrays.asList("code", "name", "category", "quantity");
 	
-    private String columnTemplate = "id brand year";
+    private String columnTemplate = "code name quantity";
     
     private List<ColumnModel> columns;
     
-    private List<Car> cars;
+    private List<Product> products;
     
-    private List<Car> filteredCars;
+    private List<Product> filteredProducts;
     
     @Inject
-    private CarService service;
+    private ProductService service;
 
     @PostConstruct
     public void init() {
-        cars = service.createCars(10);
+        products = service.getProducts(10);
         
         createDynamicColumns();
     }
     
-    public List<Car> getCars() {
-        return cars;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public List<Car> getFilteredCars() {
-        return filteredCars;
+    public List<Product> getFilteredProducts() {
+        return filteredProducts;
     }
 
-    public void setFilteredCars(List<Car> filteredCars) {
-        this.filteredCars = filteredCars;
+    public void setFilteredProducts(List<Product> filteredProducts) {
+        this.filteredProducts = filteredProducts;
     }
 
-    public void setService(CarService service) {
+    public void setService(ProductService service) {
         this.service = service;
     }
 
@@ -83,7 +83,7 @@ public class ColumnsView implements Serializable {
 
     private void createDynamicColumns() {
         String[] columnKeys = columnTemplate.split(" ");
-        columns = new ArrayList<ColumnModel>();   
+        columns = new ArrayList<>();
         
         for(String columnKey : columnKeys) {
             String key = columnKey.trim();
@@ -96,7 +96,7 @@ public class ColumnsView implements Serializable {
     
     public void updateColumns() {
         //reset table state
-        UIComponent table = FacesContext.getCurrentInstance().getViewRoot().findComponent(":form:cars");
+        UIComponent table = FacesContext.getCurrentInstance().getViewRoot().findComponent(":form:products");
         table.setValueExpression("sortBy", null);
         
         //update columns

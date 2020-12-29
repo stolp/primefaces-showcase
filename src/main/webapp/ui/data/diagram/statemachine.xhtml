@@ -7,10 +7,10 @@
 
     <ui:define name="head">
         <style type="text/css">
-            .ui-diagram-element {	
-                width:14em; 
-                height:4em; 	
-                line-height:4em;
+            .ui-diagram-element {
+                width: 14em;
+                height: 4em;
+                line-height: 4em;
                 text-align: center;
                 box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
                 border-radius: 4px;
@@ -18,25 +18,25 @@
                 background-color: #646D7E;
                 color: #ffffff;
             }
-            
+
             .ui-diagram-element:hover {
                 background-color: #828B9C;
             }
-            
+
             .start-node {
-                width:4em;
+                width: 4em;
                 border-radius: 6px;
                 background-color: #000000 !important;
             }
-                        
+
             .flow-label {
                 color: #464F60;
                 font-size: 18px;
                 font-weight: bold;
             }
         </style>
-	</ui:define>
-    
+    </ui:define>
+
     <ui:define name="title">
         Diagram - <span class="subitem">StateMachine</span>
     </ui:define>
@@ -45,13 +45,13 @@
         StateMachines can be created using state machine connectors.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/diagram" />
-    <ui:param name="widgetLink" value="diagram" />
+    <ui:param name="documentationLink" value="/components/diagram"/>
+    <ui:param name="widgetLink" value="diagram"/>
 
     <ui:define name="implementation">
-
-        <p:diagram value="#{diagramStateMachineView.model}" style="height:700px" styleClass="ui-widget-content" />
-        
+        <div class="card">
+            <p:diagram value="#{diagramStateMachineView.model}" style="height:700px" styleClass="ui-widget-content"/>
+        </div>
     </ui:define>
 
 </ui:composition>

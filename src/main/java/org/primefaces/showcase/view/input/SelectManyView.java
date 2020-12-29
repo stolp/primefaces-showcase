@@ -15,8 +15,8 @@
  */
 package org.primefaces.showcase.view.input;
 
-import org.primefaces.showcase.domain.Theme;
-import org.primefaces.showcase.service.ThemeService;
+import org.primefaces.showcase.domain.Country;
+import org.primefaces.showcase.service.CountryService;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -30,24 +30,16 @@ public class SelectManyView {
     
     private List<String> selectedOptions;
     private List<String> selectedOptions2;
-    private List<Theme> selectedThemes;
-    private List<Theme> selectedThemes2;
-    private List<Theme> themes;
+    private List<Country> selectedCountries;
+    private List<Country> selectedCountries2;
+    private List<Country> countries;
     
     @Inject
-    private ThemeService service;
+    private CountryService service;
     
     @PostConstruct
     public void init() {
-        themes = service.getThemes();
-    }
-
-    public List<Theme> getThemes() {
-        return themes;
-    }
-
-    public void setService(ThemeService service) {
-        this.service = service;
+        countries = service.getCountries();
     }
 
     public List<String> getSelectedOptions() {
@@ -58,14 +50,6 @@ public class SelectManyView {
         this.selectedOptions = selectedOptions;
     }
 
-    public List<Theme> getSelectedThemes() {
-        return selectedThemes;
-    }
-
-    public void setSelectedThemes(List<Theme> selectedThemes) {
-        this.selectedThemes = selectedThemes;
-    }
-
     public List<String> getSelectedOptions2() {
         return selectedOptions2;
     }
@@ -74,11 +58,31 @@ public class SelectManyView {
         this.selectedOptions2 = selectedOptions2;
     }
 
-    public List<Theme> getSelectedThemes2() {
-        return selectedThemes2;
+    public List<Country> getSelectedCountries() {
+        return selectedCountries;
     }
 
-    public void setSelectedThemes2(List<Theme> selectedThemes2) {
-        this.selectedThemes2 = selectedThemes2;
+    public void setSelectedCountries(List<Country> selectedCountries) {
+        this.selectedCountries = selectedCountries;
+    }
+
+    public List<Country> getSelectedCountries2() {
+        return selectedCountries2;
+    }
+
+    public void setSelectedCountries2(List<Country> selectedCountries2) {
+        this.selectedCountries2 = selectedCountries2;
+    }
+
+    public List<Country> getCountries() {
+        return countries;
+    }
+
+    public void setCountries(List<Country> countries) {
+        this.countries = countries;
+    }
+
+    public void setService(CountryService service) {
+        this.service = service;
     }
 }

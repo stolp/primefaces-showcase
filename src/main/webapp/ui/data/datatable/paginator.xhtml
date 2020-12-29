@@ -13,37 +13,37 @@
         DataTable provides a highly customizable ajax paginator.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/datatable" />
-    <ui:param name="widgetLink" value="datatable" />
+    <ui:param name="documentationLink" value="/components/datatable"/>
+    <ui:param name="widgetLink" value="datatable"/>
 
     <ui:define name="implementation">
-        
-        <h:form>
-            <p:dataTable var="car" value="#{dtPaginatorView.cars}" rows="10" 
-                         paginator="true"
-                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records" 
-                         rowsPerPageTemplate="5,10,{ShowAll|'All'}">
+        <div class="card">
+            <h:form>
+                <p:dataTable var="customer" value="#{dtPaginatorView.customers}" rows="10"
+                             paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                             rowsPerPageTemplate="5,10,{ShowAll|'All'}">
 
-                <p:column headerText="Id" field="id" />
+                    <p:column headerText="Name" field="name"/>
 
-                <p:column headerText="Year" field="year" />
+                    <p:column headerText="Country" field="country"/>
 
-                <p:column headerText="Brand" field="brand" />
+                    <p:column headerText="Company" field="company"/>
 
-                <p:column headerText="Color" field="color" />
+                    <p:column headerText="Representative" field="representative"/>
 
-                <f:facet name="paginatorTopLeft">
-                    <p:commandButton type="button" icon="pi pi-refresh" />
-                </f:facet>
+                    <f:facet name="paginatorTopLeft">
+                        <p:commandButton type="button" icon="pi pi-refresh"/>
+                    </f:facet>
 
-                <f:facet name="paginatorBottomRight">
-                    <p:commandButton type="button" icon="pi pi-cloud-upload" />
-                </f:facet>
+                    <f:facet name="paginatorBottomRight">
+                        <p:commandButton type="button" icon="pi pi-cloud-upload"/>
+                    </f:facet>
 
-            </p:dataTable>
-        </h:form>
-        
+                </p:dataTable>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

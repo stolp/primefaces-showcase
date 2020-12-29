@@ -13,16 +13,16 @@
         Poll component makes ajax calls periodically.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/poll" />
-    <ui:param name="widgetLink" value="poll" />
+    <ui:param name="documentationLink" value="/components/poll"/>
+    <ui:param name="widgetLink" value="poll"/>
 
     <ui:define name="implementation">
-        
-        <h:form>
-            <h:outputText id="txt_count" value="#{counterView.number}" />
-            <p:poll interval="3" listener="#{counterView.increment}" update="txt_count" />
-        </h:form>
-        
+        <div class="card">
+            <h:form>
+                <h:outputText id="txt_count" value="#{counterView.number}"/>
+                <p:poll interval="3" listener="#{counterView.increment}" update="txt_count"/>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

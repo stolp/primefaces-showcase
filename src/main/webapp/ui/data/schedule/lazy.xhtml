@@ -12,7 +12,7 @@
             }
         </style>
     </ui:define>
-    
+
     <ui:define name="title">
         Schedule - <span class="subitem">Lazy</span>
     </ui:define>
@@ -22,19 +22,19 @@
         In lazy loading mode, only the events that belong to the displayed time frame are fetched whereas in default eager more all events need to be loaded.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/schedule" />
-    <ui:param name="widgetLink" value="schedule" />
+    <ui:param name="documentationLink" value="/components/schedule"/>
+    <ui:param name="widgetLink" value="schedule"/>
 
     <ui:define name="implementation">
+        <div class="card">
+            <h:form>
+                <p:growl id="messages" showDetail="true"/>
 
-        <h:form>
-            <p:growl id="messages" showDetail="true" />
-     
-            <h:panelGrid columnClasses="value">
-                <p:schedule value="#{scheduleJava8View.lazyEventModel}" />
-            </h:panelGrid>
-        </h:form>
-        
+                <h:panelGrid columnClasses="value">
+                    <p:schedule value="#{scheduleJava8View.lazyEventModel}"/>
+                </h:panelGrid>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

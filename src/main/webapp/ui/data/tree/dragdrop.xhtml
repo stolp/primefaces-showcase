@@ -4,23 +4,23 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml">
-    
+
     <ui:define name="head">
         <style type="text/css">
             .ui-tree {
                 width: 300px
             }
-            
+
             #form\:tree1 {
                 float: right;
             }
-            
+
             #form\:tree2 {
                 float: left;
             }
-        </style>       
+        </style>
     </ui:define>
-    
+
     <ui:define name="title">
         Tree - <span class="subitem">DragDrop</span>
     </ui:define>
@@ -30,31 +30,33 @@
     </ui:define>
 
     <ui:define name="implementation">
-        
-        <h:form id="form">
-            <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+        <div class="card">
+            <h:form id="form">
+                <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
 
-            <h:panelGrid columns="3">
-                <p:tree id="tree1" value="#{treeDNDView.root1}" var="node" selectionMode="single" selection="#{treeDNDView.selectedNode1}" 
-                        draggable="true" droppable="true" dragdropScope="demo">
-                    <p:ajax event="dragdrop" listener="#{treeDNDView.onDragDrop}" update=":form:msgs" />
-                    <p:treeNode>
-                        <h:outputText value="#{node}" />
-                    </p:treeNode>
-                </p:tree>
+                <h:panelGrid columns="3">
+                    <p:tree id="tree1" value="#{treeDNDView.root1}" var="node" selectionMode="single"
+                            selection="#{treeDNDView.selectedNode1}"
+                            draggable="true" droppable="true" dragdropScope="demo">
+                        <p:ajax event="dragdrop" listener="#{treeDNDView.onDragDrop}" update=":form:msgs"/>
+                        <p:treeNode>
+                            <h:outputText value="#{node}"/>
+                        </p:treeNode>
+                    </p:tree>
 
-                <p:graphicImage alt="Transfer" name="demo/images/transfer.png" />
+                    <p:graphicImage alt="Transfer" name="demo/images/transfer.png"/>
 
-                <p:tree id="tree2" value="#{treeDNDView.root2}" var="node" selectionMode="single" selection="#{treeDNDView.selectedNode2}" 
-                        draggable="true" droppable="true" dragdropScope="demo">
-                    <p:ajax event="dragdrop" listener="#{treeDNDView.onDragDrop}" update=":form:msgs" />
-                    <p:treeNode>
-                        <h:outputText value="#{node}" />
-                    </p:treeNode>
-                </p:tree>
-            </h:panelGrid>
-        </h:form>
-        
+                    <p:tree id="tree2" value="#{treeDNDView.root2}" var="node" selectionMode="single"
+                            selection="#{treeDNDView.selectedNode2}"
+                            draggable="true" droppable="true" dragdropScope="demo">
+                        <p:ajax event="dragdrop" listener="#{treeDNDView.onDragDrop}" update=":form:msgs"/>
+                        <p:treeNode>
+                            <h:outputText value="#{node}"/>
+                        </p:treeNode>
+                    </p:tree>
+                </h:panelGrid>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

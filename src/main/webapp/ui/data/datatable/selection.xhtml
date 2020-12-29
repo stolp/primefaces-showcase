@@ -10,27 +10,27 @@
             .value {
                 font-weight: bold;
             }
-            
+
             .ui-datatable {
                 margin-bottom: 25px
             }
-            
+
             .ui-datatable .ui-datatable-footer {
-                text-align:left;
+                text-align: left;
             }
-            
+
             .ui-datalist ul {
                 padding: 0 0 0 10px;
                 margin: 5px 0;
             }
-            
+
             .ui-datatable .ui-button-icon-only .ui-button-text {
                 padding: 0;
                 line-height: 1.2;
             }
         </style>
-	</ui:define>
-    
+    </ui:define>
+
     <ui:define name="title">
         DataTable - <span class="subitem">Selection</span>
     </ui:define>
@@ -39,154 +39,202 @@
         There are various ways to select rows from the datatable.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/datatable" />
-    <ui:param name="widgetLink" value="datatable" />
+    <ui:param name="documentationLink" value="/components/datatable"/>
+    <ui:param name="widgetLink" value="datatable"/>
 
     <ui:define name="implementation">
-        
+
         <h:form id="form">
-            <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+            <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
 
-            <p:dataTable id="basicDT" var="car" value="#{dtSelectionView.cars1}">
-                <f:facet name="header">
-                    Basic
-                </f:facet>
-                <p:column headerText="Id" field="id" />
+            <div class="card">
+                <h5>Basic</h5>
+                <p:dataTable id="basicDT" var="product" value="#{dtSelectionView.products1}">
+                    <p:column field="code" headerText="Code"/>
 
-                <p:column headerText="Year" field="year" />
+                    <p:column field="name" headerText="Name"/>
 
-                <p:column headerText="Brand" field="brand" />
+                    <p:column field="category" headerText="Category"/>
 
-                <p:column headerText="Color" field="color" />
+                    <p:column field="quantity" headerText="Quantity"/>
+                    <p:column style="width:32px;text-align: center">
+                        <p:commandButton update=":form:productDetail" oncomplete="PF('productDialog').show()"
+                                         icon="pi pi-search" title="View">
+                            <f:setPropertyActionListener value="#{product}"
+                                                         target="#{dtSelectionView.selectedProduct}"/>
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+            </div>
 
-                <p:column style="width:32px;text-align: center">
-                     <p:commandButton oncomplete="PF('carDialog').show()" icon="pi pi-search" title="View">
-                        <f:setPropertyActionListener value="#{car}" target="#{dtSelectionView.selectedCar}" />
-                    </p:commandButton>
-                </p:column>
-            </p:dataTable>
-            
-            <p:dataTable id="singleDT" var="car" value="#{dtSelectionView.cars2}" selectionMode="single" selection="#{dtSelectionView.selectedCar}" rowKey="#{car.id}">
-                <f:facet name="header">
-                    Single with Row Click
-                </f:facet>
+            <div class="card">
+                <h5>Single with Row Click</h5>
+                <p:dataTable id="singleDT" var="product" value="#{dtSelectionView.products2}" selectionMode="single"
+                             selection="#{dtSelectionView.selectedProduct}" rowKey="#{product.id}">
+                    <p:column field="code" headerText="Code"/>
 
-                <p:column headerText="Id" field="id" />
+                    <p:column field="name" headerText="Name"/>
 
-                <p:column headerText="Year" field="year" />
+                    <p:column field="category" headerText="Category"/>
 
-                <p:column headerText="Brand" field="brand" />
+                    <p:column field="quantity" headerText="Quantity"/>
+                    <f:facet name="footer">
+                        <p:commandButton process="singleDT" update=":form:productDetail" icon="pi pi-search"
+                                         value="View"
+                                         oncomplete="PF('productDialog').show()"/>
+                    </f:facet>
+                </p:dataTable>
+            </div>
 
-                <p:column headerText="Color" field="color" />
+            <div class="card">
+                <h5>Select Events</h5>
+                <p:dataTable id="eventsDT" var="product" value="#{dtSelectionView.products3}" selectionMode="single"
+                             selection="#{dtSelectionView.selectedProduct}" rowKey="#{product.id}">
+                    <p:ajax event="rowSelect" listener="#{dtSelectionView.onRowSelect}" update=":form:msgs"/>
+                    <p:ajax event="rowUnselect" listener="#{dtSelectionView.onRowUnselect}" update=":form:msgs"/>
+                    <p:column field="code" headerText="Code"/>
 
-                <f:facet name="footer">
-                    <p:commandButton process="singleDT" icon="pi pi-search" value="View" oncomplete="PF('carDialog').show()" />
-                </f:facet>
-            </p:dataTable>
-            
-            <p:dataTable id="eventsDT" var="car" value="#{dtSelectionView.cars3}" selectionMode="single" selection="#{dtSelectionView.selectedCar}" rowKey="#{car.id}">
-                <f:facet name="header">
-                    Select Events
-                </f:facet>
+                    <p:column field="name" headerText="Name"/>
 
-                <p:ajax event="rowSelect" listener="#{dtSelectionView.onRowSelect}" update=":form:msgs" />
-                <p:ajax event="rowUnselect" listener="#{dtSelectionView.onRowUnselect}" update=":form:msgs" />
+                    <p:column field="category" headerText="Category"/>
 
-                <p:column headerText="Id" field="id" />
+                    <p:column field="quantity" headerText="Quantity"/>
+                </p:dataTable>
+            </div>
 
-                <p:column headerText="Year" field="year" />
+            <div class="card">
+                <h5>Multiple with Meta and Shift keys</h5>
+                <p:dataTable id="multipleDT" var="product" value="#{dtSelectionView.products4}" selectionMode="multiple"
+                             selection="#{dtSelectionView.selectedProducts}" rowKey="#{product.id}">
+                    <p:column field="code" headerText="Code"/>
 
-                <p:column headerText="Brand" field="brand" />
+                    <p:column field="name" headerText="Name"/>
 
-                <p:column headerText="Color" field="color" />
-            </p:dataTable>
-            
-            <p:dataTable id="multipleDT" var="car" value="#{dtSelectionView.cars4}" selectionMode="multiple" selection="#{dtSelectionView.selectedCars}" rowKey="#{car.id}">
-                <f:facet name="header">
-                    Multiple with Meta and Shift keys
-                </f:facet>
+                    <p:column field="category" headerText="Category"/>
 
-                <p:column headerText="Id" field="id" />
+                    <p:column field="quantity" headerText="Quantity"/>
+                    <f:facet name="footer">
+                        <p:commandButton process="multipleDT" update=":form:multiProductDetail" icon="pi pi-search"
+                                         value="View" oncomplete="PF('multiProductDialog').show()"/>
+                    </f:facet>
+                </p:dataTable>
+            </div>
 
-                <p:column headerText="Year" field="year" />
+            <div class="card">
+                <h5>RadioButton</h5>
+                <p:dataTable id="radioDT" var="product" value="#{dtSelectionView.products5}"
+                             selection="#{dtSelectionView.selectedProduct}" rowKey="#{product.id}">
+                    <p:column selectionMode="single" style="width:16px;text-align:center"/>
+                    <p:column field="code" headerText="Code"/>
 
-                <p:column headerText="Brand" field="brand" />
+                    <p:column field="name" headerText="Name"/>
 
-                <p:column headerText="Color" field="color" />
+                    <p:column field="category" headerText="Category"/>
 
-                <f:facet name="footer">
-                    <p:commandButton process="multipleDT" update=":form:multiCarDetail" icon="pi pi-search" value="View" oncomplete="PF('multiCarDialog').show()" />
-                </f:facet>
-            </p:dataTable>
-            
-            <p:dataTable id="radioDT" var="car" value="#{dtSelectionView.cars5}" selection="#{dtSelectionView.selectedCar}" rowKey="#{car.id}">
-                <f:facet name="header">
-                    RadioButton
-                </f:facet>
+                    <p:column field="quantity" headerText="Quantity"/>
+                    <f:facet name="footer">
+                        <p:commandButton process="radioDT" update=":form:productDetail" icon="pi pi-search" value="View"
+                                         oncomplete="PF('productDialog').show()"/>
+                    </f:facet>
+                </p:dataTable>
+            </div>
 
-                <p:column selectionMode="single" style="width:16px;text-align:center"/>
+            <div class="card">
+                <h5>Checkbox</h5>
+                <p:dataTable id="checkboxDT" var="product" value="#{dtSelectionView.products6}"
+                             selection="#{dtSelectionView.selectedProducts}" rowKey="#{product.id}"
+                             style="margin-bottom:0">
+                    <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
+                    <p:column field="code" headerText="Code"/>
 
-                <p:column headerText="Id" field="id" />
+                    <p:column field="name" headerText="Name"/>
 
-                <p:column headerText="Year" field="year" />
+                    <p:column field="category" headerText="Category"/>
 
-                <p:column headerText="Brand" field="brand" />
+                    <p:column field="quantity" headerText="Quantity"/>
+                    <f:facet name="footer">
+                        <p:commandButton process="checkboxDT" update=":form:multiProductDetail" icon="pi pi-search"
+                                         value="View"
+                                         oncomplete="PF('multiProductDialog').show()"/>
+                    </f:facet>
+                </p:dataTable>
+            </div>
 
-                <p:column headerText="Color" field="color" />
-                <f:facet name="footer">
-                    <p:commandButton process="radioDT" icon="pi pi-search" value="View" oncomplete="PF('carDialog').show()" />
-                </f:facet>
-            </p:dataTable>
-            
-            <p:dataTable id="checkboxDT" var="car" value="#{dtSelectionView.cars6}" selection="#{dtSelectionView.selectedCars}" rowKey="#{car.id}" style="margin-bottom:0">
-                <f:facet name="header">
-                    Checkbox
-                </f:facet>
-                <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
+            <p:dialog header="Product Info" widgetVar="productDialog" modal="true" showEffect="blind"
+                      hideEffect="explode" resizable="false">
+                <p:outputPanel id="productDetail" style="text-align:center;">
+                    <p:column rendered="#{not empty dtSelectionView.selectedProduct}">
+                        <div class="list-demo">
+                            <div class="product-grid-item card" style="margin-bottom: 0">
+                                <div class="product-grid-item-top">
+                                    <div>
+                                        <i class="pi pi-tag product-category-icon"/>
+                                        <span class="product-category">#{dtSelectionView.selectedProduct.category}</span>
+                                    </div>
+                                    <span class="product-badge status-#{dtSelectionView.selectedProduct.inventoryStatus.name().toLowerCase()}">#{dtSelectionView.selectedProduct.inventoryStatus.text}</span>
+                                </div>
+                                <div class="product-grid-item-content">
+                                    <p:graphicImage
+                                            name="demo/images/product/#{dtSelectionView.selectedProduct.image}"/>
+                                    <div class="product-name">#{dtSelectionView.selectedProduct.name}</div>
+                                    <div class="product-description">#{dtSelectionView.selectedProduct.description}</div>
+                                    <p:rating readonly="true" value="#{dtSelectionView.selectedProduct.rating}"/>
+                                </div>
+                                <div class="product-grid-item-bottom">
+                                    <h:outputText value="#{dtSelectionView.selectedProduct.price}"
+                                                  styleClass="product-price">
+                                        <f:convertNumber currencySymbol="$" type="currency"/>
+                                    </h:outputText>
+                                    <p:commandButton value="Add To Cart" icon="pi pi-shopping-cart"
+                                                     disabled="#{dtSelectionView.selectedProduct.inventoryStatus == 'OUTOFSTOCK'}">
+                                        <f:setPropertyActionListener value="#{dtSelectionView.selectedProduct}"
+                                                                     target="#{dtSelectionView.selectedProduct}"/>
+                                    </p:commandButton>
+                                </div>
+                            </div>
+                        </div>
+                    </p:column>
+                </p:outputPanel>
+            </p:dialog>
 
-                <p:column headerText="Id" field="id" />
-
-                <p:column headerText="Year" field="year" />
-
-                <p:column headerText="Brand" field="brand" />
-
-                <p:column headerText="Color" field="color" />
-                <f:facet name="footer">
-                    <p:commandButton process="checkboxDT" update=":form:multiCarDetail" icon="pi pi-search" value="View" oncomplete="PF('multiCarDialog').show()" />
-                </f:facet>
-            </p:dataTable>
-            
-            <p:dialog header="Car Info" id="carDialog" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" dynamic="true" cache="false">
-                <p:outputPanel id="carDetail" style="text-align:center;">
-                    <p:panelGrid  columns="2" rendered="#{not empty dtSelectionView.selectedCar}" columnClasses="label,value">
+            <p:dialog header="Selected Products" widgetVar="multiProductDialog" modal="true" showEffect="fade"
+                      hideEffect="fade" resizable="false">
+                <p:outputPanel id="multiProductDetail" style="text-align:center;">
+                    <p:dataScroller value="#{dtSelectionView.selectedProducts}" var="product" chunkSize="10"
+                                    mode="inline"
+                                    scrollHeight="500">
                         <f:facet name="header">
-                            <p:graphicImage name="demo/images/car/#{dtSelectionView.selectedCar.brand}-big.gif"/> 
+                            Selected Products
                         </f:facet>
-                        
-                        <h:outputText value="Id:" />
-                        <h:outputText value="#{dtSelectionView.selectedCar.id}" />
 
-                        <h:outputText value="Year" />
-                        <h:outputText value="#{dtSelectionView.selectedCar.year}" />
+                        <div class="list-demo">
+                            <div class="product-list-item">
+                                <p:graphicImage name="demo/images/product/#{product.image}"/>
+                                <div class="product-list-detail">
+                                    <div class="product-name">#{product.name}</div>
+                                    <div class="product-description">#{product.description}</div>
+                                    <p:rating readonly="true" value="#{product.rating}"/>
+                                    <i class="pi pi-tag product-category-icon"/><span
+                                        class="product-category">#{product.category}</span>
+                                </div>
+                                <div class="product-list-action">
+                                    <h:outputText value="#{product.price}" styleClass="product-price">
+                                        <f:convertNumber currencySymbol="$" type="currency"/>
+                                    </h:outputText>
+                                    <p:commandButton value="Add To Cart" icon="pi pi-shopping-cart"
+                                                     disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
+                                    </p:commandButton>
+                                    <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
+                                </div>
+                            </div>
+                        </div>
 
-                        <h:outputText value="Color:" />
-                        <h:outputText value="#{dtSelectionView.selectedCar.color}" style="color:#{dtSelectionView.selectedCar.color}"/>
-                    
-                        <h:outputText value="Price" />
-                        <h:outputText value="$#{dtSelectionView.selectedCar.price}" />
-                    </p:panelGrid>
+                    </p:dataScroller>
                 </p:outputPanel>
             </p:dialog>
-            
-            <p:dialog header="Selected Cars" widgetVar="multiCarDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="220">
-                <p:outputPanel id="multiCarDetail" style="text-align:center;">
-                    <ui:repeat value="#{dtSelectionView.selectedCars}" var="car">
-                        <h:outputText value="#{car.id} - #{car.brand}" style="display:block"/>
-                    </ui:repeat>
-                </p:outputPanel>
-            </p:dialog>
+
         </h:form>
-        
+
     </ui:define>
 
 </ui:composition>

@@ -13,13 +13,17 @@
         PieChart is created with a PieChartModel.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/chart" />
-    <ui:param name="widgetLink" value="chart" />
+    <ui:param name="documentationLink" value="/components/chart"/>
+    <ui:param name="widgetLink" value="chart"/>
 
     <ui:define name="implementation">
-        <p:chart type="pie" model="#{chartView.pieModel1}" style="width:400px;height:300px" />
-        <br />
-        <p:chart type="pie" model="#{chartView.pieModel2}" style="width:400px;height:300px" />
+        <div class="card">
+            <p:chart type="pie" model="#{chartView.pieModel1}" style="width:400px;height:300px"/>
+        </div>
+        <br/>
+        <div class="card">
+            <p:chart type="pie" model="#{chartView.pieModel2}" style="width:400px;height:300px"/>
+        </div>
     </ui:define>
 
 </ui:composition>

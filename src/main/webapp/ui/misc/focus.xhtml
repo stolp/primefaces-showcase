@@ -11,37 +11,37 @@
 
     <ui:define name="description">
         Focus manages element focus in forms. By default first visible and enabled input element(e.g. text, textarea, select) is chosen to receive focus automatically.
-		It is also possible to explicitly declare the component to receive focus via the for attribute. Focus is also aware of failed validations, first invalid input component receives a focus automatically.
+        It is also possible to explicitly declare the component to receive focus via the for attribute. Focus is also aware of failed validations, first invalid input component receives a focus automatically.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/focus" />
-    <ui:param name="widgetLink" value="focus" />
+    <ui:param name="documentationLink" value="/components/focus"/>
+    <ui:param name="widgetLink" value="focus"/>
 
     <ui:define name="implementation">
-        
-        <h:form>
-            <p:panel id="panel" header="Register">
+        <div class="card">
+            <h:form>
+                <p:panel id="panel" header="Register">
 
-                <p:focus context="panel"/>
+                    <p:focus context="panel"/>
 
-                <p:messages />
+                    <p:messages/>
 
-                <h:panelGrid columns="3">
-                    <p:outputLabel for="username" value="Username" />
-                    <p:inputText id="username" value="#{focusView.username}" required="true" label="Firstname">
-                        <f:validateLength minimum="2" />
-                    </p:inputText>
-                    <p:message for="username" />
+                    <h:panelGrid columns="3">
+                        <p:outputLabel for="username" value="Username"/>
+                        <p:inputText id="username" value="#{focusView.username}" required="true" label="Firstname">
+                            <f:validateLength minimum="2"/>
+                        </p:inputText>
+                        <p:message for="username"/>
 
-                    <p:outputLabel for="email" value="Email" />
-                    <p:inputText id="email" value="#{focusView.email}" required="true" label="Surname"/>
-                    <p:message for="email" />
-                </h:panelGrid>
+                        <p:outputLabel for="email" value="Email"/>
+                        <p:inputText id="email" value="#{focusView.email}" required="true" label="Surname"/>
+                        <p:message for="email"/>
+                    </h:panelGrid>
 
-                <p:commandButton id="submitButton" value="Save" update="@parent" action="#{focusView.save}" />
-            </p:panel>
-        </h:form>
-        
+                    <p:commandButton id="submitButton" value="Save" update="@parent" action="#{focusView.save}"/>
+                </p:panel>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

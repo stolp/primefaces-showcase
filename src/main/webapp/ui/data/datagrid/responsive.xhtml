@@ -30,55 +30,84 @@
     <ui:param name="widgetLink" value="datagrid" />
 
     <ui:define name="implementation">
+        <div class="list-demo card">
+            <h:form id="form">
+                <p:dataGrid var="product" value="#{dataGridView.products}" columns="3" layout="grid"
+                            rows="12" paginator="true" id="cars"
+                            paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                            rowStyleClass="ui-lg-3 ui-xl-2">
 
-        <h:form id="form">
-            <p:dataGrid var="car" value="#{dataGridView.cars}" columns="3" layout="grid"
-                        rows="12" paginator="true" id="cars"
-                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-                        rowStyleClass="ui-lg-3 ui-xl-2">
+                    <f:facet name="header">
+                        Products for Sale
+                    </f:facet>
 
-                <f:facet name="header">
-                    Cars for Sale
-                </f:facet>
+                    <div class="product-grid-item card" style="margin-bottom: 0">
+                        <div class="product-grid-item-top">
+                            <div>
+                                <i class="pi pi-tag product-category-icon"/>
+                                <span class="product-category">#{product.category}</span>
+                            </div>
+                            <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
+                        </div>
+                        <div class="product-grid-item-content">
+                            <p:graphicImage name="demo/images/product/#{product.image}"/>
+                            <div class="product-name">#{product.name}</div>
+                            <div class="product-description">#{product.description}</div>
+                            <p:rating readonly="true" value="#{product.rating}"/>
+                        </div>
+                        <div class="product-grid-item-bottom">
+                            <h:outputText value="#{product.price}" styleClass="product-price">
+                                <f:convertNumber currencySymbol="$" type="currency"/>
+                            </h:outputText>
+                            <p:commandButton update=":form:productDetail" oncomplete="PF('productDialog').show()"
+                                             value="Add To Cart"
+                                             icon="pi pi-shopping-cart"
+                                             disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
+                                <f:setPropertyActionListener value="#{product}"
+                                                             target="#{dataGridView.selectedProduct}"/>
+                            </p:commandButton>
+                        </div>
+                    </div>
 
-                <p:panel header="#{car.id}" style="text-align:center">
-                    <h:panelGrid columns="1" style="width:100%">
-                        <p:graphicImage name="demo/images/car/#{car.brand}.gif"/>
+                </p:dataGrid>
 
-                        <h:outputText value="#{car.year}" />
-
-                        <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
-                            <h:outputText styleClass="pi pi-search" style="margin:0 auto;"/>
-                            <f:setPropertyActionListener value="#{car}" target="#{dataGridView.selectedCar}" />
-                        </p:commandLink>
-                    </h:panelGrid>
-                </p:panel>
-
-            </p:dataGrid>
-
-            <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-                <p:outputPanel id="carDetail" style="text-align:center;">
-                    <p:panelGrid  columns="2" rendered="#{not empty dataGridView.selectedCar}" columnClasses="label,value">
-                        <f:facet name="header">
-                            <p:graphicImage name="demo/images/car/#{dataGridView.selectedCar.brand}-big.gif"/> 
-                        </f:facet>
-                        
-                        <h:outputText value="Id:" />
-                        <h:outputText value="#{dataGridView.selectedCar.id}" />
-
-                        <h:outputText value="Year" />
-                        <h:outputText value="#{dataGridView.selectedCar.year}" />
-
-                        <h:outputText value="Color:" />
-                        <h:outputText value="#{dataGridView.selectedCar.color}" style="color:#{dataGridView.selectedCar.color}"/>
-                    
-                        <h:outputText value="Price" />
-                        <h:outputText value="$#{dataGridView.selectedCar.price}" />
-                    </p:panelGrid>
-                </p:outputPanel>
-            </p:dialog>
-        </h:form>
-        
+                <p:dialog header="Product Info" widgetVar="productDialog" modal="true" showEffect="fade"
+                          hideEffect="fade"
+                          resizable="false">
+                    <p:outputPanel id="productDetail" style="text-align:center;">
+                        <p:column rendered="#{not empty dataGridView.selectedProduct}">
+                            <div class="list-demo">
+                                <div class="product-grid-item card" style="margin-bottom: 0">
+                                    <div class="product-grid-item-top">
+                                        <div>
+                                            <i class="pi pi-tag product-category-icon"/>
+                                            <span class="product-category">#{dataGridView.selectedProduct.category}</span>
+                                        </div>
+                                        <span class="product-badge status-#{dataGridView.selectedProduct.inventoryStatus.name().toLowerCase()}">#{dataGridView.selectedProduct.inventoryStatus.text}</span>
+                                    </div>
+                                    <div class="product-grid-item-content">
+                                        <p:graphicImage
+                                                name="demo/images/product/#{dataGridView.selectedProduct.image}"/>
+                                        <div class="product-name">#{dataGridView.selectedProduct.name}</div>
+                                        <div class="product-description">#{dataGridView.selectedProduct.description}</div>
+                                        <p:rating readonly="true" value="#{dataGridView.selectedProduct.rating}"/>
+                                    </div>
+                                    <div class="product-grid-item-bottom">
+                                        <h:outputText value="#{dataGridView.selectedProduct.price}"
+                                                      styleClass="product-price">
+                                            <f:convertNumber currencySymbol="$" type="currency"/>
+                                        </h:outputText>
+                                        <p:commandButton value="Add To Cart" icon="pi pi-shopping-cart"
+                                                         disabled="#{dataGridView.selectedProduct.inventoryStatus == 'OUTOFSTOCK'}">
+                                        </p:commandButton>
+                                    </div>
+                                </div>
+                            </div>
+                        </p:column>
+                    </p:outputPanel>
+                </p:dialog>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

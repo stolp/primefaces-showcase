@@ -11,7 +11,8 @@
 
     <ui:define name="description">
         <p>An autocomplete model can be also provided for the terminal, which will enable the autocompletion feature on the component.<br/>
-        Autocompletion can be triggered using the TAB key. In case there are more alternatives for arguments, these can be clicked to override the current input.</p>
+            Autocompletion can be triggered using the TAB key. In case there are more alternatives for arguments, these can be clicked to override the current input.
+        </p>
         <p>Try any of the following inputs as an example:</p>
         <ul>
             <li>TAB</li>
@@ -21,22 +22,23 @@
         </ul>
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/terminal" />
-    <ui:param name="widgetLink" value="terminal" />
+    <ui:param name="documentationLink" value="/components/terminal"/>
+    <ui:param name="widgetLink" value="terminal"/>
 
     <ui:define name="implementation">
+        <div class="card">
+            <h:form>
+                <p:focus for="terminal"/>
 
-        <h:form>
-            <p:focus for="terminal" />
+                <p:terminal id="terminal" widgetVar="term"
+                            commandHandler="#{terminalAutoCompleteView.handleCommand}"
+                            autoCompleteModel="#{terminalAutoCompleteView.autoCompleteModel}"
+                            welcomeMessage="Welcome to PrimeFaces Terminal, how are you today?"/>
 
-            <p:terminal id="terminal" widgetVar="term"
-                        commandHandler="#{terminalAutoCompleteView.handleCommand}"
-                        autoCompleteModel="#{terminalAutoCompleteView.autoCompleteModel}"
-                        welcomeMessage="Welcome to PrimeFaces Terminal, how are you today?" />
-
-            <p:commandButton type="button" value="Clear" icon="pi pi-trash" onclick="PF('term').clear()" style="margin-top:10px"/>
-        </h:form>
-
+                <p:commandButton type="button" value="Clear" icon="pi pi-trash" onclick="PF('term').clear()"
+                                 style="margin-top:10px"/>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

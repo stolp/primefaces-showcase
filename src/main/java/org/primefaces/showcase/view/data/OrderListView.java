@@ -17,8 +17,8 @@ package org.primefaces.showcase.view.data;
 
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
-import org.primefaces.showcase.domain.Theme;
-import org.primefaces.showcase.service.ThemeService;
+import org.primefaces.showcase.domain.Country;
+import org.primefaces.showcase.service.CountryService;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -34,15 +34,15 @@ import java.util.List;
 public class OrderListView {
     
     @Inject
-    private ThemeService service;
+    private CountryService service;
     
     private List<String> cities;
-    private List<Theme> themes;
+    private List<Country> countries;
     
     @PostConstruct
     public void init() {
         //Cities
-        cities = new ArrayList<String>();
+        cities = new ArrayList<>();
         cities.add("San Francisco");
         cities.add("London");
         cities.add("Paris");
@@ -51,15 +51,15 @@ public class OrderListView {
         cities.add("Barcelona");
         cities.add("Rome");
              
-        //Themes
-        themes = service.getThemes().subList(0, 6);    
+        //Countrys
+        countries = service.getCountries().subList(0,10);
     }
 
-    public ThemeService getService() {
+    public CountryService getService() {
         return service;
     }
 
-    public void setService(ThemeService service) {
+    public void setService(CountryService service) {
         this.service = service;
     }
 
@@ -71,20 +71,20 @@ public class OrderListView {
         this.cities = cities;
     }
 
-    public List<Theme> getThemes() {
-        return themes;
+    public List<Country> getCountries() {
+        return countries;
     }
 
-    public void setThemes(List<Theme> themes) {
-        this.themes = themes;
+    public void setCountries(List<Country> countries) {
+        this.countries = countries;
     }    
     
-    public void onSelect(SelectEvent<Theme> event) {
+    public void onSelect(SelectEvent<Country> event) {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Item Selected", event.getObject().getName()));
     }
     
-    public void onUnselect(UnselectEvent<Theme> event) {
+    public void onUnselect(UnselectEvent<Country> event) {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Item Unselected", event.getObject().getName()));
     }
