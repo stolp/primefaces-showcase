@@ -72,7 +72,7 @@ public class ProductService {
         }
 
         else {
-            return new ArrayList<>(products).subList(0, size);
+            return new ArrayList<>(products.subList(0, size));
         }
 
     }
