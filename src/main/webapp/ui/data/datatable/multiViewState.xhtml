@@ -31,105 +31,135 @@
     <ui:param name="widgetLink" value="datatable" />
 
     <ui:define name="implementation">
-
         <h:form id="form">
-            <p:messages id="messages" />
 
-            <p:dataTable id="multiViewStateDT" var="car" value="#{dtMultiViewStateView.cars}" widgetVar="carsTable" multiViewState="true"
-                         rows="10" paginator="true"
-                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="5,10,15"
-                         selectionMode="single" selection="#{dtMultiViewStateView.selectedCar}" rowKey="#{car.id}"
-                         emptyMessage="No cars found with given criteria" filteredValue="#{dtMultiViewStateView.filteredCars}">
+            <p:messages id="messages"/>
 
-                <f:facet name="header">
-                    <p:outputPanel>
-                        <h:outputText value="Search all fields:" />
-                        <p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()" style="width:150px" placeholder="Enter keyword"/>
-                    </p:outputPanel>
-                </f:facet>
+            <div class="card">
+                <p:dataTable id="tableStateDT" var="customer" value="#{dtMultiViewStateView.customers}"
+                             widgetVar="customersTable" multiViewState="true" rows="10" paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15" selectionMode="single"
+                             selection="#{dtMultiViewStateView.selectedCustomer}" rowKey="#{customer.id}"
+                             emptyMessage="No customers found with given criteria"
+                             filteredValue="#{dtMultiViewStateView.filteredCustomers}">
 
-                <p:ajax event="rowSelect" update=":form:carDetail" oncomplete="PF('carDialog').show()" />
-
-                <p:column headerText="Id" filterBy="#{car.id}" sortBy="#{car.id}" filterMatchMode="contains">
-                    <h:outputText value="#{car.id}" />
-                </p:column>
-
-                <p:column headerText="Year" filterBy="#{car.year}" sortBy="#{car.year}" filterMatchMode="startsWith">
-                    <h:outputText value="#{car.year}" />
-                </p:column>
-
-                <p:column headerText="Brand" filterBy="#{car.brand}" sortBy="#{car.brand}" filterMatchMode="exact">
-                    <f:facet name="filter">
-                        <p:selectOneMenu onchange="PF('carsTable').filter()" style="width:100%; box-sizing: border-box;" >
-                            <f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true" />
-                            <f:selectItems value="#{dtMultiViewStateView.brands}" />
-                        </p:selectOneMenu>
+                    <f:facet name="header">
+                        <p:outputPanel>
+                            <h:outputText value="Search all fields:"/>
+                            <p:inputText id="globalFilter" onkeyup="PF('customersTable').filter()" style="width:150px"
+                                         placeholder="Enter keyword"/>
+                        </p:outputPanel>
                     </f:facet>
-                    <h:outputText value="#{car.brand}" />
-                </p:column>
 
-                <p:column headerText="Color" filterBy="#{car.color}" sortBy="#{car.color}" filterMatchMode="in">
-                    <f:facet name="filter">
-                        <p:selectCheckboxMenu label="Colors" onchange="PF('carsTable').filter()" style="width:100%; box-sizing: border-box;" scrollHeight="150">
-                            <f:selectItems value="#{dtMultiViewStateView.colors}" />
-                        </p:selectCheckboxMenu>
-                    </f:facet>
-                    <h:outputText value="#{car.color}" />
-                </p:column>
+                    <p:ajax event="rowSelect" update=":form:customerDetail" oncomplete="PF('customerDialog').show()"/>
 
-                <f:facet name="paginatorTopLeft">
-                    <p:commandButton value="Clear MultiViewState" action="#{dtMultiViewStateView.clearMultiViewState}" update="@form"/>
-                </f:facet>
-            </p:dataTable>
+                    <p:column headerText="Name" filterBy="#{customer.name}" sortBy="#{customer.name}"
+                              filterMatchMode="contains">
+                        <h:outputText value="#{customer.name}"/>
+                    </p:column>
 
-            <br />
-            with LazyDataModel:
-            <p:dataTable var="car" value="#{dtLazyView.lazyModel}" paginator="true" rows="10"
-                         paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                         rowsPerPageTemplate="5,10,15" id="carTable" multiViewState="true">
-                <p:column headerText="Id" sortBy="#{car.id}" filterBy="#{car.id}">
-                    <h:outputText value="#{car.id}" />
-                </p:column>
-                <p:column headerText="Year" sortBy="#{car.year}" filterBy="#{car.year}">
-                    <h:outputText value="#{car.year}" />
-                </p:column>
-                <p:column headerText="Brand" sortBy="#{car.brand}" filterBy="#{car.brand}">
-                    <h:outputText value="#{car.brand}" />
-                </p:column>
-                <p:column headerText="Color" sortBy="#{car.color}" filterBy="#{car.color}">
-                    <h:outputText value="#{car.color}" />
-                </p:column>
+                    <p:column headerText="Country" filterBy="#{customer.country.name}" sortBy="#{customer.country.name}"
+                              filterMatchMode="startsWith">
+                        <span class="flag flag-#{customer.country.code}" style="width: 30px; height: 20px"/>
+                        <h:outputText style="vertical-align: middle; margin-left: .5rem"
+                                      value="#{customer.country.name}"/>
+                    </p:column>
 
-                <f:facet name="paginatorTopLeft">
-                    <p:commandButton value="Clear MultiViewState" action="#{dtMultiViewStateView.clearMultiViewState}" update="@form"/>
-                </f:facet>
-            </p:dataTable>
+                    <p:column headerText="Representative" filterBy="#{customer.representative.name}"
+                              sortBy="#{customer.representative.name}" filterMatchMode="startsWith">
+                        <p:graphicImage name="images/avatar/#{customer.representative.image}" library="demo"
+                                        width="32" style="vertical-align: middle"/>
+                        <h:outputText style="vertical-align: middle; margin-left: .5rem"
+                                      value="#{customer.representative.name}"/>
+                    </p:column>
 
-            <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-                <p:outputPanel id="carDetail" style="text-align:center;">
-                    <p:panelGrid  columns="2" rendered="#{not empty dtMultiViewStateView.selectedCar}" columnClasses="label,value">
-                        <f:facet name="header">
-                            <p:graphicImage name="demo/images/car/#{dtMultiViewStateView.selectedCar.brand}-big.gif"/>
+                    <p:column headerText="Status" filterBy="#{customer.status}" sortBy="#{customer.status}"
+                              filterMatchMode="exact">
+                        <f:facet name="filter">
+                            <p:selectOneMenu onchange="PF('customersTable').filter()"
+                                             style="width:100%; box-sizing: border-box;">
+                                <f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true"/>
+                                <f:selectItems value="#{dtMultiViewStateView.customerStatus}"/>
+                            </p:selectOneMenu>
                         </f:facet>
+                        <span class="customer-badge status-#{customer.status.name().toLowerCase()}">#{customer.status}</span>
+                    </p:column>
 
-                        <h:outputText value="Id:" />
-                        <h:outputText value="#{dtMultiViewStateView.selectedCar.id}" />
+                    <f:facet name="paginatorTopLeft">
+                        <p:commandButton value="Clear table state" action="#{dtMultiViewStateView.clearMultiViewState}"
+                                         update="@form"/>
+                    </f:facet>
+                </p:dataTable>
+            </div>
 
-                        <h:outputText value="Year" />
-                        <h:outputText value="#{dtMultiViewStateView.selectedCar.year}" />
+            <br/>
 
-                        <h:outputText value="Brand" />
-                        <h:outputText value="#{dtMultiViewStateView.selectedCar.brand}" />
+            <div class="card">
+                <h5>With LazyDataModel:</h5>
+                <p:dataTable var="customer" value="#{dtLazyView.lazyModel}" paginator="true" rows="10"
+                             paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                             rowsPerPageTemplate="5,10,15" id="customerTable" lazy="true" multiViewState="true">
+                    <p:column headerText="Name" sortBy="#{customer.name}" filterBy="#{customer.name}">
+                        <h:outputText value="#{customer.name}"/>
+                    </p:column>
+                    <p:column headerText="Country" sortBy="#{customer.country}" filterBy="#{customer.country}">
+                        <span class="flag flag-#{customer.country.code}" style="width: 30px; height: 20px"/>
+                        <h:outputText style="vertical-align: middle; margin-left: .5rem" value="#{customer.country}"/>
+                    </p:column>
 
-                        <h:outputText value="Color:" />
-                        <h:outputText value="#{dtMultiViewStateView.selectedCar.color}" style="color:#{dtMultiViewStateView.selectedCar.color}"/>
+                    <p:column headerText="Representative" sortBy="#{customer.representative}"
+                              filterBy="#{customer.representative}" filterMatchMode="startsWith">
+                        <p:graphicImage name="images/avatar/#{customer.representative.image}" library="demo"
+                                        width="32" style="vertical-align: middle"/>
+                        <h:outputText style="vertical-align: middle; margin-left: .5rem"
+                                      value="#{customer.representative.name}"/>
+                    </p:column>
+
+                    <p:column headerText="Status" sortBy="#{customer.status}" filterBy="#{customer.status}">
+                        <span class="customer-badge status-#{customer.status.name().toLowerCase()}">#{customer.status}</span>
+                    </p:column>
+
+                    <f:facet name="paginatorTopLeft">
+                        <p:commandButton value="Clear table state" action="#{dtMultiViewStateView.clearMultiViewState}"
+                                         update="@form"/>
+                    </f:facet>
+                </p:dataTable>
+            </div>
+
+            <p:dialog header="Customer Info" widgetVar="customerDialog" modal="true" showEffect="fade" hideEffect="fade"
+                      resizable="false">
+                <p:outputPanel id="customerDetail" style="text-align:center;">
+                    <p:panelGrid columns="2" rendered="#{not empty dtMultiViewStateView.selectedCustomer}"
+                                 columnClasses="label,value">
+                        <h:outputText value="Name:"/>
+                        <h:outputText value="#{dtMultiViewStateView.selectedCustomer.name}"/>
+
+                        <h:outputText value="Country"/>
+                        <p:column>
+                            <span class="flag flag-#{dtMultiViewStateView.selectedCustomer.country.code}"
+                                  style="width: 30px; height: 20px"/>
+                            <h:outputText style="vertical-align: middle; margin-left: .5rem"
+                                          value="#{dtMultiViewStateView.selectedCustomer.name}"/>
+                        </p:column>
+
+                        <h:outputText value="Representative"/>
+                        <p:column>
+                            <p:graphicImage
+                                    name="images/avatar/#{dtMultiViewStateView.selectedCustomer.representative.image}"
+                                    library="demo"
+                                    width="32" style="vertical-align: middle"/>
+                            <h:outputText style="vertical-align: middle; margin-left: .5rem"
+                                          value="#{dtMultiViewStateView.selectedCustomer.representative}"/>
+                        </p:column>
+
+                        <h:outputText value="Status:"/>
+                        <span class="customer-badge status-#{dtMultiViewStateView.selectedCustomer.status.name().toLowerCase()}">#{dtMultiViewStateView.selectedCustomer.status}</span>
                     </p:panelGrid>
                 </p:outputPanel>
             </p:dialog>
 
         </h:form>
-
     </ui:define>
 
 </ui:composition>

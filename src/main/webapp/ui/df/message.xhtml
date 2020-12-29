@@ -13,14 +13,14 @@
         A facesmessage can be displayed in a dynamically generated dialog on runtime.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/core/dialogframework" />
+    <ui:param name="documentationLink" value="/core/dialogframework"/>
 
     <ui:define name="implementation">
-        
-        <h:form>
-            <p:commandButton value="Show" icon="pi pi-bookmark" action="#{dfView.showMessage}" />
-        </h:form>
-    
+        <div class="card">
+            <h:form>
+                <p:commandButton value="Show" icon="pi pi-bookmark" action="#{dfView.showMessage}"/>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

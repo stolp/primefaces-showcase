@@ -13,24 +13,26 @@
         Ajax behavior callbacks are available for "close" and "move" events. Move event is available for 5.0.2+.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/dialog" />
-    <ui:param name="widgetLink" value="dialog" />
+    <ui:param name="documentationLink" value="/components/dialog"/>
+    <ui:param name="widgetLink" value="dialog"/>
 
     <ui:define name="implementation">
+        <div class="card">
+            <h:form>
+                <p:growl id="growl" sticky="true" showDetail="true"/>
 
-        <h:form>       
-            <p:growl id="growl" sticky="true" showDetail="true" />
-            
-            <h:outputLink id="openDialogLink" value="javascript:void(0)" onclick="PF('dlg').show();">Show the Picture of the Day</h:outputLink>
-            
-            <p:dialog id="picture" widgetVar="dlg" header="Picture of the Day" resizable="false" showEffect="clip" hideEffect="clip">
-                <p:ajax event="close" update="growl" listener="#{dialogView.handleClose}" />
-                <p:ajax event="move" update="growl" listener="#{dialogView.handleMove}" />
-                
-                <p:graphicImage name="/demo/images/nature/nature4.jpg" />
-            </p:dialog>      
-        </h:form>
- 
+                <h:outputLink id="openDialogLink" value="javascript:void(0)"
+                              onclick="PF('dlg').show();">Show the Picture of the Day</h:outputLink>
+
+                <p:dialog id="picture" widgetVar="dlg" header="Picture of the Day" resizable="false" showEffect="clip"
+                          hideEffect="clip">
+                    <p:ajax event="close" update="growl" listener="#{dialogView.handleClose}"/>
+                    <p:ajax event="move" update="growl" listener="#{dialogView.handleMove}"/>
+
+                    <p:graphicImage name="/demo/images/nature/nature4.jpg"/>
+                </p:dialog>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

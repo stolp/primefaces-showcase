@@ -16,9 +16,9 @@
 package org.primefaces.showcase.view.data.datatable;
 
 import org.primefaces.PrimeFaces;
-import org.primefaces.component.datatable.DataTable;
-import org.primefaces.showcase.domain.Car;
-import org.primefaces.showcase.service.CarService;
+import org.primefaces.showcase.domain.Customer;
+import org.primefaces.showcase.domain.CustomerStatus;
+import org.primefaces.showcase.service.CustomerService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -33,58 +33,52 @@ import java.util.List;
 @ViewScoped
 public class MultiViewStateView implements Serializable {
     
-    private List<Car> cars;
+    private List<Customer> customers;
     
-    private List<Car> filteredCars;
+    private List<Customer> filteredCustomers;
     
-    private Car selectedCar;
+    private Customer selectedCustomer;
     
     @Inject
-    private CarService service;
+    private CustomerService service;
 
     @PostConstruct
     public void init() {
-        cars = service.createCars(50);
+        customers = service.getCustomers(50);
     }
     
-    public List<String> getBrands() {
-        return service.getBrands();
-    }
-    
-    public List<String> getColors() {
-        return service.getColors();
-    }
-    
-    public List<Car> getCars() {
-        return cars;
+    public List<Customer> getCustomers() {
+        return customers;
     }
 
-    public List<Car> getFilteredCars() {
-        return filteredCars;
+    public List<Customer> getFilteredCustomers() {
+        return filteredCustomers;
     }
 
-    public Car getSelectedCar() {
-        return selectedCar;
+    public Customer getSelectedCustomer() {
+        return selectedCustomer;
     }
 
-    public void setSelectedCar(Car selectedCar) {
-        this.selectedCar = selectedCar;
+    public CustomerStatus[] getCustomerStatus() {
+        return CustomerStatus.values();
     }
 
-    public void setFilteredCars(List<Car> filteredCars) {
-        this.filteredCars = filteredCars;
+    public void setSelectedCustomer(Customer selectedCustomer) {
+        this.selectedCustomer = selectedCustomer;
     }
 
-    public void setService(CarService service) {
+    public void setFilteredCustomers(List<Customer> filteredCustomers) {
+        this.filteredCustomers = filteredCustomers;
+    }
+
+    public void setService(CustomerService service) {
         this.service = service;
     }
 
     public void clearMultiViewState() {
         FacesContext context = FacesContext.getCurrentInstance();
         String viewId = context.getViewRoot().getViewId();
-        PrimeFaces.current().multiViewState().clearAll(viewId, true, (clientId) -> {
-            showMessage(clientId);
-        });
+        PrimeFaces.current().multiViewState().clearAll(viewId, true, this::showMessage);
     }
 
     private void showMessage(String clientId) {

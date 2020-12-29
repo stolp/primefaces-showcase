@@ -12,7 +12,7 @@
             }
         </style>
     </ui:define>
-    
+
     <ui:define name="title">
         DataTable - <span class="subitem">ColumnToggler</span>
     </ui:define>
@@ -21,34 +21,35 @@
         ColumnToggler is a helper component of datatable to toggle the visibility of columns.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/datatable" />
-    <ui:param name="widgetLink" value="datatable" />
+    <ui:param name="documentationLink" value="/components/datatable"/>
+    <ui:param name="widgetLink" value="datatable"/>
 
     <ui:define name="implementation">
-        
-        <p:dataTable id="cars" var="car" value="#{dtBasicView.cars}">
-            <f:facet name="header">
-                List of Cars
+        <div class="card">
+            <p:dataTable id="products" var="product" value="#{dtBasicView.products}">
+                <f:facet name="header">
+                    List of Products
 
-                <p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="pi pi-align-justify" />
-                <p:columnToggler datasource="cars" trigger="toggler" />
-            </f:facet>
+                    <p:commandButton id="toggler" type="button" value="Columns" style="float:right"
+                                     icon="pi pi-align-justify"/>
+                    <p:columnToggler datasource="products" trigger="toggler"/>
+                </f:facet>
 
-            <p:column field="id" headerText="Id" />
+                <p:column field="code" headerText="Code"/>
 
-            <p:column field="year" headerText="Year" />
+                <p:column field="name" headerText="Name"/>
 
-            <p:column field="brand" headerText="Brand" />
+                <p:column field="category" headerText="Category"/>
 
-            <p:column field="color" headerText="Color" />
-            
-            <p:column headerText="Price">
-                <h:outputText value="#{car.price}">
-                    <f:convertNumber type="currency" currencySymbol="$" />
-                </h:outputText>
-            </p:column>
-        </p:dataTable>
-        
+                <p:column field="quantity" headerText="Quantity"/>
+
+                <p:column headerText="Price">
+                    <h:outputText value="#{product.price}">
+                        <f:convertNumber type="currency" currencySymbol="$"/>
+                    </h:outputText>
+                </p:column>
+            </p:dataTable>
+        </div>
     </ui:define>
 
 </ui:composition>

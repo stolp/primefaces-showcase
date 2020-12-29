@@ -2,7 +2,7 @@ package org.primefaces.showcase.rest;
 
 import org.primefaces.model.rest.AutoCompleteSuggestion;
 import org.primefaces.model.rest.AutoCompleteSuggestionResponse;
-import org.primefaces.showcase.domain.Theme;
+import org.primefaces.showcase.domain.Country;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -14,22 +14,22 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Named("themeRestService")
-@Path("/theme")
-public class ThemeService {
+@Named("countryRestService")
+@Path("/country")
+public class CountryService {
 
     @Inject
-    private org.primefaces.showcase.service.ThemeService service;
+    private org.primefaces.showcase.service.CountryService service;
 
     @GET
     @Path("/autocomplete")
     @Produces({ MediaType.APPLICATION_JSON })
     public AutoCompleteSuggestionResponse autocomplete(@QueryParam("query") String query) {
         String queryLowerCase = query.toLowerCase();
-        List<Theme> allThemes = service.getThemes();
-        return new AutoCompleteSuggestionResponse(allThemes.stream()
+        List<Country> allCountrys = service.getCountries();
+        return new AutoCompleteSuggestionResponse(allCountrys.stream()
                 .filter(t -> t.getName().toLowerCase().contains(queryLowerCase))
-                .map(t -> new AutoCompleteSuggestion(Integer.toString(t.getId()), t.getDisplayName()))
+                .map(t -> new AutoCompleteSuggestion(Integer.toString(t.getId()), t.getName()))
                 .collect(Collectors.toList()));
     }
 }

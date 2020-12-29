@@ -17,8 +17,8 @@ package org.primefaces.showcase.view.data.datatable;
 
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.LazyDataModel;
-import org.primefaces.showcase.domain.Car;
-import org.primefaces.showcase.service.CarService;
+import org.primefaces.showcase.domain.Customer;
+import org.primefaces.showcase.service.CustomerService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -32,36 +32,36 @@ import java.io.Serializable;
 @ViewScoped
 public class LazyView implements Serializable {
     
-    private LazyDataModel<Car> lazyModel;
+    private LazyDataModel<Customer> lazyModel;
     
-    private Car selectedCar;
+    private Customer selectedCustomer;
     
     @Inject
-    private CarService service;
+    private CustomerService service;
     
     @PostConstruct
     public void init() {
-        lazyModel = new LazyCarDataModel(service.createCars(200));
+        lazyModel = new LazyCustomerDataModel(service.getCustomers(200));
     }
 
-    public LazyDataModel<Car> getLazyModel() {
+    public LazyDataModel<Customer> getLazyModel() {
         return lazyModel;
     }
 
-    public Car getSelectedCar() {
-        return selectedCar;
+    public Customer getSelectedCustomer() {
+        return selectedCustomer;
     }
 
-    public void setSelectedCar(Car selectedCar) {
-        this.selectedCar = selectedCar;
+    public void setSelectedCustomer(Customer selectedCustomer) {
+        this.selectedCustomer = selectedCustomer;
     }
     
-    public void setService(CarService service) {
+    public void setService(CustomerService service) {
         this.service = service;
     }
     
-    public void onRowSelect(SelectEvent<Car> event) {
-        FacesMessage msg = new FacesMessage("Car Selected", event.getObject().getId());
+    public void onRowSelect(SelectEvent<Customer> event) {
+        FacesMessage msg = new FacesMessage("Customer Selected", String.valueOf(event.getObject().getId()));
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 }

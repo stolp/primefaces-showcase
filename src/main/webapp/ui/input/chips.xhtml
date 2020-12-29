@@ -13,25 +13,25 @@
         Chips is used to enter multiple values on an inputfield.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/chips" />
-    <ui:param name="widgetLink" value="chips" />
+    <ui:param name="documentationLink" value="/components/chips"/>
+    <ui:param name="widgetLink" value="chips"/>
 
     <ui:define name="implementation">
+        <div class="card">
+            <h:panelGrid columns="3">
+                <p:outputLabel for="chips" value="Values: "/>
+                <p:chips id="chips"/>
+                <p:separator style="visibility:hidden"/>
 
-        <h:panelGrid columns="3">
-            <p:outputLabel for="chips" value="Values: " />
-            <p:chips id="chips" />
-            <p:separator style="visibility:hidden"/>
+                <p:outputLabel for="unique" value="Unique: "/>
+                <p:chips id="unique" unique="true" max="3"/>
+                <p:separator style="visibility:hidden"/>
 
-            <p:outputLabel for="unique" value="Unique: " />
-            <p:chips id="unique" unique="true" max="3"/>
-            <p:separator style="visibility:hidden"/>
-            
-            <p:outputLabel for="paste" value="Paste (comma separated): " />
-            <p:chips id="paste" widgetVar="wgtPaste" addOnPaste="true" separator=","/>
-            <p:commandButton value="Toggle Editor" onclick="PF('wgtPaste').toggleEditor(); return false;" />
-        </h:panelGrid>
-
+                <p:outputLabel for="paste" value="Paste (comma separated): "/>
+                <p:chips id="paste" widgetVar="wgtPaste" addOnPaste="true" separator=","/>
+                <p:commandButton value="Toggle Editor" onclick="PF('wgtPaste').toggleEditor(); return false;"/>
+            </h:panelGrid>
+        </div>
     </ui:define>
 
 </ui:composition>

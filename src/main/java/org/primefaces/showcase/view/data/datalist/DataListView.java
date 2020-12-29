@@ -16,9 +16,8 @@
 package org.primefaces.showcase.view.data.datalist;
 
 import org.primefaces.PrimeFaces;
-import org.primefaces.component.datalist.DataList;
-import org.primefaces.showcase.domain.Car;
-import org.primefaces.showcase.service.CarService;
+import org.primefaces.showcase.domain.Product;
+import org.primefaces.showcase.service.ProductService;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
@@ -33,54 +32,52 @@ import java.util.List;
 @SessionScoped
 public class DataListView implements Serializable {
     
-    private List<Car> cars1;
+    private List<Product> products1;
     
-    private List<Car> cars2;
+    private List<Product> products2;
     
-    private List<Car> cars3;
+    private List<Product> products3;
     
-    private Car selectedCar;
+    private Product selectedProduct;
     
     @Inject
-    private CarService service;
+    private ProductService service;
     
     @PostConstruct
     public void init() {
-        cars1 = service.createCars(10);
-        cars2 = service.createCars(5);
-        cars3 = service.createCars(50);
+        products1 = service.getProducts(10);
+        products2 = service.getProducts(5);
+        products3 = service.getProducts(50);
     }
 
-    public List<Car> getCars1() {
-        return cars1;
+    public List<Product> getProducts1() {
+        return products1;
     }
 
-    public List<Car> getCars2() {
-        return cars2;
+    public List<Product> getProducts2() {
+        return products2;
     }
 
-    public List<Car> getCars3() {
-        return cars3;
+    public List<Product> getProducts3() {
+        return products3;
     }    
 
-    public void setService(CarService service) {
+    public void setService(ProductService service) {
         this.service = service;
     }
 
-    public Car getSelectedCar() {
-        return selectedCar;
+    public Product getSelectedProduct() {
+        return selectedProduct;
     }
 
-    public void setSelectedCar(Car selectedCar) {
-        this.selectedCar = selectedCar;
+    public void setSelectedProduct(Product selectedProduct) {
+        this.selectedProduct = selectedProduct;
     }
 
     public void clearMultiViewState() {
         FacesContext context = FacesContext.getCurrentInstance();
         String viewId = context.getViewRoot().getViewId();
-        PrimeFaces.current().multiViewState().clearAll(viewId, true, (clientId) -> {
-            showMessage(clientId);
-        });
+        PrimeFaces.current().multiViewState().clearAll(viewId, true, this::showMessage);
     }
 
     private void showMessage(String clientId) {

@@ -15,8 +15,8 @@
  */
 package org.primefaces.showcase.view.input;
 
-import org.primefaces.showcase.domain.Theme;
-import org.primefaces.showcase.service.ThemeService;
+import org.primefaces.showcase.domain.Country;
+import org.primefaces.showcase.service.CountryService;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -29,15 +29,15 @@ import java.util.List;
 public class SelectOneView {
     
     private String option;   
-    private Theme theme; 
-    private List<Theme> themes;
+    private Country country;
+    private List<Country> countries;
     
     @Inject
-    private ThemeService service;
+    private CountryService service;
     
     @PostConstruct
     public void init() {
-        themes = service.getThemes();
+        countries = service.getCountries();
     }
 
     public String getOption() {
@@ -48,19 +48,23 @@ public class SelectOneView {
         this.option = option;
     }
 
-    public Theme getTheme() {
-        return theme;
+    public Country getCountry() {
+        return country;
     }
 
-    public void setTheme(Theme theme) {
-        this.theme = theme;
+    public void setCountry(Country country) {
+        this.country = country;
     }
 
-    public List<Theme> getThemes() {
-        return themes;
+    public List<Country> getCountries() {
+        return countries;
     }
 
-    public void setService(ThemeService service) {
+    public void setCountries(List<Country> countries) {
+        this.countries = countries;
+    }
+
+    public void setService(CountryService service) {
         this.service = service;
     }
 }

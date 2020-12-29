@@ -5,13 +5,13 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml">
 
-      <ui:define name="head">
+    <ui:define name="head">
         <style type="text/css">
             .ui-button {
                 margin-top: 10px
             }
         </style>
-	</ui:define>
+    </ui:define>
 
     <ui:define name="title">
         Horizontal Tree - <span class="subitem">Selection</span>
@@ -21,78 +21,85 @@
         Tree provides three selection modes, "single", "multiple" and "checkbox".
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/tree?id=horizontal-tree" />
-    <ui:param name="widgetLink" value="horizontaltree" />
+    <ui:param name="documentationLink" value="/components/tree?id=horizontal-tree"/>
+    <ui:param name="widgetLink" value="horizontaltree"/>
 
     <ui:define name="implementation">
 
         <h:form>
             <p:growl id="msgs" showDetail="true" escape="false"/>
-            
-            <h3 style="margin-top:0">Single</h3>
-            <p:tree value="#{treeSelectionView.root1}" var="doc" orientation="horizontal"
-						selectionMode="single"
-						selection="#{treeSelectionView.selectedNode}">
-                <p:treeNode expandedIcon="pi pi-folder-open" collapsedIcon="pi pi-folder">
-                    <h:outputText value="#{doc.name}"/>
-                </p:treeNode>
-                <p:treeNode type="document" icon="pi pi-file">
-                    <h:outputText value="#{doc.name}" />
-                </p:treeNode>
-                <p:treeNode type="picture" icon="pi pi-image">
-                    <h:outputText value="#{doc.name}" />
-                </p:treeNode>
-                <p:treeNode type="mp3" icon="pi pi-video">
-                    <h:outputText value="#{doc.name}" />
-                </p:treeNode>
-            </p:tree>
-				
-            <p:commandButton value="Display" update="msgs" icon="pi pi-clone"
-								action="#{treeSelectionView.displaySelectedSingle}"/>
-            
-            <h3>Multiple with metakey</h3>
-            <p:tree value="#{treeSelectionView.root2}" var="doc" orientation="horizontal"
-						selectionMode="multiple"
-						selection="#{treeSelectionView.selectedNodes1}">
-                <p:treeNode expandedIcon="pi pi-folder-open" collapsedIcon="pi pi-folder">
-                    <h:outputText value="#{doc.name}"/>
-                </p:treeNode>
-                <p:treeNode type="document" icon="pi pi-file">
-                    <h:outputText value="#{doc.name}" />
-                </p:treeNode>
-                <p:treeNode type="picture" icon="pi pi-image">
-                    <h:outputText value="#{doc.name}" />
-                </p:treeNode>
-                <p:treeNode type="mp3" icon="pi pi-video">
-                    <h:outputText value="#{doc.name}" />
-                </p:treeNode>
-            </p:tree>
-				
-            <p:commandButton value="Display" update="msgs" icon="pi pi-clone"
-                        action="#{treeSelectionView.displaySelectedMultiple(treeSelectionView.selectedNodes1)}"/>
-            
-            <h3>Checkbox</h3>
-            <p:tree value="#{treeSelectionView.root3}" var="doc" orientation="horizontal"
-						selectionMode="checkbox"
-						selection="#{treeSelectionView.selectedNodes2}">
-                <p:treeNode icon="pi pi-paperclip">
-                    <h:outputText value="#{doc.name}"/>
-                </p:treeNode>
-                <p:treeNode type="document" icon="pi pi-file">
-                    <h:outputText value="#{doc.name}" />
-                </p:treeNode>
-                <p:treeNode type="picture" icon="pi pi-image">
-                    <h:outputText value="#{doc.name}" />
-                </p:treeNode>
-                <p:treeNode type="mp3" icon="pi pi-video">
-                    <h:outputText value="#{doc.name}" />
-                </p:treeNode>
-            </p:tree>
-				
-            <p:commandButton value="Display" update="msgs" icon="pi pi-clone"
-                        action="#{treeSelectionView.displaySelectedMultiple(treeSelectionView.selectedNodes2)}"/>
+
+            <div class="card">
+                <h5 style="margin-top:0">Single</h5>
+                <p:tree value="#{treeSelectionView.root1}" var="doc" orientation="horizontal"
+                        selectionMode="single"
+                        selection="#{treeSelectionView.selectedNode}">
+                    <p:treeNode expandedIcon="pi pi-folder-open" collapsedIcon="pi pi-folder">
+                        <h:outputText value="#{doc.name}"/>
+                    </p:treeNode>
+                    <p:treeNode type="document" icon="pi pi-file">
+                        <h:outputText value="#{doc.name}"/>
+                    </p:treeNode>
+                    <p:treeNode type="picture" icon="pi pi-image">
+                        <h:outputText value="#{doc.name}"/>
+                    </p:treeNode>
+                    <p:treeNode type="mp3" icon="pi pi-video">
+                        <h:outputText value="#{doc.name}"/>
+                    </p:treeNode>
+                </p:tree>
+
+                <p:commandButton value="Display" update="msgs" icon="pi pi-clone"
+                                 action="#{treeSelectionView.displaySelectedSingle}"/>
+            </div>
+
+            <div class="card">
+                <h5>Multiple with metakey</h5>
+                <p:tree value="#{treeSelectionView.root2}" var="doc" orientation="horizontal"
+                        selectionMode="multiple"
+                        selection="#{treeSelectionView.selectedNodes1}">
+                    <p:treeNode expandedIcon="pi pi-folder-open" collapsedIcon="pi pi-folder">
+                        <h:outputText value="#{doc.name}"/>
+                    </p:treeNode>
+                    <p:treeNode type="document" icon="pi pi-file">
+                        <h:outputText value="#{doc.name}"/>
+                    </p:treeNode>
+                    <p:treeNode type="picture" icon="pi pi-image">
+                        <h:outputText value="#{doc.name}"/>
+                    </p:treeNode>
+                    <p:treeNode type="mp3" icon="pi pi-video">
+                        <h:outputText value="#{doc.name}"/>
+                    </p:treeNode>
+                </p:tree>
+
+                <p:commandButton value="Display" update="msgs" icon="pi pi-clone"
+                                 action="#{treeSelectionView.displaySelectedMultiple(treeSelectionView.selectedNodes1)}"/>
+            </div>
+
+            <div class="card">
+                <h5>Checkbox</h5>
+                <p:tree value="#{treeSelectionView.root3}" var="doc" orientation="horizontal"
+                        selectionMode="checkbox"
+                        selection="#{treeSelectionView.selectedNodes2}">
+                    <p:treeNode icon="pi pi-paperclip">
+                        <h:outputText value="#{doc.name}"/>
+                    </p:treeNode>
+                    <p:treeNode type="document" icon="pi pi-file">
+                        <h:outputText value="#{doc.name}"/>
+                    </p:treeNode>
+                    <p:treeNode type="picture" icon="pi pi-image">
+                        <h:outputText value="#{doc.name}"/>
+                    </p:treeNode>
+                    <p:treeNode type="mp3" icon="pi pi-video">
+                        <h:outputText value="#{doc.name}"/>
+                    </p:treeNode>
+                </p:tree>
+
+                <p:commandButton value="Display" update="msgs" icon="pi pi-clone"
+                                 action="#{treeSelectionView.displaySelectedMultiple(treeSelectionView.selectedNodes2)}"/>
+            </div>
+
         </h:form>
-        
+
     </ui:define>
 
 </ui:composition>

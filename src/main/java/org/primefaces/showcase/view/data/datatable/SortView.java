@@ -16,11 +16,10 @@
 package org.primefaces.showcase.view.data.datatable;
 
 import javax.faces.view.ViewScoped;
-
 import org.primefaces.model.SortMeta;
 import org.primefaces.model.SortOrder;
-import org.primefaces.showcase.domain.Car;
-import org.primefaces.showcase.service.CarService;
+import org.primefaces.showcase.domain.Product;
+import org.primefaces.showcase.service.ProductService;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -32,51 +31,51 @@ import java.util.List;
 @Named("dtSortView")
 @ViewScoped
 public class SortView implements Serializable {
-    
-    private List<Car> cars1;
-    private List<Car> cars2;
-    private List<Car> cars3;
+
+    private List<Product> products1;
+    private List<Product> products2;
+    private List<Product> products3;
     private List<SortMeta> sortBy;
 
     @Inject
-    private CarService service;
+    private ProductService service;
 
     @PostConstruct
     public void init() {
-        cars1 = service.createCars(10);
-        cars2 = service.createCars(10);
-        cars3 = service.createCars(50);
+        products1 = service.getProducts(10);
+        products2 = service.getProducts(10);
+        products3 = service.getProducts(50);
 
         sortBy = new ArrayList<>();
         sortBy.add(SortMeta.builder()
-                .field("year")
+                .field("name")
                 .order(SortOrder.ASCENDING)
                 .build());
 
         sortBy.add(SortMeta.builder()
-                .field("color")
+                .field("category")
                 .order(SortOrder.ASCENDING)
                 .priority(1)
                 .build());
     }
 
-    public List<Car> getCars1() {
-        return cars1;
+    public List<Product> getProducts1() {
+        return products1;
     }
 
-    public List<Car> getCars2() {
-        return cars2;
+    public List<Product> getProducts2() {
+        return products2;
     }
-    
-    public List<Car> getCars3() {
-        return cars3;
+
+    public List<Product> getProducts3() {
+        return products3;
     }
 
     public List<SortMeta> getSortBy() {
         return sortBy;
     }
 
-    public void setService(CarService service) {
+    public void setService(ProductService service) {
         this.service = service;
     }
 }

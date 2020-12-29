@@ -13,24 +13,24 @@
         ContextMenu is an overlay menu display mainly displayed using right-click.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/contextmenu" />
-    <ui:param name="widgetLink" value="contextmenu" />
+    <ui:param name="documentationLink" value="/components/contextmenu"/>
+    <ui:param name="widgetLink" value="contextmenu"/>
 
     <ui:define name="implementation">
-        
-        Right click to view the menu options.
-    
-        <h:form>				
-            <p:growl id="messages" showDetail="true"/>
+        <div class="card">
+            Right click to view the menu options.
 
-            <p:contextMenu>
-                <p:menuitem value="Save" action="#{menuView.save}" update="messages" icon="pi pi-save"/>
-                <p:menuitem value="Update" action="#{menuView.update}" update="messages" icon="pi pi-refresh"/>
-                <p:menuitem value="Delete" action="#{menuView.delete}" ajax="false" icon="pi pi-times"/>
-                <p:menuitem value="Homepage" url="http://www.primefaces.org" icon="pi pi-home"/>
-            </p:contextMenu>
-        </h:form>
-        
+            <h:form>
+                <p:growl id="messages" showDetail="true"/>
+
+                <p:contextMenu>
+                    <p:menuitem value="Save" action="#{menuView.save}" update="messages" icon="pi pi-save"/>
+                    <p:menuitem value="Update" action="#{menuView.update}" update="messages" icon="pi pi-refresh"/>
+                    <p:menuitem value="Delete" action="#{menuView.delete}" ajax="false" icon="pi pi-times"/>
+                    <p:menuitem value="Homepage" url="http://www.primefaces.org" icon="pi pi-home"/>
+                </p:contextMenu>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

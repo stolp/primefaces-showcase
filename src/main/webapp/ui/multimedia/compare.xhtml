@@ -13,13 +13,15 @@
         ImageCompare provides a graphical interface to compare to similar images.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/imagecompare" />
-    <ui:param name="widgetLink" value="imagecompare" />
+    <ui:param name="documentationLink" value="/components/imagecompare"/>
+    <ui:param name="widgetLink" value="imagecompare"/>
 
     <ui:define name="implementation">
-        <p:imageCompare leftImage="/resources/demo/images/compare/lara-ps3.png"
-                        rightImage="/resources/demo/images/compare/lara-ps4.png"
-                        width="450" height="435"/>
+        <div class="card">
+            <p:imageCompare leftImage="/resources/demo/images/compare/lara-ps3.png"
+                            rightImage="/resources/demo/images/compare/lara-ps4.png"
+                            width="450" height="435"/>
+        </div>
     </ui:define>
 
 </ui:composition>

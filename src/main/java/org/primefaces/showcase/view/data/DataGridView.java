@@ -16,8 +16,8 @@
 package org.primefaces.showcase.view.data;
 
 import org.primefaces.PrimeFaces;
-import org.primefaces.showcase.domain.Car;
-import org.primefaces.showcase.service.CarService;
+import org.primefaces.showcase.domain.Product;
+import org.primefaces.showcase.service.ProductService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -32,40 +32,38 @@ import java.util.List;
 @ViewScoped
 public class DataGridView implements Serializable {
     
-    private List<Car> cars;
-    
-    private Car selectedCar;
+    private List<Product> products;
+    private Product selectedProduct;
     
     @Inject
-    private CarService service;
+    private ProductService service;
     
     @PostConstruct
     public void init() {
-        cars = service.createCars(48);
+        products = service.getProducts(48);
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setService(CarService service) {
+    public void setService(ProductService service) {
         this.service = service;
     }
 
-    public Car getSelectedCar() {
-        return selectedCar;
+    public Product getSelectedProduct() {
+        return selectedProduct;
     }
 
-    public void setSelectedCar(Car selectedCar) {
-        this.selectedCar = selectedCar;
+    public void setSelectedProduct(Product selectedProduct) {
+        this.selectedProduct = selectedProduct;
     }
+
 
     public void clearMultiViewState() {
         FacesContext context = FacesContext.getCurrentInstance();
         String viewId = context.getViewRoot().getViewId();
-        PrimeFaces.current().multiViewState().clearAll(viewId, true, (clientId) -> {
-            showMessage(clientId);
-        });
+        PrimeFaces.current().multiViewState().clearAll(viewId, true, this::showMessage);
     }
 
     private void showMessage(String clientId) {

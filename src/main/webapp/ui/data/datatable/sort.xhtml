@@ -13,8 +13,8 @@
         Sorting is enabled with field or sortBy expressions. Both single and multiple column sorting are supported.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/datatable" />
-    <ui:param name="widgetLink" value="datatable" />
+    <ui:param name="documentationLink" value="/components/datatable"/>
+    <ui:param name="widgetLink" value="datatable"/>
 
     <ui:define name="head">
         <style type="text/css">
@@ -32,39 +32,63 @@
     </ui:define>
 
     <ui:define name="implementation">
-
         <h:form>
-            <p:dataTable var="car" value="#{dtSortView.cars1}" allowUnsorting="true">
-                <f:facet name="header">
-                    Default sort with markup attributes, allowUnsorting=true
-                </f:facet>
+            <div class="card">
+                <h5>Default sort with markup attributes, allowUnsorting=true</h5>
+                <p:dataTable var="product" value="#{dtSortView.products1}" allowUnsorting="true">
 
-                <p:column headerText="Id" field="id" sortable="false" />
+                    <p:column field="code" headerText="Code"/>
 
-                <p:column headerText="Year" field="year" sortOrder="desc" sortPriority="2"/>
+                    <p:column field="name" headerText="Name"/>
 
-                <p:column headerText="Brand" field="brand" sortOrder="asc" sortPriority="1"/>
+                    <p:column field="category" headerText="Category"/>
 
-                <p:column headerText="Color" field="color" />
+                    <p:column field="quantity" headerText="Quantity"/>
 
-            </p:dataTable>
+                </p:dataTable>
+            </div>
+            <div class="card">
+                <h5>Default sort programmatically</h5>
+                <p:dataTable var="product" value="#{dtSortView.products2}" sortMode="single"
+                             sortBy="#{dtSortView.sortBy}">
 
-            <p:dataTable var="car" value="#{dtSortView.cars1}" sortMode="single" sortBy="#{dtSortView.sortBy}">
-                <f:facet name="header">
-                    Default sort programmatically
-                </f:facet>
+                    <p:column field="code" headerText="Code"/>
 
-                <p:column headerText="Id" field="id" sortable="false"/>
+                    <p:column field="name" headerText="Name"/>
 
-                <p:column headerText="Year" field="year" />
+                    <p:column field="category" headerText="Category"/>
 
-                <p:column headerText="Brand" field="brand" />
+                    <p:column field="quantity" headerText="Quantity"/>
 
-                <p:column headerText="Color" field="color" />
+                </p:dataTable>
+            </div>
+            <div class="card">
+                <h5>Multiple Columns</h5>
+                <p>Use metakey to add a column to the sort selection.</p>
 
-            </p:dataTable>
+                <p:dataTable var="product" value="#{dtSortView.products3}" sortMode="multiple">
+                    <p:column headerText="Code" sortBy="#{product.code}">
+                        <h:outputText value="#{product.code}"/>
+                    </p:column>
+
+                    <p:column headerText="Name" sortBy="#{product.name}">
+                        <h:outputText value="#{product.name}"/>
+                    </p:column>
+
+                    <p:column headerText="Category" sortBy="#{product.category}">
+                        <h:outputText value="#{product.category}"/>
+                    </p:column>
+
+                    <p:column headerText="Quantity" sortBy="#{product.quantity}">
+                        <h:outputText value="#{product.quantity}"/>
+                    </p:column>
+
+                    <p:column headerText="Price" sortBy="#{product.price}">
+                        <h:outputText value="$#{product.price}"/>
+                    </p:column>
+                </p:dataTable>
+            </div>
         </h:form>
-
     </ui:define>
 
 </ui:composition>

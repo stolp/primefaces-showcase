@@ -13,22 +13,27 @@
         ContextMenu can be attached to any component, right-click on ImageSwitch component for options.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/contextmenu" />
-    <ui:param name="widgetLink" value="contextmenu" />
+    <ui:param name="documentationLink" value="/components/contextmenu"/>
+    <ui:param name="widgetLink" value="contextmenu"/>
 
     <ui:define name="implementation">
-        <p:imageSwitch id="images" effect="fade" widgetVar="gallery" slideshowAuto="false">
-            <p:graphicImage name="/demo/images/nature/nature1.jpg" />
-            <p:graphicImage name="/demo/images/nature/nature2.jpg" />
-            <p:graphicImage name="/demo/images/nature/nature3.jpg" />
-            <p:graphicImage name="/demo/images/nature/nature4.jpg" />
-        </p:imageSwitch>
-		
-        <p:contextMenu for="images">
-            <p:menuitem value="Prev" url="javascript:void(0)" onclick="PF('gallery').previous()" icon="pi pi-caret-left" />
-            <p:menuitem value="Next" url="javascript:void(0)" onclick="PF('gallery').next()" icon="pi pi-caret-right" />
-            <p:menuitem value="Remove" url="javascript:void(0)" onclick="PF('gallery').getJQ().fadeOut()" icon="pi pi-times"/>
-        </p:contextMenu>
+        <div class="card">
+            <p:imageSwitch id="images" effect="fade" widgetVar="gallery" slideshowAuto="false">
+                <p:graphicImage name="/demo/images/nature/nature1.jpg"/>
+                <p:graphicImage name="/demo/images/nature/nature2.jpg"/>
+                <p:graphicImage name="/demo/images/nature/nature3.jpg"/>
+                <p:graphicImage name="/demo/images/nature/nature4.jpg"/>
+            </p:imageSwitch>
+
+            <p:contextMenu for="images">
+                <p:menuitem value="Prev" url="javascript:void(0)" onclick="PF('gallery').previous()"
+                            icon="pi pi-caret-left"/>
+                <p:menuitem value="Next" url="javascript:void(0)" onclick="PF('gallery').next()"
+                            icon="pi pi-caret-right"/>
+                <p:menuitem value="Remove" url="javascript:void(0)" onclick="PF('gallery').getJQ().fadeOut()"
+                            icon="pi pi-times"/>
+            </p:contextMenu>
+        </div>
     </ui:define>
 
 </ui:composition>

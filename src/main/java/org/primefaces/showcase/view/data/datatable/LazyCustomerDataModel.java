@@ -15,37 +15,35 @@
  */
 package org.primefaces.showcase.view.data.datatable;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 import org.apache.commons.collections4.ComparatorUtils;
 import org.primefaces.model.FilterMeta;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortMeta;
 import org.primefaces.model.filter.FilterConstraint;
-import org.primefaces.showcase.domain.Car;
+import org.primefaces.showcase.domain.Customer;
 import org.primefaces.util.LocaleUtils;
 
 import javax.faces.context.FacesContext;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * Dummy implementation of LazyDataModel that uses a list to mimic a real datasource like a database.
  */
-public class LazyCarDataModel extends LazyDataModel<Car> {
+public class LazyCustomerDataModel extends LazyDataModel<Customer> {
 
-    private List<Car> datasource;
+    private List<Customer> datasource;
 
-    public LazyCarDataModel(List<Car> datasource) {
+    public LazyCustomerDataModel(List<Customer> datasource) {
         this.datasource = datasource;
     }
 
     @Override
-    public Car getRowData(String rowKey) {
-        for (Car car : getWrappedData()) {
-            if (car.getId().equals(rowKey)) {
-                return car;
+    public Customer getRowData(String rowKey) {
+        for (Customer customer : datasource) {
+            if (customer.getId() == Integer.parseInt(rowKey)) {
+                return customer;
             }
         }
 
@@ -53,18 +51,18 @@ public class LazyCarDataModel extends LazyDataModel<Car> {
     }
 
     @Override
-    public Object getRowKey(Car car) {
-        return car.getId();
+    public Object getRowKey(Customer customer) {
+        return customer.getId();
     }
 
     @Override
-    public List<Car> load(int offset, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
+    public List<Customer> load(int offset, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
         long rowCount = datasource.stream()
                 .filter(o -> filter(FacesContext.getCurrentInstance(), filterBy.values(), o))
                 .count();
 
         // apply offset & filters
-        List<Car> cars = datasource.stream()
+        List<Customer> customers = datasource.stream()
                 .skip(offset)
                 .filter(o -> filter(FacesContext.getCurrentInstance(), filterBy.values(), o))
                 .limit(pageSize)
@@ -72,18 +70,19 @@ public class LazyCarDataModel extends LazyDataModel<Car> {
 
         // sort
         if (!sortBy.isEmpty()) {
-            List<Comparator<Car>> comparators = sortBy.values().stream()
+            List<Comparator<Customer>> comparators = sortBy.values().stream()
                     .map(o -> new LazySorter(o.getField(), o.getOrder()))
                     .collect(Collectors.toList());
-            Comparator<Car> cp = ComparatorUtils.chainedComparator(comparators); // from apache
-            cars.sort(cp);
+            Comparator<Customer> cp = ComparatorUtils.chainedComparator(comparators); // from apache
+            customers.sort(cp);
         }
 
         // rowCount
         setRowCount((int) rowCount);
 
-        return cars;
+        return customers;
     }
+
 
     private boolean filter(FacesContext context, Collection<FilterMeta> filterBy, Object o) {
         boolean matching = true;

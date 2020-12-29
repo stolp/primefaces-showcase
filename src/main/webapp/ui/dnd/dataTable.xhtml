@@ -8,9 +8,9 @@
     <ui:define name="head">
         <script type="text/javascript">
             function handleDrop(event, ui) {
-                var droppedCar = ui.draggable;
+                var droppedProduct = ui.draggable;
 
-                droppedCar.fadeOut('fast');
+                droppedProduct.fadeOut('fast');
             }
         </script>
     </ui:define>
@@ -20,95 +20,111 @@
     </ui:define>
 
     <ui:define name="description">
-        DragDrop components have special integration with data components. Drag the cars using the drag icon to the drop area.
+        DragDrop components have special integration with data components. Drag the products using the drag icon to the drop area.
     </ui:define>
 
     <ui:define name="implementation">
-
-        <h:form id="carForm">
-            <p:fieldset id="availableCarsField" legend="Available Cars">
-                <p:dataTable id="availableCars" var="car" value="#{dndCarsView.cars}">
-                    <p:column style="width:20px">
-                        <h:outputText id="dragIcon" styleClass="ui-icon pi pi-plus" />
-                        <p:draggable for="dragIcon" revert="true" helper="clone"/>
-                    </p:column>
-
-                    <p:column headerText="Id">
-                        <h:outputText value="#{car.id}" />
-                    </p:column>
-
-                    <p:column headerText="Year">
-                        <h:outputText value="#{car.year}" />
-                    </p:column>
-
-                    <p:column headerText="Brand">
-                        <h:outputText value="#{car.brand}" />
-                    </p:column>
-
-                    <p:column headerText="Color">
-                        <h:outputText value="#{car.color}" />
-                    </p:column>
-                </p:dataTable>
-            </p:fieldset>
-
-            <p:fieldset id="selectedCars" legend="Selected Cars" style="margin-top:20px">
-                <p:outputPanel id="dropArea">
-                    <h:outputText value="!!!Drop here!!!" rendered="#{empty dndCarsView.droppedCars}" style="font-size:24px;" />
-                    <p:dataTable id="selectedCarsTable" var="car" value="#{dndCarsView.droppedCars}" rendered="#{not empty dndCarsView.droppedCars}">
-                        <p:column headerText="Id">
-                            <h:outputText value="#{car.id}" />
+        <div class="card">
+            <h:form id="productForm">
+                <p:fieldset id="availableProductsField" legend="Available Products">
+                    <p:dataTable id="availableProducts" var="product" value="#{dndProductsView.products}">
+                        <p:column style="width:20px">
+                            <h:outputText id="dragIcon" styleClass="ui-icon pi pi-plus"/>
+                            <p:draggable for="dragIcon" revert="true" helper="clone"/>
                         </p:column>
 
-                        <p:column headerText="Year">
-                            <h:outputText value="#{car.year}" />
+                        <p:column headerText="Code">
+                            <h:outputText value="#{product.code}"/>
                         </p:column>
 
-                        <p:column headerText="Brand">
-                            <h:outputText value="#{car.brand}" />
+                        <p:column headerText="Name">
+                            <h:outputText value="#{product.name}"/>
                         </p:column>
 
-                        <p:column headerText="Color">
-                            <h:outputText value="#{car.color}" />
+                        <p:column headerText="Category">
+                            <h:outputText value="#{product.category}"/>
                         </p:column>
 
-                        <p:column style="width:32px">
-                            <p:commandButton update=":carForm:display" oncomplete="PF('carDialog').show()" icon="pi pi-search">
-                                <f:setPropertyActionListener value="#{car}" target="#{dndCarsView.selectedCar}" />
-                            </p:commandButton>
+                        <p:column headerText="Quantity">
+                            <h:outputText value="#{product.quantity}"/>
                         </p:column>
                     </p:dataTable>
-                </p:outputPanel>
-            </p:fieldset>
+                </p:fieldset>
 
-            <p:droppable for="selectedCars" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="availableCars" onDrop="handleDrop">
-                <p:ajax listener="#{dndCarsView.onCarDrop}" update="dropArea availableCars" />
-            </p:droppable>
+                <p:fieldset id="selectedProducts" legend="Selected Products" style="margin-top:20px">
+                    <p:outputPanel id="dropArea">
+                        <h:outputText value="!!!Drop here!!!" rendered="#{empty dndProductsView.droppedProducts}"
+                                      style="font-size:24px;"/>
+                        <p:dataTable id="selectedProductsTable" var="product" value="#{dndProductsView.droppedProducts}"
+                                     rendered="#{not empty dndProductsView.droppedProducts}">
+                            <p:column headerText="Code">
+                                <h:outputText value="#{product.code}"/>
+                            </p:column>
 
-            <p:dialog header="Car Detail" widgetVar="carDialog" resizable="false" draggable="false"
-                      showEffect="fade" hideEffect="fade" modal="true">
+                            <p:column headerText="Name">
+                                <h:outputText value="#{product.name}"/>
+                            </p:column>
 
-                <p:outputPanel id="display">
-                    <h:panelGrid columns="2" cellpadding="4" rendered="#{not empty dndCarsView.selectedCar}">
-                        <f:facet name="header">
-                            <p:graphicImage name="demo/images/car/#{dndCarsView.selectedCar.brand}.gif"/>
-                        </f:facet>
+                            <p:column headerText="Category">
+                                <h:outputText value="#{product.category}"/>
+                            </p:column>
 
-                        <h:outputText value="Id:" />
-                        <h:outputText value="#{dndCarsView.selectedCar.id}" style="font-weight:bold"/>
+                            <p:column headerText="Quantity">
+                                <h:outputText value="#{product.quantity}"/>
+                            </p:column>
 
-                        <h:outputText value="Year:" />
-                        <h:outputText value="#{dndCarsView.selectedCar.year}" style="font-weight:bold"/>
+                            <p:column style="width:32px">
+                                <p:commandButton update=":productForm:display" oncomplete="PF('productDialog').show()"
+                                                 icon="pi pi-search">
+                                    <f:setPropertyActionListener value="#{product}"
+                                                                 target="#{dndProductsView.selectedProduct}"/>
+                                </p:commandButton>
+                            </p:column>
+                        </p:dataTable>
+                    </p:outputPanel>
+                </p:fieldset>
 
-                        <h:outputText value="Brand:" />
-                        <h:outputText value="#{dndCarsView.selectedCar.brand}" style="font-weight:bold"/>
+                <p:droppable for="selectedProducts" tolerance="touch" activeStyleClass="ui-state-highlight"
+                             datasource="availableProducts" onDrop="handleDrop">
+                    <p:ajax listener="#{dndProductsView.onProductDrop}" update="dropArea availableProducts"/>
+                </p:droppable>
 
-                        <h:outputText value="Color:" />
-                        <h:outputText value="#{dndCarsView.selectedCar.color}" style="font-weight:bold"/>
-                    </h:panelGrid>
-                </p:outputPanel>
-            </p:dialog>
-        </h:form>
-
+                <p:dialog header="Product Detail" widgetVar="productDialog" resizable="false" draggable="false"
+                          showEffect="fade" hideEffect="fade" modal="true">
+                    <p:outputPanel id="display">
+                        <p:column rendered="#{not empty dndProductsView.selectedProduct}">
+                            <div class="list-demo">
+                                <div class="product-grid-item card" style="margin-bottom: 0">
+                                    <div class="product-grid-item-top">
+                                        <div>
+                                            <i class="pi pi-tag product-category-icon"/>
+                                            <span class="product-category">#{dndProductsView.selectedProduct.category}</span>
+                                        </div>
+                                        <span class="product-badge status-#{dndProductsView.selectedProduct.inventoryStatus.name().toLowerCase()}">#{dndProductsView.selectedProduct.inventoryStatus.text}</span>
+                                    </div>
+                                    <div class="product-grid-item-content">
+                                        <p:graphicImage
+                                                name="demo/images/product/#{dndProductsView.selectedProduct.image}"/>
+                                        <div class="product-name">#{dndProductsView.selectedProduct.name}</div>
+                                        <div class="product-description">#{dndProductsView.selectedProduct.description}</div>
+                                        <p:rating readonly="true" value="#{dndProductsView.selectedProduct.rating}"/>
+                                    </div>
+                                    <div class="product-grid-item-bottom">
+                                        <h:outputText value="#{dndProductsView.selectedProduct.price}"
+                                                      styleClass="product-price">
+                                            <f:convertNumber currencySymbol="$" type="currency"/>
+                                        </h:outputText>
+                                        <p:commandButton value="Add To Cart" icon="pi pi-shopping-cart"
+                                                         disabled="#{dndProductsView.selectedProduct.inventoryStatus == 'OUTOFSTOCK'}">
+                                        </p:commandButton>
+                                    </div>
+                                </div>
+                            </div>
+                        </p:column>
+                    </p:outputPanel>
+                </p:dialog>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

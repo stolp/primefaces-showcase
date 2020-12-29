@@ -16,126 +16,58 @@
 package org.primefaces.showcase.view.data.datatable;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.primefaces.model.FilterMeta;
-import org.primefaces.model.MatchMode;
-import org.primefaces.model.SortMeta;
-import org.primefaces.model.SortOrder;
-import org.primefaces.showcase.domain.Car;
-import org.primefaces.showcase.service.CarService;
+import org.primefaces.showcase.domain.Customer;
+import org.primefaces.showcase.domain.CustomerStatus;
+import org.primefaces.showcase.domain.Representative;
+import org.primefaces.showcase.service.CustomerService;
 
 @Named("dtFilterView")
 @ViewScoped
 public class FilterView implements Serializable {
 
-    private List<Car> cars1;
-    private List<Car> cars2;
+    private List<Customer> customers1;
 
-    private List<Car> filteredCars1;
-    private List<Car> filteredCars2;
+    private List<Customer> filteredCustomers1;
 
     @Inject
-    private CarService service;
+    private CustomerService service;
 
     private List<FilterMeta> filterBy;
 
     @PostConstruct
     public void init() {
-        cars1 = service.createCars(10);
-        cars2 = service.createCars(10);
-
-        filterBy = new ArrayList<>();
-        filterBy.add(FilterMeta.builder()
-                .field("year")
-                .filterValue(2000)
-                .matchMode(MatchMode.LESS_THAN_EQUALS)
-                .build());
-
-        filterBy.add(FilterMeta.builder()
-                .field("sold")
-                .filterValue(true)
-                .matchMode(MatchMode.EQUALS)
-                .build());
+        customers1 = service.getCustomers(10);
     }
 
-    public boolean filterByPrice(Object value, Object filter, Locale locale) {
-        String filterText = (filter == null) ? null : filter.toString().trim();
-        if (filterText == null || filterText.equals("")) {
-            return true;
-        }
-
-        if (value == null) {
-            return false;
-        }
-
-        return ((Comparable) value).compareTo(getInteger(filterText)) > 0;
+    public List<Representative> getRepresentatives() {
+        return service.getRepresentatives();
     }
 
-    public boolean globalFilterFunction(Object value, Object filter, Locale locale) {
-        String filterText = (filter == null) ? null : filter.toString().trim().toLowerCase();
-        if (filterText == null || filterText.equals("")) {
-            return true;
-        }
-        int filterInt = getInteger(filterText);
-
-        Car car = (Car) value;
-        return car.getId().toLowerCase().contains(filterText)
-                || car.getBrand().toLowerCase().contains(filterText)
-                || car.getColor().toLowerCase().contains(filterText)
-                || (car.isSold() ? "sold" : "sale").contains(filterText)
-                || car.getYear() < filterInt
-                || car.getPrice() < filterInt;
+    public CustomerStatus[] getCustomerStatus() {
+        return service.getCustomerStatus();
     }
 
-    private int getInteger(String string) {
-        try {
-            return Integer.valueOf(string);
-        }
-        catch (NumberFormatException ex) {
-            return 0;
-        }
+    public List<Customer> getCustomers1() {
+        return customers1;
     }
 
-    public List<String> getBrands() {
-        return service.getBrands();
+    public List<Customer> getFilteredCustomers1() {
+        return filteredCustomers1;
     }
 
-    public List<String> getColors() {
-        return service.getColors();
+    public void setFilteredCustomers1(List<Customer> filteredCustomers1) {
+        this.filteredCustomers1 = filteredCustomers1;
     }
 
-    public List<Car> getCars1() {
-        return cars1;
-    }
-
-    public List<Car> getCars2() {
-        return cars2;
-    }
-
-    public List<Car> getFilteredCars1() {
-        return filteredCars1;
-    }
-
-    public void setFilteredCars1(List<Car> filteredCars1) {
-        this.filteredCars1 = filteredCars1;
-    }
-
-    public List<Car> getFilteredCars2() {
-        return filteredCars2;
-    }
-
-    public void setFilteredCars2(List<Car> filteredCars2) {
-        this.filteredCars2 = filteredCars2;
-    }
-
-    public void setService(CarService service) {
+    public void setService(CustomerService service) {
         this.service = service;
     }
 

@@ -1,4 +1,4 @@
-    <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
@@ -7,8 +7,13 @@
 
     <ui:define name="head">
         <style type="text/css">
-            .start { background: green; }
-            .deadline { background: red; }
+            .start {
+                background: green;
+            }
+
+            .deadline {
+                background: red;
+            }
         </style>
     </ui:define>
 
@@ -17,36 +22,41 @@
     </ui:define>
 
     <ui:define name="description">
-        Metadata for the dates in the date picker calendar.  Allows you to dynamically change attributes like disabledDays and others after a date is selected.
+        Metadata for the dates in the date picker calendar. Allows you to dynamically change attributes like disabledDays and others after a date is selected.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/datepicker" />
-    <ui:param name="widgetLink" value="datepicker" />
+    <ui:param name="documentationLink" value="/components/datepicker"/>
+    <ui:param name="widgetLink" value="datepicker"/>
 
     <ui:define name="implementation">
 
-        <p:growl id="growl" />
+        <p:growl id="growl"/>
 
-        <h:form id="form">
-            <h:panelGrid columns="2" cellpadding="5">
-                <p:outputLabel for="basic" value="Basic:" />
-                <p:datePicker id="basic" value="#{datePickerMetadataView.date1}" model="#{datePickerMetadataView.model}" />
+        <div class="card">
+            <h:form id="form">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel for="basic" value="Basic:"/>
+                    <p:datePicker id="basic" value="#{datePickerMetadataView.date1}"
+                                  model="#{datePickerMetadataView.model}"/>
 
-                <p:outputLabel for="lazy" value="Lazy:" />
-                <p:datePicker pattern="yyyy-MM-dd" id="lazy" value="#{datePickerMetadataView.date2}" model="#{datePickerMetadataView.modelLazy}" />
+                    <p:outputLabel for="lazy" value="Lazy:"/>
+                    <p:datePicker pattern="yyyy-MM-dd" id="lazy" value="#{datePickerMetadataView.date2}"
+                                  model="#{datePickerMetadataView.modelLazy}"/>
 
-                <p:outputLabel for="basicEvent" value="Basic + event:" />
-                <p:datePicker id="basicEvent" value="#{datePickerMetadataView.date3}" model="#{datePickerMetadataView.model}">
-                    <p:ajax event="viewChange" listener="#{datePickerMetadataView.onViewChange}" update="growl" />
-                </p:datePicker>
+                    <p:outputLabel for="basicEvent" value="Basic + event:"/>
+                    <p:datePicker id="basicEvent" value="#{datePickerMetadataView.date3}"
+                                  model="#{datePickerMetadataView.model}">
+                        <p:ajax event="viewChange" listener="#{datePickerMetadataView.onViewChange}" update="growl"/>
+                    </p:datePicker>
 
-                <p:outputLabel for="lazyEvent" value="Lazy + event:" />
-                <p:datePicker pattern="yyyy-MM-dd" id="lazyEvent" value="#{datePickerMetadataView.date4}" model="#{datePickerMetadataView.modelLazy}">
-                    <p:ajax event="viewChange" listener="#{datePickerMetadataView.onViewChange}" update="growl" />
-                </p:datePicker>
-            </h:panelGrid>
-        </h:form>
-
+                    <p:outputLabel for="lazyEvent" value="Lazy + event:"/>
+                    <p:datePicker pattern="yyyy-MM-dd" id="lazyEvent" value="#{datePickerMetadataView.date4}"
+                                  model="#{datePickerMetadataView.modelLazy}">
+                        <p:ajax event="viewChange" listener="#{datePickerMetadataView.onViewChange}" update="growl"/>
+                    </p:datePicker>
+                </h:panelGrid>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

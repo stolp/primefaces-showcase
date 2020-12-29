@@ -16,8 +16,8 @@
 package org.primefaces.showcase.view.data;
 
 import javax.faces.view.ViewScoped;
-import org.primefaces.showcase.domain.Car;
-import org.primefaces.showcase.service.CarService;
+import org.primefaces.showcase.domain.Product;
+import org.primefaces.showcase.service.ProductService;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -29,21 +29,21 @@ import java.util.List;
 @ViewScoped
 public class DataScrollerView implements Serializable {
     
-    private List<Car> cars;
+    private List<Product> products;
         
     @Inject
-    private CarService service;
+    private ProductService service;
     
     @PostConstruct
     public void init() {
-        cars = service.createCars(100);
+        products = service.getProducts(100);
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setService(CarService service) {
+    public void setService(ProductService service) {
         this.service = service;
     }
 }

@@ -14,20 +14,20 @@
     </ui:define>
 
     <ui:define name="implementation">
-
-        <h:form id="form">
-            <p:growl id="messages" showDetail="true" />
-            <p:tree value="#{treeLazyLoadingView.root}" var="node" dynamic="true">
-                 <p:treeNode>
-                     <h:outputText value="#{node.name}" />
-                 </p:treeNode>
-            </p:tree>
-        </h:form>
-        
+        <div class="card">
+            <h:form id="form">
+                <p:growl id="messages" showDetail="true"/>
+                <p:tree value="#{treeLazyLoadingView.root}" var="node" dynamic="true">
+                    <p:treeNode>
+                        <h:outputText value="#{node.name}"/>
+                    </p:treeNode>
+                </p:tree>
+            </h:form>
+        </div>
     </ui:define>
 
     <ui:define name="more-source-tabs">
-        <p:tab title="/org/primefaces/showcase/view/data/tree/LazyLoadingTreeNode.java" />
+        <p:tab title="/org/primefaces/showcase/view/data/tree/LazyLoadingTreeNode.java"/>
     </ui:define>
-    
+
 </ui:composition>

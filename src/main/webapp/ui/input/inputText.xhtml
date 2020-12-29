@@ -13,21 +13,19 @@
         InputText extends standard InputText with skinning capabilities.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/inputtext" />
-    <ui:param name="widgetLink" value="inputtext" />
+    <ui:param name="documentationLink" value="/components/inputtext"/>
+    <ui:param name="widgetLink" value="inputtext"/>
 
     <ui:define name="implementation">
         <div class="card">
-            <h:form>      
-                <h5>Basic</h5>
-                <p:inputText />
-            
-               <h5>Floating Label</h5>
-               <span class="ui-float-label">
-                   <p:inputText id="float-input" value="#{basicView.text}" />
-                   <p:outputLabel for="@previous" value="Username" />
-               </span>
-            </h:form>
+            <h5>Basic</h5>
+            <p:inputText/>
+
+            <h5>Floating Label</h5>
+            <span class="ui-float-label">
+               <p:inputText id="float-input" value="#{basicView.text}"/>
+               <p:outputLabel for="@previous" value="Username"/>
+           </span>
         </div>
     </ui:define>
 

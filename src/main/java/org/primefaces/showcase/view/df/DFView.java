@@ -17,7 +17,7 @@ package org.primefaces.showcase.view.df;
 
 import org.primefaces.PrimeFaces;
 import org.primefaces.event.SelectEvent;
-import org.primefaces.showcase.domain.Car;
+import org.primefaces.showcase.domain.Product;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
@@ -30,14 +30,14 @@ import java.util.Map;
 @RequestScoped
 public class DFView {
     
-    public void viewCars() {
-        Map<String,Object> options = new HashMap<String, Object>();
+    public void viewProducts() {
+        Map<String,Object> options = new HashMap<>();
         options.put("resizable", false);
-        PrimeFaces.current().dialog().openDynamic("viewCars", options, null);
+        PrimeFaces.current().dialog().openDynamic("viewProducts", options, null);
     }
     
-    public void viewCarsCustomized() {
-        Map<String,Object> options = new HashMap<String, Object>();
+    public void viewProductsCustomized() {
+        Map<String,Object> options = new HashMap<>();
         options.put("modal", true);
         options.put("width", 640);
         options.put("height", 340);
@@ -45,20 +45,20 @@ public class DFView {
         options.put("contentHeight", "100%");
         options.put("headerElement", "customheader");
         
-        PrimeFaces.current().dialog().openDynamic("viewCars", options, null);
+        PrimeFaces.current().dialog().openDynamic("viewProducts", options, null);
     }
     
-    public void chooseCar() {
-        Map<String,Object> options = new HashMap<String, Object>();
+    public void chooseProduct() {
+        Map<String,Object> options = new HashMap<>();
         options.put("resizable", false);
         options.put("draggable", false);
         options.put("modal", true);
-        PrimeFaces.current().dialog().openDynamic("selectCar", options, null);
+        PrimeFaces.current().dialog().openDynamic("selectProduct", options, null);
     }
     
-    public void onCarChosen(SelectEvent event) {
-        Car car = (Car) event.getObject();
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Car Selected", "Id:" + car.getId());
+    public void onProductChosen(SelectEvent event) {
+        Product product = (Product) event.getObject();
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Product Selected", "Name:" + product.getName());
 		
 		FacesContext.getCurrentInstance().addMessage(null, message);
     }

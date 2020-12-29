@@ -30,17 +30,17 @@ import org.primefaces.event.UnselectEvent;
 @RequestScoped
 public class CheckboxView {
 
-    private String[] selectedConsoles;
-    private String[] selectedConsoles2;
+    private String[] selectedOptions;
+    private String[] selectedOptions2;
     private String[] selectedCities;
     private String[] selectedCities2;
     private List<String> cities;
-    private List<SelectItem> cars;
-    private String[] selectedCars;
+    private List<SelectItem> countries;
+    private String[] selectedCountries;
 
     @PostConstruct
     public void init() {
-        cities = new ArrayList<String>();
+        cities = new ArrayList<>();
         cities.add("Miami");
         cities.add("London");
         cities.add("Paris");
@@ -50,32 +50,40 @@ public class CheckboxView {
         cities.add("Rome");
         cities.add("Brasilia");
         cities.add("Amsterdam");
-        
-        cars = new ArrayList<>();
-        SelectItemGroup germanCars = new SelectItemGroup("German Cars");
-        germanCars.setSelectItems(new SelectItem[] {
-            new SelectItem("BMW", "BMW"),
-            new SelectItem("Mercedes", "Mercedes"),
-            new SelectItem("Volkswagen", "Volkswagen")
-        });
-        
-        SelectItemGroup americanCars = new SelectItemGroup("American Cars");
-        americanCars.setSelectItems(new SelectItem[]{
-            new SelectItem("Chrysler", "Chrysler"),
-            new SelectItem("GM", "GM"),
-            new SelectItem("Ford", "Ford")
+
+        countries = new ArrayList<>();
+        SelectItemGroup europeCountries = new SelectItemGroup("Europe Countries");
+        europeCountries.setSelectItems(new SelectItem[]{
+                new SelectItem("Germany", "Germany"),
+                new SelectItem("Turkey", "Turkey"),
+                new SelectItem("Spain", "Spain")
         });
 
-        cars.add(germanCars);
-        cars.add(americanCars);
+        SelectItemGroup americaCountries = new SelectItemGroup("America Countries");
+        americaCountries.setSelectItems(new SelectItem[]{
+                new SelectItem("United States", "United States"),
+                new SelectItem("Brazil", "Brazil"),
+                new SelectItem("Mexico", "Mexico")
+        });
+
+        countries.add(europeCountries);
+        countries.add(americaCountries);
     }
 
-    public String[] getSelectedConsoles() {
-        return selectedConsoles;
+    public String[] getSelectedOptions() {
+        return selectedOptions;
     }
 
-    public void setSelectedConsoles(String[] selectedConsoles) {
-        this.selectedConsoles = selectedConsoles;
+    public void setSelectedOptions(String[] selectedOptions) {
+        this.selectedOptions = selectedOptions;
+    }
+
+    public String[] getSelectedOptions2() {
+        return selectedOptions2;
+    }
+
+    public void setSelectedOptions2(String[] selectedOptions2) {
+        this.selectedOptions2 = selectedOptions2;
     }
 
     public String[] getSelectedCities() {
@@ -94,41 +102,37 @@ public class CheckboxView {
         this.selectedCities2 = selectedCities2;
     }
 
-    public String[] getSelectedConsoles2() {
-        return selectedConsoles2;
-    }
-
-    public void setSelectedConsoles2(String[] selectedConsoles2) {
-        this.selectedConsoles2 = selectedConsoles2;
-    }
-
     public List<String> getCities() {
         return cities;
     }
 
-    public List<SelectItem> getCars() {
-        return cars;
+    public void setCities(List<String> cities) {
+        this.cities = cities;
     }
 
-    public void setCars(List<SelectItem> cars) {
-        this.cars = cars;
+    public List<SelectItem> getCountries() {
+        return countries;
     }
 
-    public String[] getSelectedCars() {
-        return selectedCars;
+    public void setCountries(List<SelectItem> countries) {
+        this.countries = countries;
     }
 
-    public void setSelectedCars(String[] selectedCars) {
-        this.selectedCars = selectedCars;
+    public String[] getSelectedCountries() {
+        return selectedCountries;
+    }
+
+    public void setSelectedCountries(String[] selectedCountries) {
+        this.selectedCountries = selectedCountries;
     }
 
     public void onItemUnselect(UnselectEvent event) {
         FacesContext context = FacesContext.getCurrentInstance();
-        
+
         FacesMessage msg = new FacesMessage();
         msg.setSummary("Item unselected: " + event.getObject().toString());
         msg.setSeverity(FacesMessage.SEVERITY_INFO);
-        
+
         context.addMessage(null, msg);
     }
 }

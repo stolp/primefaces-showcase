@@ -13,25 +13,29 @@
         CommandButton extends the standard h:commandButton with ajax, partial processing and skinning features.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/commandbutton" />
-    <ui:param name="widgetLink" value="commandbutton" />
+    <ui:param name="documentationLink" value="/components/commandbutton"/>
+    <ui:param name="widgetLink" value="commandbutton"/>
 
     <ui:define name="implementation">
-        
-        <h:form> 
-            <p:growl id="growl" life="2000" />
-            
-            <p:commandButton value="Ajax Submit" id="ajax" update="growl" action="#{buttonView.buttonAction}" style="margin-right:20px;" styleClass="ui-priority-primary" />
+        <div class="card">
+            <h:form>
+                <p:growl id="growl" life="2000"/>
 
-            <p:commandButton value="Non-Ajax Submit" id="nonAjax" action="#{buttonView.buttonAction}" style="margin-right:20px;" ajax="false" />
+                <p:commandButton value="Ajax Submit" id="ajax" update="growl" action="#{buttonView.buttonAction}"
+                                 style="margin-right:20px;" styleClass="ui-priority-primary"/>
 
-            <p:commandButton value="With Icon" id="withIcon" action="#{buttonView.buttonAction}" update="growl" style="margin-right:20px;" icon="pi pi-save" />
+                <p:commandButton value="Non-Ajax Submit" id="nonAjax" action="#{buttonView.buttonAction}"
+                                 style="margin-right:20px;" ajax="false"/>
 
-            <p:commandButton action="#{buttonView.buttonAction}" id="iconOnly" update="growl" style="margin-right:20px;" icon="pi pi-save" title="Icon Only" />
+                <p:commandButton value="With Icon" id="withIcon" action="#{buttonView.buttonAction}" update="growl"
+                                 style="margin-right:20px;" icon="pi pi-save"/>
 
-            <p:commandButton value="Disabled" id="disabled" style="margin-right:20px;" disabled="true" />   
-        </h:form>
+                <p:commandButton action="#{buttonView.buttonAction}" id="iconOnly" update="growl"
+                                 style="margin-right:20px;" icon="pi pi-save" title="Icon Only"/>
 
+                <p:commandButton value="Disabled" id="disabled" style="margin-right:20px;" disabled="true"/>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

@@ -14,33 +14,57 @@
         in reflow mode, columns are displayed as stacked on smaller screens.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/datatable" />
-    <ui:param name="widgetLink" value="datatable" />
+    <ui:param name="documentationLink" value="/components/datatable"/>
+    <ui:param name="widgetLink" value="datatable"/>
 
     <ui:define name="implementation">
+
         <h:form>
-        <h3 style="margin-top:0">Column Priority</h3>
-        <p:dataTable var="car" value="#{dtBasicView.cars}">
-            <p:column headerText="Id" field="id"/>
 
-            <p:column headerText="Year (p3)" field="year" priority="3"/>
+            <div class="card">
+                <h5 style="margin-top:0">Column Priority</h5>
+                <p:dataTable var="product" value="#{dtBasicView.products}">
+                    <p:column headerText="Code">
+                        <h:outputText value="#{product.code}"/>
+                    </p:column>
 
-            <p:column headerText="Brand (p2)" field="brand" priority="2"/>
+                    <p:column headerText="Name (p3)" priority="3">
+                        <h:outputText value="#{product.name}"/>
+                    </p:column>
 
-            <p:column headerText="Color (p4)" field="color" priority="4" />
-        </p:dataTable>
-        
-        <h3>Reflow</h3>
-        <p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="5" paginator="true">
-            <p:column headerText="Id" field="id"/>
+                    <p:column headerText="Category (p2)" priority="2">
+                        <h:outputText value="#{product.category}"/>
+                    </p:column>
 
-            <p:column headerText="Year (p3)" field="year" />
+                    <p:column headerText="Price (p4)" priority="4">
+                        <h:outputText value="$#{product.price}"/>
+                    </p:column>
+                </p:dataTable>
+            </div>
 
-            <p:column headerText="Brand (p2)" field="brand" />
+            <div class="card">
+                <h5>Reflow</h5>
+                <p:dataTable var="product" value="#{dtBasicView.products}" reflow="true" rows="5" paginator="true">
+                    <p:column headerText="Code">
+                        <h:outputText value="#{product.code}"/>
+                    </p:column>
 
-            <p:column headerText="Color (p4)" field="color"  />
-        </p:dataTable>
+                    <p:column headerText="Name">
+                        <h:outputText value="#{product.name}"/>
+                    </p:column>
+
+                    <p:column headerText="Category">
+                        <h:outputText value="#{product.category}"/>
+                    </p:column>
+
+                    <p:column headerText="Price">
+                        <h:outputText value="$#{product.price}"/>
+                    </p:column>
+                </p:dataTable>
+            </div>
+
         </h:form>
+
     </ui:define>
 
 </ui:composition>

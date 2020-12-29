@@ -20,41 +20,42 @@
         </p>
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/remotecommand" />
+    <ui:param name="documentationLink" value="/components/remotecommand"/>
 
     <ui:define name="implementation">
-        
-        <h:form>
-            <p:remoteCommand name="rc" update="msgs" action="#{remoteCommandView.execute}" />
+        <div class="card">
+            <h:form>
+                <p:remoteCommand name="rc" update="msgs" action="#{remoteCommandView.execute}"/>
 
-            <p:remoteCommand name="rc2" update="msgs" action="#{remoteCommandView.execute}"
-                oncomplete="alert('Return value from server: ' + args.serverTime)"/>
-            
-            <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+                <p:remoteCommand name="rc2" update="msgs" action="#{remoteCommandView.execute}"
+                                 oncomplete="alert('Return value from server: ' + args.serverTime)"/>
 
-            <h:panelGrid columnClasses="value">
-                <p:commandButton type="button" value="Execute simple command" icon="pi pi-refresh"
-                    onclick="rc()" />
+                <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
 
-                <p:commandButton type="button" value="Passing parameters to bean method" icon="pi pi-refresh"
-                    onclick="rc([{name: 'param1', value: 'foo'}, {name: 'param2', value: 'bar'}])" />
+                <h:panelGrid columnClasses="value">
+                    <p:commandButton type="button" value="Execute simple command" icon="pi pi-refresh"
+                                     onclick="rc()"/>
 
-                <p:commandButton type="button" value="Receiving values form the bean" icon="pi pi-refresh"
-                    onclick="rc2()" />                
-            </h:panelGrid>
+                    <p:commandButton type="button" value="Passing parameters to bean method" icon="pi pi-refresh"
+                                     onclick="rc([{name: 'param1', value: 'foo'}, {name: 'param2', value: 'bar'}])"/>
 
-            <script type="text/javascript">
-                function runRemoteCommand(param1, param2) {
-                    var promise = rc([{name: 'param1', value: param1}, {name: 'param2', value: param2}]);
-                    promise.then(function(responseData) {
-                        var serverTime = responseData.jqXHR.pfArgs.serverTime;
-                        console.log("Request successful, returned server time is", serverTime);
-                    }).catch(function(error){
-                        console.error("Request failed", error);
-                    });
-                }
-            </script>
-        </h:form>    
+                    <p:commandButton type="button" value="Receiving values form the bean" icon="pi pi-refresh"
+                                     onclick="rc2()"/>
+                </h:panelGrid>
+
+                <script type="text/javascript">
+                    function runRemoteCommand(param1, param2) {
+                        var promise = rc([{name: 'param1', value: param1}, {name: 'param2', value: param2}]);
+                        promise.then(function (responseData) {
+                            var serverTime = responseData.jqXHR.pfArgs.serverTime;
+                            console.log("Request successful, returned server time is", serverTime);
+                        }).catch(function (error) {
+                            console.error("Request failed", error);
+                        });
+                    }
+                </script>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

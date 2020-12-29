@@ -8,130 +8,130 @@
     <ui:define name="head">
         <style type="text/css">
             .ui-log {
-                left:auto;
-                right:20px;
-                top:300px;
+                left: auto;
+                right: 20px;
+                top: 300px;
             }
         </style>
     </ui:define>
-    
+
     <ui:define name="title">
         Ajax Framework - <span class="subitem">Partial Submit</span>
     </ui:define>
 
     <ui:define name="description">
-    PartialSubmit reduces network traffic by only adding the partially processed components to the ajax request post. For big pages with many input components, 
+        PartialSubmit reduces network traffic by only adding the partially processed components to the ajax request post. For big pages with many input components,
         partialSubmit is extremely useful as it leads to more lightweight requests. Compare the Post Data displayed by the logger for the difference.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/core/ajaxPartialsubmit?id=partial-submit" />
+    <ui:param name="documentationLink" value="/core/ajaxPartialsubmit?id=partial-submit"/>
 
     <ui:define name="implementation">
-        
-        <h:form id="form">
-            <p:log />
+        <div class="card">
+            <h:form id="form">
+                <p:log/>
 
-            <h:panelGrid columns="5" cellpadding="5">
-                <h:outputLabel for="name" value="Name:" style="font-weight:bold" />
-                <p:inputText id="name" />
-                <p:commandButton value="False" partialSubmit="false" process="name" />
-                <p:commandButton value="True" partialSubmit="true" process="name" />
-            </h:panelGrid>
+                <h:panelGrid columns="5" cellpadding="5">
+                    <h:outputLabel for="name" value="Name:" style="font-weight:bold"/>
+                    <p:inputText id="name"/>
+                    <p:commandButton value="False" partialSubmit="false" process="name"/>
+                    <p:commandButton value="True" partialSubmit="true" process="name"/>
+                </h:panelGrid>
 
-            <p:inputText />
-            <br />
-            <p:inputText />
-            <br />
-            <p:inputText />
-            <br />
-            <p:inputText />
-            <br />
-            <p:inputText />
-            <br />
-            <p:inputText />
-            <br />
-            <p:inputText />
-            <br />
-            <p:inputText />
-            <br />
-            <p:inputText />
-            <br />
-            <p:inputText />
-            <br />
-            <p:inputText />
-            <br />
-            <p:inputTextarea />
-            <br />
-            <p:inputTextarea />
-            <br />
-            <p:inputTextarea />
-            <br />
-            <p:inputTextarea />
-            <br />
-            <p:inputTextarea />
-            <br />
-            <p:inputTextarea />
-            <br />
-            <h:selectOneMenu />
-            <br />
-            <h:selectOneMenu />
-            <br />
-            <h:selectOneMenu />
-            <br />
-            <h:selectOneMenu />
-            <br />
-            <h:selectOneMenu />
-            <br />
-            <h:selectOneMenu />
-            <br />
-            <p:inputText />
-            <br />
-            <p:inputText />
-            <br />
-            <p:inputText />
-            <br />
-            <p:inputText />
-            <br />
-            <p:inputText />
-            <br />
-            <p:inputText />
-            <br />
-            <p:inputText />
-            <br />
-            <p:inputText />
-            <br />
-            <p:inputText />
-            <br />
-            <p:inputText />
-            <br />
-            <p:inputText />
-            <br />
-            <p:inputTextarea />
-            <br />
-            <p:inputTextarea />
-            <br />
-            <p:inputTextarea />
-            <br />
-            <p:inputTextarea />
-            <br />
-            <p:inputTextarea />
-            <br />
-            <p:inputTextarea />
-            <br />
-            <h:selectOneMenu />
-            <br />
-            <h:selectOneMenu />
-            <br />
-            <h:selectOneMenu />
-            <br />
-            <h:selectOneMenu />
-            <br />
-            <h:selectOneMenu />
-            <br />
-            <h:selectOneMenu />
-            <br />
-        </h:form>
-        
+                <p:inputText/>
+                <br/>
+                <p:inputText/>
+                <br/>
+                <p:inputText/>
+                <br/>
+                <p:inputText/>
+                <br/>
+                <p:inputText/>
+                <br/>
+                <p:inputText/>
+                <br/>
+                <p:inputText/>
+                <br/>
+                <p:inputText/>
+                <br/>
+                <p:inputText/>
+                <br/>
+                <p:inputText/>
+                <br/>
+                <p:inputText/>
+                <br/>
+                <p:inputTextarea/>
+                <br/>
+                <p:inputTextarea/>
+                <br/>
+                <p:inputTextarea/>
+                <br/>
+                <p:inputTextarea/>
+                <br/>
+                <p:inputTextarea/>
+                <br/>
+                <p:inputTextarea/>
+                <br/>
+                <h:selectOneMenu/>
+                <br/>
+                <h:selectOneMenu/>
+                <br/>
+                <h:selectOneMenu/>
+                <br/>
+                <h:selectOneMenu/>
+                <br/>
+                <h:selectOneMenu/>
+                <br/>
+                <h:selectOneMenu/>
+                <br/>
+                <p:inputText/>
+                <br/>
+                <p:inputText/>
+                <br/>
+                <p:inputText/>
+                <br/>
+                <p:inputText/>
+                <br/>
+                <p:inputText/>
+                <br/>
+                <p:inputText/>
+                <br/>
+                <p:inputText/>
+                <br/>
+                <p:inputText/>
+                <br/>
+                <p:inputText/>
+                <br/>
+                <p:inputText/>
+                <br/>
+                <p:inputText/>
+                <br/>
+                <p:inputTextarea/>
+                <br/>
+                <p:inputTextarea/>
+                <br/>
+                <p:inputTextarea/>
+                <br/>
+                <p:inputTextarea/>
+                <br/>
+                <p:inputTextarea/>
+                <br/>
+                <p:inputTextarea/>
+                <br/>
+                <h:selectOneMenu/>
+                <br/>
+                <h:selectOneMenu/>
+                <br/>
+                <h:selectOneMenu/>
+                <br/>
+                <h:selectOneMenu/>
+                <br/>
+                <h:selectOneMenu/>
+                <br/>
+                <h:selectOneMenu/>
+                <br/>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

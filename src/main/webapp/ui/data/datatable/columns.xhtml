@@ -13,27 +13,31 @@
         Columns of datatable can be created dynamically using the p:columns component.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/datatable" />
-    <ui:param name="widgetLink" value="datatable" />
+    <ui:param name="documentationLink" value="/components/datatable"/>
+    <ui:param name="widgetLink" value="datatable"/>
 
     <ui:define name="implementation">
+        <div class="card">
+            Available columns are "code","name","category" and "quantity".
 
-        Available columns are "id","brand","year","color" and "price".
-        
-        <h:form id="form">    
-            <h:panelGrid columns="3" style="margin:10px 0">
-                <p:outputLabel for="template" value="Template:" style="font-weight:bold"/>
-                <p:inputText id="template" value="#{dtColumnsView.columnTemplate}" size="50"/>
-                <p:commandButton update="cars" action="#{dtColumnsView.updateColumns}" value="Update" process="@parent" icon="pi pi-refresh" oncomplete="PF('carsTable').clearFilters()"/>
-            </h:panelGrid>
+            <h:form id="form">
+                <h:panelGrid columns="3" style="margin:10px 0">
+                    <p:outputLabel for="template" value="Template:" style="font-weight:bold"/>
+                    <p:inputText id="template" value="#{dtColumnsView.columnTemplate}" size="50"/>
+                    <p:commandButton update="products" action="#{dtColumnsView.updateColumns}" value="Update"
+                                     process="@parent" icon="pi pi-refresh"
+                                     oncomplete="PF('productsTable').clearFilters()"/>
+                </h:panelGrid>
 
-            <p:dataTable id="cars" var="car" value="#{dtColumnsView.cars}" widgetVar="carsTable" filteredValue="#{dtColumnsView.filteredCars}">
+                <p:dataTable id="products" var="product" value="#{dtColumnsView.products}" widgetVar="productsTable"
+                             filteredValue="#{dtColumnsView.filteredProducts}">
 
-                <p:columns value="#{dtColumnsView.columns}" var="column" headerText="#{column.header}" field="#{column.property}"/>
+                    <p:columns value="#{dtColumnsView.columns}" var="column" headerText="#{column.header}"
+                               field="#{column.property}"/>
 
-            </p:dataTable>
-        </h:form>
-        
+                </p:dataTable>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

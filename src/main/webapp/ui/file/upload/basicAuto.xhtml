@@ -13,29 +13,29 @@
         Simple uploader uses native browser file upload. When 'auto' is set to to 'true', AJAX is used to automatically upload it.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/fileupload" />
-    <ui:param name="widgetLink" value="fileupload" />
+    <ui:param name="documentationLink" value="/components/fileupload"/>
+    <ui:param name="widgetLink" value="fileupload"/>
 
     <ui:define name="implementation">
 
-        <p:growl id="messages" showDetail="true" />
-
-        Single file<br />
-        <h:form>
-            <p:fileUpload value="#{fileUploadView.file}" mode="simple" skinSimple="true" auto="true"
-                          process="@this" update="messages"
-                          listener="#{fileUploadView.handleFileUpload}"  />
-        </h:form>
-
-        <br />
-        <br />
-        Multiple files; NOTE: in simple mode, you can get all files within a single request!<br />
-        <h:form>
-            <p:fileUpload value="#{fileUploadView.files}" mode="simple" skinSimple="true" multiple="true" auto="true"
-                          process="@this" update="messages"
-                          listener="#{fileUploadView.handleFilesUpload}" />
-        </h:form>
-
+        <p:growl id="messages" showDetail="true"/>
+        <div class="card">
+            <h5>Single file</h5>
+            <h:form>
+                <p:fileUpload value="#{fileUploadView.file}" mode="simple" skinSimple="true" auto="true"
+                              process="@this" update="messages"
+                              listener="#{fileUploadView.handleFileUpload}"/>
+            </h:form>
+        </div>
+        <div class="card">
+            <h5>Multiple files; NOTE: in simple mode, you can get all files within a single request!</h5>
+            <h:form>
+                <p:fileUpload value="#{fileUploadView.files}" mode="simple" skinSimple="true" multiple="true"
+                              auto="true"
+                              process="@this" update="messages"
+                              listener="#{fileUploadView.handleFilesUpload}"/>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

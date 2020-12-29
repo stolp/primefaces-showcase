@@ -13,13 +13,16 @@
         Galleria is a content gallery component.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/galleria" />
-    <ui:param name="widgetLink" value="galleria" />
+    <ui:param name="documentationLink" value="/components/galleria"/>
+    <ui:param name="widgetLink" value="galleria"/>
 
     <ui:define name="implementation">
-        <p:galleria value="#{imagesView.images}" var="image" panelWidth="500" panelHeight="313" showCaption="true">
-            <p:graphicImage name="demo/images/nature/#{image}" alt="Image Description for #{image}" title="#{image}"/>
-        </p:galleria>
+        <div class="card">
+            <p:galleria value="#{imagesView.images}" var="image" panelWidth="500" panelHeight="313" showCaption="true">
+                <p:graphicImage name="demo/images/nature/#{image}" alt="Image Description for #{image}"
+                                title="#{image}"/>
+            </p:galleria>
+        </div>
     </ui:define>
 
 </ui:composition>

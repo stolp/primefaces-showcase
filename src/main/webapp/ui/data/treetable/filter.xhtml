@@ -10,6 +10,7 @@
             .ui-treetable {
                 margin-top: 40px
             }
+
             .ui-treetable table {
                 table-layout: fixed
             }
@@ -24,40 +25,41 @@
         Filtering updates the data based on the constraints.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/treetable" />
-    <ui:param name="widgetLink" value="treetable" />
+    <ui:param name="documentationLink" value="/components/treetable"/>
+    <ui:param name="widgetLink" value="treetable"/>
 
     <ui:define name="implementation">
-
-        <h:form>
-            <p:treeTable widgetVar="treeTable" value="#{ttScrollableView.root1}" var="document" style="margin-top:0" >
-                <f:facet name="header">
-                    Vertical
-                </f:facet>
-                <p:column headerText="Name" filterBy="#{document.name}" filterMatchMode="contains">
-                    <h:outputText value="#{document.name}" />
-                </p:column>
-                <p:column headerText="Size">
-                    <h:outputText value="#{document.size}" />
-                </p:column>
-                <p:column headerText="Type" filterBy="#{document.type}" filterMatchMode="exact">
-                    <f:facet name="filter">
-                        <p:selectOneMenu onchange="PF('treeTable').filter()" styleClass="custom-filter">
-                            <f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true" />
-                            <f:selectItem itemLabel="Folder" itemValue="Folder" />
-                            <f:selectItem itemLabel="JPEG Image" itemValue="JPEG Image" />
-                            <f:selectItem itemLabel="PNG Image" itemValue="PNG Image" />
-                            <f:selectItem itemLabel="Movie File" itemValue="Movie File" />
-                            <f:selectItem itemLabel="Word Document" itemValue="Word Document" />
-                            <f:selectItem itemLabel="Pages Document" itemValue="Pages Document" />
-                        </p:selectOneMenu>
+        <div class="card">
+            <h:form>
+                <p:treeTable widgetVar="treeTable" value="#{ttScrollableView.root1}" var="document"
+                             style="margin-top:0">
+                    <f:facet name="header">
+                        Vertical
                     </f:facet>
+                    <p:column headerText="Name" filterBy="#{document.name}" filterMatchMode="contains">
+                        <h:outputText value="#{document.name}"/>
+                    </p:column>
+                    <p:column headerText="Size">
+                        <h:outputText value="#{document.size}"/>
+                    </p:column>
+                    <p:column headerText="Type" filterBy="#{document.type}" filterMatchMode="exact">
+                        <f:facet name="filter">
+                            <p:selectOneMenu onchange="PF('treeTable').filter()" styleClass="custom-filter">
+                                <f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true"/>
+                                <f:selectItem itemLabel="Folder" itemValue="Folder"/>
+                                <f:selectItem itemLabel="JPEG Image" itemValue="JPEG Image"/>
+                                <f:selectItem itemLabel="PNG Image" itemValue="PNG Image"/>
+                                <f:selectItem itemLabel="Movie File" itemValue="Movie File"/>
+                                <f:selectItem itemLabel="Word Document" itemValue="Word Document"/>
+                                <f:selectItem itemLabel="Pages Document" itemValue="Pages Document"/>
+                            </p:selectOneMenu>
+                        </f:facet>
 
-                    <h:outputText value="#{document.type}" />
-                </p:column>
-            </p:treeTable>
-        </h:form>
-
+                        <h:outputText value="#{document.type}"/>
+                    </p:column>
+                </p:treeTable>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

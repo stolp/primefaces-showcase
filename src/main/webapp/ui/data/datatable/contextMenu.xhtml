@@ -13,56 +13,75 @@
         ContextMenu has special integration with DataTable.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/datatable" />
-    <ui:param name="widgetLink" value="datatable" />
+    <ui:param name="documentationLink" value="/components/datatable"/>
+    <ui:param name="widgetLink" value="datatable"/>
 
     <ui:define name="implementation">
-        
-        <h:form id="form">
-            <p:dataTable id="cars" var="car" value="#{dtContextMenuView.cars}" rowKey="#{car.id}"
-                         selection="#{dtContextMenuView.selectedCar}" selectionMode="single">
-                <f:facet name="header">
-                    RightClick to View Options
-                </f:facet>
+        <div class="card">
+            <h:form id="form">
+                <p:dataTable id="products" var="product" value="#{dtContextMenuView.products}" rowKey="#{product.id}"
+                             selection="#{dtContextMenuView.selectedProduct}" selectionMode="single">
+                    <f:facet name="header">
+                        RightClick to View Options
+                    </f:facet>
 
-                <p:column field="id" headerText="Id" />
+                    <p:column field="code" headerText="Code"/>
 
-                <p:column field="year" headerText="Year" />
+                    <p:column field="name" headerText="Name"/>
 
-                <p:column field="brand" headerText="Brand" />
+                    <p:column field="category" headerText="Category"/>
 
-                <p:column field="color" headerText="Color" />
+                    <p:column field="quantity" headerText="Quantity"/>
 
-            </p:dataTable> 
+                </p:dataTable>
 
-            <p:contextMenu for="cars">
-                <p:menuitem value="View" update="carDetail" icon="pi pi-search" oncomplete="PF('carDialog').show()"/>
-                <p:menuitem value="Delete" update="cars" icon="pi pi-times" action="#{dtContextMenuView.deleteCar}"/>
-            </p:contextMenu>
-            
-            <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-                <p:outputPanel id="carDetail" style="text-align:center;">
-                    <p:panelGrid  columns="2" rendered="#{not empty dtContextMenuView.selectedCar}" columnClasses="label,value">
-                        <f:facet name="header">
-                            <p:graphicImage name="demo/images/car/#{dtContextMenuView.selectedCar.brand}-big.gif"/> 
-                        </f:facet>
-                        
-                        <h:outputText value="Id:" />
-                        <h:outputText value="#{dtContextMenuView.selectedCar.id}" />
+                <p:contextMenu for="products">
+                    <p:menuitem value="View" update="productDetail" icon="pi pi-search"
+                                oncomplete="PF('productDialog').show()"/>
+                    <p:menuitem value="Delete" update="products" icon="pi pi-times"
+                                action="#{dtContextMenuView.deleteProduct}"/>
+                </p:contextMenu>
 
-                        <h:outputText value="Year" />
-                        <h:outputText value="#{dtContextMenuView.selectedCar.year}" />
-
-                        <h:outputText value="Color:" />
-                        <h:outputText value="#{dtContextMenuView.selectedCar.color}" style="color:#{dtContextMenuView.selectedCar.color}"/>
-                    
-                        <h:outputText value="Price" />
-                        <h:outputText value="$#{dtContextMenuView.selectedCar.price}" />
-                    </p:panelGrid>
-                </p:outputPanel>
-            </p:dialog>
-        </h:form>
-        
+                <p:dialog header="Product Info" widgetVar="productDialog" modal="true" showEffect="fade"
+                          hideEffect="fade" resizable="false">
+                    <p:outputPanel id="productDetail" style="text-align:center;">
+                        <p:column rendered="#{not empty dtContextMenuView.selectedProduct}">
+                            <div class="list-demo">
+                                <div class="product-grid-item card" style="margin-bottom: 0">
+                                    <div class="product-grid-item-top">
+                                        <div>
+                                            <i class="pi pi-tag product-category-icon"/>
+                                            <span class="product-category">#{dtContextMenuView.selectedProduct.category}</span>
+                                        </div>
+                                        <span class="product-badge status-#{dtContextMenuView.selectedProduct.inventoryStatus.name().toLowerCase()}">#{dtContextMenuView.selectedProduct.inventoryStatus.text}</span>
+                                    </div>
+                                    <div class="product-grid-item-content">
+                                        <p:graphicImage
+                                                name="demo/images/product/#{dtContextMenuView.selectedProduct.image}"/>
+                                        <div class="product-name">#{dtContextMenuView.selectedProduct.name}</div>
+                                        <div class="product-description">#{dtContextMenuView.selectedProduct.description}</div>
+                                        <p:rating readonly="true" value="#{dtContextMenuView.selectedProduct.rating}"/>
+                                    </div>
+                                    <div class="product-grid-item-bottom">
+                                        <h:outputText value="#{dtContextMenuView.selectedProduct.price}"
+                                                      styleClass="product-price">
+                                            <f:convertNumber currencySymbol="$" type="currency"/>
+                                        </h:outputText>
+                                        <p:commandButton update=":form:productDetail"
+                                                         oncomplete="PF('productDialog').show()" value="Add To Cart"
+                                                         icon="pi pi-shopping-cart"
+                                                         disabled="#{dtContextMenuView.selectedProduct.inventoryStatus == 'OUTOFSTOCK'}">
+                                            <f:setPropertyActionListener value="#{dtContextMenuView.selectedProduct}"
+                                                                         target="#{dtContextMenuView.selectedProduct}"/>
+                                        </p:commandButton>
+                                    </div>
+                                </div>
+                            </div>
+                        </p:column>
+                    </p:outputPanel>
+                </p:dialog>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

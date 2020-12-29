@@ -4,9 +4,9 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml">
-    
+
     <ui:define name="head">
-        
+
         <style type="text/css">
             .ui-log {
                 left: 600px;
@@ -16,10 +16,9 @@
 
         <script type="text/javascript">
             function handleComplete(xhr, status, args) {
-                if(args.validationFailed) {
+                if (args.validationFailed) {
                     PrimeFaces.debug("Validation Failed");
-                } 
-                else {
+                } else {
                     PrimeFaces.debug("Save:" + args.saved);
                     PrimeFaces.debug("FirstName: " + args.user.firstname + ", Lastname: " + args.user.lastname);
                 }
@@ -33,7 +32,7 @@
 
     <ui:define name="description">
         PrimeFaces.current() is a helper with various utilities.
-        <ul style="color: white;">
+        <ul>
             <li>Update component(s) programmatically.</li>
             <li>Execute javascript from beans.</li>
             <li>Add ajax callback parameters as JSON.</li>
@@ -42,27 +41,28 @@
         </ul>
     </ui:define>
 
-    <ui:param name="documentationLink" value="/core/javaAPI?id=primefacescurrent" />
+    <ui:param name="documentationLink" value="/core/javaAPI?id=primefacescurrent"/>
 
     <ui:define name="implementation">
-        
-        <h:form id="form">
-            <p:panel id="panel" header="New User" style="margin-bottom:10px;">
-                <p:messages />
-                <h:panelGrid columns="2" cellpadding="5">
-                    <p:outputLabel for="firstname" value="Firstname:" />
-                    <p:inputText id="firstname" value="#{requestContextView.user.firstname}" required="true"/>
+        <div class="card">
+            <h:form id="form">
+                <p:panel id="panel" header="New User" style="margin-bottom:10px;">
+                    <p:messages/>
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <p:outputLabel for="firstname" value="Firstname:"/>
+                        <p:inputText id="firstname" value="#{requestContextView.user.firstname}" required="true"/>
 
-                    <p:outputLabel for="surname" value="Lastname:" />
-                    <p:inputText id="surname" value="#{requestContextView.user.lastname}" required="true"/>
-                </h:panelGrid>
-            </p:panel>
+                        <p:outputLabel for="surname" value="Lastname:"/>
+                        <p:inputText id="surname" value="#{requestContextView.user.lastname}" required="true"/>
+                    </h:panelGrid>
+                </p:panel>
 
-            <p:commandButton value="Save" action="#{requestContextView.save}" oncomplete="handleComplete(xhr, status, args)" />
+                <p:commandButton value="Save" action="#{requestContextView.save}"
+                                 oncomplete="handleComplete(xhr, status, args)"/>
 
-            <p:log />
-        </h:form>
-        
+                <p:log/>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

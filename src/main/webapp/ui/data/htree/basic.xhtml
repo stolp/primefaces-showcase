@@ -14,27 +14,33 @@
         available.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/tree?id=horizontal-tree" />
-    <ui:param name="widgetLink" value="horizontaltree" />
+    <ui:param name="documentationLink" value="/components/tree?id=horizontal-tree"/>
+    <ui:param name="widgetLink" value="horizontaltree"/>
 
     <ui:define name="implementation">
 
         <h:form>
-            <h3 style="margin-top:0">Client</h3>
-            <p:tree value="#{treeBasicView.root}" var="node" orientation="horizontal">
-                <p:treeNode>
-                    <h:outputText value="#{node}" />
-                </p:treeNode>
-            </p:tree>
-            
-            <h3>Ajax</h3>
-            <p:tree value="#{treeBasicView.root}" var="node" dynamic="true" orientation="horizontal">
-                <p:treeNode>
-                    <h:outputText value="#{node}" />
-                </p:treeNode>
-            </p:tree>
+
+            <div class="card">
+                <h5 style="margin-top:0">Client</h5>
+                <p:tree value="#{treeBasicView.root}" var="node" orientation="horizontal">
+                    <p:treeNode>
+                        <h:outputText value="#{node}"/>
+                    </p:treeNode>
+                </p:tree>
+            </div>
+
+            <div class="card">
+                <h5>Ajax</h5>
+                <p:tree value="#{treeBasicView.root}" var="node" dynamic="true" orientation="horizontal">
+                    <p:treeNode>
+                        <h:outputText value="#{node}"/>
+                    </p:treeNode>
+                </p:tree>
+            </div>
+
         </h:form>
-        
+
     </ui:define>
 
 </ui:composition>

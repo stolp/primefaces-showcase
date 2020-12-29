@@ -5,10 +5,10 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml">
 
-      <ui:define name="head">
+    <ui:define name="head">
         <style type="text/css">
             .ui-datalist .ui-datalist-content {
-                border:0 none
+                border: 0 none
             }
 
             .ui-datalist ul {
@@ -37,157 +37,175 @@
         features various options, customizable content, multiple selection, effects and events.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/autocomplete" />
-    <ui:param name="widgetLink" value="autocomplete" />
+    <ui:param name="documentationLink" value="/components/autocomplete"/>
+    <ui:param name="widgetLink" value="autocomplete"/>
 
     <ui:define name="implementation">
+        <div class="card">
+            <h:form>
+                <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
 
-        <h:form>
-            <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel value="Simple:" for="acSimple"/>
+                    <p:autoComplete id="acSimple" value="#{autoCompleteView.txt1}"
+                                    completeMethod="#{autoCompleteView.completeText}"/>
 
-            <h:panelGrid columns="2" cellpadding="5">
-                <p:outputLabel value="Simple:" for="acSimple" />
-                <p:autoComplete id="acSimple" value="#{autoCompleteView.txt1}" completeMethod="#{autoCompleteView.completeText}" />
+                    <p:outputLabel value="Min Length (3):" for="acMinLength"/>
+                    <p:autoComplete id="acMinLength" minQueryLength="3" value="#{autoCompleteView.txt2}"
+                                    completeMethod="#{autoCompleteView.completeText}" effect="fade"/>
 
-                <p:outputLabel value="Min Length (3):" for="acMinLength" />
-                <p:autoComplete id="acMinLength" minQueryLength="3" value="#{autoCompleteView.txt2}" completeMethod="#{autoCompleteView.completeText}" effect="fade" />
+                    <p:outputLabel value="Delay(1000):" for="acDelay"/>
+                    <p:autoComplete id="acDelay" queryDelay="1000" value="#{autoCompleteView.txt3}"
+                                    completeMethod="#{autoCompleteView.completeText}" effect="blind"/>
 
-                <p:outputLabel value="Delay(1000):" for="acDelay" />
-                <p:autoComplete id="acDelay" queryDelay="1000" value="#{autoCompleteView.txt3}" completeMethod="#{autoCompleteView.completeText}" effect="blind" />
+                    <p:outputLabel value="Max Results(5):" for="acMaxResults"/>
+                    <p:autoComplete id="acMaxResults" maxResults="5" value="#{autoCompleteView.txt4}"
+                                    completeMethod="#{autoCompleteView.completeText}"/>
 
-                <p:outputLabel value="Max Results(5):" for="acMaxResults" />
-                <p:autoComplete id="acMaxResults" maxResults="5" value="#{autoCompleteView.txt4}" completeMethod="#{autoCompleteView.completeText}" />
+                    <p:outputLabel value="Force Selection:" for="acForce"/>
+                    <p:autoComplete id="acForce" forceSelection="true" value="#{autoCompleteView.txt5}"
+                                    completeMethod="#{autoCompleteView.completeText}"/>
 
-                <p:outputLabel value="Force Selection:" for="acForce" />
-                <p:autoComplete id="acForce" forceSelection="true" value="#{autoCompleteView.txt5}" completeMethod="#{autoCompleteView.completeText}" />
+                    <p:outputLabel value="DropDown:" for="dd"/>
+                    <p:autoComplete id="dd" dropdown="true" value="#{autoCompleteView.txt6}"
+                                    completeMethod="#{autoCompleteView.completeText}"/>
 
-                <p:outputLabel value="DropDown:" for="dd" />
-                <p:autoComplete id="dd" dropdown="true" value="#{autoCompleteView.txt6}" completeMethod="#{autoCompleteView.completeText}" />
+                    <p:outputLabel value="Cache:" for="cache"/>
+                    <p:autoComplete id="cache" cache="true" cacheTimeout="30000" value="#{autoCompleteView.txt7}"
+                                    completeMethod="#{autoCompleteView.completeText}"/>
 
-                <p:outputLabel value="Cache:" for="cache" />
-                <p:autoComplete id="cache" cache="true" cacheTimeout="30000" value="#{autoCompleteView.txt7}" completeMethod="#{autoCompleteView.completeText}" />
+                    <p:outputLabel value="Select Event:" for="event"/>
+                    <p:autoComplete id="event" value="#{autoCompleteView.txt8}"
+                                    completeMethod="#{autoCompleteView.completeText}">
+                        <p:ajax event="itemSelect" listener="#{autoCompleteView.onItemSelect}" update="msgs"/>
+                    </p:autoComplete>
 
-                <p:outputLabel value="Select Event:" for="event" />
-                <p:autoComplete id="event" value="#{autoCompleteView.txt8}" completeMethod="#{autoCompleteView.completeText}">
-                    <p:ajax event="itemSelect" listener="#{autoCompleteView.onItemSelect}" update="msgs" />
-                </p:autoComplete>
+                    <p:outputLabel value="Empty message:" for="emptyMessage"/>
+                    <p:autoComplete id="emptyMessage" value="#{autoCompleteView.txt9}"
+                                    completeMethod="#{autoCompleteView.noResults}"
+                                    emptyMessage="No results">
+                        <p:ajax event="emptyMessageSelect" listener="#{autoCompleteView.onEmptyMessageSelect}"
+                                update="msgs"/>
+                    </p:autoComplete>
 
-                <p:outputLabel value="Empty message:" for="emptyMessage" />
-                <p:autoComplete id="emptyMessage" value="#{autoCompleteView.txt9}" completeMethod="#{autoCompleteView.noResults}"
-                                emptyMessage="No results">
-                    <p:ajax event="emptyMessageSelect" listener="#{autoCompleteView.onEmptyMessageSelect}" update="msgs" />
-                </p:autoComplete>
+                    <p:outputLabel value="Pojo:" for="countryPojo"/>
+                    <p:autoComplete id="countryPojo" value="#{autoCompleteView.country1}"
+                                    completeMethod="#{autoCompleteView.completeCountry}"
+                                    var="country" itemLabel="#{country.name}" itemValue="#{country}"
+                                    converter="#{countryConverter}" forceSelection="true"/>
 
-                <p:outputLabel value="Pojo:" for="themePojo" />
-                <p:autoComplete id="themePojo" value="#{autoCompleteView.theme1}" completeMethod="#{autoCompleteView.completeTheme}"
-                                var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="#{themeConverter}" forceSelection="true" />
+                    <p:outputLabel value="Pojo (via REST):" for="countryPojoRest"/>
+                    <p:outputPanel>
+                        <p:autoComplete id="countryPojoRest" widgetVar="countryPojoRest" value="#{autoCompleteView.country5}"
+                                        var="country" itemLabel="#{country.displayName}" itemValue="#{country}"
+                                        converter="#{countryConverter}"
+                                        completeEndpoint="#{request.contextPath}/rest/country/autocomplete"
+                                        forceSelection="true" emptyMessage="sorry, no suggestions"
+                                        moreText="more items available"/>
+                        <p:commandButton type="button" value="X" title="clear" onclick="PF('countryPojoRest').clear();"/>
+                    </p:outputPanel>
 
-                <p:outputLabel value="Pojo (via REST):" for="themePojoRest" />
-                <p:outputPanel>
-                    <p:autoComplete id="themePojoRest" widgetVar="themePojoRest" value="#{autoCompleteView.theme5}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="#{themeConverter}"
-                                    completeEndpoint="#{request.contextPath}/rest/theme/autocomplete" forceSelection="true" emptyMessage="sorry, no suggestions" moreText="more items available" />
-                    <p:commandButton type="button" value="X" title="clear" onclick="PF('themePojoRest').clear();" />
-                </p:outputPanel>
+                    <p:outputLabel value="Custom Content:" for="countryCustom"/>
+                    <p:autoComplete id="countryCustom" value="#{autoCompleteView.country2}"
+                                    completeMethod="#{autoCompleteView.completeCountry}"
+                                    var="country" itemLabel="#{country.name}" itemValue="#{country}"
+                                    converter="#{countryConverter}" forceSelection="true">
+                        <p:column>
+                            <span class="flag flag-#{country.code}" style="width: 30px; height: 20px"/>
+                            <h:outputText style="vertical-align: middle; margin-left: .5rem" value="#{country.name}"/>
+                        </p:column>
+                    </p:autoComplete>
 
-                <p:outputLabel value="Custom Content:" for="themeCustom" />
-                <p:autoComplete id="themeCustom" value="#{autoCompleteView.theme2}" completeMethod="#{autoCompleteView.completeTheme}"
-                                var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="#{themeConverter}" forceSelection="true">
-                    <p:column>
-                        <h:graphicImage name="showcase/images/themeswitcher/themeswitcher-#{theme.name}.png" alt="#{theme.name}" styleClass="ui-theme"/>
-                    </p:column>
+                    <p:outputLabel value="Multiple:" for="countries"/>
+                    <p:autoComplete id="countries" multiple="true" value="#{autoCompleteView.selectedCountries}"
+                                    completeMethod="#{autoCompleteView.completeCountry}"
+                                    var="country" itemLabel="#{country.name}" itemValue="#{country}"
+                                    converter="#{countryConverter}" forceSelection="true">
+                        <p:column>
+                            <span class="flag flag-#{country.code}" style="width: 30px; height: 20px"/>
+                            <h:outputText style="vertical-align: middle; margin-left: .5rem" value="#{country.name}"/>
+                        </p:column>
+                    </p:autoComplete>
 
-                    <p:column>
-                        <h:outputText value="#{theme.displayName}" />
-                    </p:column>
-                </p:autoComplete>
+                    <p:outputLabel value="Itemtip:" for="itemTip"/>
+                    <p:autoComplete id="itemTip" value="#{autoCompleteView.country3}"
+                                    completeMethod="#{autoCompleteView.completeCountry}"
+                                    var="country" itemLabel="#{country.name}" itemValue="#{country}"
+                                    converter="#{countryConverter}">
+                        <f:facet name="itemtip">
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <f:facet name="header">
+                                    <span class="flag flag-#{country.code}" style="width: 30px; height: 20px"/>
+                                </f:facet>
 
-                <p:outputLabel value="Multiple:" for="themes" />
-                <p:autoComplete id="themes" multiple="true" value="#{autoCompleteView.selectedThemes}" completeMethod="#{autoCompleteView.completeTheme}"
-                                var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="#{themeConverter}" forceSelection="true">
-                    <p:column style="width:10%">
-                        <h:graphicImage name="showcase/images/themeswitcher/themeswitcher-#{theme.name}.png" alt="#{theme.name}" styleClass="ui-theme"/>
-                    </p:column>
+                                <h:outputText value="Name:"/>
+                                <h:outputText value="#{country.name}"/>
 
-                    <p:column>
-                        <h:outputText value="#{theme.displayName}" />
-                    </p:column>
-                </p:autoComplete>
+                                <h:outputText value="Code:"/>
+                                <h:outputText value="#{country.code}"/>
+                            </h:panelGrid>
+                        </f:facet>
+                    </p:autoComplete>
 
-                <p:outputLabel value="Itemtip:" for="itemTip" />
-                <p:autoComplete id="itemTip" value="#{autoCompleteView.theme3}" completeMethod="#{autoCompleteView.completeTheme}"
-                                var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="#{themeConverter}">
-                    <f:facet name="itemtip">
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <f:facet name="header">
-                                <h:graphicImage name="showcase/images/themeswitcher/themeswitcher-#{theme.name}.png" alt="#{theme.name}" styleClass="ui-theme" />
-                            </f:facet>
+                    <p:outputLabel value="Group:" for="group"/>
+                    <p:autoComplete id="group" value="#{autoCompleteView.country4}"
+                                    completeMethod="#{autoCompleteView.completeCountry}"
+                                    var="country" itemLabel="#{country.name}" itemValue="#{country}"
+                                    converter="#{countryConverter}" forceSelection="true"
+                                    groupBy="#{autoCompleteView.getCountryGroup(country)}" scrollHeight="250"/>
+                </h:panelGrid>
 
-                            <h:outputText value="Display:" />
-                            <h:outputText value="#{theme.displayName}" />
+                <p:commandButton value="Submit" icon="pi pi-check" update="output msgs" oncomplete="PF('dlg').show()"/>
 
-                            <h:outputText value="Key" />
-                            <h:outputText value="#{theme.name}" />
-                        </h:panelGrid>
-                    </f:facet>
-                </p:autoComplete>
+                <p:dialog header="Values" resizable="false" showEffect="fade" widgetVar="dlg">
+                    <p:panelGrid id="output" columns="2" columnClasses="label, value">
+                        <h:outputText value="Simple:"/>
+                        <h:outputText value="#{autoCompleteView.txt1}"/>
 
-                <p:outputLabel value="Group:" for="group" />
-                <p:autoComplete id="group" value="#{autoCompleteView.theme4}" completeMethod="#{autoCompleteView.completeThemeContains}"
-                                var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="#{themeConverter}" forceSelection="true"
-                                groupBy="#{autoCompleteView.getThemeGroup(theme)}" scrollHeight="250"/>
-            </h:panelGrid>
+                        <h:outputText value="Min Length"/>
+                        <h:outputText value="#{autoCompleteView.txt2}"/>
 
-            <p:commandButton value="Submit" icon="pi pi-check" update="output msgs" oncomplete="PF('dlg').show()" />
+                        <h:outputText value="Delay:"/>
+                        <h:outputText value="#{autoCompleteView.txt3}"/>
 
-            <p:dialog header="Values" resizable="false" showEffect="fade" widgetVar="dlg">
-                <p:panelGrid id="output" columns="2" columnClasses="label, value">
-                    <h:outputText value="Simple:" />
-                    <h:outputText value="#{autoCompleteView.txt1}" />
+                        <h:outputText value="Max Results:"/>
+                        <h:outputText value="#{autoCompleteView.txt4}"/>
 
-                    <h:outputText value="Min Length" />
-                    <h:outputText value="#{autoCompleteView.txt2}" />
+                        <h:outputText value="Force Selection:"/>
+                        <h:outputText value="#{autoCompleteView.txt5}"/>
 
-                    <h:outputText value="Delay:" />
-                    <h:outputText value="#{autoCompleteView.txt3}" />
+                        <h:outputText value="Dropdown:"/>
+                        <h:outputText value="#{autoCompleteView.txt6}"/>
 
-                    <h:outputText value="Max Results:" />
-                    <h:outputText value="#{autoCompleteView.txt4}" />
+                        <h:outputText value="Cache:"/>
+                        <h:outputText value="#{autoCompleteView.txt7}"/>
 
-                    <h:outputText value="Force Selection:" />
-                    <h:outputText value="#{autoCompleteView.txt5}" />
+                        <h:outputText value="Select Event:"/>
+                        <h:outputText value="#{autoCompleteView.txt8}"/>
 
-                    <h:outputText value="Dropdown:" />
-                    <h:outputText value="#{autoCompleteView.txt6}" />
+                        <h:outputText value="Pojo:"/>
+                        <h:outputText value="#{autoCompleteView.country1}"/>
 
-                    <h:outputText value="Cache:" />
-                    <h:outputText value="#{autoCompleteView.txt7}" />
+                        <h:outputText value="Custom Content:"/>
+                        <h:outputText value="#{autoCompleteView.country2}"/>
 
-                    <h:outputText value="Select Event:" />
-                    <h:outputText value="#{autoCompleteView.txt8}" />
+                        <h:outputText value="Multiple:"/>
+                        <p:dataList value="#{autoCompleteView.selectedCountries}" var="t">
+                            <h:outputText value="#{t}"/>
+                        </p:dataList>
 
-                    <h:outputText value="Pojo:" />
-                    <h:outputText value="#{autoCompleteView.theme1}" />
+                        <h:outputText value="Itemtip:"/>
+                        <h:outputText value="#{autoCompleteView.country3}"/>
 
-                    <h:outputText value="Pojo (via REST):" />
-                    <h:outputText value="#{autoCompleteView.theme5}" />
-
-                    <h:outputText value="Custom Content:" />
-                    <h:outputText value="#{autoCompleteView.theme2}" />
-
-                    <h:outputText value="Multiple:" />
-                    <p:dataList value="#{autoCompleteView.selectedThemes}" var="t">
-                        <h:outputText value="#{t}" />
-                    </p:dataList>
-
-                    <h:outputText value="Itemtip:" />
-                    <h:outputText value="#{autoCompleteView.theme3}" />
-                </p:panelGrid>
-            </p:dialog>
-        </h:form>
-
+                        <h:outputText value="Group:"/>
+                        <h:outputText value="#{autoCompleteView.country4}"/>
+                    </p:panelGrid>
+                </p:dialog>
+            </h:form>
+        </div>
     </ui:define>
 
     <ui:define name="more-source-tabs">
-        <p:tab title="/org/primefaces/showcase/convert/ThemeConverter.java" />
+        <p:tab title="/org/primefaces/showcase/convert/CountryConverter.java"/>
     </ui:define>
 </ui:composition>

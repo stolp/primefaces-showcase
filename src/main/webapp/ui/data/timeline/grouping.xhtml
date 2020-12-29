@@ -38,49 +38,55 @@
         Grouping events can be useful for example when showing availability of multiple people, rooms, or other resources next to each other.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/timeline" />
-    <ui:param name="widgetLink" value="timeline" />
+    <ui:param name="documentationLink" value="/components/timeline"/>
+    <ui:param name="widgetLink" value="timeline"/>
 
     <ui:define name="implementation">
 
         <h:form id="form">
             <p:growl id="growl" showSummary="true" showDetail="false">
-                <p:autoUpdate />
+                <p:autoUpdate/>
             </p:growl>
+            <div class="card">
+                <h5>Timeline Grouping</h5>
+                <p:timeline id="timeline" value="#{groupingTimelineView.model}" var="order" varGroup="truck"
+                            editable="true" eventMargin="0" eventMarginAxis="0" stackEvents="false"
+                            orientationAxis="top" widgetVar="timelineWdgt">
+                    <p:ajax event="changed" update="@none" listener="#{groupingTimelineView.onChange}"/>
+                    <p:ajax event="delete" update="@none" listener="#{groupingTimelineView.onDelete}"/>
+                    <p:ajax event="add" update="@none" onstart="PF('timelineWdgt').cancelAdd()"/>
 
-            <p:timeline id="timeline" value="#{groupingTimelineView.model}" var="order" varGroup="truck"
-                        editable="true" eventMargin="0" eventMarginAxis="0" stackEvents="false"
-                        orientationAxis="top" widgetVar="timelineWdgt">
-                <p:ajax event="changed" update="@none" listener="#{groupingTimelineView.onChange}"/>
-                <p:ajax event="delete" update="@none" listener="#{groupingTimelineView.onDelete}"/>
-                <p:ajax event="add" update="@none" onstart="PF('timelineWdgt').cancelAdd()"/>
+                    <f:facet name="group">
+                        <h:graphicImage library="demo" name="images/timeline/truck.png" style="vertical-align:middle;"
+                                        alt="Truck"/>
+                        <h:outputText value="Truck #{truck.code}" style="font-weight:bold;"/>
+                    </f:facet>
 
-                <f:facet name="group">
-                    <h:graphicImage library="demo" name="images/timeline/truck.png" style="vertical-align:middle;" alt="Truck"/>
-                    <h:outputText value="Truck #{truck.code}" style="font-weight:bold;"/>
-                </f:facet>
+                    <h:graphicImage library="demo" name="#{order.imagePath}" rendered="#{not empty order.imagePath}"
+                                    style="display:inline; vertical-align:middle;" alt="Order"/>
+                    <h:outputText value="Order #{order.number}"/>
+                </p:timeline>
+            </div>
 
-                <h:graphicImage library="demo" name="#{order.imagePath}" rendered="#{not empty order.imagePath}"
-                                style="display:inline; vertical-align:middle;" alt="Order"/>
-                <h:outputText value="Order #{order.number}"/>
-            </p:timeline>
+            <div class="card">
+                <h5>Timeline Grouping With Vertical Scroll </h5>
 
-            <h4>Timeline Grouping With Vertical Scroll </h4>
+                <p:timeline id="timelineVerticalScroll" value="#{groupingTimelineView.model2}" var="order"
+                            varGroup="truck"
+                            editable="true" eventMargin="0" eventMarginAxis="0" stackEvents="false"
+                            orientationAxis="top" orientationItem="top" maxHeight="400" horizontalScroll="false"
+                            verticalScroll="true" widgetVar="timelineWdgt2">
+                    <f:facet name="group">
+                        <h:graphicImage library="demo" name="images/timeline/truck.png" style="vertical-align:middle;"
+                                        alt="Truck"/>
+                        <h:outputText value="Truck #{truck.code}" style="font-weight:bold;"/>
+                    </f:facet>
 
-            <p:timeline id="timelineVerticalScroll" value="#{groupingTimelineView.model2}" var="order" varGroup="truck"
-                        editable="true" eventMargin="0" eventMarginAxis="0" stackEvents="false"
-                        orientationAxis="top" orientationItem="top" maxHeight="400" horizontalScroll="false"
-                        verticalScroll="true" widgetVar="timelineWdgt2">
-                <f:facet name="group">
-                    <h:graphicImage library="demo" name="images/timeline/truck.png" style="vertical-align:middle;" alt="Truck"/>
-                    <h:outputText value="Truck #{truck.code}" style="font-weight:bold;"/>
-                </f:facet>
-
-                <h:graphicImage library="demo" name="#{order.imagePath}" rendered="#{not empty order.imagePath}"
-                                style="display:inline; vertical-align:middle;" alt="Order"/>
-                <h:outputText value="Order #{order.number}"/>
-            </p:timeline>
-
+                    <h:graphicImage library="demo" name="#{order.imagePath}" rendered="#{not empty order.imagePath}"
+                                    style="display:inline; vertical-align:middle;" alt="Order"/>
+                    <h:outputText value="Order #{order.number}"/>
+                </p:timeline>
+            </div>
             <!-- Dialog with overlapped timeline events -->
             <p:dialog id="overlapEventsDlg" header="Overlapped Orders" widgetVar="overlapEventsWdgt"
                       showEffect="clip" hideEffect="clip">
@@ -113,7 +119,7 @@
     </ui:define>
 
     <ui:define name="more-source-tabs">
-        <p:tab title="/org/primefaces/showcase/convert/OrderConverter.java" />
+        <p:tab title="/org/primefaces/showcase/convert/OrderConverter.java"/>
     </ui:define>
 
 </ui:composition>

@@ -24,109 +24,111 @@
         If a style or styleClass contains the word "right" the cell will be right aligned in the Excel/PDF output.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/dataexporter" />
-    <ui:param name="widgetLink" value="dataexporter" />
+    <ui:param name="documentationLink" value="/components/dataexporter"/>
+    <ui:param name="widgetLink" value="dataexporter"/>
 
     <ui:define name="implementation">
+        <div class="card">
+            <h:form>
+                <p:dataTable id="tbl" var="product" value="#{dataExporterView.products}"
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                             paginator="true" rows="10" style="margin-bottom:20px">
 
-        <h:form>
-            <p:dataTable id="tbl" var="car" value="#{dataExporterView.cars}" 
-                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
-                         paginator="true" rows="10" style="margin-bottom:20px">
+                    <f:facet name="{Exporters}">
+                        <div style="float:right;padding-top: 5px;">
+                            <h:commandLink>
+                                <p:graphicImage name="/demo/images/excel.png" width="24"/>
+                                <p:dataExporter type="xls" target="tbl" fileName="products"/>
+                            </h:commandLink>
 
-                <f:facet name="{Exporters}">
-                    <div style="float:right;padding-top: 5px;">
-                        <h:commandLink>
-                            <p:graphicImage name="/demo/images/excel.png" width="24"/>
-                            <p:dataExporter type="xls" target="tbl" fileName="cars" />
-                        </h:commandLink>
-                        
-                        <h:commandLink>
-                            <p:graphicImage name="/demo/images/xlsx.png" width="24"/>
-                            <p:dataExporter type="xlsxstream" target="tbl" fileName="cars" />
-                        </h:commandLink>
+                            <h:commandLink>
+                                <p:graphicImage name="/demo/images/xlsx.png" width="24"/>
+                                <p:dataExporter type="xlsxstream" target="tbl" fileName="products"/>
+                            </h:commandLink>
 
-                        <h:commandLink>
-                            <p:graphicImage name="/demo/images/pdf.png" width="24"/>
-                            <p:dataExporter type="pdf" target="tbl" fileName="cars"/>
-                        </h:commandLink>
+                            <h:commandLink>
+                                <p:graphicImage name="/demo/images/pdf.png" width="24"/>
+                                <p:dataExporter type="pdf" target="tbl" fileName="products"/>
+                            </h:commandLink>
 
-                        <h:commandLink>
-                            <p:graphicImage name="/demo/images/csv.png" width="24"/>
-                            <p:dataExporter type="csv" target="tbl" fileName="cars" />
-                        </h:commandLink>
+                            <h:commandLink>
+                                <p:graphicImage name="/demo/images/csv.png" width="24"/>
+                                <p:dataExporter type="csv" target="tbl" fileName="products"/>
+                            </h:commandLink>
 
-                        <h:commandLink>
-                            <p:graphicImage name="/demo/images/xml.png" width="24"/>
-                            <p:dataExporter type="xml" target="tbl" fileName="cars" />
-                        </h:commandLink>
-                        
-                        <h:commandLink>
-                            <p:graphicImage name="/demo/images/keyboardpencil.png" width="24"/>
-                            <p:dataExporter type="text" target="tbl" fileName="cars" exporter="#{dataExporterView.textExporter}"/>
-                        </h:commandLink>                        
-                    </div>
-                </f:facet>
+                            <h:commandLink>
+                                <p:graphicImage name="/demo/images/xml.png" width="24"/>
+                                <p:dataExporter type="xml" target="tbl" fileName="products"/>
+                            </h:commandLink>
 
-                <p:column>
-                    <f:facet name="header">
-                        <h:outputText value="Id" />
+                            <h:commandLink>
+                                <p:graphicImage name="/demo/images/keyboardpencil.png" width="24"/>
+                                <p:dataExporter type="text" target="tbl" fileName="products"
+                                                exporter="#{dataExporterView.textExporter}"/>
+                            </h:commandLink>
+                        </div>
                     </f:facet>
-                    <h:outputText value="#{car.id}" />
-                </p:column>
 
-                <p:column style="text-align:right">
-                    <f:facet name="header">
-                        <h:outputText value="Year"/>
-                    </f:facet>
-                    <h:outputText value="#{car.year}" />
-                </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Code"/>
+                        </f:facet>
+                        <h:outputText value="#{product.code}"/>
+                    </p:column>
 
-                <p:column styleClass="column-center">
-                    <f:facet name="header">
-                        <h:outputText value="Brand" />
-                    </f:facet>
-                    <h:outputText value="#{car.brand}" />
-                </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Name"/>
+                        </f:facet>
+                        <h:outputText value="#{product.name}"/>
+                    </p:column>
 
-                <p:column>
-                    <f:facet name="header">
-                        <h:outputText value="Color" />
-                    </f:facet>
-                    <h:outputText value="#{car.color}" />
-                </p:column>
-            </p:dataTable>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Category"/>
+                        </f:facet>
+                        <h:outputText value="#{product.category}"/>
+                    </p:column>
 
-            <h3>Ajax-Export, pageOnly="true"</h3>
-            <p:commandButton value="XLS">
-                <p:dataExporter type="xls" target="tbl" fileName="cars" pageOnly="true"/>
-            </p:commandButton>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Quantity"/>
+                        </f:facet>
+                        <h:outputText value="#{product.quantity}"/>
+                    </p:column>
+                </p:dataTable>
 
-            <p:commandButton value="XLXS">
-                <p:dataExporter type="xlsxstream" target="tbl" fileName="cars" pageOnly="true"/>
-            </p:commandButton>
+                <h3>Ajax-Export, pageOnly="true"</h3>
+                <p:commandButton value="XLS">
+                    <p:dataExporter type="xls" target="tbl" fileName="products" pageOnly="true"/>
+                </p:commandButton>
 
-            <p:commandButton value="PDF" ajax="false">
-                <p:dataExporter type="pdf" target="tbl" fileName="cars" pageOnly="true" />
-            </p:commandButton>
+                <p:commandButton value="XLXS">
+                    <p:dataExporter type="xlsxstream" target="tbl" fileName="products" pageOnly="true"/>
+                </p:commandButton>
 
-            <p:commandButton value="CSV">
-                <p:dataExporter type="csv" target="tbl" fileName="cars" pageOnly="true" />
-            </p:commandButton>
+                <p:commandButton value="PDF" ajax="false">
+                    <p:dataExporter type="pdf" target="tbl" fileName="products" pageOnly="true"/>
+                </p:commandButton>
 
-            <p:commandButton value="XML">
-                <p:dataExporter type="xml" target="tbl" fileName="cars" pageOnly="true" />
-            </p:commandButton>
+                <p:commandButton value="CSV">
+                    <p:dataExporter type="csv" target="tbl" fileName="products" pageOnly="true"/>
+                </p:commandButton>
 
-            <p:commandButton value="TXT">
-                <p:dataExporter type="txt" target="tbl" fileName="cars" pageOnly="true" exporter="#{dataExporterView.textExporter}" />
-            </p:commandButton>
-        </h:form>
+                <p:commandButton value="XML">
+                    <p:dataExporter type="xml" target="tbl" fileName="products" pageOnly="true"/>
+                </p:commandButton>
 
+                <p:commandButton value="TXT">
+                    <p:dataExporter type="txt" target="tbl" fileName="products" pageOnly="true"
+                                    exporter="#{dataExporterView.textExporter}"/>
+                </p:commandButton>
+            </h:form>
+        </div>
     </ui:define>
 
     <ui:define name="more-source-tabs">
-        <p:tab title="/org/primefaces/showcase/view/data/dataexporter/TextExporter.java" />
+        <p:tab title="/org/primefaces/showcase/view/data/dataexporter/TextExporter.java"/>
     </ui:define>
 
 </ui:composition>

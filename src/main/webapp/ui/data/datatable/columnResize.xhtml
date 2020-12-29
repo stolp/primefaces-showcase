@@ -13,101 +13,100 @@
         Columns can be resized in two ways, with a helper or live.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/components/datatable" />
-    <ui:param name="widgetLink" value="datatable" />
+    <ui:param name="documentationLink" value="/components/datatable"/>
+    <ui:param name="widgetLink" value="datatable"/>
 
     <ui:define name="implementation">
-        
+
         <h:form id="form">
-            <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
-            
-            <h3 style="margin-top:0">Basic Resize</h3>
-            <p:dataTable id="cars1" var="car" value="#{dtResizableColumnsView.cars1}" resizableColumns="true" style="margin-bottom:20px">
-                <f:facet name="header">
-                    Basic Resize
-                </f:facet>
+            <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
 
-                <p:column field="id" headerText="Id" />
+            <div class="card">
+                <h5 style="margin-top:0">Basic Resize</h5>
+                <p:dataTable id="products1" var="product" value="#{dtResizableColumnsView.products1}"
+                             resizableColumns="true" style="margin-bottom:20px">
 
-                <p:column field="year" headerText="Year" />
+                    <p:column field="code" headerText="Code"/>
 
-                <p:column field="brand" headerText="Brand" />
+                    <p:column field="name" headerText="Name"/>
 
-                <p:column field="color" headerText="Color" />
+                    <p:column field="category" headerText="Category"/>
 
-            </p:dataTable>
-            
-            <h3>Live Resize with Callback</h3>
-            <p:dataTable id="cars2" var="car" value="#{dtResizableColumnsView.cars2}" resizableColumns="true" liveResize="true" style="margin-bottom:20px">
-                <p:ajax event="colResize" update=":form:msgs" listener="#{dtResizableColumnsView.onResize}" />
-                <f:facet name="header">
-                    
-                </f:facet>
+                    <p:column field="quantity" headerText="Quantity"/>
 
-                <p:column field="id" headerText="Id" />
+                </p:dataTable>
+            </div>
 
-                <p:column field="year" headerText="Year" />
+            <div class="card">
+                <h5>Live Resize with Callback</h5>
+                <p:dataTable id="products2" var="product" value="#{dtResizableColumnsView.products2}"
+                             resizableColumns="true" liveResize="true" style="margin-bottom:20px">
+                    <p:ajax event="colResize" update=":form:msgs" listener="#{dtResizableColumnsView.onResize}"/>
 
-                <p:column field="brand" headerText="Brand" />
+                    <p:column field="code" headerText="Code"/>
 
-                <p:column field="color" headerText="Color" />
+                    <p:column field="name" headerText="Name"/>
 
-            </p:dataTable>
-            
-            <h3>Expand Mode with Grouping</h3>
-            <p:dataTable var="sale" value="#{dtGroupView.sales}" resizableColumns="true" resizeMode="expand">
-                <f:facet name="header">
-                    
-                </f:facet>
+                    <p:column field="category" headerText="Category"/>
 
-                <p:columnGroup type="header">
-                    <p:row>
-                        <p:column rowspan="3" headerText="Manufacturer" />
-                        <p:column colspan="4" headerText="Sale Rate" />
-                    </p:row>
-                    <p:row>
-                        <p:column colspan="2" headerText="Sales" />
-                        <p:column colspan="2" headerText="Profit" />
-                    </p:row>
-                    <p:row>
-                        <p:column headerText="Last Year" />
-                        <p:column headerText="This Year" />
-                        <p:column headerText="Last Year" />
-                        <p:column headerText="This Year" />
-                    </p:row>
-                </p:columnGroup>
+                    <p:column field="quantity" headerText="Quantity"/>
 
-                <p:column>
-                    <h:outputText value="#{sale.manufacturer}" />
-                </p:column>
-                <p:column>
-                    <h:outputText value="#{sale.lastYearProfit}%" />
-                </p:column>
-                <p:column>
-                    <h:outputText value="#{sale.thisYearProfit}%" />
-                </p:column>
-                <p:column>
-                    <h:outputText value="#{sale.lastYearSale}">
-                        <f:convertNumber type="currency" currencySymbol="$" />
-                    </h:outputText>
-                </p:column>
-                <p:column>
-                    <h:outputText value="#{sale.thisYearSale}">
-                        <f:convertNumber type="currency" currencySymbol="$" />
-                    </h:outputText>
-                </p:column>
+                </p:dataTable>
+            </div>
 
-                <p:columnGroup type="footer">
-                    <p:row>
-                        <p:column colspan="3" style="text-align:right" footerText="Totals:" />
-                        <p:column footerText="\$#{dtGroupView.lastYearTotal}" />
+            <div class="card">
+                <h5>Expand Mode with Grouping</h5>
+                <p:dataTable var="sale" value="#{dtGroupView.sales}" resizableColumns="true" resizeMode="expand">
 
-                        <p:column footerText="\$#{dtGroupView.thisYearTotal}" />
-                    </p:row>
-                </p:columnGroup>
-            </p:dataTable>
+                    <p:columnGroup type="header">
+                        <p:row>
+                            <p:column rowspan="3" headerText="Product"/>
+                            <p:column colspan="4" headerText="Sale Rate"/>
+                        </p:row>
+                        <p:row>
+                            <p:column colspan="2" headerText="Sales"/>
+                            <p:column colspan="2" headerText="Profit"/>
+                        </p:row>
+                        <p:row>
+                            <p:column headerText="Last Year"/>
+                            <p:column headerText="This Year"/>
+                            <p:column headerText="Last Year"/>
+                            <p:column headerText="This Year"/>
+                        </p:row>
+                    </p:columnGroup>
+
+                    <p:column>
+                        <h:outputText value="#{sale.manufacturer}"/>
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{sale.lastYearProfit}%"/>
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{sale.thisYearProfit}%"/>
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{sale.lastYearSale}">
+                            <f:convertNumber type="currency" currencySymbol="$"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{sale.thisYearSale}">
+                            <f:convertNumber type="currency" currencySymbol="$"/>
+                        </h:outputText>
+                    </p:column>
+
+                    <p:columnGroup type="footer">
+                        <p:row>
+                            <p:column colspan="3" style="text-align:right" footerText="Totals:"/>
+                            <p:column footerText="$#{dtGroupView.lastYearTotal}"/>
+
+                            <p:column footerText="$#{dtGroupView.thisYearTotal}"/>
+                        </p:row>
+                    </p:columnGroup>
+                </p:dataTable>
+            </div>
         </h:form>
-        
+
     </ui:define>
 
 </ui:composition>

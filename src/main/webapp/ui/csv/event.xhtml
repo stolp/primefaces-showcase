@@ -13,31 +13,33 @@
         Validations can be triggered instantly without needing a button/link click using p:clientValidator.
     </ui:define>
 
-    <ui:param name="documentationLink" value="/core/clientsidevalidation?id=events" />
+    <ui:param name="documentationLink" value="/core/clientsidevalidation?id=events"/>
 
     <ui:define name="implementation">
-        <h:form>
-            <p:panel header="Validate">
-                <h:panelGrid columns="4" cellpadding="5">
-                    <h:outputLabel for="text" value="Text: (Change)" />
-                    <p:inputText id="text" value="#{validationView.text}" required="true">
-                        <f:validateLength minimum="2" maximum="5" />
-                        <p:clientValidator />
-                    </p:inputText>
-                    <p:message for="text" display="icon" />
-                    <h:outputText value="#{validationView.text}" />
+        <div class="card">
+            <h:form>
+                <p:panel header="Validate">
+                    <h:panelGrid columns="4" cellpadding="5">
+                        <h:outputLabel for="text" value="Text: (Change)"/>
+                        <p:inputText id="text" value="#{validationView.text}" required="true">
+                            <f:validateLength minimum="2" maximum="5"/>
+                            <p:clientValidator/>
+                        </p:inputText>
+                        <p:message for="text" display="icon"/>
+                        <h:outputText value="#{validationView.text}"/>
 
-                    <h:outputLabel for="integer" value="Integer: (Keyup)" />
-                    <p:inputText id="integer" value="#{validationView.integer}">
-                        <p:clientValidator event="keyup"/>
-                    </p:inputText>
-                    <p:message for="integer" display="icon" />
-                    <h:outputText value="#{validationView.integer}" />
-                </h:panelGrid>
+                        <h:outputLabel for="integer" value="Integer: (Keyup)"/>
+                        <p:inputText id="integer" value="#{validationView.integer}">
+                            <p:clientValidator event="keyup"/>
+                        </p:inputText>
+                        <p:message for="integer" display="icon"/>
+                        <h:outputText value="#{validationView.integer}"/>
+                    </h:panelGrid>
 
-                <p:commandButton value="Save" ajax="false" icon="pi pi-check" validateClient="true" />
-            </p:panel>
-        </h:form>
+                    <p:commandButton value="Save" ajax="false" icon="pi pi-check" validateClient="true"/>
+                </p:panel>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>
