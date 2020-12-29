@@ -40,7 +40,9 @@ App = {
             
             if (link.hasClass('submenu-link')) {
                 if (link.hasClass('submenu-link-active')) {
-                    $this.activeSubmenus.filter(function(id) {return id !== link.attr('id')});
+                    $this.activeSubmenus = $.grep($this.activeSubmenus, function (val) {
+                        return val !== link.attr('id');
+                    });
                     link.removeClass('submenu-link-active').next('.submenu').slideUp('fast');
                 }
                 else {
