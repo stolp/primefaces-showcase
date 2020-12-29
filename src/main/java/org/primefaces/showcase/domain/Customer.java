@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Customer implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 
     public int id;
     public String name;

@@ -19,7 +19,9 @@ import java.io.Serializable;
 
 public class Book implements Serializable {
     
-    private String title;
+	private static final long serialVersionUID = 1L;
+	
+	private String title;
 	private String author;
 	private String publisher;
 	private Integer pages;

@@ -46,41 +46,41 @@
                 <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
 
                 <h:panelGrid columns="2" cellpadding="5">
-                    <p:outputLabel value="Simple:" for="acSimple"/>
+                    <p:outputLabel value="Simple:" for="@next"/>
                     <p:autoComplete id="acSimple" value="#{autoCompleteView.txt1}"
                                     completeMethod="#{autoCompleteView.completeText}"/>
 
-                    <p:outputLabel value="Min Length (3):" for="acMinLength"/>
+                    <p:outputLabel value="Min Length (3):" for="@next"/>
                     <p:autoComplete id="acMinLength" minQueryLength="3" value="#{autoCompleteView.txt2}"
                                     completeMethod="#{autoCompleteView.completeText}" effect="fade"/>
 
-                    <p:outputLabel value="Delay(1000):" for="acDelay"/>
+                    <p:outputLabel value="Delay(1000):" for="@next"/>
                     <p:autoComplete id="acDelay" queryDelay="1000" value="#{autoCompleteView.txt3}"
                                     completeMethod="#{autoCompleteView.completeText}" effect="blind"/>
 
-                    <p:outputLabel value="Max Results(5):" for="acMaxResults"/>
+                    <p:outputLabel value="Max Results(5):" for="@next"/>
                     <p:autoComplete id="acMaxResults" maxResults="5" value="#{autoCompleteView.txt4}"
                                     completeMethod="#{autoCompleteView.completeText}"/>
 
-                    <p:outputLabel value="Force Selection:" for="acForce"/>
+                    <p:outputLabel value="Force Selection:" for="@next"/>
                     <p:autoComplete id="acForce" forceSelection="true" value="#{autoCompleteView.txt5}"
                                     completeMethod="#{autoCompleteView.completeText}"/>
 
-                    <p:outputLabel value="DropDown:" for="dd"/>
+                    <p:outputLabel value="DropDown:" for="@next"/>
                     <p:autoComplete id="dd" dropdown="true" value="#{autoCompleteView.txt6}"
                                     completeMethod="#{autoCompleteView.completeText}"/>
 
-                    <p:outputLabel value="Cache:" for="cache"/>
+                    <p:outputLabel value="Cache:" for="@next"/>
                     <p:autoComplete id="cache" cache="true" cacheTimeout="30000" value="#{autoCompleteView.txt7}"
                                     completeMethod="#{autoCompleteView.completeText}"/>
 
-                    <p:outputLabel value="Select Event:" for="event"/>
+                    <p:outputLabel value="Select Event:" for="@next"/>
                     <p:autoComplete id="event" value="#{autoCompleteView.txt8}"
                                     completeMethod="#{autoCompleteView.completeText}">
                         <p:ajax event="itemSelect" listener="#{autoCompleteView.onItemSelect}" update="msgs"/>
                     </p:autoComplete>
 
-                    <p:outputLabel value="Empty message:" for="emptyMessage"/>
+                    <p:outputLabel value="Empty message:" for="@next"/>
                     <p:autoComplete id="emptyMessage" value="#{autoCompleteView.txt9}"
                                     completeMethod="#{autoCompleteView.noResults}"
                                     emptyMessage="No results">
@@ -88,15 +88,15 @@
                                 update="msgs"/>
                     </p:autoComplete>
 
-                    <p:outputLabel value="Pojo:" for="countryPojo"/>
-                    <p:autoComplete id="countryPojo" value="#{autoCompleteView.country1}"
+                    <p:outputLabel value="Pojo:" for="@next"/>
+                    <p:autoComplete id="pojo" value="#{autoCompleteView.country1}"
                                     completeMethod="#{autoCompleteView.completeCountry}"
                                     var="country" itemLabel="#{country.name}" itemValue="#{country}"
                                     converter="#{countryConverter}" forceSelection="true"/>
 
-                    <p:outputLabel value="Pojo (via REST):" for="countryPojoRest"/>
+                    <p:outputLabel value="Pojo (via REST):" for="pojoRest"/>
                     <p:outputPanel>
-                        <p:autoComplete id="countryPojoRest" widgetVar="countryPojoRest" value="#{autoCompleteView.country5}"
+                        <p:autoComplete id="pojoRest" widgetVar="countryPojoRest" value="#{autoCompleteView.country5}"
                                         var="country" itemLabel="#{country.displayName}" itemValue="#{country}"
                                         converter="#{countryConverter}"
                                         completeEndpoint="#{request.contextPath}/rest/country/autocomplete"
@@ -105,7 +105,7 @@
                         <p:commandButton type="button" value="X" title="clear" onclick="PF('countryPojoRest').clear();"/>
                     </p:outputPanel>
 
-                    <p:outputLabel value="Custom Content:" for="countryCustom"/>
+                    <p:outputLabel value="Custom Content:" for="@next"/>
                     <p:autoComplete id="countryCustom" value="#{autoCompleteView.country2}"
                                     completeMethod="#{autoCompleteView.completeCountry}"
                                     var="country" itemLabel="#{country.name}" itemValue="#{country}"
@@ -116,7 +116,7 @@
                         </p:column>
                     </p:autoComplete>
 
-                    <p:outputLabel value="Multiple:" for="countries"/>
+                    <p:outputLabel value="Multiple:" for="@next"/>
                     <p:autoComplete id="countries" multiple="true" value="#{autoCompleteView.selectedCountries}"
                                     completeMethod="#{autoCompleteView.completeCountry}"
                                     var="country" itemLabel="#{country.name}" itemValue="#{country}"
@@ -127,7 +127,7 @@
                         </p:column>
                     </p:autoComplete>
 
-                    <p:outputLabel value="Itemtip:" for="itemTip"/>
+                    <p:outputLabel value="Itemtip:" for="@next"/>
                     <p:autoComplete id="itemTip" value="#{autoCompleteView.country3}"
                                     completeMethod="#{autoCompleteView.completeCountry}"
                                     var="country" itemLabel="#{country.name}" itemValue="#{country}"
@@ -147,7 +147,7 @@
                         </f:facet>
                     </p:autoComplete>
 
-                    <p:outputLabel value="Group:" for="group"/>
+                    <p:outputLabel value="Group:" for="@next"/>
                     <p:autoComplete id="group" value="#{autoCompleteView.country4}"
                                     completeMethod="#{autoCompleteView.completeCountry}"
                                     var="country" itemLabel="#{country.name}" itemValue="#{country}"

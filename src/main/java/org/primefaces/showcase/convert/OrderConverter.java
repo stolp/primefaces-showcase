@@ -22,14 +22,17 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.inject.Named;
 
 import org.primefaces.model.timeline.TimelineEvent;
 import org.primefaces.showcase.domain.Order;
 
+@Named
 @FacesConverter("org.primefaces.showcase.converter.OrderConverter")
 public class OrderConverter implements Converter<TimelineEvent<Order>>, Serializable {
 
-    private List<TimelineEvent<Order>> events;
+	private static final long serialVersionUID = 1L;
+	private List<TimelineEvent<Order>> events;
 
     public OrderConverter() {
     }

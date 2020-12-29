@@ -15,10 +15,6 @@
  */
 package org.primefaces.showcase.convert;
 
-import org.primefaces.showcase.domain.Theme;
-import org.primefaces.showcase.service.ThemeService;
-
-import javax.enterprise.inject.spi.CDI;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -28,15 +24,18 @@ import javax.faces.convert.FacesConverter;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.showcase.domain.Theme;
+import org.primefaces.showcase.service.ThemeService;
+
 @Named
 @FacesConverter(value = "themeConverter", managed = true)
-public class ThemeConverter implements Converter {
+public class ThemeConverter implements Converter<Theme> {
 
     @Inject private ThemeService themeService;
-    
-    @Override
-    public Object getAsObject(FacesContext fc, UIComponent uic, String value) {
-        if(value != null && value.trim().length() > 0) {
+
+	@Override
+	public Theme getAsObject(FacesContext context, UIComponent component, String value) {
+		if(value != null && value.trim().length() > 0) {
             try {
                 return themeService.getThemes().get(Integer.parseInt(value));
             } catch(NumberFormatException e) {
@@ -46,15 +45,15 @@ public class ThemeConverter implements Converter {
         else {
             return null;
         }
-    }
+	}
 
-    @Override
-    public String getAsString(FacesContext fc, UIComponent uic, Object object) {
-        if(object != null) {
-            return String.valueOf(((Theme) object).getId());
+	@Override
+	public String getAsString(FacesContext context, UIComponent component, Theme value) {
+		if(value != null) {
+            return String.valueOf(value.getId());
         }
         else {
             return null;
         }
-    }   
+	}   
 }

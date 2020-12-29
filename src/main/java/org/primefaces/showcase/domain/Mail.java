@@ -19,6 +19,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Mail implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
     
     public String from;
     public String subject;

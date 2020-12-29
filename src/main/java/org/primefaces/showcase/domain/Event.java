@@ -19,6 +19,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public class Event implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 
 	private String name;
 	private LocalDateTime start;

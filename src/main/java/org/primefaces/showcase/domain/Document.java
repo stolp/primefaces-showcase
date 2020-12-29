@@ -18,6 +18,8 @@ package org.primefaces.showcase.domain;
 import java.io.Serializable;
 
 public class Document implements Serializable, Comparable<Document> {
+	
+	private static final long serialVersionUID = 1L;
 
 	private String name;
 	

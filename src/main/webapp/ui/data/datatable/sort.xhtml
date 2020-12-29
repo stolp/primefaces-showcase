@@ -76,11 +76,11 @@
                     </p:column>
 
                     <p:column headerText="Category" sortBy="#{product.category}">
-                        <h:outputText value="#{product.category}"/>
+                        <h:outputText value="#{product.category}" sortPriority="2"/>
                     </p:column>
 
                     <p:column headerText="Quantity" sortBy="#{product.quantity}">
-                        <h:outputText value="#{product.quantity}"/>
+                        <h:outputText value="#{product.quantity}" sortPriority="1"/>
                     </p:column>
 
                     <p:column headerText="Price" sortBy="#{product.price}">

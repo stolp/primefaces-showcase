@@ -18,6 +18,8 @@ package org.primefaces.showcase.domain;
 import java.io.Serializable;
 
 public class Sale implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 
     private String manufacturer;
 

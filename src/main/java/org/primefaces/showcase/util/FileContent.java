@@ -12,7 +12,9 @@ import java.util.List;
  */
 public class FileContent implements Serializable {
 
-    private final String title;
+	private static final long serialVersionUID = 1L;
+
+	private final String title;
 
     private final String value;
 
