@@ -22,7 +22,7 @@
             <h5 class="first">Header Row</h5>
             <h:form>
                 <p:dataTable var="customer" value="#{dtRowGroupView.customers}" sortBy="#{customer.representative.name}">
-                    <p:headerRow groupBy="#{customer.representative.name}" 
+                    <p:headerRow field="representative.name"
                                  expandable="true" 
                                  expanded="#{customer.representative.name != 'Stephen Shaw'}">
                         <p:column colspan="6">
@@ -32,25 +32,24 @@
                                           value="#{customer.representative.name}"/>
                         </p:column>
                     </p:headerRow>
-                    <p:column headerText="Representative">
-                        <h:outputText value="#{customer.representative.name}"/>
-                    </p:column>
-                    <p:column headerText="Name">
-                        <h:outputText value="#{customer.name}"/>
-                    </p:column>
-                    <p:column headerText="Country">
+
+                    <p:column headerText="Representative" field="representative.name" />
+
+                    <p:column headerText="Name" field="name" />
+
+                    <p:column headerText="Country" field="name">
                         <span class="flag flag-#{customer.country.code}" style="width: 30px; height: 20px"/>
                         <h:outputText style="vertical-align: middle; margin-left: .5rem" value="#{customer.country}"/>
                     </p:column>
-                    <p:column headerText="Company">
-                        <h:outputText value="#{customer.company}"/>
-                    </p:column>
-                    <p:column headerText="Status">
+
+                    <p:column headerText="Company" field="company" />
+
+                    <p:column headerText="Status" field="status">
                         <span class="customer-badge status-#{customer.status.name().toLowerCase()}">#{customer.status}</span>
                     </p:column>
-                    <p:column headerText="Date">
-                        <h:outputText value="#{customer.date}"/>
-                    </p:column>
+
+                    <p:column headerText="Date" field="date" />
+
                     <p:summaryRow>
                         <p:column colspan="5" style="text-align:right">
                             <h:outputText value="Total Customers:"/>
@@ -66,30 +65,28 @@
         <div class="card">
             <h5>Rowspan</h5>
             <h:form>
-                <p:dataTable var="customer" value="#{dtRowGroupView.customers}"
-                             sortBy="#{customer.representative.name}">
-                    <p:column headerText="Representative" groupRow="true">
+                <p:dataTable var="customer" value="#{dtRowGroupView.customers}">
+                    <p:column field="representative.name" headerText="Representative" groupRow="true">
                         <p:graphicImage name="images/avatar/#{customer.representative.image}" library="demo"
                                         width="32" style="vertical-align: middle"/>
                         <h:outputText style="vertical-align: middle; margin-left: .5rem"
                                       value="#{customer.representative.name}"/>
                     </p:column>
-                    <p:column headerText="Name">
-                        <h:outputText value="#{customer.name}"/>
-                    </p:column>
-                    <p:column headerText="Country">
+
+                    <p:column headerText="Name" field="name" />
+
+                    <p:column headerText="Country" field="country">
                         <span class="flag flag-#{customer.country.code}" style="width: 30px; height: 20px"/>
                         <h:outputText style="vertical-align: middle; margin-left: .5rem" value="#{customer.country}"/>
                     </p:column>
-                    <p:column headerText="Company">
-                        <h:outputText value="#{customer.company}"/>
-                    </p:column>
-                    <p:column headerText="Status">
+
+                    <p:column headerText="Company" field="company" />
+
+                    <p:column headerText="Status" field="status">
                         <span class="customer-badge status-#{customer.status.name().toLowerCase()}">#{customer.status}</span>
                     </p:column>
-                    <p:column headerText="Date">
-                        <h:outputText value="#{customer.date}"/>
-                    </p:column>
+
+                    <p:column headerText="Date" field="date" />
                 </p:dataTable>
             </h:form>
         </div>
