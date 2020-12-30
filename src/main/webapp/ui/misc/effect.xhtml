@@ -19,7 +19,7 @@
     <ui:define name="implementation">
         <div class="card">
             <h5 style="margin-top:0">Catalog</h5>
-            <h:panelGrid columns="4" cellpadding="5">
+            <p:panelGrid columns="4" cellpadding="5" layout="flex">
                 <p:panel id="blind" header="Blind">
                     <h:outputText value="click"/>
                     <p:effect type="blind" event="click">
@@ -85,7 +85,7 @@
                         <f:param name="to" value="{width: 200,height: 60}"/>
                     </p:effect>
                 </p:panel>
-            </h:panelGrid>
+            </p:panelGrid>
 
             <h5>Target</h5>
             <h:form>
