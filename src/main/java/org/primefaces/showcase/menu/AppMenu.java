@@ -350,7 +350,7 @@ public class AppMenu {
         List<MenuItem> panelMenuItems = new ArrayList<>();
         panelMenuItems.add(new MenuItem("Accordion", "/ui/panel/accordionPanel"));
         panelMenuItems.add(new MenuItem("Dashboard", "/ui/panel/dashboard"));
-        panelMenuItems.add(new MenuItem("Divider", "/ui/panel/divider"));
+        panelMenuItems.add(new MenuItem("Divider", "/ui/panel/divider", true));
         panelMenuItems.add(new MenuItem("Fieldset", "/ui/panel/fieldset"));
         panelMenuItems.add(new MenuItem("Grid CSS", "/ui/panel/grid"));
         panelMenuItems.add(new MenuItem("NotificationBar", "/ui/panel/notificationBar"));
@@ -359,6 +359,7 @@ public class AppMenu {
         panelMenuItems.add(new MenuItem("Panel", "/ui/panel/panel"));
         panelMenuItems.add(new MenuItem("PanelGrid", "/ui/panel/panelGrid"));
         panelMenuItems.add(new MenuItem("Ribbon", "/ui/panel/ribbon"));
+        panelMenuItems.add(new MenuItem("Splitter", "/ui/panel/splitter", true));
         panelMenuItems.add(new MenuItem("ScrollPanel", "/ui/panel/scrollPanel"));
         panelMenuItems.add(new MenuItem("TabView", "/ui/panel/tabView"));
         panelMenuItems.add(new MenuItem("Toolbar", "/ui/panel/toolbar"));
@@ -530,12 +531,12 @@ public class AppMenu {
 
         //MISC CATEGORY START
         List<MenuItem> miscMenuItems = new ArrayList<>();
-        miscMenuItems.add(new MenuItem("Avatar", "/ui/misc/avatar"));
-        miscMenuItems.add(new MenuItem("Badge", "/ui/misc/badge"));
-        miscMenuItems.add(new MenuItem("Chip", "/ui/misc/chip"));
-        miscMenuItems.add(new MenuItem("ScrollTop", "/ui/misc/scrollTop"));
-        miscMenuItems.add(new MenuItem("Skeleton", "/ui/misc/skeleton"));
-        miscMenuItems.add(new MenuItem("Tag", "/ui/misc/tag"));
+        miscMenuItems.add(new MenuItem("Avatar", "/ui/misc/avatar", true));
+        miscMenuItems.add(new MenuItem("Badge", "/ui/misc/badge", true));
+        miscMenuItems.add(new MenuItem("Chip", "/ui/misc/chip", true));
+        miscMenuItems.add(new MenuItem("ScrollTop", "/ui/misc/scrollTop", true));
+        miscMenuItems.add(new MenuItem("Skeleton", "/ui/misc/skeleton", true));
+        miscMenuItems.add(new MenuItem("Tag", "/ui/misc/tag", true));
         miscMenuItems.add(new MenuItem("Responsive", "/ui/misc/responsive"));
         miscMenuItems.add(new MenuItem("AutoUpdate", "/ui/misc/autoUpdate"));
         miscMenuItems.add(new MenuItem("ThemeSwitcher", "/ui/misc/themeSwitcher"));

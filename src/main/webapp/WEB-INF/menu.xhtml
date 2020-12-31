@@ -11,8 +11,12 @@
                 <div class="menu-category">#{menuCategory.label}</div>
                 <div class="menu-items">
                     <ui:repeat value="#{menuCategory.menuItems}" var="menuItem">
-                        <h:outputLink value="#{menuItem.url}" rendered="#{not menuItem.url.startsWith('/') and empty menuItem.menuItems}">#{menuItem.label}</h:outputLink>
-                        <h:link outcome="#{menuItem.url}" rendered="#{menuItem.url.startsWith('/') and empty menuItem.menuItems}">#{menuItem.label}</h:link>
+                        <h:outputLink value="#{menuItem.url}" rendered="#{not menuItem.url.startsWith('/') and empty menuItem.menuItems}">
+                            #{menuItem.label}
+                        </h:outputLink>
+                        <h:link outcome="#{menuItem.url}" rendered="#{menuItem.url.startsWith('/') and empty menuItem.menuItems}">
+                            #{menuItem.label}<p:tag value="New" styleClass="p-ml-2" rendered="#{menuItem.isNew()}"/>
+                        </h:link>
                         <p:outputPanel rendered="#{not empty menuItem.menuItems}">
                             <a id="sl_#{menuItem.label.toLowerCase()}" tabindex="0" class="submenu-link">
                                 #{menuItem.label}
@@ -20,7 +24,10 @@
                             <div class="submenu">
                                 <ul>
                                     <ui:repeat value="#{menuItem.menuItems}" var="nestedMenuItem">
-                                        <li><h:link outcome="#{nestedMenuItem.url}">#{nestedMenuItem.label}</h:link></li>
+                                        <li><h:link outcome="#{nestedMenuItem.url}">
+                                            #{nestedMenuItem.label}
+                                            <p:tag value="New" styleClass="p-ml-2" rendered="#{menuItem.isNew()}"/>
+                                        </h:link></li>
                                     </ui:repeat>
                                 </ul>
                             </div>
