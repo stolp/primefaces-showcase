@@ -205,32 +205,32 @@ public class AppMenu {
         //DataTable Nested MenuItem
         List<MenuItem> dataTableMenuItems = new ArrayList<>();
         dataTableMenuItems.add(new MenuItem("Basic", "/ui/data/datatable/basic"));
-        dataTableMenuItems.add(new MenuItem("Facets", "/ui/data/datatable/facets"));
-        dataTableMenuItems.add(new MenuItem("Paginator", "/ui/data/datatable/paginator"));
-        dataTableMenuItems.add(new MenuItem("Sort", "/ui/data/datatable/sort"));
-        dataTableMenuItems.add(new MenuItem("Filter", "/ui/data/datatable/filter"));
-        dataTableMenuItems.add(new MenuItem("Selection", "/ui/data/datatable/selection"));
+        dataTableMenuItems.add(new MenuItem("ColToggler", "/ui/data/datatable/columnToggler"));
+        dataTableMenuItems.add(new MenuItem("Columns", "/ui/data/datatable/columns"));
+        dataTableMenuItems.add(new MenuItem("ContextMenu", "/ui/data/datatable/contextMenu"));
         dataTableMenuItems.add(new MenuItem("Crud", "/ui/data/datatable/crud"));
+        dataTableMenuItems.add(new MenuItem("DisplayPriority", "/ui/data/datatable/displayPriority"));
+        dataTableMenuItems.add(new MenuItem("Edit", "/ui/data/datatable/edit"));
+        dataTableMenuItems.add(new MenuItem("Expansion", "/ui/data/datatable/expansion"));
+        dataTableMenuItems.add(new MenuItem("Facets", "/ui/data/datatable/facets"));
+        dataTableMenuItems.add(new MenuItem("Filter", "/ui/data/datatable/filter"));
         dataTableMenuItems.add(new MenuItem("Group", "/ui/data/datatable/group"));
+        dataTableMenuItems.add(new MenuItem("Lazy", "/ui/data/datatable/lazy"));
+        dataTableMenuItems.add(new MenuItem("MultiViewState", "/ui/data/datatable/multiViewState"));
+        dataTableMenuItems.add(new MenuItem("Paginator", "/ui/data/datatable/paginator"));
+        dataTableMenuItems.add(new MenuItem("Reorder", "/ui/data/datatable/reorder"));
+        dataTableMenuItems.add(new MenuItem("Resize", "/ui/data/datatable/columnResize"));
+        dataTableMenuItems.add(new MenuItem("Responsive", "/ui/data/datatable/responsive"));
+        dataTableMenuItems.add(new MenuItem("Row Add", "/ui/data/datatable/addRow"));
+        dataTableMenuItems.add(new MenuItem("Row Color", "/ui/data/datatable/rowColor"));
+        dataTableMenuItems.add(new MenuItem("Row Group", "/ui/data/datatable/rowGroup"));
+        dataTableMenuItems.add(new MenuItem("RTL", "/ui/data/datatable/rtl"));
+        dataTableMenuItems.add(new MenuItem("Scroll", "/ui/data/datatable/scroll"));
+        dataTableMenuItems.add(new MenuItem("Selection", "/ui/data/datatable/selection"));
+        dataTableMenuItems.add(new MenuItem("Sort", "/ui/data/datatable/sort"));
+        dataTableMenuItems.add(new MenuItem("Sticky", "/ui/data/datatable/sticky"));
         dataTableMenuItems.add(new MenuItem("SubTable", "/ui/data/datatable/subTable"));
         dataTableMenuItems.add(new MenuItem("SummaryRow", "/ui/data/datatable/summaryRow"));
-        dataTableMenuItems.add(new MenuItem("Expansion", "/ui/data/datatable/expansion"));
-        dataTableMenuItems.add(new MenuItem("Columns", "/ui/data/datatable/columns"));
-        dataTableMenuItems.add(new MenuItem("Edit", "/ui/data/datatable/edit"));
-        dataTableMenuItems.add(new MenuItem("Add Row", "/ui/data/datatable/addRow"));
-        dataTableMenuItems.add(new MenuItem("Scroll", "/ui/data/datatable/scroll"));
-        dataTableMenuItems.add(new MenuItem("RowColor", "/ui/data/datatable/rowColor"));
-        dataTableMenuItems.add(new MenuItem("Lazy", "/ui/data/datatable/lazy"));
-        dataTableMenuItems.add(new MenuItem("Resize", "/ui/data/datatable/columnResize"));
-        dataTableMenuItems.add(new MenuItem("Reorder", "/ui/data/datatable/reorder"));
-        dataTableMenuItems.add(new MenuItem("ColToggler", "/ui/data/datatable/columnToggler"));
-        dataTableMenuItems.add(new MenuItem("ContextMenu", "/ui/data/datatable/contextMenu"));
-        dataTableMenuItems.add(new MenuItem("Sticky", "/ui/data/datatable/sticky"));
-        dataTableMenuItems.add(new MenuItem("Responsive", "/ui/data/datatable/responsive"));
-        dataTableMenuItems.add(new MenuItem("RTL", "/ui/data/datatable/rtl"));
-        dataTableMenuItems.add(new MenuItem("MultiViewState", "/ui/data/datatable/multiViewState"));
-        dataTableMenuItems.add(new MenuItem("RowGroup", "/ui/data/datatable/rowGroup"));
-        dataTableMenuItems.add(new MenuItem("DisplayPriority", "/ui/data/datatable/displayPriority"));
         dataMenuItems.add(new MenuItem("DataTable", dataTableMenuItems));
 
         //DataView Nested MenuItem
@@ -283,7 +283,7 @@ public class AppMenu {
         dataMenuItems.add(new MenuItem("OrderList", "/ui/data/orderList"));
         dataMenuItems.add(new MenuItem("Organigram", "/ui/data/organigram"));
         dataMenuItems.add(new MenuItem("Mindmap", "/ui/data/mindmap"));
-        dataMenuItems.add(new MenuItem("PcikList", "/ui/data/pickList"));
+        dataMenuItems.add(new MenuItem("PickList", "/ui/data/pickList"));
         dataMenuItems.add(new MenuItem("Repeat", "/ui/data/repeat"));
         dataMenuItems.add(new MenuItem("Ring", "/ui/data/ring"));
 
@@ -456,7 +456,7 @@ public class AppMenu {
 
         //MULTIMEDIA CATEGORY START
         List<MenuItem> multimediaMenuItems = new ArrayList<>();
-        multimediaMenuItems.add(new MenuItem("Audio", "/ui/multimedia/audio"));
+        multimediaMenuItems.add(new MenuItem("Audio", "/ui/multimedia/audio", true));
         multimediaMenuItems.add(new MenuItem("Barcode", "/ui/multimedia/barcode"));
         multimediaMenuItems.add(new MenuItem("Compare", "/ui/multimedia/compare"));
         multimediaMenuItems.add(new MenuItem("ContentFlow", "/ui/multimedia/contentFlow"));
@@ -479,7 +479,7 @@ public class AppMenu {
         multimediaMenuItems.add(new MenuItem("PhotoCam", photoCamMenuItems));
 
         multimediaMenuItems.add(new MenuItem("Switch", "/ui/multimedia/switch"));
-        multimediaMenuItems.add(new MenuItem("Video", "/ui/multimedia/video"));
+        multimediaMenuItems.add(new MenuItem("Video", "/ui/multimedia/video", true));
         menuCategories.add(new MenuCategory("Multimedia", multimediaMenuItems));
         //MULTIMEDIA CATEGORY END
 
