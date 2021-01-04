@@ -1,0 +1,112 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Avatar
+    </ui:define>
+
+    <ui:define name="description">
+        Avatar represents people using icons, labels and images.
+    </ui:define>
+
+    <ui:param name="documentationLink" value="/components/blockui"/>
+
+    <ui:define name="implementation">
+        <div class="p-grid">
+            <div class="p-col-12 p-md-4">
+                <div class="card">
+                    <h5>Label</h5>
+                    <p:avatar label="P" styleClass="p-mr-2" size="xlarge" />
+                    <p:avatar label="V" styleClass="p-mr-2" size="large" style="background-color:#2196F3; color: #ffffff"/>
+                    <p:avatar label="U" styleClass="p-mr-2" style="background-color:#9c27b0; color: #ffffff" />
+                </div>
+            </div>
+
+            <div class="p-col-12 p-md-4">
+                <div class="card">
+                    <h5>Label - Circle</h5>
+                    <p:avatar label="P" styleClass="p-mr-2" size="xlarge" shape="circle" />
+                    <p:avatar label="V" styleClass="p-mr-2" size="large" style="background-color:#2196F3; color: #ffffff" shape="circle"  />
+                    <p:avatar label="U" styleClass="p-mr-2" style="background-color:#9c27b0; color: #ffffff" shape="circle"  />
+                </div>
+            </div>
+
+            <div class="p-col-12 p-md-4">
+                <div class="card">
+                    <h5>Label - Badge</h5>
+                    <p:badge value="4">
+                        <p:avatar label="U" size="xlarge" style="background-color:#4caf4f; color: #ffffff"/>
+                    </p:badge>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-grid">
+            <div class="p-col-12 p-md-4">
+                <div class="card">
+                    <h5>Icon</h5>
+                    <p:avatar icon="pi pi-user" styleClass="p-mr-2" size="xlarge" />
+                    <p:avatar icon="pi pi-user" styleClass="p-mr-2" size="large" style="background-color:#2196F3; color: #ffffff"/>
+                    <p:avatar icon="pi pi-user" styleClass="p-mr-2" style="background-color:#9c27b0; color: #ffffff" />
+                </div>
+            </div>
+
+            <div class="p-col-12 p-md-4">
+                <div class="card">
+                    <h5>Icon - Circle</h5>
+                    <p:avatar icon="pi pi-user" styleClass="p-mr-2" size="xlarge" shape="circle" />
+                    <p:avatar icon="pi pi-user" styleClass="p-mr-2" size="large" style="background-color:#2196F3; color: #ffffff" shape="circle" />
+                    <p:avatar icon="pi pi-user" styleClass="p-mr-2" style="background-color:#9c27b0; color: #ffffff" shape="circle" />
+                </div>
+            </div>
+
+            <div class="p-col-12 p-md-4">
+                <div class="card">
+                    <h5>Icon - Badge</h5>
+                    <p:badge value="4">
+                        <p:avatar icon="pi pi-user" size="xlarge"/>
+                    </p:badge>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-grid">
+            <div class="p-col-12 p-md-4">
+                <div class="card">
+                    <h5>Image</h5>
+                    <p:avatar image="../../resources/demo/images/avatar/amyelsner.png" styleClass="p-mr-2" size="xlarge" shape="circle" />
+                    <p:avatar image="../../resources/demo/images/avatar/asiyajavayant.png" styleClass="p-mr-2" size="large" shape="circle" />
+                    <p:avatar image="../../resources/demo/images/avatar/onyamalimba.png" styleClass="p-mr-2" shape="circle" />
+                </div>
+            </div>
+
+            <div class="p-col-12 p-md-4">
+                <div class="card">
+                    <h5>Avatar Group</h5>
+                    <p:avatarGroup styleClass="p-mb-3">
+                        <p:avatar image="../../resources/demo/images/avatar/amyelsner.png" size="large" shape="circle"/>
+                        <p:avatar image="../../resources/demo/images/avatar/asiyajavayant.png" size="large" shape="circle"/>
+                        <p:avatar image="../../resources/demo/images/avatar/onyamalimba.png" size="large" shape="circle"/>
+                        <p:avatar image="../../resources/demo/images/avatar/ionibowcher.png" size="large" shape="circle"/>
+                        <p:avatar image="../../resources/demo/images/avatar/xuxuefeng.png" size="large" shape="circle"/>
+                        <p:avatar label="+2" shape="circle" size="large" style="background-color:#9c27b0; color: #ffffff" />
+                    </p:avatarGroup>
+                </div>
+            </div>
+
+            <div class="p-col-12 p-md-4">
+                <div class="card">
+                    <h5>Image - Badge</h5>
+                    <p:badge value="4" severity="danger">
+                        <p:avatar image="../../resources/demo/images/organization/walter.jpg" size="xlarge"/>
+                    </p:badge>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

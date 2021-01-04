@@ -33,10 +33,17 @@ public class MenuItem implements Serializable {
     private final String label;
     private String url;
     private List<MenuItem> menuItems;
+    private boolean isNew;
 
     public MenuItem(String label, String url) {
         this.label = label;
         this.url = url;
+    }
+
+    public MenuItem(String label, String url, boolean isNew) {
+        this.label = label;
+        this.url = url;
+        this.isNew = isNew;
     }
 
     public MenuItem(String label, List<MenuItem> menuItems) {
@@ -50,6 +57,10 @@ public class MenuItem implements Serializable {
 
     public String getUrl() {
         return url;
+    }
+
+    public boolean isNew() {
+        return isNew;
     }
 
     public List<MenuItem> getMenuItems() {
