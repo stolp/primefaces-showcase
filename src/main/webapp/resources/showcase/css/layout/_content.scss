@@ -24,6 +24,10 @@
                 p {
                     margin: 0;
                 }
+
+                a {
+                    @include navlink();
+                }
             }
 
             .documentation-link {
