@@ -19,125 +19,52 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form>
-                <p:panelGrid class="ui-noborder">
-                    <f:facet name="header">
-                        <p:row>
-                            <p:column style="font-weight: bold;">inputNumber</p:column>
-                            <p:column style="font-weight: bold;">Numeric Value</p:column>
-                            <p:column style="font-weight: bold;">Description</p:column>
-                        </p:row>
-                    </f:facet>
-                    <p:row>
-                        <p:column>
-                            <p:inputNumber id="input1" value="#{inputNumberView.input1}" modifyValueOnWheel="false">
-                                <p:ajax update="output1"/>
-                            </p:inputNumber>
-                        </p:column>
-                        <p:column>
-                            <p:inputText id="output1" disabled="true" value="#{inputNumberView.input1}"/>
-                        </p:column>
-                        <p:column>
-                            Without configuration
-                        </p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column>
-                            <p:inputNumber id="input2" value="#{inputNumberView.input2}" symbol=" CHF"
-                                           symbolPosition="s"
-                                           decimalSeparator="," thousandSeparator=".">
-                                <p:ajax update="output2"/>
-                            </p:inputNumber>
-                        </p:column>
-                        <p:column>
-                            <p:inputText id="output2" disabled="true" value="#{inputNumberView.input2}"/>
-                        </p:column>
-                        <p:column>
-                            Suffix currency symbol and comma for decimal separator
-                        </p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column>
-                            <p:inputNumber id="input3" value="#{inputNumberView.input3}" minValue="-1000.999"
-                                           maxValue="1000" decimalPlaces="3">
-                                <p:ajax update="output3"/>
-                            </p:inputNumber>
-                        </p:column>
-                        <p:column>
-                            <p:inputText id="output3" disabled="true" value="#{inputNumberView.input3}"/>
-                        </p:column>
-                        <p:column>
-                            Maximum and minimum values (-1000.999 to 1000.000)
-                        </p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column>
-                            <p:inputNumber id="input4" value="#{inputNumberView.input4}" decimalPlaces="6">
-                                <p:ajax update="output4"/>
-                            </p:inputNumber>
-                        </p:column>
-                        <p:column>
-                            <p:inputText id="output4" disabled="true" value="#{inputNumberView.input4}"/>
-                        </p:column>
-                        <p:column>
-                            Custom decimal places
-                        </p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column>
-                            <p:inputNumber id="input5" value="#{inputNumberView.input5}" symbol="%"
-                                           symbolPosition="s" required="true" emptyValue="empty">
-                                <p:ajax update="output5"/>
-                            </p:inputNumber>
-                        </p:column>
-                        <p:column>
-                            <p:inputText id="output5" disabled="true" value="#{inputNumberView.input5}"/>
-                        </p:column>
-                        <p:column>
-                            Empty value (empty) and required
-                        </p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column>
-                            <p:inputNumber id="input6" value="#{inputNumberView.input6}" symbol="%"
-                                           symbolPosition="s" emptyValue="zero">
-                                <p:ajax update="output6"/>
-                            </p:inputNumber>
-                        </p:column>
-                        <p:column>
-                            <p:inputText id="output6" disabled="true" value="#{inputNumberView.input6}"/>
-                        </p:column>
-                        <p:column>
-                            Empty value (zero)
-                        </p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column>
-                            <p:inputNumber id="Input7" value="#{inputNumberView.input7}" symbol="%"
-                                           symbolPosition="s" emptyValue="always">
-                                <p:ajax update="output7"/>
-                            </p:inputNumber>
-                        </p:column>
-                        <p:column>
-                            <p:inputText id="output7" disabled="true" value="#{inputNumberView.input7}"/>
-                        </p:column>
-                        <p:column>
-                            Empty value (symbol is always displayed)
-                        </p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column>
-                            <p:inputNumber id="Input8" value="#{inputNumberView.input8}" decimalPlaces="15">
-                                <p:ajax update="output8"/>
-                            </p:inputNumber>
-                        </p:column>
-                        <p:column>
-                            <p:inputText id="output8" disabled="true" value="#{inputNumberView.input8}"/>
-                        </p:column>
-                        <p:column>
-                            15 Decimals using BigDecimal
-                        </p:column>
-                    </p:row>
-                </p:panelGrid>
+                <div class="ui-fluid p-formgrid p-grid">
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="input1" value="No Configuration"/>
+                        <p:inputNumber id="input1" value="#{inputNumberView.input1}" modifyValueOnWheel="false" />
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="input2" value="Currency"/>
+                        <p:inputNumber id="input2" value="#{inputNumberView.input2}" symbol=" CHF"
+                                        symbolPosition="s" decimalSeparator="," thousandSeparator="." />
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="input3" value="Min-Max"/>
+                        <p:inputNumber id="input3" value="#{inputNumberView.input3}" minValue="-1000.999"
+                                        maxValue="1000" decimalPlaces="3" />
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="input4" value="Custom Decimals"/>
+                        <p:inputNumber id="input4" value="#{inputNumberView.input4}" decimalPlaces="6" />
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="input5" value="Empty Display - Blank"/>
+                        <p:inputNumber id="input5" value="#{inputNumberView.input5}" symbol="%"
+                                        symbolPosition="s" required="true" emptyValue="empty" />
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="input6" value="Empty Display - Zero"/>
+                        <p:inputNumber id="input6" value="#{inputNumberView.input6}" symbol="%"
+                                        symbolPosition="s" emptyValue="zero" />
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="input7" value="Empty Display - Symbol"/>
+                        <p:inputNumber id="input7" value="#{inputNumberView.input7}" symbol="%"
+                                        symbolPosition="s" emptyValue="always" />
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="input8" value="Big Decimal"/>
+                        <p:inputNumber id="input8" value="#{inputNumberView.input8}" decimalPlaces="15" />
+                    </div>
+                </div>
             </h:form>
         </div>
     </ui:define>

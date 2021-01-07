@@ -21,36 +21,16 @@
             <h:form>
                 <p:growl id="growl" showDetail="true"/>
 
-                <h:panelGrid id="triStateGrid" columns="2" cellpadding="5">
-                    <h:outputText value="Basic Usage: "/>
-                    <p:triStateCheckbox value="#{triStateCheckboxView.value1}"/>
+                <h5 class="p-mt-0">Basic</h5>
+                <p:triStateCheckbox value="#{triStateCheckboxView.value1}"/>
 
-                    <h:outputText value="Ajax Behavior: "/>
-                    <p:triStateCheckbox id="ajaxTriState" value="#{triStateCheckboxView.value2}">
-                        <p:ajax event="change" update="growl" listener="#{triStateCheckboxView.addMessage}"/>
-                    </p:triStateCheckbox>
+                <h5>Remote</h5>
+                <p:triStateCheckbox id="ajaxTriState" value="#{triStateCheckboxView.value2}">
+                    <p:ajax event="change" update="growl" listener="#{triStateCheckboxView.addMessage}"/>
+                </p:triStateCheckbox>
 
-                    <h:outputText value="Customs Icons: "/>
-                    <p:triStateCheckbox value="#{triStateCheckboxView.value3}"
-                                        stateTwoIcon="pi pi-plus"
-                                        stateThreeIcon="pi pi-minus"/>
-
-                    <h:panelGroup/>
-                    <p:triStateCheckbox value="#{triStateCheckboxView.value4}" itemLabel="Item Label"/>
-                </h:panelGrid>
-
-                <p:commandButton value="Submit" process="triStateGrid" update="display" oncomplete="PF('dlg').show()"
-                                 style="margin-top:10px;"/>
-
-
-                <p:dialog header="Selected Values" showEffect="fade" hideEffect="fade" widgetVar="dlg">
-                    <h:panelGrid id="display" columns="1" style="margin: 10px;">
-                        <h:outputText value="Value 1: #{triStateCheckboxView.value1}"/>
-                        <h:outputText value="Value 2: #{triStateCheckboxView.value2}"/>
-                        <h:outputText value="Value 3: #{triStateCheckboxView.value3}"/>
-                        <h:outputText value="Value 4: #{triStateCheckboxView.value4}"/>
-                    </h:panelGrid>
-                </p:dialog>
+                <h5>Custom Icons</h5>
+                <p:triStateCheckbox value="#{triStateCheckboxView.value3}" stateTwoIcon="pi pi-plus" stateThreeIcon="pi pi-minus"/>
             </h:form>
         </div>
     </ui:define>

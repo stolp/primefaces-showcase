@@ -19,20 +19,11 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form>
-                <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-                    <h:outputText value="Platform:"/>
-                    <p:selectOneButton value="#{selectOneView.option}">
-                        <f:selectItem itemLabel="Option1" itemValue="Option1"/>
-                        <f:selectItem itemLabel="Option2" itemValue="Option2"/>
-                        <f:selectItem itemLabel="Option3" itemValue="Option3"/>
-                    </p:selectOneButton>
-
-                    <p:commandButton value="Submit" update="display" icon="pi pi-check"/>
-                    <p:spacer/>
-
-                    <h:outputText value="Selected:"/>
-                    <h:outputText id="display" value="#{selectOneView.option}" style="font-weight: bold"/>
-                </h:panelGrid>
+                <p:selectOneButton value="#{selectOneButtonView.option}">
+                    <f:selectItem itemLabel="Option1" itemValue="Option1"/>
+                    <f:selectItem itemLabel="Option2" itemValue="Option2"/>
+                    <f:selectItem itemLabel="Option3" itemValue="Option3"/>
+                </p:selectOneButton>
             </h:form>
         </div>
     </ui:define>

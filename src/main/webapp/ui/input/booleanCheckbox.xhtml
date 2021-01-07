@@ -20,22 +20,13 @@
             <h:form>
                 <p:growl id="msg"/>
 
-                <h:panelGrid columns="1" style="margin-bottom:10px" cellpadding="5">
-                    <p:selectBooleanCheckbox value="#{selectBooleanView.value1}" itemLabel="Basic"/>
+                <h5 class="p-mt-0">Basic</h5>
+                <p:selectBooleanCheckbox value="#{selectBooleanView.value1}" itemLabel="Basic"/>
 
-                    <p:selectBooleanCheckbox value="#{selectBooleanView.value2}" itemLabel="Ajax">
-                        <p:ajax update="msg" listener="#{selectBooleanView.addMessage}"/>
-                    </p:selectBooleanCheckbox>
-                </h:panelGrid>
-
-                <p:commandButton value="Submit" icon="pi pi-check" update="display" oncomplete="PF('dlg').show()"/>
-
-                <p:dialog header="Values" modal="true" resizable="false" showEffect="fade" widgetVar="dlg">
-                    <h:panelGrid columns="1" id="display">
-                        <h:outputText value="Value 1: #{selectBooleanView.value1}"/>
-                        <h:outputText value="Value 2: #{selectBooleanView.value2}"/>
-                    </h:panelGrid>
-                </p:dialog>
+                <h5>Remote</h5>
+                <p:selectBooleanCheckbox value="#{selectBooleanView.value2}" itemLabel="Ajax">
+                    <p:ajax update="msg" listener="#{selectBooleanView.addMessage}"/>
+                </p:selectBooleanCheckbox>
             </h:form>
         </div>
     </ui:define>

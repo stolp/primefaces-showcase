@@ -19,35 +19,11 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form>
-                <p:growl id="growl"/>
-                <h:panelGrid columns="2" cellpadding="5" style="margin-left: 20px">
-                    <h:outputText value="Inline: "/>
-                    <p:colorPicker value="#{colorView.colorInline}" mode="inline">
-                        <p:ajax listener="#{colorView.onColorChange}" process="@this" update="growl"/>
-                    </p:colorPicker>
+                <h5 class="p-mt-0">Inline</h5>
+                <p:colorPicker value="#{colorView.colorInline}" mode="inline" />
 
-                    <h:outputText value="Popup: "/>
-                    <p:colorPicker value="#{colorView.colorPopup}">
-                        <p:ajax event="close" listener="#{colorView.onPopupClosed}" process="@this" update="growl"/>
-                    </p:colorPicker>
-                </h:panelGrid>
-
-                <p:separator/>
-
-                <p:commandButton value="Submit" oncomplete="PF('dlg').show();" update="grid" style="margin-left: 20px"/>
-
-                <p:dialog modal="true" widgetVar="dlg" showEffect="fade" hideEffect="fade" header="Selected Colors"
-                          resizable="false">
-                    <h:panelGrid id="grid" columns="2" cellpadding="5">
-                        <h:outputText value="Inline color: "/>
-                        <h:outputText value="#{colorView.colorInline}"
-                                      style="background-color: ##{colorView.colorInline}"/>
-
-                        <h:outputText value="Popup color: "/>
-                        <h:outputText value="#{colorView.colorPopup}"
-                                      style="background-color: ##{colorView.colorPopup}"/>
-                    </h:panelGrid>
-                </p:dialog>
+                <h5>Popup</h5>
+                <p:colorPicker value="#{colorView.colorPopup}" />
             </h:form>
         </div>
     </ui:define>

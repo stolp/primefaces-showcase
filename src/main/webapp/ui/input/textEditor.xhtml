@@ -19,15 +19,11 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form>
-                <h3 style="margin-top:0">Basic</h3>
-                <p:textEditor widgetVar="editor1" value="#{editorView.text}" height="300" style="margin-bottom:10px"/>
-
-                <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="pi pi-save"/>
-                <p:commandButton value="Clear" type="button" onclick="PF('editor1').clear();" icon="pi pi-times"/>
+                <h5 class="p-mt-0">Basic</h5>
+                <p:textEditor widgetVar="editor1" value="#{editorView.text}" height="300"  />
 
                 <h3 class="first">Custom Toolbar</h3>
-                <p:textEditor widgetVar="editor2" value="#{editorView.text2}" height="300" style="margin-bottom:10px"
-                              placeholder="Enter your content">
+                <p:textEditor widgetVar="editor2" value="#{editorView.text2}" height="300" placeholder="Enter your content">
                     <f:facet name="toolbar">
                      <span class="ql-formats">
                         <button class="ql-bold"></button>
@@ -41,19 +37,6 @@
                     </span>
                     </f:facet>
                 </p:textEditor>
-
-                <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="pi pi-save"/>
-                <p:commandButton value="Clear" type="button" onclick="PF('editor2').clear();" icon="pi pi-times"/>
-
-                <p:dialog header="Content" widgetVar="dlg" showEffect="fade" hideEffect="fade">
-                    <p:outputPanel id="display">
-                        <h3 style="margin-top:0">Basic</h3>
-                        <h:outputText value="#{editorView.text}" escape="false"/>
-
-                        <h3>Custom</h3>
-                        <h:outputText value="#{editorView.text2}" escape="false"/>
-                    </p:outputPanel>
-                </p:dialog>
             </h:form>
         </div>
     </ui:define>

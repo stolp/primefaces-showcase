@@ -60,14 +60,14 @@ public class CheckboxView {
         cities.add("Amsterdam");
 
         countries = new ArrayList<>();
-        SelectItemGroup europeCountries = new SelectItemGroup("Europe Countries");
+        SelectItemGroup europeCountries = new SelectItemGroup("European Countries");
         europeCountries.setSelectItems(new SelectItem[]{
                 new SelectItem("Germany", "Germany"),
                 new SelectItem("Turkey", "Turkey"),
                 new SelectItem("Spain", "Spain")
         });
 
-        SelectItemGroup americaCountries = new SelectItemGroup("America Countries");
+        SelectItemGroup americaCountries = new SelectItemGroup("American Countries");
         americaCountries.setSelectItems(new SelectItem[]{
                 new SelectItem("United States", "United States"),
                 new SelectItem("Brazil", "Brazil"),

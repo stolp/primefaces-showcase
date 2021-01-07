@@ -23,61 +23,24 @@
                     <p:autoUpdate/>
                 </p:growl>
 
-                <h:panelGrid columns="2" cellpadding="5">
+                <h5 class="p-mt-0">Basic</h5>
+                <p:selectCheckboxMenu id="menu" value="#{checkboxView.selectedCities}" label="Cities" style="width: 15rem"
+                                        filter="true" filterMatchMode="startsWith" panelStyle="width: 15rem">
+                    <f:selectItems value="#{checkboxView.cities}"/>
+                </p:selectCheckboxMenu>
 
-                    <h:outputLabel for="menu" value="Basic:"/>
-                    <p:selectCheckboxMenu id="menu" value="#{checkboxView.selectedCities}" label="Cities"
-                                          filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
-                        <f:selectItems value="#{checkboxView.cities}"/>
-                    </p:selectCheckboxMenu>
-
-                    <h:outputLabel for="multiple" value="Multiple:"/>
-                    <p:selectCheckboxMenu id="multiple" value="#{checkboxView.selectedCities2}" label="Cities"
-                                          multiple="true"
-                                          filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+                <h5>Multiple</h5>
+                <p:selectCheckboxMenu id="multiple" value="#{checkboxView.selectedCities2}" label="Cities" style="-width: 15rem"
+                                          multiple="true" filter="true" filterMatchMode="startsWith" panelStyle="width: 15rem">
                         <p:ajax event="itemUnselect" listener="#{checkboxView.onItemUnselect}"/>
                         <f:selectItems value="#{checkboxView.cities}"/>
                     </p:selectCheckboxMenu>
 
-                    <h:outputLabel for="grouped" value="Grouped:"/>
-                    <p:selectCheckboxMenu id="grouped" value="#{checkboxView.selectedCountries}" label="Countries"
-                                          multiple="true"
-                                          filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
-                        <f:selectItems value="#{checkboxView.countries}"/>
-                    </p:selectCheckboxMenu>
-                </h:panelGrid>
-
-                <p:commandButton value="Submit" update="displayItems" oncomplete="PF('itemDialog').show()"
-                                 style="margin-top:10px;"/>
-
-                <p:dialog header="Selected Items" modal="true" showEffect="fade" hideEffect="fade"
-                          widgetVar="itemDialog" width="250">
-                    <p:outputPanel id="displayItems">
-                        <p:dataList value="#{checkboxView.selectedCities}" var="city" emptyMessage="No cities selected"
-                                    style="margin-bottom: 10px;">
-                            <f:facet name="header">
-                                Basic
-                            </f:facet>
-                            #{city}
-                        </p:dataList>
-
-                        <p:dataList value="#{checkboxView.selectedCities2}" var="city" emptyMessage="No cities selected"
-                                    style="margin-bottom: 10px;">
-                            <f:facet name="header">
-                                Multiple
-                            </f:facet>
-                            #{city}
-                        </p:dataList>
-
-                        <p:dataList value="#{checkboxView.selectedCountries}" var="country"
-                                    emptyMessage="No cars selected">
-                            <f:facet name="header">
-                                Grouped
-                            </f:facet>
-                            #{country}
-                        </p:dataList>
-                    </p:outputPanel>
-                </p:dialog>
+                <h5>Grouped</h5>
+                <p:selectCheckboxMenu id="grouped" value="#{checkboxView.selectedCountries}" label="Countries" style="width: 15rem"
+                                        multiple="true" filter="true" filterMatchMode="startsWith" panelStyle="width: 15rem">
+                    <f:selectItems value="#{checkboxView.countries}"/>
+                </p:selectCheckboxMenu>
             </h:form>
         </div>
     </ui:define>

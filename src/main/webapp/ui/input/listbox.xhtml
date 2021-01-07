@@ -5,18 +5,6 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml">
 
-    <ui:define name="head">
-        <style type="text/css">
-            .label, .value {
-                vertical-align: top
-            }
-
-            .output {
-                font-weight: bold
-            }
-        </style>
-    </ui:define>
-
     <ui:define name="title">
         SelectOneListbox
     </ui:define>
@@ -31,9 +19,8 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form>
-                <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
-                    <p:outputLabel for="basic" value="Basic:"/>
-                    <p:selectOneListbox id="basic" value="#{selectOneView.option}">
+                <h5 class="p-mt-0">Basic</h5>
+                <p:selectOneListbox id="basic" value="#{selectOneView.option}">
                         <f:selectItem itemLabel="New York" itemValue="New York"/>
                         <f:selectItem itemLabel="Rome" itemValue="Rome"/>
                         <f:selectItem itemLabel="London" itemValue="London"/>
@@ -41,11 +28,11 @@
                         <f:selectItem itemLabel="Paris" itemValue="Paris"/>
                     </p:selectOneListbox>
 
-                    <p:outputLabel for="advanced" value="Advanced:"/>
-                    <p:selectOneListbox id="advanced" value="#{selectOneView.country}" converter="#{countryConverter}"
-                                        var="c" filter="true" filterMatchMode="contains">
+                <h5>Advanced</h5>
+                <p:selectOneListbox id="advanced" value="#{selectOneView.country}" converter="#{countryConverter}"
+                    var="c" filter="true" filterMatchMode="contains">
                         <f:selectItems value="#{selectOneView.countries}" var="country" itemLabel="#{country.name}"
-                                       itemValue="#{country}"/>
+                                    itemValue="#{country}"/>
 
                         <p:column>
                             <span class="flag flag-#{c.code}" style="width: 30px; height: 20px"/>
@@ -54,22 +41,7 @@
                         <p:column>
                             <h:outputText value="#{c.name}"/>
                         </p:column>
-                    </p:selectOneListbox>
-                </h:panelGrid>
-
-                <p:separator/>
-
-                <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="pi pi-check"/>
-
-                <p:dialog header="Selected Values" modal="true" showEffect="fade" widgetVar="dlg" resizable="false">
-                    <p:panelGrid columns="2" id="display" columnClasses="label,output">
-                        <h:outputText value="Basic:"/>
-                        <h:outputText value="#{selectOneView.option}"/>
-
-                        <h:outputText value="Advanced:"/>
-                        <h:outputText value="#{selectOneView.country}"/>
-                    </p:panelGrid>
-                </p:dialog>
+                </p:selectOneListbox>
             </h:form>
         </div>
     </ui:define>

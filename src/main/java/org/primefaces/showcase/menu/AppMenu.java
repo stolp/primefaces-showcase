@@ -140,13 +140,7 @@ public class AppMenu {
         formMenuItems.add(new MenuItem("SelectOneMenu", "/ui/input/oneMenu"));
         formMenuItems.add(new MenuItem("SelectOneListbox", "/ui/input/listbox"));
         formMenuItems.add(new MenuItem("SelectManyButton", "/ui/input/manyButton"));
-
-        //SelectManyMenu Nested MenuItem
-        List<MenuItem> selectManyMenuItems = new ArrayList<>();
-        selectManyMenuItems.add(new MenuItem("Basic", "/ui/input/manymenu/basic"));
-        selectManyMenuItems.add(new MenuItem("(Un)SelectAll", "/ui/input/manymenu/selectall"));
-        formMenuItems.add(new MenuItem("SelectManyMenu", selectManyMenuItems));
-
+        formMenuItems.add(new MenuItem("SelectManyMenu", "/ui/input/manyMenu"));
         formMenuItems.add(new MenuItem("SelectManyCheckbox", "/ui/input/manyCheckbox"));
         formMenuItems.add(new MenuItem("Signature", "/ui/input/signature"));
         formMenuItems.add(new MenuItem("Slider", "/ui/input/slider"));

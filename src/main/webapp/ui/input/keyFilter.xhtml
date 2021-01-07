@@ -18,65 +18,21 @@
 
     <ui:define name="implementation">
         <div class="card">
-            Predefined masks and their regular expressions:
-            <table>
-                <tr>
-                    <td><strong>pint</strong></td>
-                    <td>/[\d]/</td>
-                </tr>
-                <tr>
-                    <td><strong>int</strong></td>
-                    <td>/[\d\-]/</td>
-                </tr>
-                <tr>
-                    <td><strong>pnum</strong></td>
-                    <td>/[\d\.]/</td>
-                </tr>
-                <tr>
-                    <td><strong>money</strong></td>
-                    <td>/[\d\.\s,]</td>
-                </tr>
-                <tr>
-                    <td><strong>num</strong></td>
-                    <td>/[\d\-\.]/</td>
-                </tr>
-                <tr>
-                    <td><strong>hex</strong></td>
-                    <td>/[0-9a-f]/i</td>
-                </tr>
-                <tr>
-                    <td><strong>email</strong></td>
-                    <td>/[a-z0-9_\.\-@]/i</td>
-                </tr>
-                <tr>
-                    <td><strong>alpha</strong></td>
-                    <td>/[a-z_]/i</td>
-                </tr>
-                <tr>
-                    <td><strong>alphanum</strong></td>
-                    <td>/[a-z0-9_]/i</td>
-                </tr>
-            </table>
-
-            <br/>
-            <br/>
-
             <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="KeyFilter with regEx on a p:inputText"/>
-                    <p:inputText id="text1">
-                        <p:keyFilter regEx="/[ABC]/i"/>
-                    </p:inputText>
+                <h5>Number</h5>
+                <p:inputText>
+                    <p:keyFilter mask="num" />
+                </p:inputText>
 
-                    <h:outputText value="KeyFilter with mask on a h:inputText"/>
-                    <h:inputText id="text2"/>
+                <h5>Regex</h5>
+                <p:inputText>
+                    <p:keyFilter regEx="/[ABC]/i"/>
+                </p:inputText>
 
-                    <h:outputText value="KeyFilter with testFunction on a p:autoComplete"/>
-                    <p:autoComplete id="autoComplete1" value="#{autoCompleteView.txt1}"
-                                    completeMethod="#{autoCompleteView.completeText}"/>
-                </h:panelGrid>
+                <h5>AutoComplete with TestFunction</h5>
+                <p:autoComplete id="autoComplete1" value="#{autoCompleteView.txt1}"
+                                completeMethod="#{autoCompleteView.completeText}"/>
 
-                <p:keyFilter for="text2" mask="num"/>
                 <p:keyFilter for="autoComplete1" testFunction="return c == 'z';"/>
             </h:form>
         </div>
