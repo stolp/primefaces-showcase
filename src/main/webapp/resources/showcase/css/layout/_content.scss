@@ -85,30 +85,30 @@
                 font-weight: 600;
                 margin: 0 2px;
             }
-        }
 
-        .ui-tabs {
-            background: transparent;
-            border: 0 none;
-
-            .ui-tabs-nav {
-                border-bottom: 1px solid var(--surface-d);
-                background-color: transparent;
-
-                li.ui-tabs-header {
+            .ui-tabs {
+                background: transparent;
+                border: 0 none;
+    
+                .ui-tabs-nav {
+                    border-bottom: 1px solid var(--surface-d);
                     background-color: transparent;
-
-                    a {
-                        text-decoration: none;
+    
+                    li.ui-tabs-header {
+                        background-color: transparent;
+    
+                        a {
+                            text-decoration: none;
+                        }
                     }
                 }
-            }
-
-            .ui-tabs-panels {
-                background: transparent;
-
-                .ui-tabs-panel {
-                    padding: 2rem 1rem;
+    
+                .ui-tabs-panels {
+                    background: transparent;
+    
+                    .ui-tabs-panel {
+                        padding: 2rem 1rem;
+                    }
                 }
             }
         }

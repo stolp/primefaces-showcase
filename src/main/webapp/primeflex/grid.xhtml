@@ -59,6 +59,24 @@
                 </div>
             </div>
 
+            <h5>Dynamic</h5>
+            <h:form>
+                <p:commandButton icon="pi pi-plus" action="#{flexGridView.increment}" update="output" styleClass="p-mr-2" />
+                <p:commandButton icon="pi pi-minus" action="#{flexGridView.decrease}" update="output" />
+
+                <p:outputPanel id="output">
+                    <div class="p-grid" style="margin-top: .5em">
+                        <ui:repeat var="column" value="#{flexGridView.columns}">
+                            <div class="p-col">
+                                <div class="box">
+                                    #{column}
+                                </div>
+                            </div>
+                        </ui:repeat>
+                    </div>
+                </p:outputPanel>
+            </h:form>
+
             <h5>Reverse Direction</h5>
             <div class="p-grid p-flex-row-reverse">
                 <div class="p-col">

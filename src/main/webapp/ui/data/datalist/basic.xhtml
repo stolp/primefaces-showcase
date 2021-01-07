@@ -20,7 +20,7 @@
 
         <h:form id="form">
 
-            <div class="list-demo card">
+            <div class="product card">
                 <h5>Basic</h5>
                 <p:dataList value="#{dataListView.products1}" var="product" type="ordered">
                     <div class="product-list-item">
@@ -49,7 +49,7 @@
                 </p:dataList>
             </div>
 
-            <div class="list-demo card">
+            <div class="product card">
                 <h5>Definition</h5>
                 <p:dataList value="#{dataListView.products2}" var="product" type="definition">
                     Product Code: #{product.code}
@@ -85,7 +85,7 @@
                       hideEffect="explode" resizable="false">
                 <p:outputPanel id="productDetail" style="text-align:center;">
                     <p:column rendered="#{not empty dataListView.selectedProduct}">
-                        <div class="list-demo">
+                        <div class="product">
                             <div class="product-grid-item card" style="margin-bottom: 0">
                                 <div class="product-grid-item-top">
                                     <div>

@@ -156,7 +156,7 @@
     }
 }
 
-.list-demo {
+.product {
     .product-name {
         font-size: 1rem;
         font-weight: 700;
@@ -246,7 +246,7 @@
 }
 
 @media screen and (max-width: 576px) {
-    .list-demo {
+    .product {
         .product-list-item {
             @include flex-direction-column();
             @include flex-align-center();

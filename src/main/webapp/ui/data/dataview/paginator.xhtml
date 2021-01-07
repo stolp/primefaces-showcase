@@ -38,7 +38,7 @@
     <ui:param name="widgetLink" value="dataview"/>
 
     <ui:define name="implementation">
-        <div class="list-demo card">
+        <div class="product card">
             <h:form id="form">
                 <p:dataView var="product" value="#{dataGridView.products}" rows="12" paginator="true"
                             rowsPerPageTemplate="6,12,16"
@@ -106,7 +106,7 @@
                           hideEffect="fade" resizable="false">
                     <p:outputPanel id="productDetail" style="text-align:center;">
                         <p:column rendered="#{not empty dataGridView.selectedProduct}">
-                            <div class="list-demo">
+                            <div class="product">
                                 <div class="product-grid-item card" style="margin-bottom: 0">
                                     <div class="product-grid-item-top">
                                         <div>

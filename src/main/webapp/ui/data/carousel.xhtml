@@ -21,7 +21,7 @@
 
         <h:form id="form">
 
-            <div class="list-demo card">
+            <div class="product card">
                 <h5>Responsive</h5>
                 <p:carousel value="#{carouselView.products}" var="product" responsive="true">
 
@@ -59,7 +59,7 @@
                 </p:carousel>
             </div>
 
-            <div class="list-demo card">
+            <div class="product card">
                 <h5>Custom</h5>
                 <p:carousel value="#{carouselView.products}" var="product"
                             itemStyle="text-align:center" numVisible="1" easing="easeOutBounce"
@@ -122,7 +122,7 @@
                       resizable="false">
                 <p:outputPanel id="productDetail" style="text-align:center;">
                     <p:column rendered="#{not empty carouselView.selectedProduct}">
-                        <div class="list-demo">
+                        <div class="product">
                             <div class="product-grid-item card" style="margin-bottom: 0">
                                 <div class="product-grid-item-top">
                                     <div>

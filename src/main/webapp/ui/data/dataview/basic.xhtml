@@ -30,7 +30,7 @@
 
     <ui:define name="implementation">
 
-        <div class="card list-demo">
+        <div class="card product">
             <h:form id="form">
                 <p:dataView var="product" value="#{dataGridView.products}"
                             gridIcon="pi pi-th-large" listIcon="pi pi-bars">
@@ -96,7 +96,7 @@
                           hideEffect="fade" resizable="false">
                     <p:outputPanel id="productDetail" style="text-align:center;">
                         <p:column rendered="#{not empty dataGridView.selectedProduct}">
-                            <div class="list-demo">
+                            <div class="product">
                                 <div class="product-grid-item card" style="margin-bottom: 0">
                                     <div class="product-grid-item-top">
                                         <div>

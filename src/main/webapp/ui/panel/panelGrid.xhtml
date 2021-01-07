@@ -340,22 +340,17 @@
         <div class="card">
             <h5>Responsive Grid</h5>
             <style>
-                /* some strange style needs to be reset on the showcase style*/
+                /* reset on the showcase style*/
                 body .ui-panelgrid .ui-panelgrid-cell {
                     background-color: transparent;
                 }
 
                 /* example use of styles for your form */
                 .my-heading-row {
-                    background-color: lightgrey;
+                    background-color: var(--surface-c);
                     font-weight: bold;
                 }
-
-                .my-heading-row-plain {
-                    background-color: lightgrey;
-                }
             </style>
-
 
             <!--
             Note: Rows and columns can have style, styleClass, and id.
@@ -387,7 +382,7 @@
                 <p:outputLabel for="@next" value="Address"/>
                 <p:inputTextarea rows="3"/>
 
-                <p:row id="my-row-id" styleClass="my-heading-row-plain" style="font-weight: bold">
+                <p:row id="my-row-id" styleClass="my-heading-row" style="font-weight: bold">
                     Vehicle
                 </p:row>
 
@@ -416,14 +411,10 @@
                 </p:row>
 
                 <p:row>
-                    <p:column styleClass="ui-grid-col-2">
-                        <p:commandButton value="Accept"/>
-                    </p:column>
-                    <p:column styleClass="ui-grid-col-2">
-                        <p:commandButton value="Reject"/>
-                    </p:column>
-                    <p:column styleClass="ui-grid-col-2">
-                        <p:commandButton value="Refer"/>
+                    <p:column styleClass="ui-grid-col-12">
+                        <p:commandButton value="Accept" styleClass="p-mr-2" style="width: auto"/>
+                        <p:commandButton value="Reject" styleClass="p-mr-2" style="width: auto"/>
+                        <p:commandButton value="Refer" style="width: auto" />
                     </p:column>
                 </p:row>
             </p:panelGrid>
