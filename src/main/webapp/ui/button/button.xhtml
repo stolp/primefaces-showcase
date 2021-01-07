@@ -5,12 +5,20 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml">
 
+    <ui:define name="head">
+        <style type="text/css">
+            button.ui-button {
+                margin-right: .5rem;
+            }
+        </style>
+    </ui:define>
+
     <ui:define name="title">
         Button
     </ui:define>
 
     <ui:define name="description">
-        Button is an extension to the standard h:button component featuring advanced skinning capabilities. Just like h:button, button does GET requests targeting bookmarkable URLs.
+        Button is a navigation component based on GET requests targeting bookmarkable URLs.
     </ui:define>
 
     <ui:param name="documentationLink" value="/components/button"/>
@@ -18,22 +26,98 @@
 
     <ui:define name="implementation">
         <div class="card">
-            <p:button outcome="productDetail" value="Bookmark" icon="pi pi-star" style="margin-right:20px;">
-                <f:param name="productId" value="10"/>
-            </p:button>
+            <h5>Basic</h5>
+            <p:button value="Submit" />
+            <p:button value="Disabled" disabled="disabled" />
 
-            <p:button outcome="productDetail" value="With Icon" icon="pi pi-star" style="margin-right:20px;">
-                <f:param name="productId" value="20"/>
-            </p:button>
+            <h5>Icons</h5>
+            <p:button icon="pi pi-check" />
+            <p:button value="Submit" icon="pi pi-check" />
+            <p:button value="Submit" icon="pi pi-check" iconPos="right" />
 
-            <p:button outcome="productDetail" icon="pi pi-star" style="margin-right:20px;" title="Icon Only">
-                <f:param name="productId" value="30"/>
-            </p:button>
+            <h5>Severities</h5>
+            <p:button value="Primary" />
+            <p:button value="Secondary" styleClass="secondary-button" />
+            <p:button value="Success" styleClass="success-button" />
+            <p:button value="Info" styleClass="info-button" />
+            <p:button value="Warning" styleClass="warning-button" />
+            <p:button value="Help" styleClass="help-button" />
+            <p:button value="Danger" styleClass="danger-button" />
 
-            <p:button outcome="productDetail" value="Bookmark" icon="pi pi-star" disabled="true"
-                      style="margin-right:20px;">
-                <f:param name="productId" value="40"/>
-            </p:button>
+            <h5>Raised Buttons</h5>
+            <p:button value="Primary" styleClass="raised-button" />
+            <p:button value="Secondary" styleClass="raised-button secondary-button" />
+            <p:button value="Success" styleClass="raised-button success-button" />
+            <p:button value="Info" styleClass="raised-button info-button" />
+            <p:button value="Warning" styleClass="raised-button warning-button" />
+            <p:button value="Help" styleClass="raised-button help-button" />
+            <p:button value="Danger" styleClass="raised-button danger-button" />
+
+            <h5>Rounded Buttons</h5>
+            <p:button value="Primary" styleClass="rounded-button" />
+            <p:button value="Secondary" styleClass="rounded-button secondary-button" />
+            <p:button value="Success" styleClass="rounded-button success-button" />
+            <p:button value="Info" styleClass="rounded-button info-button" />
+            <p:button value="Warning" styleClass="rounded-button warning-button" />
+            <p:button value="Help" styleClass="rounded-button help-button" />
+            <p:button value="Danger" styleClass="rounded-button danger-button" />
+
+            <h5>Text Buttons</h5>
+            <p:button value="Primary" styleClass="text-button" />
+            <p:button value="Secondary" styleClass="secondary-button text-button" />
+            <p:button value="Success" styleClass="success-button text-button" />
+            <p:button value="Info" styleClass="info-button text-button" />
+            <p:button value="Warning" styleClass="warning-button text-button" />
+            <p:button value="Help" styleClass="help-button text-button" />
+            <p:button value="Danger" styleClass="danger-button text-button" />
+            <p:button value="Plain" styleClass="text-button p-button-plain" />
+
+            <h5>Raised Text Buttons</h5>
+            <p:button value="Primary" styleClass="raised-button text-button" />
+            <p:button value="Secondary" styleClass="raised-button secondary-button text-button" />
+            <p:button value="Success" styleClass="raised-button success-button text-button" />
+            <p:button value="Info" styleClass="raised-button info-button text-button" />
+            <p:button value="Warning" styleClass="raised-button warning-button text-button" />
+            <p:button value="Help" styleClass="raised-button help-button text-button" />
+            <p:button value="Danger" styleClass="raised-button danger-button text-button" />
+            <p:button value="Plain" styleClass="raised-button text-button p-button-plain" />
+
+            <h5>Outlined Buttons</h5>
+            <p:button value="Primary" styleClass="outlined-button" />
+            <p:button value="Secondary" styleClass="outlined-button secondary-button" />
+            <p:button value="Success" styleClass="outlined-button success-button" />
+            <p:button value="Info" styleClass="outlined-button info-button" />
+            <p:button value="Warning" styleClass="outlined-button warning-button" />
+            <p:button value="Help" styleClass="outlined-button help-button" />
+            <p:button value="Danger" styleClass="outlined-button danger-button" />
+
+            <h5>Rounded Icon Buttons</h5>
+            <p:button icon="pi pi-bookmark" styleClass="rounded-button secondary-button" />
+            <p:button icon="pi pi-search" styleClass="rounded-button success-button" />
+            <p:button icon="pi pi-user" styleClass="rounded-button info-button" />
+            <p:button icon="pi pi-bell" styleClass="rounded-button warning-button" />
+            <p:button icon="pi pi-heart" styleClass="rounded-button help-button" />
+            <p:button icon="pi pi-times" styleClass="rounded-button danger-button" />
+            <p:button icon="pi pi-check" styleClass="rounded-button" />
+
+            <h5>Rounded Text Icon Buttons</h5>
+            <p:button icon="pi pi-check" styleClass="rounded-button text-button" />
+            <p:button icon="pi pi-bookmark" styleClass="rounded-button secondary-button text-button" />
+            <p:button icon="pi pi-search" styleClass="rounded-button success-button text-button" />
+            <p:button icon="pi pi-user" styleClass="rounded-button info-button text-button" />
+            <p:button icon="pi pi-bell" styleClass="rounded-button warning-button text-button" />
+            <p:button icon="pi pi-heart" styleClass="rounded-button help-button text-button" />
+            <p:button icon="pi pi-times" styleClass="rounded-button danger-button text-button" />
+            <p:button icon="pi pi-filter" styleClass="rounded-button text-button p-button-plain" />
+
+            <h5>Rounded and Outlined Icon Buttons</h5>
+            <p:button icon="pi pi-check" styleClass="rounded-button outlined-button" />
+            <p:button icon="pi pi-bookmark" styleClass="rounded-button secondary-button outlined-button" />
+            <p:button icon="pi pi-search" styleClass="rounded-button success-button outlined-button" />
+            <p:button icon="pi pi-user" styleClass="rounded-button info-button outlined-button" />
+            <p:button icon="pi pi-bell" styleClass="rounded-button warning-button outlined-button" />
+            <p:button icon="pi pi-heart" styleClass="rounded-button help-button outlined-button" />
+            <p:button icon="pi pi-times" styleClass="rounded-button danger-button outlined-button" />
         </div>
     </ui:define>
 
