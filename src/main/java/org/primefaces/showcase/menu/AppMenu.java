@@ -123,7 +123,7 @@ public class AppMenu {
         formMenuItems.add(new MenuItem("InputGroup", "/ui/input/inputGroup"));
         formMenuItems.add(new MenuItem("InputMask", "/ui/input/inputMask"));
         formMenuItems.add(new MenuItem("InputNumber", "/ui/input/inputNumber"));
-        formMenuItems.add(new MenuItem("InputSwitch", "/ui/input/inputSwitch"));
+        //formMenuItems.add(new MenuItem("InputSwitch", "/ui/input/inputSwitch"));
         formMenuItems.add(new MenuItem("InputText", "/ui/input/inputText"));
         formMenuItems.add(new MenuItem("InputTextArea", "/ui/input/inputTextarea"));
         formMenuItems.add(new MenuItem("KeyFilter", "/ui/input/keyFilter"));
@@ -174,6 +174,7 @@ public class AppMenu {
         dataExporterMenuItems.add(new MenuItem("Customized", "/ui/data/dataexporter/customizedDocuments"));
         dataMenuItems.add(new MenuItem("DataExporter", dataExporterMenuItems));
 
+        /*
         //DataGrid Nested MenuItem
         List<MenuItem> dataGridMenuItems = new ArrayList<>();
         dataGridMenuItems.add(new MenuItem("Basic", "/ui/data/datagrid/basic"));
@@ -187,7 +188,7 @@ public class AppMenu {
         dataListMenuItems.add(new MenuItem("Paginator", "/ui/data/datalist/paginator"));
         dataListMenuItems.add(new MenuItem("MultiViewState", "/ui/data/datalist/multiViewState"));
         dataListMenuItems.add(new MenuItem("Lazy", "/ui/data/datalist/lazy"));
-        dataMenuItems.add(new MenuItem("DataList", dataListMenuItems));
+        dataMenuItems.add(new MenuItem("DataList", dataListMenuItems));*/
 
         //DataScroller Nested MenuItem
         List<MenuItem> dataScrollerMenuItems = new ArrayList<>();
@@ -346,13 +347,13 @@ public class AppMenu {
         panelMenuItems.add(new MenuItem("Dashboard", "/ui/panel/dashboard"));
         panelMenuItems.add(new MenuItem("Divider", "/ui/panel/divider", true));
         panelMenuItems.add(new MenuItem("Fieldset", "/ui/panel/fieldset"));
-        panelMenuItems.add(new MenuItem("Grid CSS", "/ui/panel/grid"));
-        panelMenuItems.add(new MenuItem("NotificationBar", "/ui/panel/notificationBar"));
+        //panelMenuItems.add(new MenuItem("Grid CSS", "/ui/panel/grid"));
+        //panelMenuItems.add(new MenuItem("NotificationBar", "/ui/panel/notificationBar"));
         panelMenuItems.add(new MenuItem("OutputPanel", "/ui/panel/outputPanel"));
-        panelMenuItems.add(new MenuItem("FlexGrid", "/ui/panel/flexGrid"));
+        //panelMenuItems.add(new MenuItem("FlexGrid", "/ui/panel/flexGrid"));
         panelMenuItems.add(new MenuItem("Panel", "/ui/panel/panel"));
         panelMenuItems.add(new MenuItem("PanelGrid", "/ui/panel/panelGrid"));
-        panelMenuItems.add(new MenuItem("Ribbon", "/ui/panel/ribbon"));
+        //panelMenuItems.add(new MenuItem("Ribbon", "/ui/panel/ribbon"));
         panelMenuItems.add(new MenuItem("Splitter", "/ui/panel/splitter", true));
         panelMenuItems.add(new MenuItem("ScrollPanel", "/ui/panel/scrollPanel"));
         panelMenuItems.add(new MenuItem("TabView", "/ui/panel/tabView"));
