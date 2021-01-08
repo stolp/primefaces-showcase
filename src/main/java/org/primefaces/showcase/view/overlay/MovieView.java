@@ -31,10 +31,17 @@ import javax.inject.Named;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.SelectEvent;
+
 @Named
 @RequestScoped
 public class MovieView {
     
+    private Movie movie;
+
     private List<Movie> movieList;
     
     public List<Movie> getMovieList() {
@@ -59,5 +66,17 @@ public class MovieView {
         movieList.add(new Movie("The Lord of the Rings: The Return of the King", "Peter Jackson", "Fantasy, Epic", 200));
         
     }
-  
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
+    public void onRowSelect(SelectEvent<Movie> event) {
+        FacesMessage msg = new FacesMessage("Movie Selected", event.getObject().getMovie());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 }

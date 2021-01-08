@@ -21,56 +21,56 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form id="form">
-                <p:commandButton id="imageBtn" value="Basic" type="button"/>
-                <p:overlayPanel id="imagePanel" for="imageBtn" hideEffect="fade">
-                    <p:graphicImage name="/demo/images/nature/nature1.jpg" width="300"/>
+                <h5>Basic</h5>
+                <p:commandButton id="basic" value="Show" type="button"/>
+                <p:overlayPanel for="basic" showEffect="fade" hideEffect="fade" style="width:350px">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </p:overlayPanel>
 
-                <br/><br/>
-
-                <p:commandButton id="movieBtn" value="Dynamic" type="button"/>
-                <p:overlayPanel id="moviePanel" for="movieBtn" hideEffect="fade" dynamic="true" style="width:600px"
-                                modal="true">
-                    <p:dataTable var="movies" value="#{movieView.movieList}" rows="5" paginator="true">
-                        <p:column headerText="Movie">
-                            <h:outputText value="#{movies.movie}"/>
-                        </p:column>
-
-                        <p:column headerText="Directed By">
-                            <h:outputText value="#{movies.directedBy}"/>
-                        </p:column>
-
-                        <p:column headerText="Genres">
-                            <h:outputText value="#{movies.genres}"/>
-                        </p:column>
-
-                        <p:column headerText="Run Time(min.)">
-                            <h:outputText value="#{movies.runTime}"/>
-                        </p:column>
-                    </p:dataTable>
-                </p:overlayPanel>
-
-                <br/><br/>
-
-                <p:graphicImage id="img" name="/demo/images/images.png" style="cursor:pointer" title="Custom Options"/>
-                <p:overlayPanel id="imgPanel" for="img" showEffect="blind" hideEffect="explode" showEvent="mouseover"
-                                hideEvent="mousedown"
-                                dismissable="false" showCloseIcon="true">
-                    <p:imageSwitch effect="fade" style="width:300px;height:188px;">
+                <h5>Images</h5>
+                <p:commandButton id="images" type="button" icon="pi pi-image" />
+                <p:overlayPanel for="images" showEffect="fade" hideEffect="fade" dismissable="false" showCloseIcon="true">
+                    <p:imageSwitch effect="fade">
                         <ui:repeat value="#{imageSwitchView.images}" var="image">
-                            <p:graphicImage name="/demo/images/nature/#{image}" width="300"/>
+                            <p:graphicImage name="/demo/images/nature/#{image}"/>
                         </ui:repeat>
                     </p:imageSwitch>
                 </p:overlayPanel>
 
-                <br/><br/>
+                <h5>Choose Data</h5>
+                <p:growl id="msgs" showDetail="true" />
 
+                <p:commandButton id="movieBtn" value="Find" type="button" icon="pi pi-search" />
+                <p:overlayPanel for="movieBtn" hideEffect="fade" dynamic="true" showEffect="fade" style="width:600px" widgetVar="moviePicker">
+                    <p:dataTable var="movie" value="#{movieView.movieList}" rows="5" paginator="true" selectionMode="single"
+                        selection="#{movieView.movie}" rowKey="#{movie.movie}">
+                        <p:ajax event="rowSelect" listener="#{movieView.onRowSelect}" update=":form:msgs" oncomplete="PF('moviePicker').hide()"/>
+
+                        <p:column headerText="Movie">
+                            <h:outputText value="#{movie.movie}"/>
+                        </p:column>
+
+                        <p:column headerText="Directed By">
+                            <h:outputText value="#{movie.directedBy}"/>
+                        </p:column>
+
+                        <p:column headerText="Genres">
+                            <h:outputText value="#{movie.genres}"/>
+                        </p:column>
+
+                        <p:column headerText="Run Time(min.)">
+                            <h:outputText value="#{movie.runTime}"/>
+                        </p:column>
+                    </p:dataTable>
+                </p:overlayPanel>
+
+                <h5>Data Iteration</h5>
                 <p:dataTable id="basicDT" var="product" value="#{dtSelectionView.products1}">
-                    <f:facet name="header">
-                        DataTable Integration
-                    </f:facet>
                     <p:column style="width:32px;text-align: center">
-                        <p:commandButton update=":form:productDetail"
+                        <p:commandButton update=":form:productDetail" styleClass="text-button"
                                          oncomplete="PF('productOP').show('#{component.clientId}')"
                                          icon="pi pi-search" title="View">
                             <f:setPropertyActionListener value="#{product}"
@@ -96,7 +96,7 @@
                     <p:outputPanel id="productDetail" style="text-align:center;">
                         <p:column rendered="#{not empty dtSelectionView.selectedProduct}">
                             <div class="product">
-                                <div class="product-grid-item card" style="margin-bottom: 0">
+                                <div class="product-grid-item" style="border: 0 none">
                                     <div class="product-grid-item-top">
                                         <div>
                                             <i class="pi pi-tag product-category-icon"/>

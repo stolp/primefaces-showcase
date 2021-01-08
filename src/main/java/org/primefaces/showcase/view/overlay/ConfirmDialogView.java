@@ -23,9 +23,6 @@
  */
 package org.primefaces.showcase.view.overlay;
 
-import org.primefaces.event.CloseEvent;
-import org.primefaces.event.MoveEvent;
-
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -33,14 +30,14 @@ import javax.inject.Named;
 
 @Named
 @RequestScoped
-public class DialogView {
-    
-    public void handleClose(CloseEvent event) {
-        addMessage(event.getComponent().getId() + " closed", "So you don't like nature?");
+public class ConfirmDialogView {
+        
+    public void confirm() {
+        addMessage("Confirmed", "You have accepted");
     }
-    
-    public void handleMove(MoveEvent event) {
-        addMessage(event.getComponent().getId() + " moved", "Left: " + event.getLeft() + ", Top: " + event.getTop());
+
+    public void delete() {
+        addMessage("Confired", "Record deleted");
     }
     
     public void addMessage(String summary, String detail) {

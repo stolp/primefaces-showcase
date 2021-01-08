@@ -360,26 +360,15 @@ public class AppMenu {
         //OVERLAY CATEGORY START
         List<MenuItem> overlayMenuItems = new ArrayList<>();
         overlayMenuItems.add(new MenuItem("ConfirmDialog", "/ui/overlay/confirmDialog"));
-
-        //Dialog Nested MenuItem
-        List<MenuItem> dialogMenuItems = new ArrayList<>();
-        dialogMenuItems.add(new MenuItem("Basic", "/ui/overlay/dialog/basic"));
-        dialogMenuItems.add(new MenuItem("Dynamic", "/ui/overlay/dialog/dynamic"));
-        dialogMenuItems.add(new MenuItem("Focus", "/ui/overlay/dialog/focus"));
-        dialogMenuItems.add(new MenuItem("Events", "/ui/overlay/dialog/events"));
-        dialogMenuItems.add(new MenuItem("Min/Max", "/ui/overlay/dialog/minMax"));
-        dialogMenuItems.add(new MenuItem("Login", "/ui/overlay/dialog/loginDemo"));
-        dialogMenuItems.add(new MenuItem("RTL", "/ui/overlay/dialog/rtl"));
-        overlayMenuItems.add(new MenuItem("Dialog", dialogMenuItems));
-
+        overlayMenuItems.add(new MenuItem("Dialog", "/ui/overlay/dialog"));
         overlayMenuItems.add(new MenuItem("LightBox", "/ui/overlay/lightBox"));
         overlayMenuItems.add(new MenuItem("OverlayPanel", "/ui/overlay/overlayPanel"));
         overlayMenuItems.add(new MenuItem("Sidebar", "/ui/overlay/sidebar"));
 
         //Tooltip Nested MenuItem
         List<MenuItem> tooltipMenuItems = new ArrayList<>();
-        tooltipMenuItems.add(new MenuItem("Tooltip Options", "/ui/overlay/tooltip/tooltipOptions"));
-        tooltipMenuItems.add(new MenuItem("Global Tooltip", "/ui/overlay/tooltip/tooltipGlobal"));
+        tooltipMenuItems.add(new MenuItem("Options", "/ui/overlay/tooltip/tooltipOptions"));
+        tooltipMenuItems.add(new MenuItem("Global", "/ui/overlay/tooltip/tooltipGlobal"));
         overlayMenuItems.add(new MenuItem("Tooltip", tooltipMenuItems));
 
         menuCategories.add(new MenuCategory("Overlay", overlayMenuItems));
