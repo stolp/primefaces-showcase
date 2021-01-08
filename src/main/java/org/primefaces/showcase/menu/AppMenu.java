@@ -340,6 +340,7 @@ public class AppMenu {
         //PANEL CATEGORY START
         List<MenuItem> panelMenuItems = new ArrayList<>();
         panelMenuItems.add(new MenuItem("Accordion", "/ui/panel/accordionPanel"));
+        panelMenuItems.add(new MenuItem("Card", "/ui/panel/card", true));
         panelMenuItems.add(new MenuItem("Dashboard", "/ui/panel/dashboard"));
         panelMenuItems.add(new MenuItem("Divider", "/ui/panel/divider", true));
         panelMenuItems.add(new MenuItem("Fieldset", "/ui/panel/fieldset"));
