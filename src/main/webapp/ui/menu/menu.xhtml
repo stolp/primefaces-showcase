@@ -22,7 +22,7 @@
             <p:growl id="messages" showDetail="false"/>
 
             <div class="card">
-                <h5 style="margin-top:0">Plain Menu</h5>
+                <h5>Inline</h5>
                 <p:menu>
                     <p:submenu label="Ajax">
                         <p:menuitem value="Save" action="#{menuView.save}" update="messages" icon="pi pi-save"/>
@@ -41,7 +41,7 @@
 
             <div class="card">
                 <h5>Overlay</h5>
-                <p:commandButton id="dynaButton" value="Show" type="button" icon="pi pi-home"/>
+                <p:commandButton id="dynaButton" value="Show" type="button" icon="pi pi-bars"/>
                 <p:menu overlay="true" trigger="dynaButton" my="left top" at="left bottom">
                     <p:submenu label="Ajax">
                         <p:menuitem value="Save" action="#{menuView.save}" update="messages" icon="pi pi-save"/>
@@ -59,7 +59,7 @@
             </div>
 
             <div class="card">
-                <h5>Programmatic Menu</h5>
+                <h5>Programmatic</h5>
                 <p:menu model="#{menuView.model}"/>
             </div>
 

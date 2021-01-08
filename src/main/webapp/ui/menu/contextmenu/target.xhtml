@@ -18,7 +18,7 @@
 
     <ui:define name="implementation">
         <div class="card">
-            <p:imageSwitch id="images" effect="fade" widgetVar="gallery" slideshowAuto="false">
+            <p:imageSwitch id="images" effect="fade" widgetVar="gallery" slideshowAuto="false" styleClass="p-shadow-4">
                 <p:graphicImage name="/demo/images/nature/nature1.jpg"/>
                 <p:graphicImage name="/demo/images/nature/nature2.jpg"/>
                 <p:graphicImage name="/demo/images/nature/nature3.jpg"/>
@@ -27,9 +27,9 @@
 
             <p:contextMenu for="images">
                 <p:menuitem value="Prev" url="javascript:void(0)" onclick="PF('gallery').previous()"
-                            icon="pi pi-caret-left"/>
+                            icon="pi pi-chevron-left"/>
                 <p:menuitem value="Next" url="javascript:void(0)" onclick="PF('gallery').next()"
-                            icon="pi pi-caret-right"/>
+                            icon="pi pi-chevron-right"/>
                 <p:menuitem value="Remove" url="javascript:void(0)" onclick="PF('gallery').getJQ().fadeOut()"
                             icon="pi pi-times"/>
             </p:contextMenu>
