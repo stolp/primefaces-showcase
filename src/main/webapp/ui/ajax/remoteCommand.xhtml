@@ -6,7 +6,7 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="title">
-        Ajax Framework - <span class="subitem">RemoteCommand</span>
+        Ajax Framework <span class="subitem">RemoteCommand</span>
     </ui:define>
 
     <ui:define name="description">
@@ -30,18 +30,18 @@
                 <p:remoteCommand name="rc2" update="msgs" action="#{remoteCommandView.execute}"
                                  oncomplete="alert('Return value from server: ' + args.serverTime)"/>
 
-                <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
+                <h5>Basic</h5>
+                <p>Execute a simple remote command by calling a javascript function.</p>
+                <p:commandButton type="button" value="Send" icon="pi pi-refresh" onclick="rc()"/>
 
-                <h:panelGrid columnClasses="value">
-                    <p:commandButton type="button" value="Execute simple command" icon="pi pi-refresh"
-                                     onclick="rc()"/>
+                <h5>Parameters</h5>
+                <p>Passing parameters to the remote method as a javascript object.</p>
+                <p:commandButton type="button" value="Send" icon="pi pi-refresh"
+                        onclick="rc([{name: 'param1', value: 'foo'}, {name: 'param2', value: 'bar'}])"/>
 
-                    <p:commandButton type="button" value="Passing parameters to bean method" icon="pi pi-refresh"
-                                     onclick="rc([{name: 'param1', value: 'foo'}, {name: 'param2', value: 'bar'}])"/>
-
-                    <p:commandButton type="button" value="Receiving values form the bean" icon="pi pi-refresh"
-                                     onclick="rc2()"/>
-                </h:panelGrid>
+                <h5>Receive Values Back</h5>
+                <p>Receiving values form the server as a serialized json object.</p>
+                <p:commandButton type="button" value="Send" icon="pi pi-refresh" onclick="rc2()"/>
 
                 <script type="text/javascript">
                     function runRemoteCommand(param1, param2) {
@@ -54,6 +54,8 @@
                         });
                     }
                 </script>
+
+<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
             </h:form>
         </div>
     </ui:define>

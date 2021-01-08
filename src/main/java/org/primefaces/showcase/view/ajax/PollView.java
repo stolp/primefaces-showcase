@@ -23,14 +23,22 @@
  */
 package org.primefaces.showcase.view.ajax;
 
-import javax.faces.view.ViewScoped;
-
 import javax.inject.Named;
 import java.io.Serializable;
 
+import javax.faces.view.ViewScoped;
+
 @Named
 @ViewScoped
-public class CounterView implements Serializable {
+public class PollView implements Serializable {
     
+    private int number;
+
+    public void increment() {
+        number++;
+    }
     
+    public int getNumber() {
+        return number;
+    }
 }

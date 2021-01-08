@@ -80,18 +80,14 @@ public class AppMenu {
 
         //AJAX FRAMEWORK CATEGORY START
         List<MenuItem> ajaxFrameworkMenuItems = new ArrayList<>();
-        ajaxFrameworkMenuItems.add(new MenuItem("Listener", "/ui/ajax/listener"));
-        ajaxFrameworkMenuItems.add(new MenuItem("PartialSubmit", "/ui/ajax/partialSubmit"));
-        ajaxFrameworkMenuItems.add(new MenuItem("Counter", "/ui/ajax/counter"));
+        ajaxFrameworkMenuItems.add(new MenuItem("Introduction", "/ui/ajax/basic"));
         ajaxFrameworkMenuItems.add(new MenuItem("Process", "/ui/ajax/process"));
-        ajaxFrameworkMenuItems.add(new MenuItem("Validation", "/ui/ajax/validation"));
-        ajaxFrameworkMenuItems.add(new MenuItem("RemoteCommand", "/ui/ajax/remoteCommand"));
-        ajaxFrameworkMenuItems.add(new MenuItem("Dropdown", "/ui/ajax/dropdown"));
-        ajaxFrameworkMenuItems.add(new MenuItem("Observer", "/ui/ajax/observer"));
-        ajaxFrameworkMenuItems.add(new MenuItem("Basic", "/ui/ajax/basic"));
-        ajaxFrameworkMenuItems.add(new MenuItem("Event", "/ui/ajax/event"));
+        ajaxFrameworkMenuItems.add(new MenuItem("PartialSubmit", "/ui/ajax/partialSubmit"));
         ajaxFrameworkMenuItems.add(new MenuItem("Selector", "/ui/ajax/selector"));
         ajaxFrameworkMenuItems.add(new MenuItem("Search", "/ui/ajax/search"));
+        ajaxFrameworkMenuItems.add(new MenuItem("Validation", "/ui/ajax/validation"));
+        ajaxFrameworkMenuItems.add(new MenuItem("RemoteCommand", "/ui/ajax/remoteCommand"));
+        ajaxFrameworkMenuItems.add(new MenuItem("Observer", "/ui/ajax/observer"));
         ajaxFrameworkMenuItems.add(new MenuItem("Poll", "/ui/ajax/poll"));
         ajaxFrameworkMenuItems.add(new MenuItem("Fragment", "/ui/ajax/fragment"));
         ajaxFrameworkMenuItems.add(new MenuItem("Status", "/ui/ajax/status"));

@@ -23,14 +23,21 @@
  */
 package org.primefaces.showcase.view.ajax;
 
-import javax.faces.view.ViewScoped;
-
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
-import java.io.Serializable;
 
 @Named
-@ViewScoped
-public class CounterView implements Serializable {
+@RequestScoped
+public class LifecycleView {
     
-    
+    private String text;
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
 }
+

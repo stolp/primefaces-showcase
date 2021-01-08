@@ -6,11 +6,11 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="title">
-        Ajax Framework - <span class="subitem">Poll</span>
+        Ajax Framework <span class="subitem">Poll</span>
     </ui:define>
 
     <ui:define name="description">
-        Poll component makes ajax calls periodically.
+        Poll component makes remote calls periodically.
     </ui:define>
 
     <ui:param name="documentationLink" value="/components/poll"/>
@@ -19,8 +19,11 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form>
-                <h:outputText id="txt_count" value="#{counterView.number}"/>
-                <p:poll interval="3" listener="#{counterView.increment}" update="txt_count"/>
+                <h1 class="p-text-center">
+                    <h:outputText id="txt_count" value="#{pollView.number}"/>
+                </h1>
+                
+                <p:poll interval="2" listener="#{pollView.increment}" update="txt_count"/>
             </h:form>
         </div>
     </ui:define>

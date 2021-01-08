@@ -5,6 +5,15 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml">
 
+    <ui:define name="head">
+        <style type="text/css">
+            .loading-icon {
+               font-size: 3rem;
+               color: var(--primary-color);
+            }
+        </style>
+    </ui:define>
+
     <ui:define name="title">
         AjaxFramework - <span class="subitem">Status</span>
     </ui:define>
@@ -18,30 +27,31 @@
     <ui:param name="widgetLink" value="ajaxstatus"/>
 
     <ui:define name="implementation">
-        <div class="card">
-            <p:ajaxStatus style="display:block;margin-bottom:2em;height:24px;">
+        <div class="card text-secondary">
+            <p:ajaxStatus styleClass="p-d-block p-mb-4">
                 <f:facet name="default">
-                    <h:outputText value="Status: StandBy"/>
+                    <i class="pi pi-spinner loading-icon" aria-hidden="true"></i>
                 </f:facet>
 
                 <f:facet name="start">
-                    <p:graphicImage name="/demo/images/ajaxloadingbar.gif"/>
+                    <i class="pi pi-spin pi-spinner loading-icon" aria-hidden="true"></i>
                 </f:facet>
 
                 <f:facet name="complete">
-                    <h:outputText value="Status: Completed"/>
+                    <i class="pi pi-spinner loading-icon" aria-hidden="true"></i>
                 </f:facet>
             </p:ajaxStatus>
 
             <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
 
-            <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false"
-                      showHeader="false">
-                <p:graphicImage name="/demo/images/ajaxloadingbar.gif"/>
+            <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                <div class="p-text-center">
+                    <i class="pi pi-spinner loading-icon" aria-hidden="true"></i>
+                </div>
             </p:dialog>
 
             <h:form>
-                <p:commandButton value="Send" icon="pi pi-refresh"/>
+                <p:commandButton value="Send" styleClass="outlined-button secondary-button" />
             </h:form>
         </div>
     </ui:define>

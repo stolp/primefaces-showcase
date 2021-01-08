@@ -6,7 +6,7 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="title">
-        Ajax Framework - <span class="subitem">Validation</span>
+        Ajax Framework <span class="subitem">Validation</span>
     </ui:define>
 
     <ui:define name="description">
@@ -18,28 +18,25 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form>
-                <p:panel id="panel" header="New User">
+                <p:messages id="msgs"/>
 
-                    <p:messages id="msgs"/>
+                <h:panelGrid columns="3" cellpadding="7" styleClass="p-mb-3">
+                    <p:outputLabel for="firstname" value="Firstname:"/>
+                    <p:inputText id="firstname" value="#{remoteValidationView.firstname}" required="true" label="Firstname">
+                        <f:validateLength minimum="2"/>
+                    </p:inputText>
+                    <p:message for="firstname" display="icon"/>
 
-                    <h:panelGrid columns="3" cellpadding="5">
-                        <p:outputLabel for="firstname" value="Firstname:"/>
-                        <p:inputText id="firstname" value="#{userView.firstname}" required="true" label="Firstname">
-                            <f:validateLength minimum="2"/>
-                        </p:inputText>
-                        <p:message for="firstname" display="icon"/>
+                    <p:outputLabel for="lastname" value="Lastname:"/>
+                    <p:inputText id="lastname" value="#{remoteValidationView.lastname}" label="Lastname" required="true">
+                        <f:validateLength minimum="2"/>
+                        <p:ajax update="msgLastname" event="keyup"/>
+                    </p:inputText>
+                    <p:message for="lastname" id="msgLastname" display="icon"/>
 
-                        <p:outputLabel for="lastname" value="Lastname:"/>
-                        <p:inputText id="lastname" value="#{userView.lastname}" label="Lastname" required="true">
-                            <f:validateLength minimum="2"/>
-                            <p:ajax update="msgLastname" event="keyup"/>
-                        </p:inputText>
-                        <p:message for="lastname" id="msgLastname" display="icon"/>
+                </h:panelGrid>
 
-                    </h:panelGrid>
-
-                    <p:commandButton value="Save" update="panel" action="#{userView.save}" icon="pi pi-check"/>
-                </p:panel>
+                <p:commandButton value="Save" update="@form" action="#{remoteValidationView.save}" icon="pi pi-check"/>
             </h:form>
         </div>
     </ui:define>
