@@ -101,18 +101,18 @@ public class AppMenu {
         formMenuItems.add(new MenuItem("AutoComplete", "/ui/input/autoComplete"));
 
         //Calendar Nested MenuItem
-        List<MenuItem> calendarMenuItems = new ArrayList<>();
+        /*List<MenuItem> calendarMenuItems = new ArrayList<>();
         calendarMenuItems.add(new MenuItem("Date (java.util.Date)", "/ui/input/calendar/calendar"));
         calendarMenuItems.add(new MenuItem("LocalDate (java.time.Local*)", "/ui/input/calendar/calendarJava8"));
-        formMenuItems.add(new MenuItem("Calendar", calendarMenuItems));
+        formMenuItems.add(new MenuItem("Calendar", calendarMenuItems));*/
 
         formMenuItems.add(new MenuItem("Chips", "/ui/input/chips"));
         formMenuItems.add(new MenuItem("ColorPicker", "/ui/input/colorPicker"));
 
         //DatePicker Nested MenuItem
         List<MenuItem> datePickerMenuItems = new ArrayList<>();
-        datePickerMenuItems.add(new MenuItem("Date (java.util.Date)", "/ui/input/datepicker/datePicker"));
-        datePickerMenuItems.add(new MenuItem("LocalDate (java.time.Local*)", "/ui/input/datepicker/datePickerJava8"));
+        datePickerMenuItems.add(new MenuItem("java.util.Date", "/ui/input/datepicker/datePicker"));
+        datePickerMenuItems.add(new MenuItem("Java 8+ Date APIs", "/ui/input/datepicker/datePickerJava8"));
         datePickerMenuItems.add(new MenuItem("Metadata", "/ui/input/datepicker/metadata"));
         formMenuItems.add(new MenuItem("DatePicker", datePickerMenuItems));
 

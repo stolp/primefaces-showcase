@@ -78,11 +78,11 @@
     </ui:define>
 
     <ui:define name="title">
-        DatePicker (java.util.Date)
+        DatePicker <span class="subitem">java.util.Date</span>
     </ui:define>
 
     <ui:define name="description">
-        DatePicker is an input component to select a date.
+        DatePicker is an input component to select datetime.
     </ui:define>
 
     <ui:param name="documentationLink" value="/components/datepicker"/>
@@ -93,194 +93,117 @@
             <h:form id="form">
                 <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
 
-                <h:panelGrid columns="2" cellpadding="5">
-                    <p:outputLabel for="inline" value="Inline:"/>
-                    <p:datePicker id="inline" value="#{calendarView.date1}" inline="true"/>
+                <h5 class="p-mt-0">Popup</h5>
+                <div class="ui-fluid p-grid p-formgrid">
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="navigator" value="Navigator"/>
+                        <p:datePicker id="navigator" value="#{calendarView.date2}" monthNavigator="true" yearNavigator="true"/>
+                    </div>
 
-                    <p:outputLabel for="popup" value="Popup:"/>
-                    <p:datePicker id="popup" value="#{calendarView.date2}" monthNavigator="true" yearNavigator="true"/>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="multiselect" value="Multiple Selection"/>
+                        <p:datePicker id="multiselect" selectionMode="multiple" value="#{calendarView.multi}" readonlyInput="true"/>
+                    </div>
 
-                    <p:outputLabel for="multiselect" value="Multiple Selection:"/>
-                    <p:datePicker id="multiselect" selectionMode="multiple" value="#{calendarView.multi}"
-                                  readonlyInput="true"/>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="range" value="Range Selection"/>
+                        <p:datePicker id="range" selectionMode="range" value="#{calendarView.range}" readonlyInput="true"/>
+                    </div>
 
-                    <p:outputLabel for="range" value="Range Selection:"/>
-                    <p:datePicker id="range" selectionMode="range" value="#{calendarView.range}" readonlyInput="true"/>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="month" value="Month Picker"/>
+                        <p:datePicker id="month" view="month" value="#{calendarView.date3}" pattern="MM/yyyy" yearNavigator="true" yearRange="2000:2030"/>
+                    </div>
 
-                    <p:outputLabel for="month" value="Month Picker:"/>
-                    <p:datePicker id="month" view="month" value="#{calendarView.date3}" pattern="MM/yyyy"
-                                  yearNavigator="true" yearRange="2000:2030"/>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="touch" value="Touch UI"/>
+                        <p:datePicker id="touch" value="#{calendarView.date4}" touchUI="true" showOtherMonths="true"/>
+                    </div>
 
-                    <p:outputLabel for="touch" value="Touch UI:"/>
-                    <p:datePicker id="touch" value="#{calendarView.date4}" touchUI="true" showOtherMonths="true"/>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="dateTemplate" value="Date Template"/>
+                        <p:datePicker id="dateTemplate" value="#{calendarView.date5}" dateTemplate="dateTemplateFunc"/>
+                    </div>
 
-                    <p:outputLabel for="dateTemplate" value="Date Template:"/>
-                    <p:datePicker id="dateTemplate" value="#{calendarView.date5}" dateTemplate="dateTemplateFunc"/>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="disabledDD" value="Disabled Date/Day"/>
+                        <p:datePicker id="disabledDD" value="#{calendarView.date6}"
+                                      disabledDays="#{calendarView.invalidDays}"
+                                      disabledDates="#{calendarView.invalidDates}" readonlyInput="true"/>
+                    </div>
 
-                    <p:outputLabel for="disabledDD" value="Disabled Date/Day:"/>
-                    <p:datePicker id="disabledDD" value="#{calendarView.date6}"
-                                  disabledDays="#{calendarView.invalidDays}"
-                                  disabledDates="#{calendarView.invalidDates}" readonlyInput="true"/>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="button" value="Button"/>
+                        <p:datePicker id="button" value="#{calendarView.date7}" showIcon="true"/>
+                    </div>
 
-                    <p:outputLabel for="button" value="Button:"/>
-                    <p:datePicker id="button" value="#{calendarView.date7}" showIcon="true"/>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="event" value="Select Event"/>
+                        <p:datePicker id="event" value="#{calendarView.date8}">
+                            <p:ajax event="dateSelect" listener="#{calendarView.onDateSelect}" update="msgs"/>
+                        </p:datePicker>
+                    </div>
 
-                    <p:outputLabel for="event" value="Select Event:"/>
-                    <p:datePicker id="event" value="#{calendarView.date8}">
-                        <p:ajax event="dateSelect" listener="#{calendarView.onDateSelect}" update="msgs"/>
-                    </p:datePicker>
-
-                    <p:outputLabel for="spanish" value="Spanish:"/>
-                    <p:datePicker id="spanish" value="#{calendarView.date9}" locale="es" monthNavigator="true"
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="spanish" value="Spanish"/>
+                        <p:datePicker id="spanish" value="#{calendarView.date9}" locale="es" monthNavigator="true"
                                   pattern="yyyy-MMM-dd"/>
+                    </div>
 
-                    <p:outputLabel for="german" value="German:"/>
-                    <p:datePicker id="german" value="#{calendarView.dateDe}" locale="de" monthNavigator="true"
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="german" value="German"/>
+                        <p:datePicker id="german" value="#{calendarView.dateDe}" locale="de" monthNavigator="true"
                                   pattern="dd.MM.yyyy"/>
+                    </div>
 
-                    <p:outputLabel for="buttonbar" value="Button Bar:"/>
-                    <p:datePicker id="buttonbar" value="#{calendarView.date10}" showButtonBar="true"/>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="buttonbar" value="Button Bar"/>
+                        <p:datePicker id="buttonbar" value="#{calendarView.date10}" showButtonBar="true"/>
+                    </div>
 
-                    <p:outputLabel for="minmax" value="Min-Max:"/>
-                    <p:datePicker id="minmax" value="#{calendarView.date11}" mindate="#{calendarView.minDate}"
-                                  maxdate="#{calendarView.maxDate}" readonlyInput="true"/>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="minmax" value="Min-Max"/>
+                        <p:datePicker id="minmax" value="#{calendarView.date11}" mindate="#{calendarView.minDate}"
+                                      maxdate="#{calendarView.maxDate}" readonlyInput="true"/>
+                    </div>
 
-                    <p:outputLabel for="multi" value="Multiple Months:"/>
-                    <p:datePicker id="multi" value="#{calendarView.date12}" numberOfMonths="3" monthNavigator="true"
-                                  yearNavigator="true"/>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="multi" value="Multiple Months"/>
+                        <p:datePicker id="multi" value="#{calendarView.date12}" numberOfMonths="3" monthNavigator="true" yearNavigator="true"/>
+                    </div>
 
-                    <p:outputLabel for="time" value="Time"/>
-                    <p:datePicker id="time" value="#{calendarView.date13}" showTime="true"/>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="time" value="Time"/>
+                        <p:datePicker id="time" value="#{calendarView.date13}" showTime="true"/>
+                    </div>
 
-                    <p:outputLabel for="timeMinMax" value="Time (Min-Max)"/>
-                    <p:datePicker id="timeMinMax" value="#{calendarView.date16}" showTime="true"
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="timeMinMax" value="Time (Min-Max)"/>
+                        <p:datePicker id="timeMinMax" value="#{calendarView.date16}" showTime="true"
                                   mindate="#{calendarView.minDateTime}" maxdate="#{calendarView.maxDateTime}"/>
+                    </div>
 
-                    <p:outputLabel for="timeDe" value="Time (German):"/>
-                    <p:datePicker id="timeDe" value="#{calendarView.dateTimeDe}" showTime="true" locale="de"
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="timeDe" value="Time (German)"/>
+                        <p:datePicker id="timeDe" value="#{calendarView.dateTimeDe}" showTime="true" locale="de"
                                   pattern="dd.MM.yyyy"/>
 
-                    <p:outputLabel for="timeonly" value="Time Only:"/>
-                    <p:datePicker id="timeonly" value="#{calendarView.date14}" timeOnly="true" pattern="HH:mm"/>
+                    </div>
 
-                    <p:outputLabel for="timeonlyMinMax" value="Time Only (Min-Max):"/>
-                    <p:datePicker id="timeonlyMinMax" value="#{calendarView.date15}" timeOnly="true" pattern="HH:mm"
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="timeonly" value="Time Only"/>
+                        <p:datePicker id="timeonly" value="#{calendarView.date14}" timeOnly="true" pattern="HH:mm"/>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="timeonlyMinMax" value="Time Only (Min-Max)"/>
+                        <p:datePicker id="timeonlyMinMax" value="#{calendarView.date15}" timeOnly="true" pattern="HH:mm"
                                   mindate="#{calendarView.minTime}" maxdate="#{calendarView.maxTime}"/>
-                </h:panelGrid>
+                    </div>
+                </div>
 
-                <p:commandButton value="Submit" update="msgs" action="#{calendarView.click}" icon="pi pi-check"/>
-
-                <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
-                    <p:panelGrid id="display" columns="4" columnClasses="label,value,label,value">
-                        <h:outputText value="Inline:"/>
-                        <h:outputText value="#{calendarView.date1}">
-                            <f:convertDateTime pattern="MM/dd/yyyy"/>
-                        </h:outputText>
-
-                        <h:outputText value="Popup:"/>
-                        <h:outputText value="#{calendarView.date2}">
-                            <f:convertDateTime pattern="MM/dd/yyyy"/>
-                        </h:outputText>
-
-                        <h:outputText value="Multiple Selection:"/>
-                        <ui:repeat var="date" value="#{calendarView.multi}" varStatus="status"
-                                   size="#{calendarView.multi.size()}">
-                            #{status.first ? '' : ','}
-                            <h:outputText value="#{date}">
-                                <f:convertDateTime pattern="MM/dd/yyyy"/>
-                            </h:outputText>
-                        </ui:repeat>
-
-                        <h:outputText value="Range Selection:"/>
-                        <ui:repeat var="date" value="#{calendarView.range}" varStatus="status"
-                                   size="#{calendarView.range.size()}">
-                            #{status.first ? '' : '-'}
-                            <h:outputText value="#{date}">
-                                <f:convertDateTime pattern="MM/dd/yyyy"/>
-                            </h:outputText>
-                        </ui:repeat>
-
-                        <h:outputText value="Month Picker:"/>
-                        <h:outputText value="#{calendarView.date3}">
-                            <f:convertDateTime pattern="MM/yyyy"/>
-                        </h:outputText>
-
-                        <h:outputText value="Touch UI:"/>
-                        <h:outputText value="#{calendarView.date4}">
-                            <f:convertDateTime pattern="MM/dd/yyyy"/>
-                        </h:outputText>
-
-                        <h:outputText value="Date Template:"/>
-                        <h:outputText value="#{calendarView.date5}">
-                            <f:convertDateTime pattern="MM/dd/yyyy"/>
-                        </h:outputText>
-
-                        <h:outputText value="Disabled Date/Day:"/>
-                        <h:outputText value="#{calendarView.date6}">
-                            <f:convertDateTime pattern="MM/dd/yyyy"/>
-                        </h:outputText>
-
-                        <h:outputText value="Button:"/>
-                        <h:outputText value="#{calendarView.date7}">
-                            <f:convertDateTime pattern="MM/dd/yyyy"/>
-                        </h:outputText>
-
-                        <h:outputText value="Select Event:"/>
-                        <h:outputText value="#{calendarView.date8}">
-                            <f:convertDateTime pattern="MM/dd/yyyy"/>
-                        </h:outputText>
-
-                        <h:outputText value="Spanish:"/>
-                        <h:outputText value="#{calendarView.date9}">
-                            <f:convertDateTime pattern="MM/dd/yyyy"/>
-                        </h:outputText>
-
-                        <h:outputText value="German:"/>
-                        <h:outputText value="#{calendarView.dateDe}">
-                            <f:convertDateTime pattern="dd.MM.yyyy"/>
-                        </h:outputText>
-
-                        <h:outputText value="Button Bar:"/>
-                        <h:outputText value="#{calendarView.date10}">
-                            <f:convertDateTime pattern="MM/dd/yyyy"/>
-                        </h:outputText>
-
-                        <h:outputText value="Min-Max:"/>
-                        <h:outputText value="#{calendarView.date11}">
-                            <f:convertDateTime pattern="MM/dd/yyyy"/>
-                        </h:outputText>
-
-                        <h:outputText value="Multiple Months:"/>
-                        <h:outputText value="#{calendarView.date12}">
-                            <f:convertDateTime pattern="MM/dd/yyyy"/>
-                        </h:outputText>
-
-                        <h:outputText value="Time:"/>
-                        <h:outputText value="#{calendarView.date13}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm"/>
-                        </h:outputText>
-
-                        <h:outputText value="Time (Min-Max):"/>
-                        <h:outputText value="#{calendarView.date16}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm"/>
-                        </h:outputText>
-
-                        <h:outputText value="Time (German):"/>
-                        <h:outputText value="#{calendarView.dateTimeDe}">
-                            <f:convertDateTime pattern="dd.MM.yyyy HH:mm"/>
-                        </h:outputText>
-
-                        <h:outputText value="Time Only:"/>
-                        <h:outputText value="#{calendarView.date14}">
-                            <f:convertDateTime pattern="HH:mm"/>
-                        </h:outputText>
-
-                        <h:outputText value="Time Only (Min-Max):"/>
-                        <h:outputText value="#{calendarView.date15}">
-                            <f:convertDateTime pattern="HH:mm"/>
-                        </h:outputText>
-                    </p:panelGrid>
-                </p:dialog>
+                <h5>Inline</h5>
+                <p:datePicker id="inline" value="#{calendarView.date1}" inline="true"/>
             </h:form>
         </div>
     </ui:define>

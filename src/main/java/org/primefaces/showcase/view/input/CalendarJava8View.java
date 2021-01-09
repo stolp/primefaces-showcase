@@ -42,9 +42,6 @@ import java.util.List;
 @ViewScoped
 public class CalendarJava8View implements Serializable {
 
-    private Boolean timeInput = Boolean.FALSE;
-    private Boolean showOtherMonths = Boolean.FALSE;
-
     private LocalDate date1;
     @Future
     private LocalDate date2;
@@ -444,22 +441,6 @@ public class CalendarJava8View implements Serializable {
 
     public void setDateTime5(LocalDateTime dateTime5) {
         this.dateTime5 = dateTime5;
-    }
-
-    public Boolean getTimeInput() {
-        return timeInput;
-    }
-
-    public void setTimeInput(Boolean timeInput) {
-        this.timeInput = timeInput;
-    }
-
-    public Boolean getShowOtherMonths() {
-        return showOtherMonths;
-    }
-
-    public void setShowOtherMonths(Boolean showOtherMonths) {
-        this.showOtherMonths = showOtherMonths;
     }
 
     public LocalDateTime getDateTime6() {

@@ -69,429 +69,260 @@
 
             //]]>
         </script>
-
-        <style type="text/css">
-            .value {
-                font-weight: bold;
-            }
-        </style>
     </ui:define>
 
     <ui:define name="title">
-        DatePicker (Java8; LocalDate, LocalTime, LocalDateTime, YearMonth; requires PrimeFaces >= 8.0)
+        DatePicker <span class="subitem">Java 8+ Date APIs</span>
     </ui:define>
 
     <ui:define name="description">
-        DatePicker is an input component to select a date.
+        DatePicker has first class support for Java 8+ Date APIs such as LocalDate.
     </ui:define>
 
     <ui:param name="documentationLink" value="/components/datepicker"/>
     <ui:param name="widgetLink" value="datepicker"/>
 
     <ui:define name="implementation">
-        <div class="card">
-            <h:form id="form">
+        <h:form id="form">
+            <div class="card">
+            
                 <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true">
                     <p:autoUpdate/>
                 </p:growl>
 
-                <p:outputPanel styleClass="p-grid">
-                    <div class="p-col-12 p-md-8">
-                        <p:panel header="Date only" toggleable="true">
-                            <p:panelGrid columns="2" layout="flex" id="inputPanelDate" styleClass="ui-noborder"
-                                         columnClasses="p-col-12 p-lg-4, p-col-12 p-lg-8">
-                                <p:outputLabel for="inline" value="Inline:"/>
-                                <p:datePicker id="inline" value="#{calendarJava8View.date1}" inline="true"
-                                              showOtherMonths="#{calendarJava8View.showOtherMonths}"/>
-
-                                <p:outputLabel for="popup" value="Popup:"/>
-                                <p:datePicker id="popup" value="#{calendarJava8View.date2}"
-                                              showOtherMonths="#{calendarJava8View.showOtherMonths}"
-                                              monthNavigator="true"
-                                              yearNavigator="true"/>
-
-                                <p:outputLabel for="popupConvertDateTime" value="Popup (f:convertDateTime):"/>
-                                <p:datePicker id="popupConvertDateTime" value="#{calendarJava8View.date13}"
-                                              pattern="MM/dd/yyyy"
-                                              showOtherMonths="#{calendarJava8View.showOtherMonths}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" type="localDate"/>
-                                </p:datePicker>
-
-                                <p:outputLabel for="multiselect" value="Multiple Selection:"/>
-                                <p:datePicker id="multiselect" selectionMode="multiple"
-                                              value="#{calendarJava8View.multi}"
-                                              readonlyInput="true"
-                                              showOtherMonths="#{calendarJava8View.showOtherMonths}"/>
-
-                                <p:outputLabel for="range" value="Range Selection:"/>
-                                <p:datePicker id="range" selectionMode="range" value="#{calendarJava8View.range}"
-                                              readonlyInput="true"
-                                              showOtherMonths="#{calendarJava8View.showOtherMonths}"/>
-
-                                <p:outputLabel for="month" value="Month Picker:"/>
-                                <p:datePicker id="month" view="month" value="#{calendarJava8View.date3}"
-                                              pattern="MM/yyyy"
-                                              yearNavigator="true" yearRange="2000:2030"
-                                              showOtherMonths="#{calendarJava8View.showOtherMonths}"/>
-
-                                <p:outputLabel for="yearMonth" value="Month Picker (java.time.YearMonth):"/>
-                                <p:datePicker id="yearMonth" view="month" value="#{calendarJava8View.yearMonth}"
-                                              pattern="MM/yyyy" yearNavigator="true" yearRange="2000:2030"
-                                              showOtherMonths="#{calendarJava8View.showOtherMonths}"/>
-
-                                <p:outputLabel for="touch" value="Touch UI:"/>
-                                <p:datePicker id="touch" value="#{calendarJava8View.date4}" touchUI="true"
-                                              showOtherMonths="#{calendarJava8View.showOtherMonths}"/>
-
-                                <p:outputLabel for="mask" value="Mask:"/>
-                                <p:datePicker id="mask" value="#{calendarJava8View.date14}" pattern="MM/dd/yyyy"
-                                              showButtonBar="true" mask="true"/>
-
-                                <p:outputLabel for="dateTemplate" value="Date Template:"/>
-                                <p:datePicker id="dateTemplate" value="#{calendarJava8View.date5}"
-                                              dateTemplate="dateTemplateFunc"
-                                              showOtherMonths="#{calendarJava8View.showOtherMonths}"/>
-
-                                <p:outputLabel for="disabledDD" value="Disabled Date/Day:"/>
-                                <p:datePicker id="disabledDD" value="#{calendarJava8View.date6}"
-                                              disabledDays="#{calendarJava8View.invalidDays}"
-                                              disabledDates="#{calendarJava8View.invalidDates}" readonlyInput="true"
-                                              showOtherMonths="#{calendarJava8View.showOtherMonths}"/>
-
-                                <p:outputLabel for="button" value="Button:"/>
-                                <p:datePicker id="button" value="#{calendarJava8View.date7}" showIcon="true"
-                                              showOtherMonths="#{calendarJava8View.showOtherMonths}"/>
-
-                                <p:outputLabel for="event" value="Select Event:"/>
-                                <p:datePicker id="event" value="#{calendarJava8View.date8}"
-                                              showOtherMonths="#{calendarJava8View.showOtherMonths}">
-                                    <p:ajax event="dateSelect" listener="#{calendarJava8View.onDateSelect}"
-                                            update="msgs"/>
-                                </p:datePicker>
-
-                                <p:outputLabel for="spanish" value="Spanish:"/>
-                                <p:datePicker id="spanish" value="#{calendarJava8View.date9}" locale="es"
-                                              monthNavigator="true" pattern="yyyy-MMM-dd"
-                                              showOtherMonths="#{calendarJava8View.showOtherMonths}"/>
-
-                                <p:outputLabel for="german" value="German:"/>
-                                <p:outputPanel>
-                                    <p:datePicker id="german" widgetVar="german" value="#{calendarJava8View.dateDe}"
-                                                  locale="de" monthNavigator="true" pattern="dd.MM.yyyy"
-                                                  showOtherMonths="#{calendarJava8View.showOtherMonths}"/>
-                                    <h:outputText value=" "/>
-                                    <br/>
-                                    <p:commandButton type="button" value="Client Side API: setDate (24.12.2019)"
-                                                     onclick="PF('german').setDate('24.12.2019')"/>
-                                    <p:commandButton type="button" value="Client Side API: getDate"
-                                                     onclick="alert(PF('german').getDate())"/>
-                                </p:outputPanel>
-
-                                <p:outputLabel for="buttonbar" value="Button Bar:"/>
-                                <p:datePicker id="buttonbar" value="#{calendarJava8View.date10}" showButtonBar="true"
-                                              showOtherMonths="#{calendarJava8View.showOtherMonths}"/>
-
-                                <p:outputLabel for="minmax" value="Min-Max:"/>
-                                <p:datePicker id="minmax" value="#{calendarJava8View.date11}"
-                                              mindate="#{calendarJava8View.minDate}"
-                                              maxdate="#{calendarJava8View.maxDate}"
-                                              readonlyInput="true"
-                                              showOtherMonths="#{calendarJava8View.showOtherMonths}"/>
-
-                                <p:outputLabel for="multi" value="Multiple Months:"/>
-                                <p:datePicker id="multi" value="#{calendarJava8View.date12}" numberOfMonths="3"
-                                              monthNavigator="true" yearNavigator="true"
-                                              showOtherMonths="#{calendarJava8View.showOtherMonths}"/>
-                            </p:panelGrid>
-                        </p:panel>
-
-                        <br/>
-
-                        <p:panel header="Date+Time (showTime=true)" toggleable="true">
-                            <p:panelGrid columns="2" layout="flex" id="inputPanelDateTime" styleClass="ui-noborder"
-                                         columnClasses="p-col-12 p-lg-4, p-col-12 p-lg-8">
-                                <p:outputLabel for="time1" value="Time (with Select Event):"/>
-                                <p:datePicker id="time1" value="#{calendarJava8View.dateTime1}" showTime="true"
-                                              timeInput="#{calendarJava8View.timeInput}"
-                                              showOtherMonths="#{calendarJava8View.showOtherMonths}">
-                                    <p:ajax event="dateSelect" listener="#{calendarJava8View.onDateTimeSelect}"
-                                            update="msgs"/>
-                                </p:datePicker>
-
-                                <p:outputLabel for="time6" value="Time (without explicit showTime):"/>
-                                <p:datePicker id="time6" value="#{calendarJava8View.dateTime6}"
-                                              timeInput="#{calendarJava8View.timeInput}"
-                                              showOtherMonths="#{calendarJava8View.showOtherMonths}"/>
-
-                                <p:outputLabel for="time3" value="Time (Min-Max):"/>
-                                <p:datePicker id="time3" value="#{calendarJava8View.dateTime3}" showTime="true"
-                                              mindate="#{calendarJava8View.minDateTime}"
-                                              maxdate="#{calendarJava8View.maxDateTime}"
-                                              timeInput="#{calendarJava8View.timeInput}"
-                                              showOtherMonths="#{calendarJava8View.showOtherMonths}"/>
-
-                                <p:outputLabel for="time4" value="Time (Min-Max; preset value):"/>
-                                <p:datePicker id="time4" value="#{calendarJava8View.dateTime4}" showTime="true"
-                                              mindate="#{calendarJava8View.minDateTime}"
-                                              maxdate="#{calendarJava8View.maxDateTime}"
-                                              timeInput="#{calendarJava8View.timeInput}"
-                                              showOtherMonths="#{calendarJava8View.showOtherMonths}"/>
-
-                                <p:outputLabel for="time5" value="Time (with seconds):"/>
-                                <p:datePicker id="time5" value="#{calendarJava8View.dateTime5}" showTime="true"
-                                              showSeconds="true" timeInput="#{calendarJava8View.timeInput}"
-                                              showOtherMonths="#{calendarJava8View.showOtherMonths}"/>
-
-                                <p:outputLabel for="timeDe" value="Time (German):"/>
-                                <p:datePicker id="timeDe" value="#{calendarJava8View.dateTimeDe}" showTime="true"
-                                              locale="de" pattern="dd.MM.yyyy"
-                                              timeInput="#{calendarJava8View.timeInput}"
-                                              showOtherMonths="#{calendarJava8View.showOtherMonths}"/>
-
-                                <p:outputLabel for="time2" value="Time (Timezone GMT+8):"/>
-                                <p:datePicker id="time2" value="#{calendarJava8View.dateTime2}" showTime="true"
-                                              timeZone="GMT+8" timeInput="#{calendarJava8View.timeInput}"
-                                              showOtherMonths="#{calendarJava8View.showOtherMonths}"/>
-
-                                <p:outputLabel for="zonedDateTime1" value="Time (ZonedDateTime; not supported yet):"/>
-                                <p:datePicker id="zonedDateTime1" value="#{calendarJava8View.zonedDateTime1}"
-                                              showTime="true" showOtherMonths="#{calendarJava8View.showOtherMonths}"/>
-                            </p:panelGrid>
-                        </p:panel>
-
-                        <br/>
-
-                        <p:panel header="Time only (timeOnly=true)" toggleable="true">
-                            <p:panelGrid columns="2" layout="flex" id="inputPanelTime" styleClass="ui-noborder"
-                                         columnClasses="p-col-12 p-lg-4, p-col-12 p-lg-8">
-                                <p:outputLabel for="timeonly" value="Time Only (HH:mm):"/>
-                                <p:datePicker id="timeonly" value="#{calendarJava8View.time1}" timeOnly="true"
-                                              pattern="HH:mm" timeInput="#{calendarJava8View.timeInput}"/>
-
-                                <p:outputLabel for="timeonlySmart" value="Time Only (without explicit timeOnly):"/>
-                                <p:datePicker id="timeonlySmart" value="#{calendarJava8View.time7}"
-                                              timeInput="#{calendarJava8View.timeInput}"/>
-
-                                <p:outputLabel for="timeonlyMinMax" value="Time Only (Min-Max):"/>
-                                <p:outputPanel>
-                                    <p:datePicker id="timeonlyMinMax" value="#{calendarJava8View.time3}" timeOnly="true"
-                                                  mindate="#{calendarJava8View.minTime}"
-                                                  maxdate="#{calendarJava8View.maxTime}"
-                                                  timeInput="#{calendarJava8View.timeInput}"/>
-                                    (between <h:outputText value="#{calendarJava8View.minTime}"></h:outputText> and
-                                    <h:outputText value="#{calendarJava8View.maxTime}"></h:outputText>)
-                                </p:outputPanel>
-
-                                <p:outputLabel for="timeonlyMinMax2" value="Time Only (Min-Max; preset value):"/>
-                                <p:outputPanel>
-                                    <p:datePicker id="timeonlyMinMax2" value="#{calendarJava8View.time4}"
-                                                  timeOnly="true"
-                                                  mindate="#{calendarJava8View.minTime}"
-                                                  maxdate="#{calendarJava8View.maxTime}"
-                                                  timeInput="#{calendarJava8View.timeInput}"/>
-                                    (between <h:outputText value="#{calendarJava8View.minTime}"></h:outputText> and
-                                    <h:outputText value="#{calendarJava8View.maxTime}"></h:outputText>)
-                                </p:outputPanel>
-
-                                <p:outputLabel for="timeonlySeconds" value="Time Only (HH:mm:ss):"/>
-                                <p:datePicker id="timeonlySeconds" value="#{calendarJava8View.time5}" timeOnly="true"
-                                              showSeconds="true" pattern="HH:mm:ss"
-                                              timeInput="#{calendarJava8View.timeInput}"/>
-
-                                <p:outputLabel for="timeonly12" value="Time Only (AM/PM):"/>
-                                <p:datePicker id="timeonly12" value="#{calendarJava8View.time6}" timeOnly="true"
-                                              hourFormat="12" pattern="HH:mm"
-                                              timeInput="#{calendarJava8View.timeInput}"/>
-                            </p:panelGrid>
-                        </p:panel>
-
-                        <br/>
-
-                        <p:commandButton value="Submit" update="form" action="#{calendarJava8View.click}"
-                                         icon="pi pi-check"/>
+                <h5 class="p-mt-0">Popup</h5>
+                <div class="ui-fluid p-grid p-formgrid">
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="navigator" value="Navigator"/>
+                        <p:datePicker id="navigator" value="#{calendarJava8View.date2}"
+                                        monthNavigator="true"
+                                        yearNavigator="true"/>
                     </div>
-                    <div class="p-col-12 p-md-4">
-                        <p:panel header="Configuration">
-                            <p:panelGrid columns="1" layout="flex" styleClass="ui-noborder">
-                                <p:selectBooleanCheckbox value="#{calendarJava8View.timeInput}" itemLabel="timeInput">
-                                    <p:ajax update="inputPanelDate,inputPanelDateTime,inputPanelTime" process="form"/>
-                                </p:selectBooleanCheckbox>
 
-                                <p:selectBooleanCheckbox value="#{calendarJava8View.showOtherMonths}"
-                                                         itemLabel="showOtherMonths">
-                                    <p:ajax update="inputPanelDate,inputPanelDateTime,inputPanelTime" process="form"/>
-                                </p:selectBooleanCheckbox>
-                            </p:panelGrid>
-                        </p:panel>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="popupConvertDateTime" value="Popup (f:convertDateTime)"/>
+                        <p:datePicker id="popupConvertDateTime" value="#{calendarJava8View.date13}"
+                                      pattern="MM/dd/yyyy">
+                            <f:convertDateTime pattern="MM/dd/yyyy" type="localDate"/>
+                        </p:datePicker>
                     </div>
-                </p:outputPanel>
 
-                <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
-                    <p:panelGrid id="display" columns="4" columnClasses="label,value,label,value">
-                        <h:outputText value="Inline:"/>
-                        <h:outputText value="#{calendarJava8View.date1}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" type="localDate"/>
-                        </h:outputText>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="multiselect" value="Multiple Selection"/>
+                        <p:datePicker id="multiselect" selectionMode="multiple"
+                                        value="#{calendarJava8View.multi}"
+                                        readonlyInput="true"/>
+                    </div>
 
-                        <h:outputText value="Popup:"/>
-                        <h:outputText value="#{calendarJava8View.date2}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" type="localDate"/>
-                        </h:outputText>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="range" value="Range Selection"/>
+                        <p:datePicker id="range" selectionMode="range" value="#{calendarJava8View.range}"
+                                        readonlyInput="true"/>
+                    </div>
 
-                        <h:outputText value="Popup (f:convertDateTime):"/>
-                        <h:outputText value="#{calendarJava8View.date13}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" type="localDate"/>
-                        </h:outputText>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="month" value="Month Picker"/>
+                        <p:datePicker id="month" view="month" value="#{calendarJava8View.date3}"
+                                      pattern="MM/yyyy"
+                                      yearNavigator="true" yearRange="2000:2030"/>
+                    </div>
 
-                        <h:outputText value="Multiple Selection:"/>
-                        <ui:repeat var="date" value="#{calendarJava8View.multi}" varStatus="status"
-                                   size="#{calendarJava8View.multi.size()}">
-                            #{status.first ? '' : ','}
-                            <h:outputText value="#{date}">
-                                <f:convertDateTime pattern="MM/dd/yyyy" type="localDate"/>
-                            </h:outputText>
-                        </ui:repeat>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="yearMonth" value="Month Picker (java.time.YearMonth)"/>
+                        <p:datePicker id="yearMonth" view="month" value="#{calendarJava8View.yearMonth}"
+                                        pattern="MM/yyyy" yearNavigator="true" yearRange="2000:2030"/>
+                    </div>
 
-                        <h:outputText value="Range Selection:"/>
-                        <ui:repeat var="date" value="#{calendarJava8View.range}" varStatus="status"
-                                   size="#{calendarJava8View.range.size()}">
-                            #{status.first ? '' : '-'}
-                            <h:outputText value="#{date}">
-                                <f:convertDateTime pattern="MM/dd/yyyy" type="localDate"/>
-                            </h:outputText>
-                        </ui:repeat>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="touch" value="Touch UI"/>
+                        <p:datePicker id="touch" value="#{calendarJava8View.date4}" touchUI="true"/>
+                    </div>
 
-                        <h:outputText value="Month Picker:"/>
-                        <h:outputText value="#{calendarJava8View.date3}">
-                            <f:convertDateTime pattern="MM/yyyy" type="localDate"/>
-                        </h:outputText>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="mask" value="Mask"/>
+                        <p:datePicker id="mask" value="#{calendarJava8View.date14}" pattern="MM/dd/yyyy"
+                                        showButtonBar="true" mask="true"/>
+                    </div>
 
-                        <h:outputText value="Month Picker (java.time.YearMonth):"/>
-                        <h:outputText value="#{calendarJava8View.yearMonth.toString()}"/>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="dateTemplate" value="Date Template"/>
+                        <p:datePicker id="dateTemplate" value="#{calendarJava8View.date5}"
+                                        dateTemplate="dateTemplateFunc"/>
+                    </div>
 
-                        <h:outputText value="Touch UI:"/>
-                        <h:outputText value="#{calendarJava8View.date4}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" type="localDate"/>
-                        </h:outputText>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="disabledDD" value="Disabled Date/Day"/>
+                        <p:datePicker id="disabledDD" value="#{calendarJava8View.date6}"
+                                      disabledDays="#{calendarJava8View.invalidDays}"
+                                      disabledDates="#{calendarJava8View.invalidDates}" readonlyInput="true"/>
+                    </div>
 
-                        <h:outputText value="Date Template:"/>
-                        <h:outputText value="#{calendarJava8View.date5}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" type="localDate"/>
-                        </h:outputText>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="button" value="Button"/>
+                        <p:datePicker id="button" value="#{calendarJava8View.date7}" showIcon="true"/>
+                    </div>
 
-                        <h:outputText value="Disabled Date/Day:"/>
-                        <h:outputText value="#{calendarJava8View.date6}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" type="localDate"/>
-                        </h:outputText>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="event" value="Select Event"/>
+                        <p:datePicker id="event" value="#{calendarJava8View.date8}">
+                            <p:ajax event="dateSelect" listener="#{calendarJava8View.onDateSelect}"
+                                    update="msgs"/>
+                        </p:datePicker>
+                    </div>
 
-                        <h:outputText value="Button:"/>
-                        <h:outputText value="#{calendarJava8View.date7}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" type="localDate"/>
-                        </h:outputText>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="spanish" value="Spanish"/>
+                        <p:datePicker id="spanish" value="#{calendarJava8View.date9}" locale="es"
+                                        monthNavigator="true" pattern="yyyy-MMM-dd"/>
+                    </div>
 
-                        <h:outputText value="Select Event:"/>
-                        <h:outputText value="#{calendarJava8View.date8}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" type="localDate"/>
-                        </h:outputText>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="german" value="German"/>
+                        <p:datePicker id="german" widgetVar="german" value="#{calendarJava8View.dateDe}"
+                                            locale="de" monthNavigator="true" pattern="dd.MM.yyyy"/>
+                    </div>
 
-                        <h:outputText value="Spanish:"/>
-                        <h:outputText value="#{calendarJava8View.date9}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" type="localDate"/>
-                        </h:outputText>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="buttonbar" value="Button Bar"/>
+                        <p:datePicker id="buttonbar" value="#{calendarJava8View.date10}" showButtonBar="true"/>
+                    </div>
 
-                        <h:outputText value="German:"/>
-                        <h:outputText value="#{calendarJava8View.dateDe}">
-                            <f:convertDateTime pattern="dd.MM.yyyy" type="localDate"/>
-                        </h:outputText>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="minmax" value="Min-Max"/>
+                        <p:datePicker id="minmax" value="#{calendarJava8View.date11}"
+                                        mindate="#{calendarJava8View.minDate}"
+                                        maxdate="#{calendarJava8View.maxDate}"
+                                        readonlyInput="true"/>
+                    </div>
 
-                        <h:outputText value="Button Bar:"/>
-                        <h:outputText value="#{calendarJava8View.date10}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" type="localDate"/>
-                        </h:outputText>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="multi" value="Multiple Months"/>
+                        <p:datePicker id="multi" value="#{calendarJava8View.date12}" numberOfMonths="3"
+                                      monthNavigator="true" yearNavigator="true"/>
+                    </div>
+                </div>
 
-                        <h:outputText value="Min-Max:"/>
-                        <h:outputText value="#{calendarJava8View.date11}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" type="localDate"/>
-                        </h:outputText>
+                <h5>Inline</h5>
+                <p:datePicker id="inline" value="#{calendarJava8View.date1}" inline="true"/>
+            </div>
 
-                        <h:outputText value="Multiple Months:"/>
-                        <h:outputText value="#{calendarJava8View.date12}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" type="localDate"/>
-                        </h:outputText>
+            <div class="card">
+                <h5>DateTime</h5>
+                <div class="ui-fluid p-grid p-formgrid">
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="time1" value="Time (with Select Event)"/>
+                        <p:datePicker id="time1" value="#{calendarJava8View.dateTime1}" showTime="true"
+                                     >
+                            <p:ajax event="dateSelect" listener="#{calendarJava8View.onDateTimeSelect}"
+                                    update="msgs"/>
+                        </p:datePicker>
+                    </div>
 
-                        <h:outputText value="Time (with Select Event):"/>
-                        <h:outputText value="#{calendarJava8View.dateTime1}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm" type="localDateTime"/>
-                        </h:outputText>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="time6" value="Time (without explicit showTime)"/>
+                        <p:datePicker id="time6" value="#{calendarJava8View.dateTime6}"
+                                       />
+                        
+                    </div>
 
-                        <h:outputText value="Time (without explicit showTime):"/>
-                        <h:outputText value="#{calendarJava8View.dateTime6}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm" type="localDateTime"/>
-                        </h:outputText>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="time3" value="Time (Min-Max)"/>
+                        <p:datePicker id="time3" value="#{calendarJava8View.dateTime3}" showTime="true"
+                                    mindate="#{calendarJava8View.minDateTime}"
+                                    maxdate="#{calendarJava8View.maxDateTime}"
+                                   />
+                    </div>
 
-                        <h:outputText value="Time (Min-Max):"/>
-                        <h:outputText value="#{calendarJava8View.dateTime3}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm" type="localDateTime"/>
-                        </h:outputText>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="time4" value="Time (Min-Max; preset value)"/>
+                        <p:datePicker id="time4" value="#{calendarJava8View.dateTime4}" showTime="true"
+                                        mindate="#{calendarJava8View.minDateTime}"
+                                        maxdate="#{calendarJava8View.maxDateTime}"
+                                       />
+                    </div>
 
-                        <h:outputText value="Time (Min-Max; preset value):"/>
-                        <h:outputText value="#{calendarJava8View.dateTime4}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm" type="localDateTime"/>
-                        </h:outputText>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="time5" value="Time (with seconds)"/>
+                        <p:datePicker id="time5" value="#{calendarJava8View.dateTime5}" showTime="true"
+                                      showSeconds="true"/>
+                    </div>
 
-                        <h:outputText value="Time (with seconds):"/>
-                        <h:outputText value="#{calendarJava8View.dateTime5}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" type="localDateTime"/>
-                        </h:outputText>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="timeDe" value="Time (German)"/>
+                        <p:datePicker id="timeDe" value="#{calendarJava8View.dateTimeDe}" showTime="true"
+                                        locale="de" pattern="dd.MM.yyyy"
+                                       />
+                    </div>
 
-                        <h:outputText value="Time (German):"/>
-                        <h:outputText value="#{calendarJava8View.dateTimeDe}">
-                            <f:convertDateTime pattern="dd.MM.yyyy HH:mm" type="localDateTime"/>
-                        </h:outputText>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="time2" value="Time (Timezone GMT+8)"/>
+                        <p:datePicker id="time2" value="#{calendarJava8View.dateTime2}" showTime="true"
+                                        timeZone="GMT+8"/>
+                    </div>
 
-                        <h:outputText value="Time (Timezone GMT+8):"/>
-                        <h:outputText value="#{calendarJava8View.dateTime2}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm" type="localDateTime"/>
-                        </h:outputText>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="zonedDateTime1" value="Time (ZonedDateTime; not supported yet)"/>
+                        <p:datePicker id="zonedDateTime1" value="#{calendarJava8View.zonedDateTime1}"/>
+                    </div>
+                </div>
+            </div>
 
-                        <h:outputText value="Time (ZonedDateTime; not supported yet):"/>
-                        <h:outputText value="#{calendarJava8View.zonedDateTime1}">
-                            <f:convertDateTime pattern="dd.MM.yyyy HH:mm" type="zonedDateTime"/>
-                        </h:outputText>
+            <div class="card">
+                <h5>Time Only</h5>
+                <div class="ui-fluid p-grid p-formgrid">
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="timeonly" value="Time Only (HH:mm)"/>
+                        <p:datePicker id="timeonly" value="#{calendarJava8View.time1}" timeOnly="true"
+                                        pattern="HH:mm"/>
+                    </div>
 
-                        <h:outputText value="Time Only (HH:mm):"/>
-                        <h:outputText value="#{calendarJava8View.time1}">
-                            <f:convertDateTime pattern="HH:mm" type="localTime"/>
-                        </h:outputText>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="timeonlySmart" value="Time Only (without explicit timeOnly)"/>
+                        <p:datePicker id="timeonlySmart" value="#{calendarJava8View.time7}"
+                                       />
+                    </div>
 
-                        <h:outputText value="Time Only (without explicit timeOnly):"/>
-                        <h:outputText value="#{calendarJava8View.time7}">
-                            <f:convertDateTime pattern="HH:mm" type="localTime"/>
-                        </h:outputText>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="timeonlyMinMax" value="Time Only (Min-Max)"/>
+                        <p:outputPanel>
+                            <p:datePicker id="timeonlyMinMax" value="#{calendarJava8View.time3}" timeOnly="true"
+                                          mindate="#{calendarJava8View.minTime}"
+                                          maxdate="#{calendarJava8View.maxTime}"
+                                         />
+                            (between <h:outputText value="#{calendarJava8View.minTime}"></h:outputText> and
+                            <h:outputText value="#{calendarJava8View.maxTime}"></h:outputText>)
+                        </p:outputPanel>
+                    </div>
 
-                        <h:outputText value="Time Only (Min-Max):"/>
-                        <h:outputText value="#{calendarJava8View.time3}">
-                            <f:convertDateTime pattern="HH:mm" type="localTime"/>
-                        </h:outputText>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="timeonlyMinMax2" value="Time Only (Min-Max; preset value)"/>
+                        <p:outputPanel>
+                            <p:datePicker id="timeonlyMinMax2" value="#{calendarJava8View.time4}"
+                                          timeOnly="true"
+                                          mindate="#{calendarJava8View.minTime}"
+                                          maxdate="#{calendarJava8View.maxTime}"
+                                         />
+                            (between <h:outputText value="#{calendarJava8View.minTime}"></h:outputText> and
+                            <h:outputText value="#{calendarJava8View.maxTime}"></h:outputText>)
+                        </p:outputPanel>
+                    </div>
 
-                        <h:outputText value="Time Only (Min-Max; preset value):"/>
-                        <h:outputText value="#{calendarJava8View.time4}">
-                            <f:convertDateTime pattern="HH:mm" type="localTime"/>
-                        </h:outputText>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="timeonlySeconds" value="Time Only (HH:mm:ss)"/>
+                        <p:datePicker id="timeonlySeconds" value="#{calendarJava8View.time5}" timeOnly="true"
+                                        showSeconds="true" pattern="HH:mm:ss"
+                                       />
+                    </div>
 
-                        <h:outputText value="Time Only (HH:mm:ss):"/>
-                        <h:outputText value="#{calendarJava8View.time5}">
-                            <f:convertDateTime pattern="HH:mm:ss" type="localTime"/>
-                        </h:outputText>
-
-                        <h:outputText value="Time Only (AM/PM):"/>
-                        <h:outputText value="#{calendarJava8View.time6}">
-                            <f:convertDateTime pattern="hh:mm a" type="localTime"/>
-                        </h:outputText>
-                    </p:panelGrid>
-                </p:dialog>
-            </h:form>
-        </div>
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="timeonly12" value="Time Only (AM/PM)"/>
+                        <p:datePicker id="timeonly12" value="#{calendarJava8View.time6}" timeOnly="true"
+                                        hourFormat="12" pattern="HH:mm"
+                                       />
+                    </div>
+                </div>
+            </div>
+        </h:form>
     </ui:define>
 
 </ui:composition>

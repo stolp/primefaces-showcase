@@ -8,11 +8,11 @@
     <ui:define name="head">
         <style type="text/css">
             .start {
-                background: green;
+                background: #81c784;
             }
 
             .deadline {
-                background: red;
+                background: #ef9a9a;
             }
         </style>
     </ui:define>
@@ -34,22 +34,22 @@
 
         <div class="card">
             <h:form id="form">
-                <h:panelGrid columns="2" cellpadding="5">
-                    <p:outputLabel for="basic" value="Basic:"/>
+                <h:panelGrid columns="2" cellpadding="7">
+                    <p:outputLabel for="basic" value="Basic"/>
                     <p:datePicker id="basic" value="#{datePickerMetadataView.date1}"
                                   model="#{datePickerMetadataView.model}"/>
 
-                    <p:outputLabel for="lazy" value="Lazy:"/>
+                    <p:outputLabel for="lazy" value="Lazy"/>
                     <p:datePicker pattern="yyyy-MM-dd" id="lazy" value="#{datePickerMetadataView.date2}"
                                   model="#{datePickerMetadataView.modelLazy}"/>
 
-                    <p:outputLabel for="basicEvent" value="Basic + event:"/>
+                    <p:outputLabel for="basicEvent" value="Basic and Event"/>
                     <p:datePicker id="basicEvent" value="#{datePickerMetadataView.date3}"
                                   model="#{datePickerMetadataView.model}">
                         <p:ajax event="viewChange" listener="#{datePickerMetadataView.onViewChange}" update="growl"/>
                     </p:datePicker>
 
-                    <p:outputLabel for="lazyEvent" value="Lazy + event:"/>
+                    <p:outputLabel for="lazyEvent" value="Lazy and Event"/>
                     <p:datePicker pattern="yyyy-MM-dd" id="lazyEvent" value="#{datePickerMetadataView.date4}"
                                   model="#{datePickerMetadataView.modelLazy}">
                         <p:ajax event="viewChange" listener="#{datePickerMetadataView.onViewChange}" update="growl"/>
