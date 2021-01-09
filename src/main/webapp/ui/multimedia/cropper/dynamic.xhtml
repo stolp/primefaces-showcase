@@ -24,14 +24,14 @@
                 <h:panelGrid columns="3">
                     <h:panelGrid columns="1">
 
-                        <p:spinner id="iterationSpinner"
+                        <p:spinner id="iterationSpinner" styleClass="p-mb-3"
                                    value="#{dynamicCropper.numberOfIterations}"
                                    min="5" max="50" stepFactor="5"
                                    valueChangeListener="#{dynamicCropper.updateImage}">
                             <p:ajax process="@this" update="cropper"/>
                         </p:spinner>
 
-                        <h:panelGrid columns="2">
+                        <h:panelGrid columns="2" cellpadding="7">
                             <p:outputPanel id="cropper">
                                 <p:imageCropper
                                         value="#{dynamicCropper.croppedImage}"
@@ -48,8 +48,8 @@
                         </h:panelGrid>
 
                         <p:commandButton value="Crop"
-                                         action="#{dynamicCropper.crop}"
-                                         update="cropped msgs" icon="pi pi-clone"/>
+                                         action="#{dynamicCropper.crop}" styleClass="p-mt-3"
+                                         update="cropped msgs" />
 
                     </h:panelGrid>
                 </h:panelGrid>

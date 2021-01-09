@@ -21,7 +21,7 @@
             <h:form>
                 <p:growl id="msgs" showDetail="true"/>
 
-                <h:panelGrid columns="2">
+                <h:panelGrid columns="2" cellpadding="7">
                     <p:imageCropper value="#{cropperView.croppedImage}"
                                     image="/resources/demo/images/nature/nature6.jpg"
                                     initialCoords="225,75,300,125"
@@ -34,7 +34,7 @@
                     </h:panelGroup>
                 </h:panelGrid>
 
-                <p:commandButton value="Crop" action="#{cropperView.crop}" update="cropped msgs" icon="pi pi-clone"/>
+                <p:commandButton value="Crop" action="#{cropperView.crop}" update="cropped msgs" styleClass="p-mt-3" />
             </h:form>
         </div>
     </ui:define>

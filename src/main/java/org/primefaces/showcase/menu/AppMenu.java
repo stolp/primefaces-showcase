@@ -439,12 +439,12 @@ public class AppMenu {
         List<MenuItem> cropperMenuItems = new ArrayList<>();
         cropperMenuItems.add(new MenuItem("Basic", "/ui/multimedia/cropper/cropper"));
         cropperMenuItems.add(new MenuItem("Dynamic", "/ui/multimedia/cropper/dynamic"));
-        cropperMenuItems.add(new MenuItem("Combined with FileUpload", "/ui/multimedia/cropper/fileupload"));
+        cropperMenuItems.add(new MenuItem("FileUpload", "/ui/multimedia/cropper/fileupload"));
         multimediaMenuItems.add(new MenuItem("Cropper", cropperMenuItems));
 
         multimediaMenuItems.add(new MenuItem("Graphic Image", "/ui/multimedia/graphicImage"));
         multimediaMenuItems.add(new MenuItem("Galleria", "/ui/multimedia/galleria"));
-        multimediaMenuItems.add(new MenuItem("Media", "/ui/multimedia/media"));
+        //multimediaMenuItems.add(new MenuItem("Media", "/ui/multimedia/media"));
 
         //PhotoCam Nested MenuItem
         List<MenuItem> photoCamMenuItems = new ArrayList<>();

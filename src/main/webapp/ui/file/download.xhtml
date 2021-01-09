@@ -14,7 +14,6 @@
             function stop() {
                 PF('statusDialog').hide();
             }
-
             //]]>
         </script>
     </ui:define>
@@ -34,16 +33,16 @@
         <div class="card">
             <p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false"
                       resizable="false">
-                <p:graphicImage name="/demo/images/ajaxloadingbar.gif"/>
+                      <i class="pi pi-spinner pi-spin" style="font-size:3rem"></i>
             </p:dialog>
 
             <h:form>
                 <p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);"
-                                 icon="pi pi-arrow-down">
+                                 icon="pi pi-arrow-down" styleClass="p-mr-2">
                     <p:fileDownload value="#{fileDownloadView.file}"/>
                 </p:commandButton>
 
-                <p:commandButton value="Ajax Download" icon="pi pi-arrow-down">
+                <p:commandButton value="Ajax Download" icon="pi pi-arrow-down" styleClass="outlined-button">
                     <p:fileDownload value="#{fileDownloadView.file}"/>
                 </p:commandButton>
             </h:form>

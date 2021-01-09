@@ -22,11 +22,11 @@
         <div class="card">
             <h:form id="formId">
 
-                <p:fileUpload id="uploader1" mode="advanced"/>
+                <p:fileUpload id="uploader1" mode="advanced" styleClass="p-d-block p-mb-5"/>
 
                 <p:outputPanel id="tooltipsPanel">
 
-                    <p:tooltip id="uploaderChooseFileBeforeUploadToolTip"
+                    <p:tooltip id="uploaderChooseFileBeforeUploadToolTip" 
                                widgetVar="chooseWV" position="top"
                                for="@(#formId\:uploader1 > .ui-fileupload-buttonbar > .ui-fileupload-choose)"
                                value="Choose button tooltip"/>
@@ -44,21 +44,18 @@
 
                 </p:outputPanel>
 
-                <br/>
+              
 
-                <p:fileUpload id="uploader2" mode="advanced"
+                <p:fileUpload id="uploader2" mode="advanced" styleClass="p-d-block p-mb-5"
                               chooseButtonTitle="Choose button tooltip"
                               uploadButtonTitle="Upload button tooltip"
                               cancelButtonTitle="Cancel button tooltip"/>
-                <br/>
-
-                <p:fileUpload id="uploader3" mode="simple" skinSimple="true"
+              
+                <p:fileUpload id="uploader3" mode="simple" skinSimple="true" styleClass="p-d-block p-mb-5"
                               title="my custom title"/>
 
-                <br/>
-                <br/>
-
-                <p:fileUpload id="uploader4" mode="simple"
+         
+                <p:fileUpload id="uploader4" mode="simple" styleClass="p-d-block p-mb-5"
                               title="my custom title"/>
 
             </h:form>

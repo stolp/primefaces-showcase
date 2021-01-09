@@ -20,10 +20,10 @@
 
         <div class="card">
             <h5 style="margin-top:0">Manual</h5>
-            <p:commandButton type="button" onclick="PF('switcher').previous();"
-                             icon="pi pi-caret-left" id="prev" style="margin-bottom: 5px"/>
-            <p:commandButton type="button" onclick="PF('switcher').next();"
-                             icon="pi pi-caret-right" id="next" style="margin-bottom: 5px"/>
+            <p:commandButton type="button" onclick="PF('switcher').previous()"
+                             icon="pi pi-chevron-left" id="prev" styleClass="p-mr-2 p-mb-3" />
+            <p:commandButton type="button" onclick="PF('switcher').next()"
+                             icon="pi pi-chevron-right" id="next" styleClass="p-mr-2 p-mb-3" />
 
             <p:imageSwitch effect="wipe" widgetVar="switcher" id="manuelSwitcher"
                            slideshowAuto="false">
@@ -74,7 +74,7 @@
             <p:commandButton type="button" value="Show" onclick="PF('dlg').show()" icon="pi pi-home"/>
 
             <p:dialog header="Images" widgetVar="dlg" modal="true"
-                      draggable="false" resizable="false">
+                      draggable="false" resizable="false" showEffect="fade" hideEffect="fade">
 
                 <p:imageSwitch effect="fade">
                     <ui:repeat value="#{imagesView.images}" var="image">
