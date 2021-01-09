@@ -19,9 +19,12 @@
     <ui:define name="implementation">
         <div class="card">
             <p:feedReader value="https://www.nasa.gov/rss/dyn/breaking_news.rss" var="feed">
-                <h:outputText value="#{feed.title}" style="font-weight: bold;display:block"/>
-                <h:outputText value="#{feed.description.value}" escape="false"/>
-                <p:separator/>
+                <div class="p-p-3">
+                    <h:outputText value="#{feed.title}" styleClass="p-text-bold p-d-block" />
+                    <h:outputText value="#{feed.description.value}" escape="false"/>
+                    <p:divider/>
+                </div>
+                
                 <f:facet name="error">
                     <h:outputText value="Error reading RSS Feed!!!" style="color:red;"/>
                 </f:facet>

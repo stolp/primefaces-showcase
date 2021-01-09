@@ -24,30 +24,24 @@
                     <p:autoUpdate/>
                 </p:growl>
 
-                <p:panel header="Panel 1" id="panel1">
-                    <p:panelGrid columns="2" layout="flex" columnClasses="p-col-4, p-col-8"
-                                 styleClass="ui-fluid ui-noborder">
+                <p:panel header="Panel 1" id="panel1" styleClass="p-mb-5">
+                    <h:panelGrid columns="2" cellpadding="7">
                         <h:outputLabel for="name" value="Name"/>
                         <p:inputText id="name" value="#{defaultCommandView.text}"/>
 
                         <h:outputLabel for="textarea" value="Textarea"/>
                         <p:inputTextarea id="textarea" value="#{defaultCommandView.text2}"/>
-                    </p:panelGrid>
+                    </h:panelGrid>
                 </p:panel>
 
-                <br/>
-
-                <p:panel header="Panel 2" id="panel2">
-                    <p:panelGrid columns="2" layout="flex" columnClasses="p-col-4, p-col-8"
-                                 styleClass="ui-fluid ui-noborder">
+                <p:panel header="Panel 2" id="panel2" styleClass="p-mb-5">
+                    <h:panelGrid columns="2" cellpadding="7">
                         <h:outputLabel for="otherInput" value="Other input"/>
                         <p:inputText id="otherInput"/>
-                    </p:panelGrid>
+                    </h:panelGrid>
                 </p:panel>
 
-                <br/>
-
-                <p:commandButton value="Button1" id="btn1" action="#{defaultCommandView.btn1Submit}"/>
+                <p:commandButton value="Button1" id="btn1" action="#{defaultCommandView.btn1Submit}" styleClass="p-mr-2" />
                 <p:commandButton value="Button2" id="btn2" action="#{defaultCommandView.btn2Submit}"/>
 
                 <p:defaultCommand target="btn1" scope="panel1"/>

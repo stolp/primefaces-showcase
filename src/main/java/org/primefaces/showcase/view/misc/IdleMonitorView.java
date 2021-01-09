@@ -34,11 +34,11 @@ public class IdleMonitorView {
     
     public void onIdle() {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, 
-										"No activity.", "What are you doing over there?"));
+										"No activity.", "User is idle"));
 	}
 
     public void onActive() {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
-										"Welcome Back", "Well, that's a long coffee break!"));
+										"Activity detected", "User is active"));
 	}
 }

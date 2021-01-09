@@ -20,22 +20,22 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form>
-                <h5 style="margin-top:0">AJAX</h5>
+                <h5 class="p-mt-0">AJAX</h5>
                 <p:commandButton action="#{exceptionHandlerView.throwViewExpiredException}"
                                  ajax="true"
-                                 value="Throw ViewExpiredException!"/>
+                                 value="Throw ViewExpiredException!" styleClass="p-mr-2" />
                 <p:commandButton action="#{exceptionHandlerView.throwNullPointerException}"
                                  ajax="true"
                                  value="Throw NullPointerException!"/>
                 <!-- IllegalStateException is not handled using ajaxExceptionHandlers below, so the error page is shown-->
                 <p:commandButton action="#{exceptionHandlerView.throwWrappedIllegalStateException}"
                                  ajax="true"
-                                 value="Throw IllegalStateException!"/>
+                                 value="Throw IllegalStateException!" styleClass="p-mr-2"/>
 
                 <h5>Non-AJAX</h5>
                 <p:commandButton action="#{exceptionHandlerView.throwViewExpiredException}"
                                  ajax="false"
-                                 value="Throw ViewExpiredException!"/>
+                                 value="Throw ViewExpiredException!" styleClass="p-mr-2"/>
                 <!-- NullPointerException has no specific error-page defined in web.xml compared to ViewExpiredException -->
                 <!-- https://github.com/primefaces/showcase-facelift/blob/master/src/main/webapp/WEB-INF/web.xml -->
                 <p:commandButton action="#{exceptionHandlerView.throwNullPointerException}"
@@ -45,11 +45,11 @@
 
                 <p:ajaxExceptionHandler type="javax.faces.application.ViewExpiredException"
                                         update="exceptionDialog"
-                                        onexception="PF('exceptionDialog').show();"/>
+                                        onexception="PF('exceptionDialog').show()" styleClass="p-mr-2"/>
 
                 <p:ajaxExceptionHandler type="java.lang.NullPointerException"
                                         update="exceptionDialog"
-                                        onexception="PF('exceptionDialog').show();"/>
+                                        onexception="PF('exceptionDialog').show()"/>
 
                 <p:dialog id="exceptionDialog" header="Exception '#{pfExceptionHandler.type}' occured!"
                           widgetVar="exceptionDialog"

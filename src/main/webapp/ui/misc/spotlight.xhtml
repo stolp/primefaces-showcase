@@ -26,7 +26,7 @@
     </ui:define>
 
     <ui:define name="description">
-        Spotlight highlights a certain component on page.
+        Spotlight highlights a certain component on page. In this particular example, panel is highlighted on validation error.
     </ui:define>
 
     <ui:param name="documentationLink" value="/components/spotlight"/>
@@ -34,14 +34,12 @@
 
     <ui:define name="implementation">
         <div class="card">
-            Panel is highlighted on validation error.
-
             <h:form>
                 <p:growl id="growl"/>
 
-                <p:panel id="pnl" header="New User" style="margin-top:10px">
+                <p:panel id="pnl" header="New User">
                     <p:messages id="messages"/>
-                    <h:panelGrid columns="3" id="grid" cellpadding="5">
+                    <h:panelGrid columns="3" id="grid" cellpadding="7">
                         <p:outputLabel for="username" value="Username"/>
                         <p:inputText id="username" value="#{spotlightView.username}" required="true">
                             <f:validateLength minimum="2"/>
@@ -54,7 +52,7 @@
                     </h:panelGrid>
 
                     <p:commandButton value="Save" icon="pi pi-check" action="#{spotlightView.save}" update="growl grid"
-                                     oncomplete="handleForm(xhr, status, args)"/>
+                                     oncomplete="handleForm(xhr, status, args)" styleClass="p-mt-3"/>
                 </p:panel>
 
                 <p:spotlight target="pnl" widgetVar="spot"/>

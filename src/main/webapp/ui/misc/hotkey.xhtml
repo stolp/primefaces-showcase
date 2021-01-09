@@ -18,24 +18,24 @@
 
     <ui:define name="implementation">
         <div class="card">
-            <h5 style="margin-top:0">ImageSwitch Integration (Left-Right)</h5>
-            <p:imageSwitch effect="fade" widgetVar="switcher" slideshowAuto="false">
-                <p:graphicImage name="demo/images/nature/nature1.jpg"/>
-                <p:graphicImage name="demo/images/nature/nature2.jpg"/>
-                <p:graphicImage name="demo/images/nature/nature3.jpg"/>
-                <p:graphicImage name="demo/images/nature/nature4.jpg"/>
-            </p:imageSwitch>
-
-            <p:hotkey bind="left" handler="PF('switcher').previous();"/>
-            <p:hotkey bind="right" handler="PF('switcher').next();"/>
-
-            <h5>Ajax Hotkey (ctrl + shift + s)</h5>
             <h:form>
+                <h5 class="p-mt-top">ImageSwitch Integration (Left-Right)</h5>
+                <p:imageSwitch effect="fade" widgetVar="switcher" slideshowAuto="false">
+                    <p:graphicImage name="demo/images/nature/nature1.jpg"/>
+                    <p:graphicImage name="demo/images/nature/nature2.jpg"/>
+                    <p:graphicImage name="demo/images/nature/nature3.jpg"/>
+                    <p:graphicImage name="demo/images/nature/nature4.jpg"/>
+                </p:imageSwitch>
+    
+                <p:hotkey bind="left" handler="PF('switcher').previous()"/>
+                <p:hotkey bind="right" handler="PF('switcher').next()"/>
+
+                <h5>Ajax Hotkey (ctrl + shift + s)</h5>
                 <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
 
                 <p:hotkey bind="ctrl+shift+s" update="msgs" action="#{hotkeyView.save}"/>
 
-                <h:panelGrid columns="2" cellpadding="5">
+                <h:panelGrid columns="2" cellpadding="7">
                     <p:outputLabel for="text" value="Text"/>
                     <p:inputText id="text" value="#{hotkeyView.text}"/>
                 </h:panelGrid>

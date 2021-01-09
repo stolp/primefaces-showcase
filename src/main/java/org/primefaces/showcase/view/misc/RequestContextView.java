@@ -43,7 +43,7 @@ public class RequestContextView {
         user = new User();
         
         if(!FacesContext.getCurrentInstance().isPostback()) {
-            PrimeFaces.current().executeScript("alert('This onload script is added from backing bean.')");
+            PrimeFaces.current().executeScript("PrimeFaces.info('This message is added from backing bean.')");
         }
     }
 

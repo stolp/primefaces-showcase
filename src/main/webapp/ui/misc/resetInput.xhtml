@@ -20,9 +20,8 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form id="form">
-                <p:panel id="panel" header="Form" style="margin-bottom:10px;">
-                    <p:messages id="messages"/>
-                    <h:panelGrid columns="3" cellpadding="5">
+                <p:outputPanel id="panel" styleClass="p-mb-2">
+                    <h:panelGrid columns="3" cellpadding="7">
                         <p:outputLabel for="text1" value="Text 1:"/>
                         <p:inputText id="text1" value="#{resetInputView.text1}" required="true" label="Firstname">
                             <f:validateLength minimum="2"/>
@@ -33,36 +32,33 @@
                         <p:inputText id="text2" value="#{resetInputView.text2}" required="true" label="Surname"/>
                         <p:message for="text2"/>
                     </h:panelGrid>
-                </p:panel>
+                </p:outputPanel>
 
-                <p:toolbar>
-                    <f:facet name="left">
-                        <p:commandButton value="Submit" update="panel" action="#{resetInputView.save}"
-                                         style="margin-right:20px;"/>
-                    </f:facet>
+                <div class="p-d-flex p-jc-between">
+                    <p:commandButton value="Submit" update="panel" action="#{resetInputView.save}" styleClass="p-mr-2" />
 
-                    <f:facet name="right">
+                    <div>
                         <p:commandButton value="Reset Fail" update="panel" process="@this"
-                                         action="#{resetInputView.resetFail}" style="margin-right:20px;"/>
+                                         action="#{resetInputView.resetFail}" styleClass="p-mr-2 outlined-button"/>
 
-                        <p:commandButton value="Reset Tag" update="panel" process="@this" style="margin-right:20px;">
+                        <p:commandButton value="Reset Tag" update="panel" process="@this" styleClass="p-mr-2 outlined-button">
                             <p:resetInput target="panel"/>
                         </p:commandButton>
 
                         <p:commandButton value="Reset Code" update="panel" process="@this"
                                          action="#{resetInputView.reset}"
-                                         style="margin-right:20px;"/>
+                                         styleClass="p-mr-2 outlined-button"/>
 
                         <p:commandButton value="Reset Non-Ajax" action="#{resetInputView.reset}" immediate="true"
-                                         ajax="false" style="margin-right:20px;">
+                                         ajax="false" styleClass="p-mr-2 outlined-button">
                             <p:resetInput target="panel"/>
                         </p:commandButton>
 
-                        <h:commandButton value="Reset p:ajax" style="margin-right:20px;">
+                        <h:commandButton value="Reset p:ajax">
                             <p:ajax update="panel" resetValues="true"/>
                         </h:commandButton>
-                    </f:facet>
-                </p:toolbar>
+                    </div>
+                </div>
             </h:form>
         </div>
     </ui:define>

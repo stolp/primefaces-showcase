@@ -19,12 +19,9 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form>
-                <p:growl id="growl"/>
-
-                <h5 style="margin-top:0">Basic</h5>
-                <p:panel id="pnl" header="New User" style="margin-bottom:10px;">
-                    <p:messages id="messages"/>
-                    <h:panelGrid columns="3" cellpadding="5">
+                <h5 class="p-mt-0">Basic</h5>
+                <p:panel id="pnl" header="New User">
+                    <h:panelGrid columns="3" cellpadding="7">
                         <h:outputLabel for="firstname" value="Firstname: *"/>
                         <p:inputText id="firstname" value="#{blockUIView.firstname}" required="true" label="Firstname">
                             <f:validateLength minimum="2"/>
@@ -36,17 +33,16 @@
                         <p:message for="lastname"/>
                     </h:panelGrid>
 
-                    <p:commandButton id="saveBtn" value="Save" icon="pi pi-check" style="margin:0"
-                                     action="#{blockUIView.save}" update="growl"/>
+                    <p:commandButton id="saveBtn" value="Save" icon="pi pi-check" action="#{blockUIView.save}" update="growl" styleClass="p-mt-3" />
                 </p:panel>
 
                 <p:blockUI block="pnl" trigger="saveBtn"/>
 
                 <h5>Custom Content</h5>
                 <p:dataTable id="dataTable" var="customer" value="#{blockUIView.customers}"
-                             paginator="true" rows="5">
+                             paginator="true" rows="5" paginatorPosition="bottom">
                     <f:facet name="header">
-                        Cars
+                        Customers
                     </f:facet>
 
                     <p:column>
@@ -79,12 +75,11 @@
                 </p:dataTable>
 
                 <p:blockUI block="dataTable" trigger="dataTable">
-                    LOADING<br/>
-                    <p:graphicImage name="demo/images/ajaxloadingbar.gif"/>
+                    <i class="pi pi-spin pi-spinner" style="font-size: 3rem"></i>
                 </p:blockUI>
 
                 <h5>Client Side API</h5>
-                <p:accordionPanel id="accordion" multiple="true" style="margin-bottom:20px;">
+                <p:accordionPanel id="accordion" multiple="true">
                     <p:tab title="Header I">
                         <h:panelGrid columns="2" cellpadding="10">
                             <h:outputText
@@ -105,10 +100,12 @@
                     </p:tab>
                 </p:accordionPanel>
 
-                <p:commandButton id="pnlBtn" value="Block Panel" type="button" onclick="PF('bui').show()"/>
-                <p:commandButton id="pnlBtn2" value="Unblock Panel" type="button" onclick="PF('bui').hide()"/>
+                <p:commandButton id="pnlBtn" value="Block Panel" type="button" onclick="PF('bui').show()" styleClass="p-mt-5 p-mr-2" />
+                <p:commandButton id="pnlBtn2" value="Unblock Panel" type="button" onclick="PF('bui').hide()" styleClass="p-mt-5 outlined-button" />
 
                 <p:blockUI block="accordion" widgetVar="bui"/>
+
+                <p:growl id="growl"/>
             </h:form>
         </div>
     </ui:define>

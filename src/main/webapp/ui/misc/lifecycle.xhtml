@@ -20,15 +20,14 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form>
-                <p:commandButton value="Dummy Ajax Request" update="@none"/>
-                <h:commandButton value="Dummy Ajax Request">
-                    <f:ajax render="@none"/>
-                </h:commandButton>
+                <div class="p-mb-5">
+                    <p:commandButton value="Dummy Ajax Request" update="@none" styleClass="p-mr-2" />
+                    <h:commandButton value="Dummy Ajax Request">
+                        <f:ajax render="@none"/>
+                    </h:commandButton>
+                </div>
 
-                <br/>
-                <br/>
-
-                <p:lifecycle/>
+                <p:lifecycle />
             </h:form>
         </div>
     </ui:define>

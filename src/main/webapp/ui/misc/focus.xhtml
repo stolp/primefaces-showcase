@@ -20,26 +20,23 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form>
-                <p:panel id="panel" header="Register">
+                <p:focus context="panel"/>
 
-                    <p:focus context="panel"/>
+                <p:messages/>
 
-                    <p:messages/>
+                <h:panelGrid id="panel" columns="3" cellpadding="7">
+                    <p:outputLabel for="username" value="Username"/>
+                    <p:inputText id="username" value="#{focusView.username}" required="true" label="Firstname">
+                        <f:validateLength minimum="2"/>
+                    </p:inputText>
+                    <p:message for="username"/>
 
-                    <h:panelGrid columns="3">
-                        <p:outputLabel for="username" value="Username"/>
-                        <p:inputText id="username" value="#{focusView.username}" required="true" label="Firstname">
-                            <f:validateLength minimum="2"/>
-                        </p:inputText>
-                        <p:message for="username"/>
+                    <p:outputLabel for="email" value="Email"/>
+                    <p:inputText id="email" value="#{focusView.email}" required="true" label="Surname"/>
+                    <p:message for="email"/>
+                </h:panelGrid>
 
-                        <p:outputLabel for="email" value="Email"/>
-                        <p:inputText id="email" value="#{focusView.email}" required="true" label="Surname"/>
-                        <p:message for="email"/>
-                    </h:panelGrid>
-
-                    <p:commandButton id="submitButton" value="Save" update="@parent" action="#{focusView.save}"/>
-                </p:panel>
+                <p:commandButton id="submitButton" value="Save" update="@parent" action="#{focusView.save}" styleClass="p-mt-3" />
             </h:form>
         </div>
     </ui:define>

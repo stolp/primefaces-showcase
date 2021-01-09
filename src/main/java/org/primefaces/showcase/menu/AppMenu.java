@@ -42,6 +42,7 @@ public class AppMenu {
         //GENERAL CATEGORY START
         List<MenuItem> generalMenuItems = new ArrayList<>();
         generalMenuItems.add(new MenuItem("Get Started", "/getstarted"));
+        generalMenuItems.add(new MenuItem("Content Security", "https://primefaces.github.io/primefaces/10_0/#/core/contentsecuritypolicy"));
         generalMenuItems.add(new MenuItem("Forum", "https://forum.primefaces.org"));
         generalMenuItems.add(new MenuItem("Discord Chat", "https://discord.gg/gzKFYnpmCY"));
         generalMenuItems.add(new MenuItem("Source Code", "https://github.com/primefaces/primefaces"));
@@ -511,15 +512,16 @@ public class AppMenu {
         miscMenuItems.add(new MenuItem("ScrollTop", "/ui/misc/scrollTop", true));
         miscMenuItems.add(new MenuItem("Skeleton", "/ui/misc/skeleton", true));
         miscMenuItems.add(new MenuItem("Tag", "/ui/misc/tag", true));
-        miscMenuItems.add(new MenuItem("Responsive", "/ui/misc/responsive"));
+        //miscMenuItems.add(new MenuItem("Responsive", "/ui/misc/responsive"));
         miscMenuItems.add(new MenuItem("AutoUpdate", "/ui/misc/autoUpdate"));
-        miscMenuItems.add(new MenuItem("ThemeSwitcher", "/ui/misc/themeSwitcher"));
+        //miscMenuItems.add(new MenuItem("ThemeSwitcher", "/ui/misc/themeSwitcher"));
         miscMenuItems.add(new MenuItem("OutputLabel", "/ui/misc/outputLabel"));
         miscMenuItems.add(new MenuItem("BlockUI", "/ui/misc/blockUI"));
         miscMenuItems.add(new MenuItem("Cache", "/ui/misc/cache"));
         miscMenuItems.add(new MenuItem("Captcha", "/ui/misc/captcha"));
         miscMenuItems.add(new MenuItem("Clock", "/ui/misc/clock"));
-        miscMenuItems.add(new MenuItem("Collector", "/ui/misc/collector"));
+        //miscMenuItems.add(new MenuItem("Collector", "/ui/misc/collector"));
+        miscMenuItems.add(new MenuItem("Context", "/ui/misc/context"));
 
         //DefaultCommand Nested MenuItem
         List<MenuItem> defaultCommandMenuItems = new ArrayList<>();
@@ -533,26 +535,25 @@ public class AppMenu {
         miscMenuItems.add(new MenuItem("IdleMonitor", "/ui/misc/idleMonitor"));
         miscMenuItems.add(new MenuItem("ImportConstants", "/ui/misc/importConstants"));
         miscMenuItems.add(new MenuItem("ImportEnum", "/ui/misc/importEnum"));
-        miscMenuItems.add(new MenuItem("CSP", "/ui/misc/csp"));
-        miscMenuItems.add(new MenuItem("FontAwesome", "/ui/misc/fa"));
+        //miscMenuItems.add(new MenuItem("CSP", "/ui/misc/csp"));
+        //miscMenuItems.add(new MenuItem("FontAwesome", "/ui/misc/fa"));
         miscMenuItems.add(new MenuItem("Lifecycle", "/ui/misc/lifecycle"));
         miscMenuItems.add(new MenuItem("Log", "/ui/misc/log"));
         miscMenuItems.add(new MenuItem("Focus", "/ui/misc/focus"));
         miscMenuItems.add(new MenuItem("Hotkey", "/ui/misc/hotkey"));
         miscMenuItems.add(new MenuItem("Printer", "/ui/misc/printer"));
         miscMenuItems.add(new MenuItem("ProgressBar", "/ui/misc/progressBar"));
-        miscMenuItems.add(new MenuItem("RequestContext", "/ui/misc/requestContext"));
         miscMenuItems.add(new MenuItem("ResetInput", "/ui/misc/resetInput"));
         miscMenuItems.add(new MenuItem("Resizable", "/ui/misc/resizable"));
-        miscMenuItems.add(new MenuItem("Separator", "/ui/misc/separator"));
-        miscMenuItems.add(new MenuItem("Spacer", "/ui/misc/spacer"));
+        //miscMenuItems.add(new MenuItem("Separator", "/ui/misc/separator"));
+        //miscMenuItems.add(new MenuItem("Spacer", "/ui/misc/spacer"));
         miscMenuItems.add(new MenuItem("Spotlight", "/ui/misc/spotlight"));
         miscMenuItems.add(new MenuItem("Sticky", "/ui/misc/sticky"));
 
         //Terminal Nested MenuItem
         List<MenuItem> terminalCommandMenuItems = new ArrayList<>();
         terminalCommandMenuItems.add(new MenuItem("Basic", "/ui/misc/terminal/basic"));
-        terminalCommandMenuItems.add(new MenuItem("Autocompletion", "/ui/misc/terminal/autocomplete"));
+        terminalCommandMenuItems.add(new MenuItem("Autocomplete", "/ui/misc/terminal/autocomplete"));
         miscMenuItems.add(new MenuItem("Terminal", terminalCommandMenuItems));
 
         miscMenuItems.add(new MenuItem("Watermark", "/ui/misc/watermark"));

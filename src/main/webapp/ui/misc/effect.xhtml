@@ -18,8 +18,8 @@
 
     <ui:define name="implementation">
         <div class="card">
-            <h5 style="margin-top:0">Catalog</h5>
-            <p:panelGrid columns="4" cellpadding="5" layout="flex">
+            <h5 class="p-mt-0">Catalog</h5>
+            <p:panelGrid columns="4" cellpadding="7" layout="flex">
                 <p:panel id="blind" header="Blind">
                     <h:outputText value="click"/>
                     <p:effect type="blind" event="click">
@@ -86,7 +86,9 @@
                     </p:effect>
                 </p:panel>
             </p:panelGrid>
+        </div>
 
+        <div class="card">
             <h5>Target</h5>
             <h:form>
                 <p:commandButton type="button" value="Show" style="display:block" icon="pi pi-image">
@@ -96,22 +98,21 @@
                 </p:commandButton>
                 <p:graphicImage id="img" name="demo/images/nature/nature1.jpg" style="display:none"/>
             </h:form>
+        </div>
 
+        <div class="card">                
             <h:form>
                 <h5>On Load</h5>
                 <p:messages id="messages" closable="true">
                     <p:effect type="pulsate" event="load" delay="500"/>
                 </p:messages>
 
-                <p:panel id="panel" header="Message Effects" toggleable="true">
-                    <h:panelGrid columns="2" cellpadding="5">
-                        <p:outputLabel for="text" value="Type:"/>
-                        <p:inputText id="text" value="#{effectView.text}" required="true"/>
+                <h:panelGrid columns="2" cellpadding="7">
+                    <p:outputLabel for="text" value="Type:"/>
+                    <p:inputText id="text" value="#{effectView.text}" required="true"/>
+                </h:panelGrid>
 
-                        <h:outputText/>
-                        <p:commandButton id="submit" value="Echo" action="#{effectView.echo}" update="messages"/>
-                    </h:panelGrid>
-                </p:panel>
+                <p:commandButton id="submit" value="Echo" action="#{effectView.echo}" update="messages" styleClass="p-mt-3" />
             </h:form>
         </div>
     </ui:define>
