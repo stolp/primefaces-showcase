@@ -221,6 +221,8 @@ public class AppMenu {
         dataTableMenuItems.add(new MenuItem("Selection", "/ui/data/datatable/selection"));
         dataTableMenuItems.add(new MenuItem("Sort", "/ui/data/datatable/sort"));
         dataTableMenuItems.add(new MenuItem("Sticky", "/ui/data/datatable/sticky"));
+        //dataTableMenuItems.add(new MenuItem("SubTable", "/ui/data/datatable/subTable"));
+        //dataTableMenuItems.add(new MenuItem("SummaryRow", "/ui/data/datatable/summaryRow"));
         dataMenuItems.add(new MenuItem("DataTable", dataTableMenuItems));
 
         //DataView Nested MenuItem
@@ -404,13 +406,7 @@ public class AppMenu {
         List<MenuItem> chartsMenuItems = new ArrayList<>();
 
         //Bar Nested MenuItem
-        List<MenuItem> barMenuItems = new ArrayList<>();
-        barMenuItems.add(new MenuItem("Basic", "/ui/chartjs/bar/bar"));
-        barMenuItems.add(new MenuItem("Horizontal Bar", "/ui/chartjs/bar/bar"));
-        barMenuItems.add(new MenuItem("Stacked", "/ui/chartjs/bar/stacked"));
-        barMenuItems.add(new MenuItem("Stacked Group", "/ui/chartjs/bar/stackedGroup"));
-        chartsMenuItems.add(new MenuItem("Bar", barMenuItems));
-
+        chartsMenuItems.add(new MenuItem("Bar", "/ui/chartjs/bar/bar"));
         chartsMenuItems.add(new MenuItem("Bubble", "/ui/chartjs/bubble"));
         chartsMenuItems.add(new MenuItem("Donut", "/ui/chartjs/donut"));
         chartsMenuItems.add(new MenuItem("Line", "/ui/chartjs/line"));
