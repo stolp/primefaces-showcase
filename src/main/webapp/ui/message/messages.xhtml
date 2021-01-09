@@ -25,16 +25,17 @@
                     <p:autoUpdate/>
                 </p:messages>
 
-                <p:commandButton value="Info" action="#{messagesView.info}"/>
-                <p:commandButton value="Warn" action="#{messagesView.warn}"/>
-                <p:commandButton value="Error" action="#{messagesView.error}"/>
-                <p:commandButton value="Fatal" action="#{messagesView.fatal}"/>
-            </h:form>
+                <h5 class="p-mt-0">Severities</h5>
+                <p:commandButton value="Info" action="#{messagesView.info}" styleClass="p-mr-2" />
+                <p:commandButton value="Warn" action="#{messagesView.warn}" styleClass="p-mr-2 warning-button" />
+                <p:commandButton value="Error" action="#{messagesView.error}" styleClass="danger-button" />
+            </h:form>            
+        </div>
 
-            <p:separator/>
-
+        <div class="card">
             <h:form>
-                <h:panelGrid id="grid" columns="3" cellpadding="5">
+                <h5>Validation</h5>
+                <h:panelGrid id="grid" columns="3" cellpadding="7">
                     <p:outputLabel for="default" value="Default:"/>
                     <p:inputText id="default" required="true"/>
                     <p:message for="default"/>
@@ -52,7 +53,7 @@
                     <p:message for="tt" display="tooltip"/>
                 </h:panelGrid>
 
-                <p:commandButton id="submitButton" value="Submit" update="grid"/>
+                <p:commandButton id="submitButton" value="Submit" update="grid" styleClass="p-mt-3" />
             </h:form>
         </div>
     </ui:define>

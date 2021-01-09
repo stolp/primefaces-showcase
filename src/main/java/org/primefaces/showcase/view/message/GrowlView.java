@@ -31,21 +31,31 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class GrowlView {
-    
-    private String message;
 
-    public String getMessage() {
-        return message;
+    public void addMessage(FacesMessage.Severity severity, String summary, String detail) {
+        FacesContext.getCurrentInstance().
+                addMessage(null, new FacesMessage(severity, summary, detail));
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void showInfo() {
+        addMessage(FacesMessage.SEVERITY_INFO, "Info Message", "Message Content");
     }
-    
-    public void saveMessage() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        
-        context.addMessage(null, new FacesMessage("Successful",  "Your message: " + message) );
-        context.addMessage(null, new FacesMessage("Second Message", "Additional Message Detail"));
+
+    public void showWarn() {
+        addMessage(FacesMessage.SEVERITY_WARN, "Warn Message", "Message Content");
+    }
+
+    public void showError() {
+        addMessage(FacesMessage.SEVERITY_ERROR, "Error Message", "Message Content");
+    }
+
+    public void showSticky() {
+        FacesContext.getCurrentInstance().addMessage("sticky-key", new FacesMessage(FacesMessage.SEVERITY_INFO, "Sticky Message", "Message Content"));
+    }
+
+    public void showMultiple() {
+        addMessage(FacesMessage.SEVERITY_INFO, "Message 1", "Message Content");
+        addMessage(FacesMessage.SEVERITY_INFO, "Message 2", "Message Content");
+        addMessage(FacesMessage.SEVERITY_INFO, "Message 3", "Message Content");
     }
 }

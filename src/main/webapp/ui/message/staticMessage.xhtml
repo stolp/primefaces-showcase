@@ -5,14 +5,6 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml">
 
-    <ui:define name="head">
-        <style type="text/css">
-            body .ui-staticmessage.ui-message {
-                width: 100%;
-            }
-        </style>
-    </ui:define>
-
     <ui:define name="title">
         StaticMessage
     </ui:define>
@@ -26,18 +18,17 @@
 
     <ui:define name="implementation">
 
-        <div class="card ui-g">
-            <div class="ui-g-12 ui-md-3">
-                <p:staticMessage severity="info" summary="INFO!" detail="Hey, i'm a info!"/>
-            </div>
-            <div class="ui-g-12 ui-md-3">
-                <p:staticMessage severity="warn" summary="WARN!" detail="Hey, i'm a warn!"/>
-            </div>
-            <div class="ui-g-12 ui-md-3">
-                <p:staticMessage severity="error" summary="ERROR!" detail="Hey, i'm a error"/>
-            </div>
-            <div class="ui-g-12 ui-md-3">
-                <p:staticMessage severity="fatal" summary="FATAL!" detail="Hey, i'm a fatal!"/>
+        <div class="card">
+            <div class="p-grid">
+                <div class="p-col-12 p-md-4">
+                    <p:staticMessage severity="info" summary="INFO" detail="Message Content" style="width: 100%"/>
+                </div>
+                <div class="p-col-12 p-md-4">
+                    <p:staticMessage severity="warn" summary="WARN" detail="Message Content" style="width: 100%"/>
+                </div>
+                <div class="p-col-12 p-md-4">
+                    <p:staticMessage severity="error" summary="ERROR" detail="Message Content" style="width: 100%"/>
+                </div>
             </div>
         </div>
 
