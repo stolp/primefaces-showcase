@@ -32,16 +32,17 @@
             </p:growl>
 
             <div style="float:left; width: 130px;">
-                <strong>Drag and drop events</strong>
-                <p/>
-                <p:dataList id="eventsList" value="#{dndTimelineView.events}"
-                            var="event" itemType="circle">
-                    <h:panelGroup id="eventBox" layout="box" style="z-index:9999; cursor:move;">
-                        #{event.name}
-                    </h:panelGroup>
-
-                    <p:draggable for="eventBox" revert="true" helper="clone" cursor="move"/>
-                </p:dataList>
+                <strong>Events</strong>
+                <div class="p-p-3">
+                    <p:repeat id="eventsList" value="#{dndTimelineView.events}"
+                                var="event" itemType="circle">
+                        <p:outputPanel id="eventBox" style="z-index:9999; cursor:move;" styleClass="p-py-2 p-px-2">
+                            #{event.name}
+                        </p:outputPanel>
+    
+                        <p:draggable for="eventBox" revert="true" helper="clone" cursor="move"/>
+                    </p:repeat>
+                </div>
             </div>
             <p:timeline id="timeline" value="#{dndTimelineView.model}" var="event"
                         editable="true" eventMargin="10" eventMarginAxis="0" minHeight="400"

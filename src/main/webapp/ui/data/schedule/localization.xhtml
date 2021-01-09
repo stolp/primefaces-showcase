@@ -6,11 +6,6 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="head">
-        <style type="text/css">
-            .value {
-                width: 1000px;
-            }
-        </style>
         <script>
             PrimeFaces.locales ['de'] = {
                 closeText: 'Schließen',
@@ -59,10 +54,7 @@
             <h:form>
                 <p:growl id="messages" showDetail="true"/>
 
-                <h:panelGrid columnClasses="value">
-                    <p:schedule id="schedule" value="#{scheduleJava8View.eventModel}" widgetVar="myschedule"
-                                locale="de"/>
-                </h:panelGrid>
+                <p:schedule id="schedule" value="#{scheduleJava8View.eventModel}" widgetVar="myschedule" locale="de"/>
             </h:form>
         </div>
     </ui:define>

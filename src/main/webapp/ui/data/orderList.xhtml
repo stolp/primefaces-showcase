@@ -22,15 +22,12 @@
             <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
 
             <div class="card">
-                <h5 style="margin-top: 0">Basic OrderList</h5>
-                <p:orderList value="#{orderListView.cities}" var="city" controlsLocation="none" itemLabel="#{city}"
-                             itemValue="#{city}"/>
-                <p:commandButton value="Submit" update="displayCities" oncomplete="PF('cityDialog').show()"
-                                 style="margin-top:5px"/>
+                <h5>Basic</h5>
+                <p:orderList value="#{orderListView.cities}" var="city" controlsLocation="none" itemLabel="#{city}" itemValue="#{city}" />
             </div>
 
             <div class="card">
-                <h5>Pojo Support with Clip Effect, Captions, Custom Content, Reorder Controls, Events and Responsive</h5>
+                <h5>Advanced</h5>
                 <p:orderList value="#{orderListView.countries}" var="country" itemValue="#{country}"
                              converter="#{countryConverter}" controlsLocation="left" responsive="true">
                     <p:ajax event="select" listener="#{orderListView.onSelect}" update="msgs"/>
@@ -47,26 +44,8 @@
                         <h:outputText value="#{country.name}"/>
                     </p:column>
                 </p:orderList>
-                <p:commandButton value="Submit" update="displayCountrys" oncomplete="PF('countriesDialog').show()"
-                                 style="margin-top:5px"/>
             </div>
 
-            <p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="cityDialog" header="Cities"
-                      width="200">
-                <p:dataList id="displayCities" value="#{orderListView.cities}" var="city">
-                    <h:outputText value="#{city}"/>
-                </p:dataList>
-            </p:dialog>
-
-            <p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="countriesDialog" header="Countrys"
-                      width="200" id="dlgCountrys">
-                <h:panelGrid id="displayCountrys" columns="2">
-                    <ui:repeat value="#{orderListView.countries}" var="country">
-                        <h:outputText value="#{country.name}" style="margin-right:5px"/>
-                        <br/>
-                    </ui:repeat>
-                </h:panelGrid>
-            </p:dialog>
         </h:form>
 
     </ui:define>

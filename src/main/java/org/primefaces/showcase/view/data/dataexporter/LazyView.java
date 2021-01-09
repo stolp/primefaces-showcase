@@ -43,8 +43,6 @@ public class LazyView implements Serializable {
 
     private List<Customer> filteredCustomers;
 
-    private String sortMode = "single";
-
     @Inject
     private CustomerService service;
 
@@ -67,13 +65,5 @@ public class LazyView implements Serializable {
 
     public void setService(CustomerService service) {
         this.service = service;
-    }
-
-    public String getSortMode() {
-        return sortMode;
-    }
-
-    public void setSortMode(String sortMode) {
-        this.sortMode = sortMode;
     }
 }

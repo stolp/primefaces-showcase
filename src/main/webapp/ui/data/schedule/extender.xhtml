@@ -3,14 +3,6 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml">
 
-    <ui:define name="head">
-        <style type="text/css">
-            .value {
-                width: 1000px;
-            }
-        </style>
-    </ui:define>
-
     <ui:define name="title">
         Schedule <span class="subitem">Extender</span>
     </ui:define>
@@ -34,7 +26,7 @@
                 <p:growl id="messages" widgetVar="messagesGrowl" showDetail="true"
                          globalOnly="true"/>
 
-                <p:panel id="settings" header="Extender settings">
+                <p:panel id="settings" header="Extender settings" styleClass="p-mb-6">
 
                     <!-- Additional CSS or JavaScript required by the extender example -->
                     <h:outputText escape="false"
@@ -93,7 +85,7 @@
                     </p:panelGrid>
                 </p:panel>
 
-                <h:panelGrid id="schedulePanel" columnClasses="value">
+                <p:outputPanel id="schedulePanel">
 
                     <!-- Load the extender and catch errors -->
                     <script type="text/javascript">
@@ -132,7 +124,7 @@
                     <!-- The actual schedule component -->
                     <p:schedule id="schedule" value="#{scheduleJava8View.eventModel}"
                                 widgetVar="schedule" extender="window.ExtenderShowcase"/>
-                </h:panelGrid>
+                </p:outputPanel>
             </h:form>
         </div>
     </ui:define>

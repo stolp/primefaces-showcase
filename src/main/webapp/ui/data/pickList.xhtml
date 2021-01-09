@@ -23,18 +23,12 @@
 
             <div class="card">
                 <h5 style="margin-top: 0">Basic PickList</h5>
-                <p:pickList id="pickList" value="#{pickListView.cities}" var="cities" itemLabel="#{cities}"
-                            itemValue="#{cities}"/>
-
-                <p:commandButton id="citySubmit" value="Submit" update="displayCities"
-                                 oncomplete="PF('cityDialog').show()" style="margin-top:5px"/>
+                <p:pickList id="pickList" value="#{pickListView.cities}" var="cities" itemLabel="#{cities}" itemValue="#{cities}"/>
             </div>
 
             <div class="card">
-                <h5>PickList on Steroids: Pojo Support with Effect, Captions, Custom Content, Reordering, Filtering, Checkboxes,
-                    <br/>
-                    Ajax Events and Responsive</h5>
-                <p:pickList id="PojoPickList" value="#{pickListView.countries}" var="country" effect="bounce"
+                <h5>Advanced</h5>
+                <p:pickList id="PojoPickList" value="#{pickListView.countries}" var="country"
                             itemValue="#{country}" itemLabel="#{country.name}" showSourceControls="true"
                             showTargetControls="true" showCheckbox="true"
                             showSourceFilter="true" showTargetFilter="true" filterMatchMode="contains"
@@ -48,46 +42,15 @@
                     <p:ajax event="unselect" listener="#{pickListView.onUnselect}" update="msg"/>
                     <p:ajax event="reorder" listener="#{pickListView.onReorder}" update="msg"/>
 
-                    <p:column style="width:15%">
-                        <span class="flag flag-#{country.code}" style="width: 30px; height: 20px"/>
-                    </p:column>
-
-                    <p:column style="width:85%;">
-                        <h:outputText value="#{country.name}"/>
+                    <p:column style="width:94%">
+                        <div class="p-d-flex p-ai-center">
+                            <span class="flag flag-#{country.code} p-mr-2" style="width: 30px; height: 20px" />
+                            <h:outputText value="#{country.name}"/>
+                        </div>
                     </p:column>
                 </p:pickList>
-
-                <p:commandButton id="pojoSubmit" value="Submit" update="displayCountrys"
-                                 oncomplete="PF('countriesDialog').show()" style="margin-top:5px"/>
             </div>
 
-            <p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="cityDialog">
-                <h:panelGrid id="displayCities" columns="2">
-                    <h:outputText value="Source: " style="font-weight:bold"/>
-                    <ui:repeat value="#{pickListView.cities.source}" var="item">
-                        <h:outputText value="#{item}" style="margin-right:5px"/>
-                    </ui:repeat>
-
-                    <h:outputText value="Target: " style="font-weight:bold"/>
-                    <ui:repeat value="#{pickListView.cities.target}" var="item">
-                        <h:outputText value="#{item}" style="margin-right:5px"/>
-                    </ui:repeat>
-                </h:panelGrid>
-            </p:dialog>
-
-            <p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="countriesDialog">
-                <h:panelGrid id="displayCountrys" columns="2">
-                    <h:outputText value="Source: " style="font-weight:bold"/>
-                    <ui:repeat value="#{pickListView.countries.source}" var="country">
-                        <h:outputText value="#{country.name}" style="margin-right:5px"/>
-                    </ui:repeat>
-
-                    <h:outputText value="Target: " style="font-weight:bold"/>
-                    <ui:repeat value="#{pickListView.countries.target}" var="country">
-                        <h:outputText value="#{country.name}" style="margin-right:5px"/>
-                    </ui:repeat>
-                </h:panelGrid>
-            </p:dialog>
         </h:form>
     </ui:define>
 

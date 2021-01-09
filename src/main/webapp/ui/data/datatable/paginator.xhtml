@@ -25,13 +25,21 @@
                              currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
                              rowsPerPageTemplate="5,10,{ShowAll|'All'}">
 
-                    <p:column headerText="Name" field="name"/>
+                    <p:column headerText="Name">
+                        <h:outputText value="#{customer.name}" />
+                    </p:column>
 
-                    <p:column headerText="Country" field="country"/>
+                    <p:column headerText="Country">
+                        <h:outputText value="#{customer.country.name}" />
+                    </p:column>
 
-                    <p:column headerText="Company" field="company"/>
+                    <p:column headerText="Company">
+                        <h:outputText value="#{customer.company}" />
+                    </p:column>
 
-                    <p:column headerText="Representative" field="representative"/>
+                    <p:column headerText="Representative">
+                        <h:outputText value="#{customer.representative.name}" />
+                    </p:column>
 
                     <f:facet name="paginatorTopLeft">
                         <p:commandButton type="button" icon="pi pi-refresh"/>

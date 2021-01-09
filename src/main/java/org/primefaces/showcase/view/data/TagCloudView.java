@@ -44,16 +44,16 @@ public class TagCloudView {
     @PostConstruct
     public void init() {
         model = new DefaultTagCloudModel();
-        model.addTag(new DefaultTagCloudItem("Transformers", 1));
-        model.addTag(new DefaultTagCloudItem("RIA", "#", 3));
-        model.addTag(new DefaultTagCloudItem("AJAX", 2));
-        model.addTag(new DefaultTagCloudItem("jQuery", "#", 5));
-        model.addTag(new DefaultTagCloudItem("NextGen", 4));
-        model.addTag(new DefaultTagCloudItem("JSF 2.0", "#", 2));
-        model.addTag(new DefaultTagCloudItem("FCB", 5));
-        model.addTag(new DefaultTagCloudItem("Mobile",  3));
-        model.addTag(new DefaultTagCloudItem("Themes", "#", 4));
-        model.addTag(new DefaultTagCloudItem("Rocks", "#", 1));
+        model.addTag(new DefaultTagCloudItem("design", 1));
+        model.addTag(new DefaultTagCloudItem("users", "#", 3));
+        model.addTag(new DefaultTagCloudItem("application", 2));
+        model.addTag(new DefaultTagCloudItem("quality", "#", 5));
+        model.addTag(new DefaultTagCloudItem("interface", 4));
+        model.addTag(new DefaultTagCloudItem("team", "#", 2));
+        model.addTag(new DefaultTagCloudItem("product", 5));
+        model.addTag(new DefaultTagCloudItem("data",  3));
+        model.addTag(new DefaultTagCloudItem("usability", "#", 4));
+        model.addTag(new DefaultTagCloudItem("experience", "#", 1));
     }
 
     public TagCloudModel getModel() {

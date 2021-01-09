@@ -73,7 +73,7 @@ public class ColumnsView implements Serializable {
             String key = columnKey.trim();
             
             if(VALID_COLUMN_KEYS.contains(key)) {
-                columns.add(new ColumnModel(columnKey.toUpperCase(), columnKey));
+                columns.add(new ColumnModel(columnKey, columnKey));
             }
         }
     }

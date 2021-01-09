@@ -19,8 +19,19 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form>
+                <h5>Processors</h5>
+                <p:commandButton value="XLS" styleClass="p-mr-2 p-mb-2">
+                    <p:dataExporter type="xls" target="tbl" fileName="products"
+                                    postProcessor="#{customizedDocumentsView.postProcessXLS}"/>
+                </p:commandButton>
+
+                <p:commandButton value="PDF" styleClass="p-mr-2 p-mb-2">
+                    <p:dataExporter type="pdf" target="tbl" fileName="products"
+                                    preProcessor="#{customizedDocumentsView.preProcessPDF}"/>
+                </p:commandButton>
+
                 <p:dataTable id="tbl" var="product" value="#{customizedDocumentsView.products}"
-                             paginator="true" rows="10">
+                             paginator="true" rows="10" styleClass="p-mt-2">
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="Code"/>
@@ -50,45 +61,20 @@
                     </p:column>
                 </p:dataTable>
 
-                <h:commandLink id="excel">
-                    <p:graphicImage name="/demo/images/excel.png"/>
-                    <p:dataExporter type="xls" target="tbl" fileName="products"
-                                    postProcessor="#{customizedDocumentsView.postProcessXLS}"/>
-                </h:commandLink>
+                <h5>Options</h5>
+                <p:commandButton value="XLS" styleClass="p-mr-2 p-mb-2">
+                    <p:dataExporter type="xls" target="tbl2" fileName="products"
+                                    options="#{customizedDocumentsView.excelOpt}"/>
+                </p:commandButton>
 
-                <h:commandLink id="pdf">
-                    <p:graphicImage name="/demo/images/pdf.png"/>
-                    <p:dataExporter type="pdf" target="tbl" fileName="products"
-                                    preProcessor="#{customizedDocumentsView.preProcessPDF}"/>
-                </h:commandLink>
+                <p:commandButton value="XLS" styleClass="p-mr-2 p-mb-2">
+                    <p:dataExporter type="pdf" target="tbl2" fileName="products"
+                                    options="#{customizedDocumentsView.pdfOpt}"/>
+                </p:commandButton>
 
                 <p:dataTable id="tbl2" var="product" value="#{customizedDocumentsView.products2}"
-                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
-                             paginator="true" rows="10" style="margin-top: 25px;">
-
-                    <f:facet name="{Exporters}">
-                        <div style="float:right">
-                            <h:commandLink>
-                                <p:graphicImage name="/demo/images/excel.png" width="24"/>
-                                <p:dataExporter type="xls" target="tbl2" fileName="products"
-                                                options="#{customizedDocumentsView.excelOpt}"/>
-                            </h:commandLink>
-
-                            <h:commandLink>
-                                <p:graphicImage name="/demo/images/pdf.png" width="24"/>
-                                <p:dataExporter type="pdf" target="tbl2" fileName="products"
-                                                options="#{customizedDocumentsView.pdfOpt}"/>
-                            </h:commandLink>
-                        </div>
-                    </f:facet>
-
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Code"/>
-                        </f:facet>
-                        <h:outputText value="#{product.code}"/>
-                    </p:column>
-
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                             paginator="true" rows="10" styleClass="p-mt-2">
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="Name"/>

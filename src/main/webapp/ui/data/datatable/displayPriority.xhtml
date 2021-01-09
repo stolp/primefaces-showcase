@@ -9,7 +9,7 @@
     </ui:define>
 
     <ui:define name="description">
-        Columns can be given a default display priority for ordering columns.
+        Columns can be given a default display priority for ordering of the columns.
     </ui:define>
 
     <ui:param name="documentationLink" value="/components/datatable"/>
@@ -18,22 +18,13 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form id="form">
-                <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
 
-                <p:dataTable var="product" value="#{dtReorderView.products1}" draggableColumns="true"
-                             style="margin-bottom:20px">
-                    <f:facet name="header">
-                        Draggable Columns
-                    </f:facet>
-
-                    <p:ajax event="colReorder" listener="#{dtReorderView.onColReorder}"
-                            update=":form:msgs"/>
-
+                <p:dataTable var="product" value="#{dtReorderView.products1}">
                     <p:column headerText="Code (dp1)" displayPriority="1">
                         #{product.code}
                     </p:column>
 
-                    <p:column headerText="Name (not draggable) (dp0)" draggable="false" displayPriority="0">
+                    <p:column headerText="Name (dp0)" draggable="false" displayPriority="0">
                         #{product.name}
                     </p:column>
 
@@ -44,7 +35,6 @@
                     <p:column headerText="Quantity (dp5)" displayPriority="5">
                         #{product.quantity}
                     </p:column>
-
                 </p:dataTable>
             </h:form>
         </div>

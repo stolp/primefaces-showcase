@@ -18,16 +18,15 @@
 
     <ui:define name="implementation">
         <div class="card">
-            Available columns are "code","name","category" and "quantity".
+            Available columns are <b>code</b>, <b>name</b>, <b>category</b> and <b>quantity</b>.
 
             <h:form id="form">
-                <h:panelGrid columns="3" style="margin:10px 0">
-                    <p:outputLabel for="template" value="Template:" style="font-weight:bold"/>
-                    <p:inputText id="template" value="#{dtColumnsView.columnTemplate}" size="50"/>
+                <div class="p-mt-3 p-mb-5">
+                    <p:inputText id="template" value="#{dtColumnsView.columnTemplate}" size="50" styleClass="p-mr-2"/>
                     <p:commandButton update="products" action="#{dtColumnsView.updateColumns}" value="Update"
                                      process="@parent" icon="pi pi-refresh"
                                      oncomplete="PF('productsTable').clearFilters()"/>
-                </h:panelGrid>
+                </div>
 
                 <p:dataTable id="products" var="product" value="#{dtColumnsView.products}" widgetVar="productsTable"
                              filteredValue="#{dtColumnsView.filteredProducts}">

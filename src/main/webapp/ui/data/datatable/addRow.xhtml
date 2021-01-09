@@ -22,8 +22,7 @@
                 <p:growl id="msgs" showDetail="true"/>
 
                 <p:dataTable id="products1" widgetVar="products1" var="product" value="#{dtAddRowView.products1}"
-                             editable="true"
-                             style="margin-bottom:20px">
+                             editable="true">
                     <f:facet name="header">
                         Row Editing with add functionality
                     </f:facet>
@@ -68,14 +67,14 @@
                     </p:column>
 
 
-                    <p:column style="width:32px">
+                    <p:column style="width:6rem">
                         <p:rowEditor/>
                     </p:column>
                 </p:dataTable>
 
                 <div class="ui-g">
                     <div class="ui-g-12">
-                        <p:commandButton value="Add new row" styleClass="ui-priority-primary" process="@this"
+                        <p:commandButton value="Add new row" styleClass="p-mt-3" process="@this"
                                          update=":form:msgs"
                                          action="#{dtAddRowView.onAddNew()}" oncomplete="PF('products1').addRow();"/>
                     </div>

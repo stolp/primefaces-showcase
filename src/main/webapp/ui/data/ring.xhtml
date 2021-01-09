@@ -14,14 +14,6 @@
             .image-ring .ui-ring-item img {
                 width: 100%;
             }
-
-            .ui-ring button {
-                font-size: 1em !important;
-            }
-
-            .value {
-                font-weight: bold;
-            }
         </style>
     </ui:define>
 
@@ -39,51 +31,11 @@
     <ui:define name="implementation">
 
         <h:form id="form">
-
             <div class="card">
-                <h5 style="margin-top: 0">Basic Ring</h5>
-                <p:ring id="basic" value="#{ringView.products}" var="product">
-                    <p:outputPanel style="text-align: center;" layout="block">
-                        #{product.name}
-                        <br/>
-                        <p:commandButton update=":form:productDetail" icon="pi pi-search" title="View"
-                                         oncomplete="PF('productDialog').show();">
-                            <f:setPropertyActionListener value="#{product}" target="#{ringView.selectedProduct}"/>
-                        </p:commandButton>
-                    </p:outputPanel>
-                </p:ring>
-            </div>
-
-            <div class="card">
-                <h5>Images with Custom Easing</h5>
                 <p:ring id="custom" value="#{ringView.products}" var="product" styleClass="image-ring"
                         easing="easeInOutBack">
-                    <p:graphicImage id="img" name="/demo/images/product/#{product.image}"/>
+                    <p:graphicImage id="img" name="/demo/images/product/#{product.image}" styleClass="p-shadow-4" />
                 </p:ring>
-
-                <p:dialog header="Product Info" widgetVar="productDialog" modal="true" showEffect="fade"
-                          hideEffect="fade" resizable="false">
-                    <p:outputPanel id="productDetail" style="text-align:center;" layout="block">
-                        <p:panelGrid columns="2" rendered="#{not empty ringView.selectedProduct}" columnClasses="value">
-                            <f:facet name="header">
-                                <p:graphicImage name="demo/images/product/#{ringView.selectedProduct.image}"/>
-                            </f:facet>
-
-                            <h:outputText value="Code:"/>
-                            <h:outputText value="#{ringView.selectedProduct.code}" style="font-weight: bold"/>
-
-                            <h:outputText value="Name:"/>
-                            <h:outputText value="#{ringView.selectedProduct.name}" style="font-weight: bold"/>
-
-                            <h:outputText value="Category:"/>
-                            <h:outputText value="#{ringView.selectedProduct.category}" style="font-weight: bold"/>
-
-                            <h:outputText value="Price:"/>
-                            <h:outputText value="$#{ringView.selectedProduct.price}" style="font-weight: bold"/>
-
-                        </p:panelGrid>
-                    </p:outputPanel>
-                </p:dialog>
             </div>
 
         </h:form>

@@ -18,26 +18,9 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form>
-
-                <p:dataTable id="tblSales" var="sale" value="#{dtGroupView.sales}" paginator="true"
-                             paginatorPosition="top"
-                             paginatorTemplate="{CurrentPageReport} {Exporters}">
-                    <f:facet name="{Exporters}">
-                        <div style="float: right; padding-top: 5px;">
-                            <h:commandLink>
-                                <p:graphicImage name="/demo/images/xlsx.png" width="24"/>
-                                <p:dataExporter type="xlsxstream" target="tblSales" fileName="sales"/>
-                            </h:commandLink>
-
-                            <h:commandLink>
-                                <p:graphicImage name="/demo/images/pdf.png" width="24"/>
-                                <p:dataExporter type="pdf" target="tblSales" fileName="sales"/>
-                            </h:commandLink>
-                        </div>
-                    </f:facet>
-
+                <p:dataTable id="tblSales" var="sale" value="#{dtGroupView.sales}">
                     <f:facet name="header">
-                        <h:outputText value="Sales/Profits of Manufacturers"/>
+                        <h:outputText value="Product Sales"/>
                     </f:facet>
 
                     <p:columnGroup type="header">
@@ -117,7 +100,7 @@
                     </p:columns>
 
                     <f:facet name="footer">
-                        <h:outputText value="Data between 2010-2014"/>
+                        <h:outputText value="Data between 2010-2014" styleClass="p-text-bold" />
                     </f:facet>
                 </p:dataTable>
             </h:form>

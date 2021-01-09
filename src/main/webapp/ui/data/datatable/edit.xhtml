@@ -4,13 +4,6 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml">
-    <ui:define name="head">
-        <style type="text/css">
-            .ui-row-editor .ui-row-editor-pencil {
-                margin-left: 8px;
-            }
-        </style>
-    </ui:define>
 
     <ui:define name="title">
         DataTable <span class="subitem">Edit</span>
@@ -78,7 +71,7 @@
                         </p:cellEditor>
                     </p:column>
 
-                    <p:column style="width:35px">
+                    <p:column style="width:6rem">
                         <p:rowEditor editTitle="Edit Row" cancelTitle="Cancel Edit" saveTitle="Save Row"/>
                     </p:column>
                 </p:dataTable>

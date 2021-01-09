@@ -181,6 +181,10 @@
         @include flex-align-center();
         padding: 1rem;
 
+        &.border-1 {
+            border-bottom: 1px solid var(--surface-d);
+        }
+
         img {
             width: 150px;
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -211,14 +215,11 @@
         .ui-button {
             margin-bottom: .5rem;
         }
-
     }
 
     .product-grid-item {
-        border: 1px solid var(--surface-d);
-
-        &.border-0 {
-            border-color: transparent;
+        &.border-1 {
+            border: 1px solid var(--surface-d);
         }
 
         .product-grid-item-top,

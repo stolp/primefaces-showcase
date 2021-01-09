@@ -21,35 +21,33 @@
 
         <h:form id="form">
 
-            <div class="product card">
-                <h5>Responsive</h5>
+            <div class="card">
+                <h5>Default</h5>
                 <p:carousel value="#{carouselView.products}" var="product" responsive="true">
-
-                    <div class="product-grid-item card" style="margin-bottom: 0">
-                        <div class="product-grid-item-top">
-                            <div>
-                                <i class="pi pi-tag product-category-icon"/>
-                                <span class="product-category">#{product.category}</span>
+                    <div class="product">
+                        <div class="product-grid-item p-p-5">
+                            <div class="product-grid-item-top">
+                                <div>
+                                    <i class="pi pi-tag product-category-icon"/>
+                                    <span class="product-category">#{product.category}</span>
+                                </div>
+                                <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
                             </div>
-                            <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
-                        </div>
-                        <div class="product-grid-item-content">
-                            <p:graphicImage name="demo/images/product/#{product.image}"/>
-                            <div class="product-name">#{product.name}</div>
-                            <div class="product-description">#{product.description}</div>
-                            <p:rating readonly="true" value="#{product.rating}"/>
-                        </div>
-                        <div class="product-grid-item-bottom">
-                            <h:outputText value="#{product.price}" styleClass="product-price">
-                                <f:convertNumber currencySymbol="$" type="currency"/>
-                            </h:outputText>
-                            <p:commandButton update=":form:productDetail" oncomplete="PF('productDialog').show()"
-                                             value="Add To Cart"
-                                             icon="pi pi-shopping-cart"
-                                             disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
-                                <f:setPropertyActionListener value="#{product}"
-                                                             target="#{carouselView.selectedProduct}"/>
-                            </p:commandButton>
+                            <div class="product-grid-item-content">
+                                <p:graphicImage name="demo/images/product/#{product.image}"/>
+                                <div class="product-name">#{product.name}</div>
+                                <div class="product-description">#{product.description}</div>
+                                <p:rating readonly="true" value="#{product.rating}"/>
+                            </div>
+                            <div class="product-grid-item-bottom">
+                                <h:outputText value="#{product.price}" styleClass="product-price">
+                                    <f:convertNumber currencySymbol="$" type="currency"/>
+                                </h:outputText>
+                                <p:commandButton type="button" value="Add To Cart"
+                                                 icon="pi pi-shopping-cart"
+                                                 disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
+                                </p:commandButton>
+                            </div>
                         </div>
                     </div>
 
@@ -64,31 +62,30 @@
                 <p:carousel value="#{carouselView.products}" var="product"
                             itemStyle="text-align:center" numVisible="1" easing="easeOutBounce"
                             style="width: 500px;" circular="true">
-                    <div class="product-grid-item card" style="margin-bottom: 0">
-                        <div class="product-grid-item-top">
-                            <div>
-                                <i class="pi pi-tag product-category-icon"/>
-                                <span class="product-category">#{product.category}</span>
+                    <div class="product">
+                        <div class="product-grid-item p-p-5">
+                            <div class="product-grid-item-top">
+                                <div>
+                                    <i class="pi pi-tag product-category-icon"/>
+                                    <span class="product-category">#{product.category}</span>
+                                </div>
+                                <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
                             </div>
-                            <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
-                        </div>
-                        <div class="product-grid-item-content">
-                            <p:graphicImage name="demo/images/product/#{product.image}"/>
-                            <div class="product-name">#{product.name}</div>
-                            <div class="product-description">#{product.description}</div>
-                            <p:rating readonly="true" value="#{product.rating}"/>
-                        </div>
-                        <div class="product-grid-item-bottom">
-                            <h:outputText value="#{product.price}" styleClass="product-price">
-                                <f:convertNumber currencySymbol="$" type="currency"/>
-                            </h:outputText>
-                            <p:commandButton update=":form:productDetail" oncomplete="PF('productDialog').show()"
-                                             value="Add To Cart"
-                                             icon="pi pi-shopping-cart"
-                                             disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
-                                <f:setPropertyActionListener value="#{product}"
-                                                             target="#{carouselView.selectedProduct}"/>
-                            </p:commandButton>
+                            <div class="product-grid-item-content">
+                                <p:graphicImage name="demo/images/product/#{product.image}"/>
+                                <div class="product-name">#{product.name}</div>
+                                <div class="product-description">#{product.description}</div>
+                                <p:rating readonly="true" value="#{product.rating}"/>
+                            </div>
+                            <div class="product-grid-item-bottom">
+                                <h:outputText value="#{product.price}" styleClass="product-price">
+                                    <f:convertNumber currencySymbol="$" type="currency"/>
+                                </h:outputText>
+                                <p:commandButton type="button" value="Add To Cart"
+                                                    icon="pi pi-shopping-cart"
+                                                    disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
+                                </p:commandButton>
+                            </div>
                         </div>
                     </div>
                 </p:carousel>
@@ -98,64 +95,27 @@
                 <h5>Tabs</h5>
                 <p:carousel numVisible="1" effect="easeInStrong" style="margin-bottom:0">
                     <p:tab title="Header I">
-                        <h:panelGrid columns="2" cellpadding="10">
-                            <h:outputText
-                                    value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
-                        </h:panelGrid>
+                        <p class="p-m-0 p-p-3">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+                            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
                     </p:tab>
                     <p:tab title="Header II">
-                        <h:panelGrid columns="2" cellpadding="10">
-                            <h:outputText
-                                    value="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi."/>
-                        </h:panelGrid>
+                        <p class="p-m-0 p-p-3">
+                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab 
+                            illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut 
+                            odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.
+                        </p>
                     </p:tab>
                     <p:tab title="Header III">
-                        <h:panelGrid columns="2" cellpadding="10">
-                            <h:outputText
-                                    value="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus."/>
-                        </h:panelGrid>
+                        <p class="p-m-0 p-p-3">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores 
+                            et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. 
+                            Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.
+                        </p>
                     </p:tab>
                 </p:carousel>
             </div>
-
-            <p:dialog header="Product Info" widgetVar="productDialog" modal="true" showEffect="fade" hideEffect="fade"
-                      resizable="false">
-                <p:outputPanel id="productDetail" style="text-align:center;">
-                    <p:column rendered="#{not empty carouselView.selectedProduct}">
-                        <div class="product">
-                            <div class="product-grid-item card" style="margin-bottom: 0">
-                                <div class="product-grid-item-top">
-                                    <div>
-                                        <i class="pi pi-tag product-category-icon"/>
-                                        <span class="product-category">#{carouselView.selectedProduct.category}</span>
-                                    </div>
-                                    <span class="product-badge status-#{carouselView.selectedProduct.inventoryStatus.name().toLowerCase()}">#{carouselView.selectedProduct.inventoryStatus.text}</span>
-                                </div>
-                                <div class="product-grid-item-content">
-                                    <p:graphicImage name="demo/images/product/#{carouselView.selectedProduct.image}"/>
-                                    <div class="product-name">#{carouselView.selectedProduct.name}</div>
-                                    <div class="product-description">#{carouselView.selectedProduct.description}</div>
-                                    <p:rating readonly="true" value="#{carouselView.selectedProduct.rating}"/>
-                                </div>
-                                <div class="product-grid-item-bottom">
-                                    <h:outputText value="#{carouselView.selectedProduct.price}"
-                                                  styleClass="product-price">
-                                        <f:convertNumber currencySymbol="$" type="currency"/>
-                                    </h:outputText>
-                                    <p:commandButton update=":form:productDetail"
-                                                     oncomplete="PF('productDialog').show()" value="Add To Cart"
-                                                     icon="pi pi-shopping-cart"
-                                                     disabled="#{carouselView.selectedProduct.inventoryStatus == 'OUTOFSTOCK'}">
-                                        <f:setPropertyActionListener value="#{carouselView.selectedProduct}"
-                                                                     target="#{carouselView.selectedProduct}"/>
-                                    </p:commandButton>
-                                </div>
-                            </div>
-                        </div>
-                    </p:column>
-                </p:outputPanel>
-            </p:dialog>
-
         </h:form>
 
     </ui:define>

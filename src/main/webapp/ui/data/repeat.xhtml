@@ -37,55 +37,30 @@
         <div class="card">
             <h:form id="form">
                 <p:repeat value="#{dataListView.products1}" var="product">
-                    <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
-                        <p:commandLink update=":form:productDetail" oncomplete="PF('productDialog').show()">
-                            <f:setPropertyActionListener value="#{product}" target="#{dataListView.selectedProduct}"/>
+                    <div class="product">
+                        <div class="product-list-item border-1 p-p-5">
                             <p:graphicImage name="demo/images/product/#{product.image}"/>
-                        </p:commandLink>
-
-                        <p:outputPanel>
-                            <h:panelGrid columns="2" cellpadding="5">
-                                <h:outputText value="Code:"/>
-                                <h:outputText value="#{product.code}" style="font-weight: bold"/>
-
-                                <h:outputText value="Name:"/>
-                                <h:outputText value="#{product.name}" style="font-weight: bold"/>
-
-                                <h:outputText value="Category:"/>
-                                <h:outputText value="#{product.category}" style="font-weight: bold"/>
-
-                                <h:outputText value="Price:"/>
-                                <h:outputText value="$#{product.price}" style="font-weight: bold"/>
-                            </h:panelGrid>
-                        </p:outputPanel>
-                    </h:panelGrid>
-                    <hr/>
+                            <div class="product-list-detail">
+                                <div class="product-name">#{product.name}</div>
+                                <div class="product-description">#{product.description}</div>
+                                <p:rating readonly="true" value="#{product.rating}"/>
+                                <i class="pi pi-tag product-category-icon"/><span
+                                    class="product-category">#{product.category}</span>
+                            </div>
+                            <div class="product-list-action">
+                                <h:outputText value="#{product.price}" styleClass="product-price">
+                                    <f:convertNumber currencySymbol="$" type="currency"/>
+                                </h:outputText>
+                                <p:commandButton type="button"
+                                                 value="Add To Cart"
+                                                 icon="pi pi-shopping-cart"
+                                                 disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
+                                </p:commandButton>
+                                <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
+                            </div>
+                        </div>
+                    </div>
                 </p:repeat>
-
-                <p:dialog header="Product Info" widgetVar="productDialog" modal="true" showEffect="blind"
-                          hideEffect="explode"
-                          resizable="false">
-                    <p:outputPanel id="productDetail" style="text-align:center;">
-                        <p:panelGrid columns="2" rendered="#{not empty dataListView.selectedProduct}"
-                                     columnClasses="label,value">
-                            <f:facet name="header">
-                                <p:graphicImage name="demo/images/product/#{dataListView.selectedProduct.image}"/>
-                            </f:facet>
-
-                            <h:outputText value="Code:"/>
-                            <h:outputText value="#{dataListView.selectedProduct.code}" style="font-weight: bold"/>
-
-                            <h:outputText value="Name:"/>
-                            <h:outputText value="#{dataListView.selectedProduct.name}" style="font-weight: bold"/>
-
-                            <h:outputText value="Category:"/>
-                            <h:outputText value="#{dataListView.selectedProduct.category}" style="font-weight: bold"/>
-
-                            <h:outputText value="Price:"/>
-                            <h:outputText value="$#{dataListView.selectedProduct.price}" style="font-weight: bold"/>
-                        </p:panelGrid>
-                    </p:outputPanel>
-                </p:dialog>
             </h:form>
         </div>
     </ui:define>

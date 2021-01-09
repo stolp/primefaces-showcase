@@ -9,24 +9,10 @@
         DataView <span class="subitem">Lazy</span>
     </ui:define>
 
-    <ui:define name="head">
-        <style type="text/css">
-            /*demo*/
-            .ui-dataview-list .ui-dataview-row {
-                border-bottom: 1px solid #A8A8A8;
-                padding: 25px 10px;
-                /* with the exported variables from Nova and Luna Themes*/
-                border-bottom-color: var(--input-border-color, #A8A8A8);
-            }
-        </style>
-    </ui:define>
-
     <ui:define name="description">
         DataView has built-in support to deal with huge datasets. In order to enable lazy loading, a LazyDataModel needs to be implemented
-        to query the datasource when pagination happens. This example uses an in-memory list to mimic a real datasource like a database.
-        <p>
-            <strong>In a real application, loading should be executed with the query built using the information passed to the load method.</strong>
-        </p>
+        to query the datasource when pagination happens. This example uses an in-memory list to mimic a real datasource like a database. 
+        In a real application, loading should be executed with the query built using the information passed to the load method.
     </ui:define>
 
     <ui:param name="documentationLink" value="/components/dataview"/>
@@ -41,52 +27,42 @@
                             gridIcon="pi pi-th-large" listIcon="pi pi-bars">
 
                     <p:dataViewGridItem>
-                        <p:panel header="#{customer.name}" style="text-align:center">
-                            <h:panelGrid columns="2" style="width:100%">
+                        <div class="card p-d-flex p-jc-center">
+                            <h:panelGrid columns="2" cellpadding="7">
+                                <h:outputText value="Name:" styleClass="text-secondary"/>
+                                <h:outputText value="#{customer.name}"/>
 
-                                <h:outputText value="Activity:"/>
-                                <h:outputText value="#{customer.activity}"/>
-
-                                <h:outputText value="Country"/>
+                                <h:outputText value="Country:" styleClass="text-secondary"/>
                                 <p:column>
-                                    <span class="flag flag-#{customer.country.code}" style="width: 30px; height: 20px"/>
+                                    <span class="flag flag-#{customer.country.code}"
+                                            style="width: 30px; height: 20px"/>
                                     <h:outputText style="vertical-align: middle; margin-left: .5rem"
-                                                  value="#{customer.country.name}"/>
+                                                    value="#{customer.country.name}"/>
                                 </p:column>
 
-                                <h:outputText value="Company:"/>
+                                <h:outputText value="Company:" styleClass="text-secondary"/>
                                 <h:outputText value="#{customer.company}"/>
 
-                                <h:outputText value="Representative:"/>
+                                <h:outputText value="Representative:" styleClass="text-secondary"/>
                                 <p:column>
                                     <p:graphicImage name="images/avatar/#{customer.representative.image}"
                                                     library="demo"
                                                     width="32" style="vertical-align: middle"/>
                                     <h:outputText style="vertical-align: middle; margin-left: .5rem"
-                                                  value="#{customer.representative.name}"/>
+                                                    value="#{customer.representative.name}"/>
                                 </p:column>
                             </h:panelGrid>
-
-                            <p:separator/>
-
-                            <p:commandLink update=":form:customerDetail" oncomplete="PF('customerDialog').show()"
-                                           title="View Detail">
-                                <h:outputText styleClass="ui-icon pi pi-search" style="margin:0 auto;"/>
-                                <f:setPropertyActionListener value="#{customer}"
-                                                             target="#{dtLazyView.selectedCustomer}"/>
-                            </p:commandLink>
-
-                        </p:panel>
+                        </div>
                     </p:dataViewGridItem>
 
                     <p:dataViewListItem>
                         <h:panelGrid columns="2" style="width:100%" cellspacing="20">
                             <p:outputPanel>
-                                <h:panelGrid columns="2" cellpadding="5">
-                                    <h:outputText value="Name:"/>
+                                <h:panelGrid columns="2" cellpadding="7">
+                                    <h:outputText value="Name:" styleClass="text-secondary" />
                                     <h:outputText value="#{customer.name}"/>
 
-                                    <h:outputText value="Country"/>
+                                    <h:outputText value="Country:" styleClass="text-secondary"/>
                                     <p:column>
                                         <span class="flag flag-#{customer.country.code}"
                                               style="width: 30px; height: 20px"/>
@@ -94,10 +70,10 @@
                                                       value="#{customer.country.name}"/>
                                     </p:column>
 
-                                    <h:outputText value="Company:"/>
+                                    <h:outputText value="Company:" styleClass="text-secondary"/>
                                     <h:outputText value="#{customer.company}"/>
 
-                                    <h:outputText value="Representative:"/>
+                                    <h:outputText value="Representative:" styleClass="text-secondary"/>
                                     <p:column>
                                         <p:graphicImage name="images/avatar/#{customer.representative.image}"
                                                         library="demo"
@@ -107,50 +83,9 @@
                                     </p:column>
                                 </h:panelGrid>
                             </p:outputPanel>
-
-                            <p:commandLink update=":form:customerDetail" oncomplete="PF('customerDialog').show()"
-                                           title="View Detail">
-                                <h:outputText styleClass="ui-icon pi pi-search" style="margin:0 auto;"/>
-                                <f:setPropertyActionListener value="#{customer}"
-                                                             target="#{dtLazyView.selectedCustomer}"/>
-                            </p:commandLink>
                         </h:panelGrid>
-
-                        <p:separator/>
                     </p:dataViewListItem>
                 </p:dataView>
-
-                <p:dialog header="Customer Info" widgetVar="customerDialog" modal="true" showEffect="blind"
-                          hideEffect="explode" resizable="false">
-                    <p:outputPanel id="customerDetail" style="text-align:center;">
-                        <h:panelGrid columns="2" cellpadding="5" rendered="#{not empty dtLazyView.selectedCustomer}">
-
-                            <h:outputText value="Name:"/>
-                            <h:outputText value="#{dtLazyView.selectedCustomer.name}"/>
-
-                            <h:outputText value="Country"/>
-                            <p:column>
-                                <span class="flag flag-#{dtLazyView.selectedCustomer.country.code}"
-                                      style="width: 30px; height: 20px"/>
-                                <h:outputText style="vertical-align: middle; margin-left: .5rem"
-                                              value="#{dtLazyView.selectedCustomer.country.name}"/>
-                            </p:column>
-
-                            <h:outputText value="Company:"/>
-                            <h:outputText value="#{dtLazyView.selectedCustomer.company}"/>
-
-                            <h:outputText value="Representative:"/>
-                            <p:column>
-                                <p:graphicImage name="images/avatar/#{dtLazyView.selectedCustomer.representative.image}"
-                                                library="demo"
-                                                width="32" style="vertical-align: middle"/>
-                                <h:outputText style="vertical-align: middle; margin-left: .5rem"
-                                              value="#{dtLazyView.selectedCustomer.representative.name}"/>
-                            </p:column>
-
-                        </h:panelGrid>
-                    </p:outputPanel>
-                </p:dialog>
             </h:form>
         </div>
     </ui:define>

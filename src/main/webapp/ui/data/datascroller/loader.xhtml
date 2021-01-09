@@ -25,26 +25,28 @@
                     </f:facet>
 
                     <f:facet name="loader">
-                        <p:commandButton type="button" value="More" icon="pi pi-chevron-circle-down"/>
+                        <p:commandButton type="button" value="More" icon="pi pi-refresh"/>
                     </f:facet>
 
-                    <div class="product-list-item">
-                        <p:graphicImage name="demo/images/product/#{product.image}"/>
-                        <div class="product-list-detail">
-                            <div class="product-name">#{product.name}</div>
-                            <div class="product-description">#{product.description}</div>
-                            <p:rating readonly="true" value="#{product.rating}"/>
-                            <i class="pi pi-tag product-category-icon"/><span
-                                class="product-category">#{product.category}</span>
-                        </div>
-                        <div class="product-list-action">
-                            <h:outputText value="#{product.price}" styleClass="product-price">
-                                <f:convertNumber currencySymbol="$" type="currency"/>
-                            </h:outputText>
-                            <p:commandButton value="Add To Cart" icon="pi pi-shopping-cart"
-                                             disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
-                            </p:commandButton>
-                            <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
+                    <div class="product">
+                        <div class="product-list-item p-p-5">
+                            <p:graphicImage name="demo/images/product/#{product.image}"/>
+                            <div class="product-list-detail">
+                                <div class="product-name">#{product.name}</div>
+                                <div class="product-description">#{product.description}</div>
+                                <p:rating readonly="true" value="#{product.rating}"/>
+                                <i class="pi pi-tag product-category-icon"/><span
+                                    class="product-category">#{product.category}</span>
+                            </div>
+                            <div class="product-list-action">
+                                <h:outputText value="#{product.price}" styleClass="product-price">
+                                    <f:convertNumber currencySymbol="$" type="currency"/>
+                                </h:outputText>
+                                <p:commandButton value="Add To Cart" icon="pi pi-shopping-cart"
+                                                 disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
+                                </p:commandButton>
+                                <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
+                            </div>
                         </div>
                     </div>
 

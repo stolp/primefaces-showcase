@@ -204,6 +204,7 @@ public class AppMenu {
         dataTableMenuItems.add(new MenuItem("Edit", "/ui/data/datatable/edit"));
         dataTableMenuItems.add(new MenuItem("Expansion", "/ui/data/datatable/expansion"));
         dataTableMenuItems.add(new MenuItem("Facets", "/ui/data/datatable/facets"));
+        dataTableMenuItems.add(new MenuItem("Field", "/ui/data/datatable/field"));
         dataTableMenuItems.add(new MenuItem("Filter", "/ui/data/datatable/filter"));
         dataTableMenuItems.add(new MenuItem("Group", "/ui/data/datatable/group"));
         dataTableMenuItems.add(new MenuItem("Lazy", "/ui/data/datatable/lazy"));
@@ -220,17 +221,13 @@ public class AppMenu {
         dataTableMenuItems.add(new MenuItem("Selection", "/ui/data/datatable/selection"));
         dataTableMenuItems.add(new MenuItem("Sort", "/ui/data/datatable/sort"));
         dataTableMenuItems.add(new MenuItem("Sticky", "/ui/data/datatable/sticky"));
-        dataTableMenuItems.add(new MenuItem("SubTable", "/ui/data/datatable/subTable"));
-        dataTableMenuItems.add(new MenuItem("SummaryRow", "/ui/data/datatable/summaryRow"));
         dataMenuItems.add(new MenuItem("DataTable", dataTableMenuItems));
 
         //DataView Nested MenuItem
         List<MenuItem> dataViewMenuItems = new ArrayList<>();
         dataViewMenuItems.add(new MenuItem("Basic", "/ui/data/dataview/basic"));
-        dataViewMenuItems.add(new MenuItem("Paginator", "/ui/data/dataview/paginator"));
         dataViewMenuItems.add(new MenuItem("MultiViewState", "/ui/data/dataview/multiViewState"));
         dataViewMenuItems.add(new MenuItem("Lazy", "/ui/data/dataview/lazy"));
-        dataViewMenuItems.add(new MenuItem("List Only", "/ui/data/dataview/listOnly"));
         dataViewMenuItems.add(new MenuItem("Responsive", "/ui/data/dataview/responsive"));
         dataMenuItems.add(new MenuItem("DataView", dataViewMenuItems));
 
@@ -281,7 +278,7 @@ public class AppMenu {
         //Schedule Nested MenuItem
         List<MenuItem> scheduleMenuItems = new ArrayList<>();
         scheduleMenuItems.add(new MenuItem("Basic", "/ui/data/schedule/basic"));
-        scheduleMenuItems.add(new MenuItem("Configureable", "/ui/data/schedule/configureable"));
+        scheduleMenuItems.add(new MenuItem("Configuration", "/ui/data/schedule/configuration"));
         scheduleMenuItems.add(new MenuItem("Lazy", "/ui/data/schedule/lazy"));
         scheduleMenuItems.add(new MenuItem("Locale IL8N", "/ui/data/schedule/localization"));
         scheduleMenuItems.add(new MenuItem("Extender", "/ui/data/schedule/extender"));

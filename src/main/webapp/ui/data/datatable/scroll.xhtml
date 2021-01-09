@@ -7,10 +7,6 @@
 
     <ui:define name="head">
         <style type="text/css">
-            .ui-datatable {
-                margin-bottom: 20px;
-            }
-
             .ui-datatable-frozenlayout-left {
                 width: 20%;
             }
@@ -35,10 +31,9 @@
     <ui:define name="implementation">
 
         <h:form>
-
             <div class="card">
                 <h5 style="margin-top:0">Vertical</h5>
-                <p:dataTable var="customer" value="#{dtScrollView.customers1}" scrollable="true" scrollHeight="150">
+                <p:dataTable var="customer" value="#{dtScrollView.customers1}" scrollable="true" scrollHeight="250">
                     <p:column headerText="Name" footerText="Name">
                         <h:outputText value="#{customer.name}"/>
                     </p:column>
@@ -56,7 +51,7 @@
 
             <div class="card">
                 <h5>Horizontal</h5>
-                <p:dataTable var="customer" value="#{dtScrollView.customers2}" scrollable="true" scrollWidth="400">
+                <p:dataTable var="customer" value="#{dtScrollView.customers2}" scrollable="true" scrollWidth="600">
                     <p:column headerText="Name" footerText="Name">
                         <h:outputText value="#{customer.name}"/>
                     </p:column>
@@ -74,8 +69,7 @@
 
             <div class="card">
                 <h5>Horizontal and Vertical</h5>
-                <p:dataTable var="customer" value="#{dtScrollView.customers3}" scrollable="true" scrollWidth="50%"
-                             scrollHeight="150">
+                <p:dataTable var="customer" value="#{dtScrollView.customers3}" scrollable="true" scrollWidth="50%" scrollHeight="250">
                     <p:column headerText="Id" footerText="Id">
                         <h:outputText value="#{customer.id}"/>
                     </p:column>
@@ -105,12 +99,12 @@
 
             <div class="card">
                 <h5>Frozen Rows</h5>
-                <p:dataTable var="customer" value="#{dtScrollView.customers4}" scrollable="true" scrollHeight="150"
+                <p:dataTable var="customer" value="#{dtScrollView.customers4}" scrollable="true" scrollHeight="250"
                              frozenRows="2">
                     <p:column headerText="Name" footerText="Name">
                         <h:outputText value="#{customer.name}"/>
                     </p:column>
-                    <p:column headerText="Country" footerText="country">
+                    <p:column headerText="Country" footerText="Country">
                         <h:outputText value="#{customer.country}"/>
                     </p:column>
                     <p:column headerText="Representative" footerText="Representative">
@@ -124,7 +118,7 @@
 
             <div class="card">
                 <h5>Frozen Columns</h5>
-                <p:dataTable var="customer" value="#{dtScrollView.customers5}" scrollable="true" scrollHeight="150"
+                <p:dataTable var="customer" value="#{dtScrollView.customers5}" scrollable="true" scrollHeight="250"
                              scrollWidth="300" frozenColumns="1">
                     <p:column headerText="Name" footerText="Name">
                         <h:outputText value="#{customer.name}"/>
@@ -137,26 +131,6 @@
                     </p:column>
                     <p:column headerText="Date" footerText="Date">
                         <h:outputText value="#{customer.date}"/>
-                    </p:column>
-                </p:dataTable>
-            </div>
-
-            <div class="card">
-                <h5>On-Demand Data</h5>
-                <p:dataTable var="customer" value="#{dtScrollView.customers6}" scrollRows="20" scrollable="true"
-                             liveScroll="true"
-                             scrollHeight="150">
-                    <p:column headerText="Name" footerText="Name">
-                        <h:outputText value="#{customer.name}"/>
-                    </p:column>
-                    <p:column headerText="Country" footerText="country">
-                        <h:outputText value="#{customer.country}"/>
-                    </p:column>
-                    <p:column headerText="Representative" footerText="Representative">
-                        <h:outputText value="#{customer.representative.name}"/>
-                    </p:column>
-                    <p:column headerText="Status" footerText="Status">
-                        <span class="customer-badge status-#{customer.status.name().toLowerCase()}">#{customer.status}</span>
                     </p:column>
                 </p:dataTable>
             </div>

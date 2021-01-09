@@ -71,12 +71,9 @@
                                                       styleClass="product-price">
                                             <f:convertNumber currencySymbol="$" type="currency"/>
                                         </h:outputText>
-                                        <p:commandButton update=":form:productDetail"
-                                                         oncomplete="PF('productDialog').show()" value="Add To Cart"
+                                        <p:commandButton type="button" value="Add To Cart"
                                                          icon="pi pi-shopping-cart"
                                                          disabled="#{dtContextMenuView.selectedProduct.inventoryStatus == 'OUTOFSTOCK'}">
-                                            <f:setPropertyActionListener value="#{dtContextMenuView.selectedProduct}"
-                                                                         target="#{dtContextMenuView.selectedProduct}"/>
                                         </p:commandButton>
                                     </div>
                                 </div>
