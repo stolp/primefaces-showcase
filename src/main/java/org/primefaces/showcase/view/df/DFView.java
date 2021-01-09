@@ -72,7 +72,7 @@ public class DFView {
     }
     
     public void showMessage() {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "What we do in life", "Echoes in eternity.");
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Message", " Always Bet on Prime!");
         
         PrimeFaces.current().dialog().showMessageDynamic(message);
     }

@@ -26,8 +26,8 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form id="productForm">
-                <p:fieldset id="availableProductsField" legend="Available Products">
-                    <p:dataTable id="availableProducts" var="product" value="#{dndProductsView.products}">
+                <h5 class="p-mt-0">Available Products</h5>
+                <p:dataTable id="availableProducts" var="product" value="#{dndProductsView.products}">
                         <p:column style="width:20px">
                             <h:outputText id="dragIcon" styleClass="ui-icon pi pi-plus"/>
                             <p:draggable for="dragIcon" revert="true" helper="clone"/>
@@ -49,12 +49,11 @@
                             <h:outputText value="#{product.quantity}"/>
                         </p:column>
                     </p:dataTable>
-                </p:fieldset>
 
                 <p:fieldset id="selectedProducts" legend="Selected Products" style="margin-top:20px">
                     <p:outputPanel id="dropArea">
-                        <h:outputText value="!!!Drop here!!!" rendered="#{empty dndProductsView.droppedProducts}"
-                                      style="font-size:24px;"/>
+                        <h:outputText value="Drop here" rendered="#{empty dndProductsView.droppedProducts}"
+                                      style="font-size:1.5rem"/>
                         <p:dataTable id="selectedProductsTable" var="product" value="#{dndProductsView.droppedProducts}"
                                      rendered="#{not empty dndProductsView.droppedProducts}">
                             <p:column headerText="Code">

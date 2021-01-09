@@ -22,21 +22,21 @@
             <p:growl id="growl" showDetail="true"/>
 
             <div class="card">
-                <h5>DialogReturn with Button:</h5>
+                <h5>DialogReturn with Button</h5>
                 <p:commandButton id="btn" value="View" icon="pi pi-home" action="#{dfRootView.openLevel1}">
                     <p:ajax event="dialogReturn" listener="#{dfRootView.onReturnFromLevel1}" update="growl"/>
                 </p:commandButton>
             </div>
 
             <div class="card">
-                <h5>DialogReturn with Link:</h5>
-                <p:commandLink id="lnk" value="View" action="#{dfRootView.openLevel1}">
+                <h5>DialogReturn with Link</h5>
+                <p:commandLink id="lnk" value="View" action="#{dfRootView.openLevel1}" styleClass="p-text-bold">
                     <p:ajax event="dialogReturn" listener="#{dfRootView.onReturnFromLevel1}" update="growl"/>
                 </p:commandLink>
             </div>
 
             <div class="card">
-                <h5>DialogReturn with a Menu:</h5>
+                <h5>DialogReturn with a Menu</h5>
                 <p:menu>
                     <p:submenu label="Dialog Framework">
                         <p:menuitem value="View" action="#{dfRootView.openLevel1}">

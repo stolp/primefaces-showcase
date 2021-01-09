@@ -7,12 +7,12 @@
 
     <ui:define name="head">
         <style type="text/css">
-            .ui-state-active {
-                background-color: #005b9f;
+            .active-drop {
+                background-color: var(--primary-color);
             }
 
-            .ui-state-highlight {
-                background-color: #007ad9;
+            .highlight-drop {
+                background-color: var(--primary-color);
             }
         </style>
         <script type="text/javascript">
@@ -24,8 +24,8 @@
                 });
 
                 $('.ui-datatable .droppoint').droppable({
-                    activeClass: 'ui-state-active',
-                    hoverClass: 'ui-state-highlight',
+                    activeClass: 'active-drop',
+                    hoverClass: 'highlight-drop',
                     tolerance: 'pointer',
                     scope: 'treetotable',
                     drop: function (event, ui) {
@@ -53,8 +53,8 @@
                 $('.ui-tree').droppable({
                     helper: 'clone',
                     scope: 'tabletotree',
-                    activeClass: 'ui-state-active',
-                    hoverClass: 'ui-state-highlight',
+                    activeClass: 'active-drop',
+                    hoverClass: 'highlight-drop',
                     tolerance: 'touch',
                     drop: function (event, ui) {
                         tableToTree([

@@ -5,24 +5,24 @@
 <h:head>
     <title>Level 3</title>
     <style type="text/css">
-        .ui-widget {
-            font-size: 90%;
+        html {
+            font-size: 14px;
         }
     </style>
 </h:head>
 <h:body>
-    <div class="ui-g">
+    <div style="padding: 1rem">
         <h:form id="level3form">
-            <p class="ui-widget">
+            <p class="ui-widget" style="margin-top: 0">
                 Welcome to Level 3, enter value and click send to transfer data from level 3 back to level 2.
             </p>
 
-            <h:panelGrid columns="2">
+            <h:panelGrid columns="2" cellPadding="7">
                 <p:outputLabel for="val" value="Return Value"/>
                 <p:inputText id="val" value="#{dfLevel3View.val}"/>
             </h:panelGrid>
 
-            <p:commandButton value="Send" action="#{dfLevel3View.closeDialog()}"/>
+            <p:commandButton value="Send" action="#{dfLevel3View.closeDialog()}" style="margin-top: 1rem" />
         </h:form>
     </div>
 </h:body>

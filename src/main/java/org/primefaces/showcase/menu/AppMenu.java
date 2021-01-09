@@ -479,7 +479,7 @@ public class AppMenu {
         //DRAGDROP CATEGORY START
         List<MenuItem> dragDropMenuItems = new ArrayList<>();
         dragDropMenuItems.add(new MenuItem("Draggable", "/ui/dnd/draggable"));
-        dragDropMenuItems.add(new MenuItem("DataGrid", "/ui/dnd/dataGrid"));
+        dragDropMenuItems.add(new MenuItem("DataView", "/ui/dnd/dataView"));
         dragDropMenuItems.add(new MenuItem("DataTable", "/ui/dnd/dataTable"));
         dragDropMenuItems.add(new MenuItem("Custom", "/ui/dnd/custom"));
         menuCategories.add(new MenuCategory("DragDrop", dragDropMenuItems));

@@ -7,15 +7,13 @@
 <h:head>
     <title>Products</title>
     <style type="text/css">
-        .ui-widget {
-            font-size: 90%;
-        }
+        html {
+        font-size: 14px;
+    }
     </style>
 </h:head>
 
 <h:body>
-    <i id="customheader" class="pi pi-home" style="display:none"></i>
-
     <p:dataTable var="product" value="#{dfProductsView.products}">
         <p:column headerText="Code">
             <h:outputText value="#{product.code}"/>
@@ -36,4 +34,3 @@
 </h:body>
 
 </html>
-        <!-- EXAMPLE-SOURCE-END -->
