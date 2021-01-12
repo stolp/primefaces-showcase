@@ -16,81 +16,82 @@
     <ui:param name="documentationLink" value="/components/inputgroup"/>
 
     <ui:define name="implementation">
-        <div class="card">
-
-            <h5 style="margin-top:0">Addons</h5>
-            <div class="ui-g ui-fluid">
-                <div class="ui-g-12 ui-md-4">
-                    <div class="ui-inputgroup">
-                        <span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span>
-                        <p:inputText placeholder="Username"/>
+        <h:form>
+            <div class="card">
+                <h5 style="margin-top:0">Addons</h5>
+                <div class="ui-g ui-fluid">
+                    <div class="ui-g-12 ui-md-4">
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span>
+                            <p:inputText placeholder="Username"/>
+                        </div>
+                    </div>
+            
+                    <div class="ui-g-12 ui-md-4">
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon">$</span>
+                            <p:inputText placeholder="Price"/>
+                            <span class="ui-inputgroup-addon">.00</span>
+                        </div>
+                    </div>
+            
+                    <div class="ui-g-12 ui-md-4">
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon">www</span>
+                            <p:inputText placeholder="Website"/>
+                        </div>
                     </div>
                 </div>
-
-                <div class="ui-g-12 ui-md-4">
-                    <div class="ui-inputgroup">
-                        <span class="ui-inputgroup-addon">$</span>
-                        <p:inputText placeholder="Price"/>
-                        <span class="ui-inputgroup-addon">.00</span>
+            
+                <h5>Multiple Addons</h5>
+                <div class="ui-g">
+                    <div class="ui-g-12">
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon"><i class="pi pi-shopping-cart"></i></span>
+                            <span class="ui-inputgroup-addon"><i class="pi pi-money-bill"></i></span>
+                            <p:inputText placeholder="Price"/>
+                            <span class="ui-inputgroup-addon">$</span>
+                            <span class="ui-inputgroup-addon">.00</span>
+                        </div>
                     </div>
                 </div>
-
-                <div class="ui-g-12 ui-md-4">
-                    <div class="ui-inputgroup">
-                        <span class="ui-inputgroup-addon">www</span>
-                        <p:inputText placeholder="Website"/>
+            
+                <h5>Button Addons</h5>
+                <div class="ui-g ui-fluid">
+                    <div class="ui-g-12 ui-md-4">
+                        <div class="ui-inputgroup">
+                            <p:commandButton value="Search"/>
+                            <p:inputText placeholder="Keyword"/>
+                        </div>
+                    </div>
+            
+                    <div class="ui-g-12 ui-md-4">
+                        <div class="ui-inputgroup">
+                            <p:inputText placeholder="Keyboard"/>
+                            <p:commandButton icon="pi pi-search" styleClass="warning-button"/>
+                        </div>
+                    </div>
+            
+                    <div class="ui-g-12 ui-md-4">
+                        <div class="ui-inputgroup">
+                            <p:commandButton icon="pi pi-check" styleClass="success-button"/>
+                            <p:inputText placeholder="Vote"/>
+                            <p:commandButton icon="pi pi-times" styleClass="danger-button"/>
+                        </div>
+                    </div>
+                </div>
+            
+                <h5>Checkbox</h5>
+                <div class="ui-g ui-fluid">
+                    <div class="ui-g-12 ui-md-4">
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon-checkbox"><p:selectBooleanCheckbox/></span>
+                            <p:inputText placeholder="Username"/>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <h5>Multiple Addons</h5>
-            <div class="ui-g">
-                <div class="ui-g-12">
-                    <div class="ui-inputgroup">
-                        <span class="ui-inputgroup-addon"><i class="pi pi-shopping-cart"></i></span>
-                        <span class="ui-inputgroup-addon"><i class="pi pi-money-bill"></i></span>
-                        <p:inputText placeholder="Price"/>
-                        <span class="ui-inputgroup-addon">$</span>
-                        <span class="ui-inputgroup-addon">.00</span>
-                    </div>
-                </div>
-            </div>
-
-            <h5>Button Addons</h5>
-            <div class="ui-g ui-fluid">
-                <div class="ui-g-12 ui-md-4">
-                    <div class="ui-inputgroup">
-                        <p:commandButton value="Search"/>
-                        <p:inputText placeholder="Keyword"/>
-                    </div>
-                </div>
-
-                <div class="ui-g-12 ui-md-4">
-                    <div class="ui-inputgroup">
-                        <p:inputText placeholder="Keyboard"/>
-                        <p:commandButton icon="pi pi-search" styleClass="warning-button"/>
-                    </div>
-                </div>
-
-                <div class="ui-g-12 ui-md-4">
-                    <div class="ui-inputgroup">
-                        <p:commandButton icon="pi pi-check" styleClass="success-button"/>
-                        <p:inputText placeholder="Vote"/>
-                        <p:commandButton icon="pi pi-times" styleClass="danger-button"/>
-                    </div>
-                </div>
-            </div>
-
-            <h5>Checkbox</h5>
-            <div class="ui-g ui-fluid">
-                <div class="ui-g-12 ui-md-4">
-                    <div class="ui-inputgroup">
-                        <span class="ui-inputgroup-addon-checkbox"><p:selectBooleanCheckbox/></span>
-                        <p:inputText placeholder="Username"/>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </h:form>
     </ui:define>
 
 </ui:composition>
