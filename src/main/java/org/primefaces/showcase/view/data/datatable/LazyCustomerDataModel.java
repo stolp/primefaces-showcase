@@ -59,8 +59,8 @@ public class LazyCustomerDataModel extends LazyDataModel<Customer> {
     }
 
     @Override
-    public Object getRowKey(Customer customer) {
-        return customer.getId();
+    public String getRowKey(Customer customer) {
+        return String.valueOf(customer.getId());
     }
 
     @Override
