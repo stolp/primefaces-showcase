@@ -65,7 +65,7 @@ public class LazyLoadingTreeNode extends DefaultTreeNode {
             lazyLoaded = true;
 
             String parentId = ((FileInfo) getData()).getPath();
-            System.out.println("Lazy load: " + parentId);
+
             List<LazyLoadingTreeNode> childNodes = loadFunction.apply(parentId).stream()
                     .map(f -> new LazyLoadingTreeNode(f, loadFunction)).collect(Collectors.toList());
             super.getChildren().addAll(childNodes);
