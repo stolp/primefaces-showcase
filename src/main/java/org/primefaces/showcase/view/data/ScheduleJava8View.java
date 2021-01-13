@@ -108,6 +108,18 @@ public class ScheduleJava8View implements Serializable {
 				.endDate(previousDay11Pm())
 				.description("Team A vs. Team B")
 				.url("https://www.uefa.com/uefachampionsleague/")
+				.borderColor("orange")
+				.build();
+		eventModel.addEvent(event);
+
+		event = DefaultScheduleEvent.builder()
+				.startDate(LocalDateTime.now().minusDays(6))
+				.endDate(LocalDateTime.now().minusDays(3))
+				.overlapAllowed(true)
+				.editable(false)
+				.resizable(false)
+				.display("background")
+				.backgroundColor("lightgreen")
 				.build();
 		eventModel.addEvent(event);
 
@@ -117,6 +129,7 @@ public class ScheduleJava8View implements Serializable {
 				.endDate(today6Pm())
 				.description("Aragon")
 				.overlapAllowed(true)
+				.borderColor("#CB4335")
 				.build();
 		eventModel.addEvent(event);
 
@@ -127,6 +140,7 @@ public class ScheduleJava8View implements Serializable {
 				.description("all you can eat")
 				.overlapAllowed(true)
 				.resizable(true)
+				.borderColor("#27AE60")
 				.build();
 		eventModel.addEvent(event);
 
@@ -136,6 +150,7 @@ public class ScheduleJava8View implements Serializable {
 				.endDate(fourDaysLater3pm())
 				.description("Trees, flowers, ...")
 				.draggable(true)
+				.borderColor("#27AE60")
 				.build();
 		eventModel.addEvent(event);
 
@@ -144,6 +159,7 @@ public class ScheduleJava8View implements Serializable {
 				.startDate(sevenDaysLater0am())
 				.endDate(eightDaysLater0am())
 				.description("sleep as long as you want")
+				.borderColor("#27AE60")
 				.allDay(true)
 				.build();
 		eventModel.addEvent(scheduleEventAllDay);
