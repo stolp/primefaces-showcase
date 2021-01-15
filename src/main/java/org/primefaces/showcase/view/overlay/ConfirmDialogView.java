@@ -37,7 +37,7 @@ public class ConfirmDialogView {
     }
 
     public void delete() {
-        addMessage("Confired", "Record deleted");
+        addMessage("Confirmed", "Record deleted");
     }
     
     public void addMessage(String summary, String detail) {
