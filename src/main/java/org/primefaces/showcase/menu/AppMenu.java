@@ -162,6 +162,7 @@ public class AppMenu {
         //DATA CATEGORY START
         List<MenuItem> dataMenuItems = new ArrayList<>();
         dataMenuItems.add(new MenuItem("Carousel", "/ui/data/carousel"));
+        dataMenuItems.add(new MenuItem("Chronoline", "/ui/data/chronoline", true));
 
         //DataExporter Nested MenuItem
         List<MenuItem> dataExporterMenuItems = new ArrayList<>();
