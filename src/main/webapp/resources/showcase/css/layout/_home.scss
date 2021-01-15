@@ -17,8 +17,10 @@
     .introduction {
         background-color: var(--surface-a);
         background-image: url("\#{resource['showcase:images/home/intro-bg.jpg']}");
+        background-repeat: no-repeat;
+        background-size: cover;
         padding: 115px 30px 135px 50px;
-        color: #ffffff;
+        color: var(--text-color);
         position: relative;
 
         &.introduction-dark {
@@ -26,7 +28,7 @@
             color: var(--text-color);
 
             .introduction-promo {
-                background: linear-gradient(90deg, rgba(0,0,0,.1) 0%, transparent 100%);
+                background: linear-gradient(90deg, rgba(76,87,111,.4) 0%, transparent 100%);
             }
         }
         
@@ -36,7 +38,7 @@
             margin-bottom: 20px;
             padding: 10px 175px 10px 50px;
             font-size: 1.5rem;
-            background: linear-gradient(90deg, rgba(255,255,255,.1) 0%, transparent 100%);
+            background: linear-gradient(90deg, rgba(12,75,152,.6) 0%, transparent 100%);
             position: relative;
             color: #ffffff;
             font-weight: 700;
