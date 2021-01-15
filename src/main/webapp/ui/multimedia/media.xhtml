@@ -10,7 +10,7 @@
     </ui:define>
 
     <ui:define name="description">
-        Media component is a cross browser generic player to embed multimedia content like video and audio to JSF pages.
+        Media component is a cross browser generic player to embed multimedia content in JSF pages.
         Various formats such as flash, quicktime, windows media, realplayer and pdf are supported.
         Suitable player is discovered using the source extension type and a player can be specified explicitly as well.
         Media component can also play binary media using the StreamedContent API.
@@ -20,41 +20,6 @@
     <ui:param name="widgetLink" value="media"/>
 
     <ui:define name="implementation">
-
-        <div class="card">
-            <h5 style="margin-top:0">Flash</h5>
-            <p:media value="http://www.youtube.com/v/KZnUr8lcqjo" width="420" height="315" player="flash"/>
-        </div>
-
-        <div class="card">
-            <h5>QuickTime</h5>
-            <p:media value="/resources/demo/media/sample-mov.mov" width="190" height="250">
-                <f:param name="autoPlay" value="false"/>
-            </p:media>
-        </div>
-
-        <div class="card">
-            <h5>AVI</h5>
-            <p:media value="http://malsup.github.com/video/clear.avi" width="250" height="300">
-                <f:param name="autostart" value="false"/>
-                <p:outputPanel layout="block">
-                    Windows Media is required to view this media. <h:outputLink
-                        value="http://www.microsoft.com/Windows/MediaPlayer/">Download Here</h:outputLink>
-                </p:outputPanel>
-            </p:media>
-        </div>
-
-        <div class="card">
-            <h5>Real</h5>
-            <p:media value="http://service.real.com/learnnav/testrams/realvideo10_56.ram">
-                <f:param name="autostart" value="false"/>
-                <p:outputPanel layout="block">
-                    RealPlayer is required to view this media. <h:outputLink
-                        value="http://www.real.com/player/">Download Here</h:outputLink>
-                </p:outputPanel>
-            </p:media>
-        </div>
-
         <div class="card">
             <h5>PDF</h5>
             <p:media value="/resources/demo/media/guide.pdf" width="100%" height="300px">

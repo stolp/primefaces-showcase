@@ -445,7 +445,7 @@ public class AppMenu {
 
         multimediaMenuItems.add(new MenuItem("Graphic Image", "/ui/multimedia/graphicImage"));
         multimediaMenuItems.add(new MenuItem("Galleria", "/ui/multimedia/galleria"));
-        //multimediaMenuItems.add(new MenuItem("Media", "/ui/multimedia/media"));
+        multimediaMenuItems.add(new MenuItem("Media", "/ui/multimedia/media"));
 
         //PhotoCam Nested MenuItem
         List<MenuItem> photoCamMenuItems = new ArrayList<>();
