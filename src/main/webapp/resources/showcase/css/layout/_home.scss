@@ -16,13 +16,13 @@
 
     .introduction {
         background-color: var(--surface-a);
-        background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% );
+        background-image: url("\#{resource['showcase:images/home/intro-bg.jpg']}");
         padding: 115px 30px 135px 50px;
         color: #ffffff;
         position: relative;
 
         &.introduction-dark {
-            background-image: linear-gradient(to left, var(--surface-d), var(--surface-c));
+            background-image: url("\#{resource['showcase:images/home/intro-bg-dark.jpg']}");
             color: var(--text-color);
 
             .introduction-promo {
