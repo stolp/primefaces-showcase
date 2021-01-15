@@ -61,4 +61,22 @@ public class App implements Serializable {
         this.theme = theme;
         this.darkMode = darkMode;
     }
+    
+    public String getThemeImage() {
+    	String result = getTheme();
+    	switch (result) {
+		case "nova-light":
+			result = "nova";
+			break;
+		case "nova-colored":
+			result = "nova-accent";
+			break;
+		case "nova-dark":
+			result = "nova-alt";
+			break;
+		default:
+			break;
+		}
+    	return result + ".png";
+    }
 }
