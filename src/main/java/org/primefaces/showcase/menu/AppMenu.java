@@ -106,6 +106,7 @@ public class AppMenu {
         calendarMenuItems.add(new MenuItem("LocalDate (java.time.Local*)", "/ui/input/calendar/calendarJava8"));
         formMenuItems.add(new MenuItem("Calendar", calendarMenuItems));*/
 
+        formMenuItems.add(new MenuItem("CascadeSelect", "/ui/input/cascadeSelect", true));
         formMenuItems.add(new MenuItem("Chips", "/ui/input/chips"));
         formMenuItems.add(new MenuItem("ColorPicker", "/ui/input/colorPicker"));
 
