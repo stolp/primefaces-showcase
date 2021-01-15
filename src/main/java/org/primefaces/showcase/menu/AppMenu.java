@@ -207,6 +207,7 @@ public class AppMenu {
         dataTableMenuItems.add(new MenuItem("Facets", "/ui/data/datatable/facets"));
         dataTableMenuItems.add(new MenuItem("Field", "/ui/data/datatable/field"));
         dataTableMenuItems.add(new MenuItem("Filter", "/ui/data/datatable/filter"));
+        dataTableMenuItems.add(new MenuItem("Gridlines", "/ui/data/datatable/gridlines", true));
         dataTableMenuItems.add(new MenuItem("Group", "/ui/data/datatable/group"));
         dataTableMenuItems.add(new MenuItem("Lazy", "/ui/data/datatable/lazy"));
         dataTableMenuItems.add(new MenuItem("MultiViewState", "/ui/data/datatable/multiViewState"));
@@ -220,8 +221,10 @@ public class AppMenu {
         dataTableMenuItems.add(new MenuItem("RTL", "/ui/data/datatable/rtl"));
         dataTableMenuItems.add(new MenuItem("Scroll", "/ui/data/datatable/scroll"));
         dataTableMenuItems.add(new MenuItem("Selection", "/ui/data/datatable/selection"));
+        dataTableMenuItems.add(new MenuItem("Size", "/ui/data/datatable/size", true));
         dataTableMenuItems.add(new MenuItem("Sort", "/ui/data/datatable/sort"));
         dataTableMenuItems.add(new MenuItem("Sticky", "/ui/data/datatable/sticky"));
+        dataTableMenuItems.add(new MenuItem("Striped", "/ui/data/datatable/striped", true));
         //dataTableMenuItems.add(new MenuItem("SubTable", "/ui/data/datatable/subTable"));
         //dataTableMenuItems.add(new MenuItem("SummaryRow", "/ui/data/datatable/summaryRow"));
         dataMenuItems.add(new MenuItem("DataTable", dataTableMenuItems));
@@ -320,6 +323,8 @@ public class AppMenu {
         //TreeTable Nested MenuItem
         List<MenuItem> treeTableMenuItems = new ArrayList<>();
         treeTableMenuItems.add(new MenuItem("Basic", "/ui/data/treetable/basic"));
+        treeTableMenuItems.add(new MenuItem("Size", "/ui/data/treetable/size", true));
+        treeTableMenuItems.add(new MenuItem("Gridlines", "/ui/data/treetable/gridlines", true));
         treeTableMenuItems.add(new MenuItem("Selection", "/ui/data/treetable/selection"));
         treeTableMenuItems.add(new MenuItem("Events", "/ui/data/treetable/events"));
         treeTableMenuItems.add(new MenuItem("ContextMenu", "/ui/data/treetable/contextMenu"));
