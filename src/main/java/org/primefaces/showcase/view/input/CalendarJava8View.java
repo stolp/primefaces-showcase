@@ -42,6 +42,7 @@ import java.util.List;
 @ViewScoped
 public class CalendarJava8View implements Serializable {
 
+    private LocalDate date;
     private LocalDate date1;
     @Future
     private LocalDate date2;
@@ -129,6 +130,14 @@ public class CalendarJava8View implements Serializable {
     public void click() {
         PrimeFaces.current().ajax().update("form:display");
         PrimeFaces.current().executeScript("PF('dlg').show()");
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public LocalDate getDate1() {

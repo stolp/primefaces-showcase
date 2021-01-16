@@ -100,8 +100,8 @@
                 <h5 class="p-mt-0">Popup</h5>
                 <div class="ui-fluid p-grid p-formgrid">
                     <div class="p-field p-col-12 p-md-4">
-                        <p:outputLabel for="navigator" value="Navigator"/>
-                        <p:datePicker id="navigator" value="#{calendarView.date2}" monthNavigator="true" yearNavigator="true"/>
+                        <p:outputLabel for="basic" value="Basic"/>
+                        <p:datePicker id="basic" value="#{calendarView.date}" />
                     </div>
 
                     <div class="p-field p-col-12 p-md-4">
@@ -112,6 +112,11 @@
                     <div class="p-field p-col-12 p-md-4">
                         <p:outputLabel for="range" value="Range Selection"/>
                         <p:datePicker id="range" selectionMode="range" value="#{calendarView.range}" readonlyInput="true"/>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="navigator" value="Navigator"/>
+                        <p:datePicker id="navigator" value="#{calendarView.date2}" monthNavigator="true" yearNavigator="true"/>
                     </div>
 
                     <div class="p-field p-col-12 p-md-4">
