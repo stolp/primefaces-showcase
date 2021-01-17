@@ -26,13 +26,22 @@
                     <p:treeNode expandedIcon="pi pi-folder-open" collapsedIcon="pi pi-folder">
                         <h:outputText value="#{doc.name}"/>
                     </p:treeNode>
+                    <p:treeNode type="app" icon="pi pi-save">
+                        <h:outputText value="#{doc.name}"/>
+                    </p:treeNode>
                     <p:treeNode type="document" icon="pi pi-file">
+                        <h:outputText value="#{doc.name}"/>
+                    </p:treeNode>
+                    <p:treeNode type="excel" icon="pi pi-file-excel">
+                        <h:outputText value="#{doc.name}"/>
+                    </p:treeNode>
+                    <p:treeNode type="travel" icon="pi pi-file-pdf">
                         <h:outputText value="#{doc.name}"/>
                     </p:treeNode>
                     <p:treeNode type="picture" icon="pi pi-image">
                         <h:outputText value="#{doc.name}"/>
                     </p:treeNode>
-                    <p:treeNode type="mp3" icon="pi pi-video">
+                    <p:treeNode type="video" icon="pi pi-video">
                         <h:outputText value="#{doc.name}"/>
                     </p:treeNode>
                 </p:tree>

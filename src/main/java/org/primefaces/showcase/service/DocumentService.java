@@ -50,52 +50,52 @@ public class DocumentService {
 
 		//Applications
 		TreeNode primeface = new DefaultTreeNode(new Document("Primefaces", "25kb", "Folder"), applications);
-		TreeNode primefacesapp = new DefaultTreeNode(new Document("primefaces.app", "10kb", "Application"), primeface);
-		TreeNode nativeapp = new DefaultTreeNode(new Document("native.app", "10kb", "Application"), primeface);
-		TreeNode mobileapp = new DefaultTreeNode(new Document("mobile.app", "5kb", "Application"), primeface);
-		TreeNode editorapp = new DefaultTreeNode(new Document("editor.app", "25kb", "Application"), applications);
-		TreeNode settingsapp = new DefaultTreeNode(new Document("settings.app", "50kb", "Application"), applications);
+		TreeNode primefacesapp = new DefaultTreeNode("app", new Document("primefaces.app", "10kb", "Application"), primeface);
+		TreeNode nativeapp = new DefaultTreeNode("app", new Document("native.app", "10kb", "Application"), primeface);
+		TreeNode mobileapp = new DefaultTreeNode("app", new Document("mobile.app", "5kb", "Application"), primeface);
+		TreeNode editorapp = new DefaultTreeNode("app", new Document("editor.app", "25kb", "Application"), applications);
+		TreeNode settingsapp = new DefaultTreeNode("app", new Document("settings.app", "50kb", "Application"), applications);
 
 		//Cloud
-		TreeNode backup1 = new DefaultTreeNode(new Document("backup-1.zip", "10kb", "Zip"), cloud);
-		TreeNode backup2 = new DefaultTreeNode(new Document("backup-2.zip", "10kb", "Zip"), cloud);
+		TreeNode backup1 = new DefaultTreeNode("document", new Document("backup-1.zip", "10kb", "Zip"), cloud);
+		TreeNode backup2 = new DefaultTreeNode("document", new Document("backup-2.zip", "10kb", "Zip"), cloud);
 
 		//Desktop
-		TreeNode note1 = new DefaultTreeNode(new Document("note-meeting.txt", "50kb", "Text"), desktop);
-		TreeNode note2 = new DefaultTreeNode(new Document("note-todo.txt", "100kb", "Text"), desktop);
+		TreeNode note1 = new DefaultTreeNode("document", new Document("note-meeting.txt", "50kb", "Text"), desktop);
+		TreeNode note2 = new DefaultTreeNode("document", new Document("note-todo.txt", "100kb", "Text"), desktop);
 
 		//Documents
 		TreeNode work = new DefaultTreeNode(new Document("Work", "55kb", "Folder"), documents);
-		TreeNode expenses = new DefaultTreeNode(new Document("Expenses.doc", "30kb", "Document"), work);
-		TreeNode resume = new DefaultTreeNode(new Document("Resume.doc", "25kb", "Resume"), work);
+		TreeNode expenses = new DefaultTreeNode("document", new Document("Expenses.doc", "30kb", "Document"), work);
+		TreeNode resume = new DefaultTreeNode("document", new Document("Resume.doc", "25kb", "Resume"), work);
 		TreeNode home = new DefaultTreeNode(new Document("Home", "20kb", "Folder"), documents);
-		TreeNode invoices = new DefaultTreeNode(new Document("Invoices", "20kb", "Text"), home);
+		TreeNode invoices = new DefaultTreeNode("excel", new Document("Invoice.xsl", "20kb", "Excel"), home);
 
 		//Downloads
 		TreeNode spanish = new DefaultTreeNode(new Document("Spanish", "10kb", "Folder"), downloads);
-		TreeNode tutorial1 = new DefaultTreeNode(new Document("tutorial-a1.txt", "5kb", "Text"), spanish);
-		TreeNode tutorial2 = new DefaultTreeNode(new Document("tutorial-a2.txt", "5kb", "Text"), spanish);
+		TreeNode tutorial1 = new DefaultTreeNode("document", new Document("tutorial-a1.txt", "5kb", "Text"), spanish);
+		TreeNode tutorial2 = new DefaultTreeNode("document", new Document("tutorial-a2.txt", "5kb", "Text"), spanish);
 		TreeNode travel = new DefaultTreeNode(new Document("Travel", "15kb", "Folder"), downloads);
-		TreeNode hotelpdf = new DefaultTreeNode(new Document("Hotel.pdf", "10kb", "PDF"), travel);
-		TreeNode flightpdf = new DefaultTreeNode(new Document("Flight.pdf", "5kb", "PDF"), travel);
+		TreeNode hotelpdf = new DefaultTreeNode("travel", new Document("Hotel.pdf", "10kb", "PDF"), travel);
+		TreeNode flightpdf = new DefaultTreeNode("travel", new Document("Flight.pdf", "5kb", "PDF"), travel);
 
 		//Main
-		TreeNode bin = new DefaultTreeNode(new Document("bin", "50kb", "Link"), main);
-		TreeNode etc = new DefaultTreeNode(new Document("etc", "100kb", "Link"), main);
-		TreeNode var = new DefaultTreeNode(new Document("var", "100kb", "Link"), main);
+		TreeNode bin = new DefaultTreeNode("document", new Document("bin", "50kb", "Link"), main);
+		TreeNode etc = new DefaultTreeNode("document", new Document("etc", "100kb", "Link"), main);
+		TreeNode var = new DefaultTreeNode("document", new Document("var", "100kb", "Link"), main);
 
 		//Other
-		TreeNode todotxt = new DefaultTreeNode(new Document("todo.txt", "3kb", "Text"), other);
-		TreeNode logopng = new DefaultTreeNode(new Document("logo.png", "2kb", "Picture"), other);
+		TreeNode todotxt = new DefaultTreeNode("document", new Document("todo.txt", "3kb", "Text"), other);
+		TreeNode logopng = new DefaultTreeNode("picture", new Document("logo.png", "2kb", "Picture"), other);
 
 		//Pictures
-		TreeNode barcelona = new DefaultTreeNode(new Document("barcelona.jpg", "90kb", "Picture"), pictures);
-		TreeNode primeng = new DefaultTreeNode(new Document("primefaces.png", "30kb", "Picture"), pictures);
-		TreeNode prime = new DefaultTreeNode(new Document("prime.jpg", "30kb", "Picture"), pictures);
+		TreeNode barcelona = new DefaultTreeNode("picture", new Document("barcelona.jpg", "90kb", "Picture"), pictures);
+		TreeNode primeng = new DefaultTreeNode("picture", new Document("primefaces.png", "30kb", "Picture"), pictures);
+		TreeNode prime = new DefaultTreeNode("picture", new Document("prime.jpg", "30kb", "Picture"), pictures);
 
 		//Videos
-		TreeNode primefacesmkv = new DefaultTreeNode(new Document("primefaces.mkv", "1000kb", "Video"), videos);
-		TreeNode introavi = new DefaultTreeNode(new Document("intro.avi", "500kb", "Video"), videos);
+		TreeNode primefacesmkv = new DefaultTreeNode("video", new Document("primefaces.mkv", "1000kb", "Video"), videos);
+		TreeNode introavi = new DefaultTreeNode("video", new Document("intro.avi", "500kb", "Video"), videos);
 
         return root;
     }
@@ -115,52 +115,52 @@ public class DocumentService {
 
 		//Applications
 		TreeNode primeface = new CheckboxTreeNode(new Document("Primefaces", "25kb", "Folder"), applications);
-		TreeNode primefacesapp = new CheckboxTreeNode(new Document("primefaces.app", "10kb", "Application"), primeface);
-		TreeNode nativeapp = new CheckboxTreeNode(new Document("native.app", "10kb", "Application"), primeface);
-		TreeNode mobileapp = new CheckboxTreeNode(new Document("mobile.app", "5kb", "Application"), primeface);
-		TreeNode editorapp = new CheckboxTreeNode(new Document("editor.app", "25kb", "Application"), applications);
-		TreeNode settingsapp = new CheckboxTreeNode(new Document("settings.app", "50kb", "Application"), applications);
+		TreeNode primefacesapp = new CheckboxTreeNode("app", new Document("primefaces.app", "10kb", "Application"), primeface);
+		TreeNode nativeapp = new CheckboxTreeNode("app", new Document("native.app", "10kb", "Application"), primeface);
+		TreeNode mobileapp = new CheckboxTreeNode("app", new Document("mobile.app", "5kb", "Application"), primeface);
+		TreeNode editorapp = new CheckboxTreeNode("app", new Document("editor.app", "25kb", "Application"), applications);
+		TreeNode settingsapp = new CheckboxTreeNode("app", new Document("settings.app", "50kb", "Application"), applications);
 
 		//Cloud
-		TreeNode backup1 = new CheckboxTreeNode(new Document("backup-1.zip", "10kb", "Zip"), cloud);
-		TreeNode backup2 = new CheckboxTreeNode(new Document("backup-2.zip", "10kb", "Zip"), cloud);
+		TreeNode backup1 = new CheckboxTreeNode("document", new Document("backup-1.zip", "10kb", "Zip"), cloud);
+		TreeNode backup2 = new CheckboxTreeNode("document", new Document("backup-2.zip", "10kb", "Zip"), cloud);
 
 		//Desktop
-		TreeNode note1 = new CheckboxTreeNode(new Document("note-meeting.txt", "50kb", "Text"), desktop);
-		TreeNode note2 = new CheckboxTreeNode(new Document("note-todo.txt", "100kb", "Text"), desktop);
+		TreeNode note1 = new CheckboxTreeNode("document", new Document("note-meeting.txt", "50kb", "Text"), desktop);
+		TreeNode note2 = new CheckboxTreeNode("document", new Document("note-todo.txt", "100kb", "Text"), desktop);
 
 		//Documents
 		TreeNode work = new CheckboxTreeNode(new Document("Work", "55kb", "Folder"), documents);
-		TreeNode expenses = new CheckboxTreeNode(new Document("Expenses.doc", "30kb", "Document"), work);
-		TreeNode resume = new CheckboxTreeNode(new Document("Resume.doc", "25kb", "Resume"), work);
+		TreeNode expenses = new CheckboxTreeNode("document", new Document("Expenses.doc", "30kb", "Document"), work);
+		TreeNode resume = new CheckboxTreeNode("document", new Document("Resume.doc", "25kb", "Resume"), work);
 		TreeNode home = new CheckboxTreeNode(new Document("Home", "20kb", "Folder"), documents);
-		TreeNode invoices = new CheckboxTreeNode(new Document("Invoices", "20kb", "Text"), home);
+		TreeNode invoices = new CheckboxTreeNode("excel", new Document("Invoice.xsl", "20kb", "Excel"), home);
 
 		//Downloads
 		TreeNode spanish = new CheckboxTreeNode(new Document("Spanish", "10kb", "Folder"), downloads);
-		TreeNode tutorial1 = new CheckboxTreeNode(new Document("tutorial-a1.txt", "5kb", "Text"), spanish);
-		TreeNode tutorial2 = new CheckboxTreeNode(new Document("tutorial-a2.txt", "5kb", "Text"), spanish);
+		TreeNode tutorial1 = new CheckboxTreeNode("document", new Document("tutorial-a1.txt", "5kb", "Text"), spanish);
+		TreeNode tutorial2 = new CheckboxTreeNode("document", new Document("tutorial-a2.txt", "5kb", "Text"), spanish);
 		TreeNode travel = new CheckboxTreeNode(new Document("Travel", "15kb", "Folder"), downloads);
-		TreeNode hotelpdf = new CheckboxTreeNode(new Document("Hotel.pdf", "10kb", "PDF"), travel);
-		TreeNode flightpdf = new CheckboxTreeNode(new Document("Flight.pdf", "5kb", "PDF"), travel);
+		TreeNode hotelpdf = new CheckboxTreeNode("travel", new Document("Hotel.pdf", "10kb", "PDF"), travel);
+		TreeNode flightpdf = new CheckboxTreeNode("travel", new Document("Flight.pdf", "5kb", "PDF"), travel);
 
 		//Main
-		TreeNode bin = new CheckboxTreeNode(new Document("bin", "50kb", "Link"), main);
-		TreeNode etc = new CheckboxTreeNode(new Document("etc", "100kb", "Link"), main);
-		TreeNode var = new CheckboxTreeNode(new Document("var", "100kb", "Link"), main);
+		TreeNode bin = new CheckboxTreeNode("document", new Document("bin", "50kb", "Link"), main);
+		TreeNode etc = new CheckboxTreeNode("document", new Document("etc", "100kb", "Link"), main);
+		TreeNode var = new CheckboxTreeNode("document", new Document("var", "100kb", "Link"), main);
 
 		//Other
-		TreeNode todotxt = new CheckboxTreeNode(new Document("todo.txt", "3kb", "Text"), other);
-		TreeNode logopng = new CheckboxTreeNode(new Document("logo.png", "2kb", "Picture"), other);
+		TreeNode todotxt = new CheckboxTreeNode("document", new Document("todo.txt", "3kb", "Text"), other);
+		TreeNode logopng = new CheckboxTreeNode("picture", new Document("logo.png", "2kb", "Picture"), other);
 
 		//Pictures
-		TreeNode barcelona = new CheckboxTreeNode(new Document("barcelona.jpg", "90kb", "Picture"), pictures);
-		TreeNode primeng = new CheckboxTreeNode(new Document("primefaces.png", "30kb", "Picture"), pictures);
-		TreeNode prime = new CheckboxTreeNode(new Document("prime.jpg", "30kb", "Picture"), pictures);
+		TreeNode barcelona = new CheckboxTreeNode("picture", new Document("barcelona.jpg", "90kb", "Picture"), pictures);
+		TreeNode primeng = new CheckboxTreeNode("picture", new Document("primefaces.png", "30kb", "Picture"), pictures);
+		TreeNode prime = new CheckboxTreeNode("picture", new Document("prime.jpg", "30kb", "Picture"), pictures);
 
 		//Videos
-		TreeNode primefacesmkv = new CheckboxTreeNode(new Document("primefaces.mkv", "1000kb", "Video"), videos);
-		TreeNode introavi = new CheckboxTreeNode(new Document("intro.avi", "500kb", "Video"), videos);
+		TreeNode primefacesmkv = new CheckboxTreeNode("video", new Document("primefaces.mkv", "1000kb", "Video"), videos);
+		TreeNode introavi = new CheckboxTreeNode("video", new Document("intro.avi", "500kb", "Video"), videos);
         
         return root;
     }
