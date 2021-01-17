@@ -6,7 +6,7 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="head">
-        <style lang="scss">
+        <style>
             .custom-marker {
                 display: flex;
                 width: 2rem;
@@ -18,7 +18,8 @@
                 z-index: 1;
             }
 
-            .ui-chronoline-event-content .ui-chronoline-event-opposite {
+            .ui-chronoline-event-content,
+            .ui-chronoline-event-opposite {
                 line-height: 1;
             }
 
@@ -30,7 +31,6 @@
                 .customized-chronoline .ui-chronoline-event:nth-child(even) .ui-chronoline-event-content {
                     text-align: left !important;
                 }
-
 
                 .customized-chronoline .ui-chronoline-event-opposite {
                     flex: 0;
@@ -89,8 +89,7 @@
 
         <div class="card">
             <h5>Customized</h5>
-            <p:chronoline value="#{chronolineView.events}" var="event" align="alternate"
-                          styleClass="customized-chronoline">
+            <p:chronoline value="#{chronolineView.events}" var="event" align="alternate" styleClass="customized-chronoline">
 
                 <p:card>
                     <f:facet name="title">
