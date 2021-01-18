@@ -115,6 +115,7 @@ input[type="number"] {
     bottom:7px;
     font-size: 28px;
     color: var(--primary-color);
+    pointer-events: none;
 }
 
 .text-secondary {
