@@ -115,10 +115,16 @@
         img {
             height: 30px;
             width: 100%;
+
+            &.circular {
+                height: 50px;
+            }
         }
 
         .p-grid > div {
             padding: 2rem .5rem;
+            display: flex;
+            align-items: center;
         }
     }
 
