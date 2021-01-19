@@ -55,8 +55,8 @@ public class AppMenu {
         List<MenuItem> themingMenuItems = new ArrayList<>();
         themingMenuItems.add(new MenuItem("Introduction", "/theming"));
         themingMenuItems.add(new MenuItem("Theme Designer", "https://www.primefaces.org/designer/primefaces"));
-        themingMenuItems.add(new MenuItem("Visual Editor", "https://www.primefaces.org/designer-jsf"));
-        themingMenuItems.add(new MenuItem("SASS API", "https://www.primefaces.org/designer/api/primefaces/10.0.0"));
+        themingMenuItems.add(new MenuItem("Visual Editor", null, "Coming Soon"));
+        themingMenuItems.add(new MenuItem("SASS API", null, "Coming Soon"));
         menuCategories.add(new MenuCategory("Theming", themingMenuItems));
         //THEMING CATEGORY END
 
@@ -162,7 +162,7 @@ public class AppMenu {
         //DATA CATEGORY START
         List<MenuItem> dataMenuItems = new ArrayList<>();
         dataMenuItems.add(new MenuItem("Carousel", "/ui/data/carousel"));
-        dataMenuItems.add(new MenuItem("Chronoline", "/ui/data/chronoline", true));
+        dataMenuItems.add(new MenuItem("Chronoline", "/ui/data/chronoline", "New"));
 
         //DataExporter Nested MenuItem
         List<MenuItem> dataExporterMenuItems = new ArrayList<>();
@@ -208,7 +208,7 @@ public class AppMenu {
         dataTableMenuItems.add(new MenuItem("Facets", "/ui/data/datatable/facets"));
         dataTableMenuItems.add(new MenuItem("Field", "/ui/data/datatable/field"));
         dataTableMenuItems.add(new MenuItem("Filter", "/ui/data/datatable/filter"));
-        dataTableMenuItems.add(new MenuItem("Gridlines", "/ui/data/datatable/gridlines", true));
+        dataTableMenuItems.add(new MenuItem("Gridlines", "/ui/data/datatable/gridlines", "New"));
         dataTableMenuItems.add(new MenuItem("Group", "/ui/data/datatable/group"));
         dataTableMenuItems.add(new MenuItem("Lazy", "/ui/data/datatable/lazy"));
         dataTableMenuItems.add(new MenuItem("MultiViewState", "/ui/data/datatable/multiViewState"));
@@ -222,10 +222,10 @@ public class AppMenu {
         dataTableMenuItems.add(new MenuItem("RTL", "/ui/data/datatable/rtl"));
         dataTableMenuItems.add(new MenuItem("Scroll", "/ui/data/datatable/scroll"));
         dataTableMenuItems.add(new MenuItem("Selection", "/ui/data/datatable/selection"));
-        dataTableMenuItems.add(new MenuItem("Size", "/ui/data/datatable/size", true));
+        dataTableMenuItems.add(new MenuItem("Size", "/ui/data/datatable/size", "New"));
         dataTableMenuItems.add(new MenuItem("Sort", "/ui/data/datatable/sort"));
         dataTableMenuItems.add(new MenuItem("Sticky", "/ui/data/datatable/sticky"));
-        dataTableMenuItems.add(new MenuItem("Striped", "/ui/data/datatable/striped", true));
+        dataTableMenuItems.add(new MenuItem("Striped", "/ui/data/datatable/striped", "New"));
         //dataTableMenuItems.add(new MenuItem("SubTable", "/ui/data/datatable/subTable"));
         //dataTableMenuItems.add(new MenuItem("SummaryRow", "/ui/data/datatable/summaryRow"));
         dataMenuItems.add(new MenuItem("DataTable", dataTableMenuItems));
@@ -324,8 +324,8 @@ public class AppMenu {
         //TreeTable Nested MenuItem
         List<MenuItem> treeTableMenuItems = new ArrayList<>();
         treeTableMenuItems.add(new MenuItem("Basic", "/ui/data/treetable/basic"));
-        treeTableMenuItems.add(new MenuItem("Size", "/ui/data/treetable/size", true));
-        treeTableMenuItems.add(new MenuItem("Gridlines", "/ui/data/treetable/gridlines", true));
+        treeTableMenuItems.add(new MenuItem("Size", "/ui/data/treetable/size", "New"));
+        treeTableMenuItems.add(new MenuItem("Gridlines", "/ui/data/treetable/gridlines", "New"));
         treeTableMenuItems.add(new MenuItem("Selection", "/ui/data/treetable/selection"));
         treeTableMenuItems.add(new MenuItem("Events", "/ui/data/treetable/events"));
         treeTableMenuItems.add(new MenuItem("ContextMenu", "/ui/data/treetable/contextMenu"));
@@ -346,9 +346,9 @@ public class AppMenu {
         //PANEL CATEGORY START
         List<MenuItem> panelMenuItems = new ArrayList<>();
         panelMenuItems.add(new MenuItem("Accordion", "/ui/panel/accordionPanel"));
-        panelMenuItems.add(new MenuItem("Card", "/ui/panel/card", true));
+        panelMenuItems.add(new MenuItem("Card", "/ui/panel/card", "New"));
         panelMenuItems.add(new MenuItem("Dashboard", "/ui/panel/dashboard"));
-        panelMenuItems.add(new MenuItem("Divider", "/ui/panel/divider", true));
+        panelMenuItems.add(new MenuItem("Divider", "/ui/panel/divider", "New"));
         panelMenuItems.add(new MenuItem("Fieldset", "/ui/panel/fieldset"));
         //panelMenuItems.add(new MenuItem("Grid CSS", "/ui/panel/grid"));
         //panelMenuItems.add(new MenuItem("NotificationBar", "/ui/panel/notificationBar"));
@@ -357,7 +357,7 @@ public class AppMenu {
         panelMenuItems.add(new MenuItem("Panel", "/ui/panel/panel"));
         panelMenuItems.add(new MenuItem("PanelGrid", "/ui/panel/panelGrid"));
         //panelMenuItems.add(new MenuItem("Ribbon", "/ui/panel/ribbon"));
-        panelMenuItems.add(new MenuItem("Splitter", "/ui/panel/splitter", true));
+        panelMenuItems.add(new MenuItem("Splitter", "/ui/panel/splitter", "New"));
         panelMenuItems.add(new MenuItem("ScrollPanel", "/ui/panel/scrollPanel"));
         panelMenuItems.add(new MenuItem("TabView", "/ui/panel/tabView"));
         panelMenuItems.add(new MenuItem("Toolbar", "/ui/panel/toolbar"));
@@ -367,6 +367,7 @@ public class AppMenu {
         //OVERLAY CATEGORY START
         List<MenuItem> overlayMenuItems = new ArrayList<>();
         overlayMenuItems.add(new MenuItem("ConfirmDialog", "/ui/overlay/confirmDialog"));
+        overlayMenuItems.add(new MenuItem("ConfirmPopup", "/ui/overlay/confirmPopup", "New"));
         overlayMenuItems.add(new MenuItem("Dialog", "/ui/overlay/dialog"));
         overlayMenuItems.add(new MenuItem("LightBox", "/ui/overlay/lightBox"));
         overlayMenuItems.add(new MenuItem("OverlayPanel", "/ui/overlay/overlayPanel"));
@@ -437,7 +438,7 @@ public class AppMenu {
 
         //MULTIMEDIA CATEGORY START
         List<MenuItem> multimediaMenuItems = new ArrayList<>();
-        multimediaMenuItems.add(new MenuItem("Audio", "/ui/multimedia/audio", true));
+        multimediaMenuItems.add(new MenuItem("Audio", "/ui/multimedia/audio", "New"));
         multimediaMenuItems.add(new MenuItem("Barcode", "/ui/multimedia/barcode"));
         multimediaMenuItems.add(new MenuItem("Compare", "/ui/multimedia/compare"));
         multimediaMenuItems.add(new MenuItem("ContentFlow", "/ui/multimedia/contentFlow"));
@@ -460,7 +461,7 @@ public class AppMenu {
         multimediaMenuItems.add(new MenuItem("PhotoCam", photoCamMenuItems));
 
         multimediaMenuItems.add(new MenuItem("Switch", "/ui/multimedia/switch"));
-        multimediaMenuItems.add(new MenuItem("Video", "/ui/multimedia/video", true));
+        multimediaMenuItems.add(new MenuItem("Video", "/ui/multimedia/video", "New"));
         menuCategories.add(new MenuCategory("Multimedia", multimediaMenuItems));
         //MULTIMEDIA CATEGORY END
 
@@ -512,12 +513,12 @@ public class AppMenu {
 
         //MISC CATEGORY START
         List<MenuItem> miscMenuItems = new ArrayList<>();
-        miscMenuItems.add(new MenuItem("Avatar", "/ui/misc/avatar", true));
-        miscMenuItems.add(new MenuItem("Badge", "/ui/misc/badge", true));
-        miscMenuItems.add(new MenuItem("Chip", "/ui/misc/chip", true));
-        miscMenuItems.add(new MenuItem("ScrollTop", "/ui/misc/scrollTop", true));
-        miscMenuItems.add(new MenuItem("Skeleton", "/ui/misc/skeleton", true));
-        miscMenuItems.add(new MenuItem("Tag", "/ui/misc/tag", true));
+        miscMenuItems.add(new MenuItem("Avatar", "/ui/misc/avatar", "New"));
+        miscMenuItems.add(new MenuItem("Badge", "/ui/misc/badge", "New"));
+        miscMenuItems.add(new MenuItem("Chip", "/ui/misc/chip", "New"));
+        miscMenuItems.add(new MenuItem("ScrollTop", "/ui/misc/scrollTop", "New"));
+        miscMenuItems.add(new MenuItem("Skeleton", "/ui/misc/skeleton", "New"));
+        miscMenuItems.add(new MenuItem("Tag", "/ui/misc/tag", "New"));
         //miscMenuItems.add(new MenuItem("Responsive", "/ui/misc/responsive"));
         miscMenuItems.add(new MenuItem("AutoUpdate", "/ui/misc/autoUpdate"));
         //miscMenuItems.add(new MenuItem("ThemeSwitcher", "/ui/misc/themeSwitcher"));

@@ -33,17 +33,17 @@ public class MenuItem implements Serializable {
     private final String label;
     private String url;
     private List<MenuItem> menuItems;
-    private boolean isNew;
+    private String badge;
 
     public MenuItem(String label, String url) {
         this.label = label;
         this.url = url;
     }
 
-    public MenuItem(String label, String url, boolean isNew) {
+    public MenuItem(String label, String url, String badge) {
         this.label = label;
         this.url = url;
-        this.isNew = isNew;
+        this.badge = badge;
     }
 
     public MenuItem(String label, List<MenuItem> menuItems) {
@@ -59,8 +59,8 @@ public class MenuItem implements Serializable {
         return url;
     }
 
-    public boolean isNew() {
-        return isNew;
+    public String getBadge() {
+        return badge;
     }
 
     public List<MenuItem> getMenuItems() {
