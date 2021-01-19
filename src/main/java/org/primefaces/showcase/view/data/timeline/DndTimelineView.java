@@ -81,7 +81,7 @@ public class DndTimelineView implements Serializable {
                 .build();
 
         // add a new event
-        TimelineUpdater timelineUpdater = TimelineUpdater.getCurrentInstance("timeline");
+        TimelineUpdater timelineUpdater = TimelineUpdater.getCurrentInstance(":form:timeline");
         model.add(event, timelineUpdater);
 
         // remove from the list of all events

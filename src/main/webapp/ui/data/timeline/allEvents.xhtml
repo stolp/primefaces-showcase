@@ -80,27 +80,29 @@
     <ui:param name="widgetLink" value="timeline"/>
 
     <ui:define name="implementation">
+        <h:form id="form">
+            <p:growl id="growl" showSummary="true" showDetail="true"
+                keepAlive="true" life="3000">
+                <p:autoUpdate />
+            </p:growl>
 
-        <p:growl id="growl" showSummary="true" showDetail="true" keepAlive="true" life="3000">
-            <p:autoUpdate/>
-        </p:growl>
-
-        <div class="card">
-            <p:timeline id="timeline" value="#{allEventsTimelineView.model}"
-                        editable="true" eventMargin="10" eventMarginAxis="0"
-                        start="#{allEventsTimelineView.start}"
-                        end="#{allEventsTimelineView.end}"
-                        axisOnTop="true" stackEvents="false">
-                <p:ajax event="add" listener="#{allEventsTimelineView.onAdd}"/>
-                <p:ajax event="changed" listener="#{allEventsTimelineView.onChanged}"/>
-                <p:ajax event="edit" listener="#{allEventsTimelineView.onEdit}"/>
-                <p:ajax event="delete" listener="#{allEventsTimelineView.onDelete}"/>
-                <p:ajax event="select" listener="#{allEventsTimelineView.onSelect}"/>
-                <p:ajax event="rangechanged" listener="#{allEventsTimelineView.onRangeChanged}"/>
-                <p:ajax event="lazyload" listener="#{allEventsTimelineView.onLazyLoad}"/>
-                <p:ajax event="drop" listener="#{allEventsTimelineView.onDrop}"/>
-            </p:timeline>
-        </div>
+            <div class="card">
+                <p:timeline id="timeline" value="#{allEventsTimelineView.model}"
+                    editable="true" eventMargin="10" eventMarginAxis="0"
+                    start="#{allEventsTimelineView.start}"
+                    end="#{allEventsTimelineView.end}" axisOnTop="true"
+                    stackEvents="false">
+                    <p:ajax event="add" listener="#{allEventsTimelineView.onAdd}" />
+                    <p:ajax event="changed" listener="#{allEventsTimelineView.onChanged}" />
+                    <p:ajax event="edit" listener="#{allEventsTimelineView.onEdit}" />
+                    <p:ajax event="delete" listener="#{allEventsTimelineView.onDelete}" />
+                    <p:ajax event="select" listener="#{allEventsTimelineView.onSelect}" />
+                    <p:ajax event="rangechanged" listener="#{allEventsTimelineView.onRangeChanged}" />
+                    <p:ajax event="lazyload" listener="#{allEventsTimelineView.onLazyLoad}" />
+                    <p:ajax event="drop" listener="#{allEventsTimelineView.onDrop}" />
+                </p:timeline>
+            </div>
+        </h:form>
 
     </ui:define>
 

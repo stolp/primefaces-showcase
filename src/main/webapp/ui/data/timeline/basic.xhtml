@@ -17,26 +17,26 @@
     <ui:param name="widgetLink" value="timeline"/>
 
     <ui:define name="implementation">
+        <h:form id="form">
+            <p:growl id="growl" showSummary="true" showDetail="true">
+                <p:autoUpdate />
+            </p:growl>
 
-        <p:growl id="growl" showSummary="true" showDetail="true">
-            <p:autoUpdate/>
-        </p:growl>
+            <div class="card">
+                <p:timeline id="timeline" value="#{basicTimelineView.model}"
+                    height="250px" selectable="#{basicTimelineView.selectable}"
+                    zoomable="#{basicTimelineView.zoomable}"
+                    moveable="#{basicTimelineView.moveable}"
+                    stackEvents="#{basicTimelineView.stackEvents}"
+                    axisOnTop="#{basicTimelineView.axisOnTop}"
+                    eventStyle="#{basicTimelineView.eventStyle}"
+                    showCurrentTime="#{basicTimelineView.showCurrentTime}">
 
-        <div class="card">
-            <p:timeline id="timeline" value="#{basicTimelineView.model}" height="250px"
-                        selectable="#{basicTimelineView.selectable}"
-                        zoomable="#{basicTimelineView.zoomable}"
-                        moveable="#{basicTimelineView.moveable}"
-                        stackEvents="#{basicTimelineView.stackEvents}"
-                        axisOnTop="#{basicTimelineView.axisOnTop}"
-                        eventStyle="#{basicTimelineView.eventStyle}"
-                        showCurrentTime="#{basicTimelineView.showCurrentTime}">
+                    <p:ajax event="select" listener="#{basicTimelineView.onSelect}" />
 
-                <p:ajax event="select" listener="#{basicTimelineView.onSelect}"/>
-
-            </p:timeline>
-        </div>
-
+                </p:timeline>
+            </div>
+        </h:form>
     </ui:define>
 
 </ui:composition>

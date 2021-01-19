@@ -23,14 +23,14 @@
     <ui:param name="widgetLink" value="timeline"/>
 
     <ui:define name="implementation">
-
-        <p:timeline value="#{limitTimelineRangeView.model}"
-                    min="#{limitTimelineRangeView.min}"
-                    max="#{limitTimelineRangeView.max}"
-                    zoomMin="#{limitTimelineRangeView.zoomMin}"
-                    zoomMax="#{limitTimelineRangeView.zoomMax}"
-                    height="180px"/>
-
+        <h:form id="form">
+            <p:timeline value="#{limitTimelineRangeView.model}" 
+                min="#{limitTimelineRangeView.min}"
+                max="#{limitTimelineRangeView.max}" 
+                zoomMin="#{limitTimelineRangeView.zoomMin}"
+                zoomMax="#{limitTimelineRangeView.zoomMax}" 
+                height="180px" />
+        </h:form>
     </ui:define>
 
 </ui:composition>
