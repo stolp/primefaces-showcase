@@ -30,7 +30,7 @@ import javax.inject.Named;
 
 @Named
 @RequestScoped
-public class ConfirmDialogView {
+public class ConfirmView {
         
     public void confirm() {
         addMessage("Confirmed", "You have accepted");
