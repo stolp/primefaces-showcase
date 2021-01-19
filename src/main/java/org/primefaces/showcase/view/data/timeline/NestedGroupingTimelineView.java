@@ -101,7 +101,13 @@ public class NestedGroupingTimelineView implements Serializable {
                 }
 
                 Order order = new Order(orderNumber, imagePath);
-                model.add(new TimelineEvent<>(order, startDate, endDate, true, "id" + j));
+                model.add(TimelineEvent.<Order>builder()
+                        .data(order)
+                        .startDate(startDate)
+                        .endDate(endDate)
+                        .editable(true)
+                        .group("id" + j)
+                        .build());
 
                 orderNumber++;
                 referenceDate = endDate;
