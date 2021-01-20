@@ -18,7 +18,7 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form>
-                <p:dataTable id="tblSales" var="sale" value="#{dtGroupView.sales}" style="text-align: center">
+                <p:dataTable id="tblSales" var="sale" value="#{dtGroupView.sales}">
                     <f:facet name="header">
                         <h:outputText value="Product Sales"/>
                     </f:facet>
@@ -63,8 +63,8 @@
                     <p:columnGroup type="footer">
                         <p:row>
                             <p:column colspan="3" style="text-align:right" footerText="Totals:"/>
-                            <p:column footerText="$#{dtGroupView.lastYearTotal}"/>
-                            <p:column footerText="$#{dtGroupView.thisYearTotal}"/>
+                            <p:column style="text-align:left" footerText="$#{dtGroupView.lastYearTotal}"/>
+                            <p:column style="text-align:left" footerText="$#{dtGroupView.thisYearTotal}"/>
                         </p:row>
                     </p:columnGroup>
 
