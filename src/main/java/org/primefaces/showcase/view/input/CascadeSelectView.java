@@ -33,6 +33,7 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import org.primefaces.event.SelectEvent;
+import org.primefaces.showcase.domain.Place;
 
 @Named
 @RequestScoped
@@ -40,55 +41,66 @@ public class CascadeSelectView {
 
     private List<SelectItem> countries;
     private String selection;
+    private String selection2;
 
     @PostConstruct
     public void init() {
         countries = new ArrayList<>();
         SelectItemGroup group1 = new SelectItemGroup("Australia");
+        group1.setValue(new Place("Australia", "au", "country"));
         SelectItemGroup group2 = new SelectItemGroup("Canada");
+        group2.setValue(new Place("Canada", "ca", "country"));
         SelectItemGroup group3 = new SelectItemGroup("United States");
+        group3.setValue(new Place("United States", "us", "country"));
 
         SelectItemGroup group11 = new SelectItemGroup("New South Wales");
+        group11.setValue(new Place("New South Wales", null, "states"));
         SelectItemGroup group12 = new SelectItemGroup("Queensland");
+        group12.setValue(new Place("Queensland", null, "states"));
 
         SelectItemGroup group21 = new SelectItemGroup("Quebec");
+        group21.setValue(new Place("Quebec", null, "states"));
         SelectItemGroup group22 = new SelectItemGroup("Ontario");
+        group22.setValue(new Place("Ontario", null, "states"));
 
         SelectItemGroup group31 = new SelectItemGroup("California");
+        group31.setValue(new Place("California", null, "states"));
         SelectItemGroup group32 = new SelectItemGroup("Florida");
+        group32.setValue(new Place("Florida", null, "states"));
         SelectItemGroup group33 = new SelectItemGroup("Texas");
+        group33.setValue(new Place("Texas", null, "states"));
 
-        SelectItem option111 = new SelectItem("Sydney");
-        SelectItem option112 = new SelectItem("Newcastle");
-        SelectItem option113 = new SelectItem("Wollongong");
+        SelectItem option111 = new SelectItem(new Place("Sydney", null, "city"));
+        SelectItem option112 = new SelectItem(new Place("Newcastle", null, "city"));
+        SelectItem option113 = new SelectItem(new Place("Wollongong", null, "city"));
         group11.setSelectItems(new SelectItem[]{option111, option112, option113});
 
-        SelectItem option121 = new SelectItem("Brisbane");
-        SelectItem option122 = new SelectItem("Townsville");
+        SelectItem option121 = new SelectItem(new Place("Brisbane", null, "city"));
+        SelectItem option122 = new SelectItem(new Place("Townsville", null, "city"));
         group12.setSelectItems(new SelectItem[]{option121, option122});
 
-        SelectItem option211 = new SelectItem("Montreal");
-        SelectItem option212 = new SelectItem("Quebec City");
+        SelectItem option211 = new SelectItem(new Place("Montreal", null, "city"));
+        SelectItem option212 = new SelectItem(new Place("Quebec City", null, "city"));
         group21.setSelectItems(new SelectItem[]{option211, option212});
 
-        SelectItem option221 = new SelectItem("Ottawa");
-        SelectItem option222 = new SelectItem("Toronto");
+        SelectItem option221 = new SelectItem(new Place("Ottawa", null, "city"));
+        SelectItem option222 = new SelectItem(new Place("Toronto", null, "city"));
         group22.setSelectItems(new SelectItem[]{option221, option222});
 
-        SelectItem option311 = new SelectItem("Los Angeles");
-        SelectItem option312 = new SelectItem("San Diego");
-        SelectItem option313 = new SelectItem("San Francisco");
+        SelectItem option311 = new SelectItem(new Place("Los Angeles", null, "city"));
+        SelectItem option312 = new SelectItem(new Place("San Diego", null, "city"));
+        SelectItem option313 = new SelectItem(new Place("San Francisco", null, "city"));
         group31.setSelectItems(new SelectItem[]{option311, option312, option313});
 
-        SelectItem option321 = new SelectItem("Jacksonville");
-        SelectItem option322 = new SelectItem("Miami");
-        SelectItem option323 = new SelectItem("Tampa");
-        SelectItem option324 = new SelectItem("Orlando");
+        SelectItem option321 = new SelectItem(new Place("Jacksonville", null, "city"));
+        SelectItem option322 = new SelectItem(new Place("Miami", null, "city"));
+        SelectItem option323 = new SelectItem(new Place("Tampa", null, "city"));
+        SelectItem option324 = new SelectItem(new Place("Orlando", null, "city"));
         group32.setSelectItems(new SelectItem[]{option321, option322, option323, option324});
 
-        SelectItem option331 = new SelectItem("Austin");
-        SelectItem option332 = new SelectItem("Dallas");
-        SelectItem option333 = new SelectItem("Houston");
+        SelectItem option331 = new SelectItem(new Place("Austin", null, "city"));
+        SelectItem option332 = new SelectItem(new Place("Dallas", null, "city"));
+        SelectItem option333 = new SelectItem(new Place("Houston", null, "city"));
         group33.setSelectItems(new SelectItem[]{option331, option332, option333});
 
         group1.setSelectItems(new SelectItem[]{group11, group12});
@@ -115,5 +127,13 @@ public class CascadeSelectView {
 
     public void setSelection(String selection) {
         this.selection = selection;
+    }
+
+    public String getSelection2() {
+        return selection2;
+    }
+
+    public void setSelection2(String selection2) {
+        this.selection2 = selection2;
     }
 }

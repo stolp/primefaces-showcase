@@ -359,3 +359,14 @@
         }
     }
 }
+
+
+.cascadeselect-item {
+    &.country-item {
+        .flag {
+            width: 18px;
+            height: 12px;
+            margin-right: .5rem;
+        }
+    }
+}
