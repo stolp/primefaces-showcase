@@ -370,3 +370,12 @@
         }
     }
 }
+
+.manymenu-advanced {
+    &.ui-selectmanymenu .ui-selectlistbox-listcontainer .ui-selectlistbox-list .ui-selectlistbox-item > td {
+        &:nth-child(2) {
+            width: 1rem;
+            padding: 0;
+        }
+    }
+}
