@@ -124,6 +124,13 @@
             <version>1.13.0</version>
         </dependency>
 
+        <!-- File Upload -->
+        <dependency>
+            <groupId>org.overviewproject</groupId>
+            <artifactId>mime-types</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+
         <!-- Twitter API -->
         <dependency>
             <groupId>org.twitter4j</groupId>
