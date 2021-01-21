@@ -10,9 +10,13 @@
     </ui:define>
 
     <ui:define name="description">
-        PrimeFaces provides a powerful ExceptionHandler out of the box featuring support for ajax and non-ajax requests, ability to use error-page
-        configuration in web.xml, an EL extension called #{pfExceptionHandler} to provide information about the exception and the p:ajaxExceptionHandler
-        component to handle ajax exceptions at the same page.
+        PrimeFaces provides a powerful ExceptionHandler out of the box with following features:
+        <ul>
+            <li>featuring support for AJAX and non-AJAX requests</li>
+            <li>ability to use error-page configuration in web.xml</li>
+            <li>an EL extension called \#{pfExceptionHandler} to provide information about the exception</li>
+            <li>p:ajaxExceptionHandler component to customize AJAX exception handling on the current view</li>
+        </ul>
     </ui:define>
 
     <ui:param name="documentationLink" value="/core/errorhandling"/>
