@@ -46,7 +46,6 @@ public class BasicTimelineView implements Serializable {
     private boolean moveable = true;  
     private boolean stackEvents = true;  
     private String eventStyle = "box";  
-    private boolean axisOnTop;  
     private boolean showCurrentTime = true;  
     private boolean showNavigation = false;  
   
@@ -120,14 +119,6 @@ public class BasicTimelineView implements Serializable {
   
     public void setEventStyle(String eventStyle) {  
         this.eventStyle = eventStyle;  
-    }  
-  
-    public boolean isAxisOnTop() {  
-        return axisOnTop;  
-    }  
-  
-    public void setAxisOnTop(boolean axisOnTop) {  
-        this.axisOnTop = axisOnTop;  
     }  
   
     public boolean isShowCurrentTime() {  
