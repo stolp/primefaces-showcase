@@ -7,6 +7,25 @@
     <div class="layout-sidebar">
         <div class="layout-menu">
 
+            <h:form>
+                <div class="search-icon-left">
+                    <i class="pi pi-search"/>
+                    <p:autoComplete id="autoSearch" placeholder="Search by name, badge..." minQueryLength="3" effect="fade"
+                                    inputStyle="width: 100%" style="width: 100%" panelStyleClass="search-menu-items"
+                                    completeMethod="#{appMenu.completeMenuItem}" groupBy="#{menuItem.parentLabel}"
+                                    var="menuItem" scrollHeight="250">
+                        <p:column>
+                            <h:outputLink value="#{menuItem.url}" rendered="#{not empty menuItem.url and empty menuItem.badge and not menuItem.url.startsWith('/') and empty menuItem.menuItems}">
+                                #{menuItem.label}
+                            </h:outputLink>
+                            <h:link outcome="#{menuItem.url}" rendered="#{menuItem.url.startsWith('/') and empty menuItem.menuItems}" onclick="App.onSearchClick(this)">
+                                #{menuItem.label}<p:tag value="#{menuItem.badge}" styleClass="p-ml-2" rendered="#{not empty menuItem.badge}"/>
+                            </h:link>
+                        </p:column>
+                    </p:autoComplete>
+                </div>
+            </h:form>
+
             <ui:repeat value="#{appMenu.menuCategories}" var="menuCategory">
                 <div class="menu-category">#{menuCategory.label}</div>
                 <div class="menu-items">

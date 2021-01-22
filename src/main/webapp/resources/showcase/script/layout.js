@@ -143,6 +143,7 @@ App = {
 
     restoreMenu() {
         var activeRouteLink = this.menuLinks.filter('[href^="' + window.location.pathname + '"]');
+        console.log(window.location.pathname);
         if (activeRouteLink.length) {
             activeRouteLink.addClass('router-link-active');
         }
@@ -159,7 +160,21 @@ App = {
         if (scrollPosition) {
             this.sidebar.scrollTop(parseInt(scrollPosition));
         }
+    },
+
+    onSearchClick: function (el) {
+        var href = $(el).attr('href');
+        var activeRouteLink = this.menuLinks.filter('[href^="' + href + '"]');
+        if (activeRouteLink.length) {
+            var submenuLink = activeRouteLink.closest('.ui-outputpanel').find('.submenu-link');
+            if (!submenuLink.hasClass('submenu-link-active')) {
+                this.activeSubmenus.push(submenuLink.attr('id'));
+                sessionStorage.setItem('active_submenus', this.activeSubmenus.join(','));
+            }
+            sessionStorage.setItem('scroll_position', $(submenuLink).offset().top - 75);
+        }
     }
+
 }
 
 App.init();

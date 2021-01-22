@@ -34,10 +34,12 @@ import java.util.List;
 public class AppMenu {
 
     List<MenuCategory> menuCategories;
+    List<MenuItem> menuItems;
 
     @PostConstruct
     public void init() {
         menuCategories = new ArrayList<>();
+        menuItems = new ArrayList<>();
 
         //GENERAL CATEGORY START
         List<MenuItem> generalMenuItems = new ArrayList<>();
@@ -567,6 +569,43 @@ public class AppMenu {
         miscMenuItems.add(new MenuItem("Watermark", "/ui/misc/watermark"));
         menuCategories.add(new MenuCategory("Misc", miscMenuItems));
         //MISC CATEGORY END
+
+        for (MenuCategory category: menuCategories) {
+            for (MenuItem menuItem: category.getMenuItems()) {
+                menuItem.setParentLabel(category.getLabel());
+                if (menuItem.getUrl() != null) {
+                    menuItems.add(menuItem);
+                }
+                if (menuItem.getMenuItems() != null) {
+                    for (MenuItem item: menuItem.getMenuItems()) {
+                        item.setParentLabel(menuItem.getLabel());
+                        if (item.getUrl() != null) {
+                            menuItems.add(item);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public List<MenuItem> completeMenuItem(String query) {
+        String queryLowerCase = query.toLowerCase();
+        List<MenuItem> filteredItems = new ArrayList<>();
+        for (MenuItem item: menuItems) {
+            if (item.getUrl() != null && (item.getLabel().toLowerCase().contains(queryLowerCase) || item.getParentLabel().toLowerCase().contains(queryLowerCase))) {
+                filteredItems.add(item);
+            }
+            if (item.getBadge() != null) {
+                if (item.getBadge().toLowerCase().contains(queryLowerCase)){
+                    filteredItems.add(item);
+                }
+            }
+        }
+        return filteredItems;
+    }
+
+    public List<MenuItem> getMenuItems() {
+        return menuItems;
     }
 
     public List<MenuCategory> getMenuCategories() {

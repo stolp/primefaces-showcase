@@ -34,6 +34,7 @@ public class MenuItem implements Serializable {
     private String url;
     private List<MenuItem> menuItems;
     private String badge;
+    private String parentLabel;
 
     public MenuItem(String label, String url) {
         this.label = label;
@@ -67,7 +68,15 @@ public class MenuItem implements Serializable {
         return menuItems;
     }
 
-	@Override
+    public String getParentLabel() {
+        return parentLabel;
+    }
+
+    public void setParentLabel(String parentLabel) {
+        this.parentLabel = parentLabel;
+    }
+
+    @Override
 	public int hashCode() {
 		return Objects.hash(label, url);
 	}
