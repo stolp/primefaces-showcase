@@ -143,7 +143,6 @@ App = {
 
     restoreMenu() {
         var activeRouteLink = this.menuLinks.filter('[href^="' + window.location.pathname + '"]');
-        console.log(window.location.pathname);
         if (activeRouteLink.length) {
             activeRouteLink.addClass('router-link-active');
         }
