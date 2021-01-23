@@ -48,7 +48,7 @@
                                     <ui:repeat value="#{menuItem.menuItems}" var="nestedMenuItem">
                                         <li><h:link outcome="#{nestedMenuItem.url}">
                                             #{nestedMenuItem.label}
-                                            <p:tag value="#{menuItem.badge}" styleClass="p-ml-2" rendered="#{not empty menuItem.badge}"/>
+                                            <p:tag value="#{nestedMenuItem.badge}" styleClass="p-ml-2" rendered="#{not empty nestedMenuItem.badge}"/>
                                         </h:link></li>
                                     </ui:repeat>
                                 </ul>
