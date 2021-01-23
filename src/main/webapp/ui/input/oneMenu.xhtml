@@ -31,7 +31,7 @@
                             <f:selectItem itemLabel="Option2" itemValue="Option2"/>
                             <f:selectItem itemLabel="Option3" itemValue="Option3"/>
                             <f:facet name="footer">
-                                <p:divider />
+                                <p:divider styleClass="p-mt-0" />
                                 <h:outputText value="3 options" style="font-weight:bold;"/>
                             </f:facet>
                         </p:selectOneMenu>
@@ -82,9 +82,8 @@
                             </p:column>
 
                             <f:facet name="footer">
-                                <p:divider />
                                 <h:outputText value="#{selectOneMenuView.countries.size()} countries"
-                                            style="font-weight:bold;"/>
+                                            style="font-weight:bold;" styleClass="p-py-1 p-d-block"/>
                             </f:facet>
                         </p:selectOneMenu>
                     </div>
