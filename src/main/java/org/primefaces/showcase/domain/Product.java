@@ -67,6 +67,10 @@ public class Product implements Serializable {
         this.rating = rating;
     }
 
+    public Product clone() {
+    	return new Product(getId(), getCode(), getName(), getDescription(), getImage(), getPrice(), getCategory(), getQuantity(), getInventoryStatus(), getRating());
+    }
+
     public int getId() {
         return id;
     }

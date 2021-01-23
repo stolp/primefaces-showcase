@@ -52,7 +52,7 @@ public class CrudView implements Serializable {
 
     @PostConstruct
     public void init() {
-        this.products = this.productService.getProducts();
+        this.products = this.productService.getClonedProducts(100);
     }
 
     public List<Product> getProducts() {
