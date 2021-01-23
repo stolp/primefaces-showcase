@@ -143,7 +143,7 @@
                                         completeMethod="#{autoCompleteView.completeCountry}"
                                         var="country" itemLabel="#{country.name}" itemValue="#{country}"
                                         converter="#{countryConverter}" forceSelection="true"
-                                        groupBy="#{autoCompleteView.getCountryGroup(country)}" scrollHeight="250"/>
+                                        groupBy="#{autoCompleteView.getCountryGroup(country)}" escape="false" scrollHeight="250"/>
                     </div>
                 </div>
                 

@@ -29,6 +29,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -48,7 +49,8 @@ public class CountryService {
             Locale country = new Locale("", locales[i]);
             countries.add(new Country(i, country.getDisplayCountry(), country.getCountry().toLowerCase()));
         }
-
+        
+        Collections.sort(countries, (Country c1, Country c2) -> c1.getName().compareTo(c2.getName()));
     }
 
     public List<Country> getCountries() {
