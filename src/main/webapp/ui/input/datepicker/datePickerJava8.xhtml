@@ -231,7 +231,6 @@
                         <p:outputLabel for="time6" value="Time (without explicit showTime)"/>
                         <p:datePicker id="time6" value="#{calendarJava8View.dateTime6}"
                                        />
-                        
                     </div>
 
                     <div class="p-field p-col-12 p-md-4">
@@ -272,6 +271,11 @@
                     <div class="p-field p-col-12 p-md-4">
                         <p:outputLabel for="zonedDateTime1" value="Time (ZonedDateTime; not supported yet)"/>
                         <p:datePicker id="zonedDateTime1" value="#{calendarJava8View.zonedDateTime1}"/>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="time7" value="Time (with timeInput)"/>
+                        <p:datePicker id="time7" value="#{calendarJava8View.dateTime7}" timeInput="true"/>
                     </div>
                 </div>
             </div>
@@ -328,6 +332,11 @@
                         <p:datePicker id="timeonly12" value="#{calendarJava8View.time6}" timeOnly="true"
                                         hourFormat="12" pattern="HH:mm"
                                        />
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-4">
+                        <p:outputLabel for="timeonly8" value="Time Only (with timeInput)"/>
+                        <p:datePicker id="timeonly8" value="#{calendarJava8View.time8}" timeInput="true"/>
                     </div>
                 </div>
             </div>
