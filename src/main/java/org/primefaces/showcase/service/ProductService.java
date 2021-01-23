@@ -99,4 +99,13 @@ public class ProductService {
         }
 
     }
+
+	public List<Product> getClonedProducts(int size) {
+		List<Product> results = new ArrayList<>();
+		List<Product> originals = getProducts(size);
+		for (Product original : originals) {
+			results.add(original.clone());
+		}
+		return results;
+	}
 }
