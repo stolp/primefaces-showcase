@@ -27,7 +27,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -37,7 +37,7 @@ import org.primefaces.showcase.domain.Product;
 import org.primefaces.showcase.service.ProductService;
 
 @Named
-@RequestScoped
+@ViewScoped
 public class DataExporterView implements Serializable {
     
     private List<Product> products;
