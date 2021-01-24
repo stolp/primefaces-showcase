@@ -100,7 +100,7 @@
                 <h5>Lazy Loading</h5>
                 <p:dataTable var="customer" value="#{dtLazyView.lazyModel}" paginator="true" rows="10"
                              paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                             rowsPerPageTemplate="5,10,15" id="customerTable" lazy="true" multiViewState="true">
+                             rowsPerPageTemplate="5,10,15" id="customerTable" multiViewState="true">
                     <p:column headerText="Name" sortBy="#{customer.name}" filterBy="#{customer.name}">
                         <h:outputText value="#{customer.name}"/>
                     </p:column>

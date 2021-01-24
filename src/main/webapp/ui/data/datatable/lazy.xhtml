@@ -25,7 +25,7 @@
                              paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                              rowsPerPageTemplate="5,10,15" selectionMode="single"
                              selection="#{dtLazyView.selectedCustomer}"
-                             id="customerTable" lazy="true">
+                             id="customerTable">
                     <p:ajax event="rowSelect" listener="#{dtLazyView.onRowSelect}" update=":form:customerDetail"
                             oncomplete="PF('customerDialog').show()"/>
                     <p:column headerText="Name" sortBy="#{customer.name}" filterBy="#{customer.name}">
