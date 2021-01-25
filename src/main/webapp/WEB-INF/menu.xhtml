@@ -13,7 +13,7 @@
                     <p:autoComplete id="autoSearch" placeholder="Search by name, badge..." minQueryLength="3" effect="fade"
                                     inputStyle="width: 100%" style="width: 100%" panelStyleClass="search-menu-items"
                                     completeMethod="#{appMenu.completeMenuItem}" groupBy="#{menuItem.parentLabel}"
-                                    var="menuItem" scrollHeight="250">
+                                    var="menuItem" scrollHeight="500">
                         <p:column>
                             <h:outputLink value="#{menuItem.url}" rendered="#{not empty menuItem.url and empty menuItem.badge and not menuItem.url.startsWith('/') and empty menuItem.menuItems}">
                                 #{menuItem.label}
