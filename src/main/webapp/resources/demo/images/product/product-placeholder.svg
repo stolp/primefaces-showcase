@@ -1,10 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="300px" height="200px" viewBox="0 0 300 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Artboard</title>
-    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Rectangle" fill="#F8F9FA" x="0" y="0" width="300" height="200"></rect>
-        <g id="image" transform="translate(110.000000, 70.000000)" fill="#BABABC" fill-rule="nonzero">
-            <path d="M75,0 L5,0 C2.23857625,0 0,2.23857625 0,5 L0,55 C0,57.7614237 2.23857625,60 5,60 L75,60 C77.7614237,60 80,57.7614237 80,55 L80,5 C80,2.23857625 77.7614237,0 75,0 Z M20,10 C25.5228475,10 30,14.4771525 30,20 C30,25.5228475 25.5228475,30 20,30 C14.4771525,30 10,25.5228475 10,20 C10,14.4771525 14.4771525,10 20,10 Z M70,40 L70,50 L10,50 L10,40 L18.55,35.7 C19.4648753,35.2524957 20.5351247,35.2524957 21.45,35.7 L30,40 L53.65,21.1 C54.4866298,20.4991452 55.6133702,20.4991452 56.45,21.1 L70,30 L70,40 Z" id="Shape"></path>
-        </g>
-    </g>
-</svg>
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path fill="#F8F9FA" d="M0 0h300v200H0z"/><path d="M185 70h-70a5 5 0 00-5 5v50a5 5 0 005 5h70a5 5 0 005-5V75a5 5 0 00-5-5zm-55 10c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10zm50 30v10h-60v-10l8.55-4.3a3.3 3.3 0 012.9 0L140 110l23.65-18.9a2.4 2.4 0 012.8 0L180 100v10z" fill="#BABABC" fill-rule="nonzero"/></g></svg>
