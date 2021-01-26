@@ -24,8 +24,10 @@
                 <div class="products-buttonbar">
                     <div>
                         <p:commandButton value="New" icon="pi pi-plus" actionListener="#{crudView.openNew}"
-                                         update="manage-product-content" oncomplete="PF('manageProductDialog').show()"
-                                         styleClass="ui-button-success" style="margin-right: .5rem"/>
+                                         update=":form:manage-product-content" oncomplete="PF('manageProductDialog').show()"
+                                         styleClass="ui-button-success" style="margin-right: .5rem">
+                            <p:resetInput target=":form:manage-product-content"/>
+                        </p:commandButton>
                         <p:commandButton id="delete-products-button" value="#{crudView.deleteButtonMessage}"
                                          icon="pi pi-trash" actionListener="#{crudView.deleteSelectedProducts}"
                                          styleClass="ui-button-danger" disabled="#{!crudView.hasSelectedProducts()}"
@@ -98,6 +100,7 @@
                                          oncomplete="PF('manageProductDialog').show()"
                                          styleClass="edit-button rounded-button ui-button-success" process="@this">
                             <f:setPropertyActionListener value="#{product}" target="#{crudView.selectedProduct}"/>
+                            <p:resetInput target=":form:manage-product-content"/>
                         </p:commandButton>
                         <p:commandButton class="ui-button-warning rounded-button" icon="pi pi-trash" process="@this"
                                          oncomplete="PF('deleteProductDialog').show()">
