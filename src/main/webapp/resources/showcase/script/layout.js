@@ -11,6 +11,7 @@ App = {
         this.configurator = this.wrapper.children('.layout-config');
         this.configuratorButton = $('#layout-config-button');
         this.configuratorCloseButton = $('#layout-config-close-button');
+        this.filterPanel = $('.layout-sidebar-filter-panel');
         this.activeSubmenus = [];
         
         this._bindEvents();
@@ -88,9 +89,25 @@ App = {
         this.configuratorCloseButton.off('click').on('click', function() {
             $this.configurator.removeClass('layout-config-active');
         });
+
+        this.filterPanel.off('click.showcase', '.ui-autocomplete-item')
+            .on('click.showcase', '.ui-autocomplete-item', function(e) {
+                var link = $(this).find('a:first');
+
+                if (link) {
+                    link.trigger('click');
+
+                    var href = link.attr('href');
+                    if (href && href !== '#') {
+                        window.location.href = href;
+                    }
+                }
+            
+                e.preventDefault(); 
+            });
     },
 
-    hideTopbarSubmenu(item) {
+    hideTopbarSubmenu: function(item) {
         var submenu = item.children('ul');
         submenu.addClass('connected-overlay-out');
 
@@ -100,7 +117,7 @@ App = {
         }, 100);
     },
 
-    showTopbarSubmenu(item) {
+    showTopbarSubmenu: function(item) {
         item.addClass('topbar-submenu-active');
     },
 
@@ -137,11 +154,11 @@ App = {
             this.wrapper.removeClass('ui-input-filled');
     },
 
-    isMenuButton(element) {
+    isMenuButton: function(element) {
         return $.contains(this.menuButton.get(0), element) || this.menuButton.is(element);
     },
 
-    restoreMenu() {
+    restoreMenu: function() {
         var activeRouteLink = this.menuLinks.filter('[href^="' + window.location.pathname + '"]');
         if (activeRouteLink.length) {
             activeRouteLink.addClass('router-link-active');
@@ -161,19 +178,14 @@ App = {
         }
     },
 
-    onSearchClick: function (el) {
-        var href = $(el).attr('href');
-        var activeRouteLink = this.menuLinks.filter('[href^="' + href + '"]');
-        if (activeRouteLink.length) {
-            var submenuLink = activeRouteLink.closest('.ui-outputpanel').find('.submenu-link');
-            if (!submenuLink.hasClass('submenu-link-active')) {
-                this.activeSubmenus.push(submenuLink.attr('id'));
-                sessionStorage.setItem('active_submenus', this.activeSubmenus.join(','));
-            }
-            sessionStorage.setItem('scroll_position', $(submenuLink).offset().top - 75);
+    onSearchClick: function(event, id) {
+        if (id && this.activeSubmenus.indexOf(id) === -1) {
+            this.activeSubmenus.push(id);
+            sessionStorage.setItem('active_submenus', this.activeSubmenus.join(','));
         }
-    }
 
+        event.stopPropagation();
+    }
 }
 
 App.init();
