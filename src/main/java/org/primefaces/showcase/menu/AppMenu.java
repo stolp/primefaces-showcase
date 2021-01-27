@@ -27,6 +27,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Named
@@ -601,6 +602,7 @@ public class AppMenu {
                 }
             }
         }
+        filteredItems.sort(Comparator.comparing(MenuItem::getParentLabel));
         return filteredItems;
     }
 
