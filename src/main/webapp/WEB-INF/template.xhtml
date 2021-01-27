@@ -72,7 +72,13 @@
                                 </a>
                             </ui:fragment>
                             <ui:fragment rendered="#{not empty widgetLink}">
-                                <a class="documentation-link" href="https://primefaces.github.io/primefaces/jsdocs/classes/primefaces.widget.#{widgetLink}.html" target="_blank">
+                                <a class="documentation-link" href="https://primefaces.github.io/primefaces/jsdocs/classes/src_primefaces.primefaces.widget.#{widgetLink}.html#{not empty widgetLinkHash ? '#'.concat(widgetLinkHash) : ''}" target="_blank">
+                                    <i class="pi pi-external-link"></i> 
+                                    <span>CLIENT API</span>
+                                </a>
+                            </ui:fragment>
+                            <ui:fragment rendered="#{not empty primefacesClientApiLink}">
+                                <a class="documentation-link" href="https://primefaces.github.io/primefaces/jsdocs/#{primefacesClientApiLink}" target="_blank">
                                     <i class="pi pi-external-link"></i> 
                                     <span>CLIENT API</span>
                                 </a>
