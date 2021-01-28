@@ -35,6 +35,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
+import org.primefaces.showcase.domain.InventoryStatus;
 
 @Named("dtAddRowView")
 @ViewScoped
@@ -47,7 +48,7 @@ public class AddRowView implements Serializable {
     
     @PostConstruct
     public void init() {
-        products1 = service.getProducts(15);
+        products1 = service.getClonedProducts(15);
     }
 
     public List<Product> getProducts1() {
@@ -70,9 +71,9 @@ public class AddRowView implements Serializable {
 
     public void onAddNew() {
         // Add one new product to the table:
-        Product product2Add = service.getProducts(1).get(0);
-        products1.add(product2Add);
-        FacesMessage msg = new FacesMessage("New Product added", String.valueOf(product2Add.getId()));
+        Product newProduct = new Product((int) (Math.random() * 10000), "f230fh0g3", "New Bamboo Watch", "Product Description", "bamboo-watch.jpg", 100, "Accessories", 24, InventoryStatus.INSTOCK, 5);
+        products1.add(newProduct);
+        FacesMessage msg = new FacesMessage("New Product added", String.valueOf(newProduct.getId()));
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     
