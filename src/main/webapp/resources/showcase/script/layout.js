@@ -97,6 +97,13 @@ App = {
 
                     var link = $(this).find('a:first');
                     if (link) {
+                        var url = new URL(link[0].href);
+                        var menuItem = $this.menu.find('a[href*="' + url.pathname + '"');
+                        if(menuItem.length) {
+                           var scroll_position = menuItem[0].offsetTop - $this.menu[0].offsetTop;;
+                           sessionStorage.setItem('scroll_position', scroll_position); 
+                        }
+
                         link.trigger('click');
 
                         var href = link.attr('href');
@@ -184,6 +191,7 @@ App = {
     onSearchClick: function(event, id) {
         if (id && this.activeSubmenus.indexOf(id) === -1) {
             this.activeSubmenus.push(id);
+            $('#' + id).next().show();
             sessionStorage.setItem('active_submenus', this.activeSubmenus.join(','));
         }
     }
