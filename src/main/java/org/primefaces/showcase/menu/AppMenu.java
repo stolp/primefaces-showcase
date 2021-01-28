@@ -365,6 +365,7 @@ public class AppMenu {
         panelMenuItems.add(new MenuItem("ScrollPanel", "/ui/panel/scrollPanel"));
         panelMenuItems.add(new MenuItem("TabView", "/ui/panel/tabView"));
         panelMenuItems.add(new MenuItem("Toolbar", "/ui/panel/toolbar"));
+        panelMenuItems.add(new MenuItem("Wizard", "/ui/panel/wizard"));
         menuCategories.add(new MenuCategory("Panel", panelMenuItems));
         //PANEL CATEGORY END
 
