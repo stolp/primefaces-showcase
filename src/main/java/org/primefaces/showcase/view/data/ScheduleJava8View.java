@@ -118,7 +118,7 @@ public class ScheduleJava8View implements Serializable {
 				.overlapAllowed(true)
 				.editable(false)
 				.resizable(false)
-				.display("background")
+				.display(ScheduleDisplayMode.BACKGROUND)
 				.backgroundColor("lightgreen")
 				.build();
 		eventModel.addEvent(event);
