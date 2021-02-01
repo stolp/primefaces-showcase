@@ -78,9 +78,15 @@
             <div class="p-col-12 p-md-4">
                 <div class="card">
                     <h5>Image</h5>
-                    <p:avatar image="../../resources/demo/images/avatar/amyelsner.png" styleClass="p-mr-2" size="xlarge" shape="circle" />
-                    <p:avatar image="../../resources/demo/images/avatar/asiyajavayant.png" styleClass="p-mr-2" size="large" shape="circle" />
-                    <p:avatar image="../../resources/demo/images/avatar/onyamalimba.png" styleClass="p-mr-2" shape="circle" />
+                    <p:avatar styleClass="p-mr-2" size="xlarge" shape="circle">
+                        <p:graphicImage name="demo/images/avatar/amyelsner.png"/>
+                    </p:avatar>
+                    <p:avatar styleClass="p-mr-2" size="large" shape="circle">
+                        <p:graphicImage name="demo/images/avatar/asiyajavayant.png"/>
+                    </p:avatar>
+                    <p:avatar styleClass="p-mr-2" shape="circle">
+                        <p:graphicImage name="demo/images/avatar/onyamalimba.png"/>
+                    </p:avatar>
                 </div>
             </div>
 
@@ -88,11 +94,21 @@
                 <div class="card">
                     <h5>Avatar Group</h5>
                     <p:avatarGroup styleClass="p-mb-3">
-                        <p:avatar image="../../resources/demo/images/avatar/amyelsner.png" size="large" shape="circle"/>
-                        <p:avatar image="../../resources/demo/images/avatar/asiyajavayant.png" size="large" shape="circle"/>
-                        <p:avatar image="../../resources/demo/images/avatar/onyamalimba.png" size="large" shape="circle"/>
-                        <p:avatar image="../../resources/demo/images/avatar/ionibowcher.png" size="large" shape="circle"/>
-                        <p:avatar image="../../resources/demo/images/avatar/xuxuefeng.png" size="large" shape="circle"/>
+                        <p:avatar size="large" shape="circle">
+                            <p:graphicImage name="demo/images/avatar/amyelsner.png"/>
+                        </p:avatar>
+                        <p:avatar size="large" shape="circle">
+                            <p:graphicImage name="demo/images/avatar/asiyajavayant.png"/>
+                        </p:avatar>
+                        <p:avatar size="large" shape="circle">
+                            <p:graphicImage name="demo/images/avatar/onyamalimba.png"/>
+                        </p:avatar>
+                        <p:avatar size="large" shape="circle">
+                            <p:graphicImage name="demo/images/avatar/ionibowcher.png"/>
+                        </p:avatar>
+                        <p:avatar size="large" shape="circle">
+                            <p:graphicImage name="demo/images/avatar/xuxuefeng.png"/>
+                        </p:avatar>
                         <p:avatar label="+2" shape="circle" size="large" style="background-color:#9c27b0; color: #ffffff" />
                     </p:avatarGroup>
                 </div>
@@ -102,7 +118,9 @@
                 <div class="card">
                     <h5>Image - Badge</h5>
                     <p:badge value="4" severity="danger">
-                        <p:avatar image="../../resources/demo/images/organization/walter.jpg" size="xlarge"/>
+                        <p:avatar size="xlarge">
+                            <p:graphicImage name="demo/images/organization/walter.jpg"/>
+                        </p:avatar>
                     </p:badge>
                 </div>
             </div>
