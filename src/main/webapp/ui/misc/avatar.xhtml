@@ -116,11 +116,18 @@
 
             <div class="p-col-12 p-md-4">
                 <div class="card">
-                    <h5>Image - Badge</h5>
+                    <h5>Badge and Gravatar</h5>
                     <p:badge value="4" severity="danger">
                         <p:avatar size="xlarge">
                             <p:graphicImage name="demo/images/organization/walter.jpg"/>
                         </p:avatar>
+                    </p:badge>
+                    <p:avatar gravatar="pfextensions@gmail.com" size="xlarge" style="margin-left: 10px;" />
+                    <p:avatar gravatar="notfound@avatar.com" 
+                              gravatarConfig="d=https%3A%2F%2Fui-avatars.com%2Fapi%2FPrimefaces+Rocks" 
+                              size="xlarge" style="margin-left: 10px;"/>
+                    <p:badge value="2">
+                        <p:avatar gravatar="notfound@avatar.com" gravatarConfig="d=mp" size="xlarge" style="margin-left: 10px;"/>
                     </p:badge>
                 </div>
             </div>
