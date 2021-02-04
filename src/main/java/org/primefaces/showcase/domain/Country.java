@@ -25,7 +25,7 @@ package org.primefaces.showcase.domain;
 
 import java.util.Objects;
 
-public class Country {
+public class Country implements Comparable<Country> {
 
     private int id;
     private String name;
@@ -83,4 +83,8 @@ public class Country {
         return name;
     }
 
+    @Override
+    public int compareTo(Country o) {
+        return name.compareTo(o.name);
+    }
 }

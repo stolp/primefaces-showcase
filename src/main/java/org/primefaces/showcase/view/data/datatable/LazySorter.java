@@ -40,15 +40,15 @@ public class LazySorter implements Comparator<Customer> {
     @Override
     public int compare(Customer customer1, Customer customer2) {
         try {
-            Object value1 = customer1.getClass().getField(this.sortField).get(customer1);
-            Object value2 = customer2.getClass().getField(this.sortField).get(customer2);
+            Object value1 = customer1.getClass().getField(sortField).get(customer1);
+            Object value2 = customer2.getClass().getField(sortField).get(customer2);
 
             int value = ((Comparable)value1).compareTo(value2);
             
             return SortOrder.ASCENDING.equals(sortOrder) ? value : -1 * value;
         }
         catch(Exception e) {
-            throw new RuntimeException();
+            throw new RuntimeException(e);
         }
     }
 

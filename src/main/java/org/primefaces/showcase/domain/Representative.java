@@ -26,7 +26,7 @@ package org.primefaces.showcase.domain;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Representative implements Serializable {
+public class Representative implements Serializable, Comparable<Representative> {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -73,5 +73,10 @@ public class Representative implements Serializable {
     @Override
     public String toString() {
         return name;
+    }
+
+    @Override
+    public int compareTo(Representative o) {
+        return name.compareTo(o.name);
     }
 }
