@@ -23,10 +23,13 @@
  */
 package org.primefaces.showcase.domain;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Country implements Comparable<Country> {
-
+public class Country implements Serializable, Comparable<Country> {
+	
+	private static final long serialVersionUID = 1L;
+	
     private int id;
     private String name;
     private String code;

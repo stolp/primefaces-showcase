@@ -26,6 +26,8 @@ package org.primefaces.showcase.view.data.datatable;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
+
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -36,23 +38,53 @@ import org.primefaces.showcase.domain.Customer;
 import org.primefaces.showcase.domain.CustomerStatus;
 import org.primefaces.showcase.domain.Representative;
 import org.primefaces.showcase.service.CustomerService;
+import org.primefaces.util.LangUtils;
 
 @Named("dtFilterView")
 @ViewScoped
 public class FilterView implements Serializable {
+	
+    @Inject
+    private CustomerService service;
 
     private List<Customer> customers1;
 
     private List<Customer> filteredCustomers1;
+    
+    private List<Customer> customers2;
 
-    @Inject
-    private CustomerService service;
+    private List<Customer> filteredCustomers2;
 
     private List<FilterMeta> filterBy;
 
     @PostConstruct
     public void init() {
         customers1 = service.getCustomers(10);
+        customers2 = service.getCustomers(10);
+    }
+    
+    public boolean globalFilterFunction(Object value, Object filter, Locale locale) {
+        String filterText = (filter == null) ? null : filter.toString().trim().toLowerCase();
+        if (LangUtils.isValueBlank(filterText)) {
+            return true;
+        }
+        int filterInt = getInteger(filterText);
+
+        Customer customer = (Customer) value;
+        return customer.getName().toLowerCase().contains(filterText)
+                || customer.getCountry().getName().toLowerCase().contains(filterText)
+                || customer.getRepresentative().getName().toLowerCase().contains(filterText)
+                || customer.getStatus().name().toLowerCase().contains(filterText)
+                || customer.getActivity() < filterInt;
+    }
+    
+    private int getInteger(String string) {
+        try {
+            return Integer.parseInt(string);
+        }
+        catch (NumberFormatException ex) {
+            return 0;
+        }
     }
 
     public List<Representative> getRepresentatives() {
@@ -69,6 +101,18 @@ public class FilterView implements Serializable {
 
     public List<Customer> getFilteredCustomers1() {
         return filteredCustomers1;
+    }
+
+    public void setFilteredCustomers2(List<Customer> filteredCustomers2) {
+        this.filteredCustomers2 = filteredCustomers2;
+    }
+    
+    public List<Customer> getCustomers2() {
+        return customers2;
+    }
+
+    public List<Customer> getFilteredCustomers2() {
+        return filteredCustomers2;
     }
 
     public void setFilteredCustomers1(List<Customer> filteredCustomers1) {
