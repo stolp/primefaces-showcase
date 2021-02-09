@@ -39,8 +39,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.faces.event.PhaseId;
-import javax.faces.event.ValueChangeEvent;
 import javax.imageio.ImageIO;
 import javax.imageio.stream.FileImageOutputStream;
 import javax.inject.Named;
@@ -53,77 +51,37 @@ import org.primefaces.model.StreamedContent;
 @SessionScoped
 public class DynamicCropper implements Serializable {
     
-    private BufferedImage image;
     private final int width = 500;
     private final int height = 350;
     private int numberOfIterations;
+
+    private CroppedImage croppedImage;
+    private String newImageName;
     
     @PostConstruct
     public void init() {
         this.numberOfIterations = 5;
-        try {
-            this.image = mandelbrotSet(width, height, numberOfIterations);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
-    
-    public StreamedContent getImage() {
-        
-        FacesContext context = FacesContext.getCurrentInstance();
 
-        StreamedContent result = null;
-        if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
-            result = new DefaultStreamedContent();
-        }
-        else {
-            result = DefaultStreamedContent.builder().contentType("image/png").stream(() -> {
-                try {
-                    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                    ImageIO.write(this.image, "png", outputStream);
-                    return new ByteArrayInputStream(outputStream.toByteArray());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return null;
-                }
-            }).build();
-        }
-        
-        return result;
-    }
-    
-    public int getNumberOfIterations() {
-        return numberOfIterations;
-    }
-    
-    public void setNumberOfIterations(int numberOfIterations) {
-        this.numberOfIterations = numberOfIterations;
-    }
-    
-    public void updateImage(ValueChangeEvent event) {
-        Number newValue = (Number) event.getNewValue();
-        try {
-            this.image = this.mandelbrotSet(width, height, newValue.intValue());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    } 
-     
-    private CroppedImage croppedImage;
-     
-    private String newImageName;
- 
-    public CroppedImage getCroppedImage() {
-        return croppedImage;
-    }
- 
-    public void setCroppedImage(CroppedImage croppedImage) {
-        this.croppedImage = croppedImage;
+    public StreamedContent getImage() {
+        return DefaultStreamedContent.builder()
+                .contentType("image/png")
+                .stream(() -> {
+                    try {
+                        BufferedImage image = mandelbrotSet(width, height, numberOfIterations);
+                        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                        ImageIO.write(image, "png", outputStream);
+                        return new ByteArrayInputStream(outputStream.toByteArray());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        return null;
+                    }
+                })
+                .build();
     }
     
     public void crop() {
-        
-        if(this.croppedImage != null) {
+        if (this.croppedImage != null) {
             String imageName = UUID.randomUUID().toString() + ".png";
             setNewImageName(imageName);
             ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
@@ -142,15 +100,7 @@ public class DynamicCropper implements Serializable {
         }
         
     }
-     
-    public String getNewImageName() {
-        return newImageName;
-    }
- 
-    public void setNewImageName(String newImageName) {
-        this.newImageName = newImageName;
-    }
-    
+
     private BufferedImage mandelbrotSet(int width, int height, int maxIterations) throws IOException {
         
         BufferedImage result = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -187,4 +137,27 @@ public class DynamicCropper implements Serializable {
         return result;
     }
     
+    public int getNumberOfIterations() {
+        return numberOfIterations;
+    }
+    
+    public void setNumberOfIterations(int numberOfIterations) {
+        this.numberOfIterations = numberOfIterations;
+    }
+
+    public CroppedImage getCroppedImage() {
+        return croppedImage;
+    }
+ 
+    public void setCroppedImage(CroppedImage croppedImage) {
+        this.croppedImage = croppedImage;
+    }
+    
+    public String getNewImageName() {
+        return newImageName;
+    }
+
+    public void setNewImageName(String newImageName) {
+        this.newImageName = newImageName;
+    }
 }

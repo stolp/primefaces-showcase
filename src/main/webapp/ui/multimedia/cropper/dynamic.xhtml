@@ -24,10 +24,10 @@
                 <h:panelGrid columns="3">
                     <h:panelGrid columns="1">
 
-                        <p:spinner id="iterationSpinner" styleClass="p-mb-3"
+                        <p:spinner id="iterationSpinner"
                                    value="#{dynamicCropper.numberOfIterations}"
                                    min="5" max="50" stepFactor="5"
-                                   valueChangeListener="#{dynamicCropper.updateImage}">
+                                   styleClass="p-mb-3">
                             <p:ajax process="@this" update="cropper"/>
                         </p:spinner>
 
