@@ -70,7 +70,7 @@ public class CropUploaderBean implements Serializable {
     }
 
     public void crop() {
-        if(this.croppedImage == null || this.croppedImage.getBytes() == null || this.croppedImage.getBytes().length == 0) {
+        if (this.croppedImage == null || this.croppedImage.getBytes() == null || this.croppedImage.getBytes().length == 0) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Cropping failed."));
         }
         else {
@@ -79,49 +79,43 @@ public class CropUploaderBean implements Serializable {
     }
     
     public StreamedContent getImage() {
-        
-        FacesContext context = FacesContext.getCurrentInstance();
+        return DefaultStreamedContent.builder()
+            .contentType(originalImageFile == null ? null : originalImageFile.getContentType())
+            .stream(() -> {
+                if (originalImageFile == null
+                        || originalImageFile.getContent() == null
+                        || originalImageFile.getContent().length == 0) {
+                    return null;
+                }
 
-        StreamedContent result = null;
-        if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE || this.originalImageFile == null
-                || this.originalImageFile.getContent() == null || this.originalImageFile.getContent().length == 0) {
-            result = new DefaultStreamedContent();
-        }
-        else {
-            result = DefaultStreamedContent.builder().contentType(this.originalImageFile.getContentType()).stream(() -> {
                 try {
-                    return new ByteArrayInputStream(this.originalImageFile.getContent());
+                    return new ByteArrayInputStream(originalImageFile.getContent());
                 } catch (Exception e) {
                     e.printStackTrace();
                     return null;
                 }
-            }).build();
-        }
-        
-        return result;
+            })
+            .build();
     }
 
     public StreamedContent getCropped() {
-        
-        FacesContext context = FacesContext.getCurrentInstance();
-
-        StreamedContent result = null;
-        if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE || this.croppedImage == null
-                || this.croppedImage.getBytes() == null || this.croppedImage.getBytes().length == 0) {
-            result = new DefaultStreamedContent();
-        }
-        else {
-            result = DefaultStreamedContent.builder().contentType(this.originalImageFile.getContentType()).stream(() -> {
-                try {
-                    return new ByteArrayInputStream(this.croppedImage.getBytes());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return null;
-                }
-            }).build();
-        }
-        
-        return result;
+        return DefaultStreamedContent.builder()
+                .contentType(originalImageFile == null ? null : originalImageFile.getContentType())
+                .stream(() -> {
+                    if (croppedImage == null
+                            || croppedImage.getBytes() == null
+                            || croppedImage.getBytes().length == 0) {
+                        return null;
+                    }
+                    
+                    try {
+                        return new ByteArrayInputStream(this.croppedImage.getBytes());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        return null;
+                    }
+                })
+                .build();
     }
     
 }
