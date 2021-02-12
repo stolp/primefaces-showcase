@@ -32,12 +32,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Named
 @ApplicationScoped
 public class CountryService {
 
     private List<Country> countries;
+    private Map<Integer, Country> countriesAsMap;
 
     @PostConstruct
     public void init() {
@@ -49,11 +52,18 @@ public class CountryService {
             Locale country = new Locale("", locales[i]);
             countries.add(new Country(i, country.getDisplayCountry(), country.getCountry().toLowerCase()));
         }
-        
+
         Collections.sort(countries, (Country c1, Country c2) -> c1.getName().compareTo(c2.getName()));
     }
 
     public List<Country> getCountries() {
         return new ArrayList<>(countries);
+    }
+
+    public Map<Integer, Country> getCountriesAsMap() {
+        if (countriesAsMap == null) {
+            countriesAsMap = getCountries().stream().collect(Collectors.toMap(Country::getId, country -> country));
+        }
+        return countriesAsMap;
     }
 }

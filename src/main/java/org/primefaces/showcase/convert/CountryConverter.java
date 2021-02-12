@@ -46,7 +46,7 @@ public class CountryConverter implements Converter<Country> {
 	public Country getAsObject(FacesContext context, UIComponent component, String value) {
 		if (value != null && value.trim().length() > 0) {
             try {
-                return countryService.getCountries().get(Integer.parseInt(value));
+                return countryService.getCountriesAsMap().get(Integer.parseInt(value));
             } catch (NumberFormatException e) {
                 throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Conversion Error", "Not a valid country."));
             }
