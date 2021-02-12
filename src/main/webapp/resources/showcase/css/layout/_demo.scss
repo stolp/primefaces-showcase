@@ -290,12 +290,6 @@
         margin-top: 1rem;
     }
 
-    .products-buttonbar {
-        @include flex();
-        @include flex-align-start();
-        @include flex-justify-between();
-    }
-
     .product-image {
         width: 100px;
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
