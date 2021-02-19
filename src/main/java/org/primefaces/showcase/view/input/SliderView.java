@@ -35,7 +35,7 @@ import javax.inject.Named;
 @RequestScoped
 public class SliderView {
    
-    private int number1;
+    private int number1 = 50;
     private float number2 = 0.2f;  
     private int number3;   
     private int number4;   
