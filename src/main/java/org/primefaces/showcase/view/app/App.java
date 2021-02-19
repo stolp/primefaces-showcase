@@ -66,17 +66,30 @@ public class App implements Serializable {
     	String result = getTheme();
     	switch (result) {
 		case "nova-light":
-			result = "nova";
+			result = "nova.png";
 			break;
 		case "nova-colored":
-			result = "nova-accent";
+			result = "nova-accent.png";
 			break;
 		case "nova-dark":
-			result = "nova-alt";
+			result = "nova-alt.png";
 			break;
-		default:
+		case "bootstrap4-blue-light":
+            result = "bootstrap4-light-blue.svg";
+            break;
+        case "bootstrap4-blue-dark":
+            result = "bootstrap4-dark-blue.svg";
+            break;
+        case "bootstrap4-purple-light":
+            result = "bootstrap4-light-purple.svg";
+            break;
+        case "bootstrap4-purple-dark":
+            result = "bootstrap4-dark-purple.svg";
+            break;
+        default:
+            result += ".png";
 			break;
 		}
-    	return result + ".png";
+    	return result;
     }
 }

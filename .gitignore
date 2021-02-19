@@ -12,3 +12,5 @@ layout.css.map
 .DS_STORE
 .idea
 bin
+/src/main/webapp/resources/primefaces-bootstrap4-*/
+/showcase.iml

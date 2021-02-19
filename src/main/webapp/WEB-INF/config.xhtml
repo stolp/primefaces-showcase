@@ -22,7 +22,8 @@
 
                     <h4>Free Themes</h4>
                     <p>Built-in component themes created by the <a href="https://www.primefaces.org/designer/primefaces">PrimeFaces Theme Designer</a>.</p>
-                   
+
+                    <h4>PrimeOne Design</h4>
                     <div class="p-grid free-themes">
                         <div class="p-col-3">
                             <p:commandLink actionListener="#{app.changeTheme('saga', false)}" oncomplete="App.changeTheme('saga')" update=":app-theme-logo">
@@ -43,6 +44,36 @@
                             <span>Arya</span>
                         </div>
                         <div class="p-col-3"></div>
+                    </div>
+
+                    <h4>Premium Themes</h4>
+                    <p>Premium themes are only available exclusively for <a href="https://www.primefaces.org/designer/primefaces">PrimeFaces Theme Designer</a> subscribers and therefore not included in PrimeFaces core.</p>
+
+                    <div class="p-grid free-themes">
+                        <div class="p-col-3">
+                            <p:commandLink actionListener="#{app.changeTheme('bootstrap4-blue-light', false)}" oncomplete="App.changeTheme('bootstrap4-blue-light')" update=":app-theme-logo">
+                                <p:graphicImage name="images/themes/bootstrap4-light-blue.svg" library="showcase" alt="bootstrap4-blue-light" />
+                            </p:commandLink>
+                            <span>Bootstrap Blue</span>
+                        </div>
+                        <div class="p-col-3">
+                            <p:commandLink actionListener="#{app.changeTheme('bootstrap4-purple-light', true)}" oncomplete="App.changeTheme('bootstrap4-purple-light')" update=":app-theme-logo">
+                                <p:graphicImage name="images/themes/bootstrap4-light-purple.svg" library="showcase" alt="bootstrap4-purple-light" />
+                            </p:commandLink>
+                            <span>Bootstrap Purple</span>
+                        </div>
+                        <div class="p-col-3">
+                            <p:commandLink actionListener="#{app.changeTheme('bootstrap4-blue-dark', true)}" oncomplete="App.changeTheme('bootstrap4-blue-dark', true)" update=":app-theme-logo">
+                                <p:graphicImage name="images/themes/bootstrap4-dark-blue.svg" library="showcase" alt="bootstrap4-blue-dark" />
+                            </p:commandLink>
+                            <span>Bootstrap Blue</span>
+                        </div>
+                        <div class="p-col-3">
+                            <p:commandLink actionListener="#{app.changeTheme('bootstrap4-purple-dark', false)}" oncomplete="App.changeTheme('bootstrap4-purple-dark', true)" update=":app-theme-logo">
+                                <p:graphicImage name="images/themes/bootstrap4-dark-purple.svg" library="showcase" alt="bootstrap4-purple-dark" />
+                            </p:commandLink>
+                            <span>Bootstrap Purple</span>
+                        </div>
                     </div>
 
                     <h4>Legacy Free Themes</h4>
