@@ -132,29 +132,12 @@ App = {
     },
 
     changeTheme: function(theme, dark) {
-        var library = 'primefaces-';
-        var linkElement = $('link[href*="theme.css"]');
-        var href = linkElement.attr('href');
-        var index = href.indexOf(library);
-        var currentTheme = href.substring(index + library.length);
-
-        this.replaceLink(linkElement, href.replace(currentTheme, theme));
+        PrimeFaces.changeTheme(theme);
 
         if (dark)
             $('#homepage-intro').addClass('introduction-dark');
         else
             $('#homepage-intro').removeClass('introduction-dark');
-    },
-
-    replaceLink: function(linkElement, href) {
-        var cloneLinkElement = linkElement.clone(false);
-        
-        cloneLinkElement.attr('href', href);
-        linkElement.after(cloneLinkElement);
-        
-        cloneLinkElement.off('load').on('load', function() {
-            linkElement.remove();
-        });
     },
 
     updateInputStyle: function(value) {
