@@ -17,17 +17,21 @@ package org.primefaces.showcase.view.app;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+
+import org.primefaces.showcase.domain.Country;
+
 import java.io.Serializable;
+import java.util.Locale;
 
 @Named
 @SessionScoped
 public class App implements Serializable {
 
-    private String theme = "saga";
-
+	private static final long serialVersionUID = 1L;
+	private String theme = "saga";
     private boolean darkMode = false;
-
     private String inputStyle = "outlined";
+    private Country locale = new Country(0, Locale.US);
 
     public String getTheme() {
         return theme;
@@ -57,11 +61,19 @@ public class App implements Serializable {
         return this.inputStyle.equals("filled") ? "ui-input-filled" : "";
     }
 
+	public Country getLocale() {
+		return locale;
+	}
+
+	public void setLocale(Country locale) {
+		this.locale = locale;
+	}
+
     public void changeTheme(String theme, boolean darkMode) {
         this.theme = theme;
         this.darkMode = darkMode;
     }
-    
+
     public String getThemeImage() {
     	String result = getTheme();
     	switch (result) {

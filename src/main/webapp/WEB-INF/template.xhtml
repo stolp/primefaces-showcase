@@ -31,12 +31,14 @@
 
         <h:outputScript name="jquery/jquery.js" library="primefaces"/>
         <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
+        <h:outputScript name="locales/locale-#{app.locale.language}.js" library="primefaces"/>
 
         <ui:insert name="head"/>
         
     </h:head>
 
     <h:body>
+        <f:view locale="#{app.locale.locale}">
         <div class="layout-wrapper #{app.inputStyleClass}">
             <ui:fragment rendered="false">
                 <div class="layout-news">
@@ -119,6 +121,7 @@
         <h:outputStylesheet name="css/layout/layout.css" library="showcase"/>
         <h:outputScript name="script/layout.js" library="showcase" />
         <h:outputScript name="showcase/script/prism.js" />
+        </f:view>
     </h:body>
 
 </html>

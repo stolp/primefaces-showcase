@@ -24,6 +24,7 @@
 package org.primefaces.showcase.domain;
 
 import java.io.Serializable;
+import java.util.Locale;
 import java.util.Objects;
 
 public class Country implements Serializable, Comparable<Country> {
@@ -33,13 +34,30 @@ public class Country implements Serializable, Comparable<Country> {
     private int id;
     private String name;
     private String code;
+    private Locale locale;
+    private boolean rtl;
 
     public Country() {}
-
+    
+    public Country(int id, Locale locale) {
+    	this(id, locale.getDisplayCountry(), locale.getCountry().toLowerCase(), locale);
+    }
+    
+    public Country(int id, Locale locale, boolean rtl) {
+    	this(id, locale.getDisplayCountry(), locale.getCountry().toLowerCase(), locale);
+    	this.rtl = rtl;
+    }
+   
+    
     public Country(int id, String name, String code) {
+    	this(id, name, code, null);
+    }
+
+    public Country(int id, String name, String code, Locale locale) {
         this.id = id;
         this.name = name;
         this.code = code;
+        this.locale = locale;
     }
 
     public int getId() {
@@ -65,6 +83,30 @@ public class Country implements Serializable, Comparable<Country> {
     public void setCode(String code) {
         this.code = code;
     }
+    
+	public Locale getLocale() {
+		return locale;
+	}
+
+	public void setLocale(Locale locale) {
+		this.locale = locale;
+	}
+	
+	public String getLanguage( ) {
+		return locale == null ? "en" : locale.getLanguage();
+	}
+	
+	public String getDisplayLanguage( ) {
+		return locale == null ? "English" : locale.getDisplayLanguage();
+	}
+	
+	public boolean isRtl() {
+		return rtl;
+	}
+
+	public void setRtl(boolean rtl) {
+		this.rtl = rtl;
+	}
 
     @Override
     public boolean equals(Object o) {
@@ -90,4 +132,5 @@ public class Country implements Serializable, Comparable<Country> {
     public int compareTo(Country o) {
         return name.compareTo(o.name);
     }
+
 }

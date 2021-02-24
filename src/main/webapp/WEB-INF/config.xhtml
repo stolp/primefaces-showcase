@@ -13,6 +13,23 @@
 
             <div class="layout-config-content">
                 <h:form>
+                    <h4>Locale</h4>
+                     <p:selectOneMenu id="locale" value="#{app.locale}" converter="#{localeConverter}"
+                                style="width:300px" panelStyle="width:300px;height:350px;" height="350px" 
+                                effect="fade" var="l" filter="true" filterMatchMode="startsWith">
+                        <f:selectItems value="#{countryService.locales}" var="locale"
+                                    itemLabel="#{locale.displayLanguage}" itemValue="#{locale}"/>
+                        <p:ajax oncomplete="window.location.reload();"/>
+                        <p:column style="width:10%">
+                            <span class="flag flag-#{l.code}" style="width: 30px; height: 20px"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Language"/>
+                            </f:facet>
+                            <h:outputText value="#{l.displayLanguage}"/>
+                        </p:column>
+                    </p:selectOneMenu>
                     <h4>Input Style</h4>
                     <p:selectOneRadio value="#{app.inputStyle}" onchange="App.updateInputStyle(event.target.value)">
                         <f:selectItem itemLabel="Outlined" itemValue="outlined" />

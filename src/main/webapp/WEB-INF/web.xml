@@ -59,6 +59,10 @@
         <param-value>#{app.theme}</param-value>
     </context-param>
     <context-param>
+        <param-name>primefaces.DIR</param-name>
+        <param-value>#{app.locale.rtl ? 'rtl' : 'ltr'}</param-value>
+    </context-param>
+    <context-param>
         <param-name>primefaces.MOVE_SCRIPTS_TO_BOTTOM</param-name>
         <param-value>true</param-value>
     </context-param>
