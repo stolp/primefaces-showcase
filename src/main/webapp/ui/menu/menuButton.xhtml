@@ -22,11 +22,11 @@
                 <p:growl id="messages" showDetail="true"/>
 
                 <p:menuButton value="Options">
-                    <p:menuitem value="Save" action="#{menuView.save}" update="messages" icon="pi pi-save"/>
+                    <p:menuitem value="Save (Non-Ajax)" action="#{menuView.save}" ajax="false" update="messages" icon="pi pi-save"/>
                     <p:menuitem value="Update" action="#{menuView.update}" update="messages" icon="pi pi-refresh"/>
-                    <p:menuitem value="Delete" action="#{menuView.delete}" ajax="false" icon="pi pi-times"/>
+                    <p:menuitem value="Delete" action="#{menuView.delete}" update="messages" icon="pi pi-times"/>
                     <p:divider/>
-                    <p:menuitem value="Homepage" url="http://www.primefaces.org" icon="pi pi-home"/>
+                    <p:menuitem value="Website" url="http://www.primefaces.org" icon="pi pi-external-link"/>
                 </p:menuButton>
             </h:form>
         </div>
