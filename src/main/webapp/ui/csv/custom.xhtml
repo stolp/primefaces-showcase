@@ -41,7 +41,7 @@
 
                     if (!this.pattern.test(value)) {
                         var msgStr = element.data('p-email-msg'),
-                            msg = msgStr ? {summary: msgStr, detail: msgStr} : vc.getMessage(this.MESSAGE_ID);
+                            msg = msgStr ? {summary: 'Validation Error', detail: msgStr, severity: 'error'} : vc.getMessage(this.MESSAGE_ID);
 
                         throw msg;
                     }
