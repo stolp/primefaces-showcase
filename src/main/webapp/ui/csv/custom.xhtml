@@ -20,7 +20,8 @@
                     if (!this.pattern.test(value)) {
                         throw {
                             summary: 'Validation Error',
-                            detail: value + ' is not a valid email.'
+                            detail: value + ' is not a valid email.',
+                            severity: 'error'
                         }
                     }
                 }
