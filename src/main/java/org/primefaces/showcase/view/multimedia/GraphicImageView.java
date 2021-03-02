@@ -31,7 +31,6 @@ import org.jfree.data.general.PieDataset;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.imageio.ImageIO;
 import javax.inject.Named;
@@ -41,19 +40,16 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 @Named
 @RequestScoped
 public class GraphicImageView {
 
-    private StreamedContent graphicText;
-
-    private StreamedContent chart;
-
-    @PostConstruct
-    public void init() {
+    public StreamedContent getGraphicText() {
         try {
-            graphicText = DefaultStreamedContent.builder()
+            return DefaultStreamedContent.builder()
                     .contentType("image/png")
                     .stream(() -> {
                         try {
@@ -70,8 +66,15 @@ public class GraphicImageView {
                         }
                     })
                     .build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
-            chart = DefaultStreamedContent.builder()
+    public StreamedContent getChart() {
+        try {
+            return DefaultStreamedContent.builder()
                     .contentType("image/png")
                     .stream(() -> {
                         try {
@@ -88,15 +91,19 @@ public class GraphicImageView {
                     .build();
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
     }
-
-    public StreamedContent getGraphicText() {
-        return graphicText;
+    
+    public InputStream getChartAsStream() {
+        return getChart().getStream();
     }
-
-    public StreamedContent getChart() {
-        return chart;
+    
+    public byte[] getChartAsByteArray() throws IOException {
+        InputStream is = getChartAsStream();
+        byte[] array = new byte[is.available()];
+        is.read(array);
+        return array;
     }
 
     private PieDataset createDataset() {
