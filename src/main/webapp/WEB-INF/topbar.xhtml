@@ -19,7 +19,11 @@
                     <h:link outcome="/getstarted">Get Started</h:link>
                 </li>
                 <li class="topbar-submenu">
-                    <a tabindex="0">Themes</a>
+                    <a tabindex="0">
+                        <p:badge severity="danger" styleClass="p-d-inline">
+                            <h:outputText value="Themes"/>
+                        </p:badge>
+                    </a>
                     <ul class="connected-overlay-in">
                         <li class="topbar-submenu-header">THEMING</li>
                         <li><h:link outcome="/theming"><i class="pi pi-fw pi-file"></i><span>Guide</span></h:link></li>
