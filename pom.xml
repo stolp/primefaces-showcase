@@ -5,7 +5,7 @@
 
     <groupId>org.primefaces</groupId>
     <artifactId>showcase</artifactId>
-    <version>10.0.0</version>
+    <version>11.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <name>primefaces-showcase</name>
@@ -343,13 +343,13 @@
             </activation>
             <properties>
                 <jsfVersion>Mojarra-${mojarra.version}</jsfVersion>
-                <primefacesVersion>PrimeFaces-10.0.0</primefacesVersion>
+                <primefacesVersion>PrimeFaces-11.0.0-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>10.0.0</version>
+                    <version>11.0.0-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
@@ -367,13 +367,13 @@
             <id>dev-myfaces</id>
             <properties>
                 <jsfVersion>Apache MyFaces-${myfaces.version}</jsfVersion>
-                <primefacesVersion>PrimeFaces-10.0.0</primefacesVersion>
+                <primefacesVersion>PrimeFaces-11.0.0-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>10.0.0</version>
+                    <version>11.0.0-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.apache.myfaces.core</groupId>
@@ -396,13 +396,13 @@
             <id>community-stable</id>
             <properties>
                 <jsfVersion>Mojarra-${mojarra.version}</jsfVersion>
-                <primefacesVersion>PrimeFaces-8.0</primefacesVersion>
+                <primefacesVersion>PrimeFaces-10.0.0</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>8.0</version>
+                    <version>10.0.0</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
