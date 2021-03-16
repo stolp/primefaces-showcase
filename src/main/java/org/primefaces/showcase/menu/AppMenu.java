@@ -373,7 +373,6 @@ public class AppMenu {
         //panelMenuItems.add(new MenuItem("FlexGrid", "/ui/panel/flexGrid"));
         panelMenuItems.add(new MenuItem("Panel", "/ui/panel/panel"));
         panelMenuItems.add(new MenuItem("PanelGrid", "/ui/panel/panelGrid"));
-        //panelMenuItems.add(new MenuItem("Ribbon", "/ui/panel/ribbon"));
         panelMenuItems.add(new MenuItem("Splitter", "/ui/panel/splitter", "New"));
         panelMenuItems.add(new MenuItem("ScrollPanel", "/ui/panel/scrollPanel"));
         panelMenuItems.add(new MenuItem("TabView", "/ui/panel/tabView"));
@@ -539,13 +538,11 @@ public class AppMenu {
         miscMenuItems.add(new MenuItem("Tag", "/ui/misc/tag", "New"));
         //miscMenuItems.add(new MenuItem("Responsive", "/ui/misc/responsive"));
         miscMenuItems.add(new MenuItem("AutoUpdate", "/ui/misc/autoUpdate"));
-        //miscMenuItems.add(new MenuItem("ThemeSwitcher", "/ui/misc/themeSwitcher"));
         miscMenuItems.add(new MenuItem("OutputLabel", "/ui/misc/outputLabel"));
         miscMenuItems.add(new MenuItem("BlockUI", "/ui/misc/blockUI"));
         miscMenuItems.add(new MenuItem("Cache", "/ui/misc/cache"));
         miscMenuItems.add(new MenuItem("Captcha", "/ui/misc/captcha"));
         miscMenuItems.add(new MenuItem("Clock", "/ui/misc/clock"));
-        //miscMenuItems.add(new MenuItem("Collector", "/ui/misc/collector"));
         miscMenuItems.add(new MenuItem("Context", "/ui/misc/context"));
 
         //DefaultCommand Nested MenuItem
