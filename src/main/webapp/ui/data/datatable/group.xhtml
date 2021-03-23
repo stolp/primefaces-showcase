@@ -18,6 +18,19 @@
     <ui:define name="implementation">
         <div class="card">
             <h:form>
+             <div class="p-d-flex p-jc-between">
+            <div>
+            </div>
+            <div>
+                   <p:commandButton value="XLXS" styleClass="p-mr-2 p-mb-2" >
+                    <p:dataExporter type="xlsxstream" target="tblSales" fileName="sales"/>
+                </p:commandButton>
+
+                <p:commandButton value="PDF" styleClass="p-mr-2 p-mb-2" >
+                    <p:dataExporter type="pdf" target="tblSales" fileName="sales"/>
+                </p:commandButton>
+            </div>
+            </div>
                 <p:dataTable id="tblSales" var="sale" value="#{dtGroupView.sales}">
                     <f:facet name="header">
                         <h:outputText value="Product Sales"/>

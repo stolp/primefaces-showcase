@@ -187,6 +187,7 @@ public class AppMenu {
         dataExporterMenuItems.add(new MenuItem("Lazy", "/ui/data/dataexporter/lazy"));
         dataExporterMenuItems.add(new MenuItem("Exclude", "/ui/data/dataexporter/excludeColumns"));
         dataExporterMenuItems.add(new MenuItem("Customized", "/ui/data/dataexporter/customizedDocuments"));
+        dataExporterMenuItems.add(new MenuItem("TreeTable", "/ui/data/dataexporter/treetable"));
         dataMenuItems.add(new MenuItem("DataExporter", dataExporterMenuItems));
 
         /*
