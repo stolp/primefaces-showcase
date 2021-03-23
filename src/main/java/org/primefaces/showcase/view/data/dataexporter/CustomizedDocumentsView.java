@@ -136,7 +136,7 @@ public class CustomizedDocumentsView implements Serializable {
         pdf.setPageSize(PageSize.A4);
 
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-        String logo = externalContext.getRealPath("") + File.separator + "resources" + File.separator + "demo" + File.separator + "images" + File.separator + "prime_logo.png";
+        String logo = externalContext.getRealPath("") + File.separator + "resources" + File.separator + "showcase" + File.separator + "images" + File.separator + "primefaces-logo.png";
 		
 		pdf.add(Image.getInstance(logo));
 	}
