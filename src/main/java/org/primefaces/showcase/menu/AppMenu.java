@@ -292,9 +292,9 @@ public class AppMenu {
         horizontalTreeMenuItems.add(new MenuItem("ContextMenu", "/ui/data/htree/contextMenu"));
         dataMenuItems.add(new MenuItem("HorizontalTree", horizontalTreeMenuItems));
 
+        dataMenuItems.add(new MenuItem("Mindmap", "/ui/data/mindmap"));
         dataMenuItems.add(new MenuItem("OrderList", "/ui/data/orderList"));
         dataMenuItems.add(new MenuItem("Organigram", "/ui/data/organigram"));
-        dataMenuItems.add(new MenuItem("Mindmap", "/ui/data/mindmap"));
         dataMenuItems.add(new MenuItem("PickList", "/ui/data/pickList"));
         dataMenuItems.add(new MenuItem("Repeat", "/ui/data/repeat"));
         dataMenuItems.add(new MenuItem("Ring", "/ui/data/ring"));
